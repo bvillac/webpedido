@@ -7,7 +7,9 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'Utimpor S.A.',
+        'language' => 'es',
+        'charset' => 'utf-8', //'ISO-8859-1'
 
 	// preloading 'log' component
 	'preload'=>array('log'),
