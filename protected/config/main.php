@@ -10,7 +10,7 @@ return array(
 	'name'=>'Utimpor S.A.',
         'language' => 'es',
         'charset' => 'utf-8', //'ISO-8859-1'
-        //'theme' => 'utimporblue',//tema comun
+        'theme' => 'seablue',//tema comun
         //'theme' => 'classic',//tema comun
 	// preloading 'log' component
 	'preload'=>array(
@@ -28,7 +28,7 @@ return array(
 		// uncomment the following to enable the Gii tool
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
-			'password'=>'sea2014',//pass para generador
+			'password'=>'1234',//pass para generador
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
                         'generatorPaths' => array(
@@ -48,7 +48,7 @@ return array(
 		'urlManager'=>array(
 			'urlFormat'=>'path',
                         'showScriptName'=>false,
-                        'urlSuffix'=>'.html',
+                        'urlSuffix'=>'.jsp',
                         //'caseSensitive'=>true,//Si los controladores Tienen Mayusculas, Caso COntrario False
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',

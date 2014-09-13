@@ -1,0 +1,160 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20/04/2014, 06:55:25 PM
+    Author     : BYRON
+*/
+/* Estilos Genericos */
+
+.DatosTitulos{
+    font-size: 18px;
+    /*color: #333333;*/
+    color: #114359;
+    text-transform: uppercase;
+}
+.Cab_lightbox{
+    margin-bottom: 10px;
+}
+.Pie_lightbox{
+    margin-top: 10px;
+    text-align: right;
+}
+
+/* Estilos Genericos  BOX */
+
+.valTotalbox{
+    width:70px !important;
+    text-align: right;
+}
+
+.valTotalbox2{
+    width:56px !important;
+    text-align: right;
+}
+
+/* Clase para tablas en fomrularios */
+.div-table {/* Crear Tablas con Divs */
+    display:table;
+    border-collapse:collapse;
+    width:auto;
+}
+
+.trow {/* Crear filas de una tablas Divs */
+    display:table-row;
+    width:auto;
+    margin-bottom: 5px !important; 
+}
+
+.trow-right{ /* Crear filas de una tablas Divs alineada a la Derecha*/
+    text-align: right;
+}
+
+.tcol-td {/* Crear Columnas de una fila con  Divs*/
+    display:table-cell;
+    width:auto;
+    padding: 2px; /*para mantener margen entre campos de texto DL*/
+}
+
+/* Clase para Titulos en fomrularios */
+.frm-titulo{
+    color: #333333;
+    font-size: 18px;
+    margin-bottom: 10px;
+    width: auto;
+}
+/* Clase para SubTitulos en fomrularios */
+.frm-subtitulo{
+    color: #333333;
+    font-size: 15px;
+    margin-bottom: 10px;
+    width: auto;
+    font-weight: bold;
+}
+
+/* Clase para Cajas Texto en Fechas en fomrularios */
+.frm-txt-fecha{
+    width:90px !important;
+    text-align: right;
+}
+/* Clase para Cajas Texto  Totales Numericos en formularios */
+.valTotal{
+    width:90px !important;
+    text-align: right;
+}
+/* Clase para Cajas Texto  Porcentajes Numericos en formularios */
+.valPor{
+    width:40px !important; 
+    text-align: right;
+}
+
+.separar_td{/*Permite Separar entre td de un Formulario*/
+    padding-left: 10px;
+}
+
+.botones img{
+    width: 23px !important;
+    height: 20px !important;
+}
+
+/*Botones Acciones Grid*/
+#acciones-botones-grid{
+    float: right;
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
+/* CSS para Label con Forma Text  */
+
+.imputext,.uneditable-inputform {
+    background-color: #FCFCFC;
+    border-color: #CCCCCC;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.024) inset;
+    border-radius: 4px 4px 4px 4px;
+    color: #999999;
+    /*cursor: not-allowed;*/ 
+}
+
+
+ .uneditable-inputform {
+    border-radius: 4px 4px 4px 4px;
+    color: #555555;
+    display: inline-block;
+    font-size: 14px;
+    height: 30px;
+    line-height: 20px;
+    margin-left: 5px;
+    padding: 4px 6px;
+    vertical-align: middle;
+}
+.imputext, .uneditable-inputform {
+    -moz-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+
+/* FIN CSS para Label con Forma Text  */
+.text-left{
+     text-align:left !important;
+     color: #000000  !important;
+}
+
+/* Clase para Cajas Texto  Totales Numericos en formularios */
+.valTotal{
+    width:90px !important;
+    text-align: right;
+}
+/* Clase para Cajas Texto  Porcentajes Numericos en formularios */
+.valPor{
+    width:60px !important; 
+    text-align: right;
+}
+
+.separar_td{/*Permite Separar entre td de un Formulario*/
+    padding-left: 10px;
+}
+
+

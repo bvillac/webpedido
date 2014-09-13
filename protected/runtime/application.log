@@ -273,3 +273,260 @@ REQUEST_URI=/websea/
 in /var/www/html/websea/protected/views/layouts/main.php (51)
 in /var/www/html/websea/protected/views/layouts/column1.php (6)
 in /var/www/html/websea/protected/controllers/SiteController.php (32)
+2014/09/12 23:26:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "index.html" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('index.html')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('index.html')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('site/index.html')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/websea/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/websea/site/index.html
+HTTP_REFERER=http://localhost/websea/site/page.html?view=about
+---
+2014/09/12 23:30:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "index.html" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('index.html')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('index.html')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('site/index.html')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/websea/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/websea/site/index.html
+HTTP_REFERER=http://localhost/websea/site/page.html?view=about
+---
+2014/09/12 23:30:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/main.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/main.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/main.css
+HTTP_REFERER=http://localhost/websea/site/index.html
+---
+2014/09/12 23:30:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/print.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/print.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/print.css
+HTTP_REFERER=http://localhost/websea/site/index.html
+---
+2014/09/12 23:30:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/form.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/form.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/form.css
+HTTP_REFERER=http://localhost/websea/site/index.html
+---
+2014/09/12 23:30:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/screen.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/screen.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/screen.css
+HTTP_REFERER=http://localhost/websea/site/index.html
+---
+2014/09/12 23:30:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/form.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/form.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/form.css
+HTTP_REFERER=http://localhost/websea/site/index.jsp
+---
+2014/09/12 23:30:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/main.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/main.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/main.css
+HTTP_REFERER=http://localhost/websea/site/index.jsp
+---
+2014/09/12 23:30:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/print.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/print.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/print.css
+HTTP_REFERER=http://localhost/websea/site/index.jsp
+---
+2014/09/12 23:30:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/screen.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/screen.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/screen.css
+HTTP_REFERER=http://localhost/websea/site/index.jsp
+---
+2014/09/12 23:30:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/print.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/print.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/print.css
+HTTP_REFERER=http://localhost/websea/site/page.jsp?view=about
+---
+2014/09/12 23:30:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/screen.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/screen.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/screen.css
+HTTP_REFERER=http://localhost/websea/site/page.jsp?view=about
+---
+2014/09/12 23:30:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/form.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/form.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/form.css
+HTTP_REFERER=http://localhost/websea/site/page.jsp?view=about
+---
+2014/09/12 23:30:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/main.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/main.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/main.css
+HTTP_REFERER=http://localhost/websea/site/page.jsp?view=about
+---
+2014/09/12 23:30:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/form.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/form.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/form.css
+HTTP_REFERER=http://localhost/websea/site/contact.jsp
+---
+2014/09/12 23:30:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/screen.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/screen.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/screen.css
+HTTP_REFERER=http://localhost/websea/site/contact.jsp
+---
+2014/09/12 23:30:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/main.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/main.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/main.css
+HTTP_REFERER=http://localhost/websea/site/contact.jsp
+---
+2014/09/12 23:30:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/print.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/print.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/print.css
+HTTP_REFERER=http://localhost/websea/site/contact.jsp
+---
+2014/09/12 23:30:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/screen.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/screen.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/screen.css
+HTTP_REFERER=http://localhost/websea/site/login.jsp
+---
+2014/09/12 23:30:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/main.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/main.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/main.css
+HTTP_REFERER=http://localhost/websea/site/login.jsp
+---
+2014/09/12 23:30:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/print.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/print.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/print.css
+HTTP_REFERER=http://localhost/websea/site/login.jsp
+---
+2014/09/12 23:30:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "css/form.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('css/form.css')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/css/form.css
+HTTP_REFERER=http://localhost/websea/site/login.jsp
+---
+2014/09/12 23:33:34 [error] [exception.CException] exception 'CException' with message 'SiteController y sus behaviors no tienen un método o closure llamado "isSession".' in /opt/sisweb/base/CComponent.php:266
+Stack trace:
+#0 /var/www/html/websea/themes/seablue/views/layouts/main.php(97): CComponent->__call('isSession', Array)
+#1 /var/www/html/websea/themes/seablue/views/layouts/main.php(97): SiteController->isSession()
+#2 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#3 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#4 /opt/sisweb/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#5 /opt/sisweb/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#6 /opt/sisweb/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#7 /opt/sisweb/web/CBaseController.php(206): COutputProcessor->run()
+#8 /opt/sisweb/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
+#9 /var/www/html/websea/themes/seablue/views/layouts/column1.php(6): CBaseController->endContent()
+#10 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#11 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#12 /opt/sisweb/web/CController.php(784): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#13 /var/www/html/websea/protected/controllers/SiteController.php(72): CController->render('contact', Array)
+#14 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionContact()
+#15 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#17 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /opt/sisweb/web/CWebApplication.php(282): CController->run('contact')
+#19 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('site/contact')
+#20 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#21 /var/www/html/websea/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/websea/site/contact.jsp
+HTTP_REFERER=http://localhost/websea/site/page.jsp?view=about
+---
+2014/09/12 23:33:42 [error] [exception.CException] exception 'CException' with message 'SiteController y sus behaviors no tienen un método o closure llamado "isSession".' in /opt/sisweb/base/CComponent.php:266
+Stack trace:
+#0 /var/www/html/websea/themes/seablue/views/layouts/main.php(97): CComponent->__call('isSession', Array)
+#1 /var/www/html/websea/themes/seablue/views/layouts/main.php(97): SiteController->isSession()
+#2 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#3 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#4 /opt/sisweb/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#5 /opt/sisweb/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#6 /opt/sisweb/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#7 /opt/sisweb/web/CBaseController.php(206): COutputProcessor->run()
+#8 /opt/sisweb/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
+#9 /var/www/html/websea/themes/seablue/views/layouts/column1.php(6): CBaseController->endContent()
+#10 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#11 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#12 /opt/sisweb/web/CController.php(784): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#13 /var/www/html/websea/protected/controllers/SiteController.php(32): CController->render('index')
+#14 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#15 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#17 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /opt/sisweb/web/CWebApplication.php(282): CController->run('')
+#19 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('')
+#20 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#21 /var/www/html/websea/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/websea/
+---
