@@ -15,19 +15,50 @@ class UserIdentity extends CUserIdentity
 	 * against some persistent user identity storage (e.g. database).
 	 * @return boolean whether authentication succeeds.
 	 */
+         
+        private $_id;
+        private $_username;
+        //private $_password;
+        public  $_rememberMe;
+        
 	public function authenticate()
 	{
-		$users=array(
+		/*$users=array(
 			// username => password
 			'demo'=>'demo',
 			'admin'=>'admin',
-		);
-		if(!isset($users[$this->username]))
+		);*/
+		/*if(!isset($users[$this->username]))
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
 		elseif($users[$this->username]!==$this->password)
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else
 			$this->errorCode=self::ERROR_NONE;
-		return !$this->errorCode;
+		return !$this->errorCode;*/
+                //echo $this->username;
+                $session = Yii::app()->getSession();
+                $user= USUARIO::model()->find('LOWER(USU_NOMBRE)=?', array(strtolower($this->username)));
+
+                $session->add('isuser', FALSE);
+                
+                if($user===null)
+			$this->errorCode=self::ERROR_USERNAME_INVALID;
+		elseif($this->password!==$user->USU_PASSWORD)
+			$this->errorCode=self::ERROR_PASSWORD_INVALID;
+                else{
+                    //yii::app()->user->_id;
+                    $this->_id=$user->USU_ID;
+                    $this->_username=$user->USU_NOMBRE;
+                    $session->add('isuser', TRUE);
+                    //$this->setState('CORREO', $user->CORREO);
+                    //PARA USAR LAS VARIABLES DE SESSION
+                    //yii::app()->user->CORREO;
+                    //yii::app()->user->getState('CORREO');
+                    $this->errorCode=self::ERROR_NONE;
+                }
+                
+                $session->close();
+                return $this->errorCode == self::ERROR_NONE;
+                
 	}
 }

@@ -68,7 +68,7 @@ if (Yii::app()->getSession()->get('isuser', FALSE)) {
             </div>
             <!-- /.row -->
             <div class="row">
-                echo "Ingreso";
+                
                 <?php echo $content; ?>
             </div>
         </div>
@@ -93,7 +93,7 @@ if (Yii::app()->getSession()->get('isuser', FALSE)) {
 </html>
 <?php
     } else {
-        echo "NO Ingreso";
+        //echo "NO Ingreso";
         $route = $this->getRoute();
         if ($route != "site/login")
             $this->isSession();

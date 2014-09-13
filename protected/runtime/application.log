@@ -530,3 +530,221 @@ Stack trace:
 #22 {main}
 REQUEST_URI=/websea/
 ---
+2014/09/13 01:10:45 [error] [php] include(Usuario.php): failed to open stream: No such file or directory (/opt/sisweb/YiiBase.php:427)
+Stack trace:
+#0 /var/www/html/websea/protected/components/UserIdentity.php(40): spl_autoload_call()
+#1 /var/www/html/websea/protected/models/LoginForm.php(52): UserIdentity->authenticate()
+#2 /opt/sisweb/validators/CInlineValidator.php(42): LoginForm->authenticate()
+#3 /opt/sisweb/validators/CValidator.php(213): CInlineValidator->validateAttribute()
+#4 /opt/sisweb/base/CModel.php(159): CInlineValidator->validate()
+#5 /var/www/html/websea/protected/controllers/SiteController.php(94): LoginForm->validate()
+#6 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#7 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#8 /opt/sisweb/web/CController.php(286): SiteController->runAction()
+#9 /opt/sisweb/web/CController.php(265): SiteController->runActionWithFilters()
+#10 /opt/sisweb/web/CWebApplication.php(282): SiteController->run()
+#11 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/site/login
+in /var/www/html/websea/protected/components/UserIdentity.php (40)
+in /var/www/html/websea/protected/models/LoginForm.php (52)
+in /var/www/html/websea/protected/controllers/SiteController.php (94)
+2014/09/13 01:12:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/font-awesome/css/font-awesome.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/font-awesome/css/font-awesome.css
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/13 01:13:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/font-awesome/css/font-awesome.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/font-awesome/css/font-awesome.css
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/13 01:14:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/13 01:14:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/font-awesome/css/font-awesome.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/font-awesome/css/font-awesome.css
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/13 01:14:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/create"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/create')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/create.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/13 01:14:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/font-awesome/css/font-awesome.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/font-awesome/css/font-awesome.css
+HTTP_REFERER=http://localhost/websea/pEDIDO/create.jsp
+---
+2014/09/13 01:14:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/create.jsp
+---
+2014/09/13 01:14:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/font-awesome/css/font-awesome.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/font-awesome/css/font-awesome.css
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index.jsp
+---
+2014/09/13 01:14:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index.jsp
+---
+2014/09/13 01:14:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/font-awesome/css/font-awesome.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/font-awesome/css/font-awesome.css
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/13 01:14:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/create"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/create')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/create.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/13 01:14:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/font-awesome/css/font-awesome.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/font-awesome/css/font-awesome.css
+HTTP_REFERER=http://localhost/websea/pEDIDO/create.jsp
+---
+2014/09/13 01:14:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/create.jsp
+---
+2014/09/13 01:14:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/font-awesome/css/font-awesome.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/font-awesome/css/font-awesome.css
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/13 01:14:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/13 01:14:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/font-awesome/css/font-awesome.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/font-awesome/css/font-awesome.css
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index.jsp
+---
+2014/09/13 01:14:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/create"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/create')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/create.jsp
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index.jsp
+---
+2014/09/13 01:14:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/font-awesome/css/font-awesome.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/font-awesome/css/font-awesome.css
+HTTP_REFERER=http://localhost/websea/pEDIDO/create.jsp
+---
+2014/09/13 01:14:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/create"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/create')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/create.jsp
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index.jsp
+---
+2014/09/13 01:14:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/font-awesome/css/font-awesome.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/font-awesome/css/font-awesome.css
+HTTP_REFERER=http://localhost/websea/pEDIDO/create.jsp
+---
+2014/09/13 01:14:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/font-awesome/css/font-awesome.css"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/font-awesome/css/font-awesome.css
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/13 01:18:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
