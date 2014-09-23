@@ -69,6 +69,8 @@ return array(
 			'username' => 'root',
 			'password' => 'root00',
 			'charset' => 'utf8',
+                        'dbname' => "appweb_2014",
+                        'dbserver' => "192.168.10.101"
 		),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors

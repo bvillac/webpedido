@@ -748,3 +748,120 @@ Stack trace:
 REQUEST_URI=/websea/pEDIDO/index.jsp
 HTTP_REFERER=http://localhost/websea/
 ---
+2014/09/22 22:18:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/22 22:18:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/22 22:18:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index
+HTTP_REFERER=http://localhost/websea/pEDIDO/index
+---
+2014/09/23 00:19:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 00:20:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index.jsp
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index.jsp
+---
+2014/09/23 00:20:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index.jsp
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index.jsp
+---
+2014/09/23 00:20:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index.jsp
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index.jsp
+---
+2014/09/23 00:20:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index.jsp
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index.jsp
+---
+2014/09/23 00:20:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index.jsp
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index.jsp
+---
+2014/09/23 00:20:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index.jsp
+---
+2014/09/23 00:20:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index
+---
+2014/09/23 00:20:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index
+---
+2014/09/23 00:20:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index
+---
