@@ -865,3 +865,2353 @@ Stack trace:
 REQUEST_URI=/websea/uSUARIOS/index
 HTTP_REFERER=http://localhost/websea/uSUARIOS/index
 ---
+2014/09/23 10:15:01 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'appweb_2014')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CApplication.php(450): CModule->getComponent('db')
+#3 /opt/sisweb/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#4 /opt/sisweb/db/ar/CActiveRecord.php(667): CActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(1455): CActiveRecord->getCommandBuilder()
+#6 /var/www/html/websea/protected/components/UserIdentity.php(40): CActiveRecord->find('LOWER(USU_NOMBR...', Array)
+#7 /var/www/html/websea/protected/models/LoginForm.php(52): UserIdentity->authenticate()
+#8 /opt/sisweb/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#9 /opt/sisweb/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#10 /opt/sisweb/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#11 /var/www/html/websea/protected/controllers/SiteController.php(94): CModel->validate()
+#12 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#13 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#15 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /opt/sisweb/web/CWebApplication.php(282): CController->run('login')
+#17 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#18 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#19 /var/www/html/websea/index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/websea/site/login
+HTTP_REFERER=http://localhost/websea/site/login
+---
+2014/09/23 10:42:22 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'appweb_2014')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CApplication.php(450): CModule->getComponent('db')
+#3 /opt/sisweb/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#4 /opt/sisweb/db/ar/CActiveRecord.php(667): CActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(1455): CActiveRecord->getCommandBuilder()
+#6 /var/www/html/websea/protected/components/UserIdentity.php(40): CActiveRecord->find('LOWER(USU_NOMBR...', Array)
+#7 /var/www/html/websea/protected/models/LoginForm.php(52): UserIdentity->authenticate()
+#8 /opt/sisweb/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#9 /opt/sisweb/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#10 /opt/sisweb/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#11 /var/www/html/websea/protected/controllers/SiteController.php(94): CModel->validate()
+#12 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#13 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#15 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /opt/sisweb/web/CWebApplication.php(282): CController->run('login')
+#17 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#18 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#19 /var/www/html/websea/index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/websea/site/login
+HTTP_REFERER=http://localhost/websea/site/login
+---
+2014/09/23 11:10:06 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'appweb_2014')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CApplication.php(450): CModule->getComponent('db')
+#3 /opt/sisweb/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#4 /opt/sisweb/db/ar/CActiveRecord.php(667): CActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(1455): CActiveRecord->getCommandBuilder()
+#6 /var/www/html/websea/protected/components/UserIdentity.php(40): CActiveRecord->find('LOWER(USU_NOMBR...', Array)
+#7 /var/www/html/websea/protected/models/LoginForm.php(52): UserIdentity->authenticate()
+#8 /opt/sisweb/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#9 /opt/sisweb/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#10 /opt/sisweb/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#11 /var/www/html/websea/protected/controllers/SiteController.php(94): CModel->validate()
+#12 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#13 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#15 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /opt/sisweb/web/CWebApplication.php(282): CController->run('login')
+#17 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#18 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#19 /var/www/html/websea/index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/websea/site/login
+HTTP_REFERER=http://localhost/websea/site/login
+---
+2014/09/23 15:29:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 15:29:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 15:29:12 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'appweb_2014.VSCompania' doesn't exist. La sentencia SQL ejecutada fue: SHOW FULL COLUMNS FROM `VSCompania`.
+in /var/www/html/websea/protected/views/vSCompania/index.php (20)
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (128)
+in /var/www/html/websea/index.php (13)
+2014/09/23 15:29:12 [error] [exception.CDbException] exception 'CDbException' with message 'La tabla "VSCompania" definida en la clase active record "VSCompania" no se ha podido encontrar en la base de datos.' in /opt/sisweb/db/ar/CActiveRecord.php:2362
+Stack trace:
+#0 /opt/sisweb/db/ar/CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(VSCompania))
+#1 /opt/sisweb/db/ar/CActiveRecord.php(658): CActiveRecord->getMetaData()
+#2 /opt/sisweb/db/ar/CActiveRecord.php(1601): CActiveRecord->getTableSchema()
+#3 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#4 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#5 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#6 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#7 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#8 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#9 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#10 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#11 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#12 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#13 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#14 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#16 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#17 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#18 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#19 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#20 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#21 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#22 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#24 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#25 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#27 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#28 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#29 /var/www/html/websea/index.php(13): CApplication->run()
+#30 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index.jsp
+---
+2014/09/23 15:48:07 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(13): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(667): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1595): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index.jsp
+---
+2014/09/23 15:57:28 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(667): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1595): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index.jsp
+---
+2014/09/23 17:58:28 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 18:09:07 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 18:09:08 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 18:09:10 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 19:19:12 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 19:19:28 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 19:20:24 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 19:20:55 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 19:20:56 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 19:22:02 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 19:22:15 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 19:26:58 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 21:18:31 [error] [exception.CException] exception 'CException' with message 'VSCompania y sus behaviors no tienen un método o closure llamado "getAdvertDbConnection".' in /opt/sisweb/base/CComponent.php:266
+Stack trace:
+#0 /opt/sisweb/db/ar/CActiveRecord.php(229): CComponent->__call('getAdvertDbConn...', Array)
+#1 /var/www/html/websea/protected/models/VSCompania.php(41): CActiveRecord->__call('getAdvertDbConn...', Array)
+#2 /var/www/html/websea/protected/models/VSCompania.php(41): VSCompania->getAdvertDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(2365): VSCompania->getDbConnection()
+#4 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#5 /opt/sisweb/db/ar/CActiveRecord.php(214): CActiveRecord->getMetaData()
+#6 /var/www/html/websea/protected/models/VSCompania.php(41): CActiveRecord->__call('getAdvertDbConn...', Array)
+#7 /var/www/html/websea/protected/models/VSCompania.php(41): VSCompania->getAdvertDbConnection()
+#8 /opt/sisweb/db/ar/CActiveRecord.php(671): VSCompania->getDbConnection()
+#9 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#10 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#11 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#12 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#13 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#14 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#15 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#16 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#17 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#18 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#19 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#20 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#21 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#22 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#23 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#24 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#25 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#26 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#27 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#28 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#29 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#30 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#31 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#32 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#33 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#34 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#35 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#36 /var/www/html/websea/index.php(13): CApplication->run()
+#37 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 21:22:22 [error] [php] Undefined variable: className (/var/www/html/websea/protected/models/VSCompania.php:41)
+Stack trace:
+#0 /opt/sisweb/web/CActiveDataProvider.php(228): VSCompania->count()
+#1 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#2 /opt/sisweb/web/CActiveDataProvider.php(178): CActiveDataProvider->getTotalItemCount()
+#3 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#4 /opt/sisweb/zii/widgets/CBaseListView.php(111): CActiveDataProvider->getData()
+#5 /opt/sisweb/zii/widgets/CListView.php(211): CListView->init()
+#6 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#7 /opt/sisweb/web/CBaseController.php(172): VSCompaniaController->createWidget()
+#8 /var/www/html/websea/protected/views/vSCompania/index.php(20): VSCompaniaController->widget()
+#9 /opt/sisweb/web/CBaseController.php(126): require()
+#10 /opt/sisweb/web/CBaseController.php(95): VSCompaniaController->renderInternal()
+#11 /opt/sisweb/web/CController.php(869): VSCompaniaController->renderFile()
+#12 /opt/sisweb/web/CController.php(782): VSCompaniaController->renderPartial()
+#13 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): VSCompaniaController->render()
+#14 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#15 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#16 /opt/sisweb/web/filters/CFilterChain.php(133): VSCompaniaController->runAction()
+#17 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#18 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#19 /opt/sisweb/web/filters/CInlineFilter.php(58): VSCompaniaController->filterAccessControl()
+#20 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#21 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(265): VSCompaniaController->runActionWithFilters()
+#23 /opt/sisweb/web/CWebApplication.php(282): VSCompaniaController->run()
+#24 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#25 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#26 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSCompania/index.jsp
+in /var/www/html/websea/protected/models/VSCompania.php (41)
+in /var/www/html/websea/protected/views/vSCompania/index.php (20)
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (128)
+2014/09/23 21:22:52 [error] [exception.CException] exception 'CException' with message 'VSCompania y sus behaviors no tienen un método o closure llamado "getSchema".' in /opt/sisweb/base/CComponent.php:266
+Stack trace:
+#0 /opt/sisweb/db/ar/CActiveRecord.php(229): CComponent->__call('getSchema', Array)
+#1 /opt/sisweb/db/ar/CActiveRecord.php(2365): CActiveRecord->__call('getSchema', Array)
+#2 /opt/sisweb/db/ar/CActiveRecord.php(2365): VSCompania->getSchema()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#4 /opt/sisweb/db/ar/CActiveRecord.php(214): CActiveRecord->getMetaData()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(671): CActiveRecord->__call('getSchema', Array)
+#6 /opt/sisweb/db/ar/CActiveRecord.php(671): VSCompania->getSchema()
+#7 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#8 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#9 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#10 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#11 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#12 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#13 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#14 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#15 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#16 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#17 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#18 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#19 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#20 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#21 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#22 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#23 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#24 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#25 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#27 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#28 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#29 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#30 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#31 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#32 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#33 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#34 /var/www/html/websea/index.php(13): CApplication->run()
+#35 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 21:23:51 [error] [exception.CException] exception 'CException' with message 'VSCompania y sus behaviors no tienen un método o closure llamado "getSchema".' in /opt/sisweb/base/CComponent.php:266
+Stack trace:
+#0 /opt/sisweb/db/ar/CActiveRecord.php(229): CComponent->__call('getSchema', Array)
+#1 /opt/sisweb/db/ar/CActiveRecord.php(2365): CActiveRecord->__call('getSchema', Array)
+#2 /opt/sisweb/db/ar/CActiveRecord.php(2365): VSCompania->getSchema()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#4 /opt/sisweb/db/ar/CActiveRecord.php(214): CActiveRecord->getMetaData()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(671): CActiveRecord->__call('getSchema', Array)
+#6 /opt/sisweb/db/ar/CActiveRecord.php(671): VSCompania->getSchema()
+#7 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#8 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#9 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#10 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#11 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#12 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#13 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#14 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#15 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#16 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#17 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#18 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#19 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#20 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#21 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#22 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#23 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#24 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#25 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#27 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#28 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#29 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#30 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#31 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#32 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#33 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#34 /var/www/html/websea/index.php(13): CApplication->run()
+#35 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 21:23:52 [error] [exception.CException] exception 'CException' with message 'VSCompania y sus behaviors no tienen un método o closure llamado "getSchema".' in /opt/sisweb/base/CComponent.php:266
+Stack trace:
+#0 /opt/sisweb/db/ar/CActiveRecord.php(229): CComponent->__call('getSchema', Array)
+#1 /opt/sisweb/db/ar/CActiveRecord.php(2365): CActiveRecord->__call('getSchema', Array)
+#2 /opt/sisweb/db/ar/CActiveRecord.php(2365): VSCompania->getSchema()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#4 /opt/sisweb/db/ar/CActiveRecord.php(214): CActiveRecord->getMetaData()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(671): CActiveRecord->__call('getSchema', Array)
+#6 /opt/sisweb/db/ar/CActiveRecord.php(671): VSCompania->getSchema()
+#7 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#8 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#9 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#10 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#11 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#12 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#13 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#14 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#15 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#16 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#17 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#18 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#19 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#20 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#21 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#22 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#23 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#24 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#25 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#27 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#28 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#29 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#30 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#31 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#32 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#33 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#34 /var/www/html/websea/index.php(13): CApplication->run()
+#35 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 21:28:58 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'appweb_2014')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('db')
+#3 /opt/sisweb/gii/generators/model/ModelCode.php(60): CModule->__get('db')
+#4 /opt/sisweb/web/CFormModel.php(39): ModelCode->init()
+#5 /opt/sisweb/gii/CCodeGenerator.php(153): CFormModel->__construct()
+#6 /opt/sisweb/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#7 /opt/sisweb/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#8 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/websea/gii/model/index.jsp
+HTTP_REFERER=http://localhost/websea/gii
+---
+2014/09/23 21:29:32 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'appweb_2014')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('db')
+#3 /opt/sisweb/gii/generators/model/ModelCode.php(60): CModule->__get('db')
+#4 /opt/sisweb/web/CFormModel.php(39): ModelCode->init()
+#5 /opt/sisweb/gii/CCodeGenerator.php(153): CFormModel->__construct()
+#6 /opt/sisweb/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#7 /opt/sisweb/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#8 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/websea/gii/model/index.jsp
+HTTP_REFERER=http://localhost/websea/gii/default/index.jsp
+---
+2014/09/23 21:31:45 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'appweb_2014.VSCompania' doesn't exist. La sentencia SQL ejecutada fue: SHOW FULL COLUMNS FROM `VSCompania`.
+in /var/www/html/websea/index.php (13)
+2014/09/23 21:38:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vSCompania/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 21:38:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vSCompania/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/23 21:38:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vSCompania/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/23 21:38:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/23 21:38:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vSCompania/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/23 21:39:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vSCompania/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/23 21:39:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vSCompania/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/23 21:39:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vSCompania/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/23 21:40:42 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#4 /opt/sisweb/db/ar/CActiveRecord.php(140): CActiveRecord->getMetaData()
+#5 /opt/sisweb/gii/generators/crud/CrudCode.php(66): CActiveRecord->__get('tableSchema')
+#6 /opt/sisweb/validators/CInlineValidator.php(42): CrudCode->validateModel('model', Array)
+#7 /opt/sisweb/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(CrudCode), 'model')
+#8 /opt/sisweb/base/CModel.php(159): CValidator->validate(Object(CrudCode), NULL)
+#9 /opt/sisweb/gii/CCodeGenerator.php(159): CModel->validate()
+#10 /opt/sisweb/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#11 /opt/sisweb/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#12 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#13 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#14 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#16 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('gii/crud/index')
+#17 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#18 /var/www/html/websea/index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/websea/gii/crud/index.jsp
+HTTP_REFERER=http://localhost/websea/gii/crud/index.jsp
+---
+2014/09/23 21:41:30 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/db/ar/CActiveRecord.php(638): CComponent->__get('dbname')
+#1 /opt/sisweb/db/ar/CActiveRecord.php(2365): CActiveRecord->getDbConnection()
+#2 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#3 /opt/sisweb/db/ar/CActiveRecord.php(140): CActiveRecord->getMetaData()
+#4 /opt/sisweb/gii/generators/crud/CrudCode.php(66): CActiveRecord->__get('tableSchema')
+#5 /opt/sisweb/validators/CInlineValidator.php(42): CrudCode->validateModel('model', Array)
+#6 /opt/sisweb/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(CrudCode), 'model')
+#7 /opt/sisweb/base/CModel.php(159): CValidator->validate(Object(CrudCode), NULL)
+#8 /opt/sisweb/gii/CCodeGenerator.php(159): CModel->validate()
+#9 /opt/sisweb/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#10 /opt/sisweb/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#11 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#15 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('gii/crud/index')
+#16 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/html/websea/index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/websea/gii/crud/index.jsp
+HTTP_REFERER=http://localhost/websea/gii/crud/index.jsp
+---
+2014/09/23 21:41:40 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/db/ar/CActiveRecord.php(638): CComponent->__get('dbname')
+#1 /opt/sisweb/db/ar/CActiveRecord.php(2365): CActiveRecord->getDbConnection()
+#2 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#3 /opt/sisweb/db/ar/CActiveRecord.php(140): CActiveRecord->getMetaData()
+#4 /opt/sisweb/gii/generators/crud/CrudCode.php(66): CActiveRecord->__get('tableSchema')
+#5 /opt/sisweb/validators/CInlineValidator.php(42): CrudCode->validateModel('model', Array)
+#6 /opt/sisweb/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(CrudCode), 'model')
+#7 /opt/sisweb/base/CModel.php(159): CValidator->validate(Object(CrudCode), NULL)
+#8 /opt/sisweb/gii/CCodeGenerator.php(159): CModel->validate()
+#9 /opt/sisweb/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#10 /opt/sisweb/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#11 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#15 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('gii/crud/index')
+#16 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/html/websea/index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/websea/gii/crud/index.jsp
+HTTP_REFERER=http://localhost/websea/gii/crud/index.jsp
+---
+2014/09/23 21:51:07 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/db/ar/CActiveRecord.php(638): CComponent->__get('dbname')
+#1 /opt/sisweb/db/ar/CActiveRecord.php(2365): CActiveRecord->getDbConnection()
+#2 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#3 /opt/sisweb/db/ar/CActiveRecord.php(140): CActiveRecord->getMetaData()
+#4 /opt/sisweb/gii/generators/crud/CrudCode.php(66): CActiveRecord->__get('tableSchema')
+#5 /opt/sisweb/validators/CInlineValidator.php(42): CrudCode->validateModel('model', Array)
+#6 /opt/sisweb/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(CrudCode), 'model')
+#7 /opt/sisweb/base/CModel.php(159): CValidator->validate(Object(CrudCode), NULL)
+#8 /opt/sisweb/gii/CCodeGenerator.php(159): CModel->validate()
+#9 /opt/sisweb/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#10 /opt/sisweb/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#11 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#15 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('gii/crud/index')
+#16 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/html/websea/index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/websea/gii/crud/index.jsp
+HTTP_REFERER=http://localhost/websea/gii/crud/index.jsp
+---
+2014/09/23 21:54:11 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/db/ar/CActiveRecord.php(638): CComponent->__get('dbname')
+#1 /opt/sisweb/db/ar/CActiveRecord.php(2365): CActiveRecord->getDbConnection()
+#2 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#3 /opt/sisweb/db/ar/CActiveRecord.php(140): CActiveRecord->getMetaData()
+#4 /opt/sisweb/gii/generators/crud/CrudCode.php(66): CActiveRecord->__get('tableSchema')
+#5 /opt/sisweb/validators/CInlineValidator.php(42): CrudCode->validateModel('model', Array)
+#6 /opt/sisweb/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(CrudCode), 'model')
+#7 /opt/sisweb/base/CModel.php(159): CValidator->validate(Object(CrudCode), NULL)
+#8 /opt/sisweb/gii/CCodeGenerator.php(159): CModel->validate()
+#9 /opt/sisweb/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#10 /opt/sisweb/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#11 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#15 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('gii/crud/index')
+#16 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/html/websea/index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/websea/gii/crud/index.jsp
+HTTP_REFERER=http://localhost/websea/gii/crud/index.jsp
+---
+2014/09/23 21:58:19 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'appweb_2014.VSCompania' doesn't exist. La sentencia SQL ejecutada fue: SHOW FULL COLUMNS FROM `VSCompania`.
+in /var/www/html/websea/protected/views/vSCompania/index.php (20)
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (128)
+in /var/www/html/websea/index.php (13)
+2014/09/23 21:58:20 [error] [exception.CDbException] exception 'CDbException' with message 'La tabla "VSCompania" definida en la clase active record "VSCompania" no se ha podido encontrar en la base de datos.' in /opt/sisweb/db/ar/CActiveRecord.php:2366
+Stack trace:
+#0 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#1 /opt/sisweb/db/ar/CActiveRecord.php(662): CActiveRecord->getMetaData()
+#2 /opt/sisweb/db/ar/CActiveRecord.php(1605): CActiveRecord->getTableSchema()
+#3 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#4 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#5 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#6 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#7 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#8 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#9 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#10 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#11 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#12 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#13 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#14 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#16 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#17 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#18 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#19 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#20 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#21 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#22 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#24 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#25 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#27 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#28 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#29 /var/www/html/websea/index.php(13): CApplication->run()
+#30 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/23 21:59:27 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'appweb_2014.EMPRESAS' doesn't exist. La sentencia SQL ejecutada fue: SHOW FULL COLUMNS FROM `EMPRESAS`.
+in /var/www/html/websea/protected/views/vSCompania/index.php (20)
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (128)
+in /var/www/html/websea/index.php (13)
+2014/09/23 21:59:27 [error] [exception.CDbException] exception 'CDbException' with message 'La tabla "EMPRESAS" definida en la clase active record "VSCompania" no se ha podido encontrar en la base de datos.' in /opt/sisweb/db/ar/CActiveRecord.php:2366
+Stack trace:
+#0 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#1 /opt/sisweb/db/ar/CActiveRecord.php(662): CActiveRecord->getMetaData()
+#2 /opt/sisweb/db/ar/CActiveRecord.php(1605): CActiveRecord->getTableSchema()
+#3 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#4 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#5 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#6 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#7 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#8 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#9 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#10 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#11 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#12 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#13 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#14 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#16 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#17 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#18 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#19 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#20 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#21 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#22 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#24 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#25 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#27 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#28 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#29 /var/www/html/websea/index.php(13): CApplication->run()
+#30 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/23 22:00:05 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/23 22:13:51 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/23 22:13:52 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/23 22:20:00 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/23 22:32:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/23 22:32:32 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/23 22:32:42 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 22:44:43 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 22:44:44 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 22:46:47 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 22:46:49 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 22:46:54 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 22:49:28 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 22:54:56 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 23:05:36 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 23:05:37 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 23:05:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 23:05:45 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/23 23:28:45 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/23 23:28:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 23:28:50 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/23 23:31:41 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/23 23:31:50 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/23 23:31:51 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/23 23:32:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/23 23:32:37 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/23 23:47:55 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(132): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/23 23:47:56 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(132): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 08:51:57 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/db/ar/CActiveRecord.php(638): CComponent->__get('dbname')
+#1 /opt/sisweb/db/ar/CActiveRecord.php(671): CActiveRecord->getDbConnection()
+#2 /opt/sisweb/db/ar/CActiveRecord.php(1459): CActiveRecord->getCommandBuilder()
+#3 /var/www/html/websea/protected/components/UserIdentity.php(40): CActiveRecord->find('LOWER(USU_NOMBR...', Array)
+#4 /var/www/html/websea/protected/models/LoginForm.php(52): UserIdentity->authenticate()
+#5 /opt/sisweb/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#6 /opt/sisweb/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#7 /opt/sisweb/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#8 /var/www/html/websea/protected/controllers/SiteController.php(94): CModel->validate()
+#9 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#10 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /opt/sisweb/web/CWebApplication.php(282): CController->run('login')
+#14 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#15 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /var/www/html/websea/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/websea/site/login
+HTTP_REFERER=http://localhost/websea/site/login
+---
+2014/09/24 08:53:26 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'appweb_2014')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CApplication.php(450): CModule->getComponent('db')
+#3 /opt/sisweb/db/ar/CActiveRecord.php(636): CApplication->getDb()
+#4 /opt/sisweb/db/ar/CActiveRecord.php(671): CActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(1459): CActiveRecord->getCommandBuilder()
+#6 /var/www/html/websea/protected/components/UserIdentity.php(40): CActiveRecord->find('LOWER(USU_NOMBR...', Array)
+#7 /var/www/html/websea/protected/models/LoginForm.php(52): UserIdentity->authenticate()
+#8 /opt/sisweb/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#9 /opt/sisweb/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#10 /opt/sisweb/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#11 /var/www/html/websea/protected/controllers/SiteController.php(94): CModel->validate()
+#12 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#13 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#15 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /opt/sisweb/web/CWebApplication.php(282): CController->run('login')
+#17 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#18 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#19 /var/www/html/websea/index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/websea/site/login
+HTTP_REFERER=http://localhost/websea/site/login
+---
+2014/09/24 08:53:39 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'appweb_2014')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CApplication.php(450): CModule->getComponent('db')
+#3 /opt/sisweb/db/ar/CActiveRecord.php(636): CApplication->getDb()
+#4 /opt/sisweb/db/ar/CActiveRecord.php(671): CActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(1459): CActiveRecord->getCommandBuilder()
+#6 /var/www/html/websea/protected/components/UserIdentity.php(40): CActiveRecord->find('LOWER(USU_NOMBR...', Array)
+#7 /var/www/html/websea/protected/models/LoginForm.php(52): UserIdentity->authenticate()
+#8 /opt/sisweb/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#9 /opt/sisweb/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#10 /opt/sisweb/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#11 /var/www/html/websea/protected/controllers/SiteController.php(94): CModel->validate()
+#12 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#13 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#15 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /opt/sisweb/web/CWebApplication.php(282): CController->run('login')
+#17 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#18 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#19 /var/www/html/websea/index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/websea/site/login
+HTTP_REFERER=http://localhost/websea/site/login
+---
+2014/09/24 09:02:51 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/24 09:03:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/24 09:03:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/09/24 09:03:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 09:03:11 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 09:03:50 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(671): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(1599): CActiveRecord->getCommandBuilder()
+#4 /opt/sisweb/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 /opt/sisweb/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 /opt/sisweb/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 /opt/sisweb/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#9 /opt/sisweb/zii/widgets/CListView.php(211): CBaseListView->init()
+#10 /opt/sisweb/web/CBaseController.php(147): CListView->init()
+#11 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 /var/www/html/websea/protected/views/vSCompania/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#17 /var/www/html/websea/protected/controllers/VSCompaniaController.php(128): CController->render('index', Array)
+#18 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#19 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#20 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#26 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#28 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#29 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#30 /var/www/html/websea/index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 09:05:58 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Usted no se encuentra autorizado a realizar esta acción.' in /opt/sisweb/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /opt/sisweb/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no se enc...')
+#1 /opt/sisweb/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /opt/sisweb/web/CWebApplication.php(282): CController->run('admin')
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/admi...')
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/websea/vSCompania/admin.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/create.jsp
+---
+2014/09/24 09:11:34 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Usted no se encuentra autorizado a realizar esta acción.' in /opt/sisweb/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /opt/sisweb/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no se enc...')
+#1 /opt/sisweb/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /opt/sisweb/web/CWebApplication.php(282): CController->run('admin')
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/admi...')
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/websea/vSCompania/admin.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/create.jsp
+---
+2014/09/24 09:11:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/admin.jsp
+---

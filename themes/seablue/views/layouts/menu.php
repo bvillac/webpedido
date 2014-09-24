@@ -21,7 +21,7 @@
     <ul class="nav nav-second-level collapse" style="height: 0px;">
         <li>
             <!--<a href="#">Second Level Item</a>-->
-            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Digital signature'), array('/uSUARIOS/index')); ?>
+            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Digital signature'), array('/vSCompania/index')); ?>
         </li>
         <li>
             <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Mail server'), array('/uSUARIOS/index')); ?>
@@ -30,7 +30,7 @@
             <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Sri services'), array('/uSUARIOS/index')); ?>
         </li>
         <li>
-            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'MKey contingency'), array('/uSUARIOS/index')); ?>
+            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Key contingency'), array('/uSUARIOS/index')); ?>
         </li>
         
         <!--<li class="active">

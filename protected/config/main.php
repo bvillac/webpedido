@@ -65,13 +65,22 @@ return array(
 			//'connectionString' => 'mysql:host=localhost;dbname=sea2010_sisweb',
                         //'connectionString' => 'mysql:host=192.168.10.101;dbname=appweb_2014',
                         'connectionString' => 'mysql:host=localhost;dbname=appweb_2014',
+                        //'connectionString' => 'mysql:host=localhost;dbname=VSSEA',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => 'root00',
 			'charset' => 'utf8',
-                        'dbname' => "appweb_2014",
-                        'dbserver' => "192.168.10.101"
+                        //'dbname' => "appweb_2014",
+                        //'dbserver' => "192.168.10.101"
 		),
+                'dbvssea' => array(
+                    'class' => 'CDbConnection',
+                    'connectionString' => 'mysql:host=localhost;dbname=VSSEA',
+                    'emulatePrepare' => true,
+                    'username' => 'root',
+                    'password' => 'root00',
+                    'charset' => 'utf8',
+                ),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',

@@ -21,5 +21,6 @@ return array(
     'Update Member' => 'Actualizar Afiliado',
     /*Nuevo*/
     'Configuration' => 'Configuración',
+    'Please fill out the following form with your login credentials:' => 'Por favor complete el siguiente formulario con sus datos de acceso:',
 );
 ?>
