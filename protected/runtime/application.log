@@ -3215,3 +3215,1369 @@ Stack trace:
 REQUEST_URI=/websea/pEDIDO/index.jsp
 HTTP_REFERER=http://localhost/websea/vSCompania/admin.jsp
 ---
+2014/09/24 10:29:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/bootstrap/glyphicons-halflings.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/images/bootstrap/glyphicons-halflings.png
+HTTP_REFERER=http://localhost/websea/themes/seablue/css/bootstrap/bootstrap.min.css
+---
+2014/09/24 11:28:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 12:12:39 [error] [php] Undefined variable: menu (/var/www/html/websea/themes/seablue/views/layouts/main.php:65)
+Stack trace:
+#0 /opt/sisweb/web/widgets/CContentDecorator.php(76): VSCompaniaController->renderFile()
+#1 /opt/sisweb/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#2 /opt/sisweb/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#3 /opt/sisweb/web/CBaseController.php(206): CContentDecorator->run()
+#4 /opt/sisweb/web/CBaseController.php(300): VSCompaniaController->endWidget()
+#5 /var/www/html/websea/themes/seablue/views/layouts/column2.php(22): VSCompaniaController->endContent()
+#6 /opt/sisweb/web/CBaseController.php(126): require()
+#7 /opt/sisweb/web/CBaseController.php(95): VSCompaniaController->renderInternal()
+#8 /opt/sisweb/web/CController.php(784): VSCompaniaController->renderFile()
+#9 /var/www/html/websea/protected/controllers/VSCompaniaController.php(129): VSCompaniaController->render()
+#10 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#11 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#12 /opt/sisweb/web/filters/CFilterChain.php(133): VSCompaniaController->runAction()
+#13 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#14 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#15 /opt/sisweb/web/filters/CInlineFilter.php(58): VSCompaniaController->filterAccessControl()
+#16 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#17 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#18 /opt/sisweb/web/CController.php(265): VSCompaniaController->runActionWithFilters()
+#19 /opt/sisweb/web/CWebApplication.php(282): VSCompaniaController->run()
+#20 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#21 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#22 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSCompania/index.jsp
+in /var/www/html/websea/themes/seablue/views/layouts/main.php (65)
+in /var/www/html/websea/themes/seablue/views/layouts/column2.php (22)
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (129)
+2014/09/24 12:33:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/bootstrap/glyphicons-halflings.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/images/bootstrap/glyphicons-halflings.png
+HTTP_REFERER=http://localhost/websea/themes/seablue/css/bootstrap/bootstrap.min.css
+---
+2014/09/24 12:35:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/bootstrap/glyphicons-halflings.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/images/bootstrap/glyphicons-halflings.png
+HTTP_REFERER=http://192.168.10.101/websea/
+---
+2014/09/24 12:36:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/bootstrap/glyphicons-halflings.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/images/bootstrap/glyphicons-halflings.png
+HTTP_REFERER=http://192.168.10.101/websea/vSCompania/index.jsp
+---
+2014/09/24 12:37:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 12:41:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/bootstrap/glyphicons-halflings.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/seablue/images/bootstrap/glyphicons-halflings.png
+HTTP_REFERER=http://192.168.10.101/websea/vSCompania/index.jsp
+---
+2014/09/24 12:42:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 12:42:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/uSUARIOS/index.jsp
+---
+2014/09/24 12:42:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 13:17:41 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:18:23 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:18:25 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:19:03 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:19:04 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:19:06 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:19:09 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:19:10 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:20:07 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:20:29 [error] [php] Undefined variable: contBuscar (/var/www/html/websea/protected/controllers/VSCompaniaController.php:132)
+Stack trace:
+#0 /opt/sisweb/web/filters/CFilterChain.php(133): VSCompaniaController->runAction()
+#1 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): VSCompaniaController->filterAccessControl()
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): VSCompaniaController->runActionWithFilters()
+#7 /opt/sisweb/web/CWebApplication.php(282): VSCompaniaController->run()
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSCompania/index.jsp
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (132)
+in /var/www/html/websea/index.php (13)
+2014/09/24 13:20:31 [error] [php] Undefined variable: contBuscar (/var/www/html/websea/protected/controllers/VSCompaniaController.php:132)
+Stack trace:
+#0 /opt/sisweb/web/filters/CFilterChain.php(133): VSCompaniaController->runAction()
+#1 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): VSCompaniaController->filterAccessControl()
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): VSCompaniaController->runActionWithFilters()
+#7 /opt/sisweb/web/CWebApplication.php(282): VSCompaniaController->run()
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSCompania/index.jsp
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (132)
+in /var/www/html/websea/index.php (13)
+2014/09/24 13:24:41 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /var/www/html/websea/protected/models/VSCompania.php(166): CComponent->__get('dbname')
+#1 /var/www/html/websea/protected/controllers/VSCompaniaController.php(132): VSCompania->mostrarCompanias()
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#10 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:25:06 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:26:39 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:26:40 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:26:42 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:26:43 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:27:17 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:27:19 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:29:50 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:29:51 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:29:52 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:29:53 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:30:12 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:30:13 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:30:29 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/09/24 13:30:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 13:30:35 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 13:32:36 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /var/www/html/websea/protected/models/VSCompania.php(166): CComponent->__get('dbname')
+#1 /var/www/html/websea/protected/controllers/VSCompaniaController.php(132): VSCompania->mostrarCompanias()
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#10 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 13:33:37 [error] [php] Use of undefined constant hola - assumed 'hola' (/var/www/html/websea/protected/models/VSCompania.php:166)
+Stack trace:
+#0 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#1 /opt/sisweb/web/filters/CFilterChain.php(133): VSCompaniaController->runAction()
+#2 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /opt/sisweb/web/filters/CInlineFilter.php(58): VSCompaniaController->filterAccessControl()
+#5 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(265): VSCompaniaController->runActionWithFilters()
+#8 /opt/sisweb/web/CWebApplication.php(282): VSCompaniaController->run()
+#9 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSCompania/index.jsp
+in /var/www/html/websea/protected/models/VSCompania.php (166)
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (132)
+in /var/www/html/websea/index.php (13)
+2014/09/24 13:36:50 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 13:38:15 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 13:38:51 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 13:38:52 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 13:38:53 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 13:38:55 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 15:18:32 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /var/www/html/websea/protected/models/VSCompania.php(167): CComponent->__get('dbname')
+#1 /var/www/html/websea/protected/controllers/VSCompaniaController.php(132): VSCompania->mostrarCompanias()
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#10 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 15:20:23 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(27): CComponent->__get('dbname')
+#1 /var/www/html/websea/protected/models/VSCompania.php(167): VsSeaActiveRecord->dbName()
+#2 /var/www/html/websea/protected/controllers/VSCompaniaController.php(132): VSCompania->mostrarCompanias()
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#13 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#14 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/html/websea/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 15:22:52 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 15:24:06 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 15:24:07 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 15:25:13 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 15:25:46 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname2" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname2', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 15:25:47 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbname2" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbname2', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 15:37:13 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#4 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#5 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#6 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#7 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#10 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#14 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#16 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#17 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#18 /var/www/html/websea/index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 15:38:59 [error] [exception.CException] exception 'CException' with message 'La propiedad "CWebApplication"."dbvssea" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:130
+Stack trace:
+#0 /opt/sisweb/base/CModule.php(105): CComponent->__get('dbvssea')
+#1 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#2 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#3 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#4 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#5 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#6 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#7 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#10 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#14 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#16 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#17 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#18 /var/www/html/websea/index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 15:40:46 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbnamex" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbnamex', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 15:41:14 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbnamex" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbnamex', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/09/24 15:41:15 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDbConnection"."dbnamex" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('dbnamex', 'VSSEA')
+#1 /opt/sisweb/base/CModule.php(386): YiiBase::createComponent(Array)
+#2 /opt/sisweb/base/CModule.php(103): CModule->getComponent('dbvssea')
+#3 /var/www/html/websea/protected/components/VsSeaActiveRecord.php(12): CModule->__get('dbvssea')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(2365): VsSeaActiveRecord->getDbConnection()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSCompania))
+#6 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#7 /var/www/html/websea/protected/controllers/VSCompaniaController.php(121): CActiveRecord->__construct()
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---

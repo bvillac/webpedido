@@ -11,8 +11,8 @@ class VsSeaActiveRecord extends CActiveRecord {
         else {
             self::$dbvssea = Yii::app()->dbvssea; //Yii::app()->getDb("dbvssea");
             if (self::$dbvssea instanceof CDbConnection) {
-                //self::$dbname = self::$dbvssea->dbname;
-                //self::$dbserver = self::$dbvssea->dbserver;
+                self::$dbname = self::$dbvssea->dbname;
+                self::$dbserver = self::$dbvssea->dbserver;
                 self::$dbvssea->setActive(true);
                 return self::$dbvssea;
             }
