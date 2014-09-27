@@ -170,15 +170,20 @@ class VSCompania extends VsSeaActiveRecord {
                             INNER JOIN " . Yii::app()->db->dbname . ".PERSONA B
                                 ON B.PER_ID=C.PER_ID)
                             ON A.PAC_ID=C.PAC_ID
-                WHERE A.FMED_ESTADO_LOGICO=1 ";
+                WHERE A.FMED_ESTADO_LOGICO=1 ";*/
+        
+        
+        $sql = "SELECT A.IdCompania,A.Ruc,A.RazonSocial,A.NombreComercial,A.Direccion 
+                    FROM " . $con->dbname . ".VSCompania A WHERE A.Estado='1'";
+        
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
         
         return new CArrayDataProvider($rawData, array(
-                    'keyField' => 'FMED_ID',
+                    'keyField' => 'IdCompania',
                     'sort' => array(
                         'attributes' => array(
-                            'PER_ID', 'NOMBRE', 'PER_CEDULA', 'PER_CEDULA', 'FMED_FECHA_INGRESO',
+                            'IdCompania', 'Ruc', 'RazonSocial', 'NombreComercial', 'Direccion',
                         ),
                     ),
                     'totalItemCount' => count($rawData),
@@ -186,7 +191,7 @@ class VSCompania extends VsSeaActiveRecord {
                         'pageSize' => Yii::app()->params['pageSize'],
                     //'itemCount'=>count($rawData),
                     ),
-                ));*/
+                ));
         
     }
 

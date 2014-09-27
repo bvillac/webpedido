@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Este Archivo contiene las vista de Compañias
  * @author Ing. Byron Villacreses <byronvillacreses@gmail.com>
@@ -34,24 +33,29 @@ $this->widget('zii.widgets.grid.CGridView', array(
           'value' => '$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize + $row+1',
           ), */
         array(
-            'name' => 'IdCompania',
-            'header' => Yii::t('COMPANIA', 'Dni'),
-            'value' => '$data["IdCompania"]',
+            'name' => 'NOMBRE',
+            'header' => Yii::t('FICHA_MEDICA', 'Name'),
+            'value' => '$data["NOMBRE"]',
         ),
         array(
-            'name' => 'Ruc',
-            'header' => Yii::t('COMPANIA', 'Ruc'),
-            'value' => '$data["Ruc"]',
+            'name' => 'PER_CEDULA',
+            'header' => Yii::t('PERSONA', 'DNI'),
+            'value' => '$data["PER_CEDULA"]',
         ),
         array(
-            'name' => 'RazonSocial',
-            'header' => Yii::t('COMPANIA', 'Company name'),
-            'value' => '$data["RazonSocial"]',
+            'name' => 'FMED_FECHA_INGRESO',
+            'header' => Yii::t('FICHA_MEDICA', 'Admission date'),
+            'value' => 'date(Yii::app()->params["datebydefault"],strtotime($data["FMED_FECHA_INGRESO"]))',
         ),
+//        array(
+//            'name' => 'FMED_NUMERO_HISTO_CLINICA',
+//            'header' => Yii::t('FICHA_MEDICA', 'Medical History Number'),
+//            'value' => '$data["FMED_NUMERO_HISTO_CLINICA"]',
+//        ),
         array(
-            'name' => 'Direccion',
-            'header' => Yii::t('COMPANIA', 'Address'),
-            'value' => '$data["Direccion"]',
+            'name' => 'PER_DOMICILIO_DIRECCION',
+            'header' => Yii::t('FICHA_MEDICA', 'Address'),
+            'value' => '$data["PER_DOMICILIO_DIRECCION"]',
         ),
     /* array(
       'class' => 'CButtonColumn',

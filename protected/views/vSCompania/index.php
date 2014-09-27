@@ -7,21 +7,5 @@
  */
 ?>
 
-<?php
-/* @var $this VSCompaniaController */
-/* @var $dataProvider CActiveDataProvider */
-/*$this->breadcrumbs=array(
-	'Vscompanias',
-);*/
-
-echo $model;
-?>
-
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); ?>
-
-
-<?php //echo $this->renderPartial('_indexGrid',array('model' => $model)); ?>
+<?php echo $this->renderPartial('_indexGrid',array('model' => $model)); ?>
 

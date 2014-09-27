@@ -10,5 +10,9 @@ return array(
     'Create Member' => 'Crear Afiliado',
     'Contact Information' => 'Información de Contacto',
     'Company' => 'Compañía',
+    'Dni' => 'Id',
+    'Ruc' => 'Ruc',
+    'Company name' => 'Razón Social',
+    'Address' => 'Dirección',
 );
 ?>
