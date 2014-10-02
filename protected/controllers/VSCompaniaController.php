@@ -126,9 +126,9 @@ class VSCompaniaController extends Controller {
         );
         
         $this->titleWindows = Yii::t('COMPANIA', 'Company');
-        $dataProvider = new CActiveDataProvider('VSCompania');
+        //$dataProvider = new CActiveDataProvider('VSCompania');
         $this->render('index', array(
-            'dataProvider' => $dataProvider,
+           //'dataProvider' => $dataProvider,
            'model' => $modelo->mostrarCompanias(),
         ));
     }

@@ -15,6 +15,9 @@ class Controller extends CController {
     /**
      * @var array context menu items. This property will be assigned to {@link CMenu::items}.
      */
+    public $modulo = array();
+    public $botones = array();
+    public $rutaControlador = 0;
     public $menu = array();
     public $titleWindows = "";
 

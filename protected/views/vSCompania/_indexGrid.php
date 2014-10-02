@@ -17,7 +17,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
     'htmlOptions' => array('style' => 'cursor: pointer;'),
     //'selectableRows' => 2,
     //'selectionChanged' => 'fun_UpdateFichaMedica',
-    'selectionChanged' => 'fun_mostrarFichaPaciente',
+    //'selectionChanged' => 'fun_mostrarFichaPaciente',
     //'ajaxUrl'=>'Yii::app()->controller->createUrl("cOBRANZAS/", array("importarAfiliado" => $this->grid->dataProvider->pagination->currentPage+1))',
     //'summaryText'=>"<div class='whitesec_search'><p>{count} Full Quality Videos</p></div>",
     //'afterAjaxUpdate' => 'dataPrueba' ,
@@ -53,29 +53,46 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'header' => Yii::t('COMPANIA', 'Address'),
             'value' => '$data["Direccion"]',
         ),
+        array(
+            'class' => 'CButtonColumn',
+            'template' => '{edit}{deletex}',
+            'buttons' => array(
+                'edit' => array(
+                    'label' => 'Editar',
+                    'imageUrl'=>Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'].'edit.png', //ruta del icono
+                    //'click' => 'js:obtenerSeleccion',
+                ),
+                'deletex' => array(
+                    'label' => ' Eliminar',
+                    'imageUrl'=>Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'].'delete.png', //ruta del icono
+                    //'click' => 'js:obtenerSeleccion',
+                    //'click'=>'function(){$("#dialog_id").dialog("open"); return false;}',
+                ),
+            ),
+        ),
     /* array(
       'class' => 'CButtonColumn',
-      'template' => '{edit}{delete}',
+      'template' => '{add}{edit}{delete}',
       'htmlOptions' => array('style' => 'width: 50px'),
       'buttons' => array(
       'add' => array(
       //'imageUrl'=>Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'].'afiliado.png', //ruta del icono
-      'label'=>'',
-      'imageUrl'=>'', //ruta del icono
+      'label' => '',
+      'imageUrl' => '', //ruta del icono
       'click' => 'function(){hola();}',
       //'url' => '$this->grid->controller->createUrl("/Extras/update", array("id"=>$data->id,"asDialog"=>1,"gridId"=>$this->grid->id))',
       //'visible' => '($data->id===null)?false:true;'
       'options' => array('class' => 'icon-add', 'rel' => 'tooltip'),
       ),
       'edit' => array(
-      'label'=>'',
-      'imageUrl'=>'', //ruta del icono
+      'label' => '',
+      'imageUrl' => '', //ruta del icono
       'click' => 'function(){hola();}',
       'options' => array('class' => 'icon-edit', 'rel' => 'tooltip'),
       ),
       'delete' => array(
-      'label'=>'',
-      'imageUrl'=>'', //ruta del icono
+      'label' => '',
+      'imageUrl' => '', //ruta del icono
       'click' => 'function(){hola();}',
       'options' => array('class' => 'icon-remove', 'rel' => 'tooltip'),
       ),

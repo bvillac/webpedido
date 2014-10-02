@@ -43,6 +43,9 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
+                /*'bootstrap' => array(
+                    'class' => 'ext.bootstrap.components.Bootstrap'
+                ),*/
 		// uncomment the following to enable URLs in path-format
 		// uncomment the following to enable URLs in path-format
 		'urlManager'=>array(
@@ -63,8 +66,8 @@ return array(
 		
 		'db'=>array(
 			//'connectionString' => 'mysql:host=localhost;dbname=sea2010_sisweb',
-                        //'connectionString' => 'mysql:host=192.168.10.101;dbname=appweb_2014',
-                        'connectionString' => 'mysql:host=localhost;dbname=appweb_2014',
+                        'connectionString' => 'mysql:host=192.168.10.101;dbname=appweb_2014',
+                        //'connectionString' => 'mysql:host=localhost;dbname=appweb_2014',
                         //'connectionString' => 'mysql:host=localhost;dbname=VSSEA',
 			'emulatePrepare' => true,
 			'username' => 'root',
@@ -75,7 +78,8 @@ return array(
 		),
                 'dbvssea' => array(
                     'class' => 'CDbConnection',
-                    'connectionString' => 'mysql:host=localhost;dbname=VSSEA',
+                    //'connectionString' => 'mysql:host=localhost;dbname=VSSEA',
+                    'connectionString' => 'mysql:host=192.168.10.101;dbname=VSSEA',
                     'emulatePrepare' => true,
                     'username' => 'root',
                     'password' => 'root00',
@@ -110,5 +114,11 @@ return array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@utimpor.com',
                 'rutaIconos' => '/images/acciones/',
+                'pageSize' => 20,
+                'pageSizeMin' => 10,
+                'datebydefaultJS' => "yyyy-MM-dd",
+                'formaStringDate' => "Y, m, d",
+                'datepicker' => 'yy-mm-dd',
+                'datebytime' => 'Y-m-d h:i:s',
 	),
 );
