@@ -194,5 +194,48 @@ class VSCompania extends VsSeaActiveRecord {
                 ));
         
     }
+    
+    
+    public function insertarEmpresa($cabOrden) {
+        $con = Yii::app()->dbvssea;
+        $trans = $con->beginTransaction();
+        try {
+            $this->insertarDatosEmpresa($con, $cabOrden);
+            $idEmp = $con->getLastInsertID($con->dbname.'.VSCompania');
+            //$this->insertarDetalle($con, $detOrden, $orden);
+            $trans->commit();
+            $con->active = false;
+            return true;
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            throw $e;
+            return false;
+        }
+    }
+    
+    private function insertarDatosEmpresa($con, $objEmp) {
+        $objEmp[0]['UsuarioCreacion']= Yii::app()->getSession()->get('user_name', FALSE);//Define el usuario Session
+        
+        $sql = "INSERT INTO " . $con->dbname . ".VSCompania
+                (Ruc,RazonSocial,NombreComercial,Mail,EsContribuyente,Direccion,UsuarioCreacion,FechaCreacion,Estado)VALUES(
+                 '" . $objEmp[0]['Ruc'] . "',
+                 '" . $objEmp[0]['RazonSocial'] . "',
+                 '" . $objEmp[0]['NombreComercial'] . "',
+                 '" . $objEmp[0]['Mail'] . "',
+                 '" . $objEmp[0]['EsContribuyente'] . "',
+                 '" . $objEmp[0]['Direccion'] . "',
+                 '" . $objEmp[0]['UsuarioCreacion'] . "',
+                 CURRENT_TIMESTAMP(),
+                 '" . $objEmp[0]['Estado'] . "')";
+
+        //DATE(" . $cabOrden[0]['CDOR_FECHA_INGRESO'] . "),
+
+        //echo $sql;
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
+    
 
 }

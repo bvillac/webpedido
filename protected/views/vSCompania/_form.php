@@ -19,11 +19,11 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'IdCompania'); ?>
-		<?php echo $form->textField($model,'IdCompania',array('size'=>20,'maxlength'=>20)); ?>
-		<?php echo $form->error($model,'IdCompania'); ?>
-	</div>
+<!--	<div class="row">
+		<?php //echo $form->labelEx($model,'IdCompania'); ?>
+		<?php //echo $form->textField($model,'IdCompania',array('size'=>20,'maxlength'=>20)); ?>
+		<?php //echo $form->error($model,'IdCompania'); ?>
+	</div>-->
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Ruc'); ?>
@@ -59,48 +59,6 @@
 		<?php echo $form->labelEx($model,'Direccion'); ?>
 		<?php echo $form->textField($model,'Direccion',array('size'=>60,'maxlength'=>300)); ?>
 		<?php echo $form->error($model,'Direccion'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'UsuarioCreacion'); ?>
-		<?php echo $form->textField($model,'UsuarioCreacion',array('size'=>60,'maxlength'=>150)); ?>
-		<?php echo $form->error($model,'UsuarioCreacion'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'FechaCreacion'); ?>
-		<?php echo $form->textField($model,'FechaCreacion'); ?>
-		<?php echo $form->error($model,'FechaCreacion'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'UsuarioModificacion'); ?>
-		<?php echo $form->textField($model,'UsuarioModificacion',array('size'=>60,'maxlength'=>150)); ?>
-		<?php echo $form->error($model,'UsuarioModificacion'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'FechaModificacion'); ?>
-		<?php echo $form->textField($model,'FechaModificacion'); ?>
-		<?php echo $form->error($model,'FechaModificacion'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'UsuarioEliminacion'); ?>
-		<?php echo $form->textField($model,'UsuarioEliminacion',array('size'=>60,'maxlength'=>150)); ?>
-		<?php echo $form->error($model,'UsuarioEliminacion'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'FechaEliminacion'); ?>
-		<?php echo $form->textField($model,'FechaEliminacion'); ?>
-		<?php echo $form->error($model,'FechaEliminacion'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Estado'); ?>
-		<?php echo $form->textField($model,'Estado',array('size'=>1,'maxlength'=>1)); ?>
-		<?php echo $form->error($model,'Estado'); ?>
 	</div>
 
 	<div class="row buttons">

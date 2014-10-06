@@ -44,13 +44,10 @@ function fun_GuardarEmpresa(accion){
         success: function(data){
             if (data.status=="OK"){ 
                 //$.fn.yiiGridView.update(idGrid);
-                //showResponse(data.type, data.status, data.label, data.message);
-                $("#messageInfo").html(data.message+buttonAlert); 
+                showResponse(data.type, data.status, data.label, data.message);
             }else{
-                //showResponse(data.type, data.status, data.label, data.message);
-                $("#messageInfo").html(data.message+buttonAlert); 
+                showResponse(data.type, data.status, data.label, data.message);
             }
-            alerMessage();
         },
     });
 }
@@ -59,17 +56,16 @@ function objetoEmpresa(ID){
     var empArray = new Array();
     var empresa=new Object();
     empresa.id=ID;
-    empresa.Ruc=$('#txt_RUC').val();
-    empresa.RazonSocial=$('#txt_RazonSocial').val();
-    empresa.NombreComercial=$('#txt_NombreComercial').val();
-    empresa.Mail=$('#txt_Mail').val();
-    empresa.EsContribuyente=$('#txt_EsContribuyente').val();
-    empresa.Direccion=$('#txt_Direccion').val();
-    empresa.Clave=$('#txt_Clave').val();
-    empresa.conf_clave=$('#txt_conf_clave').val();
-    empresa.RutaFirma=$('#txt_RutaFirma').val();  
-    empresa.Estado='1';
+    empresa.txt_RUC=$('#txt_RUC').val();
+    empresa.txt_RazonSocial=$('#txt_RazonSocial').val();
+    empresa.txt_NombreComercial=$('#txt_NombreComercial').val();
+    empresa.txt_Mail=$('#txt_Mail').val();
+    empresa.txt_EsContribuyente=$('#txt_EsContribuyente').val();
+    empresa.txt_Direccion=$('#txt_Direccion').val();
+    empresa.txt_Clave=$('#txt_Clave').val();
+    empresa.txt_conf_clave=$('#txt_conf_clave').val();
+    empresa.txt_RutaFirma=$('#txt_RutaFirma').val();  
     empArray[0] = empresa;
-    sessionStorage.empresa = JSON.stringify(empArray);
+    sessionStorage.cabOrden = JSON.stringify(empArray);
     return JSON.stringify(empArray);
 }

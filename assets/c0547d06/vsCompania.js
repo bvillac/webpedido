@@ -45,12 +45,10 @@ function fun_GuardarEmpresa(accion){
             if (data.status=="OK"){ 
                 //$.fn.yiiGridView.update(idGrid);
                 //showResponse(data.type, data.status, data.label, data.message);
-                $("#messageInfo").html(data.message+buttonAlert); 
+                $("#messageInfo").html("Hello World");
             }else{
                 //showResponse(data.type, data.status, data.label, data.message);
-                $("#messageInfo").html(data.message+buttonAlert); 
             }
-            alerMessage();
         },
     });
 }

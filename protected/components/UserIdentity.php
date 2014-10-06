@@ -50,6 +50,8 @@ class UserIdentity extends CUserIdentity
                     $this->_id=$user->USU_ID;
                     $this->_username=$user->USU_NOMBRE;
                     $session->add('isuser', TRUE);
+                    $session->add('user_id', $user->USU_ID);
+                    $session->add('user_name', $user->USU_NOMBRE);
                     //$this->setState('CORREO', $user->CORREO);
                     //PARA USAR LAS VARIABLES DE SESSION
                     //yii::app()->user->CORREO;

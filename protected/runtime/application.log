@@ -7118,3 +7118,398 @@ Stack trace:
 REQUEST_URI=/websea/pEDIDO/index.jsp
 HTTP_REFERER=http://localhost/websea/vSCompania/index
 ---
+2014/10/02 00:33:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/create.jsp
+---
+2014/10/02 01:59:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "publicacion/upload"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('publicacion/upl...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/publicacion/upload.jsp?PHPSESSID=e7r2b191bjamsobnjq7hj95kt1&YII_CSRF_TOKEN=d3fd79e3f6e75b0be6e0d31bdaac2e72ac3def56&qqfile=CERTIFICADO+DIGITAL+EN+EL+BCE.pdf
+HTTP_REFERER=http://localhost/websea/vSCompania/create.jsp
+---
+2014/10/02 02:01:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "publicacion/upload"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('publicacion/upl...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/publicacion/upload.jsp?PHPSESSID=e7r2b191bjamsobnjq7hj95kt1&YII_CSRF_TOKEN=d3fd79e3f6e75b0be6e0d31bdaac2e72ac3def56&qqfile=manual+de+usuario+intisign.pdf
+HTTP_REFERER=http://localhost/websea/vSCompania/create.jsp
+---
+2014/10/03 10:17:02 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Usted no se encuentra autorizado a realizar esta acción.' in /opt/sisweb/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /opt/sisweb/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no se enc...')
+#1 /opt/sisweb/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /opt/sisweb/web/CWebApplication.php(282): CController->run('upload')
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSCompania/uplo...')
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/websea/VSCompania/upload.jsp?PHPSESSID=7ff09orb81u5mtc1js4nj4fvf3&YII_CSRF_TOKEN=7cffad86fedca6e1977c548984b85d78b57ea890&qqfile=manual+de+usuario+intisign.pdf
+HTTP_REFERER=http://localhost/websea/vSCompania/create.jsp
+---
+2014/10/03 10:30:03 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Usted no se encuentra autorizado a realizar esta acción.' in /opt/sisweb/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /opt/sisweb/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no se enc...')
+#1 /opt/sisweb/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /opt/sisweb/web/CWebApplication.php(282): CController->run('upload')
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSCompania/uplo...')
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/websea/VSCompania/upload.jsp?PHPSESSID=7ff09orb81u5mtc1js4nj4fvf3&YII_CSRF_TOKEN=7cffad86fedca6e1977c548984b85d78b57ea890&qqfile=manual+de+usuario+intisign.pdf
+HTTP_REFERER=http://localhost/websea/vSCompania/create.jsp
+---
+2014/10/03 10:31:29 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Usted no se encuentra autorizado a realizar esta acción.' in /opt/sisweb/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /opt/sisweb/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no se enc...')
+#1 /opt/sisweb/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /opt/sisweb/web/CWebApplication.php(282): CController->run('upload')
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSCompania/uplo...')
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/websea/VSCompania/upload.jsp?PHPSESSID=7ff09orb81u5mtc1js4nj4fvf3&YII_CSRF_TOKEN=7cffad86fedca6e1977c548984b85d78b57ea890&qqfile=manual+de+usuario+intisign.pdf
+HTTP_REFERER=http://localhost/websea/vSCompania/create.jsp
+---
+2014/10/03 10:34:39 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Usted no se encuentra autorizado a realizar esta acción.' in /opt/sisweb/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /opt/sisweb/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no se enc...')
+#1 /opt/sisweb/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /opt/sisweb/web/CWebApplication.php(282): CController->run('upload')
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSCompania/uplo...')
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/websea/VSCompania/upload.jsp?PHPSESSID=7ff09orb81u5mtc1js4nj4fvf3&YII_CSRF_TOKEN=7cffad86fedca6e1977c548984b85d78b57ea890&qqfile=manual+de+usuario+intisign.pdf
+HTTP_REFERER=http://localhost/websea/vSCompania/create.jsp
+---
+2014/10/03 10:43:05 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Usted no se encuentra autorizado a realizar esta acción.' in /opt/sisweb/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /opt/sisweb/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no se enc...')
+#1 /opt/sisweb/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /opt/sisweb/web/CWebApplication.php(282): CController->run('upload')
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSCompania/uplo...')
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/websea/VSCompania/upload.jsp?PHPSESSID=7ff09orb81u5mtc1js4nj4fvf3&YII_CSRF_TOKEN=7cffad86fedca6e1977c548984b85d78b57ea890&qqfile=manual+de+usuario+intisign.pdf
+HTTP_REFERER=http://localhost/websea/vSCompania/create.jsp
+---
+2014/10/03 10:43:19 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Usted no se encuentra autorizado a realizar esta acción.' in /opt/sisweb/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /opt/sisweb/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no se enc...')
+#1 /opt/sisweb/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /opt/sisweb/web/CWebApplication.php(282): CController->run('upload')
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSCompania/uplo...')
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/websea/VSCompania/upload.jsp?PHPSESSID=7ff09orb81u5mtc1js4nj4fvf3&YII_CSRF_TOKEN=7cffad86fedca6e1977c548984b85d78b57ea890&qqfile=manual+de+usuario+intisign.pdf
+HTTP_REFERER=http://localhost/websea/vSCompania/create.jsp
+---
+2014/10/03 13:33:40 [error] [php] Undefined index: filename (/var/www/html/websea/protected/controllers/VSCompaniaController.php:187)
+Stack trace:
+#0 /opt/sisweb/web/filters/CFilterChain.php(133): VSCompaniaController->runAction()
+#1 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): VSCompaniaController->filterAccessControl()
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): VSCompaniaController->runActionWithFilters()
+#7 /opt/sisweb/web/CWebApplication.php(282): VSCompaniaController->run()
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/VSCompania/upload.jsp?PHPSESSID=7ff09orb81u5mtc1js4nj4fvf3&YII_CSRF_TOKEN=7cffad86fedca6e1977c548984b85d78b57ea890&qqfile=PRUEBAS18022014.pdf
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (187)
+in /var/www/html/websea/index.php (13)
+2014/10/06 10:08:27 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2013] Lost connection to MySQL server at 'reading initial communication packet', system error: 113' in /opt/sisweb/db/CDbConnection.php:392
+Stack trace:
+#0 /opt/sisweb/db/CDbConnection.php(340): CDbConnection->open()
+#1 /opt/sisweb/db/CDbConnection.php(318): CDbConnection->setActive(true)
+#2 /opt/sisweb/base/CModule.php(387): CDbConnection->init()
+#3 /opt/sisweb/base/CApplication.php(450): CModule->getComponent('db')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(636): CApplication->getDb()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(671): CActiveRecord->getDbConnection()
+#6 /opt/sisweb/db/ar/CActiveRecord.php(1459): CActiveRecord->getCommandBuilder()
+#7 /var/www/html/websea/protected/components/UserIdentity.php(40): CActiveRecord->find('LOWER(USU_NOMBR...', Array)
+#8 /var/www/html/websea/protected/models/LoginForm.php(52): UserIdentity->authenticate()
+#9 /opt/sisweb/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#10 /opt/sisweb/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#11 /opt/sisweb/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#12 /var/www/html/websea/protected/controllers/SiteController.php(94): CModel->validate()
+#13 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#14 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('login')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/site/login
+HTTP_REFERER=http://localhost/websea/site/login
+---
+2014/10/06 10:12:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---
+2014/10/06 11:26:15 [error] [exception.CException] exception 'CException' with message 'El alias "bootstrap.widgets.TbButtonGroup" es inválido. Asegúrese de que apunta a un directorio o archivo existente.' in /opt/sisweb/YiiBase.php:347
+Stack trace:
+#0 /opt/sisweb/web/CWidgetFactory.php(146): YiiBase::import('bootstrap.widge...', true)
+#1 /opt/sisweb/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(VSCompaniaController), 'bootstrap.widge...', Array)
+#2 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 /var/www/html/websea/protected/views/vSCompania/create.php(24): CBaseController->widget('bootstrap.widge...', Array)
+#4 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#5 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#6 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#7 /opt/sisweb/web/CController.php(782): CController->renderPartial('create', Array, true)
+#8 /var/www/html/websea/protected/controllers/VSCompaniaController.php(78): CController->render('create', Array)
+#9 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionCreate()
+#10 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#17 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /opt/sisweb/web/CWebApplication.php(282): CController->run('create')
+#19 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/crea...')
+#20 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#21 /var/www/html/websea/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/websea/vSCompania/create.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/10/06 12:32:08 [error] [php] Undefined index: Ruc (/var/www/html/websea/protected/models/VSCompania.php:223)
+Stack trace:
+#0 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionSave()
+#1 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#2 /opt/sisweb/web/filters/CFilterChain.php(133): VSCompaniaController->runAction()
+#3 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /opt/sisweb/web/filters/CInlineFilter.php(58): VSCompaniaController->filterAccessControl()
+#6 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#8 /opt/sisweb/web/CController.php(265): VSCompaniaController->runActionWithFilters()
+#9 /opt/sisweb/web/CWebApplication.php(282): VSCompaniaController->run()
+#10 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSCompania/Save
+in /var/www/html/websea/protected/models/VSCompania.php (223)
+in /var/www/html/websea/protected/models/VSCompania.php (203)
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (201)
+2014/10/06 12:32:43 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'safas,
+                 1,
+                 CURRENT_TIMESTAMP(),
+               ' at line 9. La sentencia SQL ejecutada fue: INSERT INTO VSSEA.VSCompania
+                (Ruc,RazonSocial,NombreComercial,Mail,EsContribuyente,Direccion,UsuarioCreacion,FechaCreacion,
+                 UsuarioModificacion,FechaModificacion,UsuarioEliminacion,FechaEliminacion,Estado)VALUES(
+                 1234,
+                 adsdfa,
+                 asdfas,
+                 asdfas,
+                 asdfa,
+                 sdfasdfas safas,
+                 1,
+                 CURRENT_TIMESTAMP(),
+                 1).
+in /var/www/html/websea/protected/models/VSCompania.php (237)
+in /var/www/html/websea/protected/models/VSCompania.php (203)
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (201)
+2014/10/06 12:36:32 [error] [php] Undefined index: UsuarioCreacion (/var/www/html/websea/protected/models/VSCompania.php:229)
+Stack trace:
+#0 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionSave()
+#1 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#2 /opt/sisweb/web/filters/CFilterChain.php(133): VSCompaniaController->runAction()
+#3 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /opt/sisweb/web/filters/CInlineFilter.php(58): VSCompaniaController->filterAccessControl()
+#6 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#8 /opt/sisweb/web/CController.php(265): VSCompaniaController->runActionWithFilters()
+#9 /opt/sisweb/web/CWebApplication.php(282): VSCompaniaController->run()
+#10 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSCompania/Save
+in /var/www/html/websea/protected/models/VSCompania.php (229)
+in /var/www/html/websea/protected/models/VSCompania.php (203)
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (201)
+2014/10/06 12:37:54 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'safas,
+                 byron,
+                 CURRENT_TIMESTAMP(),
+           ' at line 9. La sentencia SQL ejecutada fue: INSERT INTO VSSEA.VSCompania
+                (Ruc,RazonSocial,NombreComercial,Mail,EsContribuyente,Direccion,UsuarioCreacion,FechaCreacion,
+                 UsuarioModificacion,FechaModificacion,UsuarioEliminacion,FechaEliminacion,Estado)VALUES(
+                 1234,
+                 adsdfa,
+                 asdfas,
+                 asdfas,
+                 asdfa,
+                 sdfasdfas safas,
+                 byron,
+                 CURRENT_TIMESTAMP(),
+                 1).
+in /var/www/html/websea/protected/models/VSCompania.php (237)
+in /var/www/html/websea/protected/models/VSCompania.php (203)
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (201)
+2014/10/06 12:38:59 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'safas,
+                 byron,
+                 CURRENT_TIMESTAMP(),
+           ' at line 8. La sentencia SQL ejecutada fue: INSERT INTO VSSEA.VSCompania
+                (Ruc,RazonSocial,NombreComercial,Mail,EsContribuyente,Direccion,UsuarioCreacion,FechaCreacion,Estado)VALUES(
+                 1234,
+                 adsdfa,
+                 asdfas,
+                 asdfas,
+                 asdfa,
+                 sdfasdfas safas,
+                 byron,
+                 CURRENT_TIMESTAMP(),
+                 1).
+in /var/www/html/websea/protected/models/VSCompania.php (236)
+in /var/www/html/websea/protected/models/VSCompania.php (203)
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (201)
+2014/10/06 12:39:12 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'safas,
+                 byron,
+                 CURRENT_TIMESTAMP(),
+           ' at line 8. La sentencia SQL ejecutada fue: INSERT INTO VSSEA.VSCompania
+                (Ruc,RazonSocial,NombreComercial,Mail,EsContribuyente,Direccion,UsuarioCreacion,FechaCreacion,Estado)VALUES(
+                 1234,
+                 adsdfa,
+                 asdfas,
+                 asdfas,
+                 asdfa,
+                 sdfasdfas safas,
+                 byron,
+                 CURRENT_TIMESTAMP(),
+                 1).
+in /var/www/html/websea/protected/models/VSCompania.php (236)
+in /var/www/html/websea/protected/models/VSCompania.php (203)
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (201)
+2014/10/06 12:39:37 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'safas,
+                 byron,
+                 CURRENT_TIMESTAMP(),
+           ' at line 8. La sentencia SQL ejecutada fue: INSERT INTO VSSEA.VSCompania
+                (Ruc,RazonSocial,NombreComercial,Mail,EsContribuyente,Direccion,UsuarioCreacion,FechaCreacion,Estado)VALUES(
+                 1234,
+                 adsdfa,
+                 asdfas,
+                 asdfas,
+                 asdfa,
+                 sdfasdfas safas,
+                 byron,
+                 CURRENT_TIMESTAMP(),
+                 1).
+in /var/www/html/websea/protected/models/VSCompania.php (236)
+in /var/www/html/websea/protected/models/VSCompania.php (203)
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (201)
+2014/10/06 12:40:19 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'safas,
+                 byron,
+                 CURRENT_TIMESTAMP(),
+           ' at line 8. La sentencia SQL ejecutada fue: INSERT INTO VSSEA.VSCompania
+                (Ruc,RazonSocial,NombreComercial,Mail,EsContribuyente,Direccion,UsuarioCreacion,FechaCreacion,Estado)VALUES(
+                 1234,
+                 adsdfa,
+                 asdfas,
+                 asdfas,
+                 asdfa,
+                 sdfasdfas safas,
+                 byron,
+                 CURRENT_TIMESTAMP(),
+                 1).
+in /var/www/html/websea/protected/models/VSCompania.php (236)
+in /var/www/html/websea/protected/models/VSCompania.php (203)
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (201)
+2014/10/06 12:40:19 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'safas,
+                 byron,
+                 CURRENT_TIMESTAMP(),
+           ' at line 8. The SQL statement executed was: INSERT INTO VSSEA.VSCompania
+                (Ruc,RazonSocial,NombreComercial,Mail,EsContribuyente,Direccion,UsuarioCreacion,FechaCreacion,Estado)VALUES(
+                 1234,
+                 adsdfa,
+                 asdfas,
+                 asdfas,
+                 asdfa,
+                 sdfasdfas safas,
+                 byron,
+                 CURRENT_TIMESTAMP(),
+                 1)' in /opt/sisweb/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/html/websea/protected/models/VSCompania.php(236): CDbCommand->execute()
+#1 /var/www/html/websea/protected/models/VSCompania.php(203): VSCompania->insertarDatosEmpresa(Object(CDbConnection), Array)
+#2 /var/www/html/websea/protected/controllers/VSCompaniaController.php(201): VSCompania->insertarEmpresa(Array)
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionSave()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /opt/sisweb/web/CWebApplication.php(282): CController->run('Save')
+#13 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/Save')
+#14 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/html/websea/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/websea/vSCompania/Save
+HTTP_REFERER=http://localhost/websea/vSCompania/create.jsp
+---
+2014/10/06 13:02:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/
+---

@@ -34,7 +34,7 @@
                         <script src="<?php echo Yii::app()->baseUrl; ?>/themes/general/jquery/jquery.min.js" type="text/javascript"></script>
                         <script src="<?php echo Yii::app()->baseUrl; ?>/themes/general/jquery/jquery-ui.min.js" type="text/javascript"></script>
                         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl; ?>/themes/general/jquery/css/smoothness/jquery-ui.min.css" />
-                        <script src="<?php echo Yii::app()->baseUrl; ?>/themes/general/js/pedido.js" type="text/javascript"></script>
+                        <script src="<?php echo Yii::app()->baseUrl; ?>/themes/general/js/general.js" type="text/javascript"></script>
 
         <!--<script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl;   ?>/js/bootstrap/bootstrap.min.js"></script>-->
                         <?php //CJavaScript::getScripts($this->getRoute()); ?>
@@ -60,6 +60,11 @@
                             <h2 class="page-header"><?php echo $this->titleWindows; ?></h2>
                         </div>
                         <!-- /.col-lg-12 -->
+                        <div class="col-lg-12">
+                            <div id="messageInfo" style="display: none;" class="alert alert-info alert-dismissable">
+                            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.row -->
                     <div class="row">

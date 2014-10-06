@@ -38,7 +38,7 @@ class VSCompaniaController extends Controller {
                 'users' => array('admin'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('admin', 'delete', 'index', 'view', 'create', 'update'),
+                'actions' => array('admin', 'delete', 'index', 'view', 'create', 'update','upload','Save'),
                 'users' => array('bvillacreses'),
             ),
             array('deny', // deny all users
@@ -72,7 +72,7 @@ class VSCompaniaController extends Controller {
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->IdCompania));
         }
-
+        $this->titleWindows = Yii::t('COMPANIA', 'Company');
         $this->render('create', array(
             'model' => $model,
         ));
@@ -169,6 +169,57 @@ class VSCompaniaController extends Controller {
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'vscompania-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
+        }
+    }
+    //Nota: Si tiene problema no olvidar los privilegios de la carpeta
+    public function actionUpload() {
+        Yii::import("ext.EAjaxUpload.qqFileUploader");
+
+        //$folder = 'uploads/'; // folder for uploaded files
+        $folder = '/opt/uploads/'; // folder for uploaded files
+        //$folder = getcwd()."/file/uploads/"; //mUESTRA TODA LA RUTA DEL PROYECTO
+        $allowedExtensions = array("pdf", "mp3", "mp4", "wmv"); //array("jpg","jpeg","gif","exe","mov" and etc...
+        $sizeLimit = 10 * 1024 * 1024; // maximum file size in bytes
+        $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+        $result = $uploader->handleUpload($folder);
+        $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+
+        $fileSize = filesize($folder . $result['filename']); //GETTING FILE SIZE
+        $fileName = $result['filename']; //GETTING FILE NAME //Retorna el Nombre del Archivo a subir
+
+        echo $return; // it's array 
+    }
+    
+     public function actionSave() {
+        if (Yii::app()->request->isPostRequest) {
+            $model = new VSCompania;
+            $objEmp = isset($_POST['EMPRESA']) ? CJavaScript::jsonDecode($_POST['EMPRESA']) : array();
+            //print_r($objEmp);
+            //$detOrden = isset($_POST['DET_ORDEN']) ? CJavaScript::jsonDecode($_POST['DET_ORDEN']) : array();
+            $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
+            if ($accion == "Create") {
+                $resul = $model->insertarEmpresa($objEmp);
+            } else {
+                //$resul = $model->actualizarOrdenDescargo($objEmp);
+            }
+            if ($resul) {
+                $arroout["status"] = "OK";
+                $arroout["type"] = "tbalert";
+                $arroout["label"] = "success";
+                $arroout["error"] = "false";
+                $arroout["message"] = Yii::t('EXCEPTION', '<strong>Well done!</strong> your information was successfully saved.');
+                $arroout["data"] = null;
+            } else {
+                $arroout["status"] = "NO_OK";
+                $arroout["type"] = "tbalert";
+                $arroout["label"] = "error";
+                $arroout["error"] = "true";
+                $arroout["message"] = Yii::t('EXCEPTION', 'Invalid request. Please do not repeatt this request again.');
+                $arroout["data"] = null;
+            }
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+            return;
         }
     }
 

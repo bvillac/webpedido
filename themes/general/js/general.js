@@ -4,6 +4,15 @@
  * and open the template in the editor.
  */
 
+var t_show=0;
+var t_hide=5000;
+var t_transi=1500;
+var buttonAlert='<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>';
+function alerMessage(){
+    setTimeout(function() {$("#messageInfo").fadeIn(t_transi);},t_show);
+    setTimeout(function() {$("#messageInfo").fadeOut(t_transi);},t_hide);
+}
+
 function nuevoItem(){
     //var link=$('#txth_controlador').val()+"/_boxDetalle?popup=content"; 
     //'data-toggle'=>'modal',

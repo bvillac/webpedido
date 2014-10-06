@@ -2,25 +2,36 @@
 /* @var $this VSCompaniaController */
 /* @var $model VSCompania */
 
-$this->breadcrumbs = array(
-    'Vscompanias' => array('index'),
-    'Create',
-);
+/* $this->breadcrumbs = array(
+  'Vscompanias' => array('index'),
+  'Create',
+  );
 
-$this->menu = array(
-    array('label' => 'List VSCompania', 'url' => array('index')),
-    array('label' => 'Manage VSCompania', 'url' => array('admin')),
-);
+  $this->menu = array(
+  array('label' => 'List VSCompania', 'url' => array('index')),
+  array('label' => 'Manage VSCompania', 'url' => array('admin')),
+  ); */
 ?>
 
-
+<?php echo $this->renderPartial('_include'); ?>
+<div class="col-lg-12">
+    <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Save'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_GuardarEmpresa("Create")')); ?>
+</div>
+<br><br>
 <div class="col-lg-6">
     <div class="panel panel-default">
-        <div class="panel-heading"> Create VSCompania </div>
+        <div class="panel-heading"><?php echo Yii::t('PERSONA', 'Compañía') ?></div>
         <div class="panel-body">
-            <?php $this->renderPartial('_form', array('model' => $model)); ?>
+            <?php $this->renderPartial('_formulario', array('model' => $model)); ?>
         </div>
     </div>
-
+</div>
+<div class="col-lg-6">
+    <div class="panel panel-default">
+        <div class="panel-heading"><?php echo Yii::t('PERSONA', 'Firma Digital') ?></div>
+        <div class="panel-body">
+            <?php $this->renderPartial('_formulario_1', array('model' => $model)); ?>
+        </div>
+    </div>
 </div>
 
