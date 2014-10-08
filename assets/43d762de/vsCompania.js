@@ -93,7 +93,7 @@ function fun_eliminarSeleccion(){
     var ids = String($.fn.yiiGridView.getSelection('TbG_COMPANIA'));
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
-        if(!confirm(mgEliminar)) return false;
+        if(!confirm($('#txth_message').val())) return false;
         var link=$('#txth_controlador').val()+"/Delete";
         //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
         $.ajax({
@@ -104,26 +104,15 @@ function fun_eliminarSeleccion(){
             } ,
             success: function(data){
                 if (data.status=="OK"){ 
-                    $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();
-                    actualizarTbG_COMPANIA();
+                    actualizarTbG_OrdenDescargo();
                 }
+                $("#messageInfo").html(data.message+buttonAlert); 
+                alerMessage();
+                
             },
             dataType: "json"
         });
     }
     return true;
-}
 
-function actualizarTbG_COMPANIA(){
-    $.fn.yiiGridView.update('TbG_COMPANIA');
-    //$.fn.yiiGridView.update(); 
-    /*var link=$('#txth_controlador').val()+"/Index";
-    $.fn.yiiGridView.update('TbG_COMPANIA', {
-        type: 'POST',
-        url:link,
-        data:{
-            //"CONT_BUSCAR": controlBuscarIndex(control,op)
-        }
-    }); */
 }

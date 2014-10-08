@@ -105,13 +105,13 @@ class VSCompaniaController extends Controller {
      * If deletion is successful, the browser will be redirected to the 'admin' page.
      * @param integer $id the ID of the model to be deleted
      */
-    public function actionDelete($id) {
+    /*public function actionDelete($id) {
         $this->loadModel($id)->delete();
 
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
         if (!isset($_GET['ajax']))
             $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-    }
+    }*/
 
     /**
      * Lists all models.
@@ -174,11 +174,10 @@ class VSCompaniaController extends Controller {
     //Nota: Si tiene problema no olvidar los privilegios de la carpeta
     public function actionUpload() {
         Yii::import("ext.EAjaxUpload.qqFileUploader");
-
-        //$folder = 'uploads/'; // folder for uploaded files
-        $folder = '/opt/uploads/'; // folder for uploaded files
+        $extfd =Yii::app()->params['seaFirext'];//Extension de firma electronica
+        $folder =Yii::app()->params['seaFirma'];// folder for uploaded files
         //$folder = getcwd()."/file/uploads/"; //mUESTRA TODA LA RUTA DEL PROYECTO
-        $allowedExtensions = array("pdf", "mp3", "mp4", "wmv"); //array("jpg","jpeg","gif","exe","mov" and etc...
+        $allowedExtensions = array($extfd, "pdf"); //array("jpg","jpeg","gif","exe","mov" and etc...
         $sizeLimit = 10 * 1024 * 1024; // maximum file size in bytes
         $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
         $result = $uploader->handleUpload($folder);
@@ -220,6 +219,40 @@ class VSCompaniaController extends Controller {
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);
             return;
+        }
+    }
+    
+    /**
+     * Deletes a particular model.
+     * If deletion is successful, the browser will be redirected to the 'admin' page.
+     * @param integer $id the ID of the model to be deleted
+     */
+    public function actionDelete() {
+        try {
+            if (Yii::app()->request->isPostRequest) {
+                //$ids = base64_decode($_POST['ids']);
+                $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
+                $res = new VSCompania;
+                if ($res->removerEmpresa($ids)) {
+                    $arroout["status"] = "OK";
+                    $arroout["type"] = "tbalert";
+                    $arroout["label"] = "success";
+                    $arroout["error"] = "false";
+                    $arroout["message"] = Yii::t('EXCEPTION', '<strong>Well done!</strong> your information was successfully delete.');
+                    $arroout["data"] = null;
+                } else {
+                    $arroout["status"] = "NO_OK";
+                    $arroout["type"] = "tbalert";
+                    $arroout["label"] = "error";
+                    $arroout["error"] = "true";
+                    $arroout["message"] = Yii::t('EXCEPTION', 'Invalid request. Deletion error; Please do not repeatt this request again.');
+                }
+                header('Content-type: application/json');
+                echo CJavaScript::jsonEncode($arroout);
+                return;
+            }
+        } catch (Exception $e) {
+            $this->errorControl($e);
         }
     }
 

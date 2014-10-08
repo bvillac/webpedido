@@ -89,41 +89,28 @@ function objetoEmpresa(ID){
     return JSON.stringify(empArray);
 }
 
-function fun_eliminarSeleccion(){
+function fun_Delete(){
     var ids = String($.fn.yiiGridView.getSelection('TbG_COMPANIA'));
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
-        if(!confirm(mgEliminar)) return false;
+        if(!confirm($('#txth_message').val())) return false;
         var link=$('#txth_controlador').val()+"/Delete";
-        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
+        var encodedIds = base64_encode(ids);  
         $.ajax({
             type: 'POST',
             url: link,
             data:{
-                "ids": ids
+                "ids": encodedIds
             } ,
             success: function(data){
                 if (data.status=="OK"){ 
-                    $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();
-                    actualizarTbG_COMPANIA();
+                    actualizarTbG_OrdenDescargo();
                 }
+                showResponse(data.type, data.status, data.label, data.message);
             },
             dataType: "json"
         });
     }
     return true;
-}
 
-function actualizarTbG_COMPANIA(){
-    $.fn.yiiGridView.update('TbG_COMPANIA');
-    //$.fn.yiiGridView.update(); 
-    /*var link=$('#txth_controlador').val()+"/Index";
-    $.fn.yiiGridView.update('TbG_COMPANIA', {
-        type: 'POST',
-        url:link,
-        data:{
-            //"CONT_BUSCAR": controlBuscarIndex(control,op)
-        }
-    }); */
 }

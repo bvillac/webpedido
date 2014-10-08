@@ -15,7 +15,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider' => $model,
     //'template' => "{items}",
     'htmlOptions' => array('style' => 'cursor: pointer;'),
-    //'selectableRows' => 2,
+    'selectableRows' => 2,
     //'selectionChanged' => 'fun_UpdateFichaMedica',
     //'selectionChanged' => 'fun_mostrarFichaPaciente',
     //'ajaxUrl'=>'Yii::app()->controller->createUrl("cOBRANZAS/", array("importarAfiliado" => $this->grid->dataProvider->pagination->currentPage+1))',
@@ -26,10 +26,10 @@ $this->widget('zii.widgets.grid.CGridView', array(
     //'beforeAjaxUpdate'=>'function(id,options){ options["type"]="POST"; }',
     //'beforeAjaxUpdate' => 'function(id,options){consultFiltros(options)}',
     'columns' => array(
-        /* array(
+         array(
           'class' => 'CCheckBoxColumn',
           ),
-          array(
+          /*array(
           'header' => '#',
           'value' => '$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize + $row+1',
           ), */
@@ -47,6 +47,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'name' => 'RazonSocial',
             'header' => Yii::t('COMPANIA', 'Company name'),
             'value' => '$data["RazonSocial"]',
+        ),
+        array(
+            'name' => 'NombreComercial',
+            'header' => Yii::t('COMPANIA', 'Company name'),
+            'value' => '$data["NombreComercial"]',
         ),
         array(
             'name' => 'Direccion',

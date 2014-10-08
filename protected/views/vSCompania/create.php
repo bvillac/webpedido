@@ -16,6 +16,7 @@
 <?php echo $this->renderPartial('_include'); ?>
 <div class="col-lg-12">
     <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Save'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_GuardarEmpresa("Create")')); ?>
+    <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Clear'), array('id' => 'btn_limpiar', 'name' => 'btn_limpiar', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_limpiarEmpresa()')); ?>
 </div>
 <br><br>
 <div class="col-lg-6">

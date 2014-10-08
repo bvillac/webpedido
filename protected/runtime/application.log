@@ -7513,3 +7513,172 @@ Stack trace:
 REQUEST_URI=/websea/pEDIDO/index.jsp
 HTTP_REFERER=http://localhost/websea/
 ---
+2014/10/06 16:25:33 [error] [php] Undefined index: filename (/var/www/html/websea/protected/controllers/VSCompaniaController.php:188)
+Stack trace:
+#0 /opt/sisweb/web/filters/CFilterChain.php(133): VSCompaniaController->runAction()
+#1 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): VSCompaniaController->filterAccessControl()
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): VSCompaniaController->runActionWithFilters()
+#7 /opt/sisweb/web/CWebApplication.php(282): VSCompaniaController->run()
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/VSCompania/upload.jsp?PHPSESSID=jpc25hqcntr6d0nt22gq0s0uf7&YII_CSRF_TOKEN=ed1ff322d6da3cd462977165d58da4db7f7c6286&qqfile=PRUEBAS18022014.pdf
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (188)
+in /var/www/html/websea/index.php (13)
+2014/10/06 16:26:43 [error] [php] Undefined index: filename (/var/www/html/websea/protected/controllers/VSCompaniaController.php:188)
+Stack trace:
+#0 /opt/sisweb/web/filters/CFilterChain.php(133): VSCompaniaController->runAction()
+#1 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): VSCompaniaController->filterAccessControl()
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): VSCompaniaController->runActionWithFilters()
+#7 /opt/sisweb/web/CWebApplication.php(282): VSCompaniaController->run()
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/VSCompania/upload.jsp?PHPSESSID=jpc25hqcntr6d0nt22gq0s0uf7&YII_CSRF_TOKEN=ed1ff322d6da3cd462977165d58da4db7f7c6286&qqfile=PRUEBAS18022014.pdf
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (188)
+in /var/www/html/websea/index.php (13)
+2014/10/06 16:27:09 [error] [php] Undefined index: filename (/var/www/html/websea/protected/controllers/VSCompaniaController.php:188)
+Stack trace:
+#0 /opt/sisweb/web/filters/CFilterChain.php(133): VSCompaniaController->runAction()
+#1 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): VSCompaniaController->filterAccessControl()
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): VSCompaniaController->runActionWithFilters()
+#7 /opt/sisweb/web/CWebApplication.php(282): VSCompaniaController->run()
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/VSCompania/upload.jsp?PHPSESSID=jpc25hqcntr6d0nt22gq0s0uf7&YII_CSRF_TOKEN=ed1ff322d6da3cd462977165d58da4db7f7c6286&qqfile=PRUEBAS18022014.pdf
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (188)
+in /var/www/html/websea/index.php (13)
+2014/10/06 16:27:32 [error] [php] Undefined index: filename (/var/www/html/websea/protected/controllers/VSCompaniaController.php:188)
+Stack trace:
+#0 /opt/sisweb/web/filters/CFilterChain.php(133): VSCompaniaController->runAction()
+#1 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): VSCompaniaController->filterAccessControl()
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): VSCompaniaController->runActionWithFilters()
+#7 /opt/sisweb/web/CWebApplication.php(282): VSCompaniaController->run()
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/VSCompania/upload.jsp?PHPSESSID=jpc25hqcntr6d0nt22gq0s0uf7&YII_CSRF_TOKEN=ed1ff322d6da3cd462977165d58da4db7f7c6286&qqfile=PRUEBAS18022014.pdf
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (188)
+in /var/www/html/websea/index.php (13)
+2014/10/06 17:51:08 [error] [php] Undefined index: UsuarioCreacion (/var/www/html/websea/protected/models/VSCompania.php:242)
+Stack trace:
+#0 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionSave()
+#1 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#2 /opt/sisweb/web/filters/CFilterChain.php(133): VSCompaniaController->runAction()
+#3 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /opt/sisweb/web/filters/CInlineFilter.php(58): VSCompaniaController->filterAccessControl()
+#6 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#8 /opt/sisweb/web/CController.php(265): VSCompaniaController->runActionWithFilters()
+#9 /opt/sisweb/web/CWebApplication.php(282): VSCompaniaController->run()
+#10 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSCompania/Save
+in /var/www/html/websea/protected/models/VSCompania.php (242)
+in /var/www/html/websea/protected/models/VSCompania.php (205)
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (200)
+2014/10/06 18:03:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/create.jsp
+---
+2014/10/07 13:37:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/create.jsp
+---
+2014/10/07 13:37:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/10/07 16:01:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/10/07 16:01:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/10/07 16:01:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index
+HTTP_REFERER=http://localhost/websea/pEDIDO/index.jsp
+---
+2014/10/07 16:03:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index
+---
+2014/10/07 18:47:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index
+---
+2014/10/07 19:12:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+---
+2014/10/07 19:12:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index
+---

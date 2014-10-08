@@ -120,11 +120,12 @@ return array(
                 'formaStringDate' => "Y, m, d",
                 'datepicker' => 'yy-mm-dd',
                 'datebytime' => 'Y-m-d h:i:s',
-                'uploadFilesDir' => '/opt/uploads',
-                'seaDocFact' => '/opt/SEADOC/FACTURAS',
-                'seaDocRete' => '/opt/SEADOC/RETENCIONES',
-                'seaDocNc' => '/opt/SEADOC/NC',
-                'seaDocNd' => '/opt/SEADOC/ND',
-                'seaDocGuia' => '/opt/SEADOC/GUIAS',
+                'seaFirma' => '/opt/SEAF/',
+                'seaFirext' => 'asc',//Extension de Firma Electronica
+                'seaDocFact' => '/opt/SEADOC/FACTURAS/',
+                'seaDocRete' => '/opt/SEADOC/RETENCIONES/',
+                'seaDocNc' => '/opt/SEADOC/NC/',
+                'seaDocNd' => '/opt/SEADOC/ND/',
+                'seaDocGuia' => '/opt/SEADOC/GUIAS/',
 	),
 );

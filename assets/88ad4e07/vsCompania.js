@@ -116,14 +116,14 @@ function fun_eliminarSeleccion(){
 }
 
 function actualizarTbG_COMPANIA(){
-    $.fn.yiiGridView.update('TbG_COMPANIA');
+    //$.fn.yiiGridView.update('TbG_COMPANIA');
     //$.fn.yiiGridView.update(); 
-    /*var link=$('#txth_controlador').val()+"/Index";
+    var link=$('#txth_controlador').val()+"/Index";
     $.fn.yiiGridView.update('TbG_COMPANIA', {
         type: 'POST',
         url:link,
         data:{
             //"CONT_BUSCAR": controlBuscarIndex(control,op)
         }
-    }); */
+    }); 
 }

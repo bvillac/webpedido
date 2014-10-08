@@ -28,19 +28,6 @@ function fun_Nuevo(accion){
     }*/
 }
 
-function fun_limpiarEmpresa(){
-    $('#txt_RUC').val('');
-    $('#txt_RazonSocial').val('');
-    $('#txt_NombreComercial').val('');
-    $('#txt_Mail').val('');
-    $('#txt_EsContribuyente').val('');
-    $('#txt_Direccion').val('');
-    $('#txt_Clave').val('');
-    $('#txt_conf_clave').val('');
-    $('#txt_RutaFirma').val(''); 
-    $('#archivo').val('');//label del archivo
-}
-
 function fun_GuardarEmpresa(accion){
     var ID=(accion=="Update")?$('#txth_CDOR_ID').val():0;
     var link=$('#txth_controlador').val()+"/Save";
@@ -87,43 +74,4 @@ function objetoEmpresa(ID){
     empArray[0] = empresa;
     sessionStorage.empresa = JSON.stringify(empArray);
     return JSON.stringify(empArray);
-}
-
-function fun_eliminarSeleccion(){
-    var ids = String($.fn.yiiGridView.getSelection('TbG_COMPANIA'));
-    var count=ids.split(",");
-    if(count.length>0 && ids!=""){
-        if(!confirm(mgEliminar)) return false;
-        var link=$('#txth_controlador').val()+"/Delete";
-        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $.ajax({
-            type: 'POST',
-            url: link,
-            data:{
-                "ids": ids
-            } ,
-            success: function(data){
-                if (data.status=="OK"){ 
-                    $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();
-                    actualizarTbG_COMPANIA();
-                }
-            },
-            dataType: "json"
-        });
-    }
-    return true;
-}
-
-function actualizarTbG_COMPANIA(){
-    $.fn.yiiGridView.update('TbG_COMPANIA');
-    //$.fn.yiiGridView.update(); 
-    /*var link=$('#txth_controlador').val()+"/Index";
-    $.fn.yiiGridView.update('TbG_COMPANIA', {
-        type: 'POST',
-        url:link,
-        data:{
-            //"CONT_BUSCAR": controlBuscarIndex(control,op)
-        }
-    }); */
 }

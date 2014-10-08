@@ -8,6 +8,7 @@ var t_show=0;
 var t_hide=5000;
 var t_transi=1500;
 var buttonAlert='<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>';
+var mgEliminar='Está seguro que desea Eliminar estos Item';
 function alerMessage(){
     setTimeout(function() {$("#messageInfo").fadeIn(t_transi);},t_show);
     setTimeout(function() {$("#messageInfo").fadeOut(t_transi);},t_hide);

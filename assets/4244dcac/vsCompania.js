@@ -104,10 +104,11 @@ function fun_eliminarSeleccion(){
             } ,
             success: function(data){
                 if (data.status=="OK"){ 
-                    $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();
                     actualizarTbG_COMPANIA();
                 }
+                $("#messageInfo").html(data.message+buttonAlert); 
+                alerMessage();
+                
             },
             dataType: "json"
         });
@@ -116,14 +117,5 @@ function fun_eliminarSeleccion(){
 }
 
 function actualizarTbG_COMPANIA(){
-    $.fn.yiiGridView.update('TbG_COMPANIA');
-    //$.fn.yiiGridView.update(); 
-    /*var link=$('#txth_controlador').val()+"/Index";
-    $.fn.yiiGridView.update('TbG_COMPANIA', {
-        type: 'POST',
-        url:link,
-        data:{
-            //"CONT_BUSCAR": controlBuscarIndex(control,op)
-        }
-    }); */
+    $.fn.yiiGridView.update('TbG_COMPANIA'); 
 }

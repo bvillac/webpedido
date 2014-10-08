@@ -196,13 +196,14 @@ class VSCompania extends VsSeaActiveRecord {
     }
     
     
-    public function insertarEmpresa($cabOrden) {
+    public function insertarEmpresa($objEmp) {
         $con = Yii::app()->dbvssea;
         $trans = $con->beginTransaction();
         try {
-            $this->insertarDatosEmpresa($con, $cabOrden);
+            $objEmp[0]['UsuarioCreacion']= Yii::app()->getSession()->get('user_name', FALSE);//Define el usuario Session
+            $this->insertarDatosEmpresa($con, $objEmp);
             $idEmp = $con->getLastInsertID($con->dbname.'.VSCompania');
-            //$this->insertarDetalle($con, $detOrden, $orden);
+            $this->datoFirmaDigital($con, $objEmp, $idEmp);
             $trans->commit();
             $con->active = false;
             return true;
@@ -215,8 +216,6 @@ class VSCompania extends VsSeaActiveRecord {
     }
     
     private function insertarDatosEmpresa($con, $objEmp) {
-        $objEmp[0]['UsuarioCreacion']= Yii::app()->getSession()->get('user_name', FALSE);//Define el usuario Session
-        
         $sql = "INSERT INTO " . $con->dbname . ".VSCompania
                 (Ruc,RazonSocial,NombreComercial,Mail,EsContribuyente,Direccion,UsuarioCreacion,FechaCreacion,Estado)VALUES(
                  '" . $objEmp[0]['Ruc'] . "',
@@ -228,14 +227,44 @@ class VSCompania extends VsSeaActiveRecord {
                  '" . $objEmp[0]['UsuarioCreacion'] . "',
                  CURRENT_TIMESTAMP(),
                  '" . $objEmp[0]['Estado'] . "')";
+        //DATE(" . $cabOrden[0]['CDOR_FECHA_INGRESO'] . "),
+        echo $sql;
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    private function datoFirmaDigital($con, $objEmp,$idEmp) {
+        $sql = "INSERT INTO " . $con->dbname . ".VSFirmaDigital 
+                (IdCompania,Clave,FechaCaducidad,EmpresaCertificadora,UsuarioCreacion,FechaCreacion,Estado)VALUES(
+                " . $idEmp . ",
+                '" . $objEmp[0]['Clave'] . "',
+                '" . $objEmp[0]['FechaCaducidad'] . "',
+                '" . $objEmp[0]['EmpresaCertificadora'] . "',
+                '" . $objEmp[0]['UsuarioCreacion'] . "',
+                CURRENT_TIMESTAMP(),
+                 '" . $objEmp[0]['Estado'] . "')";
 
         //DATE(" . $cabOrden[0]['CDOR_FECHA_INGRESO'] . "),
-
         //echo $sql;
         $command = $con->createCommand($sql);
         $command->execute();
     }
     
-    
+    public function removerEmpresa($ids) {
+        $con = Yii::app()->dbvssea;
+        $trans = $con->beginTransaction();
+        try {
+            $sql = "UPDATE " . $con->dbname . ".VSCompania SET Estado='0' WHERE idCompania IN($ids)";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            $trans->commit();
+            $con->active = false;
+            return true;
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            throw $e;
+            $con->active = false;
+            return false;
+        }
+    }
 
 }
