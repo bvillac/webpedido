@@ -266,5 +266,17 @@ class VSCompania extends VsSeaActiveRecord {
             return false;
         }
     }
+    
+    public function recuperarEmpresa($id) {
+        $con = yii::app()->dbvssea;
+        $sql = "SELECT A.IdCompania,A.Ruc,A.RazonSocial,A.NombreComercial,A.Mail,A.EsContribuyente,
+	A.Direccion,B.Clave,B.FechaCaducidad,B.EmpresaCertificadora 
+	FROM " . $con->dbname . ".VSCompania A
+		INNER JOIN " . $con->dbname . ".VSFirmaDigital B
+			ON A.IdCompania=B.IdCompania
+        WHERE A.Estado=1 AND A.IdCompania='$id'";
+        //echo $sql;
+        return $con->createCommand($sql)->query();
+    }
 
 }

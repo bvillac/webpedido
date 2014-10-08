@@ -89,21 +89,7 @@ function objetoEmpresa(ID){
     return JSON.stringify(empArray);
 }
 
-function mostrarEmpresa(Data){
-    //A.IdCompania,A.Ruc,A.RazonSocial,A.NombreComercial,A.Mail,A.EsContribuyente,
-    //A.Direccion,B.Clave,B.FechaCaducidad,B.EmpresaCertificadora 
-    $('#txt_RUC').val(Data[0]['Ruc']);
-    $('#txt_RazonSocial').val(Data[0]['RazonSocial']);
-    $('#txt_NombreComercial').val(Data[0]['NombreComercial']);
-    $('#txt_Mail').val(Data[0]['Mail']);
-    $('#txt_EsContribuyente').val(Data[0]['EsContribuyente']);
-    $('#txt_Direccion').val(Data[0]['Direccion']);
-    //$('#txt_Clave').val(varData[0]['Clave']);
-    //$('#txt_conf_clave').val(varData[0]['EMP_ID']);
-    $('#txt_RutaFirma').val(Data[0]['RutaFirma']);
-}
-
-function fun_Delete(){
+function fun_eliminarSeleccion(){
     var ids = String($.fn.yiiGridView.getSelection('TbG_COMPANIA'));
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
@@ -143,19 +129,18 @@ function actualizarTbG_COMPANIA(){
 
 function fun_Update(){
     var link="";
-    var id = String($.fn.yiiGridView.getSelection('TbG_COMPANIA'));
+    var id = String($.fn.yiiGridView.getSelection('TbG_DESCARGO_ORDEN_PRIN'));
     var count=id.split(",");
     if(count.length==1 && id!=""){
         //sessionStorage.accion="update";
-        //sessionStorage.removeItem('detalleGrid')
+        sessionStorage.removeItem('detalleGrid')
+        sessionStorage.removeItem('dataList')
+        sessionStorage.removeItem('arrayList')
+        sessionStorage.removeItem('dataListAfiliado')
+        sessionStorage.removeItem('dataListDoctor')
+        sessionStorage.removeItem('cabOrden')
+        
         link=$('#txth_controlador').val()+"/Update?";
         $('#btn_Update').attr("href", link+"id="+id); 
     }
 }
-
-function loadDataUpdate(){
-        mostrarEmpresa(varData);
-        //sessionStorage.detalleGrid = JSON.stringify(arr_detalleGrid);
-}
-
-

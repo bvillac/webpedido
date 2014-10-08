@@ -90,6 +90,8 @@ function objetoEmpresa(ID){
 }
 
 function mostrarEmpresa(Data){
+    alert(Data.toString());
+    alert(Data[0]['Ruc']);
     //A.IdCompania,A.Ruc,A.RazonSocial,A.NombreComercial,A.Mail,A.EsContribuyente,
     //A.Direccion,B.Clave,B.FechaCaducidad,B.EmpresaCertificadora 
     $('#txt_RUC').val(Data[0]['Ruc']);
@@ -149,6 +151,7 @@ function fun_Update(){
         //sessionStorage.accion="update";
         //sessionStorage.removeItem('detalleGrid')
         link=$('#txth_controlador').val()+"/Update?";
+        alert(link)
         $('#btn_Update').attr("href", link+"id="+id); 
     }
 }

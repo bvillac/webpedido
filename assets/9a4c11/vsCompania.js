@@ -89,18 +89,18 @@ function objetoEmpresa(ID){
     return JSON.stringify(empArray);
 }
 
-function mostrarEmpresa(Data){
+function mostrarEmpresa(varData){
     //A.IdCompania,A.Ruc,A.RazonSocial,A.NombreComercial,A.Mail,A.EsContribuyente,
     //A.Direccion,B.Clave,B.FechaCaducidad,B.EmpresaCertificadora 
-    $('#txt_RUC').val(Data[0]['Ruc']);
-    $('#txt_RazonSocial').val(Data[0]['RazonSocial']);
-    $('#txt_NombreComercial').val(Data[0]['NombreComercial']);
-    $('#txt_Mail').val(Data[0]['Mail']);
-    $('#txt_EsContribuyente').val(Data[0]['EsContribuyente']);
-    $('#txt_Direccion').val(Data[0]['Direccion']);
+    $('#txt_RUC').val(varData[0]['Ruc']);
+    $('#txt_RazonSocial').val(varData[0]['RazonSocial']);
+    $('#txt_NombreComercial').val(varData[0]['NombreComercial']);
+    $('#txt_Mail').val(varData[0]['Mail']);
+    $('#txt_EsContribuyente').val(varData[0]['EsContribuyente']);
+    $('#txt_Direccion').val(varData[0]['Direccion']);
     //$('#txt_Clave').val(varData[0]['Clave']);
     //$('#txt_conf_clave').val(varData[0]['EMP_ID']);
-    $('#txt_RutaFirma').val(Data[0]['RutaFirma']);
+    $('#txt_RutaFirma').val(varData[0]['RutaFirma']);
 }
 
 function fun_Delete(){
@@ -149,11 +149,13 @@ function fun_Update(){
         //sessionStorage.accion="update";
         //sessionStorage.removeItem('detalleGrid')
         link=$('#txth_controlador').val()+"/Update?";
+        alert(link)
         $('#btn_Update').attr("href", link+"id="+id); 
     }
 }
 
 function loadDataUpdate(){
+        alert(varData.toString());
         mostrarEmpresa(varData);
         //sessionStorage.detalleGrid = JSON.stringify(arr_detalleGrid);
 }

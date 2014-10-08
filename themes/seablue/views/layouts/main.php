@@ -37,6 +37,8 @@
             <script src="<?php echo Yii::app()->baseUrl; ?>/themes/general/jquery/jquery-ui.min.js" type="text/javascript"></script>
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl; ?>/themes/general/jquery/css/smoothness/jquery-ui.min.css" />
             <script src="<?php echo Yii::app()->baseUrl; ?>/themes/general/js/general.js" type="text/javascript"></script>
+            <!-- implementacion Encriptacion --> 
+            <script src="<?php echo Yii::app()->baseUrl; ?>/themes/general/js/base64.js" type="text/javascript"></script>
 
             <!--<script type="text/javascript" src="<?php //echo Yii::app()->theme->baseUrl;   ?>/js/bootstrap/bootstrap.min.js"></script>-->
             <?php //CJavaScript::getScripts($this->getRoute()); ?>

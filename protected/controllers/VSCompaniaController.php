@@ -83,7 +83,7 @@ class VSCompaniaController extends Controller {
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id the ID of the model to be updated
      */
-    public function actionUpdate($id) {
+    /*public function actionUpdate($id) {
         $model = $this->loadModel($id);
 
         // Uncomment the following line if AJAX validation is needed
@@ -97,6 +97,19 @@ class VSCompaniaController extends Controller {
 
         $this->render('update', array(
             'model' => $model,
+        ));
+    }*/
+    
+    public function actionUpdate($id) {
+        $model = new VSCompania;
+        $empresa = $model->recuperarEmpresa($id);
+        $model->IdCompania = $id; //mantiene el ID del Descargo Actualizar
+
+        $this->titleWindows = Yii::t('COMPANIA', 'Company');
+        $this->render('update', array(
+            'model' => $model,
+            //'data' => CJavaScript::jsonEncode($empresa),
+            'data' => base64_encode(CJavaScript::jsonEncode($empresa)),
         ));
     }
 

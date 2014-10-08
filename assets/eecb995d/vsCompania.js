@@ -149,11 +149,13 @@ function fun_Update(){
         //sessionStorage.accion="update";
         //sessionStorage.removeItem('detalleGrid')
         link=$('#txth_controlador').val()+"/Update?";
+        alert(link)
         $('#btn_Update').attr("href", link+"id="+id); 
     }
 }
 
 function loadDataUpdate(){
+        alert(varData.toString());
         mostrarEmpresa(varData);
         //sessionStorage.detalleGrid = JSON.stringify(arr_detalleGrid);
 }
