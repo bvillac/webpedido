@@ -207,12 +207,11 @@ class VSCompaniaController extends Controller {
             $model = new VSCompania;
             $objEmp = isset($_POST['EMPRESA']) ? CJavaScript::jsonDecode($_POST['EMPRESA']) : array();
             //print_r($objEmp);
-            //$detOrden = isset($_POST['DET_ORDEN']) ? CJavaScript::jsonDecode($_POST['DET_ORDEN']) : array();
             $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
             if ($accion == "Create") {
                 $resul = $model->insertarEmpresa($objEmp);
             } else {
-                //$resul = $model->actualizarOrdenDescargo($objEmp);
+                $resul = $model->actualizarEmpresa($objEmp);
             }
             if ($resul) {
                 $arroout["status"] = "OK";

@@ -86,7 +86,7 @@ function fun_GuardarEmpresa(accion){
 function objetoEmpresa(ID){
     var empArray = new Array();
     var empresa=new Object();
-    empresa.IdCompania=ID;
+    empresa.id=ID;
     empresa.Ruc=$('#txt_RUC').val();
     empresa.RazonSocial=$('#txt_RazonSocial').val();
     empresa.NombreComercial=$('#txt_NombreComercial').val();

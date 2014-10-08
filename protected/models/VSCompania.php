@@ -164,15 +164,6 @@ class VSCompania extends VsSeaActiveRecord {
         $rawData = array();
         $con = Yii::app()->dbvssea;
         
-        /*$sql = "SELECT A.FMED_ID,C.PAC_ID,B.PER_ID,CONCAT(B.PER_NOMBRE,' ',B.PER_APELLIDO) NOMBRE,B.PER_CEDULA,A.FMED_FECHA_INGRESO,C.PAC_CODIGO_SEGURO_SOCIAL,B.PER_DOMICILIO_DIRECCION,B.PER_DOMICILIO_TELEFONO
-                    FROM " . $con->dbname . ".FICHA_MEDICA A
-                        INNER JOIN (" . $con->dbname . ".PACIENTE C
-                            INNER JOIN " . Yii::app()->db->dbname . ".PERSONA B
-                                ON B.PER_ID=C.PER_ID)
-                            ON A.PAC_ID=C.PAC_ID
-                WHERE A.FMED_ESTADO_LOGICO=1 ";*/
-        
-        
         $sql = "SELECT A.IdCompania,A.Ruc,A.RazonSocial,A.NombreComercial,A.Direccion 
                     FROM " . $con->dbname . ".VSCompania A WHERE A.Estado='1'";
         
@@ -200,7 +191,7 @@ class VSCompania extends VsSeaActiveRecord {
         $con = Yii::app()->dbvssea;
         $trans = $con->beginTransaction();
         try {
-            $objEmp[0]['UsuarioCreacion']= Yii::app()->getSession()->get('user_name', FALSE);//Define el usuario Session
+            //$objEmp[0]['UsuarioCreacion']= Yii::app()->getSession()->get('user_name', FALSE);//Define el usuario Session
             $this->insertarDatosEmpresa($con, $objEmp);
             $idEmp = $con->getLastInsertID($con->dbname.'.VSCompania');
             $this->datoFirmaDigital($con, $objEmp, $idEmp);
@@ -224,7 +215,7 @@ class VSCompania extends VsSeaActiveRecord {
                  '" . $objEmp[0]['Mail'] . "',
                  '" . $objEmp[0]['EsContribuyente'] . "',
                  '" . $objEmp[0]['Direccion'] . "',
-                 '" . $objEmp[0]['UsuarioCreacion'] . "',
+                 '" . Yii::app()->getSession()->get('user_name', FALSE) . "',
                  CURRENT_TIMESTAMP(),
                  '" . $objEmp[0]['Estado'] . "')";
         //DATE(" . $cabOrden[0]['CDOR_FECHA_INGRESO'] . "),
@@ -239,7 +230,7 @@ class VSCompania extends VsSeaActiveRecord {
                 '" . $objEmp[0]['Clave'] . "',
                 '" . $objEmp[0]['FechaCaducidad'] . "',
                 '" . $objEmp[0]['EmpresaCertificadora'] . "',
-                '" . $objEmp[0]['UsuarioCreacion'] . "',
+                '" . Yii::app()->getSession()->get('user_id', FALSE) . "',
                 CURRENT_TIMESTAMP(),
                  '" . $objEmp[0]['Estado'] . "')";
 
@@ -277,6 +268,54 @@ class VSCompania extends VsSeaActiveRecord {
         WHERE A.Estado=1 AND A.IdCompania='$id'";
         //echo $sql;
         return $con->createCommand($sql)->query();
+    }
+    
+    public function actualizarEmpresa($objEmp) {
+        $con = yii::app()->dbvssea;
+        $trans = $con->beginTransaction();
+        try {
+            //$objEmp[0]['UsuarioModificacion']= Yii::app()->getSession()->get('user_name', FALSE);//Define el usuario Session
+            $this->actualizaEmpresa($con, $objEmp); //Actiañoza datos de la Empresa
+            $this->actualizaFirmaDigital($con, $objEmp); //Actiañoza datos de la Firma Digital
+            
+            $trans->commit();
+            $con->active = false;
+            return true;
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            throw $e;
+            return false;
+        }
+    }
+    
+    private function actualizaEmpresa($con, $objEmp) {
+         $sql = "UPDATE " . $con->dbname . ".VSCompania SET
+                    Ruc = '" . $objEmp[0]['Ruc'] . "',
+                    RazonSocial = '" . $objEmp[0]['RazonSocial'] . "',
+                    NombreComercial = '" . $objEmp[0]['NombreComercial'] . "',
+                    Mail = '" . $objEmp[0]['Mail'] . "',
+                    EsContribuyente = '" . $objEmp[0]['EsContribuyente'] . "',
+                    Direccion = '" . $objEmp[0]['Direccion'] . "',
+                    UsuarioModificacion = '" . Yii::app()->getSession()->get('user_name', FALSE) . "',
+                    FechaModificacion = CURRENT_TIMESTAMP()
+                WHERE IdCompania=" . $objEmp[0]['IdCompania'] . " ";
+        //echo $sql;
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
+    private function actualizaFirmaDigital($con, $objEmp) {
+        $sql = "UPDATE " . $con->dbname . ".VSFirmaDigital SET
+                    Clave = '" . $objEmp[0]['Clave'] . "',
+                    FechaCaducidad = '" . $objEmp[0]['FechaCaducidad'] . "',
+                    EmpresaCertificadora = '" . $objEmp[0]['EmpresaCertificadora'] . "',
+                    UsuarioModificacion = '" . Yii::app()->getSession()->get('user_id', FALSE) . "',
+                    FechaModificacion = CURRENT_TIMESTAMP()
+                WHERE IdCompania=" . $objEmp[0]['IdCompania'] . " ";
+        //echo $sql;
+        $command = $con->createCommand($sql);
+        $command->execute();
     }
 
 }

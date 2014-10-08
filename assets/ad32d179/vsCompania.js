@@ -33,12 +33,17 @@ function verificaAcciones(){
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
         if(count.length==1){
+            //$('#btn_Update img').attr("src",RutaImagenAccion+"editar.png" );
             $("#btn_Update").removeClass("disabled");
         }else{
+            //$('#btn_Update img').attr("src",RutaImagenAccion+"editar_off.png" );
             $("#btn_Update").addClass("disabled");
         }
+        //$('#btn_Delete img').attr("src",RutaImagenAccion+"eliminar.png" );
         $("#btn_Delete").removeClass("disabled");
     }else{
+        //$('#btn_Update img').attr("src",RutaImagenAccion+"editar_off.png" );
+        //$('#btn_Delete img').attr("src",RutaImagenAccion+"eliminar_off.png" );
         $("#btn_Update").addClass("disabled");
         $("#btn_Delete").addClass("disabled");
     }
@@ -58,8 +63,9 @@ function fun_limpiarEmpresa(){
 }
 
 function fun_GuardarEmpresa(accion){
-    var ID=(accion=="Update")?$('#txth_IdCompania').val():0;
+    var ID=(accion=="Update")?$('#txth_CDOR_ID').val():0;
     var link=$('#txth_controlador').val()+"/Save";
+
     $.ajax({
         type: 'POST',
         dataType: 'json',
@@ -86,7 +92,7 @@ function fun_GuardarEmpresa(accion){
 function objetoEmpresa(ID){
     var empArray = new Array();
     var empresa=new Object();
-    empresa.IdCompania=ID;
+    empresa.id=ID;
     empresa.Ruc=$('#txt_RUC').val();
     empresa.RazonSocial=$('#txt_RazonSocial').val();
     empresa.NombreComercial=$('#txt_NombreComercial').val();

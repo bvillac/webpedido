@@ -7850,3 +7850,105 @@ REQUEST_URI=/websea/vSCompania/Update?id=5
 in /var/www/html/websea/protected/views/vSCompania/update.php (29)
 in /var/www/html/websea/protected/controllers/VSCompaniaController.php (112)
 in /var/www/html/websea/index.php (13)
+2014/10/08 09:31:37 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /opt/sisweb/web/CWebApplication.php(282): CController->run('update')
+#9 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/upda...')
+#10 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /var/www/html/websea/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/websea/vSCompania/update.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/10/08 09:31:47 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /opt/sisweb/web/CWebApplication.php(282): CController->run('update')
+#9 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/upda...')
+#10 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /var/www/html/websea/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/websea/vSCompania/update.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/10/08 09:46:50 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /opt/sisweb/web/CWebApplication.php(282): CController->run('update')
+#9 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/upda...')
+#10 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /var/www/html/websea/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/websea/vSCompania/update.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/10/08 10:35:13 [error] [php] Undefined variable: resul (/var/www/html/websea/protected/controllers/VSCompaniaController.php:217)
+Stack trace:
+#0 /opt/sisweb/web/filters/CFilterChain.php(133): VSCompaniaController->runAction()
+#1 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): VSCompaniaController->filterAccessControl()
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): VSCompaniaController->runActionWithFilters()
+#7 /opt/sisweb/web/CWebApplication.php(282): VSCompaniaController->run()
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSCompania/Save
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (217)
+in /var/www/html/websea/index.php (13)
+2014/10/08 10:35:15 [error] [php] Undefined variable: resul (/var/www/html/websea/protected/controllers/VSCompaniaController.php:217)
+Stack trace:
+#0 /opt/sisweb/web/filters/CFilterChain.php(133): VSCompaniaController->runAction()
+#1 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): VSCompaniaController->filterAccessControl()
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): VSCompaniaController->runActionWithFilters()
+#7 /opt/sisweb/web/CWebApplication.php(282): VSCompaniaController->run()
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSCompania/Save
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (217)
+in /var/www/html/websea/index.php (13)
+2014/10/08 10:35:17 [error] [php] Undefined variable: resul (/var/www/html/websea/protected/controllers/VSCompaniaController.php:217)
+Stack trace:
+#0 /opt/sisweb/web/filters/CFilterChain.php(133): VSCompaniaController->runAction()
+#1 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): VSCompaniaController->filterAccessControl()
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): VSCompaniaController->runActionWithFilters()
+#7 /opt/sisweb/web/CWebApplication.php(282): VSCompaniaController->run()
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSCompania/Save
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (217)
+in /var/www/html/websea/index.php (13)

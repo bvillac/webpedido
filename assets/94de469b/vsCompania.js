@@ -58,8 +58,9 @@ function fun_limpiarEmpresa(){
 }
 
 function fun_GuardarEmpresa(accion){
-    var ID=(accion=="Update")?$('#txth_IdCompania').val():0;
+    var ID=(accion=="Update")?$('#txth_CDOR_ID').val():0;
     var link=$('#txth_controlador').val()+"/Save";
+
     $.ajax({
         type: 'POST',
         dataType: 'json',
@@ -86,7 +87,7 @@ function fun_GuardarEmpresa(accion){
 function objetoEmpresa(ID){
     var empArray = new Array();
     var empresa=new Object();
-    empresa.IdCompania=ID;
+    empresa.id=ID;
     empresa.Ruc=$('#txt_RUC').val();
     empresa.RazonSocial=$('#txt_RazonSocial').val();
     empresa.NombreComercial=$('#txt_NombreComercial').val();
