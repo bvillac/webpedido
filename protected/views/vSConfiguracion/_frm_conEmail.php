@@ -3,7 +3,7 @@
     <div class="form-group">
         <label><?php echo Yii::t('GENERAL', 'Name') ?></label>
         <?php
-        echo CHtml::textField('txt_NombreMostrar', '', array('size' => 50, 'maxlength' => 50,
+        echo CHtml::textField('txt_NombreMostrar', '', array('size' => 50, 'maxlength' => 200,
             'class' => 'form-control',
                 //'onchange' => 'return calcularItem()',
                 //'onkeydown' => "nextControl(isEnter(event),'txt_RUC')",
@@ -13,7 +13,7 @@
     <div class="form-group">
         <label><?php echo Yii::t('GENERAL', 'Subject') ?></label>
         <?php
-        echo CHtml::textArea('txta_Asunto', '', array('maxlength' => 300, 'rows' => 2, 'cols' => 50,
+        echo CHtml::textArea('txta_Asunto', '', array('maxlength' => 500, 'rows' => 2, 'cols' => 50,
             'class' => 'form-control',
                 //'onchange' => 'return calcularItem()',
                 //'onkeydown' => "nextControl(isEnter(event),'txt_RUC')",
@@ -23,7 +23,7 @@
     <div class="form-group">
         <label><?php echo Yii::t('GENERAL', 'Body') ?></label>
         <?php
-        echo CHtml::textArea('txta_Cuerpo', '', array('maxlength' => 300, 'rows' => 6, 'cols' => 50,
+        echo CHtml::textArea('txta_Cuerpo', '', array('maxlength' => 5000, 'rows' => 6, 'cols' => 100,
             'class' => 'form-control',
                 //'onchange' => 'return calcularItem()',
                 //'onkeydown' => "nextControl(isEnter(event),'txt_RUC')",
@@ -33,7 +33,7 @@
     <div class="form-group">
         <label><?php echo Yii::t('GENERAL', 'Copy Mail') ?></label>
         <?php
-        echo CHtml::textField('txt_CCO', '', array('size' => 10, 'maxlength' => 20,
+        echo CHtml::textField('txt_CCO', '', array('size' => 10, 'maxlength' => 500,
             'class' => 'form-control',
                 //'onchange' => 'return calcularItem()',
                 //'onkeydown' => "nextControl(isEnter(event),'txt_RUC')",

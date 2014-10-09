@@ -74,21 +74,3 @@ function mostrarServer(Data){
     $("#chk_ActivarAcuse").prop("checked",(Data[0]['ActivarAcuse']=='1')?true:false);
     $('#txt_CCO').val(Data[0]['CCO']);
 }
-
-function fun_limpiarServer(){
-    $('#txt_Mail').val('');
-    $('#txt_NombreMostrar').val('');
-    $('#txta_Asunto').val('');
-    $('#txta_Cuerpo').val('');
-    $("#chk_EsHtml").prop("checked",false);
-    $('#txt_Clave').val('');
-    $('#txt_Usuario').val('');
-    $('#txt_SMTPServidor').val('');
-    $('#txt_SMTPPuerto').val('');
-    $('#txt_TiempoRespuesta').val('');
-    $('#txt_TiempoEspera').val('');
-    $('#txt_ServidorAcuse').val('');
-    $("#chk_ActivarAcuse").prop("checked",false);
-    $('#txt_CCO').val('');
-}
-

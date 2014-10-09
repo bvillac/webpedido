@@ -59,10 +59,12 @@ function loadDataUpdate(){
 }
 
 function mostrarServer(Data){
+    alert(Data);
     $('#txt_Mail').val(Data[0]['Mail']);
     $('#txt_NombreMostrar').val(Data[0]['NombreMostrar']);
     $('#txta_Asunto').val(Data[0]['Asunto']);
     $('#txta_Cuerpo').val(Data[0]['Cuerpo']);
+    //objEnt.EsHtml=($("#chk_EsHtml").prop("checked"))?1:0;
     $("#chk_EsHtml").prop("checked",(Data[0]['EsHtml']=='1')?true:false);
     $('#txt_Clave').val(Data[0]['Clave']);
     $('#txt_Usuario').val(Data[0]['Usuario']);
@@ -71,24 +73,7 @@ function mostrarServer(Data){
     $('#txt_TiempoRespuesta').val(Data[0]['TiempoRespuesta']);
     $('#txt_TiempoEspera').val(Data[0]['TiempoEspera']);
     $('#txt_ServidorAcuse').val(Data[0]['ServidorAcuse']);
+    //objEnt.ActivarAcuse=($("#chk_ActivarAcuse").prop("checked"))?1:0;//$('#chk_ActivarAcuse').val();
     $("#chk_ActivarAcuse").prop("checked",(Data[0]['ActivarAcuse']=='1')?true:false);
     $('#txt_CCO').val(Data[0]['CCO']);
 }
-
-function fun_limpiarServer(){
-    $('#txt_Mail').val('');
-    $('#txt_NombreMostrar').val('');
-    $('#txta_Asunto').val('');
-    $('#txta_Cuerpo').val('');
-    $("#chk_EsHtml").prop("checked",false);
-    $('#txt_Clave').val('');
-    $('#txt_Usuario').val('');
-    $('#txt_SMTPServidor').val('');
-    $('#txt_SMTPPuerto').val('');
-    $('#txt_TiempoRespuesta').val('');
-    $('#txt_TiempoEspera').val('');
-    $('#txt_ServidorAcuse').val('');
-    $("#chk_ActivarAcuse").prop("checked",false);
-    $('#txt_CCO').val('');
-}
-

@@ -6,7 +6,7 @@
         </div>
         <div class="txt_Textbox">
             <?php
-            echo CHtml::textField('txt_Mail', '', array('size' => 50, 'maxlength' => 50,
+            echo CHtml::textField('txt_Mail', '', array('size' => 50, 'maxlength' => 100,
                 'class' => 'form-control',
                     //'onchange' => 'return calcularItem()',
                     //'onkeydown' => "nextControl(isEnter(event),'txt_RUC')",
@@ -20,7 +20,7 @@
         </div>
         <div class="txt_Textbox">
             <?php
-            echo CHtml::textField('txt_SMTPServidor', '', array('size' => 10, 'maxlength' => 20,
+            echo CHtml::textField('txt_SMTPServidor', '', array('size' => 10, 'maxlength' => 4,
                 'class' => 'form-control',
                     //'onchange' => 'return calcularItem()',
                     //'onkeydown' => "nextControl(isEnter(event),'txt_RUC')",
@@ -35,7 +35,7 @@
         </div>
         <div class="txt_Textbox">
             <?php
-            echo CHtml::textField('txt_SMTPPuerto', '', array('size' => 10, 'maxlength' => 20,
+            echo CHtml::textField('txt_SMTPPuerto', '', array('size' => 10, 'maxlength' => 4,
                 'class' => 'form-control',
                     //'onchange' => 'return calcularItem()',
                     //'onkeydown' => "nextControl(isEnter(event),'txt_RUC')",
@@ -50,7 +50,7 @@
         </div>
         <div class="txt_Textbox">
             <?php
-            echo CHtml::textField('txt_Usuario', '', array('size' => 10, 'maxlength' => 20,
+            echo CHtml::textField('txt_Usuario', '', array('size' => 10, 'maxlength' => 100,
                 'class' => 'form-control',
                     //'onchange' => 'return calcularItem()',
                     //'onkeydown' => "nextControl(isEnter(event),'txt_RUC')",
@@ -65,7 +65,7 @@
         </div>
         <div class="txt_Textbox">
             <?php
-            echo CHtml::textField('txt_Clave', '', array('size' => 10, 'maxlength' => 20,
+            echo CHtml::textField('txt_Clave', '', array('size' => 10, 'maxlength' => 25,
                 'class' => 'form-control',
                     //'onchange' => 'return calcularItem()',
                     //'onkeydown' => "nextControl(isEnter(event),'txt_RUC')",

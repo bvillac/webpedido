@@ -232,7 +232,7 @@ class VSServidorCorreo extends VsSeaActiveRecord {
         $sql = "UPDATE " . $con->dbname . ".VSServidorCorreo SET
                     IDCompania = '" . $objEnt[0]['IDCompania'] . "',
                     Mail = '" . $objEnt[0]['Mail'] . "',
-                    NombreMostrar = '" . $objEnt[0]['Ruc'] . "',
+                    NombreMostrar = '" . $objEnt[0]['NombreMostrar'] . "',
                     Asunto = '" . $objEnt[0]['Asunto'] . "',
                     Cuerpo = '" . $objEnt[0]['Cuerpo'] . "',
                     EsHtml = '" . $objEnt[0]['EsHtml'] . "',
@@ -246,7 +246,7 @@ class VSServidorCorreo extends VsSeaActiveRecord {
                     ActivarAcuse = '" . $objEnt[0]['ActivarAcuse'] . "',
                     CCO = '" . $objEnt[0]['CCO'] . "',
                     UsuarioModificacion = '" . Yii::app()->getSession()->get('user_id', FALSE) . "',
-                    FechaModificacion = CURRENT_TIMESTAMP(),
+                    FechaModificacion = CURRENT_TIMESTAMP()
                 WHERE IdCompania=" . $objEnt[0]['Id'] . " ";
         //echo $sql;
         $command = $con->createCommand($sql);
