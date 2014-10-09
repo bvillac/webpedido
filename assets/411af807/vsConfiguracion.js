@@ -92,10 +92,6 @@ function fun_limpiarServer(){
     $('#txt_CCO').val('');
 }
 
-/*
- * CONFIGURACION DE WEB SRI
- */
-
 function loadDataUpdateSri(){
         mostrarWebSri(varDataSri);
         //sessionStorage.detalleGrid = JSON.stringify(arr_detalleGrid);
@@ -110,43 +106,4 @@ function mostrarWebSri(Data){
     $('#txt_TiempoSincronizacion').val(Data[0]['TiempoSincronizacion']);
 }
 
-function fun_GuardarWebSri(accion){
-    //var ID=(accion=="Update")?$('#txth_IdCompania').val():0;
-    var ID='1';
-    var link=$('#txth_controlador').val()+"/SaveSri";
-    $.ajax({
-        type: 'POST',
-        dataType: 'json',
-        url: link,
-        data:{
-            "SERVER":objWebSri(ID),
-            "ACCION": accion
-        },
-        success: function(data){
-            if (data.status=="OK"){ 
-                $("#messageInfo").html(data.message+buttonAlert); 
-            }else{
-                $("#messageInfo").html(data.message+buttonAlert); 
-            }
-            alerMessage();
-        },
-    });
-}
 
-function objWebSri(ID){
-    var serArray = new Array();
-    var objEnt=new Object();
-    objEnt.Id=ID;
-    objEnt.IdCompania=ID;
-    objEnt.Ambiente=$('#cmb_Ambiente option:selected').val();
-    objEnt.Recepcion=$('#txt_Recepcion').val();
-    objEnt.Autorizacion=$('#txt_Autorizacion').val();
-    objEnt.RecepcionLote=$('#txt_RecepcionLote').val();
-    objEnt.TiempoRespuesta=$('#txt_TiempoRespuesta').val();
-    objEnt.TiempoSincronizacion=$('#txt_TiempoSincronizacion').val();
-    objEnt.Estado='1';
-
-    serArray[0] = objEnt;
-    //sessionStorage.servidor = JSON.stringify(serArray);
-    return JSON.stringify(serArray);
-}

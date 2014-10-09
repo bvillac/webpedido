@@ -1,14 +1,28 @@
 <?php
-/* @var $this VSConfiguracionController */
-
-$this->breadcrumbs=array(
-	'V Sconfiguracion'=>array('/vSConfiguracion'),
-	'Sersri',
-);
+/**
+ * Este Archivo contiene las vista de Compañias
+ * @author Ing. Byron Villacreses <byronvillacreses@gmail.com>
+ * @copyright Copyright &copy; SolucionesVillacreses 2014-09-24
+ * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
+ */
 ?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
 
-<p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
-</p>
+<?php echo $this->renderPartial('_include'); ?>
+<div class="col-lg-12">
+    <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Save'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_GuardarWebSri("Update")')); ?>
+    <?php //echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Clear'), array('id' => 'btn_limpiar', 'name' => 'btn_limpiar', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_limpiarWebSri()')); ?>
+</div>
+<br><br>
+<div class="col-lg-10">
+    <div class="panel panel-default">
+        <div class="panel-heading"><?php echo Yii::t('GENERAL', 'Sri web service') ?></div>
+        <div class="panel-body">
+            <?php $this->renderPartial('_frm_webSRI', array('model' => $model)); ?>
+        </div>
+    </div>
+</div>
+
+<script>
+    var varDataSri = JSON.parse(base64_decode('<?php echo $data; ?>')) ;
+    loadDataUpdateSri();
+</script>

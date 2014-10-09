@@ -32,7 +32,18 @@ return array(
     'Send Mail' => 'Enviar Email',
     'Send Mail C/Seconds' => 'Enviar Email C/Seg.',
     'Copy Mail' => 'Copiar Email',
-    
+    /*WEB SERVICE*/
+    'Sri web service' => 'Servicio Web del SRI',
+    'Web Services' => 'Web Services',
+    'Environment' => 'Ambiente',
+    'Web service reception' => 'Web service recepción',
+    'Web service authorization' => 'Web service autorización',
+    'Web service reception batch' => 'Web service recepción lote',
+    'Response time' => 'Tiempo respuesta (Seg)',
+    'Synchronization time' => 'Tiempo de sincronización (Seg)',
+    'None' => 'Ninguno',
+    'Testing' => 'Pruebas',
+    'Production' => 'Producción ',
     
     
 );

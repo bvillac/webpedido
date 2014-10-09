@@ -137,7 +137,7 @@ function objWebSri(ID){
     var serArray = new Array();
     var objEnt=new Object();
     objEnt.Id=ID;
-    objEnt.IdCompania=ID;
+    objEnt.IDCompania=ID;
     objEnt.Ambiente=$('#cmb_Ambiente option:selected').val();
     objEnt.Recepcion=$('#txt_Recepcion').val();
     objEnt.Autorizacion=$('#txt_Autorizacion').val();

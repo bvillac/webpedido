@@ -8557,3 +8557,62 @@ Stack trace:
 REQUEST_URI=/websea/vSConfiguracion/Save
 HTTP_REFERER=http://localhost/websea/vSConfiguracion/scorreo.jsp
 ---
+2014/10/08 23:42:46 [error] [php] Undefined variable: model (/var/www/html/websea/protected/views/vSConfiguracion/sersri.php:20)
+Stack trace:
+#0 /opt/sisweb/web/CController.php(869): VSConfiguracionController->renderFile()
+#1 /opt/sisweb/web/CController.php(782): VSConfiguracionController->renderPartial()
+#2 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(10): VSConfiguracionController->render()
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionSersri()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#5 /opt/sisweb/web/CController.php(286): VSConfiguracionController->runAction()
+#6 /opt/sisweb/web/CController.php(265): VSConfiguracionController->runActionWithFilters()
+#7 /opt/sisweb/web/CWebApplication.php(282): VSConfiguracionController->run()
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSConfiguracion/sersri.jsp
+in /var/www/html/websea/protected/views/vSConfiguracion/sersri.php (20)
+in /var/www/html/websea/protected/controllers/VSConfiguracionController.php (10)
+in /var/www/html/websea/index.php (13)
+2014/10/09 01:03:37 [error] [php] Undefined index: Mail (/var/www/html/websea/protected/models/VSServidorCorreo.php:234)
+Stack trace:
+#0 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionSave()
+#1 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#2 /opt/sisweb/web/CController.php(286): VSConfiguracionController->runAction()
+#3 /opt/sisweb/web/CController.php(265): VSConfiguracionController->runActionWithFilters()
+#4 /opt/sisweb/web/CWebApplication.php(282): VSConfiguracionController->run()
+#5 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#6 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#7 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSConfiguracion/Save
+in /var/www/html/websea/protected/models/VSServidorCorreo.php (234)
+in /var/www/html/websea/protected/models/VSServidorCorreo.php (218)
+in /var/www/html/websea/protected/controllers/VSConfiguracionController.php (38)
+2014/10/09 01:25:28 [error] [php] Undefined index: Mail (/var/www/html/websea/protected/models/VSServidorCorreo.php:234)
+Stack trace:
+#0 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionSave()
+#1 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#2 /opt/sisweb/web/CController.php(286): VSConfiguracionController->runAction()
+#3 /opt/sisweb/web/CController.php(265): VSConfiguracionController->runActionWithFilters()
+#4 /opt/sisweb/web/CWebApplication.php(282): VSConfiguracionController->run()
+#5 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#6 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#7 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSConfiguracion/Save
+in /var/www/html/websea/protected/models/VSServidorCorreo.php (234)
+in /var/www/html/websea/protected/models/VSServidorCorreo.php (218)
+in /var/www/html/websea/protected/controllers/VSConfiguracionController.php (38)
+2014/10/09 01:26:57 [error] [php] Undefined index: IdCompania (/var/www/html/websea/protected/models/VSServiciosSRI.php:165)
+Stack trace:
+#0 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionSaveSri()
+#1 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#2 /opt/sisweb/web/CController.php(286): VSConfiguracionController->runAction()
+#3 /opt/sisweb/web/CController.php(265): VSConfiguracionController->runActionWithFilters()
+#4 /opt/sisweb/web/CWebApplication.php(282): VSConfiguracionController->run()
+#5 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#6 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#7 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSConfiguracion/SaveSri
+in /var/www/html/websea/protected/models/VSServiciosSRI.php (165)
+in /var/www/html/websea/protected/models/VSServiciosSRI.php (146)
+in /var/www/html/websea/protected/controllers/VSConfiguracionController.php (84)
