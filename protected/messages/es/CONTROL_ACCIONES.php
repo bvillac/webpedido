@@ -30,5 +30,6 @@ return array(
     'Search' => 'Buscar',
     'Delete Selection' => 'Eliminar Selecionado',
     'Start' => 'Inicio',
+    'Process' => 'Procesar',
 );
 ?>

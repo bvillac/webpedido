@@ -5,12 +5,6 @@ class VSConfiguracionController extends Controller {
     public function actionIndex() {
         $this->render('index');
     }
-    
-   
-
-    public function actionCcontingencia() {
-        $this->render('ccontingencia');
-    }
 
     /**
      * Creates a new model.
@@ -102,6 +96,21 @@ class VSConfiguracionController extends Controller {
             echo CJavaScript::jsonEncode($arroout);
             return;
         }
+    }
+    
+    /**
+     * Creates a new model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     */
+    public function actionCcontingencia() {
+        $model = new VSServiciosSRI;
+        //$id='1';
+        //$data = $model->recuperarServiciosSRI($id);
+        $this->titleWindows = Yii::t('GENERAL', 'Key contingency');
+        $this->render('ccontingencia', array(
+            'model' => $model,
+            //'data' => base64_encode(CJavaScript::jsonEncode($data)),
+        ));
     }
 
 

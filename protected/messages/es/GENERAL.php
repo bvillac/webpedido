@@ -43,7 +43,12 @@ return array(
     'Synchronization time' => 'Tiempo de sincronización (Seg)',
     'None' => 'Ninguno',
     'Testing' => 'Pruebas',
-    'Production' => 'Producción ',
+    'Production' => 'Producción',
+    /*CLAVES DE CONTINGENCIA*/
+    'Key contingency' => 'Claves contingencia',
+    'Total Keys you uploaded' => 'Total de Claves subidas',
+    'Keys used' => 'Claves utilizadas',
+    'Keys available' => 'Claves disponibles',
     
     
 );
