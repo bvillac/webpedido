@@ -6,21 +6,34 @@
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
 return array(
-    'Create Member' => 'Crear Afiliado',
-    'Contact Information' => 'Información de Contacto',
-    'Create of Dependent' => 'Creaci&oacute;n de Dependientes',
-    'Dependent' => 'Dependiente',
-    'Dependents' => 'Dependientes',
-    'Import Member' => 'Importar Afiliado',
-    'Member' => 'Afiliado',
-    'Members' => 'Afiliados',
-    'No benefit' => 'Sin Beneficio',
     'Save' => 'Guardar',
-    'Titular Information' => 'Datos de Titular',
-    'Titular' => 'Titular',
-    'Update Member' => 'Actualizar Afiliado',
+    'Mail server' => 'Servidor de Correo',
+    'Received confirmation' => 'Confirmación recibido',
+    'Email settings' => 'Configuracion de email',
+    'Notification received' => 'Notificar recibido',
+    'Notification server' => 'Notificar Servidor',
+    'Forwarding mail' => 'Reenviar Email Dia',
     /*Nuevo*/
     'Configuration' => 'Configuración',
     'Please fill out the following form with your login credentials:' => 'Por favor complete el siguiente formulario con sus datos de acceso:',
+    /*Correos*/
+    'Mail' => 'Correo',
+    'Smtp server' => 'Servidor Smtp',
+    'Port' => 'Puerto',
+    'User' => 'Usuario',
+    'Pass' => 'Clave',
+    /*Identidad*/
+    'Name' => 'Nombre',
+    'Subject' => 'Asunto',
+    'Body' => 'Cuerpo',
+    'Day' => 'Dia(s)',
+    'Html' => 'Html',
+    'Parameters' => 'Parametros',
+    'Send Mail' => 'Enviar Email',
+    'Send Mail C/Seconds' => 'Enviar Email C/Seg.',
+    'Copy Mail' => 'Copiar Email',
+    
+    
+    
 );
 ?>

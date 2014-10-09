@@ -219,7 +219,7 @@ class VSCompania extends VsSeaActiveRecord {
                  CURRENT_TIMESTAMP(),
                  '" . $objEmp[0]['Estado'] . "')";
         //DATE(" . $cabOrden[0]['CDOR_FECHA_INGRESO'] . "),
-        echo $sql;
+        //echo $sql;
         $command = $con->createCommand($sql);
         $command->execute();
     }

@@ -4,7 +4,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 20/04/2014, 06:55:25 PM
+    Created on : 20/10/2014, 06:55:25 PM
     Author     : BYRON
 */
 /* Estilos Genericos */
@@ -162,3 +162,29 @@ and open the template in the editor.
     width:250px !important; 
 }*/
 
+
+
+/*Nuevos Estilos*/
+.rowLine{
+    display: table;
+    width: 100%;
+}
+
+.txt_label{
+    width:30%;
+    vertical-align:middle;
+    display: table-cell;
+}
+.txt_Textbox{
+    width:70%;
+    vertical-align:middle;
+    display: table-cell;
+}
+.rowTd{
+    vertical-align:middle;
+    display: table-cell;
+}
+.txt_TextboxNumber2{
+    width:45px !important; 
+    text-align: right;
+}

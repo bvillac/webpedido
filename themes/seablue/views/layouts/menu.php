@@ -7,7 +7,7 @@
 ?>
 <li class="with_menu">
     <!--<a href = "index"><i class = "fa fa-edit fa-fw"></i> Hacer Pedidos</a>-->
-    <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('PEDIDO', 'Mis Peidos'), array('/pEDIDO/index')); ?>
+    <?php echo CHtml::link('<i class="fa fa-dashboard fa-fw"></i>' . Yii::t('PEDIDO', 'Dashboard'), array('site/index')); ?>
 </li>
 <!--<li class="with_menu">
     <?php //echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('PEDIDO', 'Crear Peidos'), array('/pEDIDO/create')); ?>
@@ -21,16 +21,16 @@
     <ul class="nav nav-second-level collapse" style="height: 0px;">
         <li>
             <!--<a href="#">Second Level Item</a>-->
-            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Digital signature'), array('/vSCompania/index')); ?>
+            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Digital signature'), array('vSCompania/index')); ?>
         </li>
         <li>
-            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Mail server'), array('/uSUARIOS/index')); ?>
+            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Mail server'), array('vSConfiguracion/scorreo')); ?>
         </li>
         <li>
-            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Sri services'), array('/uSUARIOS/index')); ?>
+            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Sri services'), array('vSConfiguracion/sersri')); ?>
         </li>
         <li>
-            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Key contingency'), array('/uSUARIOS/index')); ?>
+            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Key contingency'), array('vSConfiguracion/ccontingencia')); ?>
         </li>
         
         <!--<li class="active">

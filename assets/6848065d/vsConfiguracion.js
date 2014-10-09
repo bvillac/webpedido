@@ -28,6 +28,22 @@ function fun_Nuevo(accion){
     }*/
 }
 
+function verificaAcciones(){
+    var ids = String($.fn.yiiGridView.getSelection('TbG_COMPANIA'));
+    var count=ids.split(",");
+    if(count.length>0 && ids!=""){
+        if(count.length==1){
+            $("#btn_Update").removeClass("disabled");
+        }else{
+            $("#btn_Update").addClass("disabled");
+        }
+        $("#btn_Delete").removeClass("disabled");
+    }else{
+        $("#btn_Update").addClass("disabled");
+        $("#btn_Delete").addClass("disabled");
+    }
+}
+
 function fun_limpiarEmpresa(){
     $('#txt_RUC').val('');
     $('#txt_RazonSocial').val('');
@@ -42,9 +58,8 @@ function fun_limpiarEmpresa(){
 }
 
 function fun_GuardarEmpresa(accion){
-    var ID=(accion=="Update")?$('#txth_CDOR_ID').val():0;
+    var ID=(accion=="Update")?$('#txth_IdCompania').val():0;
     var link=$('#txth_controlador').val()+"/Save";
-
     $.ajax({
         type: 'POST',
         dataType: 'json',
@@ -71,7 +86,7 @@ function fun_GuardarEmpresa(accion){
 function objetoEmpresa(ID){
     var empArray = new Array();
     var empresa=new Object();
-    empresa.id=ID;
+    empresa.IdCompania=ID;
     empresa.Ruc=$('#txt_RUC').val();
     empresa.RazonSocial=$('#txt_RazonSocial').val();
     empresa.NombreComercial=$('#txt_NombreComercial').val();
@@ -90,7 +105,6 @@ function objetoEmpresa(ID){
 }
 
 function mostrarEmpresa(Data){
-    //alert(Data.toString());
     //A.IdCompania,A.Ruc,A.RazonSocial,A.NombreComercial,A.Mail,A.EsContribuyente,
     //A.Direccion,B.Clave,B.FechaCaducidad,B.EmpresaCertificadora 
     $('#txt_RUC').val(Data[0]['Ruc']);
@@ -150,7 +164,6 @@ function fun_Update(){
         //sessionStorage.accion="update";
         //sessionStorage.removeItem('detalleGrid')
         link=$('#txth_controlador').val()+"/Update?";
-        alert(link)
         $('#btn_Update').attr("href", link+"id="+id); 
     }
 }

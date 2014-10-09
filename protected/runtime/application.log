@@ -7952,3 +7952,537 @@ Stack trace:
 REQUEST_URI=/websea/vSCompania/Save
 in /var/www/html/websea/protected/controllers/VSCompaniaController.php (217)
 in /var/www/html/websea/index.php (13)
+2014/10/08 12:22:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "uSUARIOS/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIOS/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/uSUARIOS/index.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/10/08 12:39:55 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Usted no se encuentra autorizado a realizar esta acción.' in /opt/sisweb/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /opt/sisweb/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no se enc...')
+#1 /opt/sisweb/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /opt/sisweb/web/CWebApplication.php(282): CController->run('scorreo')
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/websea/VSConfiguracion/scorreo.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/10/08 12:40:21 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "index" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(146): CController->render('index', Array)
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionScorreo()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#10 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /opt/sisweb/web/CWebApplication.php(282): CController->run('scorreo')
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/websea/VSConfiguracion/scorreo.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/10/08 12:40:38 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "Scorreo" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('Scorreo', Array, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(146): CController->render('Scorreo', Array)
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionScorreo()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#10 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /opt/sisweb/web/CWebApplication.php(282): CController->run('scorreo')
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/websea/VSConfiguracion/scorreo.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/10/08 12:41:01 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "scorreo" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('scorreo', Array, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(146): CController->render('scorreo', Array)
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionScorreo()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#10 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /opt/sisweb/web/CWebApplication.php(282): CController->run('scorreo')
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/websea/VSConfiguracion/scorreo.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/10/08 12:41:19 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "scorreo" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('scorreo', Array, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(146): CController->render('scorreo', Array)
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionscorreo()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#10 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /opt/sisweb/web/CWebApplication.php(282): CController->run('scorreo')
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/websea/VSConfiguracion/scorreo.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/10/08 12:41:20 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "scorreo" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('scorreo', Array, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(146): CController->render('scorreo', Array)
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionscorreo()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#10 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /opt/sisweb/web/CWebApplication.php(282): CController->run('scorreo')
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/websea/VSConfiguracion/scorreo.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/10/08 12:41:51 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "scorreo" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('scorreo', Array, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(146): CController->render('scorreo', Array)
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionscorreo()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#10 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /opt/sisweb/web/CWebApplication.php(282): CController->run('scorreo')
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/websea/VSConfiguracion/scorreo.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/10/08 12:43:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "scorreo" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('scorreo')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('scorreo')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/websea/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/websea/VSConfiguracion/scorreo.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/10/08 12:43:09 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "index" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(146): CController->render('index', Array)
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionIndex()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#10 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/websea/VSConfiguracion/index.jsp
+HTTP_REFERER=http://localhost/websea/VSConfiguracion/scorreo.jsp
+---
+2014/10/08 12:45:00 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "index" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(133): CController->render('index', Array)
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionIndex()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#10 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/websea/VSConfiguracion/index.jsp
+HTTP_REFERER=http://localhost/websea/VSConfiguracion/scorreo.jsp
+---
+2014/10/08 12:45:01 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "index" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(133): CController->render('index', Array)
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionIndex()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#10 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/websea/VSConfiguracion/index.jsp
+HTTP_REFERER=http://localhost/websea/VSConfiguracion/scorreo.jsp
+---
+2014/10/08 12:45:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "scorreo" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('scorreo')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('scorreo')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/websea/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/websea/VSConfiguracion/scorreo.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/index.jsp
+---
+2014/10/08 12:45:08 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "index" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(133): CController->render('index', Array)
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionIndex()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#10 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/websea/VSConfiguracion/index.jsp
+HTTP_REFERER=http://localhost/websea/VSConfiguracion/scorreo.jsp
+---
+2014/10/08 12:49:04 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "index" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('index', Array, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(133): CController->render('index', Array)
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionIndex()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#10 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/websea/VSConfiguracion/index.jsp
+HTTP_REFERER=http://localhost/websea/VSConfiguracion/scorreo.jsp
+---
+2014/10/08 12:52:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "VSConfiguracion/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/VSConfiguracion/index.jsp
+HTTP_REFERER=http://localhost/websea/VSConfiguracion/scorreo.jsp
+---
+2014/10/08 12:52:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "VSConfiguracion/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/VSConfiguracion/index.jsp
+HTTP_REFERER=http://localhost/websea/VSConfiguracion/index.jsp
+---
+2014/10/08 13:07:39 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "Scorreo" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('Scorreo', NULL, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(11): CController->render('Scorreo')
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionScorreo()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /opt/sisweb/web/CWebApplication.php(282): CController->run('scorreo')
+#7 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#8 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /var/www/html/websea/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/websea/VSConfiguracion/scorreo.jsp
+HTTP_REFERER=http://localhost/websea/VSConfiguracion/index.jsp
+---
+2014/10/08 13:09:51 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "Scorreo" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('Scorreo', NULL, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(11): CController->render('Scorreo')
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionScorreo()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /opt/sisweb/web/CWebApplication.php(282): CController->run('scorreo')
+#7 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#8 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /var/www/html/websea/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/websea/VSConfiguracion/scorreo.jsp
+HTTP_REFERER=http://localhost/websea/VSConfiguracion/index.jsp
+---
+2014/10/08 13:09:52 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "Scorreo" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('Scorreo', NULL, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(11): CController->render('Scorreo')
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionScorreo()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /opt/sisweb/web/CWebApplication.php(282): CController->run('scorreo')
+#7 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#8 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /var/www/html/websea/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/websea/VSConfiguracion/scorreo.jsp
+HTTP_REFERER=http://localhost/websea/VSConfiguracion/index.jsp
+---
+2014/10/08 13:10:04 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "Scorreo" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('Scorreo', NULL, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(11): CController->render('Scorreo')
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionScorreo()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /opt/sisweb/web/CWebApplication.php(282): CController->run('Scorreo')
+#7 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('VSConfiguracion...')
+#8 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /var/www/html/websea/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/websea/VSConfiguracion/Scorreo.jsp
+HTTP_REFERER=http://localhost/websea/VSConfiguracion/index.jsp
+---
+2014/10/08 13:14:29 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "Scorreo" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('Scorreo', NULL, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(11): CController->render('Scorreo')
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionScorreo()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /opt/sisweb/web/CWebApplication.php(282): CController->run('Scorreo')
+#7 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSConfiguracion...')
+#8 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /var/www/html/websea/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/websea/vSConfiguracion/Scorreo.jsp
+HTTP_REFERER=http://localhost/websea/VSConfiguracion/index.jsp
+---
+2014/10/08 13:18:09 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "Ccontingencia" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('Ccontingencia', NULL, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(19): CController->render('Ccontingencia')
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionCcontingencia()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /opt/sisweb/web/CWebApplication.php(282): CController->run('ccontingencia')
+#7 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSConfiguracion...')
+#8 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /var/www/html/websea/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/websea/vSConfiguracion/ccontingencia.jsp
+HTTP_REFERER=http://localhost/websea/vSConfiguracion/sersri.jsp
+---
+2014/10/08 13:18:25 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "ccontingencia" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('ccontingencia', NULL, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(19): CController->render('ccontingencia')
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionCcontingencia()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /opt/sisweb/web/CWebApplication.php(282): CController->run('ccontingencia')
+#7 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSConfiguracion...')
+#8 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /var/www/html/websea/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/websea/vSConfiguracion/ccontingencia.jsp
+HTTP_REFERER=http://localhost/websea/vSConfiguracion/sersri.jsp
+---
+2014/10/08 13:18:26 [error] [exception.CException] exception 'CException' with message 'VSConfiguracionController no ha podido encontrar la vista "ccontingencia" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('ccontingencia', NULL, true)
+#1 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(19): CController->render('ccontingencia')
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionCcontingencia()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /opt/sisweb/web/CWebApplication.php(282): CController->run('ccontingencia')
+#7 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSConfiguracion...')
+#8 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /var/www/html/websea/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/websea/vSConfiguracion/ccontingencia.jsp
+HTTP_REFERER=http://localhost/websea/vSConfiguracion/sersri.jsp
+---
+2014/10/08 13:19:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/vSConfiguracion/ccontingencia.jsp
+---
+2014/10/08 13:21:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/vSConfiguracion/ccontingencia.jsp
+---
+2014/10/08 13:22:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "pEDIDO/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDO/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/pEDIDO/index.jsp
+HTTP_REFERER=http://localhost/websea/vSConfiguracion/ccontingencia.jsp
+---
+2014/10/08 18:47:01 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'appweb_2014.VSServidorCorreo' doesn't exist. La sentencia SQL ejecutada fue: SHOW FULL COLUMNS FROM `VSServidorCorreo`.
+in /var/www/html/websea/protected/controllers/VSConfiguracionController.php (31)
+in /var/www/html/websea/index.php (13)
+2014/10/08 18:47:01 [error] [exception.CDbException] exception 'CDbException' with message 'La tabla "VSServidorCorreo" definida en la clase active record "VSServidorCorreo" no se ha podido encontrar en la base de datos.' in /opt/sisweb/db/ar/CActiveRecord.php:2366
+Stack trace:
+#0 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSServidorCorreo))
+#1 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#2 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(31): CActiveRecord->__construct()
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionSave()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /opt/sisweb/web/CWebApplication.php(282): CController->run('Save')
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSConfiguracion...')
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/websea/vSConfiguracion/Save
+HTTP_REFERER=http://localhost/websea/vSConfiguracion/scorreo.jsp
+---
+2014/10/08 18:50:30 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'appweb_2014.VSServidorCorreo' doesn't exist. La sentencia SQL ejecutada fue: SHOW FULL COLUMNS FROM `VSServidorCorreo`.
+in /var/www/html/websea/protected/controllers/VSConfiguracionController.php (31)
+in /var/www/html/websea/index.php (13)
+2014/10/08 18:50:30 [error] [exception.CDbException] exception 'CDbException' with message 'La tabla "VSServidorCorreo" definida en la clase active record "VSServidorCorreo" no se ha podido encontrar en la base de datos.' in /opt/sisweb/db/ar/CActiveRecord.php:2366
+Stack trace:
+#0 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSServidorCorreo))
+#1 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#2 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(31): CActiveRecord->__construct()
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionSave()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /opt/sisweb/web/CWebApplication.php(282): CController->run('Save')
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSConfiguracion...')
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/websea/vSConfiguracion/Save
+HTTP_REFERER=http://localhost/websea/vSConfiguracion/scorreo.jsp
+---
+2014/10/08 18:51:58 [error] [php] Undefined index: Cuerpo (/var/www/html/websea/protected/models/VSServidorCorreo.php:195)
+Stack trace:
+#0 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionSave()
+#1 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#2 /opt/sisweb/web/CController.php(286): VSConfiguracionController->runAction()
+#3 /opt/sisweb/web/CController.php(265): VSConfiguracionController->runActionWithFilters()
+#4 /opt/sisweb/web/CWebApplication.php(282): VSConfiguracionController->run()
+#5 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#6 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#7 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSConfiguracion/Save
+in /var/www/html/websea/protected/models/VSServidorCorreo.php (195)
+in /var/www/html/websea/protected/models/VSServidorCorreo.php (175)
+in /var/www/html/websea/protected/controllers/VSConfiguracionController.php (36)
+2014/10/08 18:56:23 [error] [php] Undefined index: Cuerpo (/var/www/html/websea/protected/models/VSServidorCorreo.php:195)
+Stack trace:
+#0 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionSave()
+#1 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#2 /opt/sisweb/web/CController.php(286): VSConfiguracionController->runAction()
+#3 /opt/sisweb/web/CController.php(265): VSConfiguracionController->runActionWithFilters()
+#4 /opt/sisweb/web/CWebApplication.php(282): VSConfiguracionController->run()
+#5 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#6 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#7 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSConfiguracion/Save
+in /var/www/html/websea/protected/models/VSServidorCorreo.php (195)
+in /var/www/html/websea/protected/models/VSServidorCorreo.php (175)
+in /var/www/html/websea/protected/controllers/VSConfiguracionController.php (36)
+2014/10/08 18:59:34 [error] [php] Undefined variable: objEmp (/var/www/html/websea/protected/models/VSServidorCorreo.php:208)
+Stack trace:
+#0 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionSave()
+#1 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#2 /opt/sisweb/web/CController.php(286): VSConfiguracionController->runAction()
+#3 /opt/sisweb/web/CController.php(265): VSConfiguracionController->runActionWithFilters()
+#4 /opt/sisweb/web/CWebApplication.php(282): VSConfiguracionController->run()
+#5 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#6 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#7 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSConfiguracion/Save
+in /var/www/html/websea/protected/models/VSServidorCorreo.php (208)
+in /var/www/html/websea/protected/models/VSServidorCorreo.php (175)
+in /var/www/html/websea/protected/controllers/VSConfiguracionController.php (36)
