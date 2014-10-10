@@ -2,7 +2,7 @@
 /* @var $this NubeFacturaController */
 /* @var $model NubeFactura */
 
-$this->breadcrumbs=array(
+/*$this->breadcrumbs=array(
 	'Nube Facturas'=>array('index'),
 	'Create',
 );
@@ -10,9 +10,12 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'List NubeFactura', 'url'=>array('index')),
 	array('label'=>'Manage NubeFactura', 'url'=>array('admin')),
-);
+);*/
 ?>
 
-<h1>Create NubeFactura</h1>
+<?php //$this->renderPartial('_form', array('model'=>$model)); ?>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php
+    $obj = new NubeFactura;
+    $obj->insertarFacturas();
+?>

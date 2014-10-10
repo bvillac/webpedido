@@ -60,6 +60,10 @@
             <!--<a href="#">Second Level Item</a>-->
             <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Documents'), array('vSDocumentos/index')); ?>
         </li>
+        <li>
+            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Documents'), array('NubeFactura/create')); ?>
+        </li>
+        
     </ul>
     <!-- /.nav-second-level -->
 </li>

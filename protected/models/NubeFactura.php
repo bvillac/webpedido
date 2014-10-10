@@ -222,4 +222,75 @@ class NubeFactura extends VsSeaIntermedia {
         return parent::model($className);
     }
 
+    public function insertarFacturas() {
+        $con = Yii::app()->dbvsseaint;
+        $trans = $con->beginTransaction();
+        try {
+            $dataFact = $this->buscarFacturas();
+            $empresaEnt="";//recuperar info deL Contribuyente
+            for ($i = 0; $i < sizeof($dataFact); $i++) {
+                //echo $dataFact[$i]['NOM_CLI'];
+                $this->InsertarCabFactura($con,$dataFact, $empresaEnt, $i); 
+            }
+            //$this->insertarDatosEmpresa($con, $objEmp);
+            //$idEmp = $con->getLastInsertID($con->dbname . '.VSCompania');
+            //$this->datoFirmaDigital($con, $objEmp, $idEmp);
+            $trans->commit();
+            $con->active = false;
+            //ECHO "OK";
+            return true;
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            throw $e;
+            return false;
+        }
+    }
+
+    private function buscarFacturas() {
+        $conCont = yii::app()->dbcont;
+        $rawData = array();
+        $sql = "SELECT TIP_NOF,NUM_NOF,CED_RUC,NOM_CLI,FEC_VTA 
+            FROM utimpor2014.VC010101 where FEC_VTA>'2014-05-01' LIMIT 2;";
+
+//        $sql = "SELECT B.AFMED_ID,B.ANT_ID,B.DIAG_ID,D.TANT_NOMBRE,B.AFMED_PARENTESCO_ID,B.AFMED_EST_SI,B.AFMED_NUMERO_ANO,B.AFMED_INDICADOR 
+//                    FROM DB_MEDICO.FICHA_MEDICA A
+//                        INNER JOIN (" . $con->dbname . ".ANTECEDENTES_FICHA_MEDICA B
+//                            INNER JOIN (" . $con->dbname . ".ANTECEDENTES C
+//                                    INNER JOIN " . $con->dbname . ".TIPO_ANTECEDENTES D
+//                                        ON D.TANT_ID=C.TANT_ID)
+//                            ON B.ANT_ID=C.ANT_ID)
+//                        ON A.FMED_ID=B.FMED_ID
+//                    WHERE A.FMED_ESTADO_LOGICO=1 AND A.FMED_ID=$id AND B.AFMED_INDICADOR='$ident';";
+        //echo $sql;
+        $rawData = $conCont->createCommand($sql)->queryAll();
+        $conCont->active = false;
+        return $rawData;
+    }
+    
+    private function InsertarCabFactura($con, $objEnt,$objEmp,$i) {
+        /*"INSERT INTO GSEDOCINTERMEDIA.DBO.NubeFactura " &
+                            "(Ambiente,TipoEmision, RazonSocial, NombreComercial, Ruc, CodigoDocumento, Establecimiento, " &
+                            "PuntoEmision, Secuencial, DireccionMatriz, FechaEmision, DireccionEstablecimiento, ContribuyenteEspecial, " &
+                            "ObligadoContabilidad, TipoIdentificacionComprador, GuiaRemision, RazonSocialComprador, IdentificacionComprador, " &
+                            "TotalSinImpuesto, TotalDescuento, Propina, ImporteTotal, Moneda, SecuencialERP, CodigoTransaccionERP, " &
+                            "Estado,FechaCarga) VALUES " &
+                            "(@Ambiente,@TipoEmision,@RazonSocial,@NombreComercial,@Ruc,@CodigoDocumento,@Establecimiento, " &
+                            "@PuntoEmision,@Secuencial,@DireccionMatriz,@FechaEmision,@DireccionEstablecimiento,@ContribuyenteEspecial, " &
+                            "@ObligadoContabilidad,@TipoIdentificacionComprador,@GuiaRemision,@RazonSocialComprador,@IdentificacionComprador," &
+                            "@TotalSinImpuesto,@TotalDescuento,@Propina,@ImporteTotal,@Moneda,@SecuencialERP,@CodigoTransaccionERP,@Estado,GETDATE()) " &
+                            " SELECT @@IDENTITY"*/
+        
+        $sql = "INSERT INTO " . $con->dbname . ".NubeFactura
+                (TipoEmision,SecuencialERP,Ruc,RazonSocial)VALUES(
+                 '6',
+                 '" . $objEnt[$i]['NUM_NOF'] . "',
+                 '" . $objEnt[$i]['CED_RUC'] . "',
+                 '" . $objEnt[0]['NOM_CLI'] . "')";
+        //DATE(" . $cabOrden[0]['CDOR_FECHA_INGRESO'] . "),
+        //echo $sql;
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+
 }
