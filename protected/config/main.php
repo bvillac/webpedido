@@ -66,7 +66,7 @@ return array(
 		
 		'db'=>array(
 			//'connectionString' => 'mysql:host=localhost;dbname=sea2010_sisweb',
-                        'connectionString' => 'mysql:host=192.168.10.101;dbname=appweb_2014',
+                        'connectionString' => 'mysql:host=192.168.10.101;dbname=VSSEAINTERMEDIA',
                         //'connectionString' => 'mysql:host=localhost;dbname=appweb_2014',
                         //'connectionString' => 'mysql:host=localhost;dbname=VSSEA',
 			'emulatePrepare' => true,
@@ -85,6 +85,17 @@ return array(
                     'password' => 'root00',
                     'charset' => 'utf8',
                     'dbname' => 'VSSEA',
+                    'dbserver' => "192.168.10.101"
+                ),
+                'dbvsseaint' => array(
+                    'class' => 'CDbConnection',
+                    //'connectionString' => 'mysql:host=localhost;dbname=VSSEA',
+                    'connectionString' => 'mysql:host=192.168.10.101;dbname=VSSEAINTERMEDIA',
+                    'emulatePrepare' => true,
+                    'username' => 'root',
+                    'password' => 'root00',
+                    'charset' => 'utf8',
+                    'dbname' => 'VSSEAINTERMEDIA',
                     'dbserver' => "192.168.10.101"
                 ),
 		'errorHandler'=>array(
