@@ -53,3 +53,13 @@
     </ul>
     <!-- /.nav-second-level -->
 </li>
+<li class="">
+    <a href="#"><i class="fa fa-sitemap fa-fw"></i> <?php echo Yii::t('GENERAL', 'Consultations') ?><span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level collapse" style="height: 0px;">
+        <li>
+            <!--<a href="#">Second Level Item</a>-->
+            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Documents'), array('vSDocumentos/index')); ?>
+        </li>
+    </ul>
+    <!-- /.nav-second-level -->
+</li>

@@ -49,6 +49,10 @@ return array(
     'Total Keys you uploaded' => 'Total de Claves subidas',
     'Keys used' => 'Claves utilizadas',
     'Keys available' => 'Claves disponibles',
+    /*CONSULTAS*/
+    'Consultations' => 'Consultas',
+    'Documents' => 'Documentos',
+    
     
     
 );
