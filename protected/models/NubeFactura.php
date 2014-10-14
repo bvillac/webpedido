@@ -227,17 +227,20 @@ class NubeFactura extends VsSeaIntermedia {
         $trans = $con->beginTransaction();
         try {
             $dataFact = $this->buscarFacturas();
-            $empresaEnt="";//recuperar info deL Contribuyente
+            $empresaEnt=$this->buscarDataEmpresa('1');//recuperar info deL Contribuyente
+            $codDoc='01';//Documento Factura
             for ($i = 0; $i < sizeof($dataFact); $i++) {
                 //echo $dataFact[$i]['NOM_CLI'];
-                $this->InsertarCabFactura($con,$dataFact, $empresaEnt, $i); 
+                $this->InsertarCabFactura($con,$dataFact, $empresaEnt,$codDoc, $i);
+                //$idCab = $con->getLastInsertID($con->dbname . '.NubeFactura');
+                
             }
-            //$this->insertarDatosEmpresa($con, $objEmp);
-            //$idEmp = $con->getLastInsertID($con->dbname . '.VSCompania');
+            
+            //
             //$this->datoFirmaDigital($con, $objEmp, $idEmp);
             $trans->commit();
             $con->active = false;
-            //ECHO "OK";
+            echo "OK";
             return true;
         } catch (Exception $e) {
             $trans->rollback();
@@ -250,8 +253,11 @@ class NubeFactura extends VsSeaIntermedia {
     private function buscarFacturas() {
         $conCont = yii::app()->dbcont;
         $rawData = array();
-        $sql = "SELECT TIP_NOF,NUM_NOF,CED_RUC,NOM_CLI,FEC_VTA 
-            FROM utimpor2014.VC010101 where FEC_VTA>'2014-05-01' LIMIT 2;";
+        $sql = "SELECT TIP_NOF,CONCAT(REPEAT('0',9-LENGTH(RIGHT(NUM_NOF,9))),RIGHT(NUM_NOF,9)) NUM_NOF,
+                        CED_RUC,NOM_CLI,FEC_VTA,DIR_CLI,VAL_BRU,POR_DES,VAL_DES,VAL_FLE,BAS_IVA,
+                        BAS_IV0,POR_IVA,VAL_IVA,VAL_NET,POR_R_F,VAL_R_F,POR_R_I,VAL_R_I,RIGHT(GUI_REM,9) GUI_REM,0 PROPINA
+                    FROM " . $conCont->dbname . ".VC010101 
+                WHERE IND_UPD='L' AND FEC_VTA>'2014-05-01' LIMIT 2";
 
 //        $sql = "SELECT B.AFMED_ID,B.ANT_ID,B.DIAG_ID,D.TANT_NOMBRE,B.AFMED_PARENTESCO_ID,B.AFMED_EST_SI,B.AFMED_NUMERO_ANO,B.AFMED_INDICADOR 
 //                    FROM DB_MEDICO.FICHA_MEDICA A
@@ -268,29 +274,81 @@ class NubeFactura extends VsSeaIntermedia {
         return $rawData;
     }
     
-    private function InsertarCabFactura($con, $objEnt,$objEmp,$i) {
-        /*"INSERT INTO GSEDOCINTERMEDIA.DBO.NubeFactura " &
-                            "(Ambiente,TipoEmision, RazonSocial, NombreComercial, Ruc, CodigoDocumento, Establecimiento, " &
-                            "PuntoEmision, Secuencial, DireccionMatriz, FechaEmision, DireccionEstablecimiento, ContribuyenteEspecial, " &
-                            "ObligadoContabilidad, TipoIdentificacionComprador, GuiaRemision, RazonSocialComprador, IdentificacionComprador, " &
-                            "TotalSinImpuesto, TotalDescuento, Propina, ImporteTotal, Moneda, SecuencialERP, CodigoTransaccionERP, " &
-                            "Estado,FechaCarga) VALUES " &
-                            "(@Ambiente,@TipoEmision,@RazonSocial,@NombreComercial,@Ruc,@CodigoDocumento,@Establecimiento, " &
-                            "@PuntoEmision,@Secuencial,@DireccionMatriz,@FechaEmision,@DireccionEstablecimiento,@ContribuyenteEspecial, " &
-                            "@ObligadoContabilidad,@TipoIdentificacionComprador,@GuiaRemision,@RazonSocialComprador,@IdentificacionComprador," &
-                            "@TotalSinImpuesto,@TotalDescuento,@Propina,@ImporteTotal,@Moneda,@SecuencialERP,@CodigoTransaccionERP,@Estado,GETDATE()) " &
-                            " SELECT @@IDENTITY"*/
-        
+    private function buscarDataEmpresa($id) {
+        $conSea = yii::app()->dbvssea;
+        $rawData = array();
+        $sql = "SELECT * FROM " . $conSea->dbname . ".VSCompania WHERE IdCompania=$id;";
+        //echo $sql;
+        $rawData = $conSea->createCommand($sql)->queryAll();
+        $conSea->active = false;
+        return $rawData;
+    }
+    
+    private function InsertarCabFactura($con,$objEnt,$objEmp,$codDoc,$i) {
+        $tip_iden=$this->tipoIdent($objEnt[$i]['CED_RUC']);
+        $ced_ruc=($tip_iden=='07')?'9999999999999':$objEnt[$i]['CED_RUC'];
         $sql = "INSERT INTO " . $con->dbname . ".NubeFactura
-                (TipoEmision,SecuencialERP,Ruc,RazonSocial)VALUES(
-                 '6',
-                 '" . $objEnt[$i]['NUM_NOF'] . "',
-                 '" . $objEnt[$i]['CED_RUC'] . "',
-                 '" . $objEnt[0]['NOM_CLI'] . "')";
+                            (Ambiente,TipoEmision, RazonSocial, NombreComercial, Ruc, CodigoDocumento, Establecimiento,
+                            PuntoEmision, Secuencial, DireccionMatriz, FechaEmision, DireccionEstablecimiento, ContribuyenteEspecial,
+                            ObligadoContabilidad, TipoIdentificacionComprador, GuiaRemision, RazonSocialComprador, IdentificacionComprador,
+                            TotalSinImpuesto, TotalDescuento, Propina, ImporteTotal, Moneda, SecuencialERP, CodigoTransaccionERP,Estado,FechaCarga) VALUES (
+                            '" . $objEmp[0]['Ambiente'] . "',
+                            '" . $objEmp[0]['TipoEmision'] . "',
+                            '" . $objEmp[0]['RazonSocial'] . "',
+                            '" . $objEmp[0]['NombreComercial'] . "',
+                            '" . $objEmp[0]['Ruc'] . "',
+                            '$codDoc',
+                            '" . $objEmp[0]['Establecimiento'] . "',
+                            '" . $objEmp[0]['PuntoEmision'] . "',
+                            '" . $objEnt[$i]['NUM_NOF'] . "',
+                            '" . $objEmp[0]['DireccionMatriz'] . "', 
+                            '" . $objEnt[$i]['FEC_VTA'] . "', 
+                            '" . $objEmp[0]['DireccionMatriz'] . "', 
+                            '" . $objEmp[0]['ContribuyenteEspecial'] . "', 
+                            '" . $objEmp[0]['ObligadoContabilidad'] . "', 
+                            '$tip_iden', 
+                            '" . $objEmp[0]['Establecimiento'].'-'.$objEmp[0]['PuntoEmision'].'-'.$objEnt[$i]['GUI_REM'] . "', 
+                            '" . $objEnt[$i]['NOM_CLI'] . "', 
+                            '$ced_ruc', 
+                            '" . $objEnt[$i]['VAL_BRU'] . "', 
+                            '" . $objEnt[$i]['VAL_DES'] . "', 
+                            '" . $objEnt[$i]['PROPINA'] . "', 
+                            '" . $objEnt[$i]['VAL_NET'] . "', 
+                            '" . $objEmp[0]['Moneda'] . "', 
+                            '" . $objEnt[$i]['NUM_NOF'] . "', 
+                            '" . $objEnt[0]['TIP_NOF'] . "',
+                            '1',CURRENT_TIMESTAMP() )";
+                            
+
+                            //"@Ambiente,@TipoEmision,@RazonSocial,@NombreComercial,@Ruc,@CodigoDocumento,@Establecimiento, " &
+                            //"@PuntoEmision,@Secuencial,@DireccionMatriz,@FechaEmision,@DireccionEstablecimiento,@ContribuyenteEspecial, " &
+                            //"@ObligadoContabilidad,@TipoIdentificacionComprador,@GuiaRemision,@RazonSocialComprador,@IdentificacionComprador," &
+                            //"@TotalSinImpuesto,@TotalDescuento,@Propina,@ImporteTotal,@Moneda,@SecuencialERP,@CodigoTransaccionERP,@Estado,GETDATE()) " &
+                            //" SELECT @@IDENTITY";
+
         //DATE(" . $cabOrden[0]['CDOR_FECHA_INGRESO'] . "),
         //echo $sql;
         $command = $con->createCommand($sql);
         $command->execute();
+    }
+    
+    private function tipoIdent($cedula){
+        $valor='07';//Consumidor Final por Defecto
+        IF(strlen($cedula)>10) {
+            IF(strlen($cedula)==13){
+                $valor='04';//VENTA CON RUC
+            }ELSEIF(strlen($cedula)>13){
+                $valor='06';//VENTA CON PASAPORTE
+            }
+        }ELSE{
+            IF($cedula=='9999999999'){//Esta vericacion depende de la empresa
+                $valor='07';//VENTA A CONSUMIDOR FINAL*  SON 13 DIGITOS
+            }ELSE{
+                $valor='05';//VENTA CON CEDULA
+            }
+        }
+        return $valor;
+
     }
 
 }

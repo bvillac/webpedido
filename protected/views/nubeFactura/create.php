@@ -16,6 +16,8 @@ $this->menu=array(
 <?php //$this->renderPartial('_form', array('model'=>$model)); ?>
 
 <?php
+    //require_once(Yii::app()->basePath . '/extensions/my-php-file.php');
     $obj = new NubeFactura;
     $obj->insertarFacturas();
+    //echo "hola";
 ?>

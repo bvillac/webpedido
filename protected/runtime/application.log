@@ -8633,3 +8633,125 @@ REQUEST_URI=/websea/vSConfiguracion/ccontingencia.jsp
 in /var/www/html/websea/protected/views/vSConfiguracion/ccontingencia.php (20)
 in /var/www/html/websea/protected/controllers/VSConfiguracionController.php (12)
 in /var/www/html/websea/index.php (13)
+2014/10/10 18:18:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "create.php" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('create.php')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('create.php')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeFactura/cre...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/websea/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/websea/NubeFactura/create.php
+---
+2014/10/10 18:19:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "create.php" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('create.php')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('create.php')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeFactura/cre...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/websea/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/websea/NubeFactura/create.php
+---
+2014/10/10 18:19:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "create.php" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('create.php')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('create.php')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeFactura/cre...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/websea/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/websea/NubeFactura/create.php
+---
+2014/10/10 18:22:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "create.php" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('create.php')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('create.php')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeFactura/cre...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/websea/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/websea/NubeFactura/create.php
+---
+2014/10/14 01:03:21 [error] [php] Undefined index: DireccionEstablecimiento (/var/www/html/websea/protected/models/NubeFactura.php:306)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(126): require()
+#1 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#2 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#3 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#4 /var/www/html/websea/protected/controllers/NubeFacturaController.php(79): NubeFacturaController->render()
+#5 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#6 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#7 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#8 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#11 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#13 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#14 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#15 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/www/html/websea/protected/models/NubeFactura.php (306)
+in /var/www/html/websea/protected/models/NubeFactura.php (234)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (21)
+2014/10/14 01:15:59 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'A.Direccion' in 'field list'. La sentencia SQL ejecutada fue: SELECT A.IdCompania,A.Ruc,A.RazonSocial,A.NombreComercial,A.Direccion 
+                    FROM VSSEA.VSCompania A WHERE A.Estado='1'.
+in /var/www/html/websea/protected/models/VSCompania.php (170)
+in /var/www/html/websea/protected/controllers/VSCompaniaController.php (145)
+in /var/www/html/websea/index.php (13)
+2014/10/14 01:15:59 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'A.Direccion' in 'field list'. The SQL statement executed was: SELECT A.IdCompania,A.Ruc,A.RazonSocial,A.NombreComercial,A.Direccion 
+                    FROM VSSEA.VSCompania A WHERE A.Estado='1'' in /opt/sisweb/db/CDbCommand.php:543
+Stack trace:
+#0 /opt/sisweb/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /var/www/html/websea/protected/models/VSCompania.php(170): CDbCommand->queryAll()
+#2 /var/www/html/websea/protected/controllers/VSCompaniaController.php(145): VSCompania->mostrarCompanias()
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): VSCompaniaController->actionIndex()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#13 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/inde...')
+#14 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/html/websea/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/websea/vSCompania/index.jsp
+HTTP_REFERER=http://localhost/websea/NubeFactura/create.jsp
+---
+2014/10/14 01:28:10 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (/opt/sisweb/web/helpers/CHtml.php:103)
+Stack trace:
+#0 /opt/sisweb/web/helpers/CHtml.php(158): renderAttributes()
+#1 /opt/sisweb/web/helpers/CHtml.php(442): tag()
+#2 /var/www/html/websea/themes/seablue/views/layouts/navsuperior.php(21): image()
+#3 /var/www/html/websea/themes/seablue/views/layouts/main.php(59): include()
+#4 /opt/sisweb/web/CBaseController.php(126): require()
+#5 /opt/sisweb/web/CBaseController.php(95): VSConfiguracionController->renderInternal()
+#6 /opt/sisweb/web/widgets/CContentDecorator.php(76): VSConfiguracionController->renderFile()
+#7 /opt/sisweb/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#8 /opt/sisweb/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#9 /opt/sisweb/web/CBaseController.php(206): CContentDecorator->run()
+#10 /opt/sisweb/web/CBaseController.php(300): VSConfiguracionController->endWidget()
+#11 /var/www/html/websea/themes/seablue/views/layouts/column1.php(6): VSConfiguracionController->endContent()
+#12 /opt/sisweb/web/CBaseController.php(126): require()
+#13 /opt/sisweb/web/CBaseController.php(95): VSConfiguracionController->renderInternal()
+#14 /opt/sisweb/web/CController.php(784): VSConfiguracionController->renderFile()
+#15 /var/www/html/websea/protected/controllers/VSConfiguracionController.php(6): VSConfiguracionController->render()
+#16 /opt/sisweb/web/actions/CInlineAction.php(49): VSConfiguracionController->actionIndex()
+#17 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#18 /opt/sisweb/web/CController.php(286): VSConfiguracionController->runAction()
+#19 /opt/sisweb/web/CController.php(265): VSConfiguracionController->runActionWithFilters()
+#20 /opt/sisweb/web/CWebApplication.php(282): VSConfiguracionController->run()
+#21 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#22 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#23 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSConfiguracion/index
+in /var/www/html/websea/themes/seablue/views/layouts/navsuperior.php (21)
+in /var/www/html/websea/themes/seablue/views/layouts/main.php (59)
+in /var/www/html/websea/themes/seablue/views/layouts/column1.php (6)

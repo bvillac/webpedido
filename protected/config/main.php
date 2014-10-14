@@ -22,6 +22,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+                //'application.commands.shell.*',
 	),
 
 	'modules'=>array(
@@ -66,8 +67,8 @@ return array(
 		
 		'db'=>array(
 			//'connectionString' => 'mysql:host=localhost;dbname=sea2010_sisweb',
-                        'connectionString' => 'mysql:host=192.168.10.101;dbname=appweb_2014',
-                        //'connectionString' => 'mysql:host=localhost;dbname=appweb_2014',
+                        //'connectionString' => 'mysql:host=192.168.10.101;dbname=appweb_2014',
+                        'connectionString' => 'mysql:host=localhost;dbname=appweb_2014',
                         //'connectionString' => 'mysql:host=localhost;dbname=VSSEA',
 			'emulatePrepare' => true,
 			'username' => 'root',
@@ -78,8 +79,8 @@ return array(
 		),
                 'dbcont' => array(//Contribuyente
                     'class' => 'CDbConnection',
-                    //'connectionString' => 'mysql:host=localhost;dbname=VSSEA',
-                    'connectionString' => 'mysql:host=192.168.10.101;dbname=utimpor2014',
+                    'connectionString' => 'mysql:host=localhost;dbname=utimpor2014',
+                    //'connectionString' => 'mysql:host=192.168.10.101;dbname=utimpor2014',
                     'emulatePrepare' => true,
                     'username' => 'root',
                     'password' => 'root00',
@@ -89,8 +90,8 @@ return array(
                 ),
                 'dbvssea' => array(
                     'class' => 'CDbConnection',
-                    //'connectionString' => 'mysql:host=localhost;dbname=VSSEA',
-                    'connectionString' => 'mysql:host=192.168.10.101;dbname=VSSEA',
+                    'connectionString' => 'mysql:host=localhost;dbname=VSSEA',
+                    //'connectionString' => 'mysql:host=192.168.10.101;dbname=VSSEA',
                     'emulatePrepare' => true,
                     'username' => 'root',
                     'password' => 'root00',
@@ -100,8 +101,8 @@ return array(
                 ),
                 'dbvsseaint' => array(
                     'class' => 'CDbConnection',
-                    //'connectionString' => 'mysql:host=localhost;dbname=VSSEAINTERMEDIA',
-                    'connectionString' => 'mysql:host=192.168.10.101;dbname=VSSEAINTERMEDIA',
+                    'connectionString' => 'mysql:host=localhost;dbname=VSSEAINTERMEDIA',
+                    //'connectionString' => 'mysql:host=192.168.10.101;dbname=VSSEAINTERMEDIA',
                     'emulatePrepare' => true,
                     'username' => 'root',
                     'password' => 'root00',

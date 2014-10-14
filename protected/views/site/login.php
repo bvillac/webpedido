@@ -9,7 +9,8 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Login 01</h1>
+<!--<h1>Login 01</h1>-->
+<?php echo CHtml::image(Yii::app()->theme->baseUrl.'/images/plantilla/logo.png','Utimpor',array('width'=>'200px','height'=>'50px')); ?>
 
 <p><?php echo Yii::t('GENERAL', 'Please fill out the following form with your login credentials:') ?></p>
 
