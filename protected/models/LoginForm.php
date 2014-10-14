@@ -36,7 +36,9 @@ class LoginForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-			'rememberMe'=>'Remember me next time',
+			'rememberMe'=>Yii::t('GENERAL', 'Remember me next time'),
+                        'username'=>Yii::t('GENERAL', 'User'),
+                        'password'=>Yii::t('GENERAL', 'Password'),
 		);
 	}
 
@@ -50,7 +52,7 @@ class LoginForm extends CFormModel
 		{
 			$this->_identity=new UserIdentity($this->username,$this->password);
 			if(!$this->_identity->authenticate())
-				$this->addError('password','Incorrect username or password.');
+				$this->addError('password',Yii::t('GENERAL', 'Incorrect username or password.'));
 		}
 	}
 

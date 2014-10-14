@@ -9,11 +9,7 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<!--<h1>Login 01</h1>-->
-<?php echo CHtml::image(Yii::app()->theme->baseUrl.'/images/plantilla/logo.png','Utimpor',array('width'=>'200px','height'=>'50px')); ?>
-
-<p><?php echo Yii::t('GENERAL', 'Please fill out the following form with your login credentials:') ?></p>
-
+<!--<p><?php //echo Yii::t('GENERAL', 'Please fill out the following form with your login credentials:') ?></p>-->
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
@@ -23,31 +19,31 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+        <?php //echo Yii::t('GENERAL', 'Fields with * are required.') ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username'); ?>
+	<div class="form-group">
+                <?php //echo $form->labelEx($model,'username'); ?>
+                <?php echo $form->textField($model,'username',array('class'=>'form-control','placeholder'=>'E-mail')); ?>
 		<?php echo $form->error($model,'username'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password'); ?>
+	<div class="form-group">
+                <?php //echo $form->labelEx($model,'password'); ?>
+                <?php echo $form->passwordField($model,'password',array('class'=>'form-control','placeholder'=>'Contraseña')); ?>
 		<?php echo $form->error($model,'password'); ?>
 		<p class="hint">
-			Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
+			<!--Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.-->
+                        <!--<?php //echo Yii::t('GENERAL', 'Hint: You may login with demo/demo or admin/admin.') ?>-->
 		</p>
 	</div>
 
-	<div class="row rememberMe">
+	<div class="checkbox">
 		<?php echo $form->checkBox($model,'rememberMe'); ?>
-		<?php echo $form->label($model,'rememberMe'); ?>
+            <span style="text-align:left"><?php echo $form->label($model,'rememberMe'); ?></span>
 		<?php echo $form->error($model,'rememberMe'); ?>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
+	<div class="form-group buttons">
+		<?php echo CHtml::submitButton(Yii::t('GENERAL', 'Login'),array('class'=>'btn btn-lg btn-success btn-block')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

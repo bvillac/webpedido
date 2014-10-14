@@ -16,6 +16,14 @@ return array(
     /*Nuevo*/
     'Configuration' => 'Configuración',
     'Please fill out the following form with your login credentials:' => 'Por favor complete el siguiente formulario con sus datos de acceso:',
+    /*Login*/
+    'Hint: You may login with demo/demo or admin/admin.' => 'Sugerencia: Usted puede iniciar sesión con demo / demostración o admin / admin.',
+    'Fields with * are required.' => 'La información marcada con * es requerida.',
+    'Incorrect username or password.' => 'Nombre de usuario o contraseña incorrecta.',
+    'Remember me next time' => 'Recordarme la próxima vez',
+    'User' => 'Usuario',
+    'Login' => 'Entrar',
+    'Password' => 'Contraseña',
     /*Correos*/
     'Mail' => 'Correo',
     'Smtp server' => 'Servidor Smtp',
