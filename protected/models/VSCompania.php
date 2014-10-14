@@ -164,7 +164,7 @@ class VSCompania extends VsSeaActiveRecord {
         $rawData = array();
         $con = Yii::app()->dbvssea;
         
-        $sql = "SELECT A.IdCompania,A.Ruc,A.RazonSocial,A.NombreComercial,A.Direccion 
+        $sql = "SELECT A.IdCompania,A.Ruc,A.RazonSocial,A.NombreComercial,A.DireccionMatriz 
                     FROM " . $con->dbname . ".VSCompania A WHERE A.Estado='1'";
         
         $rawData = $con->createCommand($sql)->queryAll();
@@ -174,7 +174,7 @@ class VSCompania extends VsSeaActiveRecord {
                     'keyField' => 'IdCompania',
                     'sort' => array(
                         'attributes' => array(
-                            'IdCompania', 'Ruc', 'RazonSocial', 'NombreComercial', 'Direccion',
+                            'IdCompania', 'Ruc', 'RazonSocial', 'NombreComercial', 'DireccionMatriz',
                         ),
                     ),
                     'totalItemCount' => count($rawData),
@@ -260,8 +260,8 @@ class VSCompania extends VsSeaActiveRecord {
     
     public function recuperarEmpresa($id) {
         $con = yii::app()->dbvssea;
-        $sql = "SELECT A.IdCompania,A.Ruc,A.RazonSocial,A.NombreComercial,A.Mail,A.EsContribuyente,
-	A.Direccion,B.Clave,B.FechaCaducidad,B.EmpresaCertificadora 
+        $sql = "SELECT A.IdCompania,A.Ruc,A.RazonSocial,A.NombreComercial,A.Mail,A.ContribuyenteEspecial EsContribuyente,
+	A.DireccionMatriz Direccion,B.Clave,B.FechaCaducidad,B.EmpresaCertificadora 
 	FROM " . $con->dbname . ".VSCompania A
 		INNER JOIN " . $con->dbname . ".VSFirmaDigital B
 			ON A.IdCompania=B.IdCompania

@@ -226,13 +226,14 @@ class NubeFactura extends VsSeaIntermedia {
         $con = Yii::app()->dbvsseaint;
         $trans = $con->beginTransaction();
         try {
-            $dataFact = $this->buscarFacturas();
+            $cabFact = $this->buscarFacturas();
             $empresaEnt=$this->buscarDataEmpresa('1');//recuperar info deL Contribuyente
             $codDoc='01';//Documento Factura
-            for ($i = 0; $i < sizeof($dataFact); $i++) {
+            for ($i = 0; $i < sizeof($cabFact); $i++) {
                 //echo $dataFact[$i]['NOM_CLI'];
-                $this->InsertarCabFactura($con,$dataFact, $empresaEnt,$codDoc, $i);
+                $this->InsertarCabFactura($con,$cabFact, $empresaEnt,$codDoc, $i);
                 //$idCab = $con->getLastInsertID($con->dbname . '.NubeFactura');
+                //$detFact=$this->buscarDetFacturas($dataFact[$i]['TIP_NOF'],$dataFact[$i]['NUM_NOF']);
                 
             }
             
@@ -253,9 +254,10 @@ class NubeFactura extends VsSeaIntermedia {
     private function buscarFacturas() {
         $conCont = yii::app()->dbcont;
         $rawData = array();
-        $sql = "SELECT TIP_NOF,CONCAT(REPEAT('0',9-LENGTH(RIGHT(NUM_NOF,9))),RIGHT(NUM_NOF,9)) NUM_NOF,
+        //$sql = "SELECT TIP_NOF,CONCAT(REPEAT('0',9-LENGTH(RIGHT(NUM_NOF,9))),RIGHT(NUM_NOF,9)) NUM_NOF,
+        $sql = "SELECT TIP_NOF, NUM_NOF,
                         CED_RUC,NOM_CLI,FEC_VTA,DIR_CLI,VAL_BRU,POR_DES,VAL_DES,VAL_FLE,BAS_IVA,
-                        BAS_IV0,POR_IVA,VAL_IVA,VAL_NET,POR_R_F,VAL_R_F,POR_R_I,VAL_R_I,RIGHT(GUI_REM,9) GUI_REM,0 PROPINA
+                        BAS_IV0,POR_IVA,VAL_IVA,VAL_NET,POR_R_F,VAL_R_F,POR_R_I,VAL_R_I,GUI_REM,0 PROPINA
                     FROM " . $conCont->dbname . ".VC010101 
                 WHERE IND_UPD='L' AND FEC_VTA>'2014-05-01' LIMIT 2";
 
@@ -273,6 +275,21 @@ class NubeFactura extends VsSeaIntermedia {
         $conCont->active = false;
         return $rawData;
     }
+    private function buscarDetFacturas($tipDoc,$numDoc) {
+        $conCont = yii::app()->dbcont;
+        $rawData = array();
+        //$sql = "SELECT TIP_NOF,CONCAT(REPEAT('0',9-LENGTH(RIGHT(NUM_NOF,9))),RIGHT(NUM_NOF,9)) NUM_NOF,
+        $sql = "SELECT TIP_NOF,NUM_NOF,
+                        CED_RUC,NOM_CLI,FEC_VTA,DIR_CLI,VAL_BRU,POR_DES,VAL_DES,VAL_FLE,BAS_IVA,
+                        BAS_IV0,POR_IVA,VAL_IVA,VAL_NET,POR_R_F,VAL_R_F,POR_R_I,VAL_R_I,RIGHT(GUI_REM,9) GUI_REM,0 PROPINA
+                    FROM " . $conCont->dbname . ".VC010101 
+                WHERE IND_UPD='L' AND FEC_VTA>'2014-05-01' LIMIT 2";
+        //echo $sql;
+        $rawData = $conCont->createCommand($sql)->queryAll();
+        $conCont->active = false;
+        return $rawData;
+    }
+    
     
     private function buscarDataEmpresa($id) {
         $conSea = yii::app()->dbvssea;
@@ -286,6 +303,8 @@ class NubeFactura extends VsSeaIntermedia {
     
     private function InsertarCabFactura($con,$objEnt,$objEmp,$codDoc,$i) {
         $tip_iden=$this->tipoIdent($objEnt[$i]['CED_RUC']);
+        $Secuencial=$this->ajusteNumDoc($objEnt[$i]['NUM_NOF']);
+        $GuiaRemi=$this->ajusteNumDoc($objEnt[$i]['GUI_REM']);
         $ced_ruc=($tip_iden=='07')?'9999999999999':$objEnt[$i]['CED_RUC'];
         $sql = "INSERT INTO " . $con->dbname . ".NubeFactura
                             (Ambiente,TipoEmision, RazonSocial, NombreComercial, Ruc, CodigoDocumento, Establecimiento,
@@ -300,14 +319,14 @@ class NubeFactura extends VsSeaIntermedia {
                             '$codDoc',
                             '" . $objEmp[0]['Establecimiento'] . "',
                             '" . $objEmp[0]['PuntoEmision'] . "',
-                            '" . $objEnt[$i]['NUM_NOF'] . "',
+                            '$Secuencial',
                             '" . $objEmp[0]['DireccionMatriz'] . "', 
                             '" . $objEnt[$i]['FEC_VTA'] . "', 
                             '" . $objEmp[0]['DireccionMatriz'] . "', 
                             '" . $objEmp[0]['ContribuyenteEspecial'] . "', 
                             '" . $objEmp[0]['ObligadoContabilidad'] . "', 
                             '$tip_iden', 
-                            '" . $objEmp[0]['Establecimiento'].'-'.$objEmp[0]['PuntoEmision'].'-'.$objEnt[$i]['GUI_REM'] . "', 
+                            '" . $objEmp[0]['Establecimiento'].'-'.$objEmp[0]['PuntoEmision'].'-'.$GuiaRemi. "', 
                             '" . $objEnt[$i]['NOM_CLI'] . "', 
                             '$ced_ruc', 
                             '" . $objEnt[$i]['VAL_BRU'] . "', 
@@ -327,6 +346,7 @@ class NubeFactura extends VsSeaIntermedia {
                             //" SELECT @@IDENTITY";
 
         //DATE(" . $cabOrden[0]['CDOR_FECHA_INGRESO'] . "),
+        //$sql .= "AND DATE(A.CDOR_FECHA_INGRESO) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "' ";
         //echo $sql;
         $command = $con->createCommand($sql);
         $command->execute();
@@ -349,6 +369,26 @@ class NubeFactura extends VsSeaIntermedia {
         }
         return $valor;
 
+    }
+    private function ajusteNumDoc($numDoc){
+        $result='';
+        IF(strlen($numDoc)<9){
+            $result=add_ceros($numDoc,9);//Ajusta los 9
+        }ELSE{
+            $result=substr($numDoc, -9);//Extrae Solo 9
+        }
+        return $result;
+    }
+    private function add_ceros($numero, $ceros) {
+        /* Ejemplos para usar.
+          $numero="123";
+          echo add_ceros($numero,8) */
+        $order_diez = explode(".", $numero);
+        $dif_diez = $ceros - strlen($order_diez[0]);
+        for ($m = 0; $m < $dif_diez; $m++) {
+            @$insertar_ceros .= 0;
+        }
+        return $insertar_ceros .= $numero;
     }
 
 }

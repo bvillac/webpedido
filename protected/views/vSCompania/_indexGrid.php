@@ -54,9 +54,9 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'value' => '$data["NombreComercial"]',
         ),
         array(
-            'name' => 'Direccion',
+            'name' => 'DireccionMatriz',
             'header' => Yii::t('COMPANIA', 'Address'),
-            'value' => '$data["Direccion"]',
+            'value' => '$data["DireccionMatriz"]',
         ),
         array(
             'class' => 'CButtonColumn',
