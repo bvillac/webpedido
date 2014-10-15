@@ -237,14 +237,15 @@ class NubeFactura extends VsSeaIntermedia {
             }
             $trans->commit();
             $con->active = false;
-            echo "OK";
+            $this->actualizaErpCabFactura($cabFact);
+            echo "ERP Actualizado";
             return true;
         } catch (Exception $e) {
             $trans->rollback();
             $con->active = false;
             throw $e;
             return false;
-        }
+        }   
     }
 
     private function buscarFacturas() {
@@ -255,17 +256,8 @@ class NubeFactura extends VsSeaIntermedia {
                         CED_RUC,NOM_CLI,FEC_VTA,DIR_CLI,VAL_BRU,POR_DES,VAL_DES,VAL_FLE,BAS_IVA,
                         BAS_IV0,POR_IVA,VAL_IVA,VAL_NET,POR_R_F,VAL_R_F,POR_R_I,VAL_R_I,GUI_REM,0 PROPINA
                     FROM " . $conCont->dbname . ".VC010101 
-                WHERE IND_UPD='L' AND FEC_VTA>'2014-05-01' LIMIT 2";
+                WHERE IND_UPD='L' AND FEC_VTA>'2014-05-01' AND ENV_DOC='0' LIMIT 2";
 
-//        $sql = "SELECT B.AFMED_ID,B.ANT_ID,B.DIAG_ID,D.TANT_NOMBRE,B.AFMED_PARENTESCO_ID,B.AFMED_EST_SI,B.AFMED_NUMERO_ANO,B.AFMED_INDICADOR 
-//                    FROM DB_MEDICO.FICHA_MEDICA A
-//                        INNER JOIN (" . $con->dbname . ".ANTECEDENTES_FICHA_MEDICA B
-//                            INNER JOIN (" . $con->dbname . ".ANTECEDENTES C
-//                                    INNER JOIN " . $con->dbname . ".TIPO_ANTECEDENTES D
-//                                        ON D.TANT_ID=C.TANT_ID)
-//                            ON B.ANT_ID=C.ANT_ID)
-//                        ON A.FMED_ID=B.FMED_ID
-//                    WHERE A.FMED_ESTADO_LOGICO=1 AND A.FMED_ID=$id AND B.AFMED_INDICADOR='$ident';";
         //echo $sql;
         $rawData = $conCont->createCommand($sql)->queryAll();
         $conCont->active = false;
@@ -409,6 +401,30 @@ class NubeFactura extends VsSeaIntermedia {
         $command->execute();
     }
     
+    private function actualizaErpCabFactura($cabFact) {
+        $conContUp = yii::app()->dbcont;
+        $transCont = $conContUp->beginTransaction();
+        try {    
+            for ($i = 0; $i < sizeof($cabFact); $i++) {
+                $numero = $cabFact[$i]['NUM_NOF'];
+                $tipo = $cabFact[$i]['TIP_NOF'];
+                $sql = "UPDATE " . $conContUp->dbname . ".VC010101 SET ENV_DOC=1
+                        WHERE TIP_NOF='$tipo' AND NUM_NOF='$numero' AND IND_UPD='L'";
+                //echo $sql;
+                $command = $conContUp->createCommand($sql);
+                $command->execute();
+            }
+            $transCont->commit();
+            $conContUp->active = false;
+            return true;
+        } catch (Exception $e) {
+            $transCont->rollback();
+            $conContUp->active = false;
+            throw $e;
+            return false;
+        }
+    }
+
     private function tipoIdent($cedula){
         $valor='07';//Consumidor Final por Defecto
         IF(strlen($cedula)>10) {
@@ -430,7 +446,7 @@ class NubeFactura extends VsSeaIntermedia {
     private function ajusteNumDoc($numDoc){
         $result='';
         IF(strlen($numDoc)<9){
-            $result=add_ceros($numDoc,9);//Ajusta los 9
+            $result=$this->add_ceros($numDoc,9);//Ajusta los 9
         }ELSE{
             $result=substr($numDoc, -9);//Extrae Solo 9
         }

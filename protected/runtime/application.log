@@ -9009,3 +9009,276 @@ Stack trace:
 REQUEST_URI=/websea/NubeFactura/create.jsp
 HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
 ---
+2014/10/15 01:26:13 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'IND_EST' in 'where clause'. La sentencia SQL ejecutada fue: UPDATE utimpor2014.VC010101 SET ENV_DOC=1
+                        WHERE TIP_NOF='F4' AND NUM_NOF='0000108068' AND IND_EST='L'.
+in /var/www/html/websea/protected/models/NubeFactura.php (416)
+in /var/www/html/websea/protected/models/NubeFactura.php (241)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (21)
+2014/10/15 01:26:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbTransaction se encuentra inactiva y no puede realizar las operacines commit ni roll back.' in /opt/sisweb/db/CDbTransaction.php:84
+Stack trace:
+#0 /var/www/html/websea/protected/models/NubeFactura.php(245): CDbTransaction->rollback()
+#1 /var/www/html/websea/protected/views/nubeFactura/create.php(21): NubeFactura->insertarFacturas()
+#2 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#3 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#4 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#5 /opt/sisweb/web/CController.php(782): CController->renderPartial('create', Array, true)
+#6 /var/www/html/websea/protected/controllers/NubeFacturaController.php(79): CController->render('create', Array)
+#7 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#8 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#15 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /opt/sisweb/web/CWebApplication.php(282): CController->run('create')
+#17 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeFactura/cre...')
+#18 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#19 /var/www/html/websea/index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/websea/NubeFactura/create.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/15 01:29:03 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'IND_EST' in 'where clause'. La sentencia SQL ejecutada fue: UPDATE utimpor2014.VC010101 SET ENV_DOC=1
+                        WHERE TIP_NOF='F4' AND NUM_NOF='0000108068' AND IND_EST='L'.
+in /var/www/html/websea/protected/models/NubeFactura.php (416)
+in /var/www/html/websea/protected/models/NubeFactura.php (241)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (21)
+2014/10/15 01:29:03 [error] [exception.CDbException] exception 'CDbException' with message 'CDbTransaction se encuentra inactiva y no puede realizar las operacines commit ni roll back.' in /opt/sisweb/db/CDbTransaction.php:84
+Stack trace:
+#0 /var/www/html/websea/protected/models/NubeFactura.php(245): CDbTransaction->rollback()
+#1 /var/www/html/websea/protected/views/nubeFactura/create.php(21): NubeFactura->insertarFacturas()
+#2 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#3 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#4 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#5 /opt/sisweb/web/CController.php(782): CController->renderPartial('create', Array, true)
+#6 /var/www/html/websea/protected/controllers/NubeFacturaController.php(79): CController->render('create', Array)
+#7 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#8 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#15 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /opt/sisweb/web/CWebApplication.php(282): CController->run('create')
+#17 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeFactura/cre...')
+#18 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#19 /var/www/html/websea/index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/websea/NubeFactura/create.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/15 08:56:25 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'IND_EST' in 'where clause'. La sentencia SQL ejecutada fue: UPDATE utimpor2014.VC010101 SET ENV_DOC=1
+                        WHERE TIP_NOF='F4' AND NUM_NOF='0000108068' AND IND_EST='L'.
+in /var/www/html/websea/protected/models/NubeFactura.php (416)
+in /var/www/html/websea/protected/models/NubeFactura.php (241)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (21)
+2014/10/15 08:56:25 [error] [exception.CDbException] exception 'CDbException' with message 'CDbTransaction se encuentra inactiva y no puede realizar las operacines commit ni roll back.' in /opt/sisweb/db/CDbTransaction.php:84
+Stack trace:
+#0 /var/www/html/websea/protected/models/NubeFactura.php(245): CDbTransaction->rollback()
+#1 /var/www/html/websea/protected/views/nubeFactura/create.php(21): NubeFactura->insertarFacturas()
+#2 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#3 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#4 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#5 /opt/sisweb/web/CController.php(782): CController->renderPartial('create', Array, true)
+#6 /var/www/html/websea/protected/controllers/NubeFacturaController.php(79): CController->render('create', Array)
+#7 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#8 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#15 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /opt/sisweb/web/CWebApplication.php(282): CController->run('create')
+#17 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeFactura/cre...')
+#18 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#19 /var/www/html/websea/index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/websea/NubeFactura/create.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/15 08:57:34 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'IND_EST' in 'where clause'. La sentencia SQL ejecutada fue: UPDATE utimpor2014.VC010101 SET ENV_DOC=1
+                        WHERE TIP_NOF='F4' AND NUM_NOF='0000108068' AND IND_EST='L'.
+in /var/www/html/websea/protected/models/NubeFactura.php (416)
+in /var/www/html/websea/protected/models/NubeFactura.php (241)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (21)
+2014/10/15 08:57:34 [error] [exception.CDbException] exception 'CDbException' with message 'CDbTransaction se encuentra inactiva y no puede realizar las operacines commit ni roll back.' in /opt/sisweb/db/CDbTransaction.php:84
+Stack trace:
+#0 /var/www/html/websea/protected/models/NubeFactura.php(245): CDbTransaction->rollback()
+#1 /var/www/html/websea/protected/views/nubeFactura/create.php(21): NubeFactura->insertarFacturas()
+#2 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#3 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#4 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#5 /opt/sisweb/web/CController.php(782): CController->renderPartial('create', Array, true)
+#6 /var/www/html/websea/protected/controllers/NubeFacturaController.php(79): CController->render('create', Array)
+#7 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#8 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#15 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /opt/sisweb/web/CWebApplication.php(282): CController->run('create')
+#17 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeFactura/cre...')
+#18 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#19 /var/www/html/websea/index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/websea/NubeFactura/create.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/15 09:05:08 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'IND_EST' in 'where clause'. La sentencia SQL ejecutada fue: UPDATE utimpor2014.VC010101 SET ENV_DOC=1
+                        WHERE TIP_NOF='F4' AND NUM_NOF='0000108068' AND IND_EST='L'.
+in /var/www/html/websea/protected/models/NubeFactura.php (416)
+in /var/www/html/websea/protected/models/NubeFactura.php (241)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (21)
+2014/10/15 09:05:08 [error] [exception.CDbException] exception 'CDbException' with message 'CDbTransaction se encuentra inactiva y no puede realizar las operacines commit ni roll back.' in /opt/sisweb/db/CDbTransaction.php:84
+Stack trace:
+#0 /var/www/html/websea/protected/models/NubeFactura.php(245): CDbTransaction->rollback()
+#1 /var/www/html/websea/protected/views/nubeFactura/create.php(21): NubeFactura->insertarFacturas()
+#2 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#3 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#4 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#5 /opt/sisweb/web/CController.php(782): CController->renderPartial('create', Array, true)
+#6 /var/www/html/websea/protected/controllers/NubeFacturaController.php(79): CController->render('create', Array)
+#7 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#8 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#15 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /opt/sisweb/web/CWebApplication.php(282): CController->run('create')
+#17 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeFactura/cre...')
+#18 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#19 /var/www/html/websea/index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/websea/NubeFactura/create.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/15 09:10:37 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'IND_EST' in 'where clause'. La sentencia SQL ejecutada fue: UPDATE utimpor2014.VC010101 SET ENV_DOC=1
+                        WHERE TIP_NOF='F4' AND NUM_NOF='0000108068' AND IND_EST='L'.
+in /var/www/html/websea/protected/models/NubeFactura.php (419)
+in /var/www/html/websea/protected/models/NubeFactura.php (249)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (21)
+2014/10/15 09:10:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'IND_EST' in 'where clause'. The SQL statement executed was: UPDATE utimpor2014.VC010101 SET ENV_DOC=1
+                        WHERE TIP_NOF='F4' AND NUM_NOF='0000108068' AND IND_EST='L'' in /opt/sisweb/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/html/websea/protected/models/NubeFactura.php(419): CDbCommand->execute()
+#1 /var/www/html/websea/protected/models/NubeFactura.php(249): NubeFactura->actualizaErpCabFactura(Array)
+#2 /var/www/html/websea/protected/views/nubeFactura/create.php(21): NubeFactura->insertarFacturas()
+#3 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#4 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#5 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#6 /opt/sisweb/web/CController.php(782): CController->renderPartial('create', Array, true)
+#7 /var/www/html/websea/protected/controllers/NubeFacturaController.php(79): CController->render('create', Array)
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('create')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeFactura/cre...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/NubeFactura/create.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/15 09:53:22 [error] [php] Undefined variable: insertar_ceros (/var/www/html/websea/protected/models/NubeFactura.php:466)
+Stack trace:
+#0 /var/www/html/websea/protected/models/NubeFactura.php(234): NubeFactura->InsertarCabFactura()
+#1 /var/www/html/websea/protected/views/nubeFactura/create.php(21): NubeFactura->insertarFacturas()
+#2 /opt/sisweb/web/CBaseController.php(126): require()
+#3 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#4 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#5 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#6 /var/www/html/websea/protected/controllers/NubeFacturaController.php(79): NubeFacturaController->render()
+#7 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#8 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#9 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#10 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#12 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#13 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#14 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#15 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#16 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#17 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#18 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#19 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/www/html/websea/protected/models/NubeFactura.php (466)
+in /var/www/html/websea/protected/models/NubeFactura.php (453)
+in /var/www/html/websea/protected/models/NubeFactura.php (297)
+2014/10/15 09:54:34 [error] [php] Undefined variable: insertar_ceros (/var/www/html/websea/protected/models/NubeFactura.php:466)
+Stack trace:
+#0 /var/www/html/websea/protected/models/NubeFactura.php(234): NubeFactura->InsertarCabFactura()
+#1 /var/www/html/websea/protected/views/nubeFactura/create.php(21): NubeFactura->insertarFacturas()
+#2 /opt/sisweb/web/CBaseController.php(126): require()
+#3 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#4 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#5 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#6 /var/www/html/websea/protected/controllers/NubeFacturaController.php(79): NubeFacturaController->render()
+#7 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#8 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#9 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#10 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#12 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#13 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#14 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#15 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#16 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#17 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#18 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#19 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/www/html/websea/protected/models/NubeFactura.php (466)
+in /var/www/html/websea/protected/models/NubeFactura.php (453)
+in /var/www/html/websea/protected/models/NubeFactura.php (297)
+2014/10/15 09:55:11 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'IND_EST' in 'where clause'. La sentencia SQL ejecutada fue: UPDATE utimpor2014.VC010101 SET ENV_DOC=1
+                        WHERE TIP_NOF='F4' AND NUM_NOF='0000108070' AND IND_EST='L'.
+in /var/www/html/websea/protected/models/NubeFactura.php (419)
+in /var/www/html/websea/protected/models/NubeFactura.php (249)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (21)
+2014/10/15 09:55:11 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'IND_EST' in 'where clause'. The SQL statement executed was: UPDATE utimpor2014.VC010101 SET ENV_DOC=1
+                        WHERE TIP_NOF='F4' AND NUM_NOF='0000108070' AND IND_EST='L'' in /opt/sisweb/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/html/websea/protected/models/NubeFactura.php(419): CDbCommand->execute()
+#1 /var/www/html/websea/protected/models/NubeFactura.php(249): NubeFactura->actualizaErpCabFactura(Array)
+#2 /var/www/html/websea/protected/views/nubeFactura/create.php(21): NubeFactura->insertarFacturas()
+#3 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#4 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#5 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#6 /opt/sisweb/web/CController.php(782): CController->renderPartial('create', Array, true)
+#7 /var/www/html/websea/protected/controllers/NubeFacturaController.php(79): CController->render('create', Array)
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('create')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeFactura/cre...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/NubeFactura/create.jsp
+HTTP_REFERER=http://localhost/websea/vSCompania/create.jsp
+---
