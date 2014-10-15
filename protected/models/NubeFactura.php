@@ -230,15 +230,11 @@ class NubeFactura extends VsSeaIntermedia {
             $empresaEnt=$this->buscarDataEmpresa('1');//recuperar info deL Contribuyente
             $codDoc='01';//Documento Factura
             for ($i = 0; $i < sizeof($cabFact); $i++) {
-                //echo $dataFact[$i]['NOM_CLI'];
                 $this->InsertarCabFactura($con,$cabFact, $empresaEnt,$codDoc, $i);
-                //$idCab = $con->getLastInsertID($con->dbname . '.NubeFactura');
-                //$detFact=$this->buscarDetFacturas($dataFact[$i]['TIP_NOF'],$dataFact[$i]['NUM_NOF']);
-                
+                $idCab = $con->getLastInsertID($con->dbname . '.NubeFactura');
+                $detFact=$this->buscarDetFacturas($cabFact[$i]['TIP_NOF'],$cabFact[$i]['NUM_NOF']);
+                $this->InsertarDetFactura($con,$detFact,$idCab);
             }
-            
-            //
-            //$this->datoFirmaDigital($con, $objEmp, $idEmp);
             $trans->commit();
             $con->active = false;
             echo "OK";
@@ -278,12 +274,10 @@ class NubeFactura extends VsSeaIntermedia {
     private function buscarDetFacturas($tipDoc,$numDoc) {
         $conCont = yii::app()->dbcont;
         $rawData = array();
-        //$sql = "SELECT TIP_NOF,CONCAT(REPEAT('0',9-LENGTH(RIGHT(NUM_NOF,9))),RIGHT(NUM_NOF,9)) NUM_NOF,
-        $sql = "SELECT TIP_NOF,NUM_NOF,
-                        CED_RUC,NOM_CLI,FEC_VTA,DIR_CLI,VAL_BRU,POR_DES,VAL_DES,VAL_FLE,BAS_IVA,
-                        BAS_IV0,POR_IVA,VAL_IVA,VAL_NET,POR_R_F,VAL_R_F,POR_R_I,VAL_R_I,RIGHT(GUI_REM,9) GUI_REM,0 PROPINA
-                    FROM " . $conCont->dbname . ".VC010101 
-                WHERE IND_UPD='L' AND FEC_VTA>'2014-05-01' LIMIT 2";
+        $sql = "SELECT TIP_NOF,NUM_NOF,FEC_VTA,COD_ART,NOM_ART,CAN_DES,P_VENTA,
+                        T_VENTA,VAL_DES,I_M_IVA,VAL_IVA
+                    FROM " . $conCont->dbname . ".VD010101
+                WHERE TIP_NOF='$tipDoc' AND NUM_NOF='$numDoc' AND IND_EST='L'";
         //echo $sql;
         $rawData = $conCont->createCommand($sql)->queryAll();
         $conCont->active = false;
@@ -334,7 +328,7 @@ class NubeFactura extends VsSeaIntermedia {
                             '" . $objEnt[$i]['PROPINA'] . "', 
                             '" . $objEnt[$i]['VAL_NET'] . "', 
                             '" . $objEmp[0]['Moneda'] . "', 
-                            '" . $objEnt[$i]['NUM_NOF'] . "', 
+                            '$Secuencial', 
                             '" . $objEnt[0]['TIP_NOF'] . "',
                             '1',CURRENT_TIMESTAMP() )";
                             
@@ -348,6 +342,69 @@ class NubeFactura extends VsSeaIntermedia {
         //DATE(" . $cabOrden[0]['CDOR_FECHA_INGRESO'] . "),
         //$sql .= "AND DATE(A.CDOR_FECHA_INGRESO) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "' ";
         //echo $sql;
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
+    private function InsertarDetFactura($con,$detFact,$idCab) {
+        $valSinImp = 0;
+        $val_iva12 = 0;
+        $vet_iva12 = 0;
+        $val_iva0 = 0;
+        $vet_iva0 = 0;
+        //TIP_NOF,NUM_NOF,FEC_VTA,COD_ART,NOM_ART,CAN_DES,P_VENTA,T_VENTA,VAL_DES,I_M_IVA,VAL_IVA
+        for ($i = 0; $i < sizeof($detFact); $i++) {
+            $valSinImp=floatval($detFact[$i]['T_VENTA'])-floatval($detFact[$i]['VAL_DES']);
+            if($detFact[$i]['I_M_IVA']=='1'){
+                $val_iva12 = $val_iva12 + floatval($detFact[$i]['VAL_IVA']);
+                $vet_iva12 = $vet_iva12 + $valSinImp;
+            }else{
+                $val_iva0 = 0;
+                $vet_iva0 = $vet_iva0 + $valSinImp;
+            }
+            
+            $sql = "INSERT INTO " . $con->dbname . ".NubeDetalleFactura 
+                    (CodigoPrincipal,CodigoAuxiliar,Descripcion,Cantidad,PrecioUnitario,Descuento,PrecioTotalSinImpuesto,IdFactura) VALUES (
+                    '" . $detFact[$i]['COD_ART'] . "', 
+                    '1',
+                    '" . $detFact[$i]['NOM_ART'] . "', 
+                    '" . $detFact[$i]['CAN_DES'] . "',
+                    '" . $detFact[$i]['P_VENTA'] . "',
+                    '" . $detFact[$i]['VAL_DES'] . "',
+                    '$valSinImp',
+                    '$idCab')";
+            $command = $con->createCommand($sql);
+            $command->execute();
+            $idDet = $con->getLastInsertID($con->dbname . '.NubeDetalleFactura');
+            if($detFact[$i]['I_M_IVA']=='1'){//Verifico si el ITEM tiene Impuesto
+                //Segun Datos Sri
+                $this->InsertarDetImpFactura($con,$idDet,'2','2','12',$detFact[$i]['T_VENTA'],$detFact[$i]['VAL_IVA']);//12%
+            }else{//Caso Contrario no Genera Impuesto
+                $this->InsertarDetImpFactura($con,$idDet,'2','0','0',$detFact[$i]['T_VENTA'],$detFact[$i]['VAL_IVA']);//0%
+            }
+        }
+        //Insertar Datos de Iva 0%
+        If ($vet_iva0 > 0){
+            $this->InsertarFacturaImpuesto($con,$idCab,'2','0','0', $vet_iva0,$val_iva0);
+        }
+        //Inserta Datos de Iva 12
+        If ($vet_iva12 > 0){
+            $this->InsertarFacturaImpuesto($con,$idCab,'2','2','12', $vet_iva12,$val_iva12);
+        }
+            
+    }
+    private function InsertarDetImpFactura($con,$idDet,$codigo,$CodigoPor,$Tarifa,$t_venta,$val_iva){
+        $sql = "INSERT INTO " . $con->dbname . ".NubeDetalleFacturaImpuesto 
+                 (Codigo,CodigoPorcentaje,BaseImponible,Tarifa,Valor,IdDetalleFactura)VALUES(
+                 '$codigo','$CodigoPor','$t_venta','$Tarifa','$val_iva','$idDet')";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    private function InsertarFacturaImpuesto($con,$idCab,$codigo,$CodigoPor,$Tarifa,$t_venta,$val_iva){
+        $sql = "INSERT INTO " . $con->dbname . ".NubeFacturaImpuesto 
+                 (Codigo,CodigoPorcentaje,BaseImponible,Tarifa,Valor,IdFactura)VALUES(
+                 '$codigo','$CodigoPor','$t_venta','$Tarifa','$val_iva','$idCab')";
+        
         $command = $con->createCommand($sql);
         $command->execute();
     }
