@@ -289,11 +289,17 @@ class NubeFactura extends VsSeaIntermedia {
     
     private function InsertarCabFactura($con,$objEnt,$objEmp,$codDoc,$i) {
         $tip_iden=$this->tipoIdent($objEnt[$i]['CED_RUC']);
-        $Secuencial=$this->ajusteNumDoc($objEnt[$i]['NUM_NOF']);
-        $GuiaRemi=$this->ajusteNumDoc($objEnt[$i]['GUI_REM']);
+        $Secuencial=$this->ajusteNumDoc($objEnt[$i]['NUM_NOF'],9);
+        $GuiaRemi=$this->ajusteNumDoc($objEnt[$i]['GUI_REM'],9);
         $ced_ruc=($tip_iden=='07')?'9999999999999':$objEnt[$i]['CED_RUC'];
+        /*Datos para Genera Clave*/
+        //$tip_doc,$fec_doc,$ruc,$ambiente,$serie,$numDoc,$tipoemision
+        $serie=$objEmp[0]['Establecimiento'].$objEmp[0]['PuntoEmision'];
+        $fec_doc=date("Y-m-d", strtotime($objEnt[0]['FEC_VTA']));
+        $ClaveAcceso=$this->claveAcceso($codDoc,$fec_doc,$objEmp[0]['Ruc'],$objEmp[0]['Ambiente'],$serie,$Secuencial,$objEmp[0]['TipoEmision']);
+        /*************************/
         $sql = "INSERT INTO " . $con->dbname . ".NubeFactura
-                            (Ambiente,TipoEmision, RazonSocial, NombreComercial, Ruc, CodigoDocumento, Establecimiento,
+                            (Ambiente,TipoEmision, RazonSocial, NombreComercial, Ruc,ClaveAcceso,CodigoDocumento, Establecimiento,
                             PuntoEmision, Secuencial, DireccionMatriz, FechaEmision, DireccionEstablecimiento, ContribuyenteEspecial,
                             ObligadoContabilidad, TipoIdentificacionComprador, GuiaRemision, RazonSocialComprador, IdentificacionComprador,
                             TotalSinImpuesto, TotalDescuento, Propina, ImporteTotal, Moneda, SecuencialERP, CodigoTransaccionERP,Estado,FechaCarga) VALUES (
@@ -302,12 +308,13 @@ class NubeFactura extends VsSeaIntermedia {
                             '" . $objEmp[0]['RazonSocial'] . "',
                             '" . $objEmp[0]['NombreComercial'] . "',
                             '" . $objEmp[0]['Ruc'] . "',
+                            '$ClaveAcceso',
                             '$codDoc',
                             '" . $objEmp[0]['Establecimiento'] . "',
                             '" . $objEmp[0]['PuntoEmision'] . "',
                             '$Secuencial',
                             '" . $objEmp[0]['DireccionMatriz'] . "', 
-                            '" . $objEnt[$i]['FEC_VTA'] . "', 
+                            '$fec_doc', 
                             '" . $objEmp[0]['DireccionMatriz'] . "', 
                             '" . $objEmp[0]['ContribuyenteEspecial'] . "', 
                             '" . $objEmp[0]['ObligadoContabilidad'] . "', 
@@ -434,7 +441,7 @@ class NubeFactura extends VsSeaIntermedia {
                 $valor='06';//VENTA CON PASAPORTE
             }
         }ELSE{
-            IF($cedula=='9999999999'){//Esta vericacion depende de la empresa
+            IF($cedula==Yii::app()->params['consumidorfinal']){//Esta vericacion depende de la empresa
                 $valor='07';//VENTA A CONSUMIDOR FINAL*  SON 13 DIGITOS
             }ELSE{
                 $valor='05';//VENTA CON CEDULA
@@ -443,12 +450,12 @@ class NubeFactura extends VsSeaIntermedia {
         return $valor;
 
     }
-    private function ajusteNumDoc($numDoc){
+    private function ajusteNumDoc($numDoc,$num){
         $result='';
-        IF(strlen($numDoc)<9){
-            $result=$this->add_ceros($numDoc,9);//Ajusta los 9
+        IF(strlen($numDoc)<$num){
+            $result=$this->add_ceros($numDoc,$num);//Ajusta los 9
         }ELSE{
-            $result=substr($numDoc, -9);//Extrae Solo 9
+            $result=substr($numDoc, -($num));//Extrae Solo 9
         }
         return $result;
     }
@@ -462,6 +469,48 @@ class NubeFactura extends VsSeaIntermedia {
             @$insertar_ceros .= 0;
         }
         return $insertar_ceros .= $numero;
+    }
+    
+    public function claveAcceso($tip_doc,$fec_doc,$ruc,$ambiente,$serie,$numDoc,$tipoemision){
+        //http://es.wikipedia.org/wiki/C%C3%B3digo_de_control
+        $clave='';
+        $fecha=date("dmY", strtotime($fec_doc));//ddmmyyyy
+        //Se multiplica la Numero Documento para que nos de un valor Unico y para la coprobacion 
+        //se divide y se extrae el valor que debera ser comparado con la serie
+        $codNumerico=$this->ajusteNumDoc((floatval($numDoc)*777),8);//Generado por Seguridad Comprobacion 8 Digitos
+        $clave=$fecha.$tip_doc.$ruc.$ambiente.$serie.$numDoc.$codNumerico.$tipoemision;
+        //echo '<br>'.strlen($clave);
+        //echo '<br>'.$clave.$this->modulo11($clave);
+        return $clave.$this->modulo11($clave);
+    }
+    private function modulo11($clave){
+       //echo $clave.'<br>';
+       //echo $claveInv=strrev($clave);//Se invierte la CLave para 
+       $len=strlen($clave)-1;
+       $resultado=0;
+       $numBase=2;
+       $suma=0;
+       for($i=$len;$i>=0;$i--){
+           //echo '<br>'.$digito=$clave[$i];
+           $digito= (int)$clave[$i];
+           $suma+=$numBase*$digito;
+           //echo '<br>'.$digito.'*'.$numBase.'='.$numBase*$digito;
+           $numBase=($numBase<7)?$numBase+1:2;
+       }
+       //echo '<br>Total '.$suma;
+       $resMod=$suma%11;
+       //echo '<br>Mod '.$resMod;
+       $resta=11-$resMod;
+       //echo '<br>Rest 11-'.$resMod.'='.$resta;
+       if($resta<10){
+           $resultado=$resta;
+       }elseif($resta==10){
+           $resultado=1;//Cuando es igual a 10
+       }else{
+           $resultado=0;//Caso Contrario es 11
+       }
+       //echo '<br>Digito'.$resultado;
+       return $resultado;
     }
 
 }

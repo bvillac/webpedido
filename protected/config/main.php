@@ -151,5 +151,6 @@ return array(
                 'seaDocNc' => '/opt/SEADOC/NC/',
                 'seaDocNd' => '/opt/SEADOC/ND/',
                 'seaDocGuia' => '/opt/SEADOC/GUIAS/',
+                'consumidorfinal' => '9999999999',
 	),
 );

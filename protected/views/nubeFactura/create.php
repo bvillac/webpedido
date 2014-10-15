@@ -19,5 +19,6 @@ $this->menu=array(
     //require_once(Yii::app()->basePath . '/extensions/my-php-file.php');
     $obj = new NubeFactura;
     $obj->insertarFacturas();
-    //echo "hola";
+    //$obj->ClaveAcceso('01','2014-01-01','1790221806001','1','001001','000003012','1');
+    //$obj->modulo11('060820140109928098410011001001000101253002199121');
 ?>
