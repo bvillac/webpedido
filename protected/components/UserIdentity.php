@@ -60,6 +60,10 @@ class UserIdentity extends CUserIdentity
                     
                     //INFORMACION EMPRESAS
                     $empresa->mostrarEmpresas($user->USU_ID);
+                    $emp_id='1';$est_id='1';$pemi_id='1';
+                    $session->add('emp_id', $emp_id);
+                    $session->add('est_id', $est_id);
+                    $session->add('pemi_id', $pemi_id);
                     
                     $this->errorCode=self::ERROR_NONE;
                 }

@@ -15,8 +15,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider' => $model,
     //'template' => "{items}",
     'htmlOptions' => array('style' => 'cursor: pointer;'),
-    'selectableRows' => 2,
-    'selectionChanged' => 'verificaAcciones',
+    //'selectableRows' => 2,
+    //'selectionChanged' => 'verificaAcciones',
     //'selectionChanged' => 'fun_mostrarFichaPaciente',
     //'ajaxUrl'=>'Yii::app()->controller->createUrl("cOBRANZAS/", array("importarAfiliado" => $this->grid->dataProvider->pagination->currentPage+1))',
     //'summaryText'=>"<div class='whitesec_search'><p>{count} Full Quality Videos</p></div>",
@@ -26,37 +26,69 @@ $this->widget('zii.widgets.grid.CGridView', array(
     //'beforeAjaxUpdate'=>'function(id,options){ options["type"]="POST"; }',
     //'beforeAjaxUpdate' => 'function(id,options){consultFiltros(options)}',
     'columns' => array(
-         array(
-          'class' => 'CCheckBoxColumn',
-          ),
           /*array(
           'header' => '#',
           'value' => '$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize + $row+1',
           ), */
+        /*array(
+            'name' => 'IdDoc',
+            'header' => Yii::t('COMPANIA', 'IdDoc'),
+            'value' => '$data["IdDoc"]',
+        ),*/
         array(
-            'name' => 'IdCompania',
-            'header' => Yii::t('COMPANIA', 'Dni'),
-            'value' => '$data["IdCompania"]',
+            'name' => 'Estado',
+            'header' => Yii::t('COMPANIA', 'Estado'),
+            'value' => '($data["Estado"]=="1")?"Enviado":($data["Estado"]=="2")?"Autorizado":"Negado"',
         ),
         array(
-            'name' => 'Ruc',
-            'header' => Yii::t('COMPANIA', 'Ruc'),
-            'value' => '$data["Ruc"]',
+            'name' => 'CodigoTransaccionERP',
+            'header' => Yii::t('COMPANIA', 'CodigoTransaccionERP'),
+            'value' => '$data["CodigoTransaccionERP"]',
         ),
         array(
-            'name' => 'RazonSocial',
-            'header' => Yii::t('COMPANIA', 'Company name'),
-            'value' => '$data["RazonSocial"]',
+            'name' => 'SecuencialERP',
+            'header' => Yii::t('COMPANIA', 'SecuencialERP'),
+            'value' => '$data["SecuencialERP"]',
         ),
         array(
-            'name' => 'NombreComercial',
-            'header' => Yii::t('COMPANIA', 'Company name'),
-            'value' => '$data["NombreComercial"]',
+            'name' => 'UsuarioCreador',
+            'header' => Yii::t('COMPANIA', 'UsuarioCreador'),
+            'value' => '$data["UsuarioCreador"]',
         ),
         array(
-            'name' => 'DireccionMatriz',
-            'header' => Yii::t('COMPANIA', 'Address'),
-            'value' => '$data["DireccionMatriz"]',
+            'name' => 'FechaAutorizacion',
+            'header' => Yii::t('COMPANIA', 'FechaAutorizacion'),
+            'value' => '($data["FechaAutorizacion"]<>"")?date(Yii::app()->params["datebydefault"],strtotime($data["FechaAutorizacion"])):"";',
+        ),
+        array(
+            'name' => 'AutorizacionSRI',
+            'header' => Yii::t('COMPANIA', 'AutorizacionSRI'),
+            'value' => '$data["AutorizacionSRI"]',
+        ),
+        array(
+            'name' => 'NumDocumento',
+            'header' => Yii::t('COMPANIA', 'NumDocumento'),
+            'value' => '$data["NumDocumento"]',
+        ),
+        array(
+            'name' => 'FechaEmision',
+            'header' => Yii::t('COMPANIA', 'FechaEmision'),
+            'value' => 'date(Yii::app()->params["datebydefault"],strtotime($data["FechaEmision"]))',
+        ),
+        array(
+            'name' => 'IdentificacionComprador',
+            'header' => Yii::t('COMPANIA', 'IdentificacionComprador'),
+            'value' => '$data["IdentificacionComprador"]',
+        ),
+        array(
+            'name' => 'RazonSocialComprador',
+            'header' => Yii::t('COMPANIA', 'RazonSocialComprador'),
+            'value' => '$data["RazonSocialComprador"]',
+        ),
+        array(
+            'name' => 'ImporteTotal',
+            'header' => Yii::t('COMPANIA', 'ImporteTotal'),
+            'value' => '$data["ImporteTotal"]',
         ),
         array(
             'class' => 'CButtonColumn',

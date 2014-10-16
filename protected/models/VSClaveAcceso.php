@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-class VSClaveAcceso extends CFormModel {
+class VSClaveAcceso {
 
     public function claveAcceso($tip_doc, $fec_doc, $ruc, $ambiente, $serie, $numDoc, $tipoemision) {
         $valida=new VSValidador();

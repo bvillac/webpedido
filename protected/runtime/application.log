@@ -9459,3 +9459,64 @@ Stack trace:
 REQUEST_URI=/websea/NubeFactura/create.jsp
 HTTP_REFERER=http://localhost/websea/
 ---
+2014/10/16 13:48:12 [error] [php] Undefined offset: 0 (/var/www/html/websea/protected/models/NubeFactura.php:293)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(126): require()
+#1 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#2 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#3 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#4 /var/www/html/websea/protected/controllers/NubeFacturaController.php(79): NubeFacturaController->render()
+#5 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#6 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#7 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#8 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#11 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#13 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#14 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#15 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/www/html/websea/protected/models/NubeFactura.php (293)
+in /var/www/html/websea/protected/models/NubeFactura.php (238)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (21)
+2014/10/16 15:33:53 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'VSSEAINTERMEDIA.VSDocumentos' doesn't exist. La sentencia SQL ejecutada fue: SHOW FULL COLUMNS FROM `VSSEAINTERMEDIA`.`VSDocumentos`.
+in /var/www/html/websea/protected/controllers/VSDocumentosController.php (6)
+in /var/www/html/websea/index.php (13)
+2014/10/16 15:33:53 [error] [exception.CDbException] exception 'CDbException' with message 'La tabla "VSSEAINTERMEDIA.VSDocumentos" definida en la clase active record "VSDocumentos" no se ha podido encontrar en la base de datos.' in /opt/sisweb/db/ar/CActiveRecord.php:2366
+Stack trace:
+#0 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(VSDocumentos))
+#1 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#2 /var/www/html/websea/protected/controllers/VSDocumentosController.php(6): CActiveRecord->__construct()
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): VSDocumentosController->actionIndex()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/in...')
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/websea/vSDocumentos/index.jsp
+HTTP_REFERER=http://localhost/websea/NubeFactura/create.jsp
+---
+2014/10/16 15:37:44 [error] [php] Undefined variable: tip_descargo (/var/www/html/websea/protected/views/vSDocumentos/index.php:11)
+Stack trace:
+#0 /opt/sisweb/web/CController.php(869): VSDocumentosController->renderFile()
+#1 /opt/sisweb/web/CController.php(782): VSDocumentosController->renderPartial()
+#2 /var/www/html/websea/protected/controllers/VSDocumentosController.php(18): VSDocumentosController->render()
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): VSDocumentosController->actionIndex()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#5 /opt/sisweb/web/CController.php(286): VSDocumentosController->runAction()
+#6 /opt/sisweb/web/CController.php(265): VSDocumentosController->runActionWithFilters()
+#7 /opt/sisweb/web/CWebApplication.php(282): VSDocumentosController->run()
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSDocumentos/index.jsp
+in /var/www/html/websea/protected/views/vSDocumentos/index.php (11)
+in /var/www/html/websea/protected/controllers/VSDocumentosController.php (18)
+in /var/www/html/websea/index.php (13)

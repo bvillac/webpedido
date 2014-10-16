@@ -226,9 +226,13 @@ class NubeFactura extends VsSeaIntermedia {
         $con = Yii::app()->dbvsseaint;
         $trans = $con->beginTransaction();
         $objEmpData= new EMPRESA;
+        /****VARIBLES DE SESION*******/
+        $emp_id=Yii::app()->getSession()->get('emp_id', FALSE);;
+        $est_id=Yii::app()->getSession()->get('est_id', FALSE);;
+        $pemi_id=Yii::app()->getSession()->get('pemi_id', FALSE);;
         try {
             $cabFact = $this->buscarFacturas();
-            $empresaEnt=$objEmpData->buscarDataEmpresa('1','1','1');//recuperar info deL Contribuyente
+            $empresaEnt=$objEmpData->buscarDataEmpresa($emp_id,$est_id,$pemi_id);//recuperar info deL Contribuyente
             $codDoc='01';//Documento Factura
             for ($i = 0; $i < sizeof($cabFact); $i++) {
                 $this->InsertarCabFactura($con,$cabFact, $empresaEnt,$codDoc, $i);
@@ -281,11 +285,12 @@ class NubeFactura extends VsSeaIntermedia {
         $valida=new VSValidador();
         $tip_iden=$valida->tipoIdent($objEnt[$i]['CED_RUC']);
         $Secuencial=$valida->ajusteNumDoc($objEnt[$i]['NUM_NOF'],9);
-        $GuiaRemi=$valida->ajusteNumDoc($objEnt[$i]['GUI_REM'],9);
+        //$GuiaRemi=$valida->ajusteNumDoc($objEnt[$i]['GUI_REM'],9);
+        $GuiaRemi=(strlen($objEnt[$i]['GUI_REM'])>0)?$objEmp[0]['Establecimiento'].'-'.$objEmp[0]['PuntoEmision'].'-'.$valida->ajusteNumDoc($objEnt[$i]['GUI_REM'],9):'';
         $ced_ruc=($tip_iden=='07')?'9999999999999':$objEnt[$i]['CED_RUC'];
         /*Datos para Genera Clave*/
         //$tip_doc,$fec_doc,$ruc,$ambiente,$serie,$numDoc,$tipoemision
-        $objCla=new VSClaveAcceso;
+        $objCla=new VSClaveAcceso();
         $serie=$objEmp[0]['Establecimiento'].$objEmp[0]['PuntoEmision'];
         $fec_doc=date("Y-m-d", strtotime($objEnt[0]['FEC_VTA']));
         $ClaveAcceso=$objCla->claveAcceso($codDoc,$fec_doc,$objEmp[0]['Ruc'],$objEmp[0]['Ambiente'],$serie,$Secuencial,$objEmp[0]['TipoEmision']);
@@ -311,7 +316,7 @@ class NubeFactura extends VsSeaIntermedia {
                             '" . $objEmp[0]['ContribuyenteEspecial'] . "', 
                             '" . $objEmp[0]['ObligadoContabilidad'] . "', 
                             '$tip_iden', 
-                            '" . $objEmp[0]['Establecimiento'].'-'.$objEmp[0]['PuntoEmision'].'-'.$GuiaRemi. "', 
+                            '$GuiaRemi',               
                             '" . $objEnt[$i]['NOM_CLI'] . "', 
                             '$ced_ruc', 
                             '" . $objEnt[$i]['VAL_BRU'] . "', 

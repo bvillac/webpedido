@@ -6,32 +6,45 @@
  * and open the template in the editor.
  */
 
-class VSDocumentos extends VsSeaIntermedia {
+class VSDocumentos {
 
     public function mostrarDocumentos($control) {
         $rawData = array();
-        $con = Yii::app()->dbvssea;
-
-        $sql = "SELECT A.IdCompania,A.Ruc,A.RazonSocial,A.NombreComercial,A.DireccionMatriz 
-                    FROM " . $con->dbname . ".VSCompania A WHERE A.Estado='1'";
+        $con = Yii::app()->dbvsseaint;
         
-         if (!empty($control)) {//Verifica la Opcion op para los filtros
-            $sql .= ($control[0]['TIPO_DESCARGO'] != "0") ? " AND A.TDES_ID = '" . $control[0]['TIPO_DESCARGO'] . "' " : " ";
-            $sql .= ($control[0]['COMPANIA'] != "0") ? "AND A.EMP_ID = '" . $control[0]['COMPANIA'] . "' " : "";
-            $sql .= ($control[0]['COD_PACIENTE'] != "0") ? "AND CDOR_ID_PACIENTE='".$control[0]['COD_PACIENTE']."' " : "";
-            //$sql .= ($control[0]['PACIENTE'] != "") ? "AND CONCAT(B.PER_APELLIDO,' ',B.PER_NOMBRE) LIKE '%" . $control[0]['PACIENTE'] . "%' " : "";
-            $sql .= "AND DATE(A.CDOR_FECHA_INGRESO) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "' ";
+        $sql = "SELECT A.IdFactura IdDoc,A.Estado,A.CodigoTransaccionERP,A.SecuencialERP,A.UsuarioCreador,
+                        A.FechaAutorizacion,A.AutorizacionSRI,
+                        CONCAT(A.Establecimiento,'-',A.PuntoEmision,'-',A.Secuencial) NumDocumento,
+                        A.FechaEmision,A.IdentificacionComprador,A.RazonSocialComprador,
+                        A.TotalSinImpuesto,A.TotalDescuento,A.Propina,A.ImporteTotal,
+                        B.*,C.Descripcion NombreDocumento
+                        FROM " . $con->dbname . ".NubeFactura A
+                                INNER JOIN " . $con->dbname . ".NubeFacturaImpuesto B
+                                        ON A.IdFactura=B.IdFactura
+                                INNER JOIN VSSEA.VSDirectorio C
+                                        ON A.CodigoDocumento=C.TipoDocumento
+                WHERE A.Estado='1' AND A.CodigoDocumento='01' ";
         
-        }
+        
+//         if (!empty($control)) {//Verifica la Opcion op para los filtros
+//            $sql .= ($control[0]['TIPO_DESCARGO'] != "0") ? " AND A.TDES_ID = '" . $control[0]['TIPO_DESCARGO'] . "' " : " ";
+//            $sql .= ($control[0]['COMPANIA'] != "0") ? "AND A.EMP_ID = '" . $control[0]['COMPANIA'] . "' " : "";
+//            $sql .= ($control[0]['COD_PACIENTE'] != "0") ? "AND CDOR_ID_PACIENTE='".$control[0]['COD_PACIENTE']."' " : "";
+//            //$sql .= ($control[0]['PACIENTE'] != "") ? "AND CONCAT(B.PER_APELLIDO,' ',B.PER_NOMBRE) LIKE '%" . $control[0]['PACIENTE'] . "%' " : "";
+//            $sql .= "AND DATE(A.CDOR_FECHA_INGRESO) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "' ";
+//        
+//        }
 
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
 
         return new CArrayDataProvider($rawData, array(
-            'keyField' => 'IdCompania',
+            'keyField' => 'IdDoc',
             'sort' => array(
                 'attributes' => array(
-                    'IdCompania', 'Ruc', 'RazonSocial', 'NombreComercial', 'DireccionMatriz',
+                    'IdDoc','Estado','CodigoTransaccionERP', 'SecuencialERP', 'UsuarioCreador',
+                    'FechaAutorizacion', 'AutorizacionSRI', 'NumDocumento', 'FechaEmision', 'IdentificacionComprador',
+                    'RazonSocialComprador', 'ImporteTotal', 'NombreDocumento', 
                 ),
             ),
             'totalItemCount' => count($rawData),
@@ -40,6 +53,15 @@ class VSDocumentos extends VsSeaIntermedia {
             //'itemCount'=>count($rawData),
             ),
         ));
+    }
+    
+    public function recuperarTipoDocumentos() {
+        $con = yii::app()->dbvssea;
+        $sql = "SELECT idDirectorio,TipoDocumento,Descripcion,Ruta 
+                FROM " . $con->dbname . ".VSDirectorio WHERE Estado=1;";
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
     }
 
 }
