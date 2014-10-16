@@ -114,4 +114,7 @@ class USUARIO extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+        
+        
 }

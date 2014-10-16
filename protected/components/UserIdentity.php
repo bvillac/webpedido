@@ -36,6 +36,7 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode=self::ERROR_NONE;
 		return !$this->errorCode;*/
                 //echo $this->username;
+                $empresa=new EMPRESA;
                 $session = Yii::app()->getSession();
                 $user= USUARIO::model()->find('LOWER(USU_NOMBRE)=?', array(strtolower($this->username)));
 
@@ -56,6 +57,10 @@ class UserIdentity extends CUserIdentity
                     //PARA USAR LAS VARIABLES DE SESSION
                     //yii::app()->user->CORREO;
                     //yii::app()->user->getState('CORREO');
+                    
+                    //INFORMACION EMPRESAS
+                    $empresa->mostrarEmpresas($user->USU_ID);
+                    
                     $this->errorCode=self::ERROR_NONE;
                 }
                 

@@ -1,20 +1,13 @@
 <?php
-/* @var $this NubeFacturaController */
-/* @var $dataProvider CActiveDataProvider */
-
-$this->breadcrumbs=array(
-	'Nube Facturas',
-);
-
-$this->menu=array(
-	array('label'=>'Create NubeFactura', 'url'=>array('create')),
-	array('label'=>'Manage NubeFactura', 'url'=>array('admin')),
-);
+/**
+ * Este Archivo contiene las vista de Compañias
+ * @author Ing. Byron Villacreses <byronvillacreses@gmail.com>
+ * @copyright Copyright &copy; SolucionesVillacreses 2014-09-24
+ * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
+ */
 ?>
-
-<h1>Nube Facturas</h1>
-
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); ?>
+<?php echo $this->renderPartial('_include'); ?>
+<div class="col-lg-12">
+    <?php echo $this->renderPartial('_frm_BuscarGrid', array('model' => $model, 'tip_descargo' => $tip_descargo, 'proveedor' => $proveedor)); ?>
+    <?php echo $this->renderPartial('_indexGrid', array('model' => $model)); ?>
+</div>
