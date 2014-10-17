@@ -27,7 +27,11 @@ return array(
     'Total amount' => 'ImporteTot',
     'Send' => 'Enviado',
     'Authorization' => 'Autorizado',
+    'Authorized' => 'Autorizado',
+    'Unauthorized' => 'No Autorizado',
+    '-Select-' => 'Selecionar',
     'Deny' => 'Negado',
+    'None' => 'Ninguno',
     /*Botones*/
     'Download PDF document' => 'Descargar Documento PDF',
     'Download XML document' => 'Descargar Documento XML',

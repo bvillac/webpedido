@@ -143,7 +143,7 @@ return array(
         'pageSize' => 20,
         'pageSizeMin' => 10,
         'datebydefault' => "d-m-Y",
-        'datepicker' => 'yy-mm-dd',
+        'datepicker' => 'dd-mm-yy',
         'datebytime' => 'Y-m-d h:i:s',
         'seaFirma' => '/opt/SEAF/',
         'seaFirext' => 'asc', //Extension de Firma Electronica

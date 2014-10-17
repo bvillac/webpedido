@@ -188,3 +188,27 @@ and open the template in the editor.
     width:45px !important; 
     text-align: right;
 }
+
+/* Clase para tablas en fomrularios */
+.div-table {/* Crear Tablas con Divs */
+    display:table;
+    border-collapse:collapse;
+    width:auto;
+}
+
+.trow {/* Crear filas de una tablas Divs */
+    display:table-row;
+    width:auto;
+    margin-bottom: 5px !important; 
+}
+
+.trow-right{ /* Crear filas de una tablas Divs alineada a la Derecha*/
+    text-align: right;
+}
+
+.tcol-td {/* Crear Columnas de una fila con  Divs*/
+    display:table-cell;
+    width:auto;
+    padding: 2px; /*para mantener margen entre campos de texto DL*/
+}
+

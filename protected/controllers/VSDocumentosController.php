@@ -1,6 +1,14 @@
 <?php
 
 class VSDocumentosController extends Controller {
+    
+     private function tipoAprobacion() {
+        return array(
+            //'1' => Yii::t('COMPANIA', 'Send'),
+            '2' => Yii::t('COMPANIA', 'Authorized'),
+            '3' => Yii::t('COMPANIA', 'Unauthorized'),
+        );
+    }
 
     public function actionIndex() {
         $modelo = new VSDocumentos();
@@ -15,6 +23,7 @@ class VSDocumentosController extends Controller {
             //'dataProvider' => $dataProvider,
             'model' => $modelo->mostrarDocumentos($contBuscar),
             'tipoDoc' => $modelo->recuperarTipoDocumentos(),
+            'tipoApr' => $this->tipoAprobacion(),
         ));
     }
 
