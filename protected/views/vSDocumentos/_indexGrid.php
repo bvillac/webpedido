@@ -14,6 +14,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
     'id' => 'TbG_DOCUMENTO',
     'dataProvider' => $model,
     //'template' => "{items}",
+    'template'=>'<div style="overflow:auto;">{items}</div>{pager}{summary}',
     'htmlOptions' => array('style' => 'cursor: pointer;'),
     //'selectableRows' => 2,
     //'selectionChanged' => 'verificaAcciones',
@@ -38,6 +39,31 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'filter' => false,
             'headerHtmlOptions' => array('style' => 'width:0px; display:none; border:none; textdecoration:none'),
             'htmlOptions' => array('style' => 'display:none; border:none;'),
+        ),
+        array(
+            'header' => Yii::t('COMPANIA', 'Download'),
+            'class' => 'CButtonColumn',
+            'htmlOptions' => array('style' => 'text-align:center', 'width' => '85px'),
+            'template' => '{pdf}{xml}{xsd}',
+            'buttons' => array(
+                'pdf' => array(
+                    'label' => Yii::t('COMPANIA', 'Download PDF document'),
+                    'imageUrl'=>Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'].'pdf.png', //ruta del icono
+                    //'click' => 'js:obtenerSeleccion',
+                ),
+                'xml' => array(
+                    'label' => Yii::t('COMPANIA', 'Download XML document'),
+                    'imageUrl'=>Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'].'xml.png', //ruta del icono
+                    //'click' => 'js:obtenerSeleccion',
+                    //'click'=>'function(){$("#dialog_id").dialog("open"); return false;}',
+                ),
+                'xsd' => array(
+                    'label' => Yii::t('COMPANIA', 'Download XSD document'),
+                    'imageUrl'=>Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'].'xsd.png', //ruta del icono
+                    //'click' => 'js:obtenerSeleccion',
+                    //'click'=>'function(){$("#dialog_id").dialog("open"); return false;}',
+                ),
+            ),
         ),
         array(
             'name' => 'Estado',
@@ -94,6 +120,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
         array(
             'name' => 'RazonSocialComprador',
             'header' => Yii::t('COMPANIA', 'Company name'),
+            //'htmlOptions' => array('style' => 'text-align:left', 'width' => '300px'),
             'value' => '$data["RazonSocialComprador"]',
         ),
         array(
@@ -103,23 +130,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'value' => 'Yii::app()->format->formatNumber($data["ImporteTotal"])',
             'htmlOptions' => array('style' => 'text-align:right', 'width' => '8px'),
         ),
-        array(
-            'class' => 'CButtonColumn',
-            'template' => '{edit}{deletex}',
-            'buttons' => array(
-                'edit' => array(
-                    'label' => 'Editar',
-                    'imageUrl'=>Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'].'edit.png', //ruta del icono
-                    //'click' => 'js:obtenerSeleccion',
-                ),
-                'deletex' => array(
-                    'label' => ' Eliminar',
-                    'imageUrl'=>Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'].'delete.png', //ruta del icono
-                    //'click' => 'js:obtenerSeleccion',
-                    //'click'=>'function(){$("#dialog_id").dialog("open"); return false;}',
-                ),
-            ),
-        ),
+        
     /* array(
       'class' => 'CButtonColumn',
       'template' => '{add}{edit}{delete}',

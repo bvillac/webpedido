@@ -9574,3 +9574,32 @@ Stack trace:
 REQUEST_URI=/websea/vSDocumentos/index.jsp
 HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
 ---
+2014/10/17 00:55:27 [error] [php] include(CButtonColumn columDescarga.php): failed to open stream: No such file or directory (/opt/sisweb/YiiBase.php:427)
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(196): import()
+#1 /opt/sisweb/zii/widgets/grid/CGridView.php(388): createComponent()
+#2 /opt/sisweb/zii/widgets/grid/CGridView.php(359): CGridView->initColumns()
+#3 /opt/sisweb/web/CBaseController.php(147): CGridView->init()
+#4 /opt/sisweb/web/CBaseController.php(172): VSDocumentosController->createWidget()
+#5 /var/www/html/websea/protected/views/vSDocumentos/_indexGrid.php(159): VSDocumentosController->widget()
+#6 /opt/sisweb/web/CBaseController.php(126): require()
+#7 /opt/sisweb/web/CBaseController.php(95): VSDocumentosController->renderInternal()
+#8 /opt/sisweb/web/CController.php(869): VSDocumentosController->renderFile()
+#9 /var/www/html/websea/protected/views/vSDocumentos/index.php(12): VSDocumentosController->renderPartial()
+#10 /opt/sisweb/web/CBaseController.php(126): require()
+#11 /opt/sisweb/web/CBaseController.php(95): VSDocumentosController->renderInternal()
+#12 /opt/sisweb/web/CController.php(869): VSDocumentosController->renderFile()
+#13 /opt/sisweb/web/CController.php(782): VSDocumentosController->renderPartial()
+#14 /var/www/html/websea/protected/controllers/VSDocumentosController.php(18): VSDocumentosController->render()
+#15 /opt/sisweb/web/actions/CInlineAction.php(49): VSDocumentosController->actionIndex()
+#16 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#17 /opt/sisweb/web/CController.php(286): VSDocumentosController->runAction()
+#18 /opt/sisweb/web/CController.php(265): VSDocumentosController->runActionWithFilters()
+#19 /opt/sisweb/web/CWebApplication.php(282): VSDocumentosController->run()
+#20 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#21 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#22 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSDocumentos/index.jsp
+in /var/www/html/websea/protected/views/vSDocumentos/_indexGrid.php (159)
+in /var/www/html/websea/protected/views/vSDocumentos/index.php (12)
+in /var/www/html/websea/protected/controllers/VSDocumentosController.php (18)

@@ -28,5 +28,10 @@ return array(
     'Send' => 'Enviado',
     'Authorization' => 'Autorizado',
     'Deny' => 'Negado',
+    /*Botones*/
+    'Download PDF document' => 'Descargar Documento PDF',
+    'Download XML document' => 'Descargar Documento XML',
+    'Download XSD document' => 'Descargar Documento XSD',
+    'Download' => 'Descargar',
 );
 ?>
