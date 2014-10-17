@@ -7,7 +7,7 @@
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
 ?>
-
+<!--<?//=Yii::app()->format->formatNumber( "6632678.64857" ); ?>-->
 <?php
 
 $this->widget('zii.widgets.grid.CGridView', array(
@@ -30,65 +30,78 @@ $this->widget('zii.widgets.grid.CGridView', array(
           'header' => '#',
           'value' => '$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize + $row+1',
           ), */
-        /*array(
+        array(
             'name' => 'IdDoc',
             'header' => Yii::t('COMPANIA', 'IdDoc'),
             'value' => '$data["IdDoc"]',
-        ),*/
+            'header' => false,
+            'filter' => false,
+            'headerHtmlOptions' => array('style' => 'width:0px; display:none; border:none; textdecoration:none'),
+            'htmlOptions' => array('style' => 'display:none; border:none;'),
+        ),
         array(
             'name' => 'Estado',
-            'header' => Yii::t('COMPANIA', 'Estado'),
-            'value' => '($data["Estado"]=="1")?"Enviado":($data["Estado"]=="2")?"Autorizado":"Negado"',
+            'header' => Yii::t('COMPANIA', 'Status'),
+            'value' => '($data["Estado"]=="1")?Yii::t("COMPANIA", "Send"):($data["Estado"]=="2")?Yii::t("COMPANIA", "Authorization"):Yii::t("COMPANIA", "Deny")',
         ),
+//        array(
+//            'name' => 'CodigoTransaccionERP',
+//            'header' => Yii::t('COMPANIA', 'Document type'),
+//            'value' => '$data["CodigoTransaccionERP"]',
+//        ),
         array(
-            'name' => 'CodigoTransaccionERP',
-            'header' => Yii::t('COMPANIA', 'CodigoTransaccionERP'),
-            'value' => '$data["CodigoTransaccionERP"]',
-        ),
-        array(
-            'name' => 'SecuencialERP',
-            'header' => Yii::t('COMPANIA', 'SecuencialERP'),
-            'value' => '$data["SecuencialERP"]',
-        ),
-        array(
-            'name' => 'UsuarioCreador',
-            'header' => Yii::t('COMPANIA', 'UsuarioCreador'),
-            'value' => '$data["UsuarioCreador"]',
-        ),
-        array(
-            'name' => 'FechaAutorizacion',
-            'header' => Yii::t('COMPANIA', 'FechaAutorizacion'),
-            'value' => '($data["FechaAutorizacion"]<>"")?date(Yii::app()->params["datebydefault"],strtotime($data["FechaAutorizacion"])):"";',
-        ),
-        array(
-            'name' => 'AutorizacionSRI',
-            'header' => Yii::t('COMPANIA', 'AutorizacionSRI'),
-            'value' => '$data["AutorizacionSRI"]',
+            'name' => 'NombreDocumento',
+            'header' => Yii::t('COMPANIA', 'Document type'),
+            'value' => '$data["NombreDocumento"]',
         ),
         array(
             'name' => 'NumDocumento',
-            'header' => Yii::t('COMPANIA', 'NumDocumento'),
+            'header' => Yii::t('COMPANIA', 'Document Number'),
+            'htmlOptions' => array('style' => 'text-align:center'),
             'value' => '$data["NumDocumento"]',
         ),
         array(
             'name' => 'FechaEmision',
-            'header' => Yii::t('COMPANIA', 'FechaEmision'),
+            'header' => Yii::t('COMPANIA', 'Issuance date'),
             'value' => 'date(Yii::app()->params["datebydefault"],strtotime($data["FechaEmision"]))',
         ),
         array(
+            'name' => 'UsuarioCreador',
+            'header' => Yii::t('COMPANIA', 'User'),
+            'value' => '$data["UsuarioCreador"]',
+        ),
+        array(
+            'name' => 'FechaAutorizacion',
+            'header' => Yii::t('COMPANIA', 'Authorization date'),
+            'value' => '($data["FechaAutorizacion"]<>"")?date(Yii::app()->params["datebydefault"],strtotime($data["FechaAutorizacion"])):"";',
+        ),
+        array(
+            'name' => 'AutorizacionSRI',
+            'header' => Yii::t('COMPANIA', 'Authorization number SRI'),
+            'value' => '$data["AutorizacionSRI"]',
+        ),
+//        array(
+//            'name' => 'NumDocumento',
+//            'header' => Yii::t('COMPANIA', 'NumDocumento'),
+//            'value' => '$data["NumDocumento"]',
+//        ),
+        
+        array(
             'name' => 'IdentificacionComprador',
-            'header' => Yii::t('COMPANIA', 'IdentificacionComprador'),
+            'header' => Yii::t('COMPANIA', 'Dni/Ruc'),
             'value' => '$data["IdentificacionComprador"]',
         ),
         array(
             'name' => 'RazonSocialComprador',
-            'header' => Yii::t('COMPANIA', 'RazonSocialComprador'),
+            'header' => Yii::t('COMPANIA', 'Company name'),
             'value' => '$data["RazonSocialComprador"]',
         ),
         array(
             'name' => 'ImporteTotal',
-            'header' => Yii::t('COMPANIA', 'ImporteTotal'),
-            'value' => '$data["ImporteTotal"]',
+            'header' => Yii::t('COMPANIA', 'Total amount'),
+            //'value' => '$data["ImporteTotal"]',
+            'value' => 'Yii::app()->format->formatNumber($data["ImporteTotal"])',
+            'htmlOptions' => array('style' => 'text-align:right', 'width' => '8px'),
         ),
         array(
             'class' => 'CButtonColumn',

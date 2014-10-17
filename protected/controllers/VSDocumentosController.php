@@ -9,7 +9,7 @@ class VSDocumentosController extends Controller {
             $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
             echo CJSON::encode($modelo->mostrarDocumentos($contBuscar));
         }
-        $this->titleWindows = Yii::t('COMPANIA', 'Company');
+        $this->titleWindows = Yii::t('COMPANIA', 'Document');
         
         $this->render('index', array(
             //'dataProvider' => $dataProvider,
