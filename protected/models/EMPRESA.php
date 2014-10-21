@@ -145,7 +145,7 @@ class EMPRESA extends CActiveRecord {
                 WHERE A.USU_ID='$usu_id' AND USU_EST_LOG='1'";
 
         //echo $sql;
-        $rawData = $conApp->createCommand($sql)->queryAll();
+        $rawData = $conApp->createCommand($sql)->queryRow();
         $conApp->active = false;
         return $rawData;
     }

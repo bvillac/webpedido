@@ -17,7 +17,7 @@ class VSDocumentos {
                         CONCAT(A.Establecimiento,'-',A.PuntoEmision,'-',A.Secuencial) NumDocumento,
                         A.FechaEmision,A.IdentificacionComprador,A.RazonSocialComprador,
                         A.TotalSinImpuesto,A.TotalDescuento,A.Propina,A.ImporteTotal,
-                        B.*,C.Descripcion NombreDocumento
+                        B.*,C.Descripcion NombreDocumento,A.AutorizacionSri,A.ClaveAcceso,A.FechaAutorizacion
                         FROM " . $con->dbname . ".NubeFactura A
                                 INNER JOIN " . $con->dbname . ".NubeFacturaImpuesto B
                                         ON A.IdFactura=B.IdFactura
@@ -60,6 +60,26 @@ class VSDocumentos {
         $sql = "SELECT idDirectorio,TipoDocumento,Descripcion,Ruta 
                 FROM " . $con->dbname . ".VSDirectorio WHERE Estado=1;";
         $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    }
+    
+    public function mostrarCabFactura($id,$tdoc) {
+        $rawData = array();
+        $con = Yii::app()->dbvsseaint;
+        $sql = "SELECT A.IdFactura IdDoc,A.Estado,A.CodigoTransaccionERP,A.SecuencialERP,A.UsuarioCreador,
+                        A.FechaAutorizacion,A.AutorizacionSRI,
+                        CONCAT(A.Establecimiento,'-',A.PuntoEmision,'-',A.Secuencial) NumDocumento,
+                        A.FechaEmision,A.IdentificacionComprador,A.RazonSocialComprador,
+                        A.TotalSinImpuesto,A.TotalDescuento,A.Propina,A.ImporteTotal,
+                        B.*,C.Descripcion NombreDocumento,A.AutorizacionSri,A.ClaveAcceso,A.FechaAutorizacion
+                        FROM " . $con->dbname . ".NubeFactura A
+                                INNER JOIN " . $con->dbname . ".NubeFacturaImpuesto B
+                                        ON A.IdFactura=B.IdFactura
+                                INNER JOIN VSSEA.VSDirectorio C
+                                        ON A.CodigoDocumento=C.TipoDocumento
+                WHERE A.Estado<>'0' AND A.CodigoDocumento='$tdoc' AND A.IdFactura =$id ";
+        $rawData = $con->createCommand($sql)->queryRow();//Recupera Solo 1
         $con->active = false;
         return $rawData;
     }

@@ -866,3 +866,23 @@ Stack trace:
 REQUEST_URI=/websea/vSDocumentos/GenerarPdf.jsp
 HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
 ---
+2014/10/21 15:36:43 [error] [php] Object of class CDbDataReader could not be converted to string (/var/www/html/websea/protected/views/vSDocumentos/_frm_CabFact.php:9)
+Stack trace:
+#0 /opt/sisweb/web/CController.php(869): VSDocumentosController->renderFile()
+#1 /var/www/html/websea/protected/views/vSDocumentos/facturaPDF.php(12): VSDocumentosController->renderPartial()
+#2 /opt/sisweb/web/CBaseController.php(126): require()
+#3 /opt/sisweb/web/CBaseController.php(95): VSDocumentosController->renderInternal()
+#4 /opt/sisweb/web/CController.php(869): VSDocumentosController->renderFile()
+#5 /var/www/html/websea/protected/controllers/VSDocumentosController.php(49): VSDocumentosController->renderPartial()
+#6 /opt/sisweb/web/actions/CInlineAction.php(49): VSDocumentosController->actionGenerarPdf()
+#7 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#8 /opt/sisweb/web/CController.php(286): VSDocumentosController->runAction()
+#9 /opt/sisweb/web/CController.php(265): VSDocumentosController->runActionWithFilters()
+#10 /opt/sisweb/web/CWebApplication.php(282): VSDocumentosController->run()
+#11 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#13 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSDocumentos/GenerarPdf.jsp
+in /var/www/html/websea/protected/views/vSDocumentos/_frm_CabFact.php (9)
+in /var/www/html/websea/protected/views/vSDocumentos/facturaPDF.php (12)
+in /var/www/html/websea/protected/controllers/VSDocumentosController.php (49)

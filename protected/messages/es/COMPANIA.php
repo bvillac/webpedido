@@ -7,8 +7,6 @@
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
 return array(
-    'Create Member' => 'Crear Afiliado',
-    'Contact Information' => 'Información de Contacto',
     'Company' => 'Compañía',
     'Document' => 'Documentos',
     'Dni' => 'Id',
