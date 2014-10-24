@@ -49,6 +49,7 @@ return array(
     'IRBPNR' => 'IRBPNR',
     'GRATUITIES' => 'PROPINA',
     'TOTAL VALUE' => 'VALOR TOTAL',
+    'Additional Information' => 'Información Adicional',
     
     
     

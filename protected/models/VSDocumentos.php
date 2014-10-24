@@ -101,7 +101,16 @@ class VSDocumentos {
     public function mostrarFacturaImp($id) {
         $rawData = array();
         $con = Yii::app()->dbvsseaint;
-        $sql = "SELECT * FROM VSSEAINTERMEDIA.NubeFacturaImpuesto WHERE IdFactura=$id";
+        $sql = "SELECT * FROM " . $con->dbname . ".NubeFacturaImpuesto WHERE IdFactura=$id";
+        $rawData = $con->createCommand($sql)->queryAll();//Recupera Solo 1
+        $con->active = false;
+        return $rawData;
+    }
+    
+    public function mostrarFacturaDataAdicional($id) {
+        $rawData = array();
+        $con = Yii::app()->dbvsseaint;
+        $sql = "SELECT * FROM " . $con->dbname . ".NubeDatoAdicionalFactura WHERE IdFactura=$id";
         $rawData = $con->createCommand($sql)->queryAll();//Recupera Solo 1
         $con->active = false;
         return $rawData;

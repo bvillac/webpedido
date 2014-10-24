@@ -31,11 +31,24 @@
                 border-spacing:0;
                 border-collapse: collapse;
             }
-            #invoice_body
-            {
-                height: 149mm;
+            .titleLabel{
+                font-size:7pt;
+                /*color:#000;*/
+                font-weight: bold ;
             }
-
+            .titleRazon{
+                font-size:10pt;
+                /*color:#000;*/
+                font-weight: bold ;
+            }
+            .titleDocumento{
+                font-size:10pt;
+                letter-spacing: 5px; 
+            }
+            .titleNum_Ruc{
+                font-size:9pt;
+            }
+            
 
         </style>
     </head>
@@ -84,11 +97,11 @@
             <table style="width:100%;">
                 <tbody>
                     <tr>
-                        <td style="width:50%">
-
+                        <td style="width:70%">
+                            <?php echo $this->renderPartial('_frm_DataAuxFact', array('adiFact' => $adiFact)); ?>
                         </td>
-                        <td style="width:50%;float: right">
-                            <div  style="float:right">
+                        <td style="width:30%">
+                            <div>
                                 <?php echo $this->renderPartial('_frm_TotFact', array('impFact' => $impFact, 'cabFact' => $cabFact)); ?>
                             </div>
                         </td>

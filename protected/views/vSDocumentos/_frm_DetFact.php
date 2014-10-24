@@ -3,31 +3,31 @@
     <tbody>
         <tr>
             <td class="marcoCel titleDetalle">
-                <label><?php echo Yii::t('DOCUMENTOS', 'Main code') ?></label>
+                <span><?php echo Yii::t('DOCUMENTOS', 'Main code') ?></span>
             </td>
             <td class="marcoCel titleDetalle">
-                <label><?php echo Yii::t('DOCUMENTOS', 'Main stub') ?></label>
+                <span><?php echo Yii::t('DOCUMENTOS', 'Main stub') ?></span>
             </td>
             <td class="marcoCel titleDetalle">
-                <label><?php echo Yii::t('DOCUMENTOS', 'Quantity') ?></label>
+                <span><?php echo Yii::t('DOCUMENTOS', 'Quantity') ?></span>
             </td>
             <td class="marcoCel titleDetalle">
-                <label><?php echo Yii::t('DOCUMENTOS', 'Description') ?></label>
+                <span><?php echo Yii::t('DOCUMENTOS', 'Description') ?></span>
             </td>
             <td class="marcoCel titleDetalle">
-                <label><?php echo Yii::t('DOCUMENTOS', 'Additional details') ?></label>
+                <span><?php echo Yii::t('DOCUMENTOS', 'Additional details') ?></span>
             </td>
             <td class="marcoCel titleDetalle">
-                <label><?php echo Yii::t('DOCUMENTOS', 'Additional details N2') ?></label>
+                <span><?php echo Yii::t('DOCUMENTOS', 'Additional details N2') ?></span>
             </td>
             <td class="marcoCel titleDetalle">
-                <label><?php echo Yii::t('DOCUMENTOS', 'Unit price') ?></label>
+                <span><?php echo Yii::t('DOCUMENTOS', 'Unit price') ?></span>
             </td>
             <td class="marcoCel titleDetalle">
-                <label><?php echo Yii::t('DOCUMENTOS', 'Discount') ?></label>
+                <span><?php echo Yii::t('DOCUMENTOS', 'Discount') ?></span>
             </td>
             <td class="marcoCel titleDetalle">
-                <label><?php echo Yii::t('DOCUMENTOS', 'Total price') ?></label>
+                <span><?php echo Yii::t('DOCUMENTOS', 'Total price') ?></span>
             </td>
         </tr>
         <?php
@@ -36,7 +36,7 @@
             <tr>
                 <td class="marcoCel"><?php echo $detFact[$i]['CodigoPrincipal'] ?></td>
                 <td class="marcoCel"><?php echo $detFact[$i]['CodigoAuxiliar'] ?></td>
-                <td class="marcoCel"><?php echo intval($detFact[$i]['Cantidad']) ?></td>
+                <td class="marcoCel dataNumber"><?php echo intval($detFact[$i]['Cantidad']) ?></td>
                 <td class="marcoCel"><?php echo $detFact[$i]['Descripcion'] ?></td>
                 <td class="marcoCel"><?php //echo $detFact[$i]['CodigoPrincipal'] ?></td>
                 <td class="marcoCel"><?php //echo $detFact[$i]['CodigoPrincipal'] ?></td>

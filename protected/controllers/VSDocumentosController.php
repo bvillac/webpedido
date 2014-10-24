@@ -28,10 +28,11 @@ class VSDocumentosController extends Controller {
     }
 
     public function actionGenerarPdf() {
-        $modelo = new VSDocumentos();
+        $modelo = new VSDocumentos();//Ejmpleo code 3
         $cabFact=$modelo->mostrarCabFactura('3','01');
         $detFact=$modelo->mostrarDetFactura('3');
         $impFact=$modelo->mostrarFacturaImp('3');
+        $adiFact=$modelo->mostrarFacturaDataAdicional('3');
         //$contBuscar = array();
         $mPDF1 = Yii::app()->ePdf->mpdf('utf-8', 'A4', '', '', 15, 15, 16, 16, 9, 9, 'P'); //Esto lo pueden configurar como quieren, para eso deben de entrar en la web de MPDF para ver todo lo que permite.
         $mPDF1->useOnlyCoreFonts = true;
@@ -53,7 +54,7 @@ class VSDocumentosController extends Controller {
                             'cabFact' => $cabFact,
                             'detFact' => $detFact,
                             'impFact' => $impFact,
-                            //'detFact' => $modelo->mostrarCabFactura('16','01')
+                            'adiFact' => $adiFact,
                         ), true)); //hacemos un render partial a una vista preparada, en este caso es la vista docPDF
         //$mPDF1->Output('FACTURA' . date('YmdHis'), 'I');  //Nombre del pdf y parámetro para ver pdf o descargarlo directamente.
         $mPDF1->Output($cabFact['NombreDocumento'] .'-'. $cabFact['NumDocumento'], 'I');

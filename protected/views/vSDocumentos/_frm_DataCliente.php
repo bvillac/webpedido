@@ -1,24 +1,24 @@
 <div>
-    <table style="width:100%;" class="marcoDiv">
+    <table style="width:200mm;" class="marcoDiv">
         <tbody>
             <tr>
                 <td>
-                    <label><?php echo Yii::t('DOCUMENTOS', 'Social reason and last name') ?></label>
-                    <label><?php echo $cabFact['RazonSocialComprador'] ?></label>
+                    <span class="titleLabel"><?php echo Yii::t('DOCUMENTOS', 'Social reason and last name') ?></span>
+                    <span><?php echo $cabFact['RazonSocialComprador'] ?></span>
                 </td>
                 <td>
-                    <label><?php echo Yii::t('DOCUMENTOS', 'Identification') ?></label>
-                    <label><?php echo $cabFact['IdentificacionComprador'] ?></label>
+                    <span class="titleLabel"><?php echo Yii::t('DOCUMENTOS', 'Identification') ?></span>
+                    <span><?php echo $cabFact['IdentificacionComprador'] ?></span>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <label><?php echo Yii::t('DOCUMENTOS', 'Date of issue') ?></label>
-                    <label><?php echo $cabFact['FechaEmision'] ?></label>
+                    <span class="titleLabel"><?php echo Yii::t('DOCUMENTOS', 'Date of issue') ?></span>
+                    <span><?php echo date(Yii::app()->params["datebydefault"],strtotime($cabFact['FechaEmision'])) ?></span>
                 </td>
                 <td>
-                    <label><?php echo Yii::t('DOCUMENTOS', 'Remission guide') ?></label>
-                    <label><?php echo $cabFact['GuiaRemision'] ?></label>
+                    <span class="titleLabel"><?php echo Yii::t('DOCUMENTOS', 'Remission guide') ?></span>
+                    <span><?php echo $cabFact['GuiaRemision'] ?></span>
                 </td>
             </tr>
         </tbody>
