@@ -72,7 +72,8 @@ class VSDocumentos {
                         CONCAT(A.Establecimiento,'-',A.PuntoEmision,'-',A.Secuencial) NumDocumento,
                         A.FechaEmision,A.IdentificacionComprador,A.RazonSocialComprador,
                         A.TotalSinImpuesto,A.TotalDescuento,A.Propina,A.ImporteTotal,
-                        B.*,C.Descripcion NombreDocumento,A.AutorizacionSri,A.ClaveAcceso,A.FechaAutorizacion
+                        B.*,C.Descripcion NombreDocumento,A.AutorizacionSri,A.ClaveAcceso,A.FechaAutorizacion,
+                        A.Ambiente,A.TipoEmision,A.GuiaRemision
                         FROM " . $con->dbname . ".NubeFactura A
                                 INNER JOIN " . $con->dbname . ".NubeFacturaImpuesto B
                                         ON A.IdFactura=B.IdFactura
@@ -80,6 +81,28 @@ class VSDocumentos {
                                         ON A.CodigoDocumento=C.TipoDocumento
                 WHERE A.Estado<>'0' AND A.CodigoDocumento='$tdoc' AND A.IdFactura =$id ";
         $rawData = $con->createCommand($sql)->queryRow();//Recupera Solo 1
+        $con->active = false;
+        return $rawData;
+    }
+    
+    public function mostrarDetFactura($id) {
+        $rawData = array();
+        $con = Yii::app()->dbvsseaint;
+        $sql = "SELECT A.*,B.BaseImponible,B.Tarifa,B.Valor
+                        FROM " . $con->dbname . ".NubeDetalleFactura A
+                                INNER JOIN " . $con->dbname . ".NubeDetalleFacturaImpuesto B
+                                        ON A.IdDetalleFactura=B.IdDetalleFactura
+                WHERE A.IdFactura =$id";
+        $rawData = $con->createCommand($sql)->queryAll();//Recupera Solo 1
+        $con->active = false;
+        return $rawData;
+    }
+    
+    public function mostrarFacturaImp($id) {
+        $rawData = array();
+        $con = Yii::app()->dbvsseaint;
+        $sql = "SELECT * FROM VSSEAINTERMEDIA.NubeFacturaImpuesto WHERE IdFactura=$id";
+        $rawData = $con->createCommand($sql)->queryAll();//Recupera Solo 1
         $con->active = false;
         return $rawData;
     }

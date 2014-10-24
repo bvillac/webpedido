@@ -227,9 +227,9 @@ class NubeFactura extends VsSeaIntermedia {
         $trans = $con->beginTransaction();
         $objEmpData= new EMPRESA;
         /****VARIBLES DE SESION*******/
-        $emp_id=Yii::app()->getSession()->get('emp_id', FALSE);;
-        $est_id=Yii::app()->getSession()->get('est_id', FALSE);;
-        $pemi_id=Yii::app()->getSession()->get('pemi_id', FALSE);;
+        $emp_id=Yii::app()->getSession()->get('emp_id', FALSE);
+        $est_id=Yii::app()->getSession()->get('est_id', FALSE);
+        $pemi_id=Yii::app()->getSession()->get('pemi_id', FALSE);
         try {
             $cabFact = $this->buscarFacturas();
             $empresaEnt=$objEmpData->buscarDataEmpresa($emp_id,$est_id,$pemi_id);//recuperar info deL Contribuyente
@@ -286,35 +286,35 @@ class NubeFactura extends VsSeaIntermedia {
         $tip_iden=$valida->tipoIdent($objEnt[$i]['CED_RUC']);
         $Secuencial=$valida->ajusteNumDoc($objEnt[$i]['NUM_NOF'],9);
         //$GuiaRemi=$valida->ajusteNumDoc($objEnt[$i]['GUI_REM'],9);
-        $GuiaRemi=(strlen($objEnt[$i]['GUI_REM'])>0)?$objEmp[0]['Establecimiento'].'-'.$objEmp[0]['PuntoEmision'].'-'.$valida->ajusteNumDoc($objEnt[$i]['GUI_REM'],9):'';
+        $GuiaRemi=(strlen($objEnt[$i]['GUI_REM'])>0)?$objEmp['Establecimiento'].'-'.$objEmp['PuntoEmision'].'-'.$valida->ajusteNumDoc($objEnt[$i]['GUI_REM'],9):'';
         $ced_ruc=($tip_iden=='07')?'9999999999999':$objEnt[$i]['CED_RUC'];
         /*Datos para Genera Clave*/
         //$tip_doc,$fec_doc,$ruc,$ambiente,$serie,$numDoc,$tipoemision
         $objCla=new VSClaveAcceso();
-        $serie=$objEmp[0]['Establecimiento'].$objEmp[0]['PuntoEmision'];
+        $serie=$objEmp['Establecimiento'].$objEmp['PuntoEmision'];
         $fec_doc=date("Y-m-d", strtotime($objEnt[0]['FEC_VTA']));
-        $ClaveAcceso=$objCla->claveAcceso($codDoc,$fec_doc,$objEmp[0]['Ruc'],$objEmp[0]['Ambiente'],$serie,$Secuencial,$objEmp[0]['TipoEmision']);
+        $ClaveAcceso=$objCla->claveAcceso($codDoc,$fec_doc,$objEmp['Ruc'],$objEmp['Ambiente'],$serie,$Secuencial,$objEmp['TipoEmision']);
         /*************************/
         $sql = "INSERT INTO " . $con->dbname . ".NubeFactura
                             (Ambiente,TipoEmision, RazonSocial, NombreComercial, Ruc,ClaveAcceso,CodigoDocumento, Establecimiento,
                             PuntoEmision, Secuencial, DireccionMatriz, FechaEmision, DireccionEstablecimiento, ContribuyenteEspecial,
                             ObligadoContabilidad, TipoIdentificacionComprador, GuiaRemision, RazonSocialComprador, IdentificacionComprador,
                             TotalSinImpuesto, TotalDescuento, Propina, ImporteTotal, Moneda, SecuencialERP, CodigoTransaccionERP,Estado,FechaCarga) VALUES (
-                            '" . $objEmp[0]['Ambiente'] . "',
-                            '" . $objEmp[0]['TipoEmision'] . "',
-                            '" . $objEmp[0]['RazonSocial'] . "',
-                            '" . $objEmp[0]['NombreComercial'] . "',
-                            '" . $objEmp[0]['Ruc'] . "',
+                            '" . $objEmp['Ambiente'] . "',
+                            '" . $objEmp['TipoEmision'] . "',
+                            '" . $objEmp['RazonSocial'] . "',
+                            '" . $objEmp['NombreComercial'] . "',
+                            '" . $objEmp['Ruc'] . "',
                             '$ClaveAcceso',
                             '$codDoc',
-                            '" . $objEmp[0]['Establecimiento'] . "',
-                            '" . $objEmp[0]['PuntoEmision'] . "',
+                            '" . $objEmp['Establecimiento'] . "',
+                            '" . $objEmp['PuntoEmision'] . "',
                             '$Secuencial',
-                            '" . $objEmp[0]['DireccionMatriz'] . "', 
+                            '" . $objEmp['DireccionMatriz'] . "', 
                             '$fec_doc', 
-                            '" . $objEmp[0]['DireccionMatriz'] . "', 
-                            '" . $objEmp[0]['ContribuyenteEspecial'] . "', 
-                            '" . $objEmp[0]['ObligadoContabilidad'] . "', 
+                            '" . $objEmp['DireccionMatriz'] . "', 
+                            '" . $objEmp['ContribuyenteEspecial'] . "', 
+                            '" . $objEmp['ObligadoContabilidad'] . "', 
                             '$tip_iden', 
                             '$GuiaRemi',               
                             '" . $objEnt[$i]['NOM_CLI'] . "', 
@@ -323,7 +323,7 @@ class NubeFactura extends VsSeaIntermedia {
                             '" . $objEnt[$i]['VAL_DES'] . "', 
                             '" . $objEnt[$i]['PROPINA'] . "', 
                             '" . $objEnt[$i]['VAL_NET'] . "', 
-                            '" . $objEmp[0]['Moneda'] . "', 
+                            '" . $objEmp['Moneda'] . "', 
                             '$Secuencial', 
                             '" . $objEnt[0]['TIP_NOF'] . "',
                             '1',CURRENT_TIMESTAMP() )";
@@ -374,9 +374,9 @@ class NubeFactura extends VsSeaIntermedia {
             $idDet = $con->getLastInsertID($con->dbname . '.NubeDetalleFactura');
             if($detFact[$i]['I_M_IVA']=='1'){//Verifico si el ITEM tiene Impuesto
                 //Segun Datos Sri
-                $this->InsertarDetImpFactura($con,$idDet,'2','2','12',$detFact[$i]['T_VENTA'],$detFact[$i]['VAL_IVA']);//12%
+                $this->InsertarDetImpFactura($con,$idDet,'2','2','12',$valSinImp,$detFact[$i]['VAL_IVA']);//12%
             }else{//Caso Contrario no Genera Impuesto
-                $this->InsertarDetImpFactura($con,$idDet,'2','0','0',$detFact[$i]['T_VENTA'],$detFact[$i]['VAL_IVA']);//0%
+                $this->InsertarDetImpFactura($con,$idDet,'2','0','0',$valSinImp,$detFact[$i]['VAL_IVA']);//0%
             }
         }
         //Insertar Datos de Iva 0%

@@ -154,7 +154,7 @@ class EMPRESA extends CActiveRecord {
         $conApp = yii::app()->db;
         $rawData = array();
         $sql = "SELECT A.EMP_ID,A.EMP_RUC Ruc,A.EMP_RAZONSOCIAL RazonSocial,A.EMP_NOM_COMERCIAL NombreComercial,
-                    A.EMP_AMBIENTE Ambiente,A.EMP_TIPO_EMISION TipoEmision,EMP_DIRECCION_MATRIZ DireccionMatriz,
+                    A.EMP_AMBIENTE Ambiente,A.EMP_TIPO_EMISION TipoEmision,EMP_DIRECCION_MATRIZ DireccionMatriz,EST_DIRECCION DireccionSucursal,
                     A.EMP_OBLIGA_CONTABILIDAD ObligadoContabilidad,EMP_CONTRI_ESPECIAL ContribuyenteEspecial,EMP_EMAIL_DIGITAL,
                     B.EST_NUMERO Establecimiento,C.PEMI_NUMERO PuntoEmision,A.EMP_MONEDA Moneda
                     FROM " . $conApp->dbname . ".EMPRESA A
@@ -165,7 +165,8 @@ class EMPRESA extends CActiveRecord {
             WHERE A.EMP_ID='$emp_id' AND A.EMP_EST_LOG='1' 
                      AND B.EST_ID='$est_id' AND C.PEMI_ID='$pemi_id'";
         //echo $sql;
-        $rawData = $conApp->createCommand($sql)->queryAll();
+        //$rawData = $conApp->createCommand($sql)->queryAll(); //Varios registros =>  $rawData[0]['RazonSocial']
+        $rawData = $conApp->createCommand($sql)->queryRow();  //Un solo Registro => $rawData['RazonSocial']
         $conApp->active = false;
         return $rawData;
     }

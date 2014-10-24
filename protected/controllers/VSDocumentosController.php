@@ -29,23 +29,30 @@ class VSDocumentosController extends Controller {
 
     public function actionGenerarPdf() {
         $modelo = new VSDocumentos();
-        $cabFact=$modelo->mostrarCabFactura('16','01');
+        $cabFact=$modelo->mostrarCabFactura('3','01');
+        $detFact=$modelo->mostrarDetFactura('3');
+        $impFact=$modelo->mostrarFacturaImp('3');
         //$contBuscar = array();
-        $mPDF1 = Yii::app()->ePdf->mpdf('utf-8', 'A4', '', '', 15, 15, 35, 25, 9, 9, 'P'); //Esto lo pueden configurar como quieren, para eso deben de entrar en la web de MPDF para ver todo lo que permite.
+        $mPDF1 = Yii::app()->ePdf->mpdf('utf-8', 'A4', '', '', 15, 15, 16, 16, 9, 9, 'P'); //Esto lo pueden configurar como quieren, para eso deben de entrar en la web de MPDF para ver todo lo que permite.
         $mPDF1->useOnlyCoreFonts = true;
         $mPDF1->SetTitle(Yii::app()->getSession()->get('emp_razonsocial', FALSE)." - ".$cabFact['NombreDocumento']);
         $mPDF1->SetAuthor("JuzgadoSys");
-        $mPDF1->SetWatermarkText("JuzgadoSys");
+        $mPDF1->SetWatermarkText(Yii::t('DOCUMENTOS', 'PRINTED INFORMATION PROVIDED IS VOID IN PROOF TEST ENVIRONMENT'));
         $mPDF1->showWatermarkText = true;
         $mPDF1->watermark_font = 'DejaVuSansCondensed';
-        $mPDF1->watermarkTextAlpha = 0.1;
+        $mPDF1->watermarkTextAlpha = 0.5;
         $mPDF1->SetDisplayMode('fullpage');
+        //Load a stylesheet
+        //$stylesheet = file_get_contents(Yii::app()->theme->baseUrl.'/css/print.css');
+        //$mPDF1->WriteHTML($stylesheet, 1);
         $mPDF1->WriteHTML(
                 $this->renderPartial(
                         //'docPDF', 
                         'facturaPDF',
                         array(
                             'cabFact' => $cabFact,
+                            'detFact' => $detFact,
+                            'impFact' => $impFact,
                             //'detFact' => $modelo->mostrarCabFactura('16','01')
                         ), true)); //hacemos un render partial a una vista preparada, en este caso es la vista docPDF
         //$mPDF1->Output('FACTURA' . date('YmdHis'), 'I');  //Nombre del pdf y parámetro para ver pdf o descargarlo directamente.

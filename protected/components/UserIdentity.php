@@ -59,13 +59,17 @@ class UserIdentity extends CUserIdentity
                     //yii::app()->user->getState('CORREO');
                     
                     //INFORMACION EMPRESAS
-                    $empresa->mostrarEmpresas($user->USU_ID);//
+                    //$emp=$empresa->mostrarEmpresas($user->USU_ID);
                     $emp_id='1';$est_id='1';$pemi_id='1';
+                    $data=$empresa->buscarDataEmpresa($emp_id, $est_id, $pemi_id);
                     $session->add('emp_id', $emp_id);
-                    //$session->add('emp_razonsocial',$empresa['EMP_RAZONSOCIAL']);
-                    $session->add('emp_razonsocial','Utimpor S.A.');
                     $session->add('est_id', $est_id);
                     $session->add('pemi_id', $pemi_id);
+                    $session->add('RazonSocial',$data['RazonSocial']);
+                    $session->add('DireccionMatriz',$data['DireccionMatriz']);
+                    $session->add('DireccionSucursal',$data['DireccionSucursal']);
+                    $session->add('ContribuyenteEspecial',$data['ContribuyenteEspecial']);
+                    $session->add('ObligadoContabilidad',$data['ObligadoContabilidad']);
                     
                     $this->errorCode=self::ERROR_NONE;
                 }
