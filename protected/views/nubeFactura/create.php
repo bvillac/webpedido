@@ -19,8 +19,8 @@
 <?php
 
 //require_once(Yii::app()->basePath . '/extensions/my-php-file.php');
-$obj = new NubeFactura;
-$obj->insertarFacturas();
+//$obj = new NubeFactura;
+//$obj->insertarFacturas();
 //$obj->ClaveAcceso('01','2014-01-01','1790221806001','1','001001','000003012','1');
 //$obj->modulo11('060820140109928098410011001001000101253002199121');
 //*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -33,14 +33,13 @@ $obj->insertarFacturas();
   Yii::import('system.vendors.barcodegen.class.BCGColor');
   Yii::import('system.vendors.barcodegen.class.BCGDrawing');
   Yii::import('system.vendors.barcodegen.class.BCGFont');
-  Yii::import('system.vendors.barcodegen.class.BCGcode128.barcode');
-  echo dirname(__FILE__).'<br>';
-  echo Yii::app()->basePath;
+  Yii::import('system.vendors.barcodegen.class.BCGcode128.barcode');*/
 echo dirname(__FILE__).'<br>';///var/www/html/websea/protected/views/nubeFactura
-echo $ruta = Yii::app()->basePath,'<br>';///var/www/html/websea/protected
-echo Yii::app()->theme->baseUrl;///websea/themes/seablue */
+echo $ruta = Yii::app()->basePath.'<br>';///var/www/html/websea/protected
+echo Yii::app()->theme->baseUrl.'<br>';///websea/themes/seablue 
+echo Yii::app()->baseUrl;
 
-/* SOLUCION VALIDA
+/* SOLUCION VALIDA 
 $ruta = Yii::app()->basePath;
 require_once($ruta . '/extensions/barcodegen/class/BCGFontFile.php');
 require_once($ruta . '/extensions/barcodegen/class/BCGColor.php');
@@ -66,15 +65,14 @@ $code->setBackgroundColor($color_white);
 $code->setFont($font);
 $code->setStart(NULL);
 $code->setTilde(true);
-$code->parse('a123');
+$code->parse('xa123');
 
 // Drawing Part
 //$drawing = new BCGDrawing(Yii::app()->theme->baseUrl.'/images/plantilla/filename.png', $color_white);
 $drawing = new BCGDrawing('', $color_white);
 $drawing->setBarcode($code);
 $drawing->draw();
-//$drawing->setFilename(Yii::app()->theme->baseUrl.'/images/plantilla/codebarra.png');
-$drawing->setFilename('prueba.png');
+$drawing->setFilename('codebar.png');
 
 header('Content-Type: image/png');
 //header('Content-Type: text/html; charset=utf-8');

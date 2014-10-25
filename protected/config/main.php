@@ -190,6 +190,7 @@ return array(
         'seaDocNc' => '/opt/SEADOC/NC/',
         'seaDocNd' => '/opt/SEADOC/ND/',
         'seaDocGuia' => '/opt/SEADOC/GUIAS/',
+        'seaBarra' => '/opt/codebar/',
         'consumidorfinal' => '9999999999',
     ),
 );

@@ -57,6 +57,7 @@
         $contador = count($cabFact);
         if ($cabFact !== null) {
             ?>
+            <?php echo $this->renderPartial('_barcode', array('cabFact' => $cabFact)); ?>
             <table style="width:100%;">
                 <tbody>
                     <tr>

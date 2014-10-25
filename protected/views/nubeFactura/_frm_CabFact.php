@@ -58,7 +58,8 @@
             </tr>
             <tr>
                 <td>
-                    <span><?php echo $cabFact['ClaveAcceso'] ?></span>
+                
+                    <?php echo CHtml::image(Yii::app()->params['seaBarra'] . 'codebar.png', 'Utimpor', array('width' => '280px', 'height' => '20px')); ?>
                 </td>
             </tr>
             <tr>
