@@ -1170,3 +1170,1429 @@ Stack trace:
 REQUEST_URI=/websea/vSDocumentos/GenerarPdf.jsp
 HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
 ---
+2014/10/24 11:53:43 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/Ge...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/websea/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/websea/vSDocumentos/GenerarPdf.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 11:53:56 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/Ge...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/websea/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/websea/vSDocumentos/GenerarPdf.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 11:55:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/1.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 11:55:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/8.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 11:58:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/8.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 11:58:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/8.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 12:01:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/8.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 12:01:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 12:07:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/3"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/3.jsp
+---
+2014/10/24 12:07:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/3"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/3.jsp
+---
+2014/10/24 12:11:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/3.jsp"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/3.jsp
+---
+2014/10/24 12:11:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/3.jsp"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 12:11:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "index.jsp" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('index.jsp')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('index.jsp')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/in...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/websea/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/websea/vSDocumentos/index.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/GenerarPdf.jsp
+---
+2014/10/24 12:11:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/1
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 12:12:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/1"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/1
+---
+2014/10/24 12:18:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/1"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/1
+---
+2014/10/24 12:18:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/1
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 12:19:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/1.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 12:19:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id=1"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id=1.jsp
+---
+2014/10/24 12:19:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?id=1.jsp
+---
+2014/10/24 12:19:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id=1"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id=1.jsp
+---
+2014/10/24 12:19:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/1.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 12:19:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/1.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 12:19:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/2.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 12:35:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 12:37:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/1.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 12:44:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/1.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 12:44:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/1.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 12:45:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/1"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/1.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 13:19:03 [error] [php] Undefined variable: id (/var/www/html/websea/protected/controllers/VSDocumentosController.php:31)
+Stack trace:
+#0 /opt/sisweb/web/CController.php(286): VSDocumentosController->runAction()
+#1 /opt/sisweb/web/CController.php(265): VSDocumentosController->runActionWithFilters()
+#2 /opt/sisweb/web/CWebApplication.php(282): VSDocumentosController->run()
+#3 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#5 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSDocumentos/GenerarPdf.jsp
+in /var/www/html/websea/protected/controllers/VSDocumentosController.php (31)
+in /var/www/html/websea/index.php (13)
+2014/10/24 13:19:38 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/Ge...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/websea/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/websea/vSDocumentos/GenerarPdf.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 13:19:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/1.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 13:19:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 13:20:45 [error] [php] Undefined variable: data (/var/www/html/websea/protected/views/vSDocumentos/_indexGrid.php:52)
+Stack trace:
+#0 /opt/sisweb/web/CController.php(869): VSDocumentosController->renderFile()
+#1 /var/www/html/websea/protected/views/vSDocumentos/index.php(12): VSDocumentosController->renderPartial()
+#2 /opt/sisweb/web/CBaseController.php(126): require()
+#3 /opt/sisweb/web/CBaseController.php(95): VSDocumentosController->renderInternal()
+#4 /opt/sisweb/web/CController.php(869): VSDocumentosController->renderFile()
+#5 /opt/sisweb/web/CController.php(782): VSDocumentosController->renderPartial()
+#6 /var/www/html/websea/protected/controllers/VSDocumentosController.php(27): VSDocumentosController->render()
+#7 /opt/sisweb/web/actions/CInlineAction.php(49): VSDocumentosController->actionIndex()
+#8 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#9 /opt/sisweb/web/CController.php(286): VSDocumentosController->runAction()
+#10 /opt/sisweb/web/CController.php(265): VSDocumentosController->runActionWithFilters()
+#11 /opt/sisweb/web/CWebApplication.php(282): VSDocumentosController->run()
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/vSDocumentos/index.jsp
+in /var/www/html/websea/protected/views/vSDocumentos/_indexGrid.php (52)
+in /var/www/html/websea/protected/views/vSDocumentos/index.php (12)
+in /var/www/html/websea/protected/controllers/VSDocumentosController.php (27)
+2014/10/24 13:23:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 13:23:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/3"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/3.jsp
+---
+2014/10/24 13:23:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3.jsp
+---
+2014/10/24 13:24:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/3"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/3.jsp
+---
+2014/10/24 13:26:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3.jsp
+---
+2014/10/24 13:26:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/3"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/3.jsp
+---
+2014/10/24 13:26:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 13:27:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/id/3"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/id/3.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 13:27:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 13:32:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 13:32:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/3"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/3.jsp
+---
+2014/10/24 13:32:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id=3"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id=3.jsp
+---
+2014/10/24 13:33:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id=3"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id=3
+---
+2014/10/24 13:33:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/?id=3
+---
+2014/10/24 13:33:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/?3
+---
+2014/10/24 13:34:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/?3
+---
+2014/10/24 13:34:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/?3
+---
+2014/10/24 13:35:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/?id=3
+---
+2014/10/24 13:35:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id=3
+---
+2014/10/24 13:35:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id=3.jsp
+---
+2014/10/24 13:35:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/3.jsp
+---
+2014/10/24 13:35:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 13:35:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/2.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 13:35:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/2"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/2.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 13:35:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/3"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/3.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 13:35:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/9"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/9.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 13:37:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/3"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/3.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 13:38:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/3"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/3.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 13:40:55 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/Ge...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/websea/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/websea/vSDocumentos/GenerarPdf.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 13:43:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "index.jsp" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('index.jsp')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('index.jsp')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/in...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/websea/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/websea/vSDocumentos/index.jsp
+HTTP_REFERER=http://localhost/websea/vsDocumentos/GenerarPdf/id/3.jsp
+---
+2014/10/24 13:43:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "index.jsp" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('index.jsp')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('index.jsp')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/in...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/websea/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/websea/vSDocumentos/index.jsp
+HTTP_REFERER=http://localhost/websea/vsDocumentos/GenerarPdf/id/3.jsp
+---
+2014/10/24 13:43:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 13:47:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 13:47:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 13:47:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/3"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/3
+---
+2014/10/24 13:47:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 13:48:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/3"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/3
+---
+2014/10/24 13:48:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/id/3"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/id/3
+---
+2014/10/24 13:51:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 13:51:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "index.jsp" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('index.jsp')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('index.jsp')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/in...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/websea/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/websea/vSDocumentos/index.jsp
+HTTP_REFERER=http://localhost/websea/vsDocumentos/GenerarPdf/id/3.jsp
+---
+2014/10/24 13:51:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/4
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 13:51:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/ids/4"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/ids/4
+---
+2014/10/24 13:53:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/4
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 13:53:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/5
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 13:53:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/5
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 13:53:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/5
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 14:02:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=5
+---
+2014/10/24 14:02:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf.php"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf.php?ids=5
+---
+2014/10/24 14:02:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=5
+---
+2014/10/24 14:02:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/5
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 15:49:06 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/Ge...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/websea/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/websea/vSDocumentos/GenerarPdf
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 15:49:13 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/Ge...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/websea/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/websea/vSDocumentos/GenerarPdf
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 15:49:40 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/Ge...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/websea/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/websea/vSDocumentos/GenerarPdf
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 15:51:31 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/Ge...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/websea/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/websea/vSDocumentos/GenerarPdf
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 15:55:12 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/Ge...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/websea/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/websea/vSDocumentos/GenerarPdf
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 15:55:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 15:55:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=12
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 15:59:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=6
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 16:01:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=1
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 16:08:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 16:08:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/2
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 16:08:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/2
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 16:08:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=6
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 16:12:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 16:15:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 16:16:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=8
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 16:20:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=6
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 16:22:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=6
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 16:25:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=13
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 16:32:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=11
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 16:32:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=13
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:14:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=1
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:18:39 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/Ge...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/websea/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/websea/vSDocumentos/GenerarPdf
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:19:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=1
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:19:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=1
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:19:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:21:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:24:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=2
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:25:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=2
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:25:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=2
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:25:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:25:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:25:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:25:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=5
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:27:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:28:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=5
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:36:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:38:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=6
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:38:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=7
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:42:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=5
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:43:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=5
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:43:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/8
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:44:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/8
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:57:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=5
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:57:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=5
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 18:58:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=8
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 19:00:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 19:12:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "index.jsp" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('index.jsp')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('index.jsp')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/in...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/websea/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/websea/vSDocumentos/index.jsp
+HTTP_REFERER=http://localhost/websea/vsDocumentos/GenerarPdf/id/3.jsp
+---
+2014/10/24 19:12:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=2
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 19:15:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 19:16:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=2
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 19:22:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=2
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 19:22:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 19:24:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/5
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 19:24:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/4
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 19:25:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/3
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 19:28:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/9
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 19:32:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/5
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 19:32:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/xx5
+---
+2014/10/24 19:33:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf/xx5"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/xx5
+---
+2014/10/24 19:33:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf/5
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 19:33:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "vsDocumentos/GenerarPdf"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vsDocumentos/Ge...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/vsDocumentos/GenerarPdf?ids=7
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 19:34:57 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Usted no se encuentra autorizado a realizar esta acción.' in /opt/sisweb/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /opt/sisweb/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no se enc...')
+#1 /opt/sisweb/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSCompania/Gene...')
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/websea/vSCompania/GenerarPdf?ids=6
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index
+---
+2014/10/24 19:39:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "index.jsp" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('index.jsp')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('index.jsp')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/in...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/websea/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/websea/vSDocumentos/index.jsp
+HTTP_REFERER=http://localhost/websea/vsDocumentos/GenerarPdf/id/3.jsp
+---
+2014/10/24 19:41:39 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#9 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/Ge...')
+#10 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /var/www/html/websea/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/websea/vSDocumentos/GenerarPdf/13.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 19:41:53 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#9 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/Ge...')
+#10 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /var/www/html/websea/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/websea/vSDocumentos/GenerarPdf/11.jsp
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---
+2014/10/24 20:28:06 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Usted no se encuentra autorizado a realizar esta acción.' in /opt/sisweb/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /opt/sisweb/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no se enc...')
+#1 /opt/sisweb/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#6 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('vSDocumentos/Ge...')
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/websea/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/websea/vSDocumentos/GenerarPdf.jsp?ids=4
+HTTP_REFERER=http://localhost/websea/vSDocumentos/index.jsp
+---

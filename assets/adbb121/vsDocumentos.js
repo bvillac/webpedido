@@ -4,5 +4,10 @@
  * and open the template in the editor.
  */
 
+function generarPdf(obj,id){
+    var link="";
+    link=$('#txth_controlador').val()+"/GenerarPdf?";
+    $(obj).attr("href", link+"id="+id); 
+}
 
 

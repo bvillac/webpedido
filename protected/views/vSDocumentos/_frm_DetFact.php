@@ -1,5 +1,5 @@
 
-<table class="tabDetalle">
+<table style="width:200mm" class="tabDetalle">
     <tbody>
         <tr>
             <td class="marcoCel titleDetalle">
