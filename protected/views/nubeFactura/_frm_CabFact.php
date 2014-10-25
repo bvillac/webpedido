@@ -59,7 +59,7 @@
             <tr>
                 <td>
                 
-                    <?php echo CHtml::image(Yii::app()->params['seaBarra'] . 'codebar.png', 'Utimpor', array('width' => '280px', 'height' => '20px')); ?>
+                    <?php echo CHtml::image(Yii::app()->params['seaBarra'] .$cabFact['IdentificacionComprador']. '.png', 'Utimpor', array('width' => '280px', 'height' => '20px')); ?>
                 </td>
             </tr>
             <tr>

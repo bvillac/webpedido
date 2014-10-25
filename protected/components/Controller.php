@@ -47,4 +47,22 @@ class Controller extends CController {
         }
     }
 
+    public function errorControl($e) {
+        switch ($e->getCode()) {
+            case 42000:
+                throw new CHttpException($e->getCode(), Yii::t('EXCEPTION', 'Invalid request. Please do not repeatt this request again.'));
+                break;
+            case 400:
+                throw new CHttpException($e->getCode(), Yii::t('EXCEPTION', 'Invalid request. Please do not repeatt this request again.'));
+                break;
+            case 0:
+                throw new CHttpException($e->getCode(), Yii::t('EXCEPTION', 'Invalid request. Please do not repeatt this request again.'));
+                break;
+            default:
+                throw new CHttpException($e->getCode(), $e->getMessage());
+                //throw new CHttpException($e->getCode(), Yii::t('CREDENCIAL_ADMIN', 'No data, Please try again.'));
+                break;
+        }
+    }
+
 }
