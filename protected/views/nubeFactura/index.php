@@ -8,6 +8,6 @@
 ?>
 <?php echo $this->renderPartial('_include'); ?>
 <div class="col-lg-12">
-    <?php echo $this->renderPartial('_frm_BuscarGrid', array('model' => $model, 'tipoDoc' => $tip_descargo)); ?>
+    <?php echo $this->renderPartial('_frm_BuscarGrid', array('model' => $model, 'tipoDoc' => $tipoDoc,'tipoApr'=> $tipoApr)); ?>
     <?php echo $this->renderPartial('_indexGrid', array('model' => $model)); ?>
 </div>

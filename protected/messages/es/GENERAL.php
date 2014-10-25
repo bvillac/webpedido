@@ -60,6 +60,10 @@ return array(
     /*CONSULTAS*/
     'Consultations' => 'Consultas',
     'Documents' => 'Documentos',
+    /*USER*/
+    'User Profile' => 'Perfil',
+    'Settings' => 'Configuración',
+    'Logout' => 'Salir',
     
     
     

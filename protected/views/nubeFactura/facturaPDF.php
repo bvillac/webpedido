@@ -108,8 +108,6 @@
                     </tr>
                 </tbody>
             </table>
-
-
         <?php } ?>
     </body>
 </html>

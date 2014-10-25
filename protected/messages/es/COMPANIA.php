@@ -35,5 +35,7 @@ return array(
     'Download XML document' => 'Descargar Documento XML',
     'Download XSD document' => 'Descargar Documento XSD',
     'Download' => 'Descargar',
+    /*OPCIONES BUSQUEDA*/
+    'Search by Name, Certificate' => 'Búsqueda por Nombre, Ruc',
 );
 ?>

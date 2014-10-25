@@ -49,7 +49,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
                 'pdf' => array(
                     'label' => Yii::t('COMPANIA', 'Download PDF document'),
                     'imageUrl'=>Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'].'pdf.png', //ruta del icono
-                    'url'=>'Yii::app()->createUrl("vSDocumentos/GenerarPdf", array("ids"=>$data["IdDoc"]))',
+                    'url'=>'Yii::app()->createUrl("NubeFactura/GenerarPdf", array("ids"=>$data["IdDoc"]))',
                     //'url'=>'Yii::app()->createUrl("vSDocumentos/GenerarPdf")',
                     //'click' => 'js:generarPdf(this,$data["IdDoc"])',
                 ),

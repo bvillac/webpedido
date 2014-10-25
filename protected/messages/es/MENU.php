@@ -11,5 +11,10 @@ return array(
     'Mail server' => 'Servidor Correo',
     'Sri services' => 'Servicios SRI',
     'Key contingency' => 'Clave Contingencía',
+    'Invoice' => 'Factura',
+    'Credit note' => 'Nota de Crédito',
+    'Debit note' => 'Nota de Débito',
+    'Reference guide' => 'Guía Remisión',
+    'Retention' => 'Retención',
 );
 ?>

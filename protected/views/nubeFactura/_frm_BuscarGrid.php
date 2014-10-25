@@ -1,7 +1,35 @@
 <div id="div-table">
     <div class="trow">
         <div class="tcol-td">
-            <span > <?php echo Yii::t('COMPANIA', 'Document') ?></span>
+            <?php
+            $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+                'name' => 'txt_PER_CEDULA',
+                'id' => 'txt_PER_CEDULA',
+                'source' => "js: function(request, response){ 
+                                                            autocompletarBuscarPersona(request, response,'txt_PER_CEDULA','COD-NOM');
+                                                        }",
+                'options' => array(
+                    'minLength' => '2',
+                    'showAnim' => 'fold',
+                    'select' => "js:function(event, ui) {
+                                                            actualizaBuscarPersona(ui.item.PER_ID);     
+                                                        }"
+                ),
+                'htmlOptions' => array(
+                    'class' => 'form-control',
+                    "data-type" => "number",
+                    //'onKeyup' => "verificarTextCedula(isEnter(event),'txt_PER_CEDULA')",
+                    'placeholder' => Yii::t('COMPANIA', 'Search by Name, Certificate'),
+                    //'onkeydown' => "nextControl(isEnter(event),'txt_nombre_medico_aten')",
+                    //'onkeydown' => "buscarCodigo(isEnter(event),'txt_cod_paciente','COD-ID')",
+                    'onkeydown' => "verificarTextCedula(isEnter(event),'txt_PER_CEDULA')",
+                    'value' => 'search',
+                ),
+            ));
+            ?>
+        </div>
+        <div class="tcol-td">
+            <span> <?php echo Yii::t('COMPANIA', 'Document') ?></span>
         </div>
         <div class="tcol-td">
             <?php
@@ -33,8 +61,8 @@
                     'autoSize' => true,
                     'changeMonth' => 'true',
                     'changeYear' => 'true',
-                    'showOtherMonths'=>true,
-                    'showButtonPanel'=>true,
+                    'showOtherMonths' => true,
+                    'showButtonPanel' => true,
                     'dateFormat' => Yii::app()->params['datepicker'],
                     'buttonImage' => Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'] . 'date-icon1.png',
                     'buttonImageOnly' => true,
@@ -47,7 +75,7 @@
                     //'modal'=>true,
                     //'size'=>10, 
                     'class' => 'form-control',
-                    'readonly'=>'readonly',
+                    'readonly' => 'readonly',
                 ),
             ));
             ?>

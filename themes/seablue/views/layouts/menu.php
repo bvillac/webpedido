@@ -58,10 +58,23 @@
     <ul class="nav nav-second-level collapse" style="height: 0px;">
         <li>
             <!--<a href="#">Second Level Item</a>-->
-            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Documents'), array('vSDocumentos/index')); ?>
+            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Invoice'), array('NubeFactura/index')); ?>
+            <?php //echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Documents'), array('vSDocumentos/index')); ?>
         </li>
         <li>
-            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Documents'), array('NubeFactura/create')); ?>
+            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Credit note'), array('NubeNotaCredito/index')); ?>
+        </li>
+        <li>
+            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Debit note'), array('NubeNotaDebito/index')); ?>
+        </li>
+        <li>
+            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Reference guide'), array('nubeGuiaRemision/index')); ?>
+        </li>
+        <li>
+            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Retention'), array('nubeRetencion/index')); ?>
+        </li>
+        <li>
+            <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Otros'), array('NubeFactura/create')); ?>
         </li>
         
     </ul>
