@@ -19,10 +19,9 @@ function retornarIndLista(array,property,value,ids){
     return index;
 }
 
-function buscarDataIndex(control,op){ 
-    control=(control=='')?'txt_PER_CEDULA':control;
-    var link=$('#txth_controlador').val()+"/BuscaDataIndex";
-    $.fn.yiiGridView.update('TbG_DOCUMENTO', {
+function buscarPersonaFicha(control,op){ 
+    var link=$('#txth_controlador').val()+"/BuscaPerIndex";
+    $.fn.yiiGridView.update('TbG_FICHA_MEDICA', {
         type: 'POST',
         url:link,
         data:{
@@ -70,7 +69,7 @@ function autocompletarBuscarPersona(request, response,control,op){
                 row.value=data[i]['RazonSocialComprador'];//lo que se almacena en en la caja de texto
                 arrayList[i] = row;
             }
-            sessionStorage.src_buscIndex = JSON.stringify(arrayList);//dss=>DataSessionStore
+            sessionStorage.src_buscInde = JSON.stringify(arrayList);//dss=>DataSessionStore
             response(arrayList);  
         }
     })            

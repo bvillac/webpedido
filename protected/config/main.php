@@ -180,6 +180,7 @@ return array(
         'rutaIconos' => '/images/acciones/',
         'pageSize' => 20,
         'pageSizeMin' => 10,
+        'limitRow' => 10,
         'datebydefault' => "d-m-Y",
         'datepicker' => 'dd-mm-yy',
         'datebytime' => 'Y-m-d h:i:s',

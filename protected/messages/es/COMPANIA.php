@@ -30,6 +30,9 @@ return array(
     '-Select-' => 'Selecionar',
     'Deny' => 'Negado',
     'None' => 'Ninguno',
+    'All' => 'Todos',
+    'Date Start' => 'FecIni',
+    'Date End' => 'FecFin',
     /*Botones*/
     'Download PDF document' => 'Descargar Documento PDF',
     'Download XML document' => 'Descargar Documento XML',

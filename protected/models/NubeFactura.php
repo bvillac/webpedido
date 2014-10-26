@@ -448,14 +448,14 @@ class NubeFactura extends VsSeaIntermedia {
                 WHERE A.Estado='1' AND A.CodigoDocumento='01' ";
         
         
-//         if (!empty($control)) {//Verifica la Opcion op para los filtros
-//            $sql .= ($control[0]['TIPO_DESCARGO'] != "0") ? " AND A.TDES_ID = '" . $control[0]['TIPO_DESCARGO'] . "' " : " ";
-//            $sql .= ($control[0]['COMPANIA'] != "0") ? "AND A.EMP_ID = '" . $control[0]['COMPANIA'] . "' " : "";
-//            $sql .= ($control[0]['COD_PACIENTE'] != "0") ? "AND CDOR_ID_PACIENTE='".$control[0]['COD_PACIENTE']."' " : "";
-//            //$sql .= ($control[0]['PACIENTE'] != "") ? "AND CONCAT(B.PER_APELLIDO,' ',B.PER_NOMBRE) LIKE '%" . $control[0]['PACIENTE'] . "%' " : "";
-//            $sql .= "AND DATE(A.CDOR_FECHA_INGRESO) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "' ";
-//        
-//        }
+         if (!empty($control)) {//Verifica la Opcion op para los filtros
+            $sql .= ($control[0]['TIPO_APR'] != "0") ? " AND A.Estado = '" . $control[0]['TIPO_APR'] . "' " : " ";
+            $sql .= ($control[0]['CEDULA'] > 0) ? "AND A.IdentificacionComprador = '" . $control[0]['CEDULA'] . "' " : "";
+            //$sql .= ($control[0]['COD_PACIENTE'] != "0") ? "AND CDOR_ID_PACIENTE='".$control[0]['COD_PACIENTE']."' " : "";
+            //$sql .= ($control[0]['PACIENTE'] != "") ? "AND CONCAT(B.PER_APELLIDO,' ',B.PER_NOMBRE) LIKE '%" . $control[0]['PACIENTE'] . "%' " : "";
+            $sql .= "AND DATE(A.FechaEmision) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "' ";
+        
+        }
 
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
@@ -534,6 +534,55 @@ class NubeFactura extends VsSeaIntermedia {
         $con = Yii::app()->dbvsseaint;
         $sql = "SELECT * FROM " . $con->dbname . ".NubeDatoAdicionalFactura WHERE IdFactura=$id";
         $rawData = $con->createCommand($sql)->queryAll();//Recupera Solo 1
+        $con->active = false;
+        return $rawData;
+    }
+    
+    
+     /**
+     * Función 
+     *
+     * @author Byron Villacreses
+     * @access public
+     * @return Retorna Los Datos de las Facturas GENERADAS
+     */
+    public function retornarPersona($valor, $op) {
+        $con = Yii::app()->dbvsseaint;
+        $rawData = array();
+        //Patron de Busqueda
+        /* http://www.mclibre.org/consultar/php/lecciones/php_expresiones_regulares.html */
+        $patron = "/^[[:digit:]]+$/"; //Los patrones deben empezar y acabar con el carácter / (barra).
+        if (preg_match($patron, $valor)) {
+            $op = "CED"; //La cadena son sólo números.
+        } else {
+            $op = "NOM"; //La cadena son Alfanumericos.
+            //Las separa en un array 
+            $aux = explode(" ", $valor);
+            $condicion = " ";
+            for ($i = 0; $i < count($aux); $i++) {
+                //Crea la Sentencia de Busqueda
+                //$condicion .=" AND (PER_NOMBRE LIKE '%$aux[$i]%' OR PER_APELLIDO LIKE '%$aux[$i]%' ) ";
+                $condicion .=" AND RazonSocialComprador LIKE '%$aux[$i]%' ";
+            }
+        }
+        $sql = "SELECT A.IdentificacionComprador,A.RazonSocialComprador
+                    FROM VSSEAINTERMEDIA.NubeFactura A
+                  WHERE A.Estado<>0	GROUP BY IdentificacionComprador ";
+
+        switch ($op) {
+            case 'CED':
+                $sql .=" AND IdentificacionComprador LIKE '%$valor%' ";
+                break;
+            case 'NOM':
+                $sql .=$condicion;
+                break;
+            default:
+        }
+        $sql .= " LIMIT " . Yii::app()->params['limitRow'];
+        //$sql .= " LIMIT 10";
+
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
         return $rawData;
     }

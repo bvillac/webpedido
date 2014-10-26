@@ -70,7 +70,7 @@ function autocompletarBuscarPersona(request, response,control,op){
                 row.value=data[i]['RazonSocialComprador'];//lo que se almacena en en la caja de texto
                 arrayList[i] = row;
             }
-            sessionStorage.src_buscIndex = JSON.stringify(arrayList);//dss=>DataSessionStore
+            sessionStorage.src_buscInde = JSON.stringify(arrayList);//dss=>DataSessionStore
             response(arrayList);  
         }
     })            

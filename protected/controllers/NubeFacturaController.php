@@ -30,7 +30,7 @@ class NubeFacturaController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // permite a los usuarios logueados ejecutar las acciones 
-                'actions' => array('create', 'update', 'GenerarPdf'),
+                'actions' => array('create', 'update', 'GenerarPdf','BuscaDataIndex','BuscarPersonas'),
                 'users' => array('@'),
             ),
             array('allow', // permite que únicamente el usuario admin ejecute las , 
@@ -216,11 +216,25 @@ class NubeFacturaController extends Controller {
             $valor = isset($_POST['valor']) ? $_POST['valor'] : "";
             $op = isset($_POST['op']) ? $_POST['op'] : "";
             $arrayData = array();
-            $afiliado = new FICHA_MEDICA();
-            $arrayData = $afiliado->retornarPersona($valor, $op);
+            $data = new NubeFactura();
+            $arrayData = $data->retornarPersona($valor, $op);
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arrayData);
         }
     }
+    
+    public function actionBuscaDataIndex() {
+        if (Yii::app()->request->isAjaxRequest) {
+            $arrayData = array();
+            $obj = new NubeFactura();
+            $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
+            $arrayData = $obj->mostrarDocumentos($contBuscar);
+            $this->renderPartial('_indexGrid', array(
+                'model' => $arrayData,
+            ),false, true);
+            return;
+        }
+    }
+    
 
 }
