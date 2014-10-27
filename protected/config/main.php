@@ -181,6 +181,7 @@ return array(
         'pageSize' => 20,
         'pageSizeMin' => 10,
         'limitRow' => 10,
+        'dateStart' => "01-01-2014",//Fecha de Inicio
         'datebydefault' => "d-m-Y",
         'datepicker' => 'dd-mm-yy',
         'datebytime' => 'Y-m-d h:i:s',

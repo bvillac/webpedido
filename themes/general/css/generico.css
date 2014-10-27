@@ -209,6 +209,7 @@ and open the template in the editor.
 .tcol-td {/* Crear Columnas de una fila con  Divs*/
     display:table-cell;
     width:auto;
+    vertical-align: middle;
     padding: 2px; /*para mantener margen entre campos de texto DL*/
 }
 
@@ -231,5 +232,10 @@ and open the template in the editor.
  .items td.totals {
  text-align: right;
  border: 0.1mm solid #000000;
+ }
+ 
+ .imgDate{
+     float: left;
+     width: 100px;
  }
 

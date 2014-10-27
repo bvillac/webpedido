@@ -40,5 +40,6 @@ return array(
     'Download' => 'Descargar',
     /*OPCIONES BUSQUEDA*/
     'Search by Name, Certificate' => 'Búsqueda por Nombre, Ruc',
+    'Social reason o Ruc' => 'Razón Social o Ruc',
 );
 ?>

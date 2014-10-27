@@ -18,12 +18,13 @@
                 'htmlOptions' => array(
                     'class' => 'form-control',
                     "data-type" => "number",
+                    'size'=>35, 
                     //'onKeyup' => "verificarTextCedula(isEnter(event),'txt_PER_CEDULA')",
-                    'placeholder' => Yii::t('COMPANIA', 'Search by Name, Certificate'),
+                    'placeholder' => Yii::t('COMPANIA', 'Social reason o Ruc'),
                     //'onkeydown' => "nextControl(isEnter(event),'txt_nombre_medico_aten')",
                     //'onkeydown' => "buscarCodigo(isEnter(event),'txt_cod_paciente','COD-ID')",
                     //'onkeydown' => "verificarTextCedula(isEnter(event),'txt_PER_CEDULA')",
-                    'value' => 'search',
+                    //'value' => 'search',
                 ),
             ));
             ?>
@@ -57,7 +58,7 @@
             $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                 'name' => 'dtp_fec_ini',
                 'attribute' => 'dtp_fec_ini',
-                'value' => date(Yii::app()->params['datebydefault']),
+                'value' => date(Yii::app()->params['dateStart']),
                 'language' => Yii::app()->language,
                 'options' => array(
                     'showAnim' => 'fold',
@@ -73,11 +74,11 @@
                 ),
                 'htmlOptions' => array(
                     //'style' => 'height:10px;',
-                    //'style' => 'width:100px;vertical-align:top',
+                    //'style' => 'width:100px;vertical-align:top !important',
                     //'style'=>'width:200px !important',
                     //'modal'=>true,
                     //'size'=>10, 
-                    'class' => 'form-control',
+                    'class' => 'form-control imgDate',
                     'readonly' => 'readonly',
                 ),
             ));
@@ -111,7 +112,7 @@
                     //'style'=>'width:200px !important',
                     //'modal'=>true,
                     //'size'=>10, 
-                    'class' => 'form-control',
+                    'class' => 'form-control imgDate',
                     'readonly' => 'readonly',
                 ),
             ));
