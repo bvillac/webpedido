@@ -56,8 +56,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
                 'xml' => array(
                     'label' => Yii::t('COMPANIA', 'Download XML document'),
                     'imageUrl'=>Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'].'xml.png', //ruta del icono
-                    //'click' => 'js:obtenerSeleccion',
-                    //'click'=>'function(){$("#dialog_id").dialog("open"); return false;}',
+                    'url'=>'Yii::app()->createUrl("NubeFactura/GenerarXml", array("ids"=>base64_encode($data["IdDoc"])))',
                 ),
                 'xsd' => array(
                     'label' => Yii::t('COMPANIA', 'Download XSD document'),

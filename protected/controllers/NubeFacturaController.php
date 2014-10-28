@@ -30,7 +30,7 @@ class NubeFacturaController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // permite a los usuarios logueados ejecutar las acciones 
-                'actions' => array('create', 'update', 'GenerarPdf','BuscaDataIndex','BuscarPersonas'),
+                'actions' => array('create', 'update', 'GenerarPdf', 'BuscaDataIndex', 'BuscarPersonas', 'GenerarXml'),
                 'users' => array('@'),
             ),
             array('allow', // permite que únicamente el usuario admin ejecute las , 
@@ -222,7 +222,7 @@ class NubeFacturaController extends Controller {
             echo CJavaScript::jsonEncode($arrayData);
         }
     }
-    
+
     public function actionBuscaDataIndex() {
         if (Yii::app()->request->isAjaxRequest) {
             $arrayData = array();
@@ -231,10 +231,24 @@ class NubeFacturaController extends Controller {
             $arrayData = $obj->mostrarDocumentos($contBuscar);
             $this->renderPartial('_indexGrid', array(
                 'model' => $arrayData,
-            ),false, true);
+                    ), false, true);
             return;
         }
     }
-    
+
+    public function actionGenerarXml($ids) {
+        $ids = isset($_GET['ids']) ? base64_decode($_GET['ids']) : NULL;
+        $modelo = new NubeFactura();
+        $cabFact = $modelo->mostrarCabFactura($ids, '01');
+        $detFact = $modelo->mostrarDetFactura($ids);
+        $impFact = $modelo->mostrarFacturaImp($ids);
+        $adiFact = $modelo->mostrarFacturaDataAdicional($ids);
+        $this->renderPartial('facturaXML', array(
+            'cabFact' => $cabFact,
+            'detFact' => $detFact,
+            'impFact' => $impFact,
+            'adiFact' => $adiFact,
+        ));
+    }
 
 }

@@ -55,6 +55,18 @@ class Controller extends CController {
             case 400:
                 throw new CHttpException($e->getCode(), Yii::t('EXCEPTION', 'Invalid request. Please do not repeatt this request again.'));
                 break;
+            case 401:
+                throw new CHttpException($e->getCode(), Yii::t('EXCEPTION', 'You must be authorized to view this page.'));
+                break;
+            case 404:
+                throw new CHttpException($e->getCode(), Yii::t('EXCEPTION', 'The requested URL //http:ruta was not found.'));
+                break;
+            case 500:
+                throw new CHttpException($e->getCode(), Yii::t('EXCEPTION', 'The server encountered an error processing your request.'));
+                break;
+            case 501:
+                throw new CHttpException($e->getCode(), Yii::t('EXCEPTION', 'The requested method is not implemented.'));
+                break;
             case 0:
                 throw new CHttpException($e->getCode(), Yii::t('EXCEPTION', 'Invalid request. Please do not repeatt this request again.'));
                 break;

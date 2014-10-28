@@ -67,6 +67,7 @@ class UserIdentity extends CUserIdentity
                     $session->add('pemi_id', $pemi_id);
                     $session->add('Ruc',$data['Ruc']);
                     $session->add('RazonSocial',$data['RazonSocial']);
+                    $session->add('NombreComercial',$data['NombreComercial']);
                     $session->add('DireccionMatriz',$data['DireccionMatriz']);
                     $session->add('DireccionSucursal',$data['DireccionSucursal']);
                     $session->add('ContribuyenteEspecial',$data['ContribuyenteEspecial']);
