@@ -3,15 +3,17 @@
         <tbody>
             <tr>
                 <td class="titleDetalle">
-                    <label><?php echo Yii::t('DOCUMENTOS', 'Additional Information') ?></label>
+                    <span class="titleLabel"><?php echo Yii::t('DOCUMENTOS', 'Additional Information') ?></span>
                 </td>
             </tr>
             <?php
             for ($i = 0; $i < sizeof($adiFact); $i++) {
                 ?>
                 <tr>
-                    <td class="marcoCel"><?php echo $adiFact[$i]['Nombre'] ?></td>
-                    <td class="marcoCel"><?php echo $adiFact[$i]['Descripcion'] ?></td>
+                    <td>
+                        <span class="titleLabel"><?php echo $adiFact[$i]['Nombre'] ?></span>
+                        <span><?php echo $adiFact[$i]['Descripcion'] ?></span>
+                    </td>
                 </tr>
             <?php } ?>
 

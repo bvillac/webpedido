@@ -240,9 +240,9 @@ class NubeFacturaController extends Controller {
         $ids = isset($_GET['ids']) ? base64_decode($_GET['ids']) : NULL;
         $modelo = new NubeFactura();
         $cabFact = $modelo->mostrarCabFactura($ids, '01');
-        $detFact = $modelo->mostrarDetFactura($ids);
+        $detFact = $modelo->mostrarDetFacturaImp($ids);
         $impFact = $modelo->mostrarFacturaImp($ids);
-        $adiFact = $modelo->mostrarFacturaDataAdicional($ids);
+        $adiFact = $modelo->mostrarFacturaDataAdicional($ids);//
         $this->renderPartial('facturaXML', array(
             'cabFact' => $cabFact,
             'detFact' => $detFact,

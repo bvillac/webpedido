@@ -497,7 +497,7 @@ class NubeFactura extends VsSeaIntermedia {
                         A.FechaEmision,A.IdentificacionComprador,A.RazonSocialComprador,
                         A.TotalSinImpuesto,A.TotalDescuento,A.Propina,A.ImporteTotal,
                         B.*,C.Descripcion NombreDocumento,A.AutorizacionSri,A.ClaveAcceso,A.FechaAutorizacion,
-                        A.Ambiente,A.TipoEmision,A.GuiaRemision
+                        A.Ambiente,A.TipoEmision,A.GuiaRemision,A.Moneda
                         FROM " . $con->dbname . ".NubeFactura A
                                 INNER JOIN " . $con->dbname . ".NubeFacturaImpuesto B
                                         ON A.IdFactura=B.IdFactura
@@ -517,6 +517,33 @@ class NubeFactura extends VsSeaIntermedia {
                                 INNER JOIN " . $con->dbname . ".NubeDetalleFacturaImpuesto B
                                         ON A.IdDetalleFactura=B.IdDetalleFactura
                 WHERE A.IdFactura =$id";
+        $rawData = $con->createCommand($sql)->queryAll();//Recupera Solo 1
+        $con->active = false;
+        return $rawData;
+    }
+    
+    public function mostrarDetFacturaImp($id) {
+        $rawData = array();
+        $con = Yii::app()->dbvsseaint;
+//        $sql = "SELECT A.*,B.BaseImponible,B.Tarifa,B.Valor
+//                        FROM " . $con->dbname . ".NubeDetalleFactura A
+//                                INNER JOIN " . $con->dbname . ".NubeDetalleFacturaImpuesto B
+//                                        ON A.IdDetalleFactura=B.IdDetalleFactura
+//                WHERE A.IdFactura =$id";
+        $sql = "SELECT * FROM " . $con->dbname . ".NubeDetalleFactura WHERE IdFactura=$id" ;
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();//Recupera Solo 1
+        $con->active = false;
+        for ($i = 0; $i < sizeof($rawData); $i++) {
+           $rawData[$i]['impuestos']=$this->mostrarDetalleImp($rawData[$i]['IdDetalleFactura']);//Retorna el Detalle del Impuesto
+        }
+        return $rawData;
+    }
+    
+    private function mostrarDetalleImp($id) {
+        $rawData = array();
+        $con = Yii::app()->dbvsseaint;
+        $sql = "SELECT * FROM " . $con->dbname . ".NubeDetalleFacturaImpuesto WHERE IdDetalleFactura=$id";
         $rawData = $con->createCommand($sql)->queryAll();//Recupera Solo 1
         $con->active = false;
         return $rawData;
