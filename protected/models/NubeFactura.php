@@ -239,6 +239,7 @@ class NubeFactura extends VsSeaIntermedia {
                 $idCab = $con->getLastInsertID($con->dbname . '.NubeFactura');
                 $detFact=$this->buscarDetFacturas($cabFact[$i]['TIP_NOF'],$cabFact[$i]['NUM_NOF']);
                 $this->InsertarDetFactura($con,$detFact,$idCab);
+                $this->InsertarFacturaDatoAdicional($con,$i,$cabFact,$idCab);
             }
             $trans->commit();
             $con->active = false;
@@ -259,7 +260,8 @@ class NubeFactura extends VsSeaIntermedia {
         //$sql = "SELECT TIP_NOF,CONCAT(REPEAT('0',9-LENGTH(RIGHT(NUM_NOF,9))),RIGHT(NUM_NOF,9)) NUM_NOF,
         $sql = "SELECT TIP_NOF, NUM_NOF,
                         CED_RUC,NOM_CLI,FEC_VTA,DIR_CLI,VAL_BRU,POR_DES,VAL_DES,VAL_FLE,BAS_IVA,
-                        BAS_IV0,POR_IVA,VAL_IVA,VAL_NET,POR_R_F,VAL_R_F,POR_R_I,VAL_R_I,GUI_REM,0 PROPINA
+                        BAS_IV0,POR_IVA,VAL_IVA,VAL_NET,POR_R_F,VAL_R_F,POR_R_I,VAL_R_I,GUI_REM,0 PROPINA,
+                        USUARIO,LUG_DES,NOM_CTO
                     FROM " . $conCont->dbname . ".VC010101 
                 WHERE IND_UPD='L' AND FEC_VTA>'2014-05-01' AND ENV_DOC='0' LIMIT 2";
 
@@ -299,7 +301,7 @@ class NubeFactura extends VsSeaIntermedia {
                             (Ambiente,TipoEmision, RazonSocial, NombreComercial, Ruc,ClaveAcceso,CodigoDocumento, Establecimiento,
                             PuntoEmision, Secuencial, DireccionMatriz, FechaEmision, DireccionEstablecimiento, ContribuyenteEspecial,
                             ObligadoContabilidad, TipoIdentificacionComprador, GuiaRemision, RazonSocialComprador, IdentificacionComprador,
-                            TotalSinImpuesto, TotalDescuento, Propina, ImporteTotal, Moneda, SecuencialERP, CodigoTransaccionERP,Estado,FechaCarga) VALUES (
+                            TotalSinImpuesto, TotalDescuento, Propina, ImporteTotal, Moneda, SecuencialERP, CodigoTransaccionERP,UsuarioCreador,Estado,FechaCarga) VALUES (
                             '" . $objEmp['Ambiente'] . "',
                             '" . $objEmp['TipoEmision'] . "',
                             '" . $objEmp['RazonSocial'] . "',
@@ -326,6 +328,7 @@ class NubeFactura extends VsSeaIntermedia {
                             '" . $objEmp['Moneda'] . "', 
                             '$Secuencial', 
                             '" . $objEnt[0]['TIP_NOF'] . "',
+                            '" . $objEnt[0]['USUARIO'] . "',
                             '1',CURRENT_TIMESTAMP() )";
                             
 
@@ -405,6 +408,19 @@ class NubeFactura extends VsSeaIntermedia {
         $command->execute();
     }
     
+    private function InsertarFacturaDatoAdicional($con,$i,$cabFact,$idCab){
+        $direccion=$cabFact[$i]['DIR_CLI'];
+        $destino=$cabFact[$i]['LUG_DES'];
+        $contacto=$cabFact[$i]['NOM_CTO'];
+        $sql = "INSERT INTO " . $con->dbname . ".NubeDatoAdicionalFactura 
+                 (Nombre,Descripcion,IdFactura)
+                 VALUES
+                 ('Direccion','$direccion','$idCab'),('Destino','$destino','$idCab'),('Contacto','$contacto','$idCab')";
+        
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
     private function actualizaErpCabFactura($cabFact) {
         $conContUp = yii::app()->dbcont;
         $transCont = $conContUp->beginTransaction();
@@ -433,19 +449,16 @@ class NubeFactura extends VsSeaIntermedia {
     public function mostrarDocumentos($control) {
         $rawData = array();
         $con = Yii::app()->dbvsseaint;
-        
         $sql = "SELECT A.IdFactura IdDoc,A.Estado,A.CodigoTransaccionERP,A.SecuencialERP,A.UsuarioCreador,
                         A.FechaAutorizacion,A.AutorizacionSRI,
                         CONCAT(A.Establecimiento,'-',A.PuntoEmision,'-',A.Secuencial) NumDocumento,
                         A.FechaEmision,A.IdentificacionComprador,A.RazonSocialComprador,
                         A.TotalSinImpuesto,A.TotalDescuento,A.Propina,A.ImporteTotal,
-                        B.*,C.Descripcion NombreDocumento,A.AutorizacionSri,A.ClaveAcceso,A.FechaAutorizacion
+                        C.Descripcion NombreDocumento,A.AutorizacionSri,A.ClaveAcceso,A.FechaAutorizacion
                         FROM " . $con->dbname . ".NubeFactura A
-                                INNER JOIN " . $con->dbname . ".NubeFacturaImpuesto B
-                                        ON A.IdFactura=B.IdFactura
                                 INNER JOIN VSSEA.VSDirectorio C
                                         ON A.CodigoDocumento=C.TipoDocumento
-                WHERE A.Estado='1' AND A.CodigoDocumento='01' ";
+                WHERE A.CodigoDocumento='01' ";
         
         
          if (!empty($control)) {//Verifica la Opcion op para los filtros
@@ -456,6 +469,7 @@ class NubeFactura extends VsSeaIntermedia {
             $sql .= "AND DATE(A.FechaEmision) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "' ";
         
         }
+        //echo $sql;
 
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
@@ -496,11 +510,9 @@ class NubeFactura extends VsSeaIntermedia {
                         A.CodigoDocumento,A.Establecimiento,A.PuntoEmision,A.Secuencial,
                         A.FechaEmision,A.IdentificacionComprador,A.RazonSocialComprador,
                         A.TotalSinImpuesto,A.TotalDescuento,A.Propina,A.ImporteTotal,
-                        B.*,C.Descripcion NombreDocumento,A.AutorizacionSri,A.ClaveAcceso,A.FechaAutorizacion,
+                        C.Descripcion NombreDocumento,A.AutorizacionSri,A.ClaveAcceso,A.FechaAutorizacion,
                         A.Ambiente,A.TipoEmision,A.GuiaRemision,A.Moneda
                         FROM " . $con->dbname . ".NubeFactura A
-                                INNER JOIN " . $con->dbname . ".NubeFacturaImpuesto B
-                                        ON A.IdFactura=B.IdFactura
                                 INNER JOIN VSSEA.VSDirectorio C
                                         ON A.CodigoDocumento=C.TipoDocumento
                 WHERE A.Estado<>'0' AND A.CodigoDocumento='$tdoc' AND A.IdFactura =$id ";
@@ -509,27 +521,22 @@ class NubeFactura extends VsSeaIntermedia {
         return $rawData;
     }
     
-    public function mostrarDetFactura($id) {
-        $rawData = array();
-        $con = Yii::app()->dbvsseaint;
-        $sql = "SELECT A.*,B.BaseImponible,B.Tarifa,B.Valor
-                        FROM " . $con->dbname . ".NubeDetalleFactura A
-                                INNER JOIN " . $con->dbname . ".NubeDetalleFacturaImpuesto B
-                                        ON A.IdDetalleFactura=B.IdDetalleFactura
-                WHERE A.IdFactura =$id";
-        $rawData = $con->createCommand($sql)->queryAll();//Recupera Solo 1
-        $con->active = false;
-        return $rawData;
-    }
-    
-    public function mostrarDetFacturaImp($id) {
-        $rawData = array();
-        $con = Yii::app()->dbvsseaint;
+//    public function mostrarDetFactura($id) {
+//        $rawData = array();
+//        $con = Yii::app()->dbvsseaint;
 //        $sql = "SELECT A.*,B.BaseImponible,B.Tarifa,B.Valor
 //                        FROM " . $con->dbname . ".NubeDetalleFactura A
 //                                INNER JOIN " . $con->dbname . ".NubeDetalleFacturaImpuesto B
 //                                        ON A.IdDetalleFactura=B.IdDetalleFactura
 //                WHERE A.IdFactura =$id";
+//        $rawData = $con->createCommand($sql)->queryAll();//Recupera Solo 1
+//        $con->active = false;
+//        return $rawData;
+//    }
+    
+    public function mostrarDetFacturaImp($id) {
+        $rawData = array();
+        $con = Yii::app()->dbvsseaint;
         $sql = "SELECT * FROM " . $con->dbname . ".NubeDetalleFactura WHERE IdFactura=$id" ;
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();//Recupera Solo 1

@@ -150,7 +150,7 @@ class NubeFacturaController extends Controller {
 
     private function tipoAprobacion() {
         return array(
-            //'1' => Yii::t('COMPANIA', 'Send'),
+            '1' => Yii::t('COMPANIA', 'Send'),
             '2' => Yii::t('COMPANIA', 'Authorized'),
             '3' => Yii::t('COMPANIA', 'Unauthorized'),
         );
@@ -178,7 +178,7 @@ class NubeFacturaController extends Controller {
             $ids = isset($_GET['ids']) ? base64_decode($_GET['ids']) : NULL;
             $modelo = new NubeFactura(); //Ejmpleo code 3
             $cabFact = $modelo->mostrarCabFactura($ids, '01');
-            $detFact = $modelo->mostrarDetFactura($ids);
+            $detFact = $modelo->mostrarDetFacturaImp($ids);
             $impFact = $modelo->mostrarFacturaImp($ids);
             $adiFact = $modelo->mostrarFacturaDataAdicional($ids);
             //$contBuscar = array();
