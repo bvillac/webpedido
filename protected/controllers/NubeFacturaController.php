@@ -239,6 +239,8 @@ class NubeFacturaController extends Controller {
     public function actionGenerarXml($ids) {
         $ids = isset($_GET['ids']) ? base64_decode($_GET['ids']) : NULL;
         $modelo = new NubeFactura();
+        $firmaDig = new VSFirmaDigital();
+        $firma=$firmaDig->recuperarXAdES_BES();
         $cabFact = $modelo->mostrarCabFactura($ids, '01');
         $detFact = $modelo->mostrarDetFacturaImp($ids);
         $impFact = $modelo->mostrarFacturaImp($ids);
@@ -248,6 +250,7 @@ class NubeFacturaController extends Controller {
             'detFact' => $detFact,
             'impFact' => $impFact,
             'adiFact' => $adiFact,
+            'firma' => $firma,
         ));
     }
 

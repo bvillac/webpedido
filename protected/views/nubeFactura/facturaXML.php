@@ -112,8 +112,9 @@ $xmldata .='<infoAdicional>';
 for ($i = 0; $i < sizeof($adiFact); $i++) {
     $xmldata .='<campoAdicional nombre="' . $adiFact[$i]['Nombre'] . '">' . $adiFact[$i]['Descripcion'] . '</campoAdicional>';
 }
-$xmldata .='</infoAdicional>
-</factura>';
+$xmldata .='</infoAdicional>';
+$xmldata .=$firma;
+$xmldata .='</factura>';
 
 $nomDocfile = $cabFact['NombreDocumento'] . '-' . $cabFact['NumDocumento'] . '.xml';
 if (file_put_contents(Yii::app()->params['seaDocFact'] . $nomDocfile, $xmldata)) { // this code is working fine xml get created

@@ -36,6 +36,10 @@ return array(
     ),
     // application components
     'components' => array(
+        'phpseclib' => array(
+            'class' => 'system.vendors.phpseclib.PhpSecLib'
+            //'class' => 'system.phpseclib.PhpSecLib'
+        ),
         'ePdf' => array(
             'class' => 'ext.yii-pdf.EYiiPdf',
             'params' => array(
@@ -187,7 +191,7 @@ return array(
         'datepicker' => 'dd-mm-yy',
         'datebytime' => 'Y-m-d h:i:s',
         'seaFirma' => '/opt/SEAF/',
-        'seaFirext' => 'asc', //Extension de Firma Electronica
+        'seaFirext' => 'p12', //Extension de Firma Electronica
         'seaDocFact' => '/opt/SEADOC/FACTURAS/',
         'seaDocRete' => '/opt/SEADOC/RETENCIONES/',
         'seaDocNc' => '/opt/SEADOC/NC/',

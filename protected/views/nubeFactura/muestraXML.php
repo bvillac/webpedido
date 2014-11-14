@@ -4,7 +4,8 @@
     <numeroAutorizacion>0210201418592709912672630011005252541</numeroAutorizacion>
     <fechaAutorizacion class="fechaAutorizacion">02/10/2014 18:59:27</fechaAutorizacion>
     <comprobante>
-        <![CDATA[<?xml version="1.0" encoding="UTF-8"?><factura id="comprobante" version="1.0.0">
+        <![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+        <factura id="comprobante" version="1.0.0">
             <infoTributaria>
                 <ambiente>2</ambiente>
                 <tipoEmision>1</tipoEmision>
@@ -187,6 +188,34 @@
                         </ds:RSAKeyValue>
                     </ds:KeyValue>
                 </ds:KeyInfo>
-                <ds:Object Id="Signature384250-Object296686"><etsi:QualifyingProperties Target="#Signature384250"><etsi:SignedProperties Id="Signature384250-SignedProperties483439"><etsi:SignedSignatureProperties><etsi:SigningTime>2014-09-28T23:01:07-05:00</etsi:SigningTime><etsi:SigningCertificate><etsi:Cert><etsi:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><ds:DigestValue>KM2HTIHd9p23qj3m/p0ph57+Ma0=</ds:DigestValue></etsi:CertDigest><etsi:IssuerSerial><ds:X509IssuerName>CN=AUTORIDAD DE CERTIFICACION SUB SECURITY DATA,OU=ENTIDAD DE CERTIFICACION DE INFORMACION,O=SECURITY DATA S.A.,C=EC</ds:X509IssuerName><ds:X509SerialNumber>1297951265</ds:X509SerialNumber></etsi:IssuerSerial></etsi:Cert></etsi:SigningCertificate></etsi:SignedSignatureProperties><etsi:SignedDataObjectProperties><etsi:DataObjectFormat ObjectReference="#Reference-ID-427820"><etsi:Description>comprobante</etsi:Description><etsi:MimeType>text/xml</etsi:MimeType></etsi:DataObjectFormat></etsi:SignedDataObjectProperties></etsi:SignedProperties></etsi:QualifyingProperties></ds:Object></ds:Signature></factura>]]>
+                <ds:Object Id="Signature384250-Object296686">
+                    <etsi:QualifyingProperties Target="#Signature384250">
+                        <etsi:SignedProperties Id="Signature384250-SignedProperties483439">
+                            <etsi:SignedSignatureProperties>
+                                <etsi:SigningTime>2014-09-28T23:01:07-05:00</etsi:SigningTime>
+                                <etsi:SigningCertificate>
+                                    <etsi:Cert>
+                                        <etsi:CertDigest>
+                                            <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                                            <ds:DigestValue>KM2HTIHd9p23qj3m/p0ph57+Ma0=</ds:DigestValue>
+                                        </etsi:CertDigest>
+                                        <etsi:IssuerSerial>
+                                            <ds:X509IssuerName>CN=AUTORIDAD DE CERTIFICACION SUB SECURITY DATA,OU=ENTIDAD DE CERTIFICACION DE INFORMACION,O=SECURITY DATA S.A.,C=EC</ds:X509IssuerName>
+                                            <ds:X509SerialNumber>1297951265</ds:X509SerialNumber>
+                                        </etsi:IssuerSerial>
+                                    </etsi:Cert>
+                                </etsi:SigningCertificate>
+                            </etsi:SignedSignatureProperties>
+                            <etsi:SignedDataObjectProperties>
+                                <etsi:DataObjectFormat ObjectReference="#Reference-ID-427820">
+                                    <etsi:Description>comprobante</etsi:Description>
+                                    <etsi:MimeType>text/xml</etsi:MimeType>
+                                </etsi:DataObjectFormat>
+                            </etsi:SignedDataObjectProperties>
+                        </etsi:SignedProperties>
+                    </etsi:QualifyingProperties>
+                </ds:Object>
+            </ds:Signature>
+        </factura>]]>
     </comprobante>
 </autorizacion>
