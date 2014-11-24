@@ -139,6 +139,15 @@ class VSFirmaDigital extends VsSeaActiveRecord {
     public function recuperarXAdES_BES() {
         /* EJEMPO DE FIRMADO */
         //$obj = new VSFirmaDigital;
+        //Varibles de EntornoFirma
+        $config = array(
+            //"digest_alg" => "sha1",
+            "private_key_bits" => 2048,
+            //"private_key_type" => OPENSSL_KEYTYPE_RSA,
+        );
+        
+        $XmlDsigRSASHA1Url = "http://www.w3.org/2000/09/xmldsig#rsa-sha1";
+
         $Dataf = $this->recuperarFirmaDigital('1');
         $x509 = Yii::app()->phpseclib->createX509(); //Crear el ObjetoX509
         $RutaFile = explode(".", base64_decode($Dataf['RutaFile'])); //Obtiene el Nombre del Certificado x Default = .p12
@@ -148,9 +157,9 @@ class VSFirmaDigital extends VsSeaActiveRecord {
         $p12buf = fread($fd, filesize($file));
         fclose($fd);
         //Se carga el Certificado para Manipular
-        $cert = $x509->loadX509($p12buf);
-        $DataCn = explode(",", $x509->getIssuerDN(true));//Dastos del Usuario Firma
-        $X509IssuerName = trim($DataCn[4]) . ',' . trim($DataCn[3]) . ',' . trim($DataCn[2]) . ',' . trim($DataCn[1]) . ',' . trim($DataCn[0]);//Crear el String segun SRI
+        $cert = $x509->loadX509($p12buf);//Obtengo el Certificado Digital
+        $DataCn = explode(",", $x509->getIssuerDN(true)); //Dastos del Usuario Firma
+        $X509IssuerName = trim($DataCn[4]) . ',' . trim($DataCn[3]) . ',' . trim($DataCn[2]) . ',' . trim($DataCn[1]) . ',' . trim($DataCn[0]); //Crear el String segun SRI
 
 
         $xmldata = '<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:etsi="http://uri.etsi.org/01903/v1.3.2#" Id="Signature504735">
@@ -216,5 +225,7 @@ class VSFirmaDigital extends VsSeaActiveRecord {
                     </ds:Signature>';
         return $xmldata;
     }
+
+  
 
 }

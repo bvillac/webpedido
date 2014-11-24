@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Este Archivo contiene las vista de Compañias
  * @author Ing. Byron Villacreses <byronvillacreses@gmail.com>
@@ -9,14 +8,13 @@
 ?>
 <!--<?//=Yii::app()->format->formatNumber( "6632678.64857" ); ?>-->
 <?php
-
 $this->widget('zii.widgets.grid.CGridView', array(
     'id' => 'TbG_DOCUMENTO',
     'dataProvider' => $model,
     //'template' => "{items}",
-    'template'=>'<div style="overflow:auto;">{items}</div>{pager}{summary}',
+    'template' => '<div style="overflow:auto;">{items}</div>{pager}{summary}',
     'htmlOptions' => array('style' => 'cursor: pointer;'),
-    //'selectableRows' => 2,
+    'selectableRows' => 2,
     //'selectionChanged' => 'verificaAcciones',
     //'selectionChanged' => 'fun_mostrarFichaPaciente',
     //'ajaxUrl'=>'Yii::app()->controller->createUrl("cOBRANZAS/", array("importarAfiliado" => $this->grid->dataProvider->pagination->currentPage+1))',
@@ -27,7 +25,10 @@ $this->widget('zii.widgets.grid.CGridView', array(
     //'beforeAjaxUpdate'=>'function(id,options){ options["type"]="POST"; }',
     //'beforeAjaxUpdate' => 'function(id,options){consultFiltros(options)}',
     'columns' => array(
-          /*array(
+        array(
+            'class' => 'CCheckBoxColumn',
+        ),
+        /* array(
           'header' => '#',
           'value' => '$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize + $row+1',
           ), */
@@ -44,26 +45,27 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'header' => Yii::t('COMPANIA', 'Download'),
             'class' => 'CButtonColumn',
             'htmlOptions' => array('style' => 'text-align:center', 'width' => '85px'),
-            'template' => '{pdf}{xml}{xsd}',
+            //'template' => '{pdf}{xml}{xsd}',
+            'template' => '{pdf}{xml}',
             'buttons' => array(
                 'pdf' => array(
                     'label' => Yii::t('COMPANIA', 'Download PDF document'),
-                    'imageUrl'=>Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'].'pdf.png', //ruta del icono
-                    'url'=>'Yii::app()->createUrl("NubeFactura/GenerarPdf", array("ids"=>base64_encode($data["IdDoc"])))',
-                    //'url'=>'Yii::app()->createUrl("vSDocumentos/GenerarPdf")',
-                    //'click' => 'js:generarPdf(this,$data["IdDoc"])',
+                    'imageUrl' => Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'] . 'pdf.png', //ruta del icono
+                    'url' => 'Yii::app()->createUrl("NubeFactura/GenerarPdf", array("ids"=>base64_encode($data["IdDoc"])))',
+                //'url'=>'Yii::app()->createUrl("vSDocumentos/GenerarPdf")',
+                //'click' => 'js:generarPdf(this,$data["IdDoc"])',
                 ),
                 'xml' => array(
                     'label' => Yii::t('COMPANIA', 'Download XML document'),
-                    'imageUrl'=>Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'].'xml.png', //ruta del icono
-                    'url'=>'Yii::app()->createUrl("NubeFactura/GenerarXml", array("ids"=>base64_encode($data["IdDoc"])))',
+                    'imageUrl' => Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'] . 'xml.png', //ruta del icono
+                    'url' => 'Yii::app()->createUrl("NubeFactura/GenerarXml", array("ids"=>base64_encode($data["IdDoc"])))',
                 ),
-                'xsd' => array(
-                    'label' => Yii::t('COMPANIA', 'Download XSD document'),
-                    'imageUrl'=>Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'].'xsd.png', //ruta del icono
-                    //'click' => 'js:obtenerSeleccion',
-                    //'click'=>'function(){$("#dialog_id").dialog("open"); return false;}',
-                ),
+            //'xsd' => array(
+            //    'label' => Yii::t('COMPANIA', 'Download XSD document'),
+            //    'imageUrl'=>Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'].'xsd.png', //ruta del icono
+            //'click' => 'js:obtenerSeleccion',
+            //'click'=>'function(){$("#dialog_id").dialog("open"); return false;}',
+            //),
             ),
         ),
         array(
@@ -112,7 +114,6 @@ $this->widget('zii.widgets.grid.CGridView', array(
 //            'header' => Yii::t('COMPANIA', 'NumDocumento'),
 //            'value' => '$data["NumDocumento"]',
 //        ),
-        
         array(
             'name' => 'IdentificacionComprador',
             'header' => Yii::t('COMPANIA', 'Dni/Ruc'),
@@ -131,7 +132,6 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'value' => 'Yii::app()->format->formatNumber($data["ImporteTotal"])',
             'htmlOptions' => array('style' => 'text-align:right', 'width' => '8px'),
         ),
-        
     /* array(
       'class' => 'CButtonColumn',
       'template' => '{add}{edit}{delete}',

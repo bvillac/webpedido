@@ -115,7 +115,6 @@ for ($i = 0; $i < sizeof($adiFact); $i++) {
 $xmldata .='</infoAdicional>';
 $xmldata .=$firma;
 $xmldata .='</factura>';
-
 $nomDocfile = $cabFact['NombreDocumento'] . '-' . $cabFact['NumDocumento'] . '.xml';
 if (file_put_contents(Yii::app()->params['seaDocFact'] . $nomDocfile, $xmldata)) { // this code is working fine xml get created
     //echo "file created";exit;
@@ -126,7 +125,6 @@ if (file_put_contents(Yii::app()->params['seaDocFact'] . $nomDocfile, $xmldata))
     // File to download
     readfile(Yii::app()->params['seaDocFact'] . $nomDocfile);        // i am not able to download the same file
 }
-
 //$xmlobj = new SimpleXMLElement($xmldata);
 //$xmlobj->asXML(Yii::app()->params['seaDocFact'] . "memberBill.xml");
 //echo htmlentities($xmldata);

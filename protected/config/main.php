@@ -36,6 +36,9 @@ return array(
     ),
     // application components
     'components' => array(
+//        'xmlseclib' => array(
+//            'class' => 'system.vendors.xmlseclib.*'
+//        ),
         'phpseclib' => array(
             'class' => 'system.vendors.phpseclib.PhpSecLib'
             //'class' => 'system.phpseclib.PhpSecLib'
