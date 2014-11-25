@@ -30,7 +30,7 @@ class NubeFacturaController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // permite a los usuarios logueados ejecutar las acciones 
-                'actions' => array('create', 'update', 'GenerarPdf', 'BuscaDataIndex', 'BuscarPersonas', 'GenerarXml'),
+                'actions' => array('create', 'update', 'GenerarPdf', 'BuscaDataIndex', 'BuscarPersonas', 'GenerarXml', 'EnviarDocumento'),
                 'users' => array('@'),
             ),
             array('allow', // permite que únicamente el usuario admin ejecute las , 
@@ -240,11 +240,11 @@ class NubeFacturaController extends Controller {
         $ids = isset($_GET['ids']) ? base64_decode($_GET['ids']) : NULL;
         $modelo = new NubeFactura();
         $firmaDig = new VSFirmaDigital();
-        $firma=$firmaDig->recuperarXAdES_BES();
+        $firma = $firmaDig->recuperarXAdES_BES();
         $cabFact = $modelo->mostrarCabFactura($ids, '01');
         $detFact = $modelo->mostrarDetFacturaImp($ids);
         $impFact = $modelo->mostrarFacturaImp($ids);
-        $adiFact = $modelo->mostrarFacturaDataAdicional($ids);//
+        $adiFact = $modelo->mostrarFacturaDataAdicional($ids); //
         $this->renderPartial('facturaXML', array(
             'cabFact' => $cabFact,
             'detFact' => $detFact,
@@ -252,6 +252,32 @@ class NubeFacturaController extends Controller {
             'adiFact' => $adiFact,
             'firma' => $firma,
         ));
+    }
+
+    public function actionEnviarDocumento() {
+        //$modelo = new NubeFactura();
+        //$contBuscar = array();
+        if (Yii::app()->request->isAjaxRequest) {
+            $ids = isset($_POST['ids']) ? base64_decode($_POST['ids']) : NULL;
+            $res = new NubeFactura;
+            if ($res->enviarDocumentos($ids)) {
+                $arroout["status"] = "OK";
+                $arroout["type"] = "tbalert";
+                $arroout["label"] = "success";
+                $arroout["error"] = "false";
+                $arroout["message"] = Yii::t('EXCEPTION', '<strong>Well done!</strong> your information was successfully send.');
+                $arroout["data"] = null;
+            } else {
+                $arroout["status"] = "NO_OK";
+                $arroout["type"] = "tbalert";
+                $arroout["label"] = "error";
+                $arroout["error"] = "true";
+                $arroout["message"] = Yii::t('EXCEPTION', 'Invalid request. Deletion error; Please do not repeatt this request again.');
+            }
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+            return;
+        }
     }
 
 }

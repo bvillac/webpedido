@@ -80,47 +80,17 @@ function verificaAcciones(){
     var ids = String($.fn.yiiGridView.getSelection('TbG_DOCUMENTO'));
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
-        $("#btn_enviar").removeClass("disabled");
+        if(count.length==1){
+            $("#btn_enviar").removeClass("disabled");
+        }else{
+            $("#btn_enviar").addClass("disabled");
+        }
+        //$("#btn_Delete").removeClass("disabled");
     }else{
         $("#btn_enviar").addClass("disabled");
+        //$("#btn_Delete").addClass("disabled");
     }
 }
 
-function fun_EnviarDocumento(){
-    var ids = String($.fn.yiiGridView.getSelection('TbG_DOCUMENTO'));
-    var count=ids.split(",");
-    if(count.length>0 && ids!=""){
-        if(!confirm(mgEnvDocum)) return false;
-        var link=$('#txth_controlador').val()+"/EnviarDocumento";
-        var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $.ajax({
-            type: 'POST',
-            url: link,
-            data:{
-                "ids": encodedIds
-            } ,
-            success: function(data){
-                if (data.status=="OK"){ 
-                    $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();
-                    actualizarTbG_COMPANIA();
-                }
-            },
-            dataType: "json"
-        });
-    }
-    return true;
-}
 
-function actualizarTbG_COMPANIA(){
-    $.fn.yiiGridView.update('TbG_COMPANIA');
-    /*var link=$('#txth_controlador').val()+"/Index";
-    $.fn.yiiGridView.update('TbG_COMPANIA', {
-        type: 'POST',
-        url:link,
-        data:{
-            //"CONT_BUSCAR": controlBuscarIndex(control,op)
-        }
-    }); */
-}
 

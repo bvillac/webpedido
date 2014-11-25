@@ -121,5 +121,8 @@
         <div class="tcol-td form-group">
             <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Search'), array('id' => 'btn_buscar', 'name' => 'btn_buscar', 'class' => 'btn btn-success', 'onclick' => 'buscarDataIndex("","")')); ?>
         </div>
+        <div class="tcol-td form-group">
+            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Send'), array('id' => 'btn_enviar', 'name' => 'btn_enviar', 'class' => 'btn btn-success', 'onclick' => 'fun_EnviarDocumento()')); ?>
+        </div>
     </div>
 </div>

@@ -92,12 +92,12 @@ function fun_EnviarDocumento(){
     if(count.length>0 && ids!=""){
         if(!confirm(mgEnvDocum)) return false;
         var link=$('#txth_controlador').val()+"/EnviarDocumento";
-        var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
+        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
         $.ajax({
             type: 'POST',
             url: link,
             data:{
-                "ids": encodedIds
+                "ids": ids
             } ,
             success: function(data){
                 if (data.status=="OK"){ 

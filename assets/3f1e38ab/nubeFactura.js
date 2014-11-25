@@ -80,9 +80,16 @@ function verificaAcciones(){
     var ids = String($.fn.yiiGridView.getSelection('TbG_DOCUMENTO'));
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
+//        if(count.length==1){
+//            $("#btn_enviar").removeClass("disabled");
+//        }else{
+//            $("#btn_enviar").addClass("disabled");
+//        }
         $("#btn_enviar").removeClass("disabled");
+        //$("#btn_Delete").removeClass("disabled");
     }else{
         $("#btn_enviar").addClass("disabled");
+        //$("#btn_Delete").addClass("disabled");
     }
 }
 
@@ -91,13 +98,13 @@ function fun_EnviarDocumento(){
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
         if(!confirm(mgEnvDocum)) return false;
-        var link=$('#txth_controlador').val()+"/EnviarDocumento";
-        var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
+        var link=$('#txth_controlador').val()+"/Delete";
+        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
         $.ajax({
             type: 'POST',
             url: link,
             data:{
-                "ids": encodedIds
+                "ids": ids
             } ,
             success: function(data){
                 if (data.status=="OK"){ 

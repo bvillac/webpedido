@@ -225,21 +225,21 @@ class NubeFactura extends VsSeaIntermedia {
     public function insertarFacturas() {
         $con = Yii::app()->dbvsseaint;
         $trans = $con->beginTransaction();
-        $objEmpData= new EMPRESA;
-        /****VARIBLES DE SESION*******/
-        $emp_id=Yii::app()->getSession()->get('emp_id', FALSE);
-        $est_id=Yii::app()->getSession()->get('est_id', FALSE);
-        $pemi_id=Yii::app()->getSession()->get('pemi_id', FALSE);
+        $objEmpData = new EMPRESA;
+        /*         * **VARIBLES DE SESION****** */
+        $emp_id = Yii::app()->getSession()->get('emp_id', FALSE);
+        $est_id = Yii::app()->getSession()->get('est_id', FALSE);
+        $pemi_id = Yii::app()->getSession()->get('pemi_id', FALSE);
         try {
             $cabFact = $this->buscarFacturas();
-            $empresaEnt=$objEmpData->buscarDataEmpresa($emp_id,$est_id,$pemi_id);//recuperar info deL Contribuyente
-            $codDoc='01';//Documento Factura
+            $empresaEnt = $objEmpData->buscarDataEmpresa($emp_id, $est_id, $pemi_id); //recuperar info deL Contribuyente
+            $codDoc = '01'; //Documento Factura
             for ($i = 0; $i < sizeof($cabFact); $i++) {
-                $this->InsertarCabFactura($con,$cabFact, $empresaEnt,$codDoc, $i);
+                $this->InsertarCabFactura($con, $cabFact, $empresaEnt, $codDoc, $i);
                 $idCab = $con->getLastInsertID($con->dbname . '.NubeFactura');
-                $detFact=$this->buscarDetFacturas($cabFact[$i]['TIP_NOF'],$cabFact[$i]['NUM_NOF']);
-                $this->InsertarDetFactura($con,$detFact,$idCab);
-                $this->InsertarFacturaDatoAdicional($con,$i,$cabFact,$idCab);
+                $detFact = $this->buscarDetFacturas($cabFact[$i]['TIP_NOF'], $cabFact[$i]['NUM_NOF']);
+                $this->InsertarDetFactura($con, $detFact, $idCab);
+                $this->InsertarFacturaDatoAdicional($con, $i, $cabFact, $idCab);
             }
             $trans->commit();
             $con->active = false;
@@ -251,7 +251,7 @@ class NubeFactura extends VsSeaIntermedia {
             $con->active = false;
             throw $e;
             return false;
-        }   
+        }
     }
 
     private function buscarFacturas() {
@@ -270,7 +270,8 @@ class NubeFactura extends VsSeaIntermedia {
         $conCont->active = false;
         return $rawData;
     }
-    private function buscarDetFacturas($tipDoc,$numDoc) {
+
+    private function buscarDetFacturas($tipDoc, $numDoc) {
         $conCont = yii::app()->dbcont;
         $rawData = array();
         $sql = "SELECT TIP_NOF,NUM_NOF,FEC_VTA,COD_ART,NOM_ART,CAN_DES,P_VENTA,
@@ -282,21 +283,21 @@ class NubeFactura extends VsSeaIntermedia {
         $conCont->active = false;
         return $rawData;
     }
-    
-    private function InsertarCabFactura($con,$objEnt,$objEmp,$codDoc,$i) {
-        $valida=new VSValidador();
-        $tip_iden=$valida->tipoIdent($objEnt[$i]['CED_RUC']);
-        $Secuencial=$valida->ajusteNumDoc($objEnt[$i]['NUM_NOF'],9);
+
+    private function InsertarCabFactura($con, $objEnt, $objEmp, $codDoc, $i) {
+        $valida = new VSValidador();
+        $tip_iden = $valida->tipoIdent($objEnt[$i]['CED_RUC']);
+        $Secuencial = $valida->ajusteNumDoc($objEnt[$i]['NUM_NOF'], 9);
         //$GuiaRemi=$valida->ajusteNumDoc($objEnt[$i]['GUI_REM'],9);
-        $GuiaRemi=(strlen($objEnt[$i]['GUI_REM'])>0)?$objEmp['Establecimiento'].'-'.$objEmp['PuntoEmision'].'-'.$valida->ajusteNumDoc($objEnt[$i]['GUI_REM'],9):'';
-        $ced_ruc=($tip_iden=='07')?'9999999999999':$objEnt[$i]['CED_RUC'];
-        /*Datos para Genera Clave*/
+        $GuiaRemi = (strlen($objEnt[$i]['GUI_REM']) > 0) ? $objEmp['Establecimiento'] . '-' . $objEmp['PuntoEmision'] . '-' . $valida->ajusteNumDoc($objEnt[$i]['GUI_REM'], 9) : '';
+        $ced_ruc = ($tip_iden == '07') ? '9999999999999' : $objEnt[$i]['CED_RUC'];
+        /* Datos para Genera Clave */
         //$tip_doc,$fec_doc,$ruc,$ambiente,$serie,$numDoc,$tipoemision
-        $objCla=new VSClaveAcceso();
-        $serie=$objEmp['Establecimiento'].$objEmp['PuntoEmision'];
-        $fec_doc=date("Y-m-d", strtotime($objEnt[0]['FEC_VTA']));
-        $ClaveAcceso=$objCla->claveAcceso($codDoc,$fec_doc,$objEmp['Ruc'],$objEmp['Ambiente'],$serie,$Secuencial,$objEmp['TipoEmision']);
-        /*************************/
+        $objCla = new VSClaveAcceso();
+        $serie = $objEmp['Establecimiento'] . $objEmp['PuntoEmision'];
+        $fec_doc = date("Y-m-d", strtotime($objEnt[0]['FEC_VTA']));
+        $ClaveAcceso = $objCla->claveAcceso($codDoc, $fec_doc, $objEmp['Ruc'], $objEmp['Ambiente'], $serie, $Secuencial, $objEmp['TipoEmision']);
+        /*         * ********************** */
         $sql = "INSERT INTO " . $con->dbname . ".NubeFactura
                             (Ambiente,TipoEmision, RazonSocial, NombreComercial, Ruc,ClaveAcceso,CodigoDocumento, Establecimiento,
                             PuntoEmision, Secuencial, DireccionMatriz, FechaEmision, DireccionEstablecimiento, ContribuyenteEspecial,
@@ -330,22 +331,21 @@ class NubeFactura extends VsSeaIntermedia {
                             '" . $objEnt[0]['TIP_NOF'] . "',
                             '" . $objEnt[0]['USUARIO'] . "',
                             '1',CURRENT_TIMESTAMP() )";
-                            
 
-                            //"@Ambiente,@TipoEmision,@RazonSocial,@NombreComercial,@Ruc,@CodigoDocumento,@Establecimiento, " &
-                            //"@PuntoEmision,@Secuencial,@DireccionMatriz,@FechaEmision,@DireccionEstablecimiento,@ContribuyenteEspecial, " &
-                            //"@ObligadoContabilidad,@TipoIdentificacionComprador,@GuiaRemision,@RazonSocialComprador,@IdentificacionComprador," &
-                            //"@TotalSinImpuesto,@TotalDescuento,@Propina,@ImporteTotal,@Moneda,@SecuencialERP,@CodigoTransaccionERP,@Estado,GETDATE()) " &
-                            //" SELECT @@IDENTITY";
 
+        //"@Ambiente,@TipoEmision,@RazonSocial,@NombreComercial,@Ruc,@CodigoDocumento,@Establecimiento, " &
+        //"@PuntoEmision,@Secuencial,@DireccionMatriz,@FechaEmision,@DireccionEstablecimiento,@ContribuyenteEspecial, " &
+        //"@ObligadoContabilidad,@TipoIdentificacionComprador,@GuiaRemision,@RazonSocialComprador,@IdentificacionComprador," &
+        //"@TotalSinImpuesto,@TotalDescuento,@Propina,@ImporteTotal,@Moneda,@SecuencialERP,@CodigoTransaccionERP,@Estado,GETDATE()) " &
+        //" SELECT @@IDENTITY";
         //DATE(" . $cabOrden[0]['CDOR_FECHA_INGRESO'] . "),
         //$sql .= "AND DATE(A.CDOR_FECHA_INGRESO) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "' ";
         //echo $sql;
         $command = $con->createCommand($sql);
         $command->execute();
     }
-    
-    private function InsertarDetFactura($con,$detFact,$idCab) {
+
+    private function InsertarDetFactura($con, $detFact, $idCab) {
         $valSinImp = 0;
         $val_iva12 = 0;
         $vet_iva12 = 0;
@@ -353,15 +353,15 @@ class NubeFactura extends VsSeaIntermedia {
         $vet_iva0 = 0;
         //TIP_NOF,NUM_NOF,FEC_VTA,COD_ART,NOM_ART,CAN_DES,P_VENTA,T_VENTA,VAL_DES,I_M_IVA,VAL_IVA
         for ($i = 0; $i < sizeof($detFact); $i++) {
-            $valSinImp=floatval($detFact[$i]['T_VENTA'])-floatval($detFact[$i]['VAL_DES']);
-            if($detFact[$i]['I_M_IVA']=='1'){
+            $valSinImp = floatval($detFact[$i]['T_VENTA']) - floatval($detFact[$i]['VAL_DES']);
+            if ($detFact[$i]['I_M_IVA'] == '1') {
                 $val_iva12 = $val_iva12 + floatval($detFact[$i]['VAL_IVA']);
                 $vet_iva12 = $vet_iva12 + $valSinImp;
-            }else{
+            } else {
                 $val_iva0 = 0;
                 $vet_iva0 = $vet_iva0 + $valSinImp;
             }
-            
+
             $sql = "INSERT INTO " . $con->dbname . ".NubeDetalleFactura 
                     (CodigoPrincipal,CodigoAuxiliar,Descripcion,Cantidad,PrecioUnitario,Descuento,PrecioTotalSinImpuesto,IdFactura) VALUES (
                     '" . $detFact[$i]['COD_ART'] . "', 
@@ -375,56 +375,57 @@ class NubeFactura extends VsSeaIntermedia {
             $command = $con->createCommand($sql);
             $command->execute();
             $idDet = $con->getLastInsertID($con->dbname . '.NubeDetalleFactura');
-            if($detFact[$i]['I_M_IVA']=='1'){//Verifico si el ITEM tiene Impuesto
+            if ($detFact[$i]['I_M_IVA'] == '1') {//Verifico si el ITEM tiene Impuesto
                 //Segun Datos Sri
-                $this->InsertarDetImpFactura($con,$idDet,'2','2','12',$valSinImp,$detFact[$i]['VAL_IVA']);//12%
-            }else{//Caso Contrario no Genera Impuesto
-                $this->InsertarDetImpFactura($con,$idDet,'2','0','0',$valSinImp,$detFact[$i]['VAL_IVA']);//0%
+                $this->InsertarDetImpFactura($con, $idDet, '2', '2', '12', $valSinImp, $detFact[$i]['VAL_IVA']); //12%
+            } else {//Caso Contrario no Genera Impuesto
+                $this->InsertarDetImpFactura($con, $idDet, '2', '0', '0', $valSinImp, $detFact[$i]['VAL_IVA']); //0%
             }
         }
         //Insertar Datos de Iva 0%
-        If ($vet_iva0 > 0){
-            $this->InsertarFacturaImpuesto($con,$idCab,'2','0','0', $vet_iva0,$val_iva0);
+        If ($vet_iva0 > 0) {
+            $this->InsertarFacturaImpuesto($con, $idCab, '2', '0', '0', $vet_iva0, $val_iva0);
         }
         //Inserta Datos de Iva 12
-        If ($vet_iva12 > 0){
-            $this->InsertarFacturaImpuesto($con,$idCab,'2','2','12', $vet_iva12,$val_iva12);
+        If ($vet_iva12 > 0) {
+            $this->InsertarFacturaImpuesto($con, $idCab, '2', '2', '12', $vet_iva12, $val_iva12);
         }
-            
     }
-    private function InsertarDetImpFactura($con,$idDet,$codigo,$CodigoPor,$Tarifa,$t_venta,$val_iva){
+
+    private function InsertarDetImpFactura($con, $idDet, $codigo, $CodigoPor, $Tarifa, $t_venta, $val_iva) {
         $sql = "INSERT INTO " . $con->dbname . ".NubeDetalleFacturaImpuesto 
                  (Codigo,CodigoPorcentaje,BaseImponible,Tarifa,Valor,IdDetalleFactura)VALUES(
                  '$codigo','$CodigoPor','$t_venta','$Tarifa','$val_iva','$idDet')";
         $command = $con->createCommand($sql);
         $command->execute();
     }
-    private function InsertarFacturaImpuesto($con,$idCab,$codigo,$CodigoPor,$Tarifa,$t_venta,$val_iva){
+
+    private function InsertarFacturaImpuesto($con, $idCab, $codigo, $CodigoPor, $Tarifa, $t_venta, $val_iva) {
         $sql = "INSERT INTO " . $con->dbname . ".NubeFacturaImpuesto 
                  (Codigo,CodigoPorcentaje,BaseImponible,Tarifa,Valor,IdFactura)VALUES(
                  '$codigo','$CodigoPor','$t_venta','$Tarifa','$val_iva','$idCab')";
-        
+
         $command = $con->createCommand($sql);
         $command->execute();
     }
-    
-    private function InsertarFacturaDatoAdicional($con,$i,$cabFact,$idCab){
-        $direccion=$cabFact[$i]['DIR_CLI'];
-        $destino=$cabFact[$i]['LUG_DES'];
-        $contacto=$cabFact[$i]['NOM_CTO'];
+
+    private function InsertarFacturaDatoAdicional($con, $i, $cabFact, $idCab) {
+        $direccion = $cabFact[$i]['DIR_CLI'];
+        $destino = $cabFact[$i]['LUG_DES'];
+        $contacto = $cabFact[$i]['NOM_CTO'];
         $sql = "INSERT INTO " . $con->dbname . ".NubeDatoAdicionalFactura 
                  (Nombre,Descripcion,IdFactura)
                  VALUES
                  ('Direccion','$direccion','$idCab'),('Destino','$destino','$idCab'),('Contacto','$contacto','$idCab')";
-        
+
         $command = $con->createCommand($sql);
         $command->execute();
     }
-    
+
     private function actualizaErpCabFactura($cabFact) {
         $conContUp = yii::app()->dbcont;
         $transCont = $conContUp->beginTransaction();
-        try {    
+        try {
             for ($i = 0; $i < sizeof($cabFact); $i++) {
                 $numero = $cabFact[$i]['NUM_NOF'];
                 $tipo = $cabFact[$i]['TIP_NOF'];
@@ -444,8 +445,7 @@ class NubeFactura extends VsSeaIntermedia {
             return false;
         }
     }
-    
-    
+
     public function mostrarDocumentos($control) {
         $rawData = array();
         $con = Yii::app()->dbvsseaint;
@@ -459,15 +459,14 @@ class NubeFactura extends VsSeaIntermedia {
                                 INNER JOIN VSSEA.VSDirectorio C
                                         ON A.CodigoDocumento=C.TipoDocumento
                 WHERE A.CodigoDocumento='01' ";
-        
-        
-         if (!empty($control)) {//Verifica la Opcion op para los filtros
+
+
+        if (!empty($control)) {//Verifica la Opcion op para los filtros
             $sql .= ($control[0]['TIPO_APR'] != "0") ? " AND A.Estado = '" . $control[0]['TIPO_APR'] . "' " : " ";
             $sql .= ($control[0]['CEDULA'] > 0) ? "AND A.IdentificacionComprador = '" . $control[0]['CEDULA'] . "' " : "";
             //$sql .= ($control[0]['COD_PACIENTE'] != "0") ? "AND CDOR_ID_PACIENTE='".$control[0]['COD_PACIENTE']."' " : "";
             //$sql .= ($control[0]['PACIENTE'] != "") ? "AND CONCAT(B.PER_APELLIDO,' ',B.PER_NOMBRE) LIKE '%" . $control[0]['PACIENTE'] . "%' " : "";
             $sql .= "AND DATE(A.FechaEmision) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "' ";
-        
         }
         //echo $sql;
 
@@ -478,9 +477,9 @@ class NubeFactura extends VsSeaIntermedia {
             'keyField' => 'IdDoc',
             'sort' => array(
                 'attributes' => array(
-                    'IdDoc','Estado','CodigoTransaccionERP', 'SecuencialERP', 'UsuarioCreador',
+                    'IdDoc', 'Estado', 'CodigoTransaccionERP', 'SecuencialERP', 'UsuarioCreador',
                     'FechaAutorizacion', 'AutorizacionSRI', 'NumDocumento', 'FechaEmision', 'IdentificacionComprador',
-                    'RazonSocialComprador', 'ImporteTotal', 'NombreDocumento', 
+                    'RazonSocialComprador', 'ImporteTotal', 'NombreDocumento',
                 ),
             ),
             'totalItemCount' => count($rawData),
@@ -490,7 +489,7 @@ class NubeFactura extends VsSeaIntermedia {
             ),
         ));
     }
-    
+
     public function recuperarTipoDocumentos() {
         $con = yii::app()->dbvssea;
         $sql = "SELECT idDirectorio,TipoDocumento,Descripcion,Ruta 
@@ -499,8 +498,8 @@ class NubeFactura extends VsSeaIntermedia {
         $con->active = false;
         return $rawData;
     }
-    
-    public function mostrarCabFactura($id,$tdoc) {
+
+    public function mostrarCabFactura($id, $tdoc) {
         $rawData = array();
         $con = Yii::app()->dbvsseaint;
         $sql = "SELECT A.IdFactura IdDoc,A.Estado,A.CodigoTransaccionERP,A.SecuencialERP,A.UsuarioCreador,
@@ -516,11 +515,11 @@ class NubeFactura extends VsSeaIntermedia {
                                 INNER JOIN VSSEA.VSDirectorio C
                                         ON A.CodigoDocumento=C.TipoDocumento
                 WHERE A.Estado<>'0' AND A.CodigoDocumento='$tdoc' AND A.IdFactura =$id ";
-        $rawData = $con->createCommand($sql)->queryRow();//Recupera Solo 1
+        $rawData = $con->createCommand($sql)->queryRow(); //Recupera Solo 1
         $con->active = false;
         return $rawData;
     }
-    
+
 //    public function mostrarDetFactura($id) {
 //        $rawData = array();
 //        $con = Yii::app()->dbvsseaint;
@@ -533,49 +532,48 @@ class NubeFactura extends VsSeaIntermedia {
 //        $con->active = false;
 //        return $rawData;
 //    }
-    
+
     public function mostrarDetFacturaImp($id) {
         $rawData = array();
         $con = Yii::app()->dbvsseaint;
-        $sql = "SELECT * FROM " . $con->dbname . ".NubeDetalleFactura WHERE IdFactura=$id" ;
+        $sql = "SELECT * FROM " . $con->dbname . ".NubeDetalleFactura WHERE IdFactura=$id";
         //echo $sql;
-        $rawData = $con->createCommand($sql)->queryAll();//Recupera Solo 1
+        $rawData = $con->createCommand($sql)->queryAll(); //Recupera Solo 1
         $con->active = false;
         for ($i = 0; $i < sizeof($rawData); $i++) {
-           $rawData[$i]['impuestos']=$this->mostrarDetalleImp($rawData[$i]['IdDetalleFactura']);//Retorna el Detalle del Impuesto
+            $rawData[$i]['impuestos'] = $this->mostrarDetalleImp($rawData[$i]['IdDetalleFactura']); //Retorna el Detalle del Impuesto
         }
         return $rawData;
     }
-    
+
     private function mostrarDetalleImp($id) {
         $rawData = array();
         $con = Yii::app()->dbvsseaint;
         $sql = "SELECT * FROM " . $con->dbname . ".NubeDetalleFacturaImpuesto WHERE IdDetalleFactura=$id";
-        $rawData = $con->createCommand($sql)->queryAll();//Recupera Solo 1
+        $rawData = $con->createCommand($sql)->queryAll(); //Recupera Solo 1
         $con->active = false;
         return $rawData;
     }
-    
+
     public function mostrarFacturaImp($id) {
         $rawData = array();
         $con = Yii::app()->dbvsseaint;
         $sql = "SELECT * FROM " . $con->dbname . ".NubeFacturaImpuesto WHERE IdFactura=$id";
-        $rawData = $con->createCommand($sql)->queryAll();//Recupera Solo 1
+        $rawData = $con->createCommand($sql)->queryAll(); //Recupera Solo 1
         $con->active = false;
         return $rawData;
     }
-    
+
     public function mostrarFacturaDataAdicional($id) {
         $rawData = array();
         $con = Yii::app()->dbvsseaint;
         $sql = "SELECT * FROM " . $con->dbname . ".NubeDatoAdicionalFactura WHERE IdFactura=$id";
-        $rawData = $con->createCommand($sql)->queryAll();//Recupera Solo 1
+        $rawData = $con->createCommand($sql)->queryAll(); //Recupera Solo 1
         $con->active = false;
         return $rawData;
     }
-    
-    
-     /**
+
+    /**
      * Función 
      *
      * @author Byron Villacreses
@@ -616,14 +614,173 @@ class NubeFactura extends VsSeaIntermedia {
         }
         $sql .= " LIMIT " . Yii::app()->params['limitRow'];
         //$sql .= " LIMIT 10";
-
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
         return $rawData;
     }
 
+    public function enviarDocumentos($id) {
+        //$con = Yii::app()->dbvssea;
+        //$trans = $con->beginTransaction();
+        
+        try {
+            $firmaDig = new VSFirmaDigital();
+            $ids = explode(",", $id);
+            for ($i = 0; $i < count($ids); $i++) {
+                if ($ids[$i] !== "") {
+                    $result=$this->generarFileXML($ids[$i]);
+                    if($result['estado']){
+                        //echo $result['nomDoc'];
+                        $firma = $firmaDig->firmaXAdES_BES($result['nomDoc']);
+                    }
+                }
+            }
+//            $sql = "UPDATE " . $con->dbname . ".VSCompania SET Estado='0' WHERE idCompania IN($ids)";
+//            $comando = $con->createCommand($sql);
+//            $comando->execute();
+//            $trans->commit();
+//            $con->active = false;
+            return true;
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+//            $trans->rollBack();
+//            throw $e;
+//            $con->active = false;
+            return false;
+        }
+    }
 
+    private function generarFileXML($ids) {
+        $cabFact = $this->mostrarCabFactura($ids, '01');
+        $detFact = $this->mostrarDetFacturaImp($ids);
+        $impFact = $this->mostrarFacturaImp($ids);
+        $adiFact = $this->mostrarFacturaDataAdicional($ids);
+
+
+        $xmldata = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+            <factura id="comprobante" version="1.1.0">
+                <infoTributaria>
+                    <ambiente>' . $cabFact["Ambiente"] . '</ambiente>
+                    <tipoEmision>' . $cabFact["TipoEmision"] . '</tipoEmision>
+                    <razonSocial>' . Yii::app()->getSession()->get('RazonSocial', FALSE) . '</razonSocial>
+                    <nombreComercial>' . Yii::app()->getSession()->get('NombreComercial', FALSE) . '</nombreComercial>
+                    <ruc>' . Yii::app()->getSession()->get('Ruc', FALSE) . '</ruc>
+                    <claveAcceso>' . $cabFact["ClaveAcceso"] . '</claveAcceso>
+                    <codDoc>' . $cabFact["CodigoDocumento"] . '</codDoc>
+                    <estab>' . $cabFact["Establecimiento"] . '</estab>
+                    <ptoEmi>' . $cabFact["PuntoEmision"] . '</ptoEmi>
+                    <secuencial>' . $cabFact["Secuencial"] . '</secuencial>
+                    <dirMatriz>' . $cabFact["DireccionMatriz"] . '</dirMatriz>
+                </infoTributaria>
+                <infoFactura>
+                    <fechaEmision>' . date(Yii::app()->params["dateXML"], strtotime($cabFact["FechaEmision"])) . '</fechaEmision>
+                    <dirEstablecimiento>' . $cabFact["DireccionEstablecimiento"] . '</dirEstablecimiento>
+                    <contribuyenteEspecial>' . $cabFact["ContribuyenteEspecial"] . '</contribuyenteEspecial>
+                    <obligadoContabilidad>' . $cabFact["ObligadoContabilidad"] . '</obligadoContabilidad>
+                    <tipoIdentificacionComprador>' . $cabFact["TipoIdentificacionComprador"] . '</tipoIdentificacionComprador>
+                    <razonSocialComprador>' . $cabFact["RazonSocialComprador"] . '</razonSocialComprador>
+                    <identificacionComprador>' . $cabFact["IdentificacionComprador"] . '</identificacionComprador>
+                    <totalSinImpuestos>' . Yii::app()->format->formatNumber($cabFact["TotalSinImpuesto"]) . '</totalSinImpuestos>
+                    <totalDescuento>' . Yii::app()->format->formatNumber($cabFact["TotalDescuento"]) . '</totalDescuento>';
+        $xmldata .='<totalConImpuestos>';
+        $IRBPNR = 0; //NOta validar si existe casos para estos
+        $ICE = 0;
+        for ($i = 0; $i < sizeof($impFact); $i++) {
+            if ($impFact[$i]['Codigo'] == '2') {//Valores de IVA
+                switch ($impFact[$i]['CodigoPorcentaje']) {
+                    case 0:
+                        //$BASEIVA0=$impFact[$i]['BaseImponible'];
+                        break;
+                    case 2:
+                        $BASEIVA12 = $impFact[$i]['BaseImponible'];
+                        $VALORIVA12 = $impFact[$i]['Valor'];
+                        $xmldata .='<totalImpuesto>
+                                <codigo>' . $impFact[$i]["Codigo"] . '</codigo>
+                                <codigoPorcentaje>' . $impFact[$i]["CodigoPorcentaje"] . '</codigoPorcentaje>
+                                <baseImponible>' . Yii::app()->format->formatNumber($impFact[$i]["BaseImponible"]) . '</baseImponible>
+                                <tarifa>' . Yii::app()->format->formatNumber($impFact[$i]["Tarifa"]) . '</tarifa>
+                                <valor>' . Yii::app()->format->formatNumber($impFact[$i]["Valor"]) . '</valor>
+                            </totalImpuesto>';
+                        break;
+                    case 6://No objeto Iva
+                        //$NOOBJIVA=$impFact[$i]['BaseImponible'];
+                        break;
+                    case 7://Excento de Iva
+                        //$EXENTOIVA=$impFact[$i]['BaseImponible'];
+                        break;
+                    default:
+                }
+            }
+            //NOta Verificar cuando el COdigo sea igual a 3 o 5 Para los demas impuestos
+        }
+
+        $xmldata .='</totalConImpuestos>
+                <propina>' . Yii::app()->format->formatNumber($cabFact["Propina"]) . '</propina>
+                <importeTotal>' . Yii::app()->format->formatNumber($cabFact["ImporteTotal"]) . '</importeTotal>
+                <moneda>' . $cabFact["Moneda"] . '</moneda>
+            </infoFactura>';
+        $xmldata .='<detalles>';
+        for ($i = 0; $i < sizeof($detFact); $i++) {//DETALLE DE FACTURAS
+            $xmldata .='<detalle>
+            <codigoPrincipal>' . $detFact[$i]['CodigoPrincipal'] . '</codigoPrincipal>
+            <codigoAuxiliar>' . $detFact[$i]['CodigoAuxiliar'] . '</codigoAuxiliar>
+            <descripcion>' . $detFact[$i]['Descripcion'] . '</descripcion>
+            <cantidad>' . Yii::app()->format->formatNumber($detFact[$i]['Cantidad']) . '</cantidad>
+            <precioUnitario>' . Yii::app()->format->formatNumber($detFact[$i]['PrecioUnitario']) . '</precioUnitario>
+            <descuento>' . Yii::app()->format->formatNumber($detFact[$i]['Descuento']) . '</descuento>
+            <precioTotalSinImpuesto>' . Yii::app()->format->formatNumber($detFact[$i]['PrecioTotalSinImpuesto']) . '</precioTotalSinImpuesto>
+            <impuestos>';
+            $impuesto = $detFact[$i]['impuestos'];
+            for ($j = 0; $j < sizeof($impuesto); $j++) {//DETALLE IMPUESTO DE FACTURA
+                $xmldata .='<impuesto>
+                        <codigo>' . $impuesto[$j]['Codigo'] . '</codigo>
+                        <codigoPorcentaje>' . $impuesto[$j]['CodigoPorcentaje'] . '</codigoPorcentaje>
+                        <tarifa>' . Yii::app()->format->formatNumber($impuesto[$j]['Tarifa']) . '</tarifa>
+                        <baseImponible>' . Yii::app()->format->formatNumber($impuesto[$j]['BaseImponible']) . '</baseImponible>
+                        <valor>' . Yii::app()->format->formatNumber($impuesto[$j]['Valor']) . '</valor>
+                    </impuesto>';
+            }
+            $xmldata .='</impuestos>
+        </detalle>';
+        }
+        $xmldata .='</detalles>';
+//    <retenciones>
+//        <retencion>
+//	    <codigo>4</codigo>
+//	    <codigoPorcentaje>327</codigoPorcentaje>
+//	    <tarifa>0.00</tarifa>	    
+//	    <valor>0.00</valor>
+//        </retencion>
+//        <retencion>
+//	    <codigo>4</codigo>
+//	    <codigoPorcentaje>328</codigoPorcentaje>
+//	    <tarifa>0.00</tarifa>	    
+//	    <valor>0.00</valor>
+//        </retencion>
+//		 <retencion>
+//	    <codigo>4</codigo>
+//	    <codigoPorcentaje>3</codigoPorcentaje>
+//	    <tarifa>1</tarifa>	    
+//	    <valor>0.00</valor>
+//        </retencion>
+//    </retenciones>
+
+        $xmldata .='<infoAdicional>';
+        for ($i = 0; $i < sizeof($adiFact); $i++) {
+            $xmldata .='<campoAdicional nombre="' . $adiFact[$i]['Nombre'] . '">' . $adiFact[$i]['Descripcion'] . '</campoAdicional>';
+        }
+        $xmldata .='</infoAdicional>';
+        //$xmldata .=$firma;
+        $xmldata .='</factura>';
+        $nomDocfile = $cabFact['NombreDocumento'] . '-' . $cabFact['NumDocumento'] . '.xml';
+
+        file_put_contents(Yii::app()->params['seaDocXml'] . $nomDocfile, $xmldata); //Escribo el Archivo Xml
+        $result = array(
+            'nomDoc' => $nomDocfile,
+            'estado' => true
+        );
+        return $result;
+    }
     
 
 }

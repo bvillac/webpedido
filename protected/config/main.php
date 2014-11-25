@@ -195,6 +195,7 @@ return array(
         'datebytime' => 'Y-m-d h:i:s',
         'seaFirma' => '/opt/SEAF/',
         'seaFirext' => 'p12', //Extension de Firma Electronica
+        'seaDocXml' => '/opt/SEADOC/DOCXML/',
         'seaDocFact' => '/opt/SEADOC/FACTURAS/',
         'seaDocRete' => '/opt/SEADOC/RETENCIONES/',
         'seaDocNc' => '/opt/SEADOC/NC/',

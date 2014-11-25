@@ -15,7 +15,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
     'template' => '<div style="overflow:auto;">{items}</div>{pager}{summary}',
     'htmlOptions' => array('style' => 'cursor: pointer;'),
     'selectableRows' => 2,
-    //'selectionChanged' => 'verificaAcciones',
+    'selectionChanged' => 'verificaAcciones',
     //'selectionChanged' => 'fun_mostrarFichaPaciente',
     //'ajaxUrl'=>'Yii::app()->controller->createUrl("cOBRANZAS/", array("importarAfiliado" => $this->grid->dataProvider->pagination->currentPage+1))',
     //'summaryText'=>"<div class='whitesec_search'><p>{count} Full Quality Videos</p></div>",

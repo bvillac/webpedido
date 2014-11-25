@@ -20,6 +20,9 @@
  * The followings are the available model relations:
  * @property VSCompania $idCompania
  */
+Yii::import('system.vendors.nusoap.lib.*');
+require_once('nusoap.php');
+
 class VSFirmaDigital extends VsSeaActiveRecord {
 
     /**
@@ -225,7 +228,45 @@ class VSFirmaDigital extends VsSeaActiveRecord {
                     </ds:Signature>';
         return $xmldata;
     }
+    
+    public function firmaXAdES_BES($Documento) {
 
-  
+        $obj = new VSFirmaDigital;
+        $Dataf = $obj->recuperarFirmaDigital('1');
+        $fileCertificado = Yii::app()->params['seaFirma'] . base64_decode($Dataf['RutaFile']);
+        $pass = base64_decode($Dataf['Clave']);
+        $filexml = Yii::app()->params['seaDocXml'] . $Documento;
+        //$client = new nusoap_client('http://www.lapolitecnica.net/webservices/servicio.php?wsdl', 'wsdl');
+
+        $client = new nusoap_client('http://127.0.0.1:8080/FIRMARSRI/FirmaElectronicaSRI?wsdl', 'wsdl');
+        $err = $client->getError();
+        if ($err) {
+            echo 'Error en Constructor' . $err;
+        }
+        //$param = array('param_id' => '2', 'param_txt' => 'DVD');
+        $param = array(
+            'pathOrigen' => $filexml,
+            'pathFirmado' => Yii::app()->params['seaDocFact'],
+            'pathCertificado' => $fileCertificado,
+            'clave' => $pass,
+            'nombreFirmado' => $Documento
+        );
+
+        $result = $client->call('firmar', $param);
+
+        if ($client->fault) {
+            echo 'Fallo';
+            print_r($result);
+        } else { // Chequea errores
+            $err = $client->getError();
+            if ($err) {  // Muestra el error
+                echo 'Error' . $err;
+            } else {  // Muestra el resultado
+                //echo 'Resultado';
+                //print_r($result);
+                //echo $result['return'];
+            }
+        }
+    }
 
 }
