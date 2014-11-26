@@ -268,5 +268,64 @@ class VSFirmaDigital extends VsSeaActiveRecord {
             }
         }
     }
+    
+    /**
+     * This function accepts a byte value,
+     * as returned from the filesize()
+     * function, and converts to into the
+     * appropriate larger value (Mb, Kb, etc.).
+     *
+     * @param string $size File size in bytes.
+     * @return string Formatted files sinze in Kb, Mb, or Gb
+     * 
+     * Replace "/path/to/your/file.ext" with the path to the file you want the size of.
+     * $file_size = convertFileSize(filesize('/path/to/your/file.ext'));
+     * 
+     */
+    public function convertFileSize($size) {
+        switch ($size) {
+            case ($size / 1073741824) > 1:
+                //return round(($size / 1073741824), 2) . "Gb";
+                return $res = array(
+                    'size' => round(($size / 1073741824), 2),
+                    'type' => 'Gb'
+                );
+            case ($size / 1048576) > 1:
+                //return round(($size / 1048576), 2) . "Mb";
+                return $res = array(
+                    'size' => round(($size / 1048576), 2),
+                    'type' => 'Mb'
+                );
+            case ($size / 1024) > 1:
+                //return round(($size / 1024), 2) . "Kb";
+                return $res = array(
+                    'size' => round(($size / 1024), 2),
+                    'type' => 'Kb'
+                );
+            default:
+                //return $size . ' bytes';
+                return $res = array(
+                    'size' => $size,
+                    'type' => 'bytes'
+                );
+        }
+    }
+    
+    public function Base64StrToByteArray($string) {
+        $bytes = array();
+        for ($i = 0; $i < strlen($string); $i++) {
+            $bytes[] = ord($string[$i]);
+        }
+        return $bytes;
+        //return array_slice(unpack("C*", "\0".$string), 1);
+    }
+
+    public function ByteArrayToBase64Str($bytes) {
+        $string = "";
+        foreach ($bytes as $chr) {
+            $string .= chr($chr);
+        }
+        return $string;
+    }
 
 }

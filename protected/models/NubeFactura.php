@@ -257,13 +257,15 @@ class NubeFactura extends VsSeaIntermedia {
     private function buscarFacturas() {
         $conCont = yii::app()->dbcont;
         $rawData = array();
+        $fechaIni=Yii::app()->params['dateStartFact'];
+        $limitEnv=Yii::app()->params['limitEnv'];
         //$sql = "SELECT TIP_NOF,CONCAT(REPEAT('0',9-LENGTH(RIGHT(NUM_NOF,9))),RIGHT(NUM_NOF,9)) NUM_NOF,
         $sql = "SELECT TIP_NOF, NUM_NOF,
                         CED_RUC,NOM_CLI,FEC_VTA,DIR_CLI,VAL_BRU,POR_DES,VAL_DES,VAL_FLE,BAS_IVA,
                         BAS_IV0,POR_IVA,VAL_IVA,VAL_NET,POR_R_F,VAL_R_F,POR_R_I,VAL_R_I,GUI_REM,0 PROPINA,
                         USUARIO,LUG_DES,NOM_CTO
                     FROM " . $conCont->dbname . ".VC010101 
-                WHERE IND_UPD='L' AND FEC_VTA>'2014-05-01' AND ENV_DOC='0' LIMIT 2";
+                WHERE IND_UPD='L' AND FEC_VTA>'$fechaIni' AND ENV_DOC='0' LIMIT $limitEnv";
 
         //echo $sql;
         $rawData = $conCont->createCommand($sql)->queryAll();
@@ -657,91 +659,97 @@ class NubeFactura extends VsSeaIntermedia {
         $adiFact = $this->mostrarFacturaDataAdicional($ids);
 
 
-        $xmldata = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-            <factura id="comprobante" version="1.1.0">
-                <infoTributaria>
-                    <ambiente>' . $cabFact["Ambiente"] . '</ambiente>
-                    <tipoEmision>' . $cabFact["TipoEmision"] . '</tipoEmision>
-                    <razonSocial>' . Yii::app()->getSession()->get('RazonSocial', FALSE) . '</razonSocial>
-                    <nombreComercial>' . Yii::app()->getSession()->get('NombreComercial', FALSE) . '</nombreComercial>
-                    <ruc>' . Yii::app()->getSession()->get('Ruc', FALSE) . '</ruc>
-                    <claveAcceso>' . $cabFact["ClaveAcceso"] . '</claveAcceso>
-                    <codDoc>' . $cabFact["CodigoDocumento"] . '</codDoc>
-                    <estab>' . $cabFact["Establecimiento"] . '</estab>
-                    <ptoEmi>' . $cabFact["PuntoEmision"] . '</ptoEmi>
-                    <secuencial>' . $cabFact["Secuencial"] . '</secuencial>
-                    <dirMatriz>' . $cabFact["DireccionMatriz"] . '</dirMatriz>
-                </infoTributaria>
-                <infoFactura>
-                    <fechaEmision>' . date(Yii::app()->params["dateXML"], strtotime($cabFact["FechaEmision"])) . '</fechaEmision>
-                    <dirEstablecimiento>' . $cabFact["DireccionEstablecimiento"] . '</dirEstablecimiento>
-                    <contribuyenteEspecial>' . $cabFact["ContribuyenteEspecial"] . '</contribuyenteEspecial>
-                    <obligadoContabilidad>' . $cabFact["ObligadoContabilidad"] . '</obligadoContabilidad>
-                    <tipoIdentificacionComprador>' . $cabFact["TipoIdentificacionComprador"] . '</tipoIdentificacionComprador>
-                    <razonSocialComprador>' . $cabFact["RazonSocialComprador"] . '</razonSocialComprador>
-                    <identificacionComprador>' . $cabFact["IdentificacionComprador"] . '</identificacionComprador>
-                    <totalSinImpuestos>' . Yii::app()->format->formatNumber($cabFact["TotalSinImpuesto"]) . '</totalSinImpuestos>
-                    <totalDescuento>' . Yii::app()->format->formatNumber($cabFact["TotalDescuento"]) . '</totalDescuento>';
-        $xmldata .='<totalConImpuestos>';
-        $IRBPNR = 0; //NOta validar si existe casos para estos
-        $ICE = 0;
-        for ($i = 0; $i < sizeof($impFact); $i++) {
-            if ($impFact[$i]['Codigo'] == '2') {//Valores de IVA
-                switch ($impFact[$i]['CodigoPorcentaje']) {
-                    case 0:
-                        //$BASEIVA0=$impFact[$i]['BaseImponible'];
-                        break;
-                    case 2:
-                        $BASEIVA12 = $impFact[$i]['BaseImponible'];
-                        $VALORIVA12 = $impFact[$i]['Valor'];
-                        $xmldata .='<totalImpuesto>
-                                <codigo>' . $impFact[$i]["Codigo"] . '</codigo>
-                                <codigoPorcentaje>' . $impFact[$i]["CodigoPorcentaje"] . '</codigoPorcentaje>
-                                <baseImponible>' . Yii::app()->format->formatNumber($impFact[$i]["BaseImponible"]) . '</baseImponible>
-                                <tarifa>' . Yii::app()->format->formatNumber($impFact[$i]["Tarifa"]) . '</tarifa>
-                                <valor>' . Yii::app()->format->formatNumber($impFact[$i]["Valor"]) . '</valor>
-                            </totalImpuesto>';
-                        break;
-                    case 6://No objeto Iva
-                        //$NOOBJIVA=$impFact[$i]['BaseImponible'];
-                        break;
-                    case 7://Excento de Iva
-                        //$EXENTOIVA=$impFact[$i]['BaseImponible'];
-                        break;
-                    default:
-                }
-            }
-            //NOta Verificar cuando el COdigo sea igual a 3 o 5 Para los demas impuestos
-        }
-
-        $xmldata .='</totalConImpuestos>
-                <propina>' . Yii::app()->format->formatNumber($cabFact["Propina"]) . '</propina>
-                <importeTotal>' . Yii::app()->format->formatNumber($cabFact["ImporteTotal"]) . '</importeTotal>
-                <moneda>' . $cabFact["Moneda"] . '</moneda>
-            </infoFactura>';
+        $xmldata = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
+            $xmldata .='<factura id="comprobante" version="1.0.0">';
+                $xmldata .='<infoTributaria>';
+                    $xmldata .='<ambiente>' . $cabFact["Ambiente"] . '</ambiente>';
+                    $xmldata .='<tipoEmision>' . $cabFact["TipoEmision"] . '</tipoEmision>';
+                    $xmldata .='<razonSocial>' . Yii::app()->getSession()->get('RazonSocial', FALSE) . '</razonSocial>';
+                    $xmldata .='<nombreComercial>' . Yii::app()->getSession()->get('NombreComercial', FALSE) . '</nombreComercial>';
+                    $xmldata .='<ruc>' . Yii::app()->getSession()->get('Ruc', FALSE) . '</ruc>';
+                    $xmldata .='<claveAcceso>' . $cabFact["ClaveAcceso"] . '</claveAcceso>';
+                    $xmldata .='<codDoc>' . $cabFact["CodigoDocumento"] . '</codDoc>';
+                    $xmldata .='<estab>' . $cabFact["Establecimiento"] . '</estab>';
+                    $xmldata .='<ptoEmi>' . $cabFact["PuntoEmision"] . '</ptoEmi>';
+                    $xmldata .='<secuencial>' . $cabFact["Secuencial"] . '</secuencial>';
+                    $xmldata .='<dirMatriz>' . $cabFact["DireccionMatriz"] . '</dirMatriz>';
+                $xmldata .='</infoTributaria>';
+                $xmldata .='<infoFactura>';
+                    $xmldata .='<fechaEmision>' . date(Yii::app()->params["dateXML"], strtotime($cabFact["FechaEmision"])) . '</fechaEmision>';
+                    $xmldata .='<dirEstablecimiento>' . $cabFact["DireccionEstablecimiento"] . '</dirEstablecimiento>';
+                    $xmldata .='<contribuyenteEspecial>' . $cabFact["ContribuyenteEspecial"] . '</contribuyenteEspecial>';
+                    $xmldata .='<obligadoContabilidad>' . $cabFact["ObligadoContabilidad"] . '</obligadoContabilidad>';
+                    $xmldata .='<tipoIdentificacionComprador>' . $cabFact["TipoIdentificacionComprador"] . '</tipoIdentificacionComprador>';
+                    $xmldata .='<razonSocialComprador>' . $cabFact["RazonSocialComprador"] . '</razonSocialComprador>';
+                    $xmldata .='<identificacionComprador>' . $cabFact["IdentificacionComprador"] . '</identificacionComprador>';
+                    $xmldata .='<totalSinImpuestos>' . Yii::app()->format->formatNumber($cabFact["TotalSinImpuesto"]) . '</totalSinImpuestos>';
+                    $xmldata .='<totalDescuento>' . Yii::app()->format->formatNumber($cabFact["TotalDescuento"]) . '</totalDescuento>';
+                        $xmldata .='<totalConImpuestos>';
+                        $IRBPNR = 0; //NOta validar si existe casos para estos
+                        $ICE = 0;
+                        for ($i = 0; $i < sizeof($impFact); $i++) {
+                            if ($impFact[$i]['Codigo'] == '2') {//Valores de IVA
+                                switch ($impFact[$i]['CodigoPorcentaje']) {
+                                    case 0:
+                                        $BASEIVA0=$impFact[$i]['BaseImponible'];
+                                        $xmldata .='<totalImpuesto>';
+                                                $xmldata .='<codigo>' . $impFact[$i]["Codigo"] . '</codigo>';
+                                                $xmldata .='<codigoPorcentaje>' . $impFact[$i]["CodigoPorcentaje"] . '</codigoPorcentaje>';
+                                                $xmldata .='<baseImponible>' . Yii::app()->format->formatNumber($impFact[$i]["BaseImponible"]) . '</baseImponible>';
+                                                //$xmldata .='<tarifa>' . Yii::app()->format->formatNumber($impFact[$i]["Tarifa"]) . '</tarifa>';
+                                                $xmldata .='<valor>' . Yii::app()->format->formatNumber($impFact[$i]["Valor"]) . '</valor>';
+                                        $xmldata .='</totalImpuesto>';
+                                        break;
+                                    case 2:
+                                        $BASEIVA12 = $impFact[$i]['BaseImponible'];
+                                        $VALORIVA12 = $impFact[$i]['Valor'];
+                                        $xmldata .='<totalImpuesto>';
+                                                $xmldata .='<codigo>' . $impFact[$i]["Codigo"] . '</codigo>';
+                                                $xmldata .='<codigoPorcentaje>' . $impFact[$i]["CodigoPorcentaje"] . '</codigoPorcentaje>';
+                                                $xmldata .='<baseImponible>' . Yii::app()->format->formatNumber($impFact[$i]["BaseImponible"]) . '</baseImponible>';
+                                                $xmldata .='<tarifa>' . Yii::app()->format->formatNumber($impFact[$i]["Tarifa"]) . '</tarifa>';
+                                                $xmldata .='<valor>' . Yii::app()->format->formatNumber($impFact[$i]["Valor"]) . '</valor>';
+                                        $xmldata .='</totalImpuesto>';
+                                        break;
+                                    case 6://No objeto Iva
+                                        //$NOOBJIVA=$impFact[$i]['BaseImponible'];
+                                        break;
+                                    case 7://Excento de Iva
+                                        //$EXENTOIVA=$impFact[$i]['BaseImponible'];
+                                        break;
+                                    default:
+                                }
+                            }
+                            //NOta Verificar cuando el COdigo sea igual a 3 o 5 Para los demas impuestos
+                        }
+                        $xmldata .='</totalConImpuestos>';
+                $xmldata .='<propina>' . Yii::app()->format->formatNumber($cabFact["Propina"]) . '</propina>';
+                $xmldata .='<importeTotal>' . Yii::app()->format->formatNumber($cabFact["ImporteTotal"]) . '</importeTotal>';
+                $xmldata .='<moneda>' . $cabFact["Moneda"] . '</moneda>';
+            $xmldata .='</infoFactura>';
         $xmldata .='<detalles>';
         for ($i = 0; $i < sizeof($detFact); $i++) {//DETALLE DE FACTURAS
-            $xmldata .='<detalle>
-            <codigoPrincipal>' . $detFact[$i]['CodigoPrincipal'] . '</codigoPrincipal>
-            <codigoAuxiliar>' . $detFact[$i]['CodigoAuxiliar'] . '</codigoAuxiliar>
-            <descripcion>' . $detFact[$i]['Descripcion'] . '</descripcion>
-            <cantidad>' . Yii::app()->format->formatNumber($detFact[$i]['Cantidad']) . '</cantidad>
-            <precioUnitario>' . Yii::app()->format->formatNumber($detFact[$i]['PrecioUnitario']) . '</precioUnitario>
-            <descuento>' . Yii::app()->format->formatNumber($detFact[$i]['Descuento']) . '</descuento>
-            <precioTotalSinImpuesto>' . Yii::app()->format->formatNumber($detFact[$i]['PrecioTotalSinImpuesto']) . '</precioTotalSinImpuesto>
-            <impuestos>';
+            $xmldata .='<detalle>';
+            $xmldata .='<codigoPrincipal>' . $detFact[$i]['CodigoPrincipal'] . '</codigoPrincipal>';
+            $xmldata .='<codigoAuxiliar>' . $detFact[$i]['CodigoAuxiliar'] . '</codigoAuxiliar>';
+            $xmldata .='<descripcion>' . $detFact[$i]['Descripcion'] . '</descripcion>';
+            $xmldata .='<cantidad>' . Yii::app()->format->formatNumber($detFact[$i]['Cantidad']) . '</cantidad>';
+            $xmldata .='<precioUnitario>' . Yii::app()->format->formatNumber($detFact[$i]['PrecioUnitario']) . '</precioUnitario>';
+            $xmldata .='<descuento>' . Yii::app()->format->formatNumber($detFact[$i]['Descuento']) . '</descuento>';
+            $xmldata .='<precioTotalSinImpuesto>' . Yii::app()->format->formatNumber($detFact[$i]['PrecioTotalSinImpuesto']) . '</precioTotalSinImpuesto>';
+            $xmldata .='<impuestos>';
             $impuesto = $detFact[$i]['impuestos'];
             for ($j = 0; $j < sizeof($impuesto); $j++) {//DETALLE IMPUESTO DE FACTURA
-                $xmldata .='<impuesto>
-                        <codigo>' . $impuesto[$j]['Codigo'] . '</codigo>
-                        <codigoPorcentaje>' . $impuesto[$j]['CodigoPorcentaje'] . '</codigoPorcentaje>
-                        <tarifa>' . Yii::app()->format->formatNumber($impuesto[$j]['Tarifa']) . '</tarifa>
-                        <baseImponible>' . Yii::app()->format->formatNumber($impuesto[$j]['BaseImponible']) . '</baseImponible>
-                        <valor>' . Yii::app()->format->formatNumber($impuesto[$j]['Valor']) . '</valor>
-                    </impuesto>';
+                $xmldata .='<impuesto>';
+                        $xmldata .='<codigo>' . $impuesto[$j]['Codigo'] . '</codigo>';
+                        $xmldata .='<codigoPorcentaje>' . $impuesto[$j]['CodigoPorcentaje'] . '</codigoPorcentaje>';
+                        $xmldata .='<tarifa>' . Yii::app()->format->formatNumber($impuesto[$j]['Tarifa']) . '</tarifa>';
+                        $xmldata .='<baseImponible>' . Yii::app()->format->formatNumber($impuesto[$j]['BaseImponible']) . '</baseImponible>';
+                        $xmldata .='<valor>' . Yii::app()->format->formatNumber($impuesto[$j]['Valor']) . '</valor>';
+                    $xmldata .='</impuesto>';
             }
-            $xmldata .='</impuestos>
-        </detalle>';
+            $xmldata .='</impuestos>';
+        $xmldata .='</detalle>';
         }
         $xmldata .='</detalles>';
 //    <retenciones>
@@ -767,11 +775,14 @@ class NubeFactura extends VsSeaIntermedia {
 
         $xmldata .='<infoAdicional>';
         for ($i = 0; $i < sizeof($adiFact); $i++) {
-            $xmldata .='<campoAdicional nombre="' . $adiFact[$i]['Nombre'] . '">' . $adiFact[$i]['Descripcion'] . '</campoAdicional>';
+            if(strlen(trim($adiFact[$i]['Descripcion']))>0){
+                $xmldata .='<campoAdicional nombre="' . $adiFact[$i]['Nombre'] . '">' . $adiFact[$i]['Descripcion'] . '</campoAdicional>';
+            }
         }
         $xmldata .='</infoAdicional>';
         //$xmldata .=$firma;
         $xmldata .='</factura>';
+        //echo htmlentities($xmldata);
         $nomDocfile = $cabFact['NombreDocumento'] . '-' . $cabFact['NumDocumento'] . '.xml';
 
         file_put_contents(Yii::app()->params['seaDocXml'] . $nomDocfile, $xmldata); //Escribo el Archivo Xml

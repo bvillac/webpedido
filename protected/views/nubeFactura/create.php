@@ -196,47 +196,161 @@
   //echo "DONE";
 
   /******************* NUSOAP *********************** */
+/*
+  Yii::import('system.vendors.nusoap.lib.*');
+  require_once('nusoap.php');
+  $obj = new VSFirmaDigital;
+  $Dataf = $obj->recuperarFirmaDigital('1');
+  $fileCertificado = Yii::app()->params['seaFirma'] . base64_decode($Dataf['RutaFile']);
+  //echo '<br>';
+  $pass = base64_decode($Dataf['Clave']);
+  //echo '<br>';
+  $filexml = Yii::app()->params['seaDocFact'] . 'FACTURA-001-001-000108133.xml';
+  //$client = new nusoap_client('http://www.lapolitecnica.net/webservices/servicio.php?wsdl', 'wsdl');
+
+
+  $client = new nusoap_client('http://127.0.0.1:8080/FIRMARSRI/FirmaElectronicaSRI?wsdl', 'wsdl');
+  $err = $client->getError();
+  if ($err) {
+  echo 'Error en Constructor' . $err;
+  }
+  $ruta23 = Yii::app()->params['seaDocFact'];
+  //$param = array('param_id' => '2', 'param_txt' => 'DVD');
+  $param = array(
+  'pathOrigen' => $filexml,
+  'pathFirmado' => Yii::app()->params['seaDocFact'],
+  'pathCertificado' => $fileCertificado,
+  'clave' => $pass,
+  'nombreFirmado' => 'FACTURA-001-001-000108133.xml'
+  );
+
+  $result = $client->call('firmar', $param);
+
+  if ($client->fault) {
+  echo 'Fallo';
+  print_r($result);
+  } else { // Chequea errores
+  $err = $client->getError();
+  if ($err) {  // Muestra el error
+  echo 'Error' . $err;
+  } else {  // Muestra el resultado
+  //echo 'Resultado';
+  //print_r($result);
+  echo $result['return'];
+  }
+  }
+ * 
+ */
+
+/* * *******    ENVIO DE LA INFORMACION WEB SERVICE  *********** */
 
 Yii::import('system.vendors.nusoap.lib.*');
 require_once('nusoap.php');
 $obj = new VSFirmaDigital;
-$Dataf = $obj->recuperarFirmaDigital('1');
-$fileCertificado = Yii::app()->params['seaFirma'] . base64_decode($Dataf['RutaFile']);
-//echo '<br>';
-$pass = base64_decode($Dataf['Clave']);
-//echo '<br>';
-$filexml = Yii::app()->params['seaDocFact'] . 'FACTURA-001-001-000108133.xml';
-//$client = new nusoap_client('http://www.lapolitecnica.net/webservices/servicio.php?wsdl', 'wsdl');
-
-
-$client = new nusoap_client('http://127.0.0.1:8080/FIRMARSRI/FirmaElectronicaSRI?wsdl', 'wsdl');
+$filexml = Yii::app()->params['seaDocFact'] . 'FACTURA-001-001-000113715.xml';
+echo $filexml . '<br>';
+//$file_size = $obj->convertFileSize(filesize($filexml));
+//print_r($file_size);
+//echo $file_size['size'];
+$file64base = base64_encode(file_get_contents($filexml)); //SE OBTIEN EL XML Y SE LO LLEVA BASE64
+//print_r($file64base);
+$filebyte = $obj->Base64StrToByteArray($file64base); //LOS TRASNFORMA UN ARRAY DE BYTES
+//print_r($filebyte);
+//echo count($filebyte);
+//$res=$obj->ByteArrayToBase64Str($filebyte);//DEVUELVE A STRING
+//echo '<br>'.$res;
+//echo base64_decode($res);
+//APLICANADO NUSOAP
+$wdsl = 'https://celcer.sri.gob.ec/comprobantes-electronicos-ws/RecepcionComprobantes?wsdl'; //Ruta del Web service SRI
+$client = new nusoap_client($wdsl, 'wsdl');
 $err = $client->getError();
 if ($err) {
     echo 'Error en Constructor' . $err;
 }
-$ruta23=Yii::app()->params['seaDocFact'];
-//$param = array('param_id' => '2', 'param_txt' => 'DVD');
 $param = array(
-    'pathOrigen' => $filexml,
-    'pathFirmado' => Yii::app()->params['seaDocFact'] ,
-    'pathCertificado' => $fileCertificado,
-    'clave' => $pass,
-    'nombreFirmado' => 'FACTURA-001-001-000108133.xml'
+    'xml' => $filebyte
 );
 
-$result = $client->call('firmar', $param);
+$response = $client->call('validarComprobante', $param);
 
 if ($client->fault) {
-    echo 'Fallo';
-    print_r($result);
+    echo 'Existe un Problemas en el Envio';
+    print_r($response);
 } else { // Chequea errores
     $err = $client->getError();
     if ($err) {  // Muestra el error
         echo 'Error' . $err;
     } else {  // Muestra el resultado
         //echo 'Resultado';
-        //print_r($result);
-        echo $result['return'];
+        print_r($response);
+        //$Recepcion=$response['RespuestaRecepcionComprobante'];//Response Recibido
+        //$estado=$Recepcion['estado'];//Devuelve el Estod del Documento
+        //$comprobantes=$Recepcion['comprobantes'];//Array del Comprobante
+        //$comprobante=$comprobantes['comprobante'];//Mensajes del COmprobante
+        //$mensajes=$comprobante['mensajes'];//Data mensajes del Error Recibido
+        //print_r($mensajes);
+        //echo $mensajes['mensaje']['identificador'];
+        //echo $mensajes['mensaje']['mensaje'];
+        //echo $mensajes['mensaje']['informacionAdicional'];
+        //echo $mensajes['mensaje']['tipo'];
     }
 }
+
+ 
+
+/*
+        $obj = new NubeFactura;
+        $ids=63;
+        $cabFact = $obj->mostrarCabFactura($ids, '01');
+        $detFact = $obj->mostrarDetFacturaImp($ids);
+        $impFact = $obj->mostrarFacturaImp($ids);
+        $adiFact = $obj->mostrarFacturaDataAdicional($ids);
+        print_r($impFact);
+        //echo sizeof($impFact);
+        
+        $xmldata ='<totalConImpuestos>';
+                        $IRBPNR = 0; //NOta validar si existe casos para estos
+                        $ICE = 0;
+                        for ($i = 0; $i < sizeof($impFact); $i++) {
+                            
+                            if ($impFact[$i]['Codigo'] == '2') {//Valores de IVA
+                                echo $impFact[$i]['Codigo'];
+                                switch ($impFact[$i]['CodigoPorcentaje']) {
+                                    case 0:
+                                        $BASEIVA0=$impFact[$i]['BaseImponible'];
+                                        $xmldata .='<totalImpuesto>';
+                                                $xmldata .='<codigo>' . $impFact[$i]["Codigo"] . '</codigo>';
+                                                $xmldata .='<codigoPorcentaje>' . $impFact[$i]["CodigoPorcentaje"] . '</codigoPorcentaje>';
+                                                $xmldata .='<baseImponible>' . Yii::app()->format->formatNumber($impFact[$i]["BaseImponible"]) . '</baseImponible>';
+                                                $xmldata .='<tarifa>' . Yii::app()->format->formatNumber($impFact[$i]["Tarifa"]) . '</tarifa>';
+                                                $xmldata .='<valor>' . Yii::app()->format->formatNumber($impFact[$i]["Valor"]) . '</valor>';
+                                        $xmldata .='</totalImpuesto>';
+                                        break;
+                                    case 2:
+                                        $BASEIVA12 = $impFact[$i]['BaseImponible'];
+                                        $VALORIVA12 = $impFact[$i]['Valor'];
+                                        $xmldata .='<totalImpuesto>';
+                                                $xmldata .='<codigo>' . $impFact[$i]["Codigo"] . '</codigo>';
+                                                $xmldata .='<codigoPorcentaje>' . $impFact[$i]["CodigoPorcentaje"] . '</codigoPorcentaje>';
+                                                $xmldata .='<baseImponible>' . Yii::app()->format->formatNumber($impFact[$i]["BaseImponible"]) . '</baseImponible>';
+                                                $xmldata .='<tarifa>' . Yii::app()->format->formatNumber($impFact[$i]["Tarifa"]) . '</tarifa>';
+                                                $xmldata .='<valor>' . Yii::app()->format->formatNumber($impFact[$i]["Valor"]) . '</valor>';
+                                            $xmldata .='</totalImpuesto>';
+                                        break;
+                                    case 6://No objeto Iva
+                                        //$NOOBJIVA=$impFact[$i]['BaseImponible'];
+                                        break;
+                                    case 7://Excento de Iva
+                                        //$EXENTOIVA=$impFact[$i]['BaseImponible'];
+                                        break;
+                                    default:
+                                }
+                            }
+                            //NOta Verificar cuando el COdigo sea igual a 3 o 5 Para los demas impuestos
+                        }
+                        $xmldata .='</totalConImpuestos>';
+                        
+        echo htmlentities($xmldata);
+*/
+
 ?>
