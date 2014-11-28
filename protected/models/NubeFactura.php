@@ -635,6 +635,8 @@ class NubeFactura extends VsSeaIntermedia {
                     if($result['estado']){
                         //echo $result['nomDoc'];
                         $firma = $firmaDig->firmaXAdES_BES($result['nomDoc']);
+                        $response=$firmaDig->validarComprobante($result['nomDoc']);//Envio NOmbre Documento
+                        $response=$firmaDig->autorizacionComprobante($result['ClaveAcceso']);//Envio CLave de Acceso
                     }
                 }
             }
@@ -788,10 +790,13 @@ class NubeFactura extends VsSeaIntermedia {
         file_put_contents(Yii::app()->params['seaDocXml'] . $nomDocfile, $xmldata); //Escribo el Archivo Xml
         $result = array(
             'nomDoc' => $nomDocfile,
+            'ClaveAcceso' => $cabFact["ClaveAcceso"],
             'estado' => true
         );
         return $result;
     }
+    
+    
     
 
 }

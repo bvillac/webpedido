@@ -371,11 +371,31 @@ if ($client->fault) {
 }
 */
 
+
+/****************** PRUEBA ERRORES SRI **********************/
 $obj = new VSFirmaDigital;
-//$response=$obj->validarComprobante('FACTURA-001-001-000116975.xml');
-//$response=$obj->autorizacionComprobante('1711201401099236253700110010010001169749088879817');
-$response=$obj->autorizacionComprobante('1711201401099236253700110010010001169759088957511');
-print_r($response);
+//$obj->insertarFacturas();
+//$response=$obj->validarComprobante('FACTURA-001-001-000116977.xml');
+$response=$obj->autorizacionComprobante('1711201401099236253700110010010001169769089035214');
+//$response=$obj->autorizacionComprobante('1711201401099236253700110010010001169769089035214');//Ojo error de diferencias
+//$response=$obj->autorizacionComprobante('1711201401099236253700110010010001169779089112915');//Autorizado Normal
+//print_r($response);
+//[status] => OK [error] => [message] => Respuesta Ok WebService: autorizacionComprobante [data]
+if($response['status']=='OK'){
+    $numeroAutorizacion=(int)$response['data']['RespuestaAutorizacionComprobante']['numeroComprobantes'];
+    if($numeroAutorizacion>0){//Verifica si Autorizo algun Comprobante Apesar de recibirlo Autorizo Comprobante
+        $obj->actualizaDocRecibidoSri($response['data']['RespuestaAutorizacionComprobante'],'101');
+        //print_r($response['data']);
+//        $mensaje=$response['data']['RespuestaAutorizacionComprobante']['autorizaciones']['autorizacion']['mensajes']['mensaje'];
+//        //print_r($mensaje);
+//        for ($i = 0; $i < sizeof($mensaje); $i++) {
+//            echo $mensaje[$i]['mensaje'];
+//        }
+    }
+
+    
+    
+}
 
 
 ?>
