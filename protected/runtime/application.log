@@ -1622,3 +1622,601 @@ REQUEST_URI=/websea/NubeFactura/create.jsp
 in /var/www/html/websea/protected/views/nubeFactura/create.php (288)
 in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
 in /var/www/html/websea/index.php (13)
+2014/11/26 17:41:02 [error] [php] java_require() not supported anymore. Please use <a href="http://php-java-bridge.sourceforge.net/pjb/webapp.php>tomcat or jee hot deployment</a> instead (/var/local/apache-tomcat-7.0.57/webapps/JavaBridge/java/Java.inc:1656)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(126): require()
+#1 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#2 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#3 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#4 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#5 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#6 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#7 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#8 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#11 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#13 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#14 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#15 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/local/apache-tomcat-7.0.57/webapps/JavaBridge/java/Java.inc (1656)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (358)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
+2014/11/26 17:41:38 [error] [php] require_once(JavaBridge/java/Java.inc): failed to open stream: No such file or directory (/var/www/html/websea/protected/views/nubeFactura/create.php:357)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#1 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#2 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#3 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#4 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#5 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#6 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#7 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#9 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#10 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#13 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#14 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#15 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/www/html/websea/protected/views/nubeFactura/create.php (357)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (357)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
+2014/11/26 17:41:53 [error] [php] java_require() not supported anymore. Please use <a href="http://php-java-bridge.sourceforge.net/pjb/webapp.php>tomcat or jee hot deployment</a> instead (/var/local/apache-tomcat-7.0.57/webapps/JavaBridge/java/Java.inc:1656)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(126): require()
+#1 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#2 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#3 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#4 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#5 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#6 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#7 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#8 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#11 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#13 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#14 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#15 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/local/apache-tomcat-7.0.57/webapps/JavaBridge/java/Java.inc (1656)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (358)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
+2014/11/26 17:43:34 [error] [php] java_require() not supported anymore. Please use <a href="http://php-java-bridge.sourceforge.net/pjb/webapp.php>tomcat or jee hot deployment</a> instead (/var/local/apache-tomcat-7.0.57/webapps/JavaBridge/java/Java.inc:1656)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(126): require()
+#1 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#2 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#3 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#4 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#5 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#6 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#7 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#8 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#11 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#13 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#14 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#15 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/local/apache-tomcat-7.0.57/webapps/JavaBridge/java/Java.inc (1656)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (358)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
+2014/11/26 17:52:20 [error] [php] java_require() not supported anymore. Please use <a href="http://php-java-bridge.sourceforge.net/pjb/webapp.php>tomcat or jee hot deployment</a> instead (/var/local/apache-tomcat-7.0.57/webapps/JavaBridge/java/Java.inc:1656)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(126): require()
+#1 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#2 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#3 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#4 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#5 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#6 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#7 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#8 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#11 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#13 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#14 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#15 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/local/apache-tomcat-7.0.57/webapps/JavaBridge/java/Java.inc (1656)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (358)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
+2014/11/26 18:01:30 [error] [php] require_once(): http:// wrapper is disabled in the server configuration by allow_url_include=0 (/var/www/html/websea/protected/views/nubeFactura/create.php:358)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#1 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#2 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#3 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#4 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#5 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#6 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#7 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#9 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#10 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#13 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#14 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#15 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/www/html/websea/protected/views/nubeFactura/create.php (358)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (358)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
+2014/11/26 18:02:51 [error] [php] java_require() not supported anymore. Please use <a href="http://php-java-bridge.sourceforge.net/pjb/webapp.php>tomcat or jee hot deployment</a> instead (/var/local/apache-tomcat-7.0.57/webapps/JavaBridge/java/Java.inc:1656)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(126): require()
+#1 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#2 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#3 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#4 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#5 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#6 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#7 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#8 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#11 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#13 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#14 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#15 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/local/apache-tomcat-7.0.57/webapps/JavaBridge/java/Java.inc (1656)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (359)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
+2014/11/26 18:15:28 [error] [php] java_require() not supported anymore. Please use <a href="http://php-java-bridge.sourceforge.net/pjb/webapp.php>tomcat or jee hot deployment</a> instead (/var/local/tomcat7/webapps/JavaBridge/java/Java.inc:1656)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(126): require()
+#1 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#2 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#3 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#4 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#5 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#6 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#7 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#8 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#11 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#13 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#14 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#15 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/local/tomcat7/webapps/JavaBridge/java/Java.inc (1656)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (360)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
+2014/11/26 18:20:14 [error] [php] java_require() not supported anymore. Please use <a href="http://php-java-bridge.sourceforge.net/pjb/webapp.php>tomcat or jee hot deployment</a> instead (/var/local/tomcat7/webapps/JavaBridge/java/Java.inc:1656)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(126): require()
+#1 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#2 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#3 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#4 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#5 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#6 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#7 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#8 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#11 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#13 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#14 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#15 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/local/tomcat7/webapps/JavaBridge/java/Java.inc (1656)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (360)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
+2014/11/26 18:22:18 [error] [php] file_get_contents(/opt/SEADOC/FACTURAS/FACTURA-001-001-000116966c.xml): failed to open stream: No such file or directory (/var/www/html/websea/protected/views/nubeFactura/create.php:311)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#1 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#2 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#3 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#4 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#5 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#6 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#7 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#9 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#10 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#13 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#14 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#15 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/www/html/websea/protected/views/nubeFactura/create.php (311)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
+in /var/www/html/websea/index.php (13)
+2014/11/27 00:50:09 [error] [php] Undefined variable: byteArray (/var/www/html/websea/protected/models/VSFirmaDigital.php:324)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#1 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#2 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#3 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#4 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#5 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#6 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#7 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#9 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#10 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#13 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#14 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#15 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/www/html/websea/protected/models/VSFirmaDigital.php (324)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (317)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
+2014/11/27 19:53:31 [error] [php] java_require() not supported anymore. Please use <a href="http://php-java-bridge.sourceforge.net/pjb/webapp.php>tomcat or jee hot deployment</a> instead (/var/local/tomcat7/webapps/JavaBridge/java/Java.inc:1656)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(126): require()
+#1 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#2 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#3 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#4 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#5 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#6 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#7 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#8 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#11 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#13 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#14 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#15 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/local/tomcat7/webapps/JavaBridge/java/Java.inc (1656)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (366)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
+2014/11/27 19:55:28 [error] [php] java_require() not supported anymore. Please use <a href="http://php-java-bridge.sourceforge.net/pjb/webapp.php>tomcat or jee hot deployment</a> instead (/var/local/tomcat7/webapps/JavaBridge/java/Java.inc:1656)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(126): require()
+#1 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#2 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#3 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#4 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#5 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#6 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#7 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#8 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#11 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#13 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#14 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#15 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/local/tomcat7/webapps/JavaBridge/java/Java.inc (1656)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (366)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
+2014/11/27 20:06:59 [error] [php] Undefined variable: msg (/var/www/html/websea/protected/models/VSFirmaDigital.php:318)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#1 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#2 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#3 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#4 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#5 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#6 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#7 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#9 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#10 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#13 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#14 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#15 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/www/html/websea/protected/models/VSFirmaDigital.php (318)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (317)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
+2014/11/27 20:07:49 [error] [php] Undefined variable: bytes (/var/www/html/websea/protected/models/VSFirmaDigital.php:318)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#1 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#2 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#3 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#4 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#5 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#6 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#7 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#9 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#10 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#13 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#14 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#15 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/www/html/websea/protected/models/VSFirmaDigital.php (318)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (317)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
+2014/11/28 00:39:54 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'S.A.', 
+                            '0992283440001', 
+                          ' at line 23. La sentencia SQL ejecutada fue: INSERT INTO VSSEAINTERMEDIA.NubeFactura
+                            (Ambiente,TipoEmision, RazonSocial, NombreComercial, Ruc,ClaveAcceso,CodigoDocumento, Establecimiento,
+                            PuntoEmision, Secuencial, DireccionMatriz, FechaEmision, DireccionEstablecimiento, ContribuyenteEspecial,
+                            ObligadoContabilidad, TipoIdentificacionComprador, GuiaRemision, RazonSocialComprador, IdentificacionComprador,
+                            TotalSinImpuesto, TotalDescuento, Propina, ImporteTotal, Moneda, SecuencialERP, CodigoTransaccionERP,UsuarioCreador,Estado,FechaCarga) VALUES (
+                            '1',
+                            '1',
+                            'UTIMPOR S.A.',
+                            'UTIMPOR S.A.',
+                            '0992362537001',
+                            '1711201401099236253700110010010001169809089346017',
+                            '01',
+                            '001',
+                            '001',
+                            '000116980',
+                            'Cdla. La Garzota, Av. Hermano Miguel Solar 3 y Av. Agustin Freire', 
+                            '2014-11-17', 
+                            'Cdla. La Garzota, Av. Hermano Miguel Solar 3 y Av. Agustin Freire', 
+                            '999', 
+                            'SI', 
+                            '04', 
+                            '',               
+                            'ESTUDIO JURIDICO ROMERO D'& ASOCIADOS S.A.', 
+                            '0992283440001', 
+                            '152.69', 
+                            '0.00', 
+                            '0', 
+                            '166.27', 
+                            'DOLAR', 
+                            '000116980', 
+                            'F4',
+                            'v00',
+                            '1',CURRENT_TIMESTAMP() ).
+in /var/www/html/websea/protected/models/NubeFactura.php (347)
+in /var/www/html/websea/protected/models/NubeFactura.php (238)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (23)
+2014/11/28 00:39:54 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'S.A.', 
+                            '0992283440001', 
+                          ' at line 23. The SQL statement executed was: INSERT INTO VSSEAINTERMEDIA.NubeFactura
+                            (Ambiente,TipoEmision, RazonSocial, NombreComercial, Ruc,ClaveAcceso,CodigoDocumento, Establecimiento,
+                            PuntoEmision, Secuencial, DireccionMatriz, FechaEmision, DireccionEstablecimiento, ContribuyenteEspecial,
+                            ObligadoContabilidad, TipoIdentificacionComprador, GuiaRemision, RazonSocialComprador, IdentificacionComprador,
+                            TotalSinImpuesto, TotalDescuento, Propina, ImporteTotal, Moneda, SecuencialERP, CodigoTransaccionERP,UsuarioCreador,Estado,FechaCarga) VALUES (
+                            '1',
+                            '1',
+                            'UTIMPOR S.A.',
+                            'UTIMPOR S.A.',
+                            '0992362537001',
+                            '1711201401099236253700110010010001169809089346017',
+                            '01',
+                            '001',
+                            '001',
+                            '000116980',
+                            'Cdla. La Garzota, Av. Hermano Miguel Solar 3 y Av. Agustin Freire', 
+                            '2014-11-17', 
+                            'Cdla. La Garzota, Av. Hermano Miguel Solar 3 y Av. Agustin Freire', 
+                            '999', 
+                            'SI', 
+                            '04', 
+                            '',               
+                            'ESTUDIO JURIDICO ROMERO D'& ASOCIADOS S.A.', 
+                            '0992283440001', 
+                            '152.69', 
+                            '0.00', 
+                            '0', 
+                            '166.27', 
+                            'DOLAR', 
+                            '000116980', 
+                            'F4',
+                            'v00',
+                            '1',CURRENT_TIMESTAMP() )' in /opt/sisweb/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/html/websea/protected/models/NubeFactura.php(347): CDbCommand->execute()
+#1 /var/www/html/websea/protected/models/NubeFactura.php(238): NubeFactura->InsertarCabFactura(Object(CDbConnection), Array, Array, '01', 6)
+#2 /var/www/html/websea/protected/views/nubeFactura/create.php(23): NubeFactura->insertarFacturas()
+#3 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#4 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#5 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#6 /opt/sisweb/web/CController.php(782): CController->renderPartial('create', Array, true)
+#7 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): CController->render('create', Array)
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('create')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeFactura/cre...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/NubeFactura/create.jsp
+HTTP_REFERER=http://localhost/websea/NubeFactura/create.jsp
+---
+2014/11/28 00:40:30 [error] [system.db.CDbCommand] CDbCommand::execute() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'S.A.', 
+                            '0992283440001', 
+                          ' at line 23. La sentencia SQL ejecutada fue: INSERT INTO VSSEAINTERMEDIA.NubeFactura
+                            (Ambiente,TipoEmision, RazonSocial, NombreComercial, Ruc,ClaveAcceso,CodigoDocumento, Establecimiento,
+                            PuntoEmision, Secuencial, DireccionMatriz, FechaEmision, DireccionEstablecimiento, ContribuyenteEspecial,
+                            ObligadoContabilidad, TipoIdentificacionComprador, GuiaRemision, RazonSocialComprador, IdentificacionComprador,
+                            TotalSinImpuesto, TotalDescuento, Propina, ImporteTotal, Moneda, SecuencialERP, CodigoTransaccionERP,UsuarioCreador,Estado,FechaCarga) VALUES (
+                            '1',
+                            '1',
+                            'UTIMPOR S.A.',
+                            'UTIMPOR S.A.',
+                            '0992362537001',
+                            '1711201401099236253700110010010001169809089346017',
+                            '01',
+                            '001',
+                            '001',
+                            '000116980',
+                            'Cdla. La Garzota, Av. Hermano Miguel Solar 3 y Av. Agustin Freire', 
+                            '2014-11-17', 
+                            'Cdla. La Garzota, Av. Hermano Miguel Solar 3 y Av. Agustin Freire', 
+                            '999', 
+                            'SI', 
+                            '04', 
+                            '',               
+                            'ESTUDIO JURIDICO ROMERO D'& ASOCIADOS S.A.', 
+                            '0992283440001', 
+                            '152.69', 
+                            '0.00', 
+                            '0', 
+                            '166.27', 
+                            'DOLAR', 
+                            '000116980', 
+                            'F4',
+                            'v00',
+                            '1',CURRENT_TIMESTAMP() ).
+in /var/www/html/websea/protected/models/NubeFactura.php (347)
+in /var/www/html/websea/protected/models/NubeFactura.php (238)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (23)
+2014/11/28 00:40:30 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'S.A.', 
+                            '0992283440001', 
+                          ' at line 23. The SQL statement executed was: INSERT INTO VSSEAINTERMEDIA.NubeFactura
+                            (Ambiente,TipoEmision, RazonSocial, NombreComercial, Ruc,ClaveAcceso,CodigoDocumento, Establecimiento,
+                            PuntoEmision, Secuencial, DireccionMatriz, FechaEmision, DireccionEstablecimiento, ContribuyenteEspecial,
+                            ObligadoContabilidad, TipoIdentificacionComprador, GuiaRemision, RazonSocialComprador, IdentificacionComprador,
+                            TotalSinImpuesto, TotalDescuento, Propina, ImporteTotal, Moneda, SecuencialERP, CodigoTransaccionERP,UsuarioCreador,Estado,FechaCarga) VALUES (
+                            '1',
+                            '1',
+                            'UTIMPOR S.A.',
+                            'UTIMPOR S.A.',
+                            '0992362537001',
+                            '1711201401099236253700110010010001169809089346017',
+                            '01',
+                            '001',
+                            '001',
+                            '000116980',
+                            'Cdla. La Garzota, Av. Hermano Miguel Solar 3 y Av. Agustin Freire', 
+                            '2014-11-17', 
+                            'Cdla. La Garzota, Av. Hermano Miguel Solar 3 y Av. Agustin Freire', 
+                            '999', 
+                            'SI', 
+                            '04', 
+                            '',               
+                            'ESTUDIO JURIDICO ROMERO D'& ASOCIADOS S.A.', 
+                            '0992283440001', 
+                            '152.69', 
+                            '0.00', 
+                            '0', 
+                            '166.27', 
+                            'DOLAR', 
+                            '000116980', 
+                            'F4',
+                            'v00',
+                            '1',CURRENT_TIMESTAMP() )' in /opt/sisweb/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/html/websea/protected/models/NubeFactura.php(347): CDbCommand->execute()
+#1 /var/www/html/websea/protected/models/NubeFactura.php(238): NubeFactura->InsertarCabFactura(Object(CDbConnection), Array, Array, '01', 6)
+#2 /var/www/html/websea/protected/views/nubeFactura/create.php(23): NubeFactura->insertarFacturas()
+#3 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#4 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#5 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#6 /opt/sisweb/web/CController.php(782): CController->renderPartial('create', Array, true)
+#7 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): CController->render('create', Array)
+#8 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#9 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#16 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /opt/sisweb/web/CWebApplication.php(282): CController->run('create')
+#18 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeFactura/cre...')
+#19 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /var/www/html/websea/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/websea/NubeFactura/create.jsp
+HTTP_REFERER=http://localhost/websea/NubeFactura/index.jsp
+---
+2014/11/28 00:53:16 [error] [php] Undefined variable: obj (/var/www/html/websea/protected/models/VSFirmaDigital.php:358)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#1 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#2 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#3 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#4 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#5 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#6 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#7 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#9 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#10 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#13 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#14 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#15 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/www/html/websea/protected/models/VSFirmaDigital.php (358)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (375)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)
+2014/11/28 00:54:03 [error] [php] Undefined variable: obj (/var/www/html/websea/protected/models/VSFirmaDigital.php:358)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(95): NubeFacturaController->renderInternal()
+#1 /opt/sisweb/web/CController.php(869): NubeFacturaController->renderFile()
+#2 /opt/sisweb/web/CController.php(782): NubeFacturaController->renderPartial()
+#3 /var/www/html/websea/protected/controllers/NubeFacturaController.php(74): NubeFacturaController->render()
+#4 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionCreate()
+#5 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#6 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#7 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#9 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#10 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#12 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#13 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#14 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#15 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#16 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/NubeFactura/create.jsp
+in /var/www/html/websea/protected/models/VSFirmaDigital.php (358)
+in /var/www/html/websea/protected/views/nubeFactura/create.php (375)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (74)

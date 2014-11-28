@@ -230,7 +230,6 @@ class VSFirmaDigital extends VsSeaActiveRecord {
     }
     
     public function firmaXAdES_BES($Documento) {
-
         $obj = new VSFirmaDigital;
         $Dataf = $obj->recuperarFirmaDigital('1');
         $fileCertificado = Yii::app()->params['seaFirma'] . base64_decode($Dataf['RutaFile']);
@@ -311,21 +310,81 @@ class VSFirmaDigital extends VsSeaActiveRecord {
         }
     }
     
-    public function Base64StrToByteArray($string) {
+    public function StrToByteArray($string) {
         $bytes = array();
         for ($i = 0; $i < strlen($string); $i++) {
             $bytes[] = ord($string[$i]);
         }
         return $bytes;
-        //return array_slice(unpack("C*", "\0".$string), 1);
     }
 
-    public function ByteArrayToBase64Str($bytes) {
+    public function ByteArrayToStr($bytes) {
         $string = "";
         foreach ($bytes as $chr) {
             $string .= chr($chr);
         }
         return $string;
+    }
+    
+    public function autorizacionComprobante($ClaveAcceso) {
+        $wdsl = 'https://celcer.sri.gob.ec/comprobantes-electronicos-ws/AutorizacionComprobantes?wsdl'; //Ruta del Web service SRI AutorizacionComprobantes
+        $param = array(
+            'claveAccesoComprobante' => $ClaveAcceso
+        );
+        $metodo = 'autorizacionComprobante';
+        return $this->webServiceNuSoap($wdsl, $param, $metodo);
+    }
+
+    public function validarComprobante($Documento) {
+        $filexml = Yii::app()->params['seaDocFact'] . $Documento;
+        $filebyte = $this->StrToByteArray(file_get_contents($filexml));
+        $file64base = base64_encode(file_get_contents($filexml));
+        $wdsl = 'https://celcer.sri.gob.ec/comprobantes-electronicos-ws/RecepcionComprobantes?wsdl'; //Ruta del Web service SRI RecepcionComprobantes
+        $param = array(
+            'xml' => $file64base
+        );
+        $metodo = 'validarComprobante';
+        return $this->webServiceNuSoap($wdsl, $param, $metodo);
+    }
+
+    private function webServiceNuSoap($wdsl, $param, $metodo) {
+        $client = new nusoap_client($wdsl, 'wsdl');
+        $err = $client->getError();
+        if ($err) {
+            //echo 'Error en Constructor' . $err;
+            $arroout["status"] = "NO";
+            $arroout["error"] = $err;
+            $arroout["message"] = 'Error en Constructor';
+            $arroout["data"] = null;
+            return $arroout;
+        }
+        $response = $client->call($metodo, $param);
+        if ($client->fault) {
+            //echo 'Existe un Problemas en el Envio';
+            //print_r($response);
+            $arroout["status"] = "NO";
+            $arroout["error"] = $response;
+            $arroout["message"] = 'Existe un Problemas en el Envio';
+            $arroout["data"] = null;
+            return $arroout;
+        } else { // Chequea errores
+            $err = $client->getError();
+            if ($err) {  // Muestra el error
+                //echo 'Error' . $err;
+                $arroout["status"] = "NO";
+                $arroout["error"] = $err;
+                $arroout["message"] = 'Error en la Respuesta del CLiente';
+                $arroout["data"] = null;
+                return $arroout;
+            } else {  // Muestra el resultado
+                //print_r($response);
+                $arroout["status"] = "OK";
+                $arroout["error"] = $err;
+                $arroout["message"] = 'Respuesta Ok WebService: '.$metodo;
+                $arroout["data"] = $response;
+                return $arroout;
+            }
+        }
     }
 
 }

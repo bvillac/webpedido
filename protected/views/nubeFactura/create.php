@@ -195,6 +195,7 @@
   //}
   //echo "DONE";
 
+
   /******************* NUSOAP *********************** */
 /*
   Yii::import('system.vendors.nusoap.lib.*');
@@ -241,62 +242,6 @@
   }
  * 
  */
-
-/* * *******    ENVIO DE LA INFORMACION WEB SERVICE  *********** */
-
-Yii::import('system.vendors.nusoap.lib.*');
-require_once('nusoap.php');
-$obj = new VSFirmaDigital;
-$filexml = Yii::app()->params['seaDocFact'] . 'FACTURA-001-001-000113715.xml';
-echo $filexml . '<br>';
-//$file_size = $obj->convertFileSize(filesize($filexml));
-//print_r($file_size);
-//echo $file_size['size'];
-$file64base = base64_encode(file_get_contents($filexml)); //SE OBTIEN EL XML Y SE LO LLEVA BASE64
-//print_r($file64base);
-$filebyte = $obj->Base64StrToByteArray($file64base); //LOS TRASNFORMA UN ARRAY DE BYTES
-//print_r($filebyte);
-//echo count($filebyte);
-//$res=$obj->ByteArrayToBase64Str($filebyte);//DEVUELVE A STRING
-//echo '<br>'.$res;
-//echo base64_decode($res);
-//APLICANADO NUSOAP
-$wdsl = 'https://celcer.sri.gob.ec/comprobantes-electronicos-ws/RecepcionComprobantes?wsdl'; //Ruta del Web service SRI
-$client = new nusoap_client($wdsl, 'wsdl');
-$err = $client->getError();
-if ($err) {
-    echo 'Error en Constructor' . $err;
-}
-$param = array(
-    'xml' => $filebyte
-);
-
-$response = $client->call('validarComprobante', $param);
-
-if ($client->fault) {
-    echo 'Existe un Problemas en el Envio';
-    print_r($response);
-} else { // Chequea errores
-    $err = $client->getError();
-    if ($err) {  // Muestra el error
-        echo 'Error' . $err;
-    } else {  // Muestra el resultado
-        //echo 'Resultado';
-        print_r($response);
-        //$Recepcion=$response['RespuestaRecepcionComprobante'];//Response Recibido
-        //$estado=$Recepcion['estado'];//Devuelve el Estod del Documento
-        //$comprobantes=$Recepcion['comprobantes'];//Array del Comprobante
-        //$comprobante=$comprobantes['comprobante'];//Mensajes del COmprobante
-        //$mensajes=$comprobante['mensajes'];//Data mensajes del Error Recibido
-        //print_r($mensajes);
-        //echo $mensajes['mensaje']['identificador'];
-        //echo $mensajes['mensaje']['mensaje'];
-        //echo $mensajes['mensaje']['informacionAdicional'];
-        //echo $mensajes['mensaje']['tipo'];
-    }
-}
-
- 
 
 /*
         $obj = new NubeFactura;
@@ -352,5 +297,85 @@ if ($client->fault) {
                         
         echo htmlentities($xmldata);
 */
+
+/* * *******    ENVIO DE LA INFORMACION WEB SERVICE  *********** */
+/*
+Yii::import('system.vendors.nusoap.lib.*');
+require_once('nusoap.php');
+$obj = new VSFirmaDigital;
+$filexml = Yii::app()->params['seaDocFact'] . 'FACTURA-001-001-000116973.xml';
+//echo $filexml . '<br>';
+//$file_size = $obj->convertFileSize(filesize($filexml));
+//print_r($file_size);
+//echo $file_size['size'];
+//$contenido=file_get_contents($filexml);
+//echo $contenido;
+//$filebyte = $obj->Base64StrToByteArray($contenido);
+//print_r($filebyte);
+//$file64base = base64_encode(file_get_contents($filexml)); //SE OBTIEN EL XML Y SE LO LLEVA BASE64
+//print_r($file64base);
+//$filebyte = $obj->Base64StrToByteArray($file64base); //LOS TRASNFORMA UN ARRAY DE BYTES
+
+//contrario.. primero a bynario y despues base64
+$file64base = $obj->StrToByteArray(file_get_contents($filexml));
+$filebyte=base64_encode(file_get_contents($filexml));
+
+
+
+//print_r($filebyte);
+//echo count($filebyte);
+//$res=$obj->ByteArrayToStr($filebyte);//DEVUELVE A STRING
+//echo '<br>'.$res;
+//echo base64_decode($res);
+//APLICANADO NUSOAP
+//$wdsl = 'https://celcer.sri.gob.ec/comprobantes-electronicos-ws/RecepcionComprobantes?wsdl'; //Ruta del Web service SRI RecepcionComprobantes
+$wdsl = 'https://celcer.sri.gob.ec/comprobantes-electronicos-ws/AutorizacionComprobantes?wsdl'; //Ruta del Web service SRI AutorizacionComprobantes
+
+//echo $wdsl. '<br>';
+$client = new nusoap_client($wdsl, 'wsdl');
+//$client->useHTTPPersistentConnection();
+
+$err = $client->getError();
+if ($err) {
+    echo 'Error en Constructor' . $err;
+}
+$param = array(
+    //'xml' => $filebyte
+    'claveAccesoComprobante' => '1711201401099236253700110010010001169739088802118'
+);
+
+//$response = $client->call('validarComprobante', $param);
+$response = $client->call('autorizacionComprobante', $param);
+
+if ($client->fault) {
+    echo 'Existe un Problemas en el Envio';
+    print_r($response);
+} else { // Chequea errores
+    $err = $client->getError();
+    if ($err) {  // Muestra el error
+        echo 'Error' . $err;
+    } else {  // Muestra el resultado
+        //echo 'Resultado';
+        print_r($response);
+        //$Recepcion=$response['RespuestaRecepcionComprobante'];//Response Recibido
+        //$estado=$Recepcion['estado'];//Devuelve el Estod del Documento
+        //$comprobantes=$Recepcion['comprobantes'];//Array del Comprobante
+        //$comprobante=$comprobantes['comprobante'];//Mensajes del COmprobante
+        //$mensajes=$comprobante['mensajes'];//Data mensajes del Error Recibido
+        //print_r($mensajes);
+        //echo $mensajes['mensaje']['identificador'];
+        //echo $mensajes['mensaje']['mensaje'];
+        //echo $mensajes['mensaje']['informacionAdicional'];
+        //echo $mensajes['mensaje']['tipo'];
+    }
+}
+*/
+
+$obj = new VSFirmaDigital;
+//$response=$obj->validarComprobante('FACTURA-001-001-000116975.xml');
+//$response=$obj->autorizacionComprobante('1711201401099236253700110010010001169749088879817');
+$response=$obj->autorizacionComprobante('1711201401099236253700110010010001169759088957511');
+print_r($response);
+
 
 ?>
