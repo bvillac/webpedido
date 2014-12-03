@@ -30,7 +30,7 @@ class NubeFacturaController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // permite a los usuarios logueados ejecutar las acciones 
-                'actions' => array('create', 'update', 'GenerarPdf', 'BuscaDataIndex', 'BuscarPersonas', 'GenerarXml', 'EnviarDocumento'),
+                'actions' => array('create', 'update', 'GenerarPdf', 'BuscaDataIndex', 'BuscarPersonas', 'GenerarXml', 'EnviarDocumento','XmlAutorizado'),
                 'users' => array('@'),
             ),
             array('allow', // permite que únicamente el usuario admin ejecute las , 
@@ -251,6 +251,16 @@ class NubeFacturaController extends Controller {
             'impFact' => $impFact,
             'adiFact' => $adiFact,
             'firma' => $firma,
+        ));
+    }
+    
+    public function actionXmlAutorizado($ids) {
+        $ids = isset($_GET['ids']) ? base64_decode($_GET['ids']) : NULL;
+        $modelo = new NubeFactura();
+        $nomDocfile= array();
+        $nomDocfile=$modelo->mostrarRutaXMLAutorizado($ids);
+        $this->renderPartial('facturaAutXML', array(
+            'nomDocfile' => $nomDocfile,
         ));
     }
 

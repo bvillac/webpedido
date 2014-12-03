@@ -650,12 +650,14 @@ class NubeFactura extends VsSeaIntermedia {
                                 }else{
                                     //Si Existe un error al realizar la peticion al Web Servicies
                                     $arroout["status"] = "NO_OK";
+                                    $arroout["error"] = $autComp["error"];
                                     $arroout["message"] = Yii::t('EXCEPTION', 'Failed to perform authorization document.');
                                     return $arroout;
                                 }
                             }else{
                                 //Si Existe un error al realizar la peticion al Web Servicies
                                 $arroout["status"] = "NO_OK";
+                                $arroout["error"] = $valComp["error"];
                                 $arroout["message"] = Yii::t('EXCEPTION', 'Failed to perform validation of the document.');
                                 return $arroout;
                             }
@@ -663,6 +665,7 @@ class NubeFactura extends VsSeaIntermedia {
                             //Sin No hay firma Automaticamente Hay que Parar el Envio
                             //break;
                             $arroout["status"] = "NO_OK";
+                            $arroout["error"] = $firma["error"];
                             $arroout["message"] = Yii::t('EXCEPTION', 'Failed to perform the signed document.');
                             return $arroout;
                         }
@@ -819,6 +822,16 @@ class NubeFactura extends VsSeaIntermedia {
             'estado' => true
         );
         return $result;
+    }
+    
+    public function mostrarRutaXMLAutorizado($id) {
+        $rawData = array();
+        $con = Yii::app()->dbvsseaint;
+        $sql = "SELECT EstadoDocumento,DirectorioDocumento,NombreDocumento FROM " . $con->dbname . ".NubeFactura WHERE "
+                . "IdFactura=$id AND EstadoDocumento='AUTORIZADO'";
+        $rawData = $con->createCommand($sql)->queryRow(); //Recupera Solo 1
+        $con->active = false;
+        return $rawData;
     }
     
     

@@ -27,13 +27,13 @@
             </tr>
             <tr>
                 <td>
-                    <span ><?php echo $cabFact['ClaveAcceso'] ?></span>
+                    <span ><?php echo $cabFact['AutorizacionSRI'] ?></span>
                 </td>
             </tr>
             <tr>
                 <td>
                     <span class="titleLabel"><?php echo Yii::t('DOCUMENTOS', 'DATE AND TIME AUTHORIZATION') ?></span>
-                    <span><?php echo date(Yii::app()->params["datebytime"],strtotime($cabFact['FechaEmision']))  ?></span>
+                    <span><?php echo date(Yii::app()->params["datebytime"],strtotime($cabFact['FechaAutorizacion']))  ?></span>
                 </td>
                 
             </tr>
