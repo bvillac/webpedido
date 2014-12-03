@@ -327,6 +327,7 @@ class VSFirmaDigital extends VsSeaActiveRecord {
     }
 
     private function webServiceNuSoap($wdsl, $param, $metodo) {
+        //set_time_limit(600);
         $client = new nusoap_client($wdsl, 'wsdl');
         $err = $client->getError();
         if ($err) {
@@ -366,7 +367,7 @@ class VSFirmaDigital extends VsSeaActiveRecord {
         }
     }
     
-    public function actualizaDocRecibidoSri($response,$ids) {
+    public function actualizaDocRecibidoSri($response,$ids,$NombreDocumento,$DirectorioDocumento) {
         $con = Yii::app()->dbvsseaint;
         $trans = $con->beginTransaction();
         try {
@@ -375,8 +376,8 @@ class VSFirmaDigital extends VsSeaActiveRecord {
             $numeroAutorizacion='';
             $CodigoError='';
             $DescripcionError='';
-            $DirectorioDocumento='';
-            $NombreDocumento='';
+            //$DirectorioDocumento='';
+            //$NombreDocumento='';
             if($estado=='AUTORIZADO'){
                 $numeroAutorizacion = ($response['autorizaciones']['autorizacion']['numeroAutorizacion']!=null)?$response['autorizaciones']['autorizacion']['numeroAutorizacion']:'';
                 $codEstado='2';
@@ -442,6 +443,42 @@ class VSFirmaDigital extends VsSeaActiveRecord {
             $command = $con->createCommand($sql);
             $command->execute();
         }
+    }
+    
+    public function newXMLDocRecibidoSri($response,$NombreDocumento) {
+        $estado = $response['autorizaciones']['autorizacion']['estado'];
+        if ($estado == 'AUTORIZADO') {
+            $xmldata=$this->xmlAutoSri($response['autorizaciones']['autorizacion']);
+            file_put_contents(Yii::app()->params['seaDocAutFact'] . $NombreDocumento, $xmldata); //Escribo el Archivo Xml
+            $arroout["status"] = "OK";
+            $arroout["error"] = null;
+            $arroout["message"] = 'El Xml se recibio correctamente';
+            $arroout["data"] = null;
+        } else {
+            $arroout["status"] = "NO";
+            $arroout["error"] = null;
+            $arroout["message"] = 'El Xml no se Genero';
+            $arroout["data"] = null;
+        }
+        return $arroout;
+    }
+    private function xmlAutoSri($response) {
+        $xmldata = '<?xml version="1.0" encoding="UTF-8"?>';
+        $xmldata .= '<autorizacion>';
+            $xmldata .= '<estado>' . $response["estado"] . '</estado>';
+            $xmldata .= '<numeroAutorizacion>' . $response["numeroAutorizacion"] . '</numeroAutorizacion>';
+            $xmldata .= '<fechaAutorizacion class="fechaAutorizacion">' . $this->getFechaAuto($response["fechaAutorizacion"]) . '</fechaAutorizacion>';
+            $xmldata .= '<comprobante><![CDATA[' . $response["comprobante"] . ']]></comprobante>';
+        $xmldata .= '</autorizacion>';
+        return $xmldata;
+    }
+    
+    private function getFechaAuto($fecha) {
+         //formato de Fecha Autorizacion=>2014-12-02T21:34:15.637-05:00 =>   02/10/2014 18:59:27 
+        $aux = explode(".", trim($fecha));
+        $aux = explode("T", trim($aux[0]));//Separamos por medio de la T
+        $fecha=date('d/m/Y', strtotime($aux[0])).' '.$aux[1];
+        return $fecha;
     }
 
 }

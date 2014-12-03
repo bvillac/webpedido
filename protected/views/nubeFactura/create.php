@@ -206,7 +206,7 @@
   //echo '<br>';
   $pass = base64_decode($Dataf['Clave']);
   //echo '<br>';
-  $filexml = Yii::app()->params['seaDocFact'] . 'FACTURA-001-001-000108133.xml';
+  $filexml = Yii::app()->params['seaDocXml'] . 'FACTURA-001-001-000116980.xml';
   //$client = new nusoap_client('http://www.lapolitecnica.net/webservices/servicio.php?wsdl', 'wsdl');
 
 
@@ -240,8 +240,7 @@
   echo $result['return'];
   }
   }
- * 
- */
+*/
 
 /*
         $obj = new NubeFactura;
@@ -375,26 +374,31 @@ if ($client->fault) {
 /****************** PRUEBA ERRORES SRI **********************/
 $obj = new VSFirmaDigital;
 //$obj->insertarFacturas();
-//$response=$obj->validarComprobante('FACTURA-001-001-000116977.xml');
-$response=$obj->autorizacionComprobante('1711201401099236253700110010010001169769089035214');
+//$response=$obj->validarComprobante('FACTURA-001-001-000117002.xml');XML=1
+//$response=$obj->validarComprobante('FACTURA-001-001-000117001.xml');//XML=2
+//$response=$obj->autorizacionComprobante('1711201401099236253700110010010001169769089035214');
 //$response=$obj->autorizacionComprobante('1711201401099236253700110010010001169769089035214');//Ojo error de diferencias
 //$response=$obj->autorizacionComprobante('1711201401099236253700110010010001169779089112915');//Autorizado Normal
+//$response=$obj->autorizacionComprobante('1711201401099236253700110010010001170029091055410');//XML=1
+$response=$obj->autorizacionComprobante('1711201401099236253700110010010001170019090977718');//XML=2
 //print_r($response);
 //[status] => OK [error] => [message] => Respuesta Ok WebService: autorizacionComprobante [data]
+
 if($response['status']=='OK'){
     $numeroAutorizacion=(int)$response['data']['RespuestaAutorizacionComprobante']['numeroComprobantes'];
     if($numeroAutorizacion>0){//Verifica si Autorizo algun Comprobante Apesar de recibirlo Autorizo Comprobante
-        $obj->actualizaDocRecibidoSri($response['data']['RespuestaAutorizacionComprobante'],'101');
-        //print_r($response['data']);
+        $obj->actualizaDocRecibidoSri($response['data']['RespuestaAutorizacionComprobante'],'144','FACTURA-001-001-000117001.xml',Yii::app()->params['seaDocFact']);
+        $obj->newXMLDocRecibidoSri($response['data']['RespuestaAutorizacionComprobante'],'FACTURA-001-001-000117001.xml');
+        print_r($response['data']);
+        
+        
 //        $mensaje=$response['data']['RespuestaAutorizacionComprobante']['autorizaciones']['autorizacion']['mensajes']['mensaje'];
 //        //print_r($mensaje);
 //        for ($i = 0; $i < sizeof($mensaje); $i++) {
 //            echo $mensaje[$i]['mensaje'];
 //        }
     }
-
-    
-    
+  
 }
 
 

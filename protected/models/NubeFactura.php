@@ -299,7 +299,8 @@ class NubeFactura extends VsSeaIntermedia {
         $serie = $objEmp['Establecimiento'] . $objEmp['PuntoEmision'];
         $fec_doc = date("Y-m-d", strtotime($objEnt[0]['FEC_VTA']));
         $ClaveAcceso = $objCla->claveAcceso($codDoc, $fec_doc, $objEmp['Ruc'], $objEmp['Ambiente'], $serie, $Secuencial, $objEmp['TipoEmision']);
-        /*         * ********************** */
+        /** ********************** */
+        $nomCliente=str_replace("'","",$objEnt[$i]['NOM_CLI']);// Error del ' en el Text
         $sql = "INSERT INTO " . $con->dbname . ".NubeFactura
                             (Ambiente,TipoEmision, RazonSocial, NombreComercial, Ruc,ClaveAcceso,CodigoDocumento, Establecimiento,
                             PuntoEmision, Secuencial, DireccionMatriz, FechaEmision, DireccionEstablecimiento, ContribuyenteEspecial,
@@ -322,7 +323,7 @@ class NubeFactura extends VsSeaIntermedia {
                             '" . $objEmp['ObligadoContabilidad'] . "', 
                             '$tip_iden', 
                             '$GuiaRemi',               
-                            '" . $objEnt[$i]['NOM_CLI'] . "', 
+                            '$nomCliente', 
                             '$ced_ruc', 
                             '" . $objEnt[$i]['VAL_BRU'] . "', 
                             '" . $objEnt[$i]['VAL_DES'] . "', 
@@ -623,34 +624,58 @@ class NubeFactura extends VsSeaIntermedia {
     }
 
     public function enviarDocumentos($id) {
-        //$con = Yii::app()->dbvssea;
-        //$trans = $con->beginTransaction();
-        
         try {
             $firmaDig = new VSFirmaDigital();
             $ids = explode(",", $id);
             for ($i = 0; $i < count($ids); $i++) {
                 if ($ids[$i] !== "") {
-                    $result=$this->generarFileXML($ids[$i]);
-                    if($result['estado']){
+                    $result = $this->generarFileXML($ids[$i]);
+                    if ($result['estado']) {
                         //echo $result['nomDoc'];
                         $firma = $firmaDig->firmaXAdES_BES($result['nomDoc']);
-                        $response=$firmaDig->validarComprobante($result['nomDoc']);//Envio NOmbre Documento
-                        $response=$firmaDig->autorizacionComprobante($result['ClaveAcceso']);//Envio CLave de Acceso
+                        //Verifica Errores del Firmado
+                        if ($firma['status'] == 'OK') {
+                            //Validad COmprobante
+                            $valComp = $firmaDig->validarComprobante($result['nomDoc']); //Envio NOmbre Documento
+                            if ($valComp['status'] == 'OK') {//Retorna Datos del Comprobacion
+                                //Autorizacin de Comprobantes
+                                $autComp = $firmaDig->autorizacionComprobante($result['ClaveAcceso']); //Envio CLave de Acceso
+                                if ($autComp['status'] == 'OK') {
+                                    //Validamos el Numero de Autorizacin que debe ser Mayor a 0
+                                    $numeroAutorizacion = (int) $autComp['data']['RespuestaAutorizacionComprobante']['numeroComprobantes'];
+                                    if ($numeroAutorizacion > 0) {//Verifica si Autorizo algun Comprobante Apesar de recibirlo Autorizo Comprobante
+                                        $firmaDig->actualizaDocRecibidoSri($autComp['data']['RespuestaAutorizacionComprobante'], $ids[$i], $result['nomDoc'], Yii::app()->params['seaDocAutFact']);
+                                        $firmaDig->newXMLDocRecibidoSri($autComp['data']['RespuestaAutorizacionComprobante'],$result['nomDoc']);
+                                    }
+                                }else{
+                                    //Si Existe un error al realizar la peticion al Web Servicies
+                                    $arroout["status"] = "NO_OK";
+                                    $arroout["message"] = Yii::t('EXCEPTION', 'Failed to perform authorization document.');
+                                    return $arroout;
+                                }
+                            }else{
+                                //Si Existe un error al realizar la peticion al Web Servicies
+                                $arroout["status"] = "NO_OK";
+                                $arroout["message"] = Yii::t('EXCEPTION', 'Failed to perform validation of the document.');
+                                return $arroout;
+                            }
+                        }else{
+                            //Sin No hay firma Automaticamente Hay que Parar el Envio
+                            //break;
+                            $arroout["status"] = "NO_OK";
+                            $arroout["message"] = Yii::t('EXCEPTION', 'Failed to perform the signed document.');
+                            return $arroout;
+                        }
                     }
                 }
             }
-//            $sql = "UPDATE " . $con->dbname . ".VSCompania SET Estado='0' WHERE idCompania IN($ids)";
-//            $comando = $con->createCommand($sql);
-//            $comando->execute();
-//            $trans->commit();
-//            $con->active = false;
-            return true;
+            $arroout["status"] = "OK";
+            $arroout["message"] = Yii::t('EXCEPTION', '<strong>Well done!</strong> your information was successfully send.');
+            return $arroout;
         } catch (Exception $e) { // se arroja una excepción si una consulta falla
-//            $trans->rollBack();
-//            throw $e;
-//            $con->active = false;
-            return false;
+            $arroout["status"] = "NO_OK";
+            $arroout["message"] = Yii::t('EXCEPTION', 'Failed to send the document, check with your Web Manager.');
+            return $arroout;
         }
     }
 

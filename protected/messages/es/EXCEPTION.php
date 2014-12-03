@@ -19,5 +19,10 @@ return array(
     '<strong>Well done!</strong> your information was successfully delete.'=> '<strong> Bien hecho! </ strong> su información se elimina con éxito.',
     '<strong>Well done!</strong> your information was successfully send.'=> '<strong> Bien hecho! </ strong> su información se envío con éxito.',
     'Invalid request. Deletion error; Please do not repeatt this request again.'=> 'Petición inválida. Error borrado; Por favor, no repeatt esta solicitud de nuevo.',
+    'Failed to perform the signed document.' => 'Error al realizar el firmado del documento.',
+    'Failed to perform validation of the document.' => 'Error al realizar la validación del documento.',
+    'Failed to perform authorization document.' => 'Error al realizar la autorización del documento.',
+    'Failed to send the document, check with your Web Manager.' => 'Error al enviar el documento, consultar con su Administrador Web.',
+    
 );
 ?>

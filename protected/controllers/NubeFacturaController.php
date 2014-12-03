@@ -260,7 +260,8 @@ class NubeFacturaController extends Controller {
         if (Yii::app()->request->isAjaxRequest) {
             $ids = isset($_POST['ids']) ? base64_decode($_POST['ids']) : NULL;
             $res = new NubeFactura;
-            if ($res->enviarDocumentos($ids)) {
+            $obj=$res->enviarDocumentos($ids);
+            if ($obj["status"] == "OK") {
                 $arroout["status"] = "OK";
                 $arroout["type"] = "tbalert";
                 $arroout["label"] = "success";
@@ -272,7 +273,7 @@ class NubeFacturaController extends Controller {
                 $arroout["type"] = "tbalert";
                 $arroout["label"] = "error";
                 $arroout["error"] = "true";
-                $arroout["message"] = Yii::t('EXCEPTION', 'Invalid request. Deletion error; Please do not repeatt this request again.');
+                $arroout["message"] = $obj["message"];
             }
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);
