@@ -62,6 +62,7 @@ class UserIdentity extends CUserIdentity
                     //$emp=$empresa->mostrarEmpresas($user->USU_ID);
                     $emp_id='1';$est_id='1';$pemi_id='1';
                     $data=$empresa->buscarDataEmpresa($emp_id, $est_id, $pemi_id);
+                    
                     $session->add('emp_id', $emp_id);
                     $session->add('est_id', $est_id);
                     $session->add('pemi_id', $pemi_id);
@@ -72,6 +73,11 @@ class UserIdentity extends CUserIdentity
                     $session->add('DireccionSucursal',$data['DireccionSucursal']);
                     $session->add('ContribuyenteEspecial',$data['ContribuyenteEspecial']);
                     $session->add('ObligadoContabilidad',$data['ObligadoContabilidad']);
+                    //Asignacion de Ambiente Pruebas o Produccion
+                    $ambiente=$empresa->buscarAmbienteEmp($data['EMP_ID'],$data['Ambiente']);
+                    $session->add('Recepcion',trim($ambiente['Recepcion']));//Aceptacion Comprobantes
+                    $session->add('Autorizacion',trim($ambiente['Autorizacion']));//Autorizacion Comprobantes
+                    $session->add('RecepcionLote',trim($ambiente['RecepcionLote']));//RecepcionLote Comprobantes
                     
                     $this->errorCode=self::ERROR_NONE;
                 }

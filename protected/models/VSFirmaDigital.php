@@ -306,6 +306,7 @@ class VSFirmaDigital extends VsSeaActiveRecord {
     }
     
     public function autorizacionComprobante($ClaveAcceso) {
+        //$wdsl = Yii::app()->getSession()->get('Autorizacion', FALSE);//wsdl dependiendo del ambiente Configurado
         $wdsl = 'https://celcer.sri.gob.ec/comprobantes-electronicos-ws/AutorizacionComprobantes?wsdl'; //Ruta del Web service SRI AutorizacionComprobantes
         $param = array(
             'claveAccesoComprobante' => $ClaveAcceso
@@ -318,6 +319,7 @@ class VSFirmaDigital extends VsSeaActiveRecord {
         $filexml = Yii::app()->params['seaDocFact'] . $Documento;
         $filebyte = $this->StrToByteArray(file_get_contents($filexml));
         $file64base = base64_encode(file_get_contents($filexml));
+        //$wdsl = Yii::app()->getSession()->get('Recepcion', FALSE);//wsdl dependiendo del ambiente Configurado
         $wdsl = 'https://celcer.sri.gob.ec/comprobantes-electronicos-ws/RecepcionComprobantes?wsdl'; //Ruta del Web service SRI RecepcionComprobantes
         $param = array(
             'xml' => $file64base

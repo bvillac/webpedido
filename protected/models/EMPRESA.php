@@ -170,5 +170,17 @@ class EMPRESA extends CActiveRecord {
         $conApp->active = false;
         return $rawData;
     }
+    
+    public function buscarAmbienteEmp($IdCompania,$Ambiente) {
+        $conApp = yii::app()->dbvssea;;
+        $rawData = array();
+        $sql = "SELECT Recepcion,Autorizacion,RecepcionLote,TiempoRespuesta,TiempoSincronizacion "
+                . "FROM " . $conApp->dbname . ".VSServiciosSRI WHERE IdCompania=$IdCompania AND Ambiente=$Ambiente AND Estado=1";
+        //echo $sql;
+        //$rawData = $conApp->createCommand($sql)->queryAll(); //Varios registros =>  $rawData[0]['RazonSocial']
+        $rawData = $conApp->createCommand($sql)->queryRow();  //Un solo Registro => $rawData['RazonSocial']
+        $conApp->active = false;
+        return $rawData;
+    }
 
 }

@@ -351,15 +351,6 @@ class NubeFactura extends VsSeaIntermedia {
                             '" . $objEnt[0]['USUARIO'] . "',
                             '1',CURRENT_TIMESTAMP() )";
 
-
-        //"@Ambiente,@TipoEmision,@RazonSocial,@NombreComercial,@Ruc,@CodigoDocumento,@Establecimiento, " &
-        //"@PuntoEmision,@Secuencial,@DireccionMatriz,@FechaEmision,@DireccionEstablecimiento,@ContribuyenteEspecial, " &
-        //"@ObligadoContabilidad,@TipoIdentificacionComprador,@GuiaRemision,@RazonSocialComprador,@IdentificacionComprador," &
-        //"@TotalSinImpuesto,@TotalDescuento,@Propina,@ImporteTotal,@Moneda,@SecuencialERP,@CodigoTransaccionERP,@Estado,GETDATE()) " &
-        //" SELECT @@IDENTITY";
-        //DATE(" . $cabOrden[0]['CDOR_FECHA_INGRESO'] . "),
-        //$sql .= "AND DATE(A.CDOR_FECHA_INGRESO) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "' ";
-        //echo $sql;
         $command = $con->createCommand($sql);
         $command->execute();
     }
@@ -538,19 +529,6 @@ class NubeFactura extends VsSeaIntermedia {
         $con->active = false;
         return $rawData;
     }
-
-//    public function mostrarDetFactura($id) {
-//        $rawData = array();
-//        $con = Yii::app()->dbvsseaint;
-//        $sql = "SELECT A.*,B.BaseImponible,B.Tarifa,B.Valor
-//                        FROM " . $con->dbname . ".NubeDetalleFactura A
-//                                INNER JOIN " . $con->dbname . ".NubeDetalleFacturaImpuesto B
-//                                        ON A.IdDetalleFactura=B.IdDetalleFactura
-//                WHERE A.IdFactura =$id";
-//        $rawData = $con->createCommand($sql)->queryAll();//Recupera Solo 1
-//        $con->active = false;
-//        return $rawData;
-//    }
 
     public function mostrarDetFacturaImp($id) {
         $rawData = array();
