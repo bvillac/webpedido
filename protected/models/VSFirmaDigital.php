@@ -329,6 +329,7 @@ class VSFirmaDigital extends VsSeaActiveRecord {
     private function webServiceNuSoap($wdsl, $param, $metodo) {
         //set_time_limit(600);
         $client = new nusoap_client($wdsl, 'wsdl');
+        //$client = new nusoap_client ($wdsl, 'wsdl', false, false, false, false, 0, 600);
         $err = $client->getError();
         if ($err) {
             //echo 'Error en Constructor' . $err;
@@ -367,28 +368,29 @@ class VSFirmaDigital extends VsSeaActiveRecord {
         }
     }
     
-    public function actualizaDocRecibidoSri($response,$ids,$NombreDocumento,$DirectorioDocumento) {
+    public function actualizaDocRecibidoSri($response,$ids,$NombreDocumento,$DirDocAutorizado,$DirDocFirmado) {
         $con = Yii::app()->dbvsseaint;
         $trans = $con->beginTransaction();
         try {
-            $estado = $response['autorizaciones']['autorizacion']['estado'];
-            $fecha = date(Yii::app()->params["datebytime"], strtotime($response['autorizaciones']['autorizacion']['fechaAutorizacion']));
+            $estado = $response['estado'];
+            $fecha = date(Yii::app()->params["datebytime"], strtotime($response['fechaAutorizacion']));
             $numeroAutorizacion='';
             $CodigoError='';
             $DescripcionError='';
             //$DirectorioDocumento='';
             //$NombreDocumento='';
             if($estado=='AUTORIZADO'){
-                $numeroAutorizacion = ($response['autorizaciones']['autorizacion']['numeroAutorizacion']!=null)?$response['autorizaciones']['autorizacion']['numeroAutorizacion']:'';
+                $numeroAutorizacion = ($response['numeroAutorizacion']!=null)?$response['numeroAutorizacion']:'';
                 $codEstado='2';
-                
+                $DirectorioDocumento=$DirDocAutorizado;
             }else{
                 $codEstado='3';
-                $mensaje=$response['autorizaciones']['autorizacion']['mensajes']['mensaje'];//Array de Errores Sri
+                $mensaje=$response['mensajes']['mensaje'];//Array de Errores Sri
                 $this->mensajeErrorDocumentos($con,$mensaje,$ids,'FACTURA');
                 $CodigoError=$mensaje[0]['identificador'];
                 $InformacionAdicional=(!empty($mensaje[0]['informacionAdicional']))?$mensaje[0]['informacionAdicional']:'';
                 $DescripcionError="ID=>$CodigoError Error=> $InformacionAdicional";
+                $DirectorioDocumento=$DirDocFirmado;
             }
     
             $sql = "UPDATE " . $con->dbname . ".NubeFactura SET 
@@ -446,9 +448,9 @@ class VSFirmaDigital extends VsSeaActiveRecord {
     }
     
     public function newXMLDocRecibidoSri($response,$NombreDocumento) {
-        $estado = $response['autorizaciones']['autorizacion']['estado'];
+        $estado = $response['estado'];
         if ($estado == 'AUTORIZADO') {
-            $xmldata=$this->xmlAutoSri($response['autorizaciones']['autorizacion']);
+            $xmldata=$this->xmlAutoSri($response);
             file_put_contents(Yii::app()->params['seaDocAutFact'] . $NombreDocumento, $xmldata); //Escribo el Archivo Xml
             $arroout["status"] = "OK";
             $arroout["error"] = null;

@@ -222,7 +222,7 @@ class NubeFactura extends VsSeaIntermedia {
         return parent::model($className);
     }
 
-    public function insertarFacturas() {
+    public function insertarFacturas($opcion) {
         $con = Yii::app()->dbvsseaint;
         $trans = $con->beginTransaction();
         $objEmpData = new EMPRESA;
@@ -231,7 +231,7 @@ class NubeFactura extends VsSeaIntermedia {
         $est_id = Yii::app()->getSession()->get('est_id', FALSE);
         $pemi_id = Yii::app()->getSession()->get('pemi_id', FALSE);
         try {
-            $cabFact = $this->buscarFacturas();
+            $cabFact = $this->buscarFacturas($opcion);
             $empresaEnt = $objEmpData->buscarDataEmpresa($emp_id, $est_id, $pemi_id); //recuperar info deL Contribuyente
             $codDoc = '01'; //Documento Factura
             for ($i = 0; $i < sizeof($cabFact); $i++) {
@@ -254,19 +254,34 @@ class NubeFactura extends VsSeaIntermedia {
         }
     }
 
-    private function buscarFacturas() {
+    private function buscarFacturas($opcion) {
         $conCont = yii::app()->dbcont;
         $rawData = array();
-        $fechaIni=Yii::app()->params['dateStartFact'];
-        $limitEnv=Yii::app()->params['limitEnv'];
+        $fechaIni = Yii::app()->params['dateStartFact'];
+        $limitEnv = Yii::app()->params['limitEnv'];
         //$sql = "SELECT TIP_NOF,CONCAT(REPEAT('0',9-LENGTH(RIGHT(NUM_NOF,9))),RIGHT(NUM_NOF,9)) NUM_NOF,
-        $sql = "SELECT TIP_NOF, NUM_NOF,
+        switch ($opcion['OP']) {
+            case '1':
+                $Documento=$opcion['NUM_DOC'];
+                $TipoDoc=$opcion['NUM_DOC'];
+                $sql = "SELECT TIP_NOF, NUM_NOF,
+                        CED_RUC,NOM_CLI,FEC_VTA,DIR_CLI,VAL_BRU,POR_DES,VAL_DES,VAL_FLE,BAS_IVA,
+                        BAS_IV0,POR_IVA,VAL_IVA,VAL_NET,POR_R_F,VAL_R_F,POR_R_I,VAL_R_I,GUI_REM,0 PROPINA,
+                        USUARIO,LUG_DES,NOM_CTO
+                    FROM " . $conCont->dbname . ".VC010101 
+                WHERE NUM_NOF LIKE '%$Documento' AND TIP_NOF='$TipoDoc' ";
+                break;
+            case 'RETENCION':
+                $sql = "SELECT TIP_NOF, NUM_NOF,
                         CED_RUC,NOM_CLI,FEC_VTA,DIR_CLI,VAL_BRU,POR_DES,VAL_DES,VAL_FLE,BAS_IVA,
                         BAS_IV0,POR_IVA,VAL_IVA,VAL_NET,POR_R_F,VAL_R_F,POR_R_I,VAL_R_I,GUI_REM,0 PROPINA,
                         USUARIO,LUG_DES,NOM_CTO
                     FROM " . $conCont->dbname . ".VC010101 
                 WHERE IND_UPD='L' AND FEC_VTA>'$fechaIni' AND ENV_DOC='0' LIMIT $limitEnv";
-
+                break;
+            default:
+            //$IdGuiaRemision=$ids;
+        }
         //echo $sql;
         $rawData = $conCont->createCommand($sql)->queryAll();
         $conCont->active = false;
@@ -301,6 +316,7 @@ class NubeFactura extends VsSeaIntermedia {
         $ClaveAcceso = $objCla->claveAcceso($codDoc, $fec_doc, $objEmp['Ruc'], $objEmp['Ambiente'], $serie, $Secuencial, $objEmp['TipoEmision']);
         /** ********************** */
         $nomCliente=str_replace("'","",$objEnt[$i]['NOM_CLI']);// Error del ' en el Text
+        $TotalSinImpuesto=floatval($objEnt[$i]['BAS_IVA'])+floatval($objEnt[$i]['BAS_IV0']);//Cambio por Ajuste de Valores Byron
         $sql = "INSERT INTO " . $con->dbname . ".NubeFactura
                             (Ambiente,TipoEmision, RazonSocial, NombreComercial, Ruc,ClaveAcceso,CodigoDocumento, Establecimiento,
                             PuntoEmision, Secuencial, DireccionMatriz, FechaEmision, DireccionEstablecimiento, ContribuyenteEspecial,
@@ -325,7 +341,7 @@ class NubeFactura extends VsSeaIntermedia {
                             '$GuiaRemi',               
                             '$nomCliente', 
                             '$ced_ruc', 
-                            '" . $objEnt[$i]['VAL_BRU'] . "', 
+                            '" . $TotalSinImpuesto . "', 
                             '" . $objEnt[$i]['VAL_DES'] . "', 
                             '" . $objEnt[$i]['PROPINA'] . "', 
                             '" . $objEnt[$i]['VAL_NET'] . "', 
@@ -643,9 +659,21 @@ class NubeFactura extends VsSeaIntermedia {
                                 if ($autComp['status'] == 'OK') {
                                     //Validamos el Numero de Autorizacin que debe ser Mayor a 0
                                     $numeroAutorizacion = (int) $autComp['data']['RespuestaAutorizacionComprobante']['numeroComprobantes'];
-                                    if ($numeroAutorizacion > 0) {//Verifica si Autorizo algun Comprobante Apesar de recibirlo Autorizo Comprobante
-                                        $firmaDig->actualizaDocRecibidoSri($autComp['data']['RespuestaAutorizacionComprobante'], $ids[$i], $result['nomDoc'], Yii::app()->params['seaDocAutFact']);
-                                        $firmaDig->newXMLDocRecibidoSri($autComp['data']['RespuestaAutorizacionComprobante'],$result['nomDoc']);
+                                    $autorizacion=$autComp['data']['RespuestaAutorizacionComprobante']['autorizaciones']['autorizacion'];
+                                    if ($numeroAutorizacion==1) {//Verifica si Autorizo algun Comprobante Apesar de recibirlo Autorizo Comprobante
+                                        $firmaDig->actualizaDocRecibidoSri($autorizacion, $ids[$i], $result['nomDoc'], Yii::app()->params['seaDocAutFact'],Yii::app()->params['seaDocFact']);
+                                        $firmaDig->newXMLDocRecibidoSri($autorizacion,$result['nomDoc']);
+                                    }else{
+                                        //Ingresa si el Documento a intentado Varias AUTORIZACIONES
+                                        if($numeroAutorizacion>1){
+                                            for ($c = 0; $c < sizeof($autorizacion); $c++) {
+                                                $firmaDig->actualizaDocRecibidoSri($autorizacion[$c], $ids[$i], $result['nomDoc'], Yii::app()->params['seaDocAutFact'],Yii::app()->params['seaDocFact']);
+                                                if($autorizacion[$c]['estado']=='AUTORIZADO'){
+                                                    $firmaDig->newXMLDocRecibidoSri($autorizacion[$c],$result['nomDoc']);
+                                                    break;//Si de todo el Recorrido Existe un Autorizado 
+                                                }
+                                            }
+                                        }
                                     }
                                 }else{
                                     //Si Existe un error al realizar la peticion al Web Servicies
