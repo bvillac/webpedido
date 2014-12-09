@@ -3426,3 +3426,83 @@ REQUEST_URI=/websea/site/login
 in /var/www/html/websea/protected/components/UserIdentity.php (78)
 in /var/www/html/websea/protected/models/LoginForm.php (54)
 in /var/www/html/websea/protected/controllers/SiteController.php (94)
+2014/12/08 17:51:24 [error] [php] Uninitialized string offset: 0 (/var/www/html/websea/protected/models/NubeFactura.php:640)
+Stack trace:
+#0 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#1 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#2 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#5 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#8 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#9 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/nubeFactura/EnviarDocumento
+in /var/www/html/websea/protected/models/NubeFactura.php (640)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (273)
+in /var/www/html/websea/index.php (13)
+2014/12/08 19:08:48 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ASC' at line 10. La sentencia SQL ejecutada fue: SELECT A.IdFactura IdDoc,A.Estado,A.CodigoTransaccionERP,A.SecuencialERP,A.UsuarioCreador,
+                        A.FechaAutorizacion,A.AutorizacionSRI,
+                        CONCAT(A.Establecimiento,'-',A.PuntoEmision,'-',A.Secuencial) NumDocumento,
+                        A.FechaEmision,A.IdentificacionComprador,A.RazonSocialComprador,
+                        A.TotalSinImpuesto,A.TotalDescuento,A.Propina,A.ImporteTotal,
+                        C.Descripcion NombreDocumento,A.AutorizacionSri,A.ClaveAcceso,A.FechaAutorizacion
+                        FROM VSSEAINTERMEDIA.NubeFactura A
+                                INNER JOIN VSSEA.VSDirectorio C
+                                        ON A.CodigoDocumento=C.TipoDocumento
+                WHERE A.CodigoDocumento='01' ORDER BY ASC.
+in /var/www/html/websea/protected/models/NubeFactura.php (484)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (170)
+in /var/www/html/websea/index.php (13)
+2014/12/08 19:08:48 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ASC' at line 10. The SQL statement executed was: SELECT A.IdFactura IdDoc,A.Estado,A.CodigoTransaccionERP,A.SecuencialERP,A.UsuarioCreador,
+                        A.FechaAutorizacion,A.AutorizacionSRI,
+                        CONCAT(A.Establecimiento,'-',A.PuntoEmision,'-',A.Secuencial) NumDocumento,
+                        A.FechaEmision,A.IdentificacionComprador,A.RazonSocialComprador,
+                        A.TotalSinImpuesto,A.TotalDescuento,A.Propina,A.ImporteTotal,
+                        C.Descripcion NombreDocumento,A.AutorizacionSri,A.ClaveAcceso,A.FechaAutorizacion
+                        FROM VSSEAINTERMEDIA.NubeFactura A
+                                INNER JOIN VSSEA.VSDirectorio C
+                                        ON A.CodigoDocumento=C.TipoDocumento
+                WHERE A.CodigoDocumento='01' ORDER BY ASC' in /opt/sisweb/db/CDbCommand.php:543
+Stack trace:
+#0 /opt/sisweb/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /var/www/html/websea/protected/models/NubeFactura.php(484): CDbCommand->queryAll()
+#2 /var/www/html/websea/protected/controllers/NubeFacturaController.php(170): NubeFactura->mostrarDocumentos(Array)
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): NubeFacturaController->actionIndex()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#13 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeFactura/ind...')
+#14 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/html/websea/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/websea/NubeFactura/index.jsp
+HTTP_REFERER=http://localhost/websea/NubeFactura/create.jsp
+---
+2014/12/08 21:35:57 [error] [php] Uninitialized string offset: 0 (/var/www/html/websea/protected/models/NubeFactura.php:641)
+Stack trace:
+#0 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#1 /opt/sisweb/web/filters/CFilterChain.php(133): NubeFacturaController->runAction()
+#2 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /opt/sisweb/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /opt/sisweb/web/filters/CInlineFilter.php(58): NubeFacturaController->filterAccessControl()
+#5 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(265): NubeFacturaController->runActionWithFilters()
+#8 /opt/sisweb/web/CWebApplication.php(282): NubeFacturaController->run()
+#9 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#11 /var/www/html/websea/index.php(13): CWebApplication->run()
+REQUEST_URI=/websea/nubeFactura/EnviarDocumento
+in /var/www/html/websea/protected/models/NubeFactura.php (641)
+in /var/www/html/websea/protected/controllers/NubeFacturaController.php (273)
+in /var/www/html/websea/index.php (13)
