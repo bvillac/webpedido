@@ -27,6 +27,7 @@ return array(
     'Authorization' => 'Autorizado',
     'Authorized' => 'Autorizado',
     'Unauthorized' => 'No Autorizado',
+    'Returned' => 'Devuelta',
     '-Select-' => 'Selecionar',
     'Deny' => 'Negado',
     'None' => 'Ninguno',

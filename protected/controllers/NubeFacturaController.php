@@ -153,6 +153,7 @@ class NubeFacturaController extends Controller {
             '1' => Yii::t('COMPANIA', 'Send'),
             '2' => Yii::t('COMPANIA', 'Authorized'),
             '3' => Yii::t('COMPANIA', 'Unauthorized'),
+            '4' => Yii::t('COMPANIA', 'Returned'),
         );
     }
 

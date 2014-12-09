@@ -15,8 +15,8 @@ $opcion['OP']='1';//1=>todos los Registros y 2=> Un solo registro
 /****************** PRUEBA ERRORES SRI **********************/
 $obj = new VSFirmaDigital;
 //$obj->insertarFacturas();
-//$response=$obj->validarComprobante('FACTURA-001-001-000117080.xml');
-//$response=$obj->validarComprobante('FACTURA-001-001-000117002.xml');XML=1
+//$response=$obj->validarComprobante('FACTURA-001-001-000117072.xml');
+//$response=$obj->validarComprobante('FACTURA-001-001-000117002.xml');//XML=1
 //$response=$obj->validarComprobante('FACTURA-001-001-000117001.xml');//XML=2
 //$response=$obj->autorizacionComprobante('1711201401099236253700110010010001169769089035214');
 //$response=$obj->autorizacionComprobante('1711201401099236253700110010010001169769089035214');//Ojo error de diferencias
@@ -24,10 +24,25 @@ $obj = new VSFirmaDigital;
 //$response=$obj->autorizacionComprobante('1711201401099236253700110010010001170029091055410');//XML=1
 //$response=$obj->autorizacionComprobante('1711201401099236253700110010010001170019090977718');//XML=2
 //$response=$obj->autorizacionComprobante('1711201401099236253700110010010001170059091288519');//Esta OK
-$response=$obj->autorizacionComprobante('1811201401099236253700110010010001170809097116012');//CLAVE EN PROCESO
+$response=$obj->autorizacionComprobante('1811201401099236253700110010010001170729096494419');//CLAVE EN PROCESO
 
 print_r($response);
 //[status] => OK [error] => [message] => Respuesta Ok WebService: autorizacionComprobante [data]
+
+//if($response['status']=='OK'){
+//    //[estado] => DEVUELTA 
+//    $Rac=$response['data']['RespuestaRecepcionComprobante'];
+//    $estadoRac=$Rac['estado'];
+//    if($estadoRac=='RECIBIDA'){
+//        //Continua con el Proceso
+//    }else{
+//        //Verifica si la Clave esta en Proceso de Validacion
+//        if($estadoRac=='DEVUELTA'){
+//            $obj->recibeDocSriDevuelto($Rac,'219','FACTURA-001-001-000117080.xml',Yii::app()->params['seaDocFact']);
+//        }
+//        
+//    }
+//}
 
 //if($response['status']=='OK'){
 //    $numeroAutorizacion=(int)$response['data']['RespuestaAutorizacionComprobante']['numeroComprobantes'];

@@ -633,42 +633,58 @@ class NubeFactura extends VsSeaIntermedia {
                             //Validad COmprobante
                             $valComp = $firmaDig->validarComprobante($result['nomDoc']); //Envio NOmbre Documento
                             if ($valComp['status'] == 'OK') {//Retorna Datos del Comprobacion
-                                //Autorizacin de Comprobantes
-                                $autComp = $firmaDig->autorizacionComprobante($result['ClaveAcceso']); //Envio CLave de Acceso
-                                if ($autComp['status'] == 'OK') {
-                                    //Validamos el Numero de Autorizacin que debe ser Mayor a 0
-                                    $numeroAutorizacion = (int) $autComp['data']['RespuestaAutorizacionComprobante']['numeroComprobantes'];
-                                    $autorizacion=$autComp['data']['RespuestaAutorizacionComprobante']['autorizaciones']['autorizacion'];
-                                    if ($numeroAutorizacion==1) {//Verifica si Autorizo algun Comprobante Apesar de recibirlo Autorizo Comprobante
-                                        $firmaDig->actualizaDocRecibidoSri($autorizacion, $ids[$i], $result['nomDoc'], Yii::app()->params['seaDocAutFact'],Yii::app()->params['seaDocFact']);
-                                        $firmaDig->newXMLDocRecibidoSri($autorizacion,$result['nomDoc']);
-                                    }else{
-                                        //Ingresa si el Documento a intentado Varias AUTORIZACIONES
-                                        if($numeroAutorizacion>1){
-                                            for ($c = 0; $c < sizeof($autorizacion); $c++) {
-                                                $firmaDig->actualizaDocRecibidoSri($autorizacion[$c], $ids[$i], $result['nomDoc'], Yii::app()->params['seaDocAutFact'],Yii::app()->params['seaDocFact']);
-                                                if($autorizacion[$c]['estado']=='AUTORIZADO'){
-                                                    $firmaDig->newXMLDocRecibidoSri($autorizacion[$c],$result['nomDoc']);
-                                                    break;//Si de todo el Recorrido Existe un Autorizado 
+                                //Verifica si el Doc Fue Recibido Correctamente...
+                                $Rac = $valComp['data']['RespuestaRecepcionComprobante'];
+                                $estadoRac = $Rac['estado'];
+                                if ($estadoRac == 'RECIBIDA') {
+                                    //Continua con el Proceso
+                                    //Autorizacion de Comprobantes
+                                    $autComp = $firmaDig->autorizacionComprobante($result['ClaveAcceso']); //Envio CLave de Acceso
+                                    if ($autComp['status'] == 'OK') {
+                                        //Validamos el Numero de Autorizacin que debe ser Mayor a 0
+                                        $numeroAutorizacion = (int) $autComp['data']['RespuestaAutorizacionComprobante']['numeroComprobantes'];
+                                        $autorizacion = $autComp['data']['RespuestaAutorizacionComprobante']['autorizaciones']['autorizacion'];
+                                        if ($numeroAutorizacion == 1) {//Verifica si Autorizo algun Comprobante Apesar de recibirlo Autorizo Comprobante
+                                            $firmaDig->actualizaDocRecibidoSri($autorizacion, $ids[$i], $result['nomDoc'], Yii::app()->params['seaDocAutFact'], Yii::app()->params['seaDocFact']);
+                                            $firmaDig->newXMLDocRecibidoSri($autorizacion, $result['nomDoc']);
+                                        } else {
+                                            //Ingresa si el Documento a intentado Varias AUTORIZACIONES
+                                            if ($numeroAutorizacion > 1) {
+                                                for ($c = 0; $c < sizeof($autorizacion); $c++) {
+                                                    $firmaDig->actualizaDocRecibidoSri($autorizacion[$c], $ids[$i], $result['nomDoc'], Yii::app()->params['seaDocAutFact'], Yii::app()->params['seaDocFact']);
+                                                    if ($autorizacion[$c]['estado'] == 'AUTORIZADO') {
+                                                        $firmaDig->newXMLDocRecibidoSri($autorizacion[$c], $result['nomDoc']);
+                                                        break; //Si de todo el Recorrido Existe un Autorizado 
+                                                    }
                                                 }
                                             }
                                         }
+                                    } else {
+                                        //Si Existe un error al realizar la peticion al Web Servicies
+                                        $arroout["status"] = "NO_OK";
+                                        $arroout["error"] = $autComp["error"];
+                                        $arroout["message"] = Yii::t('EXCEPTION', 'Failed to perform authorization document.');
+                                        return $arroout;
                                     }
-                                }else{
-                                    //Si Existe un error al realizar la peticion al Web Servicies
-                                    $arroout["status"] = "NO_OK";
-                                    $arroout["error"] = $autComp["error"];
-                                    $arroout["message"] = Yii::t('EXCEPTION', 'Failed to perform authorization document.');
-                                    return $arroout;
+                                } else {
+                                    //Verifica si la Clave esta en Proceso de Validacion
+                                    if ($estadoRac == 'DEVUELTA') {
+                                        //Actualiza Errores de Documento Devuelto...
+                                        $firmaDig->recibeDocSriDevuelto($Rac, $ids[$i], $result['nomDoc'], Yii::app()->params['seaDocFact']);
+                                        //$arroout["status"] = "NO_OK";
+                                        //$arroout["error"] = null;
+                                        //$arroout["message"] = Yii::t('EXCEPTION', 'Failed to perform validation of the document.');
+                                        //return $arroout;
+                                    }
                                 }
-                            }else{
+                            } else {
                                 //Si Existe un error al realizar la peticion al Web Servicies
                                 $arroout["status"] = "NO_OK";
                                 $arroout["error"] = $valComp["error"];
                                 $arroout["message"] = Yii::t('EXCEPTION', 'Failed to perform validation of the document.');
                                 return $arroout;
                             }
-                        }else{
+                        } else {
                             //Sin No hay firma Automaticamente Hay que Parar el Envio
                             //break;
                             $arroout["status"] = "NO_OK";

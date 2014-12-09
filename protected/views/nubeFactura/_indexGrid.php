@@ -71,7 +71,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
         array(
             'name' => 'Estado',
             'header' => Yii::t('COMPANIA', 'Status'),
-            'value' => '($data["Estado"]=="1")?Yii::t("COMPANIA", "Send"):(($data["Estado"]=="2")?Yii::t("COMPANIA", "Authorization"):Yii::t("COMPANIA", "Deny"))',
+            'value' => '($data["Estado"]=="1")?Yii::t("COMPANIA", "Send"):(($data["Estado"]=="2")?Yii::t("COMPANIA", "Authorization"):(($data["Estado"]=="3")?Yii::t("COMPANIA", "Deny"):Yii::t("COMPANIA", "Returned")))',
         ),
 //        array(
 //            'name' => 'CodigoTransaccionERP',

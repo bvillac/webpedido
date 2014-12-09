@@ -331,7 +331,6 @@ class VSFirmaDigital extends VsSeaActiveRecord {
     private function webServiceNuSoap($wdsl, $param, $metodo) {
         //set_time_limit(600);
         $client = new nusoap_client($wdsl, 'wsdl');
-        //$client = new nusoap_client ($wdsl, 'wsdl', false, false, false, false, 0, 600);
         $err = $client->getError();
         if ($err) {
             //echo 'Error en Constructor' . $err;
@@ -379,8 +378,6 @@ class VSFirmaDigital extends VsSeaActiveRecord {
             $numeroAutorizacion='';
             $CodigoError='';
             $DescripcionError='';
-            //$DirectorioDocumento='';
-            //$NombreDocumento='';
             if($estado=='AUTORIZADO'){
                 $numeroAutorizacion = ($response['numeroAutorizacion']!=null)?$response['numeroAutorizacion']:'';
                 $codEstado='2';
@@ -394,7 +391,6 @@ class VSFirmaDigital extends VsSeaActiveRecord {
                 $DescripcionError="ID=>$CodigoError Error=> $InformacionAdicional";
                 $DirectorioDocumento=$DirDocFirmado;
             }
-    
             $sql = "UPDATE " . $con->dbname . ".NubeFactura SET 
                                 AutorizacionSRI='$numeroAutorizacion',FechaAutorizacion='$fecha',
                                 DirectorioDocumento='$DirectorioDocumento',NombreDocumento='$NombreDocumento',
@@ -404,7 +400,6 @@ class VSFirmaDigital extends VsSeaActiveRecord {
             //echo $sql;
             $command = $con->createCommand($sql);
             $command->execute();
-
             $trans->commit();
             $con->active = false;
             return true;
@@ -416,6 +411,44 @@ class VSFirmaDigital extends VsSeaActiveRecord {
         }
     }
     
+    public function recibeDocSriDevuelto($response, $ids, $NombreDocumento, $DirDocFirmado) {
+        $con = Yii::app()->dbvsseaint;
+        $trans = $con->beginTransaction();
+        try {
+            //[estado] => DEVUELTA 
+            $estado = $response['estado'];
+            $CodigoError = '';
+            $DescripcionError = '';
+            $comprobanteRac = $response['comprobantes']['comprobante'];
+            $codEstado = '4';
+            $mensaje = $comprobanteRac['mensajes']['mensaje']; //Array de Errores Sri
+            //$this->mensajeErrorDocumentos($con, $mensaje, $ids, 'FACTURA');
+            $CodigoError = $mensaje['identificador'];
+            $InformacionAdicional = (!empty($mensaje['informacionAdicional'])) ? $mensaje['informacionAdicional'] : '';
+            $DescripcionError = "ID=>$CodigoError Error=> $InformacionAdicional";
+            $DirectorioDocumento = $DirDocFirmado;
+
+            $sql = "UPDATE " . $con->dbname . ".NubeFactura SET 
+                                DirectorioDocumento='$DirectorioDocumento',NombreDocumento='$NombreDocumento',
+                                EstadoDocumento='$estado',Estado='$codEstado',
+                                DescripcionError='$DescripcionError',CodigoError='$CodigoError'
+                            WHERE IdFactura='$ids'";
+            //echo $sql;
+            $command = $con->createCommand($sql);
+            $command->execute();
+
+            $trans->commit();
+            $con->active = false;
+            //echo 'esta OK';
+            return true;
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            throw $e;
+            return false;
+        }
+    }
+
     private function mensajeErrorDocumentos($con, $mensaje, $ids, $tipDoc) {
         $IdFactura='';$IdRetencion='';$IdNotaCredito='';$IdNotaDebito='';$IdGuiaRemision='';
         switch ($tipDoc) {
