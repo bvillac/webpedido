@@ -86,23 +86,56 @@ function verificaAcciones(){
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
         $("#btn_enviar").removeClass("disabled");
-        //verificaAutorizado('TbG_DOCUMENTO');
+        verificaAutorizado('TbG_DOCUMENTO');
     }else{
         $("#btn_enviar").addClass("disabled");
     }
 }
+function verificaAutorizadoxxxx(TbGtable) {
+    var estado = '';
+    $('#' + TbGtable + ' >table >tbody >tr').each(function () {
+        estado = $(this).find("td").eq(3).html();
+        alert(estado);
+//        if (estado == 'Enviado') {
+//             alert(estado);
+//        }
+    });
+
+}
 
 function verificaAutorizado(TbGtable) {
+    alert('otro');
+
+
     $('#' + TbGtable + ' tr').each(function () {
+
         var estado = $(this).find("td").eq(3).html();//Columna Estado
-        //Verifica que este CHeck la Primera COlumna
         if ($(this).children(':first-child').children(':first-child').is(':checked')){
             alert(estado);
-            if (estado == 'Autorizado') {//Si es Igual Autorizado no lo deja Check
-                
-            }
         }
+        
+        //var nombre = $(this).find("td").eq(1).html();
+        //var apellidos = $(this).find("td").eq(3).html();
+
     });
+
+
+
+//    var ids=0;
+//    $('#' + TbGtable + ' >table >tbody >tr').each(function () {
+//        alert('chek1');
+//        if ($(this).children(':first-child').children(':first-child').is(':checked')){
+//            alert('chek2');
+//            $(this).children().each(function(){      
+//                if($(this).is(':first-child')){
+//                    ids =  $(this).children(':first-child').val();
+//                    alert(ids);
+//                    //return ids;
+//                }
+//            });
+//        }
+//    });
+
 }
 
 

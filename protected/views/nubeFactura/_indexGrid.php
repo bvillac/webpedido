@@ -26,7 +26,10 @@ $this->widget('zii.widgets.grid.CGridView', array(
     //'beforeAjaxUpdate' => 'function(id,options){consultFiltros(options)}',
     'columns' => array(
         array(
+            'id'=>'chkId',
             'class' => 'CCheckBoxColumn',
+            //'cssClassExpression' => '($data["Estado"]=="2")?"disabled":""',
+            'disabled' => '($data["Estado"]=="2")?true:false',
         ),
         /* array(
           'header' => '#',

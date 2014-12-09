@@ -86,7 +86,7 @@ function verificaAcciones(){
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
         $("#btn_enviar").removeClass("disabled");
-        //verificaAutorizado('TbG_DOCUMENTO');
+        verificaAutorizado('TbG_DOCUMENTO');
     }else{
         $("#btn_enviar").addClass("disabled");
     }

@@ -86,23 +86,20 @@ function verificaAcciones(){
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
         $("#btn_enviar").removeClass("disabled");
-        //verificaAutorizado('TbG_DOCUMENTO');
+        verificaAutorizado('TbG_DOCUMENTO');
     }else{
         $("#btn_enviar").addClass("disabled");
     }
 }
-
 function verificaAutorizado(TbGtable) {
-    $('#' + TbGtable + ' tr').each(function () {
-        var estado = $(this).find("td").eq(3).html();//Columna Estado
-        //Verifica que este CHeck la Primera COlumna
-        if ($(this).children(':first-child').children(':first-child').is(':checked')){
-            alert(estado);
-            if (estado == 'Autorizado') {//Si es Igual Autorizado no lo deja Check
-                
-            }
+    var estado = '';
+    $('#' + TbGtable + ' >table >tbody >tr').each(function () {
+        estado = $(this).find("td").eq(3).html();
+        if (estado == 'Enviado') {
+             alert(estado);
         }
     });
+
 }
 
 
