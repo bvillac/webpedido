@@ -172,10 +172,27 @@ class EMPRESA extends CActiveRecord {
     }
     
     public function buscarAmbienteEmp($IdCompania,$Ambiente) {
-        $conApp = yii::app()->dbvssea;;
+        $conApp = yii::app()->dbvssea;
         $rawData = array();
         $sql = "SELECT Recepcion,Autorizacion,RecepcionLote,TiempoRespuesta,TiempoSincronizacion "
                 . "FROM " . $conApp->dbname . ".VSServiciosSRI WHERE IdCompania=$IdCompania AND Ambiente=$Ambiente AND Estado=1";
+        //echo $sql;
+        //$rawData = $conApp->createCommand($sql)->queryAll(); //Varios registros =>  $rawData[0]['RazonSocial']
+        $rawData = $conApp->createCommand($sql)->queryRow();  //Un solo Registro => $rawData['RazonSocial']
+        $conApp->active = false;
+        return $rawData;
+    }
+    
+    public function buscarTipoUser($IdUser) {
+        $conApp = yii::app()->db;
+        $rawData = array();
+        $sql = "SELECT A.UEMP_ID,A.USU_EMP_ERP UsuarioErp,A.USU_ID,B.USU_NOMBRE,C.TUSU_ID TipoUser,C.TUSU_NOMBRE TipoNombre "
+                        . "FROM " . $conApp->dbname . ".USUARIO_EMPRESA A "
+                                . "INNER JOIN " . $conApp->dbname . ".USUARIO B "
+                                        . "ON A.USU_ID=B.USU_ID "
+                                . "INNER JOIN  " . $conApp->dbname . ".TIPO_USUARIO C "
+                                        . "ON A.TUSU_ID=C.TUSU_ID "
+                . "WHERE A.USU_ID=$IdUser AND B.USU_EST_LOG=1 ";
         //echo $sql;
         //$rawData = $conApp->createCommand($sql)->queryAll(); //Varios registros =>  $rawData[0]['RazonSocial']
         $rawData = $conApp->createCommand($sql)->queryRow();  //Un solo Registro => $rawData['RazonSocial']

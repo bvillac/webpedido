@@ -111,9 +111,9 @@ function fun_EnviarDocumento(){
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
         if(!confirm(mgEnvDocum)) return false;
+        $("#TbG_DOCUMENTO").addClass("loading");
         var link=$('#txth_controlador').val()+"/EnviarDocumento";
         var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $("#TbG_DOCUMENTO").addClass("loading");
         $.ajax({
             type: 'POST',
             url: link,

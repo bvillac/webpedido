@@ -110,10 +110,10 @@ function fun_EnviarDocumento(){
     var ids = String($.fn.yiiGridView.getSelection('TbG_DOCUMENTO'));
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
+        $("#TbG_DOCUMENTO").addClass("loading");
         if(!confirm(mgEnvDocum)) return false;
         var link=$('#txth_controlador').val()+"/EnviarDocumento";
         var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $("#TbG_DOCUMENTO").addClass("loading");
         $.ajax({
             type: 'POST',
             url: link,

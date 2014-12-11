@@ -107,13 +107,13 @@ function verificaAutorizado(TbGtable) {
 
 
 function fun_EnviarDocumento(){
+    $("#TbG_DOCUMENTO").addClass("loading");
     var ids = String($.fn.yiiGridView.getSelection('TbG_DOCUMENTO'));
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
         if(!confirm(mgEnvDocum)) return false;
         var link=$('#txth_controlador').val()+"/EnviarDocumento";
         var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $("#TbG_DOCUMENTO").addClass("loading");
         $.ajax({
             type: 'POST',
             url: link,
@@ -132,12 +132,11 @@ function fun_EnviarDocumento(){
             },
             dataType: "json"
         });
-        $("#TbG_DOCUMENTO").removeClass("loading");
     }else{
         $("#messageInfo").html(selecDoc+buttonAlert); 
         alerMessage();
     }
-    
+    $("#TbG_DOCUMENTO").removeClass("loading");
     return true;
 }
 

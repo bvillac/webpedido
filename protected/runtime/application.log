@@ -100,3 +100,197 @@ Stack trace:
 REQUEST_URI=/websea/NubeFactura/index.jsp
 HTTP_REFERER=http://localhost/websea/NubeFactura/create.jsp
 ---
+2014/12/10 16:08:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/images/plantilla/loading.gif
+HTTP_REFERER=http://localhost/websea/themes/general/css/generico.css
+---
+2014/12/10 16:10:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/images/plantilla/loading.gif
+HTTP_REFERER=http://localhost/websea/themes/general/css/generico.css
+---
+2014/12/10 16:10:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/images/plantilla/loading.gif
+---
+2014/12/10 16:10:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/images/plantilla/loading.gif
+---
+2014/12/10 16:10:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/images/plantilla/loading.gif
+---
+2014/12/10 16:10:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/images/plantilla/loading.gif
+---
+2014/12/10 16:11:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/images/plantilla/loading.gif
+---
+2014/12/10 16:12:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/images/plantilla/loading.gif
+HTTP_REFERER=http://localhost/websea/themes/general/css/generico.css
+---
+2014/12/10 16:12:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/images/plantilla/loading.gif
+---
+2014/12/10 16:12:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/images/plantilla/loading.gif
+---
+2014/12/10 16:12:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/images/plantilla/loading.gif
+---
+2014/12/10 16:12:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/css/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/css/images/plantilla/loading.gif
+HTTP_REFERER=http://localhost/websea/themes/general/css/generico.css
+---
+2014/12/10 16:12:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/css/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/css/images/plantilla/loading.gif
+---
+2014/12/10 16:12:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/css/.images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/css/.images/plantilla/loading.gif
+HTTP_REFERER=http://localhost/websea/themes/general/css/generico.css
+---
+2014/12/10 16:12:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/css//images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/css//images/plantilla/loading.gif
+HTTP_REFERER=http://localhost/websea/themes/general/css/generico.css
+---
+2014/12/10 16:12:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general//images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general//images/plantilla/loading.gif
+HTTP_REFERER=http://localhost/websea/themes/general/css/generico.css
+---
+2014/12/10 16:13:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/images/p...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/images/plantilla/loading.gif
+HTTP_REFERER=http://localhost/websea/themes/general/css/generico.css
+---
+2014/12/10 16:13:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/images/p...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/images/plantilla/loading.gif
+---
+2014/12/10 16:15:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/images/plantilla/loading.gif
+HTTP_REFERER=http://localhost/websea/themes/general/css/generico.css
+---
+2014/12/10 16:15:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/images/plantilla/loading.gif
+---
+2014/12/10 16:15:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/images/plantilla/loading.gif
+---
+2014/12/10 16:15:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/css/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/css/images/plantilla/loading.gif
+HTTP_REFERER=http://localhost/websea/themes/general/css/generico.css
+---
+2014/12/10 16:15:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/general/css/images/plantilla/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/general/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/websea/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/websea/themes/general/css/images/plantilla/loading.gif
+---

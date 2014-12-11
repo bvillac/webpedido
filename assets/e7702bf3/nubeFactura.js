@@ -86,6 +86,7 @@ function verificaAcciones(){
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
         $("#btn_enviar").removeClass("disabled");
+        $("#TbG_DOCUMENTO").addClass("loading");
         //verificaAutorizado('TbG_DOCUMENTO');
     }else{
         $("#btn_enviar").addClass("disabled");
@@ -113,7 +114,6 @@ function fun_EnviarDocumento(){
         if(!confirm(mgEnvDocum)) return false;
         var link=$('#txth_controlador').val()+"/EnviarDocumento";
         var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $("#TbG_DOCUMENTO").addClass("loading");
         $.ajax({
             type: 'POST',
             url: link,
@@ -132,12 +132,10 @@ function fun_EnviarDocumento(){
             },
             dataType: "json"
         });
-        $("#TbG_DOCUMENTO").removeClass("loading");
     }else{
         $("#messageInfo").html(selecDoc+buttonAlert); 
         alerMessage();
     }
-    
     return true;
 }
 

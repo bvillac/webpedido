@@ -4,6 +4,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+$tipoUser=Yii::app()->getSession()->get('TipoUser', FALSE);
+
 ?>
 <li class="with_menu">
     <!--<a href = "index"><i class = "fa fa-edit fa-fw"></i> Hacer Pedidos</a>-->
@@ -15,6 +17,8 @@
 <li class="with_menu">
     <?php //echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('PEDIDO', 'Usuario'), array('/uSUARIOS/index')); ?>
 </li>-->
+
+<?php if ($tipoUser==1) {   ?> 
 
 <li class="">
     <a href="#"><i class="fa fa-sitemap fa-fw"></i> <?php echo Yii::t('GENERAL', 'Configuration') ?><span class="fa arrow"></span></a>
@@ -53,6 +57,7 @@
     </ul>
     <!-- /.nav-second-level -->
 </li>
+<?php }  ?> 
 <li class="">
     <a href="#"><i class="fa fa-sitemap fa-fw"></i> <?php echo Yii::t('GENERAL', 'Consultations') ?><span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse" style="height: 0px;">
@@ -61,6 +66,7 @@
             <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Invoice'), array('NubeFactura/index')); ?>
             <?php //echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Documents'), array('vSDocumentos/index')); ?>
         </li>
+        <?php if ($tipoUser==1) {   ?> 
         <li>
             <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Credit note'), array('NubeNotaCredito/index')); ?>
         </li>
@@ -76,7 +82,7 @@
         <li>
             <?php echo CHtml::link('<i class="fa fa-edit fa-fw"></i>' . Yii::t('MENU', 'Otros'), array('NubeFactura/create')); ?>
         </li>
-        
+        <?php }  ?> 
     </ul>
     <!-- /.nav-second-level -->
 </li>

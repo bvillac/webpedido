@@ -24,6 +24,7 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
+                <?php /*
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
@@ -73,12 +74,15 @@
                         </li>
                     </ul>
                     <!-- /.dropdown-messages -->
-                </li>
+                </li> */ ?>
                 <!-- /.dropdown -->
                 
                 <!-- /.dropdown -->
                 
                 <!-- /.dropdown -->
+                <label><?php echo Yii::app()->getSession()->get('TipoNombre', FALSE); ?>  </label>
+                <label><?php echo Yii::t('GENERAL', 'User') ?>:</label>
+                <label><?php echo Yii::app()->getSession()->get('user_name', FALSE); ?></label>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>

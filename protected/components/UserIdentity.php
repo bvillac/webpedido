@@ -57,11 +57,12 @@ class UserIdentity extends CUserIdentity
                     //PARA USAR LAS VARIABLES DE SESSION
                     //yii::app()->user->CORREO;
                     //yii::app()->user->getState('CORREO');
-                    
+                    //Yii::app()->getSession()->get('user_name', FALSE);
                     //INFORMACION EMPRESAS
                     //$emp=$empresa->mostrarEmpresas($user->USU_ID);
                     $emp_id='1';$est_id='1';$pemi_id='1';
                     $data=$empresa->buscarDataEmpresa($emp_id, $est_id, $pemi_id);
+                    $tipoUser=$empresa->buscarTipoUser($user->USU_ID);
                     
                     $session->add('emp_id', $emp_id);
                     $session->add('est_id', $est_id);
@@ -78,6 +79,9 @@ class UserIdentity extends CUserIdentity
                     $session->add('Recepcion',trim($ambiente['Recepcion']));//Aceptacion Comprobantes
                     $session->add('Autorizacion',trim($ambiente['Autorizacion']));//Autorizacion Comprobantes
                     $session->add('RecepcionLote',trim($ambiente['RecepcionLote']));//RecepcionLote Comprobantes
+                    $session->add('UsuarioErp',$tipoUser['UsuarioErp']);
+                    $session->add('TipoUser',$tipoUser['TipoUser']);
+                    $session->add('TipoNombre',$tipoUser['TipoNombre']);
                     
                     $this->errorCode=self::ERROR_NONE;
                 }

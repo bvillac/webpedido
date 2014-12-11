@@ -187,6 +187,7 @@ return array(
         'rutaIconos' => '/images/acciones/',
         'pageSize' => 20,
         'pageSizeMin' => 10,
+        'limitRowSQL' => 100,
         'limitRow' => 10,
         'dateStart' => "01-01-2014",//Fecha de Inicio
         'dateStartFact' => "2014-11-15",//Fecha de Inicio Facturacaion

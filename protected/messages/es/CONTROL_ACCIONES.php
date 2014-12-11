@@ -31,5 +31,7 @@ return array(
     'Delete Selection' => 'Eliminar Selecionado',
     'Start' => 'Inicio',
     'Process' => 'Procesar',
+    'Send' => 'Enviar',
+    'Authorizing document' => 'Autorizar',
 );
 ?>

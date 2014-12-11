@@ -458,6 +458,9 @@ class NubeFactura extends VsSeaIntermedia {
 
     public function mostrarDocumentos($control) {
         $rawData = array();
+        $limitrowsql=Yii::app()->params['limitRowSQL'];
+        $tipoUser=Yii::app()->getSession()->get('TipoUser', FALSE);
+        $usuarioErp=Yii::app()->getSession()->get('UsuarioErp', FALSE);
         $con = Yii::app()->dbvsseaint;
         $sql = "SELECT A.IdFactura IdDoc,A.Estado,A.CodigoTransaccionERP,A.SecuencialERP,A.UsuarioCreador,
                         A.FechaAutorizacion,A.AutorizacionSRI,
@@ -469,8 +472,8 @@ class NubeFactura extends VsSeaIntermedia {
                                 INNER JOIN VSSEA.VSDirectorio C
                                         ON A.CodigoDocumento=C.TipoDocumento
                 WHERE A.CodigoDocumento='01' ";
-
-
+        
+        $sql .= ($tipoUser!=1) ? "AND A.UsuarioCreador = '$usuarioErp' " : "";//Para Usuario Vendedores.
         if (!empty($control)) {//Verifica la Opcion op para los filtros
             $sql .= ($control[0]['TIPO_APR'] != "0") ? " AND A.Estado = '" . $control[0]['TIPO_APR'] . "' " : " ";
             $sql .= ($control[0]['CEDULA'] > 0) ? "AND A.IdentificacionComprador = '" . $control[0]['CEDULA'] . "' " : "";
@@ -478,7 +481,7 @@ class NubeFactura extends VsSeaIntermedia {
             //$sql .= ($control[0]['PACIENTE'] != "") ? "AND CONCAT(B.PER_APELLIDO,' ',B.PER_NOMBRE) LIKE '%" . $control[0]['PACIENTE'] . "%' " : "";
             $sql .= "AND DATE(A.FechaEmision) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "'  ";
         }
-        $sql .= "ORDER BY A.IdFactura DESC";
+        $sql .= "ORDER BY A.IdFactura DESC LIMIT $limitrowsql";
         //echo $sql;
 
         $rawData = $con->createCommand($sql)->queryAll();
