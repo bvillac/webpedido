@@ -14,7 +14,12 @@ $opcion['OP']='1';//1=>todos los Registros y 2=> Un solo registro
 
 /****************** PRUEBA ERRORES SRI **********************/
 $obj = new VSFirmaDigital;
-$response=$obj->validarComprobante('FACTURA-001-001-000117091.xml');
+
+//$response=$obj->validarComprobante('FACTURA-001-001-000117085.xml');
+//$response=$obj->validarComprobante('FACTURA-001-001-000117100.xml');
+//$response=$obj->validarComprobante('FACTURA-001-001-000117078.xml');
+$response=$obj->validarComprobante('FACTURA-001-001-000117122.xml');
+
 //$response=$obj->validarComprobante('FACTURA-001-001-000117002.xml');//XML=1
 //$response=$obj->validarComprobante('FACTURA-001-001-000117001.xml');//XML=2
 //$response=$obj->autorizacionComprobante('1711201401099236253700110010010001169769089035214');
@@ -24,6 +29,10 @@ $response=$obj->validarComprobante('FACTURA-001-001-000117091.xml');
 //$response=$obj->autorizacionComprobante('1711201401099236253700110010010001170019090977718');//XML=2
 //$response=$obj->autorizacionComprobante('1711201401099236253700110010010001170059091288519');//Esta OK
 //$response=$obj->autorizacionComprobante('1811201401099236253700110010010001170729096494419');//CLAVE EN PROCESO
+
+//$response=$obj->autorizacionComprobante('1811201401099236253700110010010001170859097504516');//pROBLEMA CON LA Ñ
+//$response=$obj->autorizacionComprobante('1811201401099236253700110010010001171009098670010');//pROBLEMA CON EL "/"
+//$response=$obj->autorizacionComprobante('1811201401099236253700110010010001170789096960617');
 
 print_r($response);
 //[status] => OK [error] => [message] => Respuesta Ok WebService: autorizacionComprobante [data]

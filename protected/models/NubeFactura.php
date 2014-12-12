@@ -736,6 +736,7 @@ class NubeFactura extends VsSeaIntermedia {
                     $xmldata .='<contribuyenteEspecial>' . $cabFact["ContribuyenteEspecial"] . '</contribuyenteEspecial>';
                     $xmldata .='<obligadoContabilidad>' . $cabFact["ObligadoContabilidad"] . '</obligadoContabilidad>';
                     $xmldata .='<tipoIdentificacionComprador>' . $cabFact["TipoIdentificacionComprador"] . '</tipoIdentificacionComprador>';
+                    //$xmldata .='<razonSocialComprador>' . utf8_encode($cabFact["RazonSocialComprador"]) . '</razonSocialComprador>';
                     $xmldata .='<razonSocialComprador>' . $cabFact["RazonSocialComprador"] . '</razonSocialComprador>';
                     $xmldata .='<identificacionComprador>' . $cabFact["IdentificacionComprador"] . '</identificacionComprador>';
                     $xmldata .='<totalSinImpuestos>' . Yii::app()->format->formatNumber($cabFact["TotalSinImpuesto"]) . '</totalSinImpuestos>';
