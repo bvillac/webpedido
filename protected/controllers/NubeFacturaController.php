@@ -266,8 +266,6 @@ class NubeFacturaController extends Controller {
     }
 
     public function actionEnviarDocumento() {
-        //$modelo = new NubeFactura();
-        //$contBuscar = array();
         if (Yii::app()->request->isAjaxRequest) {
             $ids = isset($_POST['ids']) ? base64_decode($_POST['ids']) : NULL;
             $res = new NubeFactura;

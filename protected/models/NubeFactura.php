@@ -524,11 +524,11 @@ class NubeFactura extends VsSeaIntermedia {
                         A.FechaEmision,A.IdentificacionComprador,A.RazonSocialComprador,
                         A.TotalSinImpuesto,A.TotalDescuento,A.Propina,A.ImporteTotal,
                         C.Descripcion NombreDocumento,A.AutorizacionSri,A.ClaveAcceso,A.FechaAutorizacion,
-                        A.Ambiente,A.TipoEmision,A.GuiaRemision,A.Moneda
+                        A.Ambiente,A.TipoEmision,A.GuiaRemision,A.Moneda,A.Ruc
                         FROM " . $con->dbname . ".NubeFactura A
                                 INNER JOIN VSSEA.VSDirectorio C
                                         ON A.CodigoDocumento=C.TipoDocumento
-                WHERE A.Estado<>'0' AND A.CodigoDocumento='$tdoc' AND A.IdFactura =$id ";
+                WHERE A.Estado<>'2' AND A.CodigoDocumento='$tdoc' AND A.IdFactura =$id ";
         $rawData = $con->createCommand($sql)->queryRow(); //Recupera Solo 1
         $con->active = false;
         return $rawData;
@@ -624,11 +624,12 @@ class NubeFactura extends VsSeaIntermedia {
     public function enviarDocumentos($id) {
         try {
             $firmaDig = new VSFirmaDigital();
+            $errAuto= new VSexception();
             $ids = explode(",", $id);
             for ($i = 0; $i < count($ids); $i++) {
                 if ($ids[$i] !== "") {
                     $result = $this->generarFileXML($ids[$i]);
-                    if ($result['estado']) {
+                    if ($result['status']) {
                         //echo $result['nomDoc'];
                         $firma = $firmaDig->firmaXAdES_BES($result['nomDoc']);
                         //Verifica Errores del Firmado
@@ -695,6 +696,8 @@ class NubeFactura extends VsSeaIntermedia {
                             $arroout["message"] = Yii::t('EXCEPTION', 'Failed to perform the signed document.');
                             return $arroout;
                         }
+                    }else{
+                        return $errAuto->messageSystem('NO_OK', $result["error"],1,null, null);
                     }
                 }
             }
@@ -707,13 +710,31 @@ class NubeFactura extends VsSeaIntermedia {
             return $arroout;
         }
     }
+    
+    
 
     private function generarFileXML($ids) {
-        $cabFact = $this->mostrarCabFactura($ids, '01');
+        $msgAuto= new VSexception();
+        $codDoc = '01'; //Documento Factura
+        $cabFact = $this->mostrarCabFactura($ids, $codDoc);
+        if (count($cabFact)>0) {
+            if($cabFact["Estado"]==4){
+                //Documento Devuelto hay que volver a generar la clave de Acceso
+                $objCla = new VSClaveAcceso();
+                $serie = $cabFact['Establecimiento'] . $cabFact['PuntoEmision'];
+                $fec_doc = date("Y-m-d", strtotime($cabFact['FechaEmision']));
+                $ClaveAcceso = $objCla->claveAcceso($codDoc, $fec_doc, $cabFact['Ruc'], $cabFact['Ambiente'], $serie, $cabFact['Secuencial'], $cabFact['TipoEmision']);
+                $this->actualizaClaveAccesoFactura($ids,$ClaveAcceso);
+                $cabFact = $this->mostrarCabFactura($ids, $codDoc);//Vuelve a Consultar con la Clave de Acceso Nueva.
+            }
+        }else{
+            //Si la Cabecera no devuelve registros Retorna un resultado  de False
+            return $msgAuto->messageFileXML(false, null, null, 1, null, null);
+        }
+        
         $detFact = $this->mostrarDetFacturaImp($ids);
         $impFact = $this->mostrarFacturaImp($ids);
         $adiFact = $this->mostrarFacturaDataAdicional($ids);
-
 
         $xmldata = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
             $xmldata .='<factura id="comprobante" version="1.0.0">';
@@ -841,14 +862,8 @@ class NubeFactura extends VsSeaIntermedia {
         $xmldata .='</factura>';
         //echo htmlentities($xmldata);
         $nomDocfile = $cabFact['NombreDocumento'] . '-' . $cabFact['NumDocumento'] . '.xml';
-
         file_put_contents(Yii::app()->params['seaDocXml'] . $nomDocfile, $xmldata); //Escribo el Archivo Xml
-        $result = array(
-            'nomDoc' => $nomDocfile,
-            'ClaveAcceso' => $cabFact["ClaveAcceso"],
-            'estado' => true
-        );
-        return $result;
+        return $msgAuto->messageFileXML(true, $nomDocfile, $cabFact["ClaveAcceso"], 2, null, null);
     }
     
     public function mostrarRutaXMLAutorizado($id) {
@@ -859,6 +874,26 @@ class NubeFactura extends VsSeaIntermedia {
         $rawData = $con->createCommand($sql)->queryRow(); //Recupera Solo 1
         $con->active = false;
         return $rawData;
+    }
+    
+    
+    public function actualizaClaveAccesoFactura($ids,$clave) {
+        $con = Yii::app()->dbvsseaint;
+        $trans = $con->beginTransaction();
+        try {
+            $sql = "UPDATE " . $con->dbname . ".NubeFactura SET ClaveAcceso='$clave' WHERE IdFactura='$ids'";
+            //echo $sql;
+            $command = $con->createCommand($sql);
+            $command->execute();
+            $trans->commit();
+            $con->active = false;
+            return true;
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            throw $e;
+            return false;
+        }
     }
     
     

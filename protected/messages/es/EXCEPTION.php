@@ -23,6 +23,9 @@ return array(
     'Failed to perform validation of the document.' => 'Error al realizar la validación del documento.',
     'Failed to perform authorization document.' => 'Error al realizar la autorización del documento.',
     'Failed to send the document, check with your Web Manager.' => 'Error al enviar el documento, consultar con su Administrador Web.',
+    'Error document was not found.' => 'Error el documento no se encontró.',
+    'Gender xml file correctly.' => 'Error el documento no se encontró.',
+    
     
 );
 ?>
