@@ -119,7 +119,7 @@
                             <!-- /input-group -->
                         </li>
 
-                        <?php include("menu.php"); ?>
+                        <?php echo $this->menuModulos(); ?>
                         <!-- /#Menu de pedidos -->
                         
                         

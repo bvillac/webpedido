@@ -3,8 +3,8 @@
 $opcion['TIP_DOC']='F4';//Tipo Documento
 $opcion['NUM_DOC']='000117005';//Numero Documento
 $opcion['OP']='1';//1=>todos los Registros y 2=> Un solo registro
-$obj = new NubeFactura;
-$obj->insertarFacturas($opcion);
+//$obj = new NubeFactura;
+//$obj->insertarFacturas($opcion);
 
 /*
   echo dirname(__FILE__).'<br>';///var/www/html/websea/protected/views/nubeFactura
@@ -19,7 +19,7 @@ $obj = new VSFirmaDigital;
 //$response=$obj->validarComprobante('FACTURA-001-001-000117085.xml');
 //$response=$obj->validarComprobante('FACTURA-001-001-000117100.xml');
 //$response=$obj->validarComprobante('FACTURA-001-001-000117078.xml');
-$response=$obj->validarComprobante('FACTURA-001-001-000117135.xml');
+$response=$obj->validarComprobante('FACTURA-001-001-000117134.xml');
 
 //$response=$obj->validarComprobante('FACTURA-001-001-000117002.xml');//XML=1
 //$response=$obj->validarComprobante('FACTURA-001-001-000117001.xml');//XML=2

@@ -741,25 +741,26 @@ class NubeFactura extends VsSeaIntermedia {
                 $xmldata .='<infoTributaria>';
                     $xmldata .='<ambiente>' . $cabFact["Ambiente"] . '</ambiente>';
                     $xmldata .='<tipoEmision>' . $cabFact["TipoEmision"] . '</tipoEmision>';
-                    $xmldata .='<razonSocial>' . Yii::app()->getSession()->get('RazonSocial', FALSE) . '</razonSocial>';
-                    $xmldata .='<nombreComercial>' . Yii::app()->getSession()->get('NombreComercial', FALSE) . '</nombreComercial>';
-                    $xmldata .='<ruc>' . Yii::app()->getSession()->get('Ruc', FALSE) . '</ruc>';
-                    $xmldata .='<claveAcceso>' . $cabFact["ClaveAcceso"] . '</claveAcceso>';
+                    $xmldata .='<razonSocial>' . utf8_encode(trim(Yii::app()->getSession()->get('RazonSocial', FALSE))) . '</razonSocial>';
+                    $xmldata .='<nombreComercial>' . utf8_encode(trim(Yii::app()->getSession()->get('NombreComercial', FALSE))) . '</nombreComercial>';
+                    $xmldata .='<ruc>' . utf8_encode(trim(Yii::app()->getSession()->get('Ruc', FALSE))) . '</ruc>';
+                    $xmldata .='<claveAcceso>' . utf8_encode(trim($cabFact["ClaveAcceso"])) . '</claveAcceso>';
                     $xmldata .='<codDoc>' . $cabFact["CodigoDocumento"] . '</codDoc>';
-                    $xmldata .='<estab>' . $cabFact["Establecimiento"] . '</estab>';
-                    $xmldata .='<ptoEmi>' . $cabFact["PuntoEmision"] . '</ptoEmi>';
-                    $xmldata .='<secuencial>' . $cabFact["Secuencial"] . '</secuencial>';
-                    $xmldata .='<dirMatriz>' . $cabFact["DireccionMatriz"] . '</dirMatriz>';
+                    $xmldata .='<estab>' . utf8_encode(trim($cabFact["Establecimiento"])) . '</estab>';
+                    $xmldata .='<ptoEmi>' . utf8_encode(trim($cabFact["PuntoEmision"])) . '</ptoEmi>';
+                    $xmldata .='<secuencial>' . utf8_encode(trim($cabFact["Secuencial"])) . '</secuencial>';
+                    $xmldata .='<dirMatriz>' . utf8_encode(trim($cabFact["DireccionMatriz"])) . '</dirMatriz>';
                 $xmldata .='</infoTributaria>';
                 $xmldata .='<infoFactura>';
                     $xmldata .='<fechaEmision>' . date(Yii::app()->params["dateXML"], strtotime($cabFact["FechaEmision"])) . '</fechaEmision>';
-                    $xmldata .='<dirEstablecimiento>' . $cabFact["DireccionEstablecimiento"] . '</dirEstablecimiento>';
-                    $xmldata .='<contribuyenteEspecial>' . $cabFact["ContribuyenteEspecial"] . '</contribuyenteEspecial>';
-                    $xmldata .='<obligadoContabilidad>' . $cabFact["ObligadoContabilidad"] . '</obligadoContabilidad>';
-                    $xmldata .='<tipoIdentificacionComprador>' . $cabFact["TipoIdentificacionComprador"] . '</tipoIdentificacionComprador>';
-                    //$xmldata .='<razonSocialComprador>' . utf8_encode($cabFact["RazonSocialComprador"]) . '</razonSocialComprador>';
-                    $xmldata .='<razonSocialComprador>' . $cabFact["RazonSocialComprador"] . '</razonSocialComprador>';
-                    $xmldata .='<identificacionComprador>' . $cabFact["IdentificacionComprador"] . '</identificacionComprador>';
+                    $xmldata .='<dirEstablecimiento>' . utf8_encode(trim($cabFact["DireccionEstablecimiento"])) . '</dirEstablecimiento>';
+                    if(strlen(trim($cabFact['ContribuyenteEspecial']))>0){
+                        $xmldata .='<contribuyenteEspecial>' . utf8_encode(trim($cabFact["ContribuyenteEspecial"])) . '</contribuyenteEspecial>';
+                    }
+                    $xmldata .='<obligadoContabilidad>' . utf8_encode(trim($cabFact["ObligadoContabilidad"])) . '</obligadoContabilidad>';
+                    $xmldata .='<tipoIdentificacionComprador>' . utf8_encode(trim($cabFact["TipoIdentificacionComprador"])) . '</tipoIdentificacionComprador>';
+                    $xmldata .='<razonSocialComprador>' . utf8_encode(trim($cabFact["RazonSocialComprador"])) . '</razonSocialComprador>';
+                    $xmldata .='<identificacionComprador>' . utf8_encode(trim($cabFact["IdentificacionComprador"])) . '</identificacionComprador>';
                     $xmldata .='<totalSinImpuestos>' . Yii::app()->format->formatNumber($cabFact["TotalSinImpuesto"]) . '</totalSinImpuestos>';
                     $xmldata .='<totalDescuento>' . Yii::app()->format->formatNumber($cabFact["TotalDescuento"]) . '</totalDescuento>';
                         $xmldata .='<totalConImpuestos>';
@@ -803,14 +804,14 @@ class NubeFactura extends VsSeaIntermedia {
                         $xmldata .='</totalConImpuestos>';
                 $xmldata .='<propina>' . Yii::app()->format->formatNumber($cabFact["Propina"]) . '</propina>';
                 $xmldata .='<importeTotal>' . Yii::app()->format->formatNumber($cabFact["ImporteTotal"]) . '</importeTotal>';
-                $xmldata .='<moneda>' . $cabFact["Moneda"] . '</moneda>';
+                $xmldata .='<moneda>' . utf8_encode(trim($cabFact["Moneda"])) . '</moneda>';
             $xmldata .='</infoFactura>';
         $xmldata .='<detalles>';
         for ($i = 0; $i < sizeof($detFact); $i++) {//DETALLE DE FACTURAS
             $xmldata .='<detalle>';
-            $xmldata .='<codigoPrincipal>' . $detFact[$i]['CodigoPrincipal'] . '</codigoPrincipal>';
-            $xmldata .='<codigoAuxiliar>' . $detFact[$i]['CodigoAuxiliar'] . '</codigoAuxiliar>';
-            $xmldata .='<descripcion>' . $detFact[$i]['Descripcion'] . '</descripcion>';
+            $xmldata .='<codigoPrincipal>' . utf8_encode(trim($detFact[$i]['CodigoPrincipal'])) . '</codigoPrincipal>';
+            $xmldata .='<codigoAuxiliar>' . utf8_encode(trim($detFact[$i]['CodigoAuxiliar'])) . '</codigoAuxiliar>';
+            $xmldata .='<descripcion>' . utf8_encode(trim($detFact[$i]['Descripcion'])) . '</descripcion>';
             $xmldata .='<cantidad>' . Yii::app()->format->formatNumber($detFact[$i]['Cantidad']) . '</cantidad>';
             $xmldata .='<precioUnitario>' . Yii::app()->format->formatNumber($detFact[$i]['PrecioUnitario']) . '</precioUnitario>';
             $xmldata .='<descuento>' . Yii::app()->format->formatNumber($detFact[$i]['Descuento']) . '</descuento>';
@@ -854,7 +855,7 @@ class NubeFactura extends VsSeaIntermedia {
         $xmldata .='<infoAdicional>';
         for ($i = 0; $i < sizeof($adiFact); $i++) {
             if(strlen(trim($adiFact[$i]['Descripcion']))>0){
-                $xmldata .='<campoAdicional nombre="' . $adiFact[$i]['Nombre'] . '">' . $adiFact[$i]['Descripcion'] . '</campoAdicional>';
+                $xmldata .='<campoAdicional nombre="' . utf8_encode(trim($adiFact[$i]['Nombre'])) . '">' . utf8_encode(trim($adiFact[$i]['Descripcion'])) . '</campoAdicional>';
             }
         }
         $xmldata .='</infoAdicional>';

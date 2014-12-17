@@ -34,6 +34,15 @@ class Controller extends CController {
             $this->redirect(Yii::app()->homeUrl . "site/login");
         }
     }
+    
+    public function menuModulos() {
+        $model = new VSacceso();
+        // se debe cargar la plantilla haciendo un Partial. 
+        //$res = $model->recuperaModulos($this->id_modulo, Yii::app()->controller->route);
+        //return $this->renderPartial("//layouts/menu", array('res' => $res, 'id_modulo' => $this->id_modulo, 'rutaControl' => Yii::app()->controller->route), true, false);
+        return $model->menuModulosFrm(1);
+        
+    }
 
     public function actionError() {
         if ($error = Yii::app()->errorHandler->error) {

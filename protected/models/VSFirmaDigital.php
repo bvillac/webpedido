@@ -331,6 +331,7 @@ class VSFirmaDigital extends VsSeaActiveRecord {
     private function webServiceNuSoap($wdsl, $param, $metodo) {
         //set_time_limit(600);
         $client = new nusoap_client($wdsl, 'wsdl');
+        //$client = new soapclient($wdsl, 'wsdl');
         $err = $client->getError();
         if ($err) {
             //echo 'Error en Constructor' . $err;
@@ -340,6 +341,7 @@ class VSFirmaDigital extends VsSeaActiveRecord {
             $arroout["data"] = null;
             return $arroout;
         }
+        //$response=$client->send($metodo,$param);
         $response = $client->call($metodo, $param);
         if ($client->fault) {
             //echo 'Existe un Problemas en el Envio';
