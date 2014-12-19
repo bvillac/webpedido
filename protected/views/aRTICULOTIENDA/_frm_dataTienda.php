@@ -14,19 +14,18 @@
         </div>
     </div>
     <div class="form-group">
-        <label><?php echo Yii::t('GENERAL', 'Subject') ?></label>
         <?php
         $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-                'name' => 'txt_PER_CEDULA',
-                'id' => 'txt_PER_CEDULA',
+                'name' => 'txt_ART_ID',
+                'id' => 'txt_ART_ID',
                 'source' => "js: function(request, response){ 
-                          autocompletarBuscarPersona(request, response,'txt_PER_CEDULA','COD-NOM');
+                          autocompletarBuscarItems(request, response,'txt_ART_ID','COD-NOM');
                         }",
                 'options' => array(
                     'minLength' => '2',
                     'showAnim' => 'fold',
                     'select' => "js:function(event, ui) {
-                            //actualizaBuscarPersona(ui.item.PER_ID);     
+                            //actualizaBuscarPersona(ui.item.ART_ID);     
                         }"
                 ),
                 'htmlOptions' => array(
@@ -34,7 +33,7 @@
                     "data-type" => "number",
                     'size'=>35, 
                     //'onKeyup' => "verificarTextCedula(isEnter(event),'txt_PER_CEDULA')",
-                    'placeholder' => Yii::t('COMPANIA', 'Social reason o Ruc'),
+                    'placeholder' => Yii::t('GENERAL', 'Find articles by code or name'),
                     //'onkeydown' => "nextControl(isEnter(event),'txt_nombre_medico_aten')",
                     //'onkeydown' => "buscarCodigo(isEnter(event),'txt_cod_paciente','COD-ID')",
                     //'onkeydown' => "verificarTextCedula(isEnter(event),'txt_PER_CEDULA')",
@@ -43,60 +42,29 @@
             ));
             ?>
     </div>
-    <div class="form-group">
-        <label><?php echo Yii::t('GENERAL', 'Body') ?></label>
-        <?php
-        echo CHtml::textArea('txta_Cuerpo', '', array('maxlength' => 5000, 'rows' => 6, 'cols' => 100,
-            'class' => 'form-control',
-                //'onchange' => 'return calcularItem()',
-                //'onkeydown' => "nextControl(isEnter(event),'txt_RUC')",
-        ))
-        ?>
-    </div>
-    <div class="form-group">
-        <label><?php echo Yii::t('GENERAL', 'Copy Mail') ?></label>
-        <?php
-        echo CHtml::textField('txt_CCO', '', array('size' => 10, 'maxlength' => 500,
-            'class' => 'form-control',
-                //'onchange' => 'return calcularItem()',
-                //'onkeydown' => "nextControl(isEnter(event),'txt_RUC')",
-        ))
-        ?>
-    </div>
-    <!--<div class="form-group tooltip-demo">
-        <label><?php //echo Yii::t('GENERAL', 'Parameters')  ?></label>
-        <button data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." 
-                data-placement="left" data-toggle="popover" data-container="body" class="btn btn-default" type="button" data-original-title="" title="">
-                                    Popover on left
-        </button>
-    </div>-->
     <div class="form-group rowLine">
-        <div class="rowTd">
-            <label><?php echo Yii::t('GENERAL', 'Send Mail C/Seconds') ?></label>
+        <div class="txt_label">
+            <label><?php echo Yii::t('GENERAL', 'Price') ?></label>
         </div>
-        <div class="rowTd">
+        <div class="txt_Textbox">
             <?php
-            echo CHtml::textField('txt_TiempoRespuesta', '', array('size' => 10, 'maxlength' => 2,
+            echo CHtml::textField('txt_PCLI_P_VENTA', '', array('size' => 10, 'maxlength' => 6,
                 'class' => 'form-control txt_TextboxNumber2',
+                'placeholder' => '0,00',
                     //'onchange' => 'return calcularItem()',
                     //'onkeydown' => "nextControl(isEnter(event),'txt_RUC')",
             ))
             ?>
+            
         </div>
-        <div class="rowTd">
-            <label><?php echo Yii::t('GENERAL', 'Html') ?></label>
-        </div>
-        <div class="rowTd">
-            <?php //echo CHtml::checkBox('chk_EsHtml', false, array('value' => 136, 'onclick' => 'validadorChk(this)')); ?>
-            <?php echo CHtml::checkBox('chk_EsHtml', false, array('value' => '')); ?>
-        </div>
-        
         
     </div>
-
-
-
-
+    <div class="form-group rowLine">
+        <div class="txt_Textbox">
+            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Add'), array('id' => 'btn_add', 'name' => 'btn_add', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_GuardarConfig("Update")')); ?>
+        </div>
+    </div>  
+    
 </form>
 
 
