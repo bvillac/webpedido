@@ -13,7 +13,9 @@
  */
 class VSacceso {
     //put your code here
-    public function menuModulosFrm($id) {
+    public function menuModulosFrm() {
+        $id=Yii::app()->getSession()->get('RolId', FALSE);//Rol del Usuario.
+        $frmActivo=strtolower(Yii::app()->controller->route);
         $conApp = yii::app()->db;
         $rawData = array();
         $sql = "SELECT B.OMOD_ID,B.OMOD_PADRE_ID,B.OMOD_NOMBRE,B.MOD_ID,C.MOD_NOMBRE,B.OMOD_TIPO, "

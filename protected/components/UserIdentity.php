@@ -36,7 +36,7 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode=self::ERROR_NONE;
 		return !$this->errorCode;*/
                 //echo $this->username;
-                $empresa=new EMPRESA;
+                $empresa=new ROL;
                 $session = Yii::app()->getSession();
                 $user= USUARIO::model()->find('LOWER(USU_NOMBRE)=?', array(strtolower($this->username)));
 
@@ -59,29 +59,12 @@ class UserIdentity extends CUserIdentity
                     //yii::app()->user->getState('CORREO');
                     //Yii::app()->getSession()->get('user_name', FALSE);
                     //INFORMACION EMPRESAS
-                    //$emp=$empresa->mostrarEmpresas($user->USU_ID);
-                    $emp_id='1';$est_id='1';$pemi_id='1';
-                    $data=$empresa->buscarDataEmpresa($emp_id, $est_id, $pemi_id);
-                    $tipoUser=$empresa->buscarTipoUser($user->USU_ID);
+                   
                     
-                    $session->add('emp_id', $emp_id);
-                    $session->add('est_id', $est_id);
-                    $session->add('pemi_id', $pemi_id);
-                    $session->add('Ruc',$data['Ruc']);
-                    $session->add('RazonSocial',$data['RazonSocial']);
-                    $session->add('NombreComercial',$data['NombreComercial']);
-                    $session->add('DireccionMatriz',$data['DireccionMatriz']);
-                    $session->add('DireccionSucursal',$data['DireccionSucursal']);
-                    $session->add('ContribuyenteEspecial',$data['ContribuyenteEspecial']);
-                    $session->add('ObligadoContabilidad',$data['ObligadoContabilidad']);
-                    //Asignacion de Ambiente Pruebas o Produccion
-                    $ambiente=$empresa->buscarAmbienteEmp($data['EMP_ID'],$data['Ambiente']);
-                    $session->add('Recepcion',trim($ambiente['Recepcion']));//Aceptacion Comprobantes
-                    $session->add('Autorizacion',trim($ambiente['Autorizacion']));//Autorizacion Comprobantes
-                    $session->add('RecepcionLote',trim($ambiente['RecepcionLote']));//RecepcionLote Comprobantes
-                    $session->add('UsuarioErp',$tipoUser['UsuarioErp']);
-                    $session->add('TipoUser',$tipoUser['TipoUser']);
-                    $session->add('TipoNombre',$tipoUser['TipoNombre']);
+                    $tipoUser=$empresa->buscarTipoUser($user->USU_ID);
+               
+                    $session->add('RolId',$tipoUser['ROL_ID']);
+                    $session->add('RolNombre',$tipoUser['ROL_NOMBRE']);
                     
                     $this->errorCode=self::ERROR_NONE;
                 }

@@ -17,6 +17,14 @@
 	<?php echo CHtml::encode($data->USU_NOMBRE); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('USU_ALIAS')); ?>:</b>
+	<?php echo CHtml::encode($data->USU_ALIAS); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('USU_CORREO')); ?>:</b>
+	<?php echo CHtml::encode($data->USU_CORREO); ?>
+	<br />
+
 	<b><?php echo CHtml::encode($data->getAttributeLabel('USU_PASSWORD')); ?>:</b>
 	<?php echo CHtml::encode($data->USU_PASSWORD); ?>
 	<br />
@@ -25,6 +33,7 @@
 	<?php echo CHtml::encode($data->USU_EST_LOG); ?>
 	<br />
 
+	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('USU_FEC_CRE')); ?>:</b>
 	<?php echo CHtml::encode($data->USU_FEC_CRE); ?>
 	<br />
@@ -33,5 +42,6 @@
 	<?php echo CHtml::encode($data->USU_FEC_MOD); ?>
 	<br />
 
+	*/ ?>
 
 </div>

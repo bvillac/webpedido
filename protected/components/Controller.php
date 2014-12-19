@@ -40,7 +40,7 @@ class Controller extends CController {
         // se debe cargar la plantilla haciendo un Partial. 
         //$res = $model->recuperaModulos($this->id_modulo, Yii::app()->controller->route);
         //return $this->renderPartial("//layouts/menu", array('res' => $res, 'id_modulo' => $this->id_modulo, 'rutaControl' => Yii::app()->controller->route), true, false);
-        return $model->menuModulosFrm(1);
+        return $model->menuModulosFrm();
         
     }
 

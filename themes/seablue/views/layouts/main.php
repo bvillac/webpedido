@@ -72,6 +72,8 @@
                     </div>
                     <!-- /.row -->
                     <div class="row">
+                        
+                        <?php //echo strtolower(Yii::app()->controller->route); ?>
                         <?php echo $content; ?>
                     </div>
 

@@ -27,6 +27,16 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model,'USU_ALIAS'); ?>
+		<?php echo $form->textField($model,'USU_ALIAS',array('size'=>50,'maxlength'=>50)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'USU_CORREO'); ?>
+		<?php echo $form->textField($model,'USU_CORREO',array('size'=>60,'maxlength'=>60)); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'USU_PASSWORD'); ?>
 		<?php echo $form->textField($model,'USU_PASSWORD',array('size'=>50,'maxlength'=>50)); ?>
 	</div>

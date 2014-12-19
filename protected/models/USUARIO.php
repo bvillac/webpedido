@@ -7,6 +7,8 @@
  * @property string $USU_ID
  * @property string $PER_ID
  * @property string $USU_NOMBRE
+ * @property string $USU_ALIAS
+ * @property string $USU_CORREO
  * @property string $USU_PASSWORD
  * @property string $USU_EST_LOG
  * @property string $USU_FEC_CRE
@@ -14,6 +16,7 @@
  *
  * The followings are the available model relations:
  * @property PERSONA $pER
+ * @property USUARIOTIENDA[] $uSUARIOTIENDAs
  */
 class USUARIO extends CActiveRecord
 {
@@ -36,12 +39,13 @@ class USUARIO extends CActiveRecord
 			array('PER_ID', 'required'),
 			array('PER_ID', 'length', 'max'=>20),
 			array('USU_NOMBRE', 'length', 'max'=>100),
-			array('USU_PASSWORD', 'length', 'max'=>50),
+			array('USU_ALIAS, USU_PASSWORD', 'length', 'max'=>50),
+			array('USU_CORREO', 'length', 'max'=>60),
 			array('USU_EST_LOG', 'length', 'max'=>1),
 			array('USU_FEC_CRE, USU_FEC_MOD', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('USU_ID, PER_ID, USU_NOMBRE, USU_PASSWORD, USU_EST_LOG, USU_FEC_CRE, USU_FEC_MOD', 'safe', 'on'=>'search'),
+			array('USU_ID, PER_ID, USU_NOMBRE, USU_ALIAS, USU_CORREO, USU_PASSWORD, USU_EST_LOG, USU_FEC_CRE, USU_FEC_MOD', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,6 +58,7 @@ class USUARIO extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'pER' => array(self::BELONGS_TO, 'PERSONA', 'PER_ID'),
+			'uSUARIOTIENDAs' => array(self::HAS_MANY, 'USUARIOTIENDA', 'USU_ID'),
 		);
 	}
 
@@ -66,6 +71,8 @@ class USUARIO extends CActiveRecord
 			'USU_ID' => 'Usu',
 			'PER_ID' => 'Per',
 			'USU_NOMBRE' => 'Usu Nombre',
+			'USU_ALIAS' => 'Usu Alias',
+			'USU_CORREO' => 'Usu Correo',
 			'USU_PASSWORD' => 'Usu Password',
 			'USU_EST_LOG' => 'Usu Est Log',
 			'USU_FEC_CRE' => 'Usu Fec Cre',
@@ -94,6 +101,8 @@ class USUARIO extends CActiveRecord
 		$criteria->compare('USU_ID',$this->USU_ID,true);
 		$criteria->compare('PER_ID',$this->PER_ID,true);
 		$criteria->compare('USU_NOMBRE',$this->USU_NOMBRE,true);
+		$criteria->compare('USU_ALIAS',$this->USU_ALIAS,true);
+		$criteria->compare('USU_CORREO',$this->USU_CORREO,true);
 		$criteria->compare('USU_PASSWORD',$this->USU_PASSWORD,true);
 		$criteria->compare('USU_EST_LOG',$this->USU_EST_LOG,true);
 		$criteria->compare('USU_FEC_CRE',$this->USU_FEC_CRE,true);
@@ -114,7 +123,4 @@ class USUARIO extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-        
-        
-        
 }

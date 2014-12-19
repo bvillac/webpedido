@@ -24,6 +24,8 @@ $this->menu=array(
 		'USU_ID',
 		'PER_ID',
 		'USU_NOMBRE',
+		'USU_ALIAS',
+		'USU_CORREO',
 		'USU_PASSWORD',
 		'USU_EST_LOG',
 		'USU_FEC_CRE',

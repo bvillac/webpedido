@@ -63,7 +63,13 @@ return array(
     /*USER*/
     'User Profile' => 'Perfil',
     'Settings' => 'Configuración',
-    'Logout' => 'Salir',
+    'Logout' => 'Salir', 
+     /*TIENDA ARTICULO*/
+    'Customer' => 'Cliente',
+    'Customer price' => 'Precio por Cliente',
+    'Store items' => 'Items Tiendas',
+    'Store' => 'Tiendas',
+    '-Select-' => 'SELECIONAR',
     
     
     

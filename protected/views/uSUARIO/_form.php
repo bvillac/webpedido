@@ -32,6 +32,18 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'USU_ALIAS'); ?>
+		<?php echo $form->textField($model,'USU_ALIAS',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->error($model,'USU_ALIAS'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'USU_CORREO'); ?>
+		<?php echo $form->textField($model,'USU_CORREO',array('size'=>60,'maxlength'=>60)); ?>
+		<?php echo $form->error($model,'USU_CORREO'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'USU_PASSWORD'); ?>
 		<?php echo $form->textField($model,'USU_PASSWORD',array('size'=>50,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'USU_PASSWORD'); ?>

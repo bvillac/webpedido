@@ -48,10 +48,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'USU_ID',
 		'PER_ID',
 		'USU_NOMBRE',
+		'USU_ALIAS',
+		'USU_CORREO',
 		'USU_PASSWORD',
+		/*
 		'USU_EST_LOG',
 		'USU_FEC_CRE',
-		/*
 		'USU_FEC_MOD',
 		*/
 		array(

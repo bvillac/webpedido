@@ -114,15 +114,12 @@ return array(
           ), */
         // uncomment the following to use a MySQL database
         'db' => array(
-            //'connectionString' => 'mysql:host=localhost;dbname=sea2010_sisweb',
-            //'connectionString' => 'mysql:host=192.168.10.101;dbname=appweb_2014',
-            'connectionString' => 'mysql:host=localhost;dbname=appweb_2014',
-            //'connectionString' => 'mysql:host=localhost;dbname=VSSEA',
+            'connectionString' => 'mysql:host=localhost;dbname=VSSEAPEDIDO',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => 'root00',
             'charset' => 'utf8',
-            'dbname' => "appweb_2014",
+            'dbname' => "VSSEAPEDIDO",
             'dbserver' => "192.168.10.101"
         ),
         'dbcont' => array(//Contribuyente
@@ -195,21 +192,7 @@ return array(
         'datebydefault' => "d-m-Y",
         'dateXML' => "d/m/Y",
         'datepicker' => 'dd-mm-yy',
-        'datebytime' => 'Y-m-d h:i:s',
-        'seaFirma' => '/opt/SEAF/',
-        'seaFirext' => 'p12', //Extension de Firma Electronica
-        'seaDocXml' => '/opt/SEADOC/GENERADO/',
-        'seaDocFact' => '/opt/SEADOC/FIRMADO/FACTURAS/',
-        'seaDocRete' => '/opt/SEADOC/FIRMADO/RETENCIONES/',
-        'seaDocNc' => '/opt/SEADOC/FIRMADO/NC/',
-        'seaDocNd' => '/opt/SEADOC/FIRMADO/ND/',
-        'seaDocGuia' => '/opt/SEADOC/FIRMADO/GUIAS/',
-        'seaDocAutFact' => '/opt/SEADOC/AUTORIZADO/FACTURAS/',
-        'seaDocAutRete' => '/opt/SEADOC/AUTORIZADO/RETENCIONES/',
-        'seaDocAutNc' => '/opt/SEADOC/AUTORIZADO/NC/',
-        'seaDocAutNd' => '/opt/SEADOC/AUTORIZADO/ND/',
-        'seaDocAutGuia' => '/opt/SEADOC/AUTORIZADO/GUIAS/',
-        'seaBarra' => '/opt/codebar/',
+        'datebytime' => 'Y-m-d h:i:s',      
         'consumidorfinal' => '9999999999',
     ),
 );

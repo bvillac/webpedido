@@ -80,7 +80,7 @@
                 <!-- /.dropdown -->
                 
                 <!-- /.dropdown -->
-                <label><?php echo Yii::app()->getSession()->get('TipoNombre', FALSE); ?>  </label>
+                <label><?php echo Yii::app()->getSession()->get('RolNombre', FALSE); ?>  </label>
                 <label><?php echo Yii::t('GENERAL', 'User') ?>:</label>
                 <label><?php echo Yii::app()->getSession()->get('user_name', FALSE); ?></label>
                 <li class="dropdown">
