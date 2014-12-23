@@ -69,7 +69,7 @@ return array(
     'Customer price' => 'Precio por Cliente',
     'Store items' => 'Items Tiendas',
     'Store' => 'Tiendas',
-    '-Select-' => 'SELECIONAR',
+    '-Select-' => 'Seleccionar',
     'Find articles by code or name' => 'Buscar artículos por código o nombre',
     'Price' => 'Precio',
     'List of price' => 'Lista de Precio',
