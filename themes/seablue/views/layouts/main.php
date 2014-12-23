@@ -37,6 +37,7 @@
             <script src="<?php echo Yii::app()->baseUrl; ?>/themes/general/jquery/jquery-ui.min.js" type="text/javascript"></script>
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->baseUrl; ?>/themes/general/jquery/css/smoothness/jquery-ui.min.css" />
             <script src="<?php echo Yii::app()->baseUrl; ?>/themes/general/js/general.js" type="text/javascript"></script>
+            <script src="<?php echo Yii::app()->baseUrl; ?>/themes/general/js/validador.js" type="text/javascript"></script>
             <!-- implementacion Encriptacion --> 
             <script src="<?php echo Yii::app()->baseUrl; ?>/themes/general/js/base64.js" type="text/javascript"></script>
 

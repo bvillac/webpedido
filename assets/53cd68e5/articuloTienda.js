@@ -121,8 +121,8 @@ function addVariosItemTiendas(TbGtable, lista, i) {
 function retornaFilaTiendas(c, Grid, TbGtable, op) {
     var RutaImagenAccion = $('#txth_rutaImg').val();
     var strFila = "";
-    var imgCol = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/delete.png" >';
-    //var imgCol2 = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/edit16.png" >';
+    var imgCol = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/delete16.png" >';
+    var imgCol2 = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/edit16.png" >';
     strFila += '<td style="display:none; border:none;">' + Grid[c]['ART_ID'] + '</td>';
     strFila += '<td width="5px" style="text-align: left">' + Grid[c]['COD_ART'] + '</td>';
     strFila += '<td width="100px" style="text-align:left">' + Grid[c]['ART_DES_COM'] + '</td>';
@@ -134,7 +134,7 @@ function retornaFilaTiendas(c, Grid, TbGtable, op) {
             strFila += 'onkeydown="javascript:return pedidoVentasEnterGrid(isEnter(event),this)" ';
             strFila += 'type="text"></td>';
     strFila += '<td width="36px" style="text-align:center">';
-    //strFila += '<a class="btn-img" onclick="editarPrecioTiendas(' + Grid[c]['ART_ID'] + ',\'' + TbGtable + '\')" >' + imgCol2 + '</a>';
+    strFila += '<a class="btn-img" onclick="editarPrecioTiendas(' + Grid[c]['ART_ID'] + ',\'' + TbGtable + '\')" >' + imgCol2 + '</a>';
     strFila += '<a class="btn-img" onclick="eliminarItemsTiendas(' + Grid[c]['ART_ID'] + ',\'' + TbGtable + '\')" >' + imgCol + '</a>';
     strFila += '</td>';
     if (op) {
@@ -145,8 +145,7 @@ function retornaFilaTiendas(c, Grid, TbGtable, op) {
 function pedidoVentasEnterGrid(valor,control){
     if (valor) {//Si el usuario Presiono Enter= True
          control.value = redondea(control.value, Ndecimal);
-         //var p_venta=parseFloat(control.value);
-         var p_venta=control.value;
+         var p_venta=parseFloat(control.value);
          actualizaGridPrecioTienda(control,p_venta)
     }
 }

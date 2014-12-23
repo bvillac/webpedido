@@ -30,7 +30,7 @@ class ARTICULOTIENDAController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update','BuscarArticulo'),
+                'actions' => array('create', 'update','BuscarArticulo','BuscarPrecioTienda','Save','EliminarItems'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -174,6 +174,44 @@ class ARTICULOTIENDAController extends Controller {
             $arrayData = array();
             $data = new ARTICULO;
             $arrayData = $data->retornarBusArticulo($valor, $op);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arrayData);
+        }
+    }
+    
+    public function actionSave() {
+        if (Yii::app()->request->isPostRequest) {
+            $model = new PRECIOCLIENTE;
+            $dts_PrecioTienda = isset($_POST['DTS_PRECIO_TIENDA']) ? CJavaScript::jsonDecode($_POST['DTS_PRECIO_TIENDA']) : array();
+            $cliId = isset($_POST['CLI_ID']) ? $_POST['CLI_ID'] : "";
+            $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
+            if ($accion == "Create") {
+                $arroout = $model->insertarPrecioTienda($cliId,$dts_PrecioTienda);
+            } else {
+                //$arroout = $model->insertarPrecioTienda($cliId,$dts_PrecioTienda);
+            }
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+        }
+    }
+    
+    public function actionEliminarItems() {
+        if (Yii::app()->request->isAjaxRequest) {
+            //$data = isset($_POST['DATA']) ? base64_decode(CJavaScript::jsonDecode($_POST['DATA'])) : array();
+            $data = isset($_POST['DATA']) ? CJavaScript::jsonDecode($_POST['DATA']) : array();
+            $res = new PRECIOCLIENTE;
+            $arroout=$res->removerTiendaPrecio($data);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+        }
+    }
+    
+    public function actionBuscarPrecioTienda() {
+        if (Yii::app()->request->isAjaxRequest) {
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
+            $arrayData = array();
+            $data = new PRECIOCLIENTE;
+            $arrayData = $data->retornarPrecioTienda($ids);
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arrayData);
         }

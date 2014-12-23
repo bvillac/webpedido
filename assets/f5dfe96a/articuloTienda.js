@@ -121,8 +121,8 @@ function addVariosItemTiendas(TbGtable, lista, i) {
 function retornaFilaTiendas(c, Grid, TbGtable, op) {
     var RutaImagenAccion = $('#txth_rutaImg').val();
     var strFila = "";
-    var imgCol = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/delete.png" >';
-    //var imgCol2 = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/edit16.png" >';
+    var imgCol = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/delete16.png" >';
+    var imgCol2 = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/edit16.png" >';
     strFila += '<td style="display:none; border:none;">' + Grid[c]['ART_ID'] + '</td>';
     strFila += '<td width="5px" style="text-align: left">' + Grid[c]['COD_ART'] + '</td>';
     strFila += '<td width="100px" style="text-align:left">' + Grid[c]['ART_DES_COM'] + '</td>';

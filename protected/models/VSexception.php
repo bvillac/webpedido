@@ -49,6 +49,18 @@ class VSexception {
             case 4:
                 $messageError=Yii::t('EXCEPTION', 'Failed to perform the signed document.');
                 break;
+            case 6://Petion invalida volver a intentar
+                //$messageError=Yii::t('EXCEPTION', 'Invalid request. Please do not repeatt this request again.');
+                break;
+            case 10://Petion invalida volver a intentar
+                $messageError=Yii::t('EXCEPTION', '<strong>Well done!</strong> your information was successfully saved.');
+                break;
+            case 11://Petion invalida volver a intentar
+                $messageError=Yii::t('EXCEPTION', 'Invalid request. Please do not repeatt this request again.');
+                break;
+            case 12://Datos eliminados Correctamente
+                $messageError=Yii::t('EXCEPTION', '<strong>Well done!</strong> your information was successfully delete.');
+                break;
             default:
                 $messageError=$message;
         }

@@ -121,20 +121,20 @@ function addVariosItemTiendas(TbGtable, lista, i) {
 function retornaFilaTiendas(c, Grid, TbGtable, op) {
     var RutaImagenAccion = $('#txth_rutaImg').val();
     var strFila = "";
-    var imgCol = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/delete.png" >';
-    //var imgCol2 = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/edit16.png" >';
+    var imgCol = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/delete16.png" >';
+    var imgCol2 = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/edit16.png" >';
     strFila += '<td style="display:none; border:none;">' + Grid[c]['ART_ID'] + '</td>';
     strFila += '<td width="5px" style="text-align: left">' + Grid[c]['COD_ART'] + '</td>';
     strFila += '<td width="100px" style="text-align:left">' + Grid[c]['ART_DES_COM'] + '</td>';
     //strFila += '<td width="20px" style="text-align:right">' + Grid[c]['ART_P_VENTA'] + '</td>';
     strFila += '<td width="10px"><input id="txt_p_' + Grid[c]['ART_ID'] + '" name="'+ Grid[c]['ART_ID'] + '" class="form-control txt_TextboxNumber2 validation_Vs"' ;
-            strFila += ' value="' + redondea(Grid[c]['ART_P_VENTA'], Ndecimal) + '" maxlength="6" ';
+            strFila += ' value="' + redondea(Grid[c]['ART_P_VENTA'], 2) + '" maxlength="6" ';
             //strFila += 'onkeypress="javascript:return validateFloatKeyPress(this, event, 4, 6);"';
-            strFila += 'onblur="javascript:return pedidoVentasEnterGrid(isEnter(event),this)" ';
-            strFila += 'onkeydown="javascript:return pedidoVentasEnterGrid(isEnter(event),this)" ';
+            //strFila += 'onblur="javascript:return pedidoVentasEnterGrid(isEnter(event),this)" ';
+            //strFila += 'onkeydown="javascript:return pedidoVentasEnterGrid(isEnter(event),this)" ';
             strFila += 'type="text"></td>';
     strFila += '<td width="36px" style="text-align:center">';
-    //strFila += '<a class="btn-img" onclick="editarPrecioTiendas(' + Grid[c]['ART_ID'] + ',\'' + TbGtable + '\')" >' + imgCol2 + '</a>';
+    strFila += '<a class="btn-img" onclick="editarPrecioTiendas(' + Grid[c]['ART_ID'] + ',\'' + TbGtable + '\')" >' + imgCol2 + '</a>';
     strFila += '<a class="btn-img" onclick="eliminarItemsTiendas(' + Grid[c]['ART_ID'] + ',\'' + TbGtable + '\')" >' + imgCol + '</a>';
     strFila += '</td>';
     if (op) {
@@ -142,27 +142,6 @@ function retornaFilaTiendas(c, Grid, TbGtable, op) {
     }
     return strFila;
 }
-function pedidoVentasEnterGrid(valor,control){
-    if (valor) {//Si el usuario Presiono Enter= True
-         control.value = redondea(control.value, Ndecimal);
-         //var p_venta=parseFloat(control.value);
-         var p_venta=control.value;
-         actualizaGridPrecioTienda(control,p_venta)
-    }
-}
-
-function actualizaGridPrecioTienda(control,p_venta){
-    var arrayList = JSON.parse(sessionStorage.dts_precioTienda);
-        if (arrayList.length > 0) {
-            for (var i = 0; i < arrayList.length; i++) {
-                if(arrayList[i]['ART_ID']==control.name){
-                    arrayList[i]['ART_P_VENTA']=p_venta;
-                    sessionStorage.dts_precioTienda = JSON.stringify(arrayList);
-                }   
-            }
-        }
-}
-
 
 function agregarItemsTiendas(opAccion) {
     var tGrid = 'TbG_Tiendas';
