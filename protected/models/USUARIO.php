@@ -18,109 +18,117 @@
  * @property PERSONA $pER
  * @property USUARIOTIENDA[] $uSUARIOTIENDAs
  */
-class USUARIO extends CActiveRecord
-{
-	/**
-	 * @return string the associated database table name
-	 */
-	public function tableName()
-	{
-		return 'USUARIO';
-	}
+class USUARIO extends CActiveRecord {
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('PER_ID', 'required'),
-			array('PER_ID', 'length', 'max'=>20),
-			array('USU_NOMBRE', 'length', 'max'=>100),
-			array('USU_ALIAS, USU_PASSWORD', 'length', 'max'=>50),
-			array('USU_CORREO', 'length', 'max'=>60),
-			array('USU_EST_LOG', 'length', 'max'=>1),
-			array('USU_FEC_CRE, USU_FEC_MOD', 'safe'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('USU_ID, PER_ID, USU_NOMBRE, USU_ALIAS, USU_CORREO, USU_PASSWORD, USU_EST_LOG, USU_FEC_CRE, USU_FEC_MOD', 'safe', 'on'=>'search'),
-		);
-	}
+    /**
+     * @return string the associated database table name
+     */
+    public function tableName() {
+        return 'USUARIO';
+    }
 
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-			'pER' => array(self::BELONGS_TO, 'PERSONA', 'PER_ID'),
-			'uSUARIOTIENDAs' => array(self::HAS_MANY, 'USUARIOTIENDA', 'USU_ID'),
-		);
-	}
+    /**
+     * @return array validation rules for model attributes.
+     */
+    public function rules() {
+        // NOTE: you should only define rules for those attributes that
+        // will receive user inputs.
+        return array(
+            array('PER_ID', 'required'),
+            array('PER_ID', 'length', 'max' => 20),
+            array('USU_NOMBRE', 'length', 'max' => 100),
+            array('USU_ALIAS, USU_PASSWORD', 'length', 'max' => 50),
+            array('USU_CORREO', 'length', 'max' => 60),
+            array('USU_EST_LOG', 'length', 'max' => 1),
+            array('USU_FEC_CRE, USU_FEC_MOD', 'safe'),
+            // The following rule is used by search().
+            // @todo Please remove those attributes that should not be searched.
+            array('USU_ID, PER_ID, USU_NOMBRE, USU_ALIAS, USU_CORREO, USU_PASSWORD, USU_EST_LOG, USU_FEC_CRE, USU_FEC_MOD', 'safe', 'on' => 'search'),
+        );
+    }
 
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
-	public function attributeLabels()
-	{
-		return array(
-			'USU_ID' => 'Usu',
-			'PER_ID' => 'Per',
-			'USU_NOMBRE' => 'Usu Nombre',
-			'USU_ALIAS' => 'Usu Alias',
-			'USU_CORREO' => 'Usu Correo',
-			'USU_PASSWORD' => 'Usu Password',
-			'USU_EST_LOG' => 'Usu Est Log',
-			'USU_FEC_CRE' => 'Usu Fec Cre',
-			'USU_FEC_MOD' => 'Usu Fec Mod',
-		);
-	}
+    /**
+     * @return array relational rules.
+     */
+    public function relations() {
+        // NOTE: you may need to adjust the relation name and the related
+        // class name for the relations automatically generated below.
+        return array(
+            'pER' => array(self::BELONGS_TO, 'PERSONA', 'PER_ID'),
+            'uSUARIOTIENDAs' => array(self::HAS_MANY, 'USUARIOTIENDA', 'USU_ID'),
+        );
+    }
 
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 *
-	 * Typical usecase:
-	 * - Initialize the model fields with values from filter form.
-	 * - Execute this method to get CActiveDataProvider instance which will filter
-	 * models according to data in model fields.
-	 * - Pass data provider to CGridView, CListView or any similar widget.
-	 *
-	 * @return CActiveDataProvider the data provider that can return the models
-	 * based on the search/filter conditions.
-	 */
-	public function search()
-	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
+    /**
+     * @return array customized attribute labels (name=>label)
+     */
+    public function attributeLabels() {
+        return array(
+            'USU_ID' => 'Usu',
+            'PER_ID' => 'Per',
+            'USU_NOMBRE' => 'Usu Nombre',
+            'USU_ALIAS' => 'Usu Alias',
+            'USU_CORREO' => 'Usu Correo',
+            'USU_PASSWORD' => 'Usu Password',
+            'USU_EST_LOG' => 'Usu Est Log',
+            'USU_FEC_CRE' => 'Usu Fec Cre',
+            'USU_FEC_MOD' => 'Usu Fec Mod',
+        );
+    }
 
-		$criteria=new CDbCriteria;
+    /**
+     * Retrieves a list of models based on the current search/filter conditions.
+     *
+     * Typical usecase:
+     * - Initialize the model fields with values from filter form.
+     * - Execute this method to get CActiveDataProvider instance which will filter
+     * models according to data in model fields.
+     * - Pass data provider to CGridView, CListView or any similar widget.
+     *
+     * @return CActiveDataProvider the data provider that can return the models
+     * based on the search/filter conditions.
+     */
+    public function search() {
+        // @todo Please modify the following code to remove attributes that should not be searched.
 
-		$criteria->compare('USU_ID',$this->USU_ID,true);
-		$criteria->compare('PER_ID',$this->PER_ID,true);
-		$criteria->compare('USU_NOMBRE',$this->USU_NOMBRE,true);
-		$criteria->compare('USU_ALIAS',$this->USU_ALIAS,true);
-		$criteria->compare('USU_CORREO',$this->USU_CORREO,true);
-		$criteria->compare('USU_PASSWORD',$this->USU_PASSWORD,true);
-		$criteria->compare('USU_EST_LOG',$this->USU_EST_LOG,true);
-		$criteria->compare('USU_FEC_CRE',$this->USU_FEC_CRE,true);
-		$criteria->compare('USU_FEC_MOD',$this->USU_FEC_MOD,true);
+        $criteria = new CDbCriteria;
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-	}
+        $criteria->compare('USU_ID', $this->USU_ID, true);
+        $criteria->compare('PER_ID', $this->PER_ID, true);
+        $criteria->compare('USU_NOMBRE', $this->USU_NOMBRE, true);
+        $criteria->compare('USU_ALIAS', $this->USU_ALIAS, true);
+        $criteria->compare('USU_CORREO', $this->USU_CORREO, true);
+        $criteria->compare('USU_PASSWORD', $this->USU_PASSWORD, true);
+        $criteria->compare('USU_EST_LOG', $this->USU_EST_LOG, true);
+        $criteria->compare('USU_FEC_CRE', $this->USU_FEC_CRE, true);
+        $criteria->compare('USU_FEC_MOD', $this->USU_FEC_MOD, true);
 
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return USUARIO the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
+        return new CActiveDataProvider($this, array(
+            'criteria' => $criteria,
+        ));
+    }
+
+    /**
+     * Returns the static model of the specified AR class.
+     * Please note that you should have this exact method in all your CActiveRecord descendants!
+     * @param string $className active record class name.
+     * @return USUARIO the static model class
+     */
+    public static function model($className = __CLASS__) {
+        return parent::model($className);
+    }
+    
+    public function recuperarTiendasUsuario($ids) {
+        $con = yii::app()->db;
+        $sql = "SELECT B.TIE_ID,C.TIE_NOMBRE FROM VSSEAPEDIDO.USUARIO A
+                        INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA B
+                                        INNER JOIN " . $con->dbname . ".TIENDA C
+                                                ON B.TIE_ID=C.TIE_ID)
+                                ON A.USU_ID=B.USU_ID
+                WHERE A.USU_EST_LOG=1 AND A.USU_ID=$ids;";
+        $rawData =$con->createCommand($sql)->query();
+        $con->active = false;
+        return $rawData;
+    }
+
 }

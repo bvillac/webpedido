@@ -26,6 +26,7 @@ return array(
     'Password' => 'Contraseña',
     /*Correos*/
     'Mail' => 'Correo',
+    'E-mail' => 'E-mail',
     'Smtp server' => 'Servidor Smtp',
     'Port' => 'Puerto',
     'User' => 'Usuario',

@@ -30,7 +30,7 @@ class TIENDAController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update','Save'),
+                'actions' => array('create', 'update','Save','Delete','Producto','BuscarItemTienda','SaveItems'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -103,10 +103,11 @@ class TIENDAController extends Controller {
      * @param integer $id the ID of the model to be updated
      */
     public function actionUpdate($id) {
+        $ids = base64_decode($id);
         $model = new TIENDA;
         $dataCliente = new ARTICULOTIENDA;
-        $tienda = $model->recuperarTiendas($id);
-        $model->TIE_ID = $id; //mantiene el ID del Descargo Actualizar
+        $tienda = $model->recuperarTiendas($ids);
+        $model->TIE_ID = $ids; //mantiene el ID del Descargo Actualizar
 
         //$this->titleWindows = Yii::t('TIENDA', 'Store');
         $this->render('update', array(
@@ -123,12 +124,16 @@ class TIENDAController extends Controller {
      * If deletion is successful, the browser will be redirected to the 'admin' page.
      * @param integer $id the ID of the model to be deleted
      */
-    public function actionDelete($id) {
-        $this->loadModel($id)->delete();
+    public function actionDelete() {
+            if (Yii::app()->request->isPostRequest) {
+                //$ids = base64_decode($_POST['ids']);
+                $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
+                $res = new TIENDA;
+                $arroout=$res->removerTienda($ids);
+                header('Content-type: application/json');
+                echo CJavaScript::jsonEncode($arroout);
+            }
 
-        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-        if (!isset($_GET['ajax']))
-            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
     }
 
     /**
@@ -197,5 +202,51 @@ class TIENDAController extends Controller {
         }
     }
     
+    public function actionProducto() {
+        $model = new TIENDA;
+        $this->titleWindows = Yii::t('TIENDA', 'Stores');
+        $this->render('producto', array(
+            'model' => $model->mostrarItemsTiendas(),
+            'tienda' => $model->recuperarTiendasCliente(),
+        ));
+    }
+    
+    public function actionBuscarItemTienda() {
+        if (Yii::app()->request->isAjaxRequest) {
+//            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
+//            $arrayData = array();
+//            $data = new TIENDA;
+//            $arrayData = $data->mostrarItemsCheckTiendas($ids);
+//            header('Content-type: application/json');
+//            echo CJavaScript::jsonEncode($arrayData);
+            
+            $arrayData = array();
+            $data = new TIENDA;
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
+            $arrayData = $data->mostrarItemsCheckTiendas($ids);
+            $this->renderPartial('_indexGridTienda', array(
+                'model' => $arrayData,
+            ),false, true);
+            return;
+        }
+    }
+    
+    public function actionSaveItems() {
+        if (Yii::app()->request->isPostRequest) {
+            $model = new TIENDA;
+            $arroout=array();
+            $data = isset($_POST['DATA']) ? CJavaScript::jsonDecode($_POST['DATA']) : array();
+            //print_r($data['IDS']);
+            $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
+            if ($accion == "Create") {
+                $arroout = $model->insertarTiendaItems($data);
+            } else {
+                //$arroout = $model->actualizarTienda($tienda);
+            }
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+            return;
+        }
+    }
 
 }

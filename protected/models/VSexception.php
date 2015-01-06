@@ -61,6 +61,12 @@ class VSexception {
             case 12://Datos eliminados Correctamente
                 $messageError=Yii::t('EXCEPTION', '<strong>Well done!</strong> your information was successfully delete.');
                 break;
+            case 20://La solicitud fÚe realizada correctamente.
+                $messageError=Yii::t('EXCEPTION', 'The request was completed successfully.');
+                break;
+            case 21://No podemos encontrar los datos que está solicitando.
+                $messageError=Yii::t('EXCEPTION', 'We can not find the information you are requesting.');
+                break;
             default:
                 $messageError=$message;
         }

@@ -223,8 +223,40 @@ function mostrarProductosTienda(ids) {
             ids: ids
         }
     });
+    
+//    if (ids > 0) {
+//        var tGrid = 'TbG_TIENDA';
+//        var link = $('#txth_controlador').val() + "/BuscarItemTienda";
+//        $.ajax({
+//            type: 'POST',
+//            dataType: 'json',
+//            url: link,
+//            data: {
+//                ids: ids
+//            },
+//            success: function (data) {
+//                if (data.status == "OK") {
+//                    var ids=data.data;
+//                    var count = ids.length;
+//                    for (var i = 0; i < count; i++) {
+//                        alert(ids[i]['IdsPre']);
+//                    }
+//                    //$("#messageInfo").html(data.message + buttonAlert);
+//                    //alerMessage();
+//                } else {
+//                    $("#messageInfo").html(data.message + buttonAlert);
+//                    alerMessage();
+//                }
+//            },
+//        });
+//    } else {
+//        alert('Seleccionar Tienda')
+//    }
 }
-
+function checkIdsData(Ids){//chkTienda
+    //if($("#chk_antSoc_"+i).prop("checked")){//Si es verdadero Ingresa al Array
+    
+}
 
 function fun_GuardarProductos(accion) {
     if ($('#cmb_tienda option:selected').val() > 0) {

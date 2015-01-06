@@ -17,5 +17,7 @@ return array(
     'Order days' => 'Días de pedido',
     'Start' => 'Inicio',
     'End' => 'Fin',
+    'Status' => 'Estado',
+    'Code' => 'Código',
 );
 ?>

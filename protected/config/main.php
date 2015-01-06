@@ -83,6 +83,8 @@ return array(
         'user' => array(
             // enable cookie-based authentication
             'allowAutoLogin' => true,
+            //'loginUrl' => array('site/loginx'), //login page url
+            //'recoveryUrl'=>'site/recovery', //Recovery or change password page url
         ),
         'format' => array(
             // number format

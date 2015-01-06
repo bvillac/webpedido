@@ -196,6 +196,7 @@ class TIENDA extends CActiveRecord {
     }
     
     public function actualizarTienda($objEnt) {
+        $msg= new VSexception();
         $con = yii::app()->db;
         $trans = $con->beginTransaction();
         try {
@@ -211,7 +212,7 @@ class TIENDA extends CActiveRecord {
                     FEC_FIN_PED = '" . $objEnt['FEC_FIN_PED'] . "',
                     TIE_EST_LOG = '" . $objEnt['TIE_EST_LOG'] . "',
                     TIE_FEC_MOD = CURRENT_TIMESTAMP()
-                WHERE TIE_ID=" . $objEmp[0]['TIE_ID'] . " ";
+                WHERE TIE_ID=" . $objEnt['TIE_ID'] . " ";
             //echo $sql;
             $command = $con->createCommand($sql);
             $command->execute();
@@ -240,6 +241,160 @@ class TIENDA extends CActiveRecord {
         $rawData = $con->createCommand($sql)->queryRow();//Retorna solo 1
         $con->active = false;
         return $rawData;
+    }
+    
+    public function removerTienda($ids) {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $sql = "UPDATE " . $con->dbname . ".TIENDA SET TIE_EST_LOG='0' WHERE TIE_ID IN($ids)";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,12,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+    
+    public function recuperarTiendasCliente() {
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        $con = yii::app()->db;
+        $sql = "SELECT TIE_ID,TIE_NOMBRE FROM " . $con->dbname . ".TIENDA WHERE CLI_ID=$cli_Id AND TIE_EST_LOG=1 ";
+        //echo $sql;
+        $rawData =$con->createCommand($sql)->query();
+        $con->active = false;
+        return $rawData;
+    }
+    
+    public function mostrarItemsCheckTiendas($ids) {
+        $msg= new VSexception();
+        $rawData = array();
+        $con = Yii::app()->db;
+        //$sql = "SELECT B.PCLI_ID IdsPre
+//        $sql = "SELECT B.PCLI_ID IdsPre,B.ART_ID IdsArt,C.COD_ART Codigo,C.ART_DES_COM Nombre,A.ARTIE_EST_LOG Estado
+//                        FROM " . $con->dbname . ".ARTICULO_TIENDA A
+//                                INNER JOIN (" . $con->dbname . ".PRECIO_CLIENTE B
+//                                                INNER JOIN " . $con->dbname . ".ARTICULO C
+//                                                        ON C.ART_ID=B.ART_ID)
+//                                        ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
+//                WHERE A.TIE_ID=$ids ";
+        
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        $sql = "SELECT B.PCLI_ID IdsPre,B.ART_ID IdsArt,C.COD_ART Codigo,C.ART_DES_COM Nombre,
+                    (SELECT IF(D.PCLI_ID=NULL,0,1) FROM " . $con->dbname . ".ARTICULO_TIENDA D WHERE D.PCLI_ID=B.PCLI_ID AND D.TIE_ID=$ids) AS Estado
+                    FROM " . $con->dbname . ".PRECIO_CLIENTE B
+                        INNER JOIN " . $con->dbname . ".ARTICULO C
+                            ON C.ART_ID=B.ART_ID
+                WHERE B.CLI_ID=$cli_Id AND PCLI_EST_LOG=1 ";
+        
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return new CArrayDataProvider($rawData, array(
+            'keyField' => 'IdsPre',
+            'sort' => array(
+                'attributes' => array(
+                    'Codigo', 'Nombre', 'Estado',
+                ),
+            ),
+            'totalItemCount' => count($rawData),
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
+        ));
+//        if(count($rawData)>0){
+//            return $msg->messageSystem('OK',null,20,null, $rawData);
+//        }else{
+//            return $msg->messageSystem('NO_OK',null,21,null, null);
+//        }
+        //return $rawData;
+    }
+
+    public function mostrarItemsTiendas() {
+        $rawData = array();
+        $con = Yii::app()->db;
+            //$rawData[]=$this->rowProdList();
+            $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+            $sql = "SELECT B.PCLI_ID IdsPre,B.ART_ID IdsArt,C.COD_ART Codigo,C.ART_DES_COM Nombre,'' AS Estado
+                                    FROM " . $con->dbname . ".PRECIO_CLIENTE B
+                                                    INNER JOIN " . $con->dbname . ".ARTICULO C
+                                                            ON C.ART_ID=B.ART_ID
+                    WHERE B.CLI_ID=$cli_Id AND PCLI_EST_LOG=1 ";
+            $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+
+        return new CArrayDataProvider($rawData, array(
+            'keyField' => 'IdsPre',
+            'sort' => array(
+                'attributes' => array(
+                    'Codigo', 'Nombre', 'Estado',
+                ),
+            ),
+            'totalItemCount' => count($rawData),
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
+        ));
+    }
+    
+    public function rowProdList() {
+        return array(
+            "IdsPre" => '', //0
+            "IdsArt" => '', //0
+            "Codigo" => '', //0
+            "Nombre" => '', //0
+            "Estado" => '',
+        );
+        
+    }
+    
+    public function insertarTiendaItems($objEnt) {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $tieId=$objEnt['TIE_ID'];
+            $ids = explode(",", $objEnt['IDS']);
+            for ($i = 0; $i < count($ids); $i++) {
+                $preId=$ids[$i];
+                if($this->existeProductoTienda($con,$tieId,$preId)){
+                    //SI existe
+                    $sql = "UPDATE " . $con->dbname . ".ARTICULO_TIENDA SET ARTIE_EST_LOG='1' "
+                            . "WHERE PCLI_ID=$preId AND TIE_ID=$tieId ";
+                    
+                }else{
+                    //Si No existe
+                    $sql="INSERT INTO " . $con->dbname . ".ARTICULO_TIENDA 
+                        (TIE_ID,PCLI_ID,ARTIE_EST_LOG)VALUES($tieId,$preId,'1')";
+                }
+                $command = $con->createCommand($sql);
+                $command->execute();
+            }
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,10,null, null);
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            //throw $e;
+            return $msg->messageSystem('NO_OK',$e->getMessage(),11,null, null);
+        }
+    }
+    
+    private function existeProductoTienda($con,$TieId,$PreID) {
+        $rawData = array();
+        $sql = "SELECT PCLI_ID FROM " . $con->dbname . ".ARTICULO_TIENDA WHERE PCLI_ID=$PreID AND TIE_ID=$TieId";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryRow();
+        if ($rawData === false)
+            return false; //en caso de que existe problema o no retorne nada tiene false por defecto 
+        return true;//$rawData['PCLI_ID'];
     }
 
 }

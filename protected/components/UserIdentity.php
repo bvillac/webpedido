@@ -59,10 +59,12 @@ class UserIdentity extends CUserIdentity
                     //yii::app()->user->getState('CORREO');
                     //Yii::app()->getSession()->get('user_name', FALSE);
                     //INFORMACION EMPRESAS
+                    
+                    $session->add('TieID', '1');
+                    $session->add('CliID', '2');
                    
                     
-                    $tipoUser=$empresa->buscarTipoUser($user->USU_ID);
-               
+                    $tipoUser=$empresa->buscarTipoUser($user->USU_ID);            
                     $session->add('RolId',$tipoUser['ROL_ID']);
                     $session->add('RolNombre',$tipoUser['ROL_NOMBRE']);
                     

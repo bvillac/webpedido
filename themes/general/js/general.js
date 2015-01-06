@@ -34,5 +34,3 @@ function nuevoItem() {
     //$('#btn_add').attr("href", link+"&acc=new&id=0");
 //limpiarItems();
 }
-
-

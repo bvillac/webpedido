@@ -211,20 +211,21 @@ function validateForm() {
 }
 
 function mostrarProductosTienda(ids) {
-    //var key = $.fn.yiiGridView.getColumn(0);
-    //alert(key.toSource);
-    //
-    
-    var link=$('#txth_controlador').val()+"/BuscarItemTienda";
-    $.fn.yiiGridView.update('TbG_TIENDA', {
-        type: 'POST',
-        url:link,
-        data:{
-            ids: ids
-        }
-    });
+    if (ids > 0) {
+        var tGrid = 'TbG_TIENDA';
+        var link = $('#txth_controlador').val() + "/BuscarItemTienda";
+        $.fn.yiiGridView.update(tGrid, {
+            type: 'POST',
+            dataType: 'json',
+            url: link,
+            data: {
+                ids: ids
+            }
+        });
+    } else {
+        alert('Seleccionar Tienda')
+    }
 }
-
 
 function fun_GuardarProductos(accion) {
     if ($('#cmb_tienda option:selected').val() > 0) {
@@ -266,15 +267,5 @@ function objetoItemsTienda(ids){
     //sessionStorage.tienda = JSON.stringify(tienda);
     return JSON.stringify(tienda);
 }
-
-//$.fn.yiiGridView.update('user-grid', {
-//    type: 'POST',
-//    url: $(this).attr('href'),
-//    success: function (data) {
-//        $('#AjFlash').html(data).fadeIn().animate({opacity: 1.0}, 3000).fadeOut('slow');
-//
-//        $.fn.yiiGridView.update('user-grid');
-//    }
-//})
 
 

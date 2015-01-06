@@ -211,20 +211,41 @@ function validateForm() {
 }
 
 function mostrarProductosTienda(ids) {
-    //var key = $.fn.yiiGridView.getColumn(0);
-    //alert(key.toSource);
-    //
-    
-    var link=$('#txth_controlador').val()+"/BuscarItemTienda";
-    $.fn.yiiGridView.update('TbG_TIENDA', {
-        type: 'POST',
-        url:link,
-        data:{
-            ids: ids
-        }
-    });
+    var key = $.fn.yiiGridView.getRow('0');
+    alert(key.toSource);
+    if (ids > 0) {
+        var tGrid = 'TbG_TIENDA';
+        var link = $('#txth_controlador').val() + "/BuscarItemTienda";
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: link,
+            data: {
+                ids: ids
+            },
+            success: function (data) {
+                if (data.status == "OK") {
+                    var ids=data.data;
+                    var count = ids.length;
+                    for (var i = 0; i < count; i++) {
+                        alert(ids[i]['IdsPre']);
+                    }
+                    //$("#messageInfo").html(data.message + buttonAlert);
+                    //alerMessage();
+                } else {
+                    $("#messageInfo").html(data.message + buttonAlert);
+                    alerMessage();
+                }
+            },
+        });
+    } else {
+        alert('Seleccionar Tienda')
+    }
 }
-
+function checkIdsData(Ids){//chkTienda
+    //if($("#chk_antSoc_"+i).prop("checked")){//Si es verdadero Ingresa al Array
+    
+}
 
 function fun_GuardarProductos(accion) {
     if ($('#cmb_tienda option:selected').val() > 0) {
@@ -266,15 +287,5 @@ function objetoItemsTienda(ids){
     //sessionStorage.tienda = JSON.stringify(tienda);
     return JSON.stringify(tienda);
 }
-
-//$.fn.yiiGridView.update('user-grid', {
-//    type: 'POST',
-//    url: $(this).attr('href'),
-//    success: function (data) {
-//        $('#AjFlash').html(data).fadeIn().animate({opacity: 1.0}, 3000).fadeOut('slow');
-//
-//        $.fn.yiiGridView.update('user-grid');
-//    }
-//})
 
 

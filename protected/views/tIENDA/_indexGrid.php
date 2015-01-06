@@ -35,6 +35,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'name' => 'TIE_CUPO',
             'header' => Yii::t('TIENDA', 'Quota'),
             'value' => '$data["TIE_CUPO"]',
+            'htmlOptions' => array('style' => 'text-align:right', 'width' => '8px'),
         ),
         array(
             'name' => 'CLI_NOMBRE',
