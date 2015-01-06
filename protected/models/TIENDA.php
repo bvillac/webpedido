@@ -396,5 +396,51 @@ class TIENDA extends CActiveRecord {
             return false; //en caso de que existe problema o no retorne nada tiene false por defecto 
         return true;//$rawData['PCLI_ID'];
     }
+    
+    public function recuperarTiendasRol() {
+        $rol_Id=Yii::app()->getSession()->get('RolId', FALSE);
+        $usu_Id=Yii::app()->getSession()->get('user_id', FALSE);
+        $con = yii::app()->db;
+        $sql = "SELECT B.TIE_ID,B.TIE_NOMBRE
+                        FROM " . $con->dbname . ".USUARIO_TIENDA A
+                                INNER JOIN " . $con->dbname . ".TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                WHERE A.UTIE_EST_LOG=1 AND A.ROL_ID=$rol_Id AND USU_ID=$usu_Id ";
+        //echo $sql;
+        $rawData =$con->createCommand($sql)->query();
+        $con->active = false;
+        return $rawData;
+    }
+    
+    public function listarItemsTiendas($ids) {
+        $rawData = array();
+        $con = Yii::app()->db;
+        //$rawData[]=$this->rowProdList();
+        $sql = "SELECT A.ARTIE_ID,A.PCLI_ID,B.ART_ID,C.COD_ART Codigo, C.ART_DES_COM Nombre,B.PCLI_P_VENTA Precio,
+                        '0' Cantidad,'0' Total,C.ART_I_M_IVA Iva,'' Observacion,A.ARTIE_EST_LOG Estado
+                        FROM " . $con->dbname . ".ARTICULO_TIENDA A
+                                INNER JOIN (" . $con->dbname . ".PRECIO_CLIENTE B
+                                                INNER JOIN " . $con->dbname . ".ARTICULO C
+                                                        ON C.ART_ID=B.ART_ID)
+                                        ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
+                WHERE A.ARTIE_EST_LOG=1 AND A.TIE_ID=$ids ";
+        //$sql.=($ids!=0)?"AND A.TIE_ID=$ids":"";
+        $sql.=" ORDER BY C.ART_DES_COM";
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+
+        return new CArrayDataProvider($rawData, array(
+            'keyField' => 'ARTIE_ID',
+            'sort' => array(
+                'attributes' => array(
+                    'Codigo', 'Nombre', 'Estado',
+                ),
+            ),
+            'totalItemCount' => count($rawData),
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
+        ));
+    }
 
 }

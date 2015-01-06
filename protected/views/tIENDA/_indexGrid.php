@@ -7,7 +7,6 @@
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
 ?>
-
 <?php
 //'TIE_ID', 'TIE_NOMBRE', 'TIE_DIRECCION', 'TIE_CUPO', 'CLI_NOMBRE','TIE_CONTACTO',
 $this->widget('zii.widgets.grid.CGridView', array(
@@ -68,3 +67,4 @@ $this->widget('zii.widgets.grid.CGridView', array(
     ),
 ));
 ?>
+

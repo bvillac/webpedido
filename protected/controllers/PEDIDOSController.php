@@ -1,36 +1,50 @@
 <?php
 
-class PEDIDOSController extends Controller
-{
-	public function actionIndex()
-	{
-		$this->render('index');
-	}
+class PEDIDOSController extends Controller {
+    
+     public function accessRules() {
+        return array(
+            array('allow', // allow all users to perform 'index' and 'view' actions
+                'actions' => array('index', 'view'),
+                'users' => array('*'),
+            ),
+            array('allow', // allow authenticated user to perform 'create' and 'update' actions
+                'actions' => array('create', 'update','Save','Listar'),
+                'users' => array('@'),
+            ),
+            array('allow', // allow admin user to perform 'admin' and 'delete' actions
+                'actions' => array('admin', 'delete'),
+                'users' => array('admin'),
+            ),
+            array('deny', // deny all users
+                'users' => array('*'),
+            ),
+        );
+    }
 
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
+    public function actionIndex() {
+        $this->render('index');
+    }
 
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
+
+    public function actionListar() {
+        $model = new TIENDA;
+        $arrayData = array();
+        if (Yii::app()->request->isAjaxRequest) {
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
+            $arrayData = $model->listarItemsTiendas($ids);
+            $this->renderPartial('_indexGrid', array(
+                'model' => $arrayData,
+            ),false, true);
+            return;
+        }
+        $this->titleWindows = Yii::t('TIENDA', 'List orders');
+        $this->render('listar', array(
+            'model' => $model->listarItemsTiendas(0),
+            'tienda' => $model->recuperarTiendasRol(),
+        ));
+        
+        
+    }
+
 }

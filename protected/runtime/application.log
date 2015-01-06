@@ -1611,3 +1611,261 @@ Stack trace:
 REQUEST_URI=/webpedido/tIENDA/BuscarItemTienda?ajax=TbG_TIENDA
 HTTP_REFERER=http://localhost/webpedido/tIENDA/producto.jsp
 ---
+2015/01/06 09:36:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "NubeNotaCredito/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeNotaCredito...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/NubeNotaCredito/index.jsp
+HTTP_REFERER=http://localhost/webpedido/tIENDA/producto.jsp
+---
+2015/01/06 09:37:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "NubeFactura/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeFactura/ind...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/NubeFactura/index.jsp
+HTTP_REFERER=http://localhost/webpedido/NubeNotaCredito/index.jsp
+---
+2015/01/06 10:13:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "Pedidos/listar"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('Pedidos/listar')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/Pedidos/listar.jsp
+HTTP_REFERER=http://localhost/webpedido/tIENDA/producto.jsp
+---
+2015/01/06 10:14:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "Pedidos/listar"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('Pedidos/listar')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/Pedidos/listar.jsp
+HTTP_REFERER=http://localhost/webpedido/tIENDA/producto.jsp
+---
+2015/01/06 10:14:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "listar" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('listar')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('listar')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/listar')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/webpedido/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/webpedido/pEDIDOS/listar.jsp
+HTTP_REFERER=http://localhost/webpedido/aRTICULOTIENDA/index.jsp
+---
+2015/01/06 10:16:44 [error] [exception.CException] exception 'CException' with message 'PEDIDOSController no ha podido encontrar la vista "producto" solicitada.' in /opt/sisweb/web/CController.php:878
+Stack trace:
+#0 /opt/sisweb/web/CController.php(782): CController->renderPartial('producto', Array, true)
+#1 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(36): CController->render('producto', Array)
+#2 /opt/sisweb/web/actions/CInlineAction.php(49): PEDIDOSController->actionListar()
+#3 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /opt/sisweb/web/CWebApplication.php(282): CController->run('listar')
+#7 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/listar')
+#8 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /var/www/html/webpedido/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/webpedido/pEDIDOS/listar.jsp
+HTTP_REFERER=http://localhost/webpedido/aRTICULOTIENDA/index.jsp
+---
+2015/01/06 11:12:02 [error] [php] Undefined index: TIE_NOMBRE (/opt/sisweb/base/CComponent.php(612) : eval()'d code:1)
+Stack trace:
+#0 /opt/sisweb/zii/widgets/grid/CGridColumn.php(151): CDataColumn->renderDataCellContent()
+#1 /opt/sisweb/zii/widgets/grid/CGridView.php(616): CDataColumn->renderDataCell()
+#2 /opt/sisweb/zii/widgets/grid/CGridView.php(572): CGridView->renderTableRow()
+#3 /opt/sisweb/zii/widgets/grid/CGridView.php(482): CGridView->renderTableBody()
+#4 /opt/sisweb/zii/widgets/CBaseListView.php(167): CGridView->renderItems()
+#5 unknown(0): CGridView->renderSection()
+#6 /opt/sisweb/zii/widgets/CBaseListView.php(150): preg_replace_callback()
+#7 /opt/sisweb/zii/widgets/CBaseListView.php(135): CGridView->renderContent()
+#8 /opt/sisweb/web/CBaseController.php(173): CGridView->run()
+#9 /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php(69): PEDIDOSController->widget()
+#10 /opt/sisweb/web/CBaseController.php(126): require()
+#11 /opt/sisweb/web/CBaseController.php(95): PEDIDOSController->renderInternal()
+#12 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#13 /var/www/html/webpedido/protected/views/pEDIDOS/listar.php(9): PEDIDOSController->renderPartial()
+#14 /opt/sisweb/web/CBaseController.php(126): require()
+#15 /opt/sisweb/web/CBaseController.php(95): PEDIDOSController->renderInternal()
+#16 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#17 /opt/sisweb/web/CController.php(782): PEDIDOSController->renderPartial()
+#18 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(36): PEDIDOSController->render()
+#19 /opt/sisweb/web/actions/CInlineAction.php(49): PEDIDOSController->actionListar()
+#20 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#21 /opt/sisweb/web/CController.php(286): PEDIDOSController->runAction()
+#22 /opt/sisweb/web/CController.php(265): PEDIDOSController->runActionWithFilters()
+#23 /opt/sisweb/web/CWebApplication.php(282): PEDIDOSController->run()
+#24 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#25 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#26 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/pEDIDOS/listar.jsp
+in /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php (69)
+in /var/www/html/webpedido/protected/views/pEDIDOS/listar.php (9)
+in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (36)
+2015/01/06 11:21:31 [error] [php] Missing argument 2 for CHtml::activeTextField(), called in /opt/sisweb/base/CComponent.php(612) : eval()'d code on line 1 and defined (/opt/sisweb/web/helpers/CHtml.php:1430)
+Stack trace:
+#0 /opt/sisweb/zii/widgets/grid/CDataColumn.php(137): CDataColumn->evaluateExpression()
+#1 /opt/sisweb/zii/widgets/grid/CGridColumn.php(151): CDataColumn->renderDataCellContent()
+#2 /opt/sisweb/zii/widgets/grid/CGridView.php(616): CDataColumn->renderDataCell()
+#3 /opt/sisweb/zii/widgets/grid/CGridView.php(572): CGridView->renderTableRow()
+#4 /opt/sisweb/zii/widgets/grid/CGridView.php(482): CGridView->renderTableBody()
+#5 /opt/sisweb/zii/widgets/CBaseListView.php(167): CGridView->renderItems()
+#6 unknown(0): CGridView->renderSection()
+#7 /opt/sisweb/zii/widgets/CBaseListView.php(150): preg_replace_callback()
+#8 /opt/sisweb/zii/widgets/CBaseListView.php(135): CGridView->renderContent()
+#9 /opt/sisweb/web/CBaseController.php(173): CGridView->run()
+#10 /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php(56): PEDIDOSController->widget()
+#11 /opt/sisweb/web/CBaseController.php(126): require()
+#12 /opt/sisweb/web/CBaseController.php(95): PEDIDOSController->renderInternal()
+#13 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#14 /var/www/html/webpedido/protected/views/pEDIDOS/listar.php(9): PEDIDOSController->renderPartial()
+#15 /opt/sisweb/web/CBaseController.php(126): require()
+#16 /opt/sisweb/web/CBaseController.php(95): PEDIDOSController->renderInternal()
+#17 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#18 /opt/sisweb/web/CController.php(782): PEDIDOSController->renderPartial()
+#19 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(36): PEDIDOSController->render()
+#20 /opt/sisweb/web/actions/CInlineAction.php(49): PEDIDOSController->actionListar()
+#21 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#22 /opt/sisweb/web/CController.php(286): PEDIDOSController->runAction()
+#23 /opt/sisweb/web/CController.php(265): PEDIDOSController->runActionWithFilters()
+#24 /opt/sisweb/web/CWebApplication.php(282): PEDIDOSController->run()
+#25 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#26 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#27 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/pEDIDOS/listar.jsp
+in /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php (56)
+in /var/www/html/webpedido/protected/views/pEDIDOS/listar.php (9)
+in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (36)
+2015/01/06 11:25:33 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (/opt/sisweb/web/helpers/CHtml.php:103)
+Stack trace:
+#0 /opt/sisweb/web/helpers/CHtml.php(158): renderAttributes()
+#1 /opt/sisweb/web/helpers/CHtml.php(1351): tag()
+#2 /opt/sisweb/web/helpers/CHtml.php(596): inputField()
+#3 /opt/sisweb/base/CComponent.php(612) : eval()'d code(1): textField()
+#4 /opt/sisweb/base/CComponent.php(612): eval()
+#5 /opt/sisweb/zii/widgets/grid/CDataColumn.php(137): CDataColumn->evaluateExpression()
+#6 /opt/sisweb/zii/widgets/grid/CGridColumn.php(151): CDataColumn->renderDataCellContent()
+#7 /opt/sisweb/zii/widgets/grid/CGridView.php(616): CDataColumn->renderDataCell()
+#8 /opt/sisweb/zii/widgets/grid/CGridView.php(572): CGridView->renderTableRow()
+#9 /opt/sisweb/zii/widgets/grid/CGridView.php(482): CGridView->renderTableBody()
+#10 /opt/sisweb/zii/widgets/CBaseListView.php(167): CGridView->renderItems()
+#11 unknown(0): CGridView->renderSection()
+#12 /opt/sisweb/zii/widgets/CBaseListView.php(150): preg_replace_callback()
+#13 /opt/sisweb/zii/widgets/CBaseListView.php(135): CGridView->renderContent()
+#14 /opt/sisweb/web/CBaseController.php(173): CGridView->run()
+#15 /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php(56): PEDIDOSController->widget()
+#16 /opt/sisweb/web/CBaseController.php(126): require()
+#17 /opt/sisweb/web/CBaseController.php(95): PEDIDOSController->renderInternal()
+#18 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#19 /var/www/html/webpedido/protected/views/pEDIDOS/listar.php(9): PEDIDOSController->renderPartial()
+#20 /opt/sisweb/web/CBaseController.php(126): require()
+#21 /opt/sisweb/web/CBaseController.php(95): PEDIDOSController->renderInternal()
+#22 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#23 /opt/sisweb/web/CController.php(782): PEDIDOSController->renderPartial()
+#24 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(36): PEDIDOSController->render()
+#25 /opt/sisweb/web/actions/CInlineAction.php(49): PEDIDOSController->actionListar()
+#26 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#27 /opt/sisweb/web/CController.php(286): PEDIDOSController->runAction()
+#28 /opt/sisweb/web/CController.php(265): PEDIDOSController->runActionWithFilters()
+#29 /opt/sisweb/web/CWebApplication.php(282): PEDIDOSController->run()
+#30 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#31 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#32 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/pEDIDOS/listar.jsp
+in /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php (56)
+in /var/www/html/webpedido/protected/views/pEDIDOS/listar.php (9)
+in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (36)
+2015/01/06 11:26:05 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (/opt/sisweb/web/helpers/CHtml.php:103)
+Stack trace:
+#0 /opt/sisweb/web/helpers/CHtml.php(158): renderAttributes()
+#1 /opt/sisweb/web/helpers/CHtml.php(1351): tag()
+#2 /opt/sisweb/web/helpers/CHtml.php(596): inputField()
+#3 /opt/sisweb/base/CComponent.php(612) : eval()'d code(1): textField()
+#4 /opt/sisweb/base/CComponent.php(612): eval()
+#5 /opt/sisweb/zii/widgets/grid/CDataColumn.php(137): CDataColumn->evaluateExpression()
+#6 /opt/sisweb/zii/widgets/grid/CGridColumn.php(151): CDataColumn->renderDataCellContent()
+#7 /opt/sisweb/zii/widgets/grid/CGridView.php(616): CDataColumn->renderDataCell()
+#8 /opt/sisweb/zii/widgets/grid/CGridView.php(572): CGridView->renderTableRow()
+#9 /opt/sisweb/zii/widgets/grid/CGridView.php(482): CGridView->renderTableBody()
+#10 /opt/sisweb/zii/widgets/CBaseListView.php(167): CGridView->renderItems()
+#11 unknown(0): CGridView->renderSection()
+#12 /opt/sisweb/zii/widgets/CBaseListView.php(150): preg_replace_callback()
+#13 /opt/sisweb/zii/widgets/CBaseListView.php(135): CGridView->renderContent()
+#14 /opt/sisweb/web/CBaseController.php(173): CGridView->run()
+#15 /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php(56): PEDIDOSController->widget()
+#16 /opt/sisweb/web/CBaseController.php(126): require()
+#17 /opt/sisweb/web/CBaseController.php(95): PEDIDOSController->renderInternal()
+#18 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#19 /var/www/html/webpedido/protected/views/pEDIDOS/listar.php(9): PEDIDOSController->renderPartial()
+#20 /opt/sisweb/web/CBaseController.php(126): require()
+#21 /opt/sisweb/web/CBaseController.php(95): PEDIDOSController->renderInternal()
+#22 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#23 /opt/sisweb/web/CController.php(782): PEDIDOSController->renderPartial()
+#24 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(36): PEDIDOSController->render()
+#25 /opt/sisweb/web/actions/CInlineAction.php(49): PEDIDOSController->actionListar()
+#26 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#27 /opt/sisweb/web/CController.php(286): PEDIDOSController->runAction()
+#28 /opt/sisweb/web/CController.php(265): PEDIDOSController->runActionWithFilters()
+#29 /opt/sisweb/web/CWebApplication.php(282): PEDIDOSController->run()
+#30 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#31 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#32 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/pEDIDOS/listar.jsp
+in /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php (56)
+in /var/www/html/webpedido/protected/views/pEDIDOS/listar.php (9)
+in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (36)
+2015/01/06 11:26:36 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (/opt/sisweb/web/helpers/CHtml.php:103)
+Stack trace:
+#0 /opt/sisweb/web/helpers/CHtml.php(158): renderAttributes()
+#1 /opt/sisweb/web/helpers/CHtml.php(1351): tag()
+#2 /opt/sisweb/web/helpers/CHtml.php(596): inputField()
+#3 /opt/sisweb/base/CComponent.php(612) : eval()'d code(1): textField()
+#4 /opt/sisweb/base/CComponent.php(612): eval()
+#5 /opt/sisweb/zii/widgets/grid/CDataColumn.php(137): CDataColumn->evaluateExpression()
+#6 /opt/sisweb/zii/widgets/grid/CGridColumn.php(151): CDataColumn->renderDataCellContent()
+#7 /opt/sisweb/zii/widgets/grid/CGridView.php(616): CDataColumn->renderDataCell()
+#8 /opt/sisweb/zii/widgets/grid/CGridView.php(572): CGridView->renderTableRow()
+#9 /opt/sisweb/zii/widgets/grid/CGridView.php(482): CGridView->renderTableBody()
+#10 /opt/sisweb/zii/widgets/CBaseListView.php(167): CGridView->renderItems()
+#11 unknown(0): CGridView->renderSection()
+#12 /opt/sisweb/zii/widgets/CBaseListView.php(150): preg_replace_callback()
+#13 /opt/sisweb/zii/widgets/CBaseListView.php(135): CGridView->renderContent()
+#14 /opt/sisweb/web/CBaseController.php(173): CGridView->run()
+#15 /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php(56): PEDIDOSController->widget()
+#16 /opt/sisweb/web/CBaseController.php(126): require()
+#17 /opt/sisweb/web/CBaseController.php(95): PEDIDOSController->renderInternal()
+#18 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#19 /var/www/html/webpedido/protected/views/pEDIDOS/listar.php(9): PEDIDOSController->renderPartial()
+#20 /opt/sisweb/web/CBaseController.php(126): require()
+#21 /opt/sisweb/web/CBaseController.php(95): PEDIDOSController->renderInternal()
+#22 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#23 /opt/sisweb/web/CController.php(782): PEDIDOSController->renderPartial()
+#24 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(36): PEDIDOSController->render()
+#25 /opt/sisweb/web/actions/CInlineAction.php(49): PEDIDOSController->actionListar()
+#26 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#27 /opt/sisweb/web/CController.php(286): PEDIDOSController->runAction()
+#28 /opt/sisweb/web/CController.php(265): PEDIDOSController->runActionWithFilters()
+#29 /opt/sisweb/web/CWebApplication.php(282): PEDIDOSController->run()
+#30 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#31 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#32 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/pEDIDOS/listar.jsp
+in /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php (56)
+in /var/www/html/webpedido/protected/views/pEDIDOS/listar.php (9)
+in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (36)
+2015/01/06 15:58:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "BuscarItemTienda" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('BuscarItemTiend...')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('BuscarItemTiend...')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/BuscarI...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/webpedido/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/webpedido/pEDIDOS/BuscarItemTienda?ajax=TbG_PEDIDO
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/listar.jsp
+---
