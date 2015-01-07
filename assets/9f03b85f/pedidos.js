@@ -43,11 +43,11 @@ function mostrarListaTienda(ids) {
         }
     });
     if ($('#cmb_tienda option:selected').val()!=0) {
-        buscarDataTienda(ids);
+        autocompletarBuscarItems(ids);
     }
 }
 
-function buscarDataTienda(ids) {
+function autocompletarBuscarItems(ids) {
     var link = $('#txth_controlador').val() + "/DataTienda";
     $.ajax({
         type: 'POST',
@@ -58,14 +58,12 @@ function buscarDataTienda(ids) {
         },
         success: function (data) {
             $('#lbl_cupo').text(redondea(data['TIE_CUPO'], Ndecimal))
-            $('#lbl_pedido').text('Pedido Nº');
-            $('#lbl_total').text('0.00');
         }
     })
 }
 
 /**************** GUARDAR DATOS PEDIDOS  ******************/
-function guardarListaPedido(accion) {
+function guardarTiendasPrecio(accion) {
     if ($('#cmb_tienda option:selected').val()!=0) {
         //var ID = (accion == "Update") ? $('#txth_CDOR_ID').val() : 0;
         var tieId=$('#cmb_tienda option:selected').val();
@@ -81,56 +79,16 @@ function guardarListaPedido(accion) {
             },
             success: function (data) {
                 if (data.status == "OK") {
-                    $("#messageInfo").html(data.message+data.documento+buttonAlert);
-                    $('#lbl_pedido').text(data.documento);
+                    $("#messageInfo").html(data.message+buttonAlert); 
                     alerMessage();
                 } else {
                     $("#messageInfo").html(data.message+buttonAlert); 
-                    $('#lbl_pedido').text('');
                     alerMessage();
                 }
             },
             dataType: "json"
         });
     }
-}
-
-function fun_DeletePedido(){
-    var ids = String($.fn.yiiGridView.getSelection('TbG_PEDIDO'));
-    var count=ids.split(",");
-    if(count.length>0 && ids!=""){
-        if(!confirm(mgEliminar)) return false;
-        var link=$('#txth_controlador').val()+"/Delete";
-        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $.ajax({
-            type: 'POST',
-            url: link,
-            data:{
-                "ids": ids
-            } ,
-            success: function(data){
-                if (data.status=="OK"){ 
-                    $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();
-                    actualizarTbG_PEDIDO();
-                }
-            },
-            dataType: "json"
-        });
-    }
-    return true;
-}
-
-function actualizarTbG_PEDIDO(){
-    $.fn.yiiGridView.update('TbG_PEDIDO');
-    /*var link=$('#txth_controlador').val()+"/Index";
-    $.fn.yiiGridView.update('TbG_COMPANIA', {
-        type: 'POST',
-        url:link,
-        data:{
-            //"CONT_BUSCAR": controlBuscarIndex(control,op)
-        }
-    }); */
 }
 
 function listaPedido() {

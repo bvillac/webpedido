@@ -20,108 +20,200 @@
  * @property USUARIOTIENDA $uTIE
  * @property TEMPDETPEDIDO[] $tEMPDETPEDIDOs
  */
-class TEMP_CABPEDIDO extends CActiveRecord
-{
-	/**
-	 * @return string the associated database table name
-	 */
-	public function tableName()
-	{
-		return 'TEMP_CAB_PEDIDO';
-	}
+class TEMP_CABPEDIDO extends CActiveRecord {
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('TDOC_ID, TIE_ID, UTIE_ID', 'required'),
-			array('TDOC_ID, TIE_ID, UTIE_ID', 'length', 'max'=>20),
-			array('TCPED_TOTAL', 'length', 'max'=>14),
-			array('TCPED_EST_LOG', 'length', 'max'=>1),
-			array('TCPED_FEC_CRE, TCPED_FEC_MOD', 'safe'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('TCPED_ID, TDOC_ID, TIE_ID, UTIE_ID, TCPED_TOTAL, TCPED_EST_LOG, TCPED_FEC_CRE, TCPED_FEC_MOD', 'safe', 'on'=>'search'),
-		);
-	}
+    /**
+     * @return string the associated database table name
+     */
+    public function tableName() {
+        return 'TEMP_CAB_PEDIDO';
+    }
 
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-			'cABPEDIDOs' => array(self::HAS_MANY, 'CABPEDIDO', 'TCPED_ID'),
-			'tDOC' => array(self::BELONGS_TO, 'TIPODOCUMENTOS', 'TDOC_ID'),
-			'tIE' => array(self::BELONGS_TO, 'TIENDA', 'TIE_ID'),
-			'uTIE' => array(self::BELONGS_TO, 'USUARIOTIENDA', 'UTIE_ID'),
-			'tEMPDETPEDIDOs' => array(self::HAS_MANY, 'TEMPDETPEDIDO', 'TCPED_ID'),
-		);
-	}
+    /**
+     * @return array validation rules for model attributes.
+     */
+    public function rules() {
+        // NOTE: you should only define rules for those attributes that
+        // will receive user inputs.
+        return array(
+            array('TDOC_ID, TIE_ID, UTIE_ID', 'required'),
+            array('TDOC_ID, TIE_ID, UTIE_ID', 'length', 'max' => 20),
+            array('TCPED_TOTAL', 'length', 'max' => 14),
+            array('TCPED_EST_LOG', 'length', 'max' => 1),
+            array('TCPED_FEC_CRE, TCPED_FEC_MOD', 'safe'),
+            // The following rule is used by search().
+            // @todo Please remove those attributes that should not be searched.
+            array('TCPED_ID, TDOC_ID, TIE_ID, UTIE_ID, TCPED_TOTAL, TCPED_EST_LOG, TCPED_FEC_CRE, TCPED_FEC_MOD', 'safe', 'on' => 'search'),
+        );
+    }
 
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
-	public function attributeLabels()
-	{
-		return array(
-			'TCPED_ID' => 'Tcped',
-			'TDOC_ID' => 'Tdoc',
-			'TIE_ID' => 'Tie',
-			'UTIE_ID' => 'Utie',
-			'TCPED_TOTAL' => 'Tcped Total',
-			'TCPED_EST_LOG' => 'Tcped Est Log',
-			'TCPED_FEC_CRE' => 'Tcped Fec Cre',
-			'TCPED_FEC_MOD' => 'Tcped Fec Mod',
-		);
-	}
+    /**
+     * @return array relational rules.
+     */
+    public function relations() {
+        // NOTE: you may need to adjust the relation name and the related
+        // class name for the relations automatically generated below.
+        return array(
+            'cABPEDIDOs' => array(self::HAS_MANY, 'CABPEDIDO', 'TCPED_ID'),
+            'tDOC' => array(self::BELONGS_TO, 'TIPODOCUMENTOS', 'TDOC_ID'),
+            'tIE' => array(self::BELONGS_TO, 'TIENDA', 'TIE_ID'),
+            'uTIE' => array(self::BELONGS_TO, 'USUARIOTIENDA', 'UTIE_ID'),
+            'tEMPDETPEDIDOs' => array(self::HAS_MANY, 'TEMPDETPEDIDO', 'TCPED_ID'),
+        );
+    }
 
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 *
-	 * Typical usecase:
-	 * - Initialize the model fields with values from filter form.
-	 * - Execute this method to get CActiveDataProvider instance which will filter
-	 * models according to data in model fields.
-	 * - Pass data provider to CGridView, CListView or any similar widget.
-	 *
-	 * @return CActiveDataProvider the data provider that can return the models
-	 * based on the search/filter conditions.
-	 */
-	public function search()
-	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
+    /**
+     * @return array customized attribute labels (name=>label)
+     */
+    public function attributeLabels() {
+        return array(
+            'TCPED_ID' => 'Tcped',
+            'TDOC_ID' => 'Tdoc',
+            'TIE_ID' => 'Tie',
+            'UTIE_ID' => 'Utie',
+            'TCPED_TOTAL' => 'Tcped Total',
+            'TCPED_EST_LOG' => 'Tcped Est Log',
+            'TCPED_FEC_CRE' => 'Tcped Fec Cre',
+            'TCPED_FEC_MOD' => 'Tcped Fec Mod',
+        );
+    }
 
-		$criteria=new CDbCriteria;
+    /**
+     * Retrieves a list of models based on the current search/filter conditions.
+     *
+     * Typical usecase:
+     * - Initialize the model fields with values from filter form.
+     * - Execute this method to get CActiveDataProvider instance which will filter
+     * models according to data in model fields.
+     * - Pass data provider to CGridView, CListView or any similar widget.
+     *
+     * @return CActiveDataProvider the data provider that can return the models
+     * based on the search/filter conditions.
+     */
+    public function search() {
+        // @todo Please modify the following code to remove attributes that should not be searched.
 
-		$criteria->compare('TCPED_ID',$this->TCPED_ID,true);
-		$criteria->compare('TDOC_ID',$this->TDOC_ID,true);
-		$criteria->compare('TIE_ID',$this->TIE_ID,true);
-		$criteria->compare('UTIE_ID',$this->UTIE_ID,true);
-		$criteria->compare('TCPED_TOTAL',$this->TCPED_TOTAL,true);
-		$criteria->compare('TCPED_EST_LOG',$this->TCPED_EST_LOG,true);
-		$criteria->compare('TCPED_FEC_CRE',$this->TCPED_FEC_CRE,true);
-		$criteria->compare('TCPED_FEC_MOD',$this->TCPED_FEC_MOD,true);
+        $criteria = new CDbCriteria;
 
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-	}
+        $criteria->compare('TCPED_ID', $this->TCPED_ID, true);
+        $criteria->compare('TDOC_ID', $this->TDOC_ID, true);
+        $criteria->compare('TIE_ID', $this->TIE_ID, true);
+        $criteria->compare('UTIE_ID', $this->UTIE_ID, true);
+        $criteria->compare('TCPED_TOTAL', $this->TCPED_TOTAL, true);
+        $criteria->compare('TCPED_EST_LOG', $this->TCPED_EST_LOG, true);
+        $criteria->compare('TCPED_FEC_CRE', $this->TCPED_FEC_CRE, true);
+        $criteria->compare('TCPED_FEC_MOD', $this->TCPED_FEC_MOD, true);
 
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return TEMP_CABPEDIDO the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
+        return new CActiveDataProvider($this, array(
+            'criteria' => $criteria,
+        ));
+    }
+
+    /**
+     * Returns the static model of the specified AR class.
+     * Please note that you should have this exact method in all your CActiveRecord descendants!
+     * @param string $className active record class name.
+     * @return TEMP_CABPEDIDO the static model class
+     */
+    public static function model($className = __CLASS__) {
+        return parent::model($className);
+    }
+
+    public function insertarLista($tieId,$total, $dts_Lista) {
+        $msg = new VSexception();
+        $valida = new VSValidador();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $this->InsertarCabListPedTemp($con,$total, $tieId);
+            $idCab = $con->getLastInsertID($con->dbname . '.TEMP_CAB_PEDIDO');
+            for ($i = 0; $i < sizeof($dts_Lista); $i++) {
+                $artieId = $dts_Lista[$i]['ARTIE_ID'];
+                $artId = $dts_Lista[$i]['ART_ID'];
+                $cant = $dts_Lista[$i]['CANT'];
+                $precio = $dts_Lista[$i]['PRECIO'];
+                $subtotal = $dts_Lista[$i]['TOTAL'];
+                $observ = $dts_Lista[$i]['OBSERV'];  
+                $sql = "INSERT INTO " . $con->dbname . ".TEMP_DET_PEDIDO
+                        (TCPED_ID,ARTIE_ID,ART_ID,TDPED_CAN_PED,TDPED_P_VENTA,TDPED_T_VENTA,
+                        TDPED_EST_AUT,TDPED_OBSERVA,TDPED_EST_LOG,TDPED_FEC_CRE)VALUES
+                        ($idCab,$artieId,$artId,$cant,$precio,$subtotal,'1','$observ','1',CURRENT_TIMESTAMP())";
+                //echo $sql;
+                $command = $con->createCommand($sql);
+                $command->execute();
+            }
+            $trans->commit();
+            $con->active = false;
+            return $msg->messagePedidos('OK',$valida->ajusteNumDoc($idCab, 9),'PE',null, 30, null, null);
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            //throw $e;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+    
+    private function InsertarCabListPedTemp($con,$total,$tieId) {
+        $utieId=Yii::app()->getSession()->get('UtieId', FALSE);
+        $sql="INSERT INTO " . $con->dbname . ".TEMP_CAB_PEDIDO
+                (TDOC_ID,TIE_ID,UTIE_ID,TCPED_TOTAL,TCPED_EST_LOG,TCPED_FEC_CRE)VALUES
+                (1,$tieId,$utieId,$total,1,CURRENT_TIMESTAMP());";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
+    public function listarPedidosTiendas($control) {
+        $rawData = array();
+        $con = Yii::app()->db;
+        //$rawData[]=$this->rowProdList();
+        $sql = "SELECT A.TCPED_ID PedID,A.TIE_ID TieID,A.TCPED_TOTAL Total,DATE(A.TCPED_FEC_CRE) FechaPedido, 
+                        B.TIE_NOMBRE NombreTienda,B.TIE_DIRECCION DireccionTienda,E.PER_NOMBRE NombrePersona,
+                        CONCAT(REPEAT( '0', 9 - LENGTH(A.TCPED_ID) ),A.TCPED_ID) Numero,A.TCPED_EST_LOG Estado
+                        FROM " . $con->dbname . ".TEMP_CAB_PEDIDO A
+                                INNER JOIN " . $con->dbname . ".TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                                INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA C
+                                                INNER JOIN (" . $con->dbname . ".USUARIO D
+                                                                INNER JOIN " . $con->dbname . ".PERSONA E
+                                                                        ON D.PER_ID=E.PER_ID)
+                                                        ON C.USU_ID=D.USU_ID)
+                                        ON C.UTIE_ID=A.UTIE_ID
+                WHERE  A.TCPED_FEC_CRE BETWEEN '2015-01-01' AND '2015-01-08' ORDER BY A.TCPED_ID;";//A.TCPED_EST_LOG=1 AND
+        
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+
+        return new CArrayDataProvider($rawData, array(
+            'keyField' => 'PedID',
+            'sort' => array(
+                'attributes' => array(
+                    'PedID','Numero','TieID','Total','FechaPedido','NombreTienda','DireccionTienda','NombrePersona','Estado'
+                ),
+            ),
+            'totalItemCount' => count($rawData),
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
+        ));
+    }
+    
+    public function anularPedidoTemp($ids) {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $sql = "UPDATE " . $con->dbname . ".TEMP_CAB_PEDIDO SET TCPED_EST_LOG='4' WHERE TCPED_ID IN($ids)";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,12,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+
 }

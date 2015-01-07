@@ -112,7 +112,7 @@ function fun_DeletePedido(){
                 if (data.status=="OK"){ 
                     $("#messageInfo").html(data.message+buttonAlert); 
                     alerMessage();
-                    actualizarTbG_PEDIDO();
+                    actualizarTbG_TIENDA();
                 }
             },
             dataType: "json"

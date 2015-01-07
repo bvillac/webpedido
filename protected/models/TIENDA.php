@@ -243,6 +243,16 @@ class TIENDA extends CActiveRecord {
         return $rawData;
     }
     
+    public function recuperarTiendasCupo($id) {
+        $con = yii::app()->db;
+        $sql = "SELECT A.TIE_CUPO FROM " . $con->dbname . ".TIENDA A
+                WHERE A.TIE_EST_LOG=1 AND A.TIE_ID='$id' ";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryRow();//Retorna solo 1
+        $con->active = false;
+        return $rawData;
+    }
+    
     public function removerTienda($ids) {
         $msg= new VSexception();
         $con = Yii::app()->db;

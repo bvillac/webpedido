@@ -30,6 +30,15 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'htmlOptions' => array('style' => 'display:none; border:none;'),
         ),
         array(
+            'name' => 'ART_ID',
+            'header' => Yii::t('TIENDA', 'Ids'),
+            'value' => '$data["ART_ID"]',
+            'header' => false,
+            'filter' => false,
+            'headerHtmlOptions' => array('style' => 'width:0px; display:none; border:none; textdecoration:none'),
+            'htmlOptions' => array('style' => 'display:none; border:none;'),
+        ),
+        array(
             'name' => 'Codigo',
             'header' => Yii::t('TIENDA', 'Code'),
             'value' => '$data["Codigo"]',
@@ -69,8 +78,13 @@ $this->widget('zii.widgets.grid.CGridView', array(
         array(
             'name' => 'Observacion',
             'header' => Yii::t('TIENDA', 'Observation'),
-            'value' => '$data["Observacion"]',
-            //'value'=>'CHtml::textArea("txtA_cat_".$data["ARTIE_ID"],$data["Observacion"], array("class" => " txt_TextboxNumber2 validation_Vs"))',
+            'value'=>'CHtml::textField("txt_obs_".$data["ARTIE_ID"],"", array('
+                    . '"size" => 10, "maxlength" => 300,"placeholder" => "...",'
+                    . '"class" => "validation_Vs",'
+                    . '))',
+            'type'=>'raw',
+            //'headerHtmlOptions' => array('style' => 'width:30px;'),
+            'htmlOptions'=>array('width'=>'30px'),      
         ),
 
     ),

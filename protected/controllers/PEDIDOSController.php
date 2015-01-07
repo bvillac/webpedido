@@ -9,7 +9,7 @@ class PEDIDOSController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update','Save','Listar'),
+                'actions' => array('create', 'update','Save','Listar','DataTienda','Aprobar','Delete'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -19,6 +19,15 @@ class PEDIDOSController extends Controller {
             array('deny', // deny all users
                 'users' => array('*'),
             ),
+        );
+    }
+    
+    private function tipoAprobacion() {
+        return array(
+            '1' => Yii::t('TIENDA', 'Order'),
+            '2' => Yii::t('TIENDA', 'Dressed'),
+            '3' => Yii::t('TIENDA', 'Authorized'),
+            '4' => Yii::t('TIENDA', 'Canceled'),
         );
     }
 
@@ -43,8 +52,67 @@ class PEDIDOSController extends Controller {
             'model' => $model->listarItemsTiendas(0),
             'tienda' => $model->recuperarTiendasRol(),
         ));
+    }
+    
+    public function actionDataTienda() {
+        if (Yii::app()->request->isAjaxRequest) {
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
+            $arrayData = array();
+            $data = new TIENDA;
+            $arrayData = $data->recuperarTiendasCupo($ids);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arrayData);
+        }
+    }
+    
+    public function actionSave() {
+        if (Yii::app()->request->isPostRequest) {
+            $model = new TEMP_CABPEDIDO;
+            $dts_Lista = isset($_POST['DTS_LISTA']) ? CJavaScript::jsonDecode($_POST['DTS_LISTA']) : array();
+            $tieId = isset($_POST['TIE_ID']) ? $_POST['TIE_ID'] : "";
+            $total = isset($_POST['TOTAL']) ? $_POST['TOTAL'] : 0;
+            $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
+            if ($accion == "Create") {
+                $arroout = $model->insertarLista($tieId,$total,$dts_Lista);
+            } else {
+                //$arroout = $model->insertarPrecioTienda($cliId,$dts_PrecioTienda);
+            }
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+        }
+    }
+    
+    public function actionAprobar() {
+        $model = new TEMP_CABPEDIDO;
+        $tienda = new TIENDA;
         
-        
+        $arrayData = array();
+        if (Yii::app()->request->isAjaxRequest) {
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
+            $arrayData = $model->listarPedidosTiendas(null);
+            $this->renderPartial('_indexGridPedidos', array(
+                'model' => $arrayData,
+            ),false, true);
+            return;
+        }
+        $this->titleWindows = Yii::t('TIENDA', 'Approved orders');
+        $this->render('aprobar', array(
+            'model' => $model->listarPedidosTiendas(null),
+            'tienda' => $tienda->recuperarTiendasRol(),
+            'estado' => $this->tipoAprobacion(),
+        ));
+    }
+    
+    public function actionDelete() {
+            if (Yii::app()->request->isPostRequest) {
+                //$ids = base64_decode($_POST['ids']);
+                $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
+                $res = new TEMP_CABPEDIDO;
+                $arroout=$res->anularPedidoTemp($ids);
+                header('Content-type: application/json');
+                echo CJavaScript::jsonEncode($arroout);
+            }
+
     }
 
 }

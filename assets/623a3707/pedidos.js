@@ -58,7 +58,7 @@ function buscarDataTienda(ids) {
         },
         success: function (data) {
             $('#lbl_cupo').text(redondea(data['TIE_CUPO'], Ndecimal))
-            $('#lbl_pedido').text('Pedido Nº');
+            $('#lbl_pedido').text('0.00');
             $('#lbl_total').text('0.00');
         }
     })
@@ -93,44 +93,6 @@ function guardarListaPedido(accion) {
             dataType: "json"
         });
     }
-}
-
-function fun_DeletePedido(){
-    var ids = String($.fn.yiiGridView.getSelection('TbG_PEDIDO'));
-    var count=ids.split(",");
-    if(count.length>0 && ids!=""){
-        if(!confirm(mgEliminar)) return false;
-        var link=$('#txth_controlador').val()+"/Delete";
-        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $.ajax({
-            type: 'POST',
-            url: link,
-            data:{
-                "ids": ids
-            } ,
-            success: function(data){
-                if (data.status=="OK"){ 
-                    $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();
-                    actualizarTbG_PEDIDO();
-                }
-            },
-            dataType: "json"
-        });
-    }
-    return true;
-}
-
-function actualizarTbG_PEDIDO(){
-    $.fn.yiiGridView.update('TbG_PEDIDO');
-    /*var link=$('#txth_controlador').val()+"/Index";
-    $.fn.yiiGridView.update('TbG_COMPANIA', {
-        type: 'POST',
-        url:link,
-        data:{
-            //"CONT_BUSCAR": controlBuscarIndex(control,op)
-        }
-    }); */
 }
 
 function listaPedido() {

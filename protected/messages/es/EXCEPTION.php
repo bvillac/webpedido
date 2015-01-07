@@ -27,7 +27,7 @@ return array(
     'Error document was not found.' => 'Error el documento no se encontró.',
     'Gender xml file correctly.' => 'Error el documento no se encontró.',
     'We can not find the information you are requesting.'=> 'No podemos encontrar los datos que está solicitando.',
-    
+    '<strong>Well done!</strong> your order was successfully saved.' => '<strong>Bien Hecho!</strong> Su Orden fue guardada correctamente.',
     
 );
 ?>

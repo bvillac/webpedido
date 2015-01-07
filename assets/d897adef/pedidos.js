@@ -112,25 +112,13 @@ function fun_DeletePedido(){
                 if (data.status=="OK"){ 
                     $("#messageInfo").html(data.message+buttonAlert); 
                     alerMessage();
-                    actualizarTbG_PEDIDO();
+                    actualizarTbG_TIENDA();
                 }
             },
             dataType: "json"
         });
     }
     return true;
-}
-
-function actualizarTbG_PEDIDO(){
-    $.fn.yiiGridView.update('TbG_PEDIDO');
-    /*var link=$('#txth_controlador').val()+"/Index";
-    $.fn.yiiGridView.update('TbG_COMPANIA', {
-        type: 'POST',
-        url:link,
-        data:{
-            //"CONT_BUSCAR": controlBuscarIndex(control,op)
-        }
-    }); */
 }
 
 function listaPedido() {

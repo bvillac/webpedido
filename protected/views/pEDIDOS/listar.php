@@ -1,5 +1,5 @@
 <?php echo $this->renderPartial('_include'); ?>
-<div class="col-lg-8">
+<div class="col-lg-12">
     <?php $this->renderPartial('_frm_dataTienda', 
                     array(
                         'tienda' =>$tienda)); ?>

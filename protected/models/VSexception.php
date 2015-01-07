@@ -33,6 +33,17 @@ class VSexception {
         return $arroout;
     }
     
+    public function messagePedidos($status,$numDoc,$nomDoc,$error,$op,$message,$data) {
+        $arroout = array(
+            'status' => $status,
+            'documento' => ' Pedido Nº: '.$nomDoc.'-'.$numDoc,
+            'error' => $error,
+            'message' =>  $this->messageError($op,$message),
+            'data' => $data
+        );
+        return $arroout;
+    }
+    
     private function messageError($op,$message){
         $messageError='';
         switch ($op) {
@@ -55,7 +66,7 @@ class VSexception {
             case 10://Petion invalida volver a intentar
                 $messageError=Yii::t('EXCEPTION', '<strong>Well done!</strong> your information was successfully saved.');
                 break;
-            case 11://Petion invalida volver a intentar
+            case 11://Petion invalida no volver a intentar
                 $messageError=Yii::t('EXCEPTION', 'Invalid request. Please do not repeatt this request again.');
                 break;
             case 12://Datos eliminados Correctamente
@@ -66,6 +77,9 @@ class VSexception {
                 break;
             case 21://No podemos encontrar los datos que está solicitando.
                 $messageError=Yii::t('EXCEPTION', 'We can not find the information you are requesting.');
+                break;
+            case 30://Su Orden fue guardada correctamente.
+                $messageError=Yii::t('EXCEPTION', '<strong>Well done!</strong> your order was successfully saved.');
                 break;
             default:
                 $messageError=$message;

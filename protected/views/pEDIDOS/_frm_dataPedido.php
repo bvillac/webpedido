@@ -1,7 +1,7 @@
 <form role="form">
     <div class="form-group rowLine">
         <div class="rowTd">
-            <label><?php echo Yii::t('GENERAL', 'Store') ?></label>
+            <label><?php echo Yii::t('TIENDA', 'Stores') ?></label>
         </div>
         <div class="rowTd">
             <?php
@@ -16,7 +16,20 @@
             ?> 
         </div>
         <div class="rowTd">
+            <label><?php echo Yii::t('TIENDA', 'Status') ?></label>
+        </div>
+        <div class="rowTd">
+            <?php
+            echo CHtml::dropDownList(
+                    'cmb_estado', '0'
+                    , array('0' => Yii::t('TIENDA', 'All')) + $estado
+                    , array('class' => 'form-control')
+            );
+            ?> 
+        </div>
+        <div class="rowTd">
             <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Save'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'guardarListaPedido("Create")')); ?>
+            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Cancel'), array('id' => 'btn_anular', 'name' => 'btn_anular', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_DeletePedido()')); ?>
         </div>
         <div class="rowTd">
             <label><?php echo Yii::t('TIENDA', 'Total') ?>:</label>
