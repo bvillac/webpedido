@@ -326,31 +326,3 @@ function controlBuscarIndex(op){
     buscarArray[0] = buscarIndex;
     return JSON.stringify(buscarArray);
 }
-
-
-/************************ GUARDAR PEDIDOS *******************/
-function fun_guardarPedidoAut(){
-    var ids = String($.fn.yiiGridView.getSelection('TbG_PEDIDO'));
-    var count=ids.split(",");
-    if(count.length>0 && ids!=""){
-        if(!confirm(mgEnvPedid)) return false;
-        var link=$('#txth_controlador').val()+"/EnvPedAut";
-        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $.ajax({
-            type: 'POST',
-            url: link,
-            data:{
-                "ids": ids
-            } ,
-            success: function(data){
-                if (data.status=="OK"){ 
-                    $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();
-                    $.fn.yiiGridView.update('TbG_PEDIDO');
-                }
-            },
-            dataType: "json"
-        });
-    }
-    return true;
-}

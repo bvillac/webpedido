@@ -346,7 +346,9 @@ function fun_guardarPedidoAut(){
                 if (data.status=="OK"){ 
                     $("#messageInfo").html(data.message+buttonAlert); 
                     alerMessage();
-                    $.fn.yiiGridView.update('TbG_PEDIDO');
+                    //anularItemPedidoTemp(ids);
+                    //actualizarTbG_PEDIDO();
+                    //$.fn.yiiGridView.update('TbG_PEDIDO');
                 }
             },
             dataType: "json"

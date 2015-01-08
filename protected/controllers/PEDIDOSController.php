@@ -9,7 +9,9 @@ class PEDIDOSController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update','Save','Listar','DataTienda','Aprobar','Delete','AnuItemPedTemp'),
+                'actions' => array(
+                    'create', 'update','Save','Listar','DataTienda',
+                    'Aprobar','Delete','AnuItemPedTemp','EnvPedAut'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -137,5 +139,32 @@ class PEDIDOSController extends Controller {
             }
 
     }
+    
+    public function actionEnvPedAut() {
+            if (Yii::app()->request->isPostRequest) {
+                //$ids = base64_decode($_POST['ids']);
+                $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
+                $res = new CABPEDIDO;
+                $arroout=$res->insertarPedidos($ids);
+                header('Content-type: application/json');
+                echo CJavaScript::jsonEncode($arroout);
+            }
+
+    }
+    
+    public function actionBuscaDataIndex() {
+        if (Yii::app()->request->isAjaxRequest) {
+            $arrayData = array();
+            $model = new TEMP_CABPEDIDO;
+            $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
+            $arrayData = $model->listarPedidosTiendas($contBuscar);
+            $this->renderPartial('_indexGridPedidos', array(
+                'model' => $arrayData,
+                    ), false, true);
+            return;
+        }
+    }
+    
+    
 
 }

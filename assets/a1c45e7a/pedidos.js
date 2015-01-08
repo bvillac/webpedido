@@ -319,38 +319,10 @@ function controlBuscarIndex(op){
     var buscarArray = new Array();
     var buscarIndex=new Object();
     buscarIndex.OP=op;
-    buscarIndex.TIE_ID=$('#cmb_tienda option:selected').val();
-    buscarIndex.EST_LOG=$('#cmb_estado option:selected').val();
+    buscarIndex.TIPO_APR=$('#cmb_tipoApr option:selected').val();
+    buscarIndex.RAZONSOCIAL=$('#'+control).val(),
     buscarIndex.F_INI=$('#dtp_fec_ini').val();
     buscarIndex.F_FIN=$('#dtp_fec_fin').val();
     buscarArray[0] = buscarIndex;
     return JSON.stringify(buscarArray);
-}
-
-
-/************************ GUARDAR PEDIDOS *******************/
-function fun_guardarPedidoAut(){
-    var ids = String($.fn.yiiGridView.getSelection('TbG_PEDIDO'));
-    var count=ids.split(",");
-    if(count.length>0 && ids!=""){
-        if(!confirm(mgEnvPedid)) return false;
-        var link=$('#txth_controlador').val()+"/EnvPedAut";
-        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $.ajax({
-            type: 'POST',
-            url: link,
-            data:{
-                "ids": ids
-            } ,
-            success: function(data){
-                if (data.status=="OK"){ 
-                    $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();
-                    $.fn.yiiGridView.update('TbG_PEDIDO');
-                }
-            },
-            dataType: "json"
-        });
-    }
-    return true;
 }

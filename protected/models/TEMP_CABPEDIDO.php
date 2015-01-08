@@ -202,6 +202,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
     public function listarPedidosTiendas($control) {
         $rawData = array();
         $con = Yii::app()->db;
+        $limitrowsql = Yii::app()->params['limitRowSQL'];
         //$rawData[]=$this->rowProdList();
         $sql = "SELECT A.TCPED_ID PedID,A.TIE_ID TieID,A.TCPED_TOTAL Total,DATE(A.TCPED_FEC_CRE) FechaPedido, 
                         B.TIE_NOMBRE NombreTienda,B.TIE_DIRECCION DireccionTienda,E.PER_NOMBRE NombrePersona,
@@ -215,8 +216,19 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                                                                         ON D.PER_ID=E.PER_ID)
                                                         ON C.USU_ID=D.USU_ID)
                                         ON C.UTIE_ID=A.UTIE_ID
-                WHERE  A.TCPED_FEC_CRE BETWEEN '2015-01-01' AND '2015-01-09' ORDER BY A.TCPED_ID;";//A.TCPED_EST_LOG=1 AND
-        
+                WHERE  "; //A.TCPED_EST_LOG=1 AND
+
+        if (!empty($control)) {//Verifica la Opcion op para los filtros
+            $sql .= ($control[0]['EST_LOG'] != "0") ? " A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : " A.TCPED_EST_LOG<>'' ";
+            $sql .= ($control[0]['TIE_ID'] > 0) ? "AND A.TIE_ID = '" . $control[0]['TIE_ID'] . "' " : "";
+            //$sql .= ($control[0]['COD_PACIENTE'] != "0") ? "AND CDOR_ID_PACIENTE='".$control[0]['COD_PACIENTE']."' " : "";
+            //$sql .= ($control[0]['PACIENTE'] != "") ? "AND CONCAT(B.PER_APELLIDO,' ',B.PER_NOMBRE) LIKE '%" . $control[0]['PACIENTE'] . "%' " : "";
+            $sql .= "AND DATE(A.TCPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "'  ";
+        }else{
+            $sql .= "A.TCPED_EST_LOG<>'' ";
+        }
+        $sql .= "ORDER BY A.TCPED_ID DESC LIMIT $limitrowsql";
+
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
 
@@ -224,7 +236,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
             'keyField' => 'PedID',
             'sort' => array(
                 'attributes' => array(
-                    'PedID','Numero','TieID','Total','FechaPedido','NombreTienda','DireccionTienda','NombrePersona','Estado'
+                    'PedID', 'Numero', 'TieID', 'Total', 'FechaPedido', 'NombreTienda', 'DireccionTienda', 'NombrePersona', 'Estado'
                 ),
             ),
             'totalItemCount' => count($rawData),
@@ -233,7 +245,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
             ),
         ));
     }
-    
+
     public function anularPedidoTemp($ids) {
         $msg= new VSexception();
         $con = Yii::app()->db;

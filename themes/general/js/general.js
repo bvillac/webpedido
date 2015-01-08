@@ -15,6 +15,7 @@ var buttonAlert = '<button aria-hidden="true" data-dismiss="alert" class="close"
 var selecDoc = 'Seleccionar documento para autorizar';
 var mgEliminar = 'Está seguro que desea Eliminar estos Item';
 var mgEnvDocum = 'Está seguro que desea Enviar estos Documentos';
+var mgEnvPedid = 'Está seguro que desea Enviar estos Pedidos';
 
 function alerMessage() {
     setTimeout(function () {

@@ -7,9 +7,9 @@
             <?php
             echo CHtml::dropDownList(
                     'cmb_tienda', '0'
-                    , array('0' => Yii::t('GENERAL', '-Select-')) + CHtml::listData($tienda, 'TIE_ID', 'TIE_NOMBRE')
+                    , array('0' => Yii::t('TIENDA', 'All')) + CHtml::listData($tienda, 'TIE_ID', 'TIE_NOMBRE')
                     , array(
-                'onchange' => 'js:mostrarListaTienda(this.value)',
+                //'onchange' => 'js:mostrarListaTienda(this.value)',
                 'class' => 'form-control'
                     )
             );
@@ -50,11 +50,6 @@
                     'showOn' => 'button',
                 ),
                 'htmlOptions' => array(
-                    //'style' => 'height:10px;',
-                    //'style' => 'width:100px;vertical-align:top !important',
-                    //'style'=>'width:200px !important',
-                    //'modal'=>true,
-                    //'size'=>10, 
                     'class' => 'form-control imgDate',
                     'readonly' => 'readonly',
                 ),
@@ -84,23 +79,21 @@
                     'showOn' => 'button',
                 ),
                 'htmlOptions' => array(
-                    //'style' => 'height:10px;',
-                    //'style' => 'width:100px;vertical-align:top',
-                    //'style'=>'width:200px !important',
-                    //'modal'=>true,
-                    //'size'=>10, 
                     'class' => 'form-control imgDate',
                     'readonly' => 'readonly',
                 ),
             ));
             ?>
         </div>
+        <div class="tcol-td form-group">
+            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Search'), array('id' => 'btn_buscar', 'name' => 'btn_buscar', 'class' => 'btn btn-success', 'onclick' => 'buscarDataIndex("")')); ?>
+        </div>
     </div>
 
 </div>
 <div class="lineLeft">
         <?php echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Create'), array('pEDIDOS/listar'), array('title' => Yii::t('CONTROL_ACCIONES', 'Create'), 'class' => 'btn btn-primary btn-sm',)); ?>
-        <?php echo CHtml::button(Yii::t('TIENDA', 'To order'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'guardarListaPedido("Create")')); ?>
+        <?php echo CHtml::button(Yii::t('TIENDA', 'To order'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_guardarPedidoAut()')); ?>
         <?php echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Edit'), array('tIENDA/update'), array('id' => 'btn_Update', 'name' => 'btn_Update', 'title' => Yii::t('CONTROL_ACCIONES', 'Edit'), 'class' => 'btn btn-primary btn-sm disabled', 'onclick' => 'fun_Update()')); ?>
         <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Cancel'), array('id' => 'btn_anular', 'name' => 'btn_anular', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_DeletePedido()')); ?>
 </div>

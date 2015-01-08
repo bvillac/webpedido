@@ -188,7 +188,7 @@ return array(
         'pageSizeMin' => 10,
         'limitRowSQL' => 100,
         'limitRow' => 10,
-        'dateStart' => "01-01-2014",//Fecha de Inicio
+        'dateStart' => "01-01-2015",//Fecha de Inicio
         'dateStartFact' => "2014-11-15",//Fecha de Inicio Facturacaion
         'limitEnv' => 2,//Limite de Envio Documentos
         'datebydefault' => "d-m-Y",
