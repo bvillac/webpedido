@@ -81,6 +81,7 @@ class VSexception {
             case 30://Su Orden fue guardada correctamente.
                 $messageError=Yii::t('EXCEPTION', '<strong>Well done!</strong> your order was successfully saved.');
                 break;
+            
             default:
                 $messageError=$message;
         }

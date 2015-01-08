@@ -80,13 +80,13 @@ class PEDIDOSController extends Controller {
         if (Yii::app()->request->isPostRequest) {
             $model = new TEMP_CABPEDIDO;
             $dts_Lista = isset($_POST['DTS_LISTA']) ? CJavaScript::jsonDecode($_POST['DTS_LISTA']) : array();
-            $tieId = isset($_POST['TIE_ID']) ? $_POST['TIE_ID'] : "";
+            $tieId = isset($_POST['TIE_ID']) ? $_POST['TIE_ID'] : 0;
             $total = isset($_POST['TOTAL']) ? $_POST['TOTAL'] : 0;
             $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
             if ($accion == "Create") {
                 $arroout = $model->insertarLista($tieId,$total,$dts_Lista);
             } else {
-                //$arroout = $model->insertarPrecioTienda($cliId,$dts_PrecioTienda);
+                $arroout = $model->actualizarLista($tieId,$total,$dts_Lista);
             }
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);

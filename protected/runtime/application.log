@@ -2596,3 +2596,49 @@ Stack trace:
 REQUEST_URI=/webpedido/pEDIDOS/Update?ajax=TbG_PEDIDO&id=
 HTTP_REFERER=http://localhost/webpedido/pEDIDOS/Update?id=Nw==
 ---
+2015/01/08 10:00:44 [error] [system.db.CDbCommand] CDbCommand::fetch() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 6. La sentencia SQL ejecutada fue: SELECT A.TCPED_ID PedID,CONCAT(REPEAT( '0', 9 - LENGTH(A.TCPED_ID) ),A.TCPED_ID) Numero,
+                        A.TCPED_TOTAL Total,DATE(A.TCPED_FEC_CRE) FechaPedido,B.TIE_NOMBRE NombreTienda
+                        FROM VSSEAPEDIDO.TEMP_CAB_PEDIDO A
+                                INNER JOIN VSSEAPEDIDO.TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                WHERE A.TCPED_ID= ;.
+in /var/www/html/webpedido/protected/models/TEMP_CABPEDIDO.php (247)
+in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (44)
+in /var/www/html/webpedido/index.php (13)
+2015/01/08 10:00:44 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 6. The SQL statement executed was: SELECT A.TCPED_ID PedID,CONCAT(REPEAT( '0', 9 - LENGTH(A.TCPED_ID) ),A.TCPED_ID) Numero,
+                        A.TCPED_TOTAL Total,DATE(A.TCPED_FEC_CRE) FechaPedido,B.TIE_NOMBRE NombreTienda
+                        FROM VSSEAPEDIDO.TEMP_CAB_PEDIDO A
+                                INNER JOIN VSSEAPEDIDO.TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                WHERE A.TCPED_ID= ;' in /opt/sisweb/db/CDbCommand.php:543
+Stack trace:
+#0 /opt/sisweb/db/CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 /var/www/html/webpedido/protected/models/TEMP_CABPEDIDO.php(247): CDbCommand->queryRow()
+#2 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(44): TEMP_CABPEDIDO->cabeceraPedidoTemp('')
+#3 [internal function]: PEDIDOSController->actionUpdate('')
+#4 /opt/sisweb/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PEDIDOSController), Array)
+#5 /opt/sisweb/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PEDIDOSController), Object(ReflectionMethod), Array)
+#6 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#7 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#8 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /opt/sisweb/web/CWebApplication.php(282): CController->run('Update')
+#10 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/Update')
+#11 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /var/www/html/webpedido/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/webpedido/pEDIDOS/Update?ajax=TbG_PEDIDO&id=
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/Update?id=Nw==
+---
+2015/01/08 12:23:42 [error] [php] Undefined variable: idCab (/var/www/html/webpedido/protected/models/TEMP_CABPEDIDO.php:177)
+Stack trace:
+#0 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#1 /opt/sisweb/web/CController.php(286): PEDIDOSController->runAction()
+#2 /opt/sisweb/web/CController.php(265): PEDIDOSController->runActionWithFilters()
+#3 /opt/sisweb/web/CWebApplication.php(282): PEDIDOSController->run()
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/pEDIDOS/Save
+in /var/www/html/webpedido/protected/models/TEMP_CABPEDIDO.php (177)
+in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (89)
+in /var/www/html/webpedido/index.php (13)

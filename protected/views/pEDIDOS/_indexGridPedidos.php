@@ -34,11 +34,13 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'name' => 'Numero',
             'header' => Yii::t('TIENDA', 'Number'),
             'value' => '$data["Numero"]',
+            'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
         ),
         array(
             'name' => 'FechaPedido',
             'header' => Yii::t('TIENDA', 'Date'),
             'value' => '$data["FechaPedido"]',
+            'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
         ),
         array(
             'name' => 'NombreTienda',
@@ -54,12 +56,13 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'name' => 'Total',
             'header' => Yii::t('TIENDA', 'Total'),
             'value' => 'Yii::app()->format->formatNumber($data["Total"])',
-            'htmlOptions' => array('style' => 'text-align:right', 'width' => '8px'),
+            'htmlOptions' => array('style' => 'text-align:right', 'width' => '20px'),
         ),
         array(
             'name' => 'Estado',
             'header' => Yii::t('TIENDA', 'Status'),
             'value' => '($data["Estado"]=="1")?Yii::t("TIENDA", "Order"):(($data["Estado"]=="2")?Yii::t("TIENDA", "Dressed"):(($data["Estado"]=="3")?Yii::t("TIENDA", "Authorized"):Yii::t("TIENDA", "Canceled")))',
+            'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
         ),
     ),
 ));

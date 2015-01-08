@@ -128,14 +128,14 @@ function buscarDataTienda(ids) {
 /**************** GUARDAR DATOS PEDIDOS  ******************/
 function guardarListaPedido(accion) {
     if ($('#cmb_tienda option:selected').val()!=0) {
-        var ID = (accion == "Update") ? $('#txth_PedID').val() : 0;
-        var tieId=(accion == "Create") ?$('#cmb_tienda option:selected').val():ID;//Cuando Es Actualizacion Retorno el Id Cabecera
+        //var ID = (accion == "Update") ? $('#txth_CDOR_ID').val() : 0;
+        var tieId=$('#cmb_tienda option:selected').val();
         var link = $('#txth_controlador').val() + "/Save";
         $.ajax({
             type: 'POST',
             url: link,
             data: {
-                "DTS_LISTA": (accion == "Create") ?listaPedido():listaPedidoDetTemp(),
+                "DTS_LISTA": listaPedido(),
                 "TIE_ID": tieId,
                 "TOTAL": $('#lbl_total').text(),
                 "ACCION": accion
@@ -207,6 +207,11 @@ function fun_Update(){
 }
 
 
+function loadDataUpdate(){
+        mostrarTienda(varData);
+        //sessionStorage.detalleGrid = JSON.stringify(arr_detalleGrid);
+}
+
 function listaPedido() {
     var TbGtable = 'TbG_PEDIDO';
     var arrayList = new Array;
@@ -232,31 +237,7 @@ function listaPedido() {
     return JSON.stringify(arrayList);
 }
 
-function listaPedidoDetTemp() {
-    var TbGtable = 'TbG_PEDIDO';
-    var arrayList = new Array;
-    var i = -1;
-    $('#' + TbGtable + ' tr').each(function () {
-        var idstable = $(this).find("td").eq(1).html();
-        if (idstable != '') {
-            var subtotal = parseFloat($(this).find("td").eq(7).html());
-            if (subtotal > 0) {
-                var rowGrid = new Object();
-                i += 1;
-                rowGrid.DetId = idstable;
-                rowGrid.CANT = $('#txt_cat_' + idstable).val();
-                rowGrid.TOTAL = redondea(subtotal, Ndecimal);
-                rowGrid.OBSERV = $('#txt_obs_' + idstable).val();
-                arrayList[i] = rowGrid;
-            }
-
-        }
-    });
-    return JSON.stringify(arrayList);
-}
-
 /**********************  PEDIDOS TEMPORALES  *********************/
-
 function fun_AnularItemPedido(){
     var ids = String($.fn.yiiGridView.getSelection('TbG_PEDIDO'));
     var count=ids.split(",");

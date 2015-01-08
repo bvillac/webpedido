@@ -33,6 +33,7 @@ return array(
     'Start' => 'Inicio',
     'Process' => 'Procesar',
     'Send' => 'Enviar',
+    'Cancel Item' => 'Anular Item',
     'Authorizing document' => 'Autorizar',
 );
 ?>

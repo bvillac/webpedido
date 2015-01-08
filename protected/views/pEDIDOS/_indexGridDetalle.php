@@ -54,14 +54,14 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'header' => Yii::t('TIENDA', 'Quantity'),
             //'value' => '$data["Cantidad"]',
             //'htmlOptions' => array('style' => 'text-align:right', 'width' => '8px'),
-            'value'=>'CHtml::textField("txt_cat_".$data["DetId"],$data["Cantidad"], array('
+            'value'=>'($data["EstAut"]=="1")?CHtml::textField("txt_cat_".$data["DetId"],$data["Cantidad"], array('
                     . '"size" => 8, "maxlength" => 100,"placeholder" => Yii::app()->format->formatNumber(0),'
                     . '"class" => " txt_TextboxNumber2 validation_Vs",'
-                    . '"onkeydown" => "pedidoEnterGrid(isEnter(event),this,$data[DetId])",'
-                    . '"onblur" => "pedidoEnterGrid(isEnter(event),this,$data[DetId])"'
-                    . '))',
+                    . '"onkeydown" => "pedidoEnterGridTemp(isEnter(event),this,$data[DetId])",'
+                    . '"onblur" => "pedidoEnterGridTemp(isEnter(event),this,$data[DetId])"'
+                    . ')):"0.00"',
             'type'=>'raw',
-            'htmlOptions'=>array('width'=>'8px'),
+            'htmlOptions' => array('style' => 'text-align:right', 'width' => '8px'),
 
         ),
         array(
@@ -74,23 +74,25 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'name' => 'TotVta',
             'header' => Yii::t('TIENDA', 'Total'),
             'value' => 'Yii::app()->format->formatNumber($data["TotVta"])',
-            'htmlOptions' => array('style' => 'text-align:right', 'width' => '8px'),
+            'htmlOptions' => array('style' => 'text-align:right', 'width' => '30px'),
         ),
         array(
             'name' => 'Observacion',
             'header' => Yii::t('TIENDA', 'Observation'),
             'value'=>'CHtml::textField("txt_obs_".$data["DetId"],$data["Observacion"], array('
-                    . '"size" => 10, "maxlength" => 300,"placeholder" => "...",'
+                    . '"size" => 30, "maxlength" => 300,"placeholder" => "...",'
                     . '"class" => "validation_Vs",'
                     . '))',
             'type'=>'raw',
             //'headerHtmlOptions' => array('style' => 'width:30px;'),
-            'htmlOptions'=>array('width'=>'30px'),      
+            //'htmlOptions'=>array('width'=>'30px'), 
+            'htmlOptions' => array('style' => 'text-align:center', 'width' => '200px'),
         ),
         array(
             'name' => 'EstAut',
             'header' => Yii::t('TIENDA', 'Status'),
             'value' => '($data["EstAut"]=="1")?Yii::t("TIENDA", "Active"):Yii::t("TIENDA", "Inactive")',
+            'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
         ),
 
     ),

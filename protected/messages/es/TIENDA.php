@@ -41,7 +41,7 @@ return array(
     'List orders' => 'Listar pedidos',
     'Store name' => 'Tienda',
     'To order' => 'Hacer Pedido',
-    'User order' => 'UsuarioPedido',
+    'User order' => 'Usuario Pedido',
     
     
 );

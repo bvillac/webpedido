@@ -153,11 +153,48 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         }
     }
     
+    public function actualizarLista($cabId,$total, $dts_Lista) {
+        $msg = new VSexception();
+        $valida = new VSValidador();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $this->actualizaCabListPedTemp($con,$total, $cabId);
+            for ($i = 0; $i < sizeof($dts_Lista); $i++) {
+                $detId = $dts_Lista[$i]['DetId'];
+                $cant = $dts_Lista[$i]['CANT'];
+                $subtotal = $dts_Lista[$i]['TOTAL'];
+                $observ = $dts_Lista[$i]['OBSERV']; 
+                $sql = "UPDATE " . $con->dbname . ".TEMP_DET_PEDIDO "
+                        . "SET TDPED_CAN_PED=$cant,TDPED_T_VENTA=$subtotal,TDPED_OBSERVA='$observ',TDPED_FEC_MOD=CURRENT_TIMESTAMP() "
+                        . "WHERE TDPED_ID=$detId AND TDPED_EST_LOG='1' ";
+                //echo $sql;
+                $command = $con->createCommand($sql);
+                $command->execute();
+            }
+            $trans->commit();
+            $con->active = false;
+            return $msg->messagePedidos('OK',$valida->ajusteNumDoc($cabId, 9),'PE',null, 30, null, null);
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            //throw $e;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+    
     private function InsertarCabListPedTemp($con,$total,$tieId) {
         $utieId=Yii::app()->getSession()->get('UtieId', FALSE);
         $sql="INSERT INTO " . $con->dbname . ".TEMP_CAB_PEDIDO
                 (TDOC_ID,TIE_ID,UTIE_ID,TCPED_TOTAL,TCPED_EST_LOG,TCPED_FEC_CRE)VALUES
                 (1,$tieId,$utieId,$total,1,CURRENT_TIMESTAMP());";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
+    private function actualizaCabListPedTemp($con,$total,$cabId) {
+        $sql = "UPDATE " . $con->dbname . ".TEMP_CAB_PEDIDO SET TCPED_TOTAL=$total "
+                . "WHERE TCPED_ID=$cabId";
         $command = $con->createCommand($sql);
         $command->execute();
     }
@@ -178,7 +215,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                                                                         ON D.PER_ID=E.PER_ID)
                                                         ON C.USU_ID=D.USU_ID)
                                         ON C.UTIE_ID=A.UTIE_ID
-                WHERE  A.TCPED_FEC_CRE BETWEEN '2015-01-01' AND '2015-01-08' ORDER BY A.TCPED_ID;";//A.TCPED_EST_LOG=1 AND
+                WHERE  A.TCPED_FEC_CRE BETWEEN '2015-01-01' AND '2015-01-09' ORDER BY A.TCPED_ID;";//A.TCPED_EST_LOG=1 AND
         
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
@@ -221,7 +258,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         $con = Yii::app()->db;
         $trans = $con->beginTransaction();
         try {
-            $sql = "UPDATE " . $con->dbname . ".TEMP_DET_PEDIDO SET TDPED_EST_AUT='0' WHERE TDPED_ID IN($ids)";
+            $sql = "UPDATE " . $con->dbname . ".TEMP_DET_PEDIDO SET TDPED_CAN_PED=0,TDPED_T_VENTA=0,TDPED_EST_AUT='0' WHERE TDPED_ID IN($ids)";
             $comando = $con->createCommand($sql);
             $comando->execute();
             $trans->commit();

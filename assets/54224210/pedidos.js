@@ -129,7 +129,7 @@ function buscarDataTienda(ids) {
 function guardarListaPedido(accion) {
     if ($('#cmb_tienda option:selected').val()!=0) {
         var ID = (accion == "Update") ? $('#txth_PedID').val() : 0;
-        var tieId=(accion == "Create") ?$('#cmb_tienda option:selected').val():ID;//Cuando Es Actualizacion Retorno el Id Cabecera
+        var tieId=(accion == "Create") ?$('#cmb_tienda option:selected').val():ID;
         var link = $('#txth_controlador').val() + "/Save";
         $.ajax({
             type: 'POST',
@@ -237,14 +237,16 @@ function listaPedidoDetTemp() {
     var arrayList = new Array;
     var i = -1;
     $('#' + TbGtable + ' tr').each(function () {
-        var idstable = $(this).find("td").eq(1).html();
+        var idstable = $(this).find("td").eq(0).html();
         if (idstable != '') {
-            var subtotal = parseFloat($(this).find("td").eq(7).html());
+            var subtotal = parseFloat($(this).find("td").eq(6).html());
             if (subtotal > 0) {
                 var rowGrid = new Object();
                 i += 1;
-                rowGrid.DetId = idstable;
+                rowGrid.ARTIE_ID = idstable;
+                rowGrid.ART_ID = $(this).find("td").eq(1).html();
                 rowGrid.CANT = $('#txt_cat_' + idstable).val();
+                rowGrid.PRECIO = $(this).find("td").eq(5).html();
                 rowGrid.TOTAL = redondea(subtotal, Ndecimal);
                 rowGrid.OBSERV = $('#txt_obs_' + idstable).val();
                 arrayList[i] = rowGrid;

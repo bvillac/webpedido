@@ -44,14 +44,6 @@ function pedidoEnterGrid(valor,control,Ids){
          calculaTotal(cant,Ids);
     }
 }
-function pedidoEnterGridTemp(valor,control,Ids){
-    if (valor) {//Si el usuario Presiono Enter= True
-         control.value = redondea(control.value, Ndecimal);
-         //var p_venta=parseFloat(control.value);
-         var cant=control.value;
-         calculaTotalPedTemp(cant,Ids);
-    }
-}
 function calculaTotal( cant,Ids) {
     var precio = 0;
     var valor=0;
@@ -67,27 +59,6 @@ function calculaTotal( cant,Ids) {
         }
         if (idstable!='') {
             vtot=parseFloat($(this).find("td").eq(6).html());
-            total+=(vtot>0)?vtot:0;
-        }
-    });
-    $('#lbl_total').text(redondea(total, Ndecimal))
-}
-
-function calculaTotalPedTemp(cant,Ids) {
-    var precio = 0;
-    var valor=0;
-    var total=0;
-    var vtot=0;
-    var TbGtable = 'TbG_PEDIDO';
-    $('#' + TbGtable + ' tr').each(function () {
-        var idstable = $(this).find("td").eq(1).html();
-        if (idstable==Ids) {
-            precio = $(this).find("td").eq(6).html();
-            valor=redondea(precio * cant, Ndecimal);
-            $(this).find("td").eq(7).html(valor);
-        }
-        if (idstable!='') {
-            vtot=parseFloat($(this).find("td").eq(7).html());
             total+=(vtot>0)?vtot:0;
         }
     });
@@ -128,14 +99,14 @@ function buscarDataTienda(ids) {
 /**************** GUARDAR DATOS PEDIDOS  ******************/
 function guardarListaPedido(accion) {
     if ($('#cmb_tienda option:selected').val()!=0) {
-        var ID = (accion == "Update") ? $('#txth_PedID').val() : 0;
-        var tieId=(accion == "Create") ?$('#cmb_tienda option:selected').val():ID;//Cuando Es Actualizacion Retorno el Id Cabecera
+        //var ID = (accion == "Update") ? $('#txth_CDOR_ID').val() : 0;
+        var tieId=$('#cmb_tienda option:selected').val();
         var link = $('#txth_controlador').val() + "/Save";
         $.ajax({
             type: 'POST',
             url: link,
             data: {
-                "DTS_LISTA": (accion == "Create") ?listaPedido():listaPedidoDetTemp(),
+                "DTS_LISTA": listaPedido(),
                 "TIE_ID": tieId,
                 "TOTAL": $('#lbl_total').text(),
                 "ACCION": accion
@@ -207,6 +178,11 @@ function fun_Update(){
 }
 
 
+function loadDataUpdate(){
+        mostrarTienda(varData);
+        //sessionStorage.detalleGrid = JSON.stringify(arr_detalleGrid);
+}
+
 function listaPedido() {
     var TbGtable = 'TbG_PEDIDO';
     var arrayList = new Array;
@@ -232,31 +208,7 @@ function listaPedido() {
     return JSON.stringify(arrayList);
 }
 
-function listaPedidoDetTemp() {
-    var TbGtable = 'TbG_PEDIDO';
-    var arrayList = new Array;
-    var i = -1;
-    $('#' + TbGtable + ' tr').each(function () {
-        var idstable = $(this).find("td").eq(1).html();
-        if (idstable != '') {
-            var subtotal = parseFloat($(this).find("td").eq(7).html());
-            if (subtotal > 0) {
-                var rowGrid = new Object();
-                i += 1;
-                rowGrid.DetId = idstable;
-                rowGrid.CANT = $('#txt_cat_' + idstable).val();
-                rowGrid.TOTAL = redondea(subtotal, Ndecimal);
-                rowGrid.OBSERV = $('#txt_obs_' + idstable).val();
-                arrayList[i] = rowGrid;
-            }
-
-        }
-    });
-    return JSON.stringify(arrayList);
-}
-
 /**********************  PEDIDOS TEMPORALES  *********************/
-
 function fun_AnularItemPedido(){
     var ids = String($.fn.yiiGridView.getSelection('TbG_PEDIDO'));
     var count=ids.split(",");
@@ -274,7 +226,6 @@ function fun_AnularItemPedido(){
                 if (data.status=="OK"){ 
                     $("#messageInfo").html(data.message+buttonAlert); 
                     alerMessage();
-                    anularItemPedidoTemp(ids);
                     //actualizarTbG_PEDIDO();
                     //$.fn.yiiGridView.update('TbG_PEDIDO');
                 }
@@ -283,22 +234,4 @@ function fun_AnularItemPedido(){
         });
     }
     return true;
-}
-
-function anularItemPedidoTemp(Ids) {
-    var elem=Ids.split(",")
-    var i=0;
-    var TbGtable = 'TbG_PEDIDO';
-    $('#' + TbGtable + ' tr').each(function () {
-        var idstable = $(this).find("td").eq(1).html();
-        if (idstable!='') {
-            if(idstable==elem[i]){
-                $(this).find("td").eq(9).html('Inactivo');
-                $('#txt_cat_' + idstable).val(redondea(0, Ndecimal));
-                $('#txt_cat_' + idstable).attr("disabled", true);
-                calculaTotalPedTemp(0,idstable);
-                i++;
-            }
-        }
-    });
 }
