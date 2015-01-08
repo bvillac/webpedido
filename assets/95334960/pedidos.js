@@ -207,31 +207,3 @@ function listaPedido() {
     });
     return JSON.stringify(arrayList);
 }
-
-/**********************  PEDIDOS TEMPORALES  *********************/
-function fun_AnularItemPedido(){
-    var ids = String($.fn.yiiGridView.getSelection('TbG_PEDIDO'));
-    var count=ids.split(",");
-    if(count.length>0 && ids!=""){
-        if(!confirm(mgEliminar)) return false;
-        var link=$('#txth_controlador').val()+"/AnuItemPedTemp";
-        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $.ajax({
-            type: 'POST',
-            url: link,
-            data:{
-                "ids": ids
-            } ,
-            success: function(data){
-                if (data.status=="OK"){ 
-                    $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();
-                    //actualizarTbG_PEDIDO();
-                    $.fn.yiiGridView.update('TbG_PEDIDO');
-                }
-            },
-            dataType: "json"
-        });
-    }
-    return true;
-}

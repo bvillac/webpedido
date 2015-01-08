@@ -9,7 +9,7 @@ class PEDIDOSController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update','Save','Listar','DataTienda','Aprobar','Delete'),
+                'actions' => array('create', 'update','Save','Listar','DataTienda','Aprobar','Delete','AnuItemPedTemp'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -33,6 +33,17 @@ class PEDIDOSController extends Controller {
 
     public function actionIndex() {
         $this->render('index');
+    }
+    
+    public function actionUpdate($id) {
+        $ids = base64_decode($id);
+        $model = new TEMP_CABPEDIDO;
+        $model->TDOC_ID = $ids; //mantiene el ID  Actualizar
+        //$this->titleWindows = Yii::t('TIENDA', 'Store');
+        $this->render('update', array(
+            'CabPed' => $model->cabeceraPedidoTemp($ids),
+            'DetPed' => $model->detallePedidoTemp($ids),
+        ));
     }
 
 
@@ -109,6 +120,18 @@ class PEDIDOSController extends Controller {
                 $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
                 $res = new TEMP_CABPEDIDO;
                 $arroout=$res->anularPedidoTemp($ids);
+                header('Content-type: application/json');
+                echo CJavaScript::jsonEncode($arroout);
+            }
+
+    }
+    
+    public function actionAnuItemPedTemp() {
+            if (Yii::app()->request->isPostRequest) {
+                //$ids = base64_decode($_POST['ids']);
+                $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
+                $res = new TEMP_CABPEDIDO;
+                $arroout=$res->anularItemPedidoTemp($ids);
                 header('Content-type: application/json');
                 echo CJavaScript::jsonEncode($arroout);
             }

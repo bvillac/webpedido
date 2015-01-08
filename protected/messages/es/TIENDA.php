@@ -9,6 +9,7 @@ return array(
     'Ids' => 'Ids',
     'Name' => 'Nombre',
     'Address' => 'Dirección',
+    'Approved orders' => 'Aprobar Pedidos',
     'Quota' => 'Cupo',
     'Number' => 'Nº',
     'Quantity' => 'Cantidad',
@@ -25,6 +26,8 @@ return array(
     'End' => 'Fin',
     'Date' => 'Fecha',
     'Status' => 'Estado',
+    'Active' => 'Activo',
+    'Inactive' => 'Inactivo',
     'Canceled' => 'Anulado',
     'Dressed' => 'Atendido',
     'All' => 'Todos',
@@ -37,7 +40,9 @@ return array(
     'Observation' => 'Observación',
     'List orders' => 'Listar pedidos',
     'Store name' => 'Tienda',
+    'To order' => 'Hacer Pedido',
     'User order' => 'UsuarioPedido',
-    'Approved orders' => 'Aprobar Pedidos',
+    
+    
 );
 ?>

@@ -118,7 +118,7 @@ and open the template in the editor.
 }
 
 
- .uneditable-inputform {
+.uneditable-inputform {
     border-radius: 4px 4px 4px 4px;
     color: #555555;
     display: inline-block;
@@ -138,8 +138,8 @@ and open the template in the editor.
 
 /* FIN CSS para Label con Forma Text  */
 .text-left{
-     text-align:left !important;
-     color: #000000  !important;
+    text-align:left !important;
+    color: #000000  !important;
 }
 
 /* Clase para Cajas Texto  Totales Numericos en formularios */
@@ -215,27 +215,31 @@ and open the template in the editor.
 
 /*Documentos PDF*/
 
- td { vertical-align: top; }
- .items td {
- border-left: 0.1mm solid #000000;
- border-right: 0.1mm solid #000000;
- }
- table thead td { background-color: #EEEEEE;
- text-align: center;
- border: 0.1mm solid #000000;
- }
- .items td.blanktotal {
- background-color: #FFFFFF;
- border: 0mm none #000000;
- border-top: 0.1mm solid #000000;
- }
- .items td.totals {
- text-align: right;
- border: 0.1mm solid #000000;
- }
- 
- .imgDate{
-     float: left;
-     width: 100px;
- }
+td { vertical-align: top; }
+.items td {
+    border-left: 0.1mm solid #000000;
+    border-right: 0.1mm solid #000000;
+}
+table thead td { background-color: #EEEEEE;
+                 text-align: center;
+                 border: 0.1mm solid #000000;
+}
+.items td.blanktotal {
+    background-color: #FFFFFF;
+    border: 0mm none #000000;
+    border-top: 0.1mm solid #000000;
+}
+.items td.totals {
+    text-align: right;
+    border: 0.1mm solid #000000;
+}
+
+.imgDate{
+    float: left;
+    width: 100px;
+}
+
+.lineLeft{
+    float: right;
+}
 

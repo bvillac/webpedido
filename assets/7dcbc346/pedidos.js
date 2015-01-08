@@ -214,7 +214,7 @@ function fun_AnularItemPedido(){
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
         if(!confirm(mgEliminar)) return false;
-        var link=$('#txth_controlador').val()+"/AnuItemPedTemp";
+        var link=$('#txth_controlador').val()+"/Delete";
         //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
         $.ajax({
             type: 'POST',
@@ -226,8 +226,7 @@ function fun_AnularItemPedido(){
                 if (data.status=="OK"){ 
                     $("#messageInfo").html(data.message+buttonAlert); 
                     alerMessage();
-                    //actualizarTbG_PEDIDO();
-                    $.fn.yiiGridView.update('TbG_PEDIDO');
+                    actualizarTbG_PEDIDO();
                 }
             },
             dataType: "json"

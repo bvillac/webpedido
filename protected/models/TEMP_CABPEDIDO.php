@@ -215,5 +215,67 @@ class TEMP_CABPEDIDO extends CActiveRecord {
             return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
         }
     }
+    
+    public function anularItemPedidoTemp($ids) {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $sql = "UPDATE " . $con->dbname . ".TEMP_DET_PEDIDO SET TDPED_EST_AUT='0' WHERE TDPED_ID IN($ids)";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,12,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+    
+    public function cabeceraPedidoTemp($ids) {
+        $con = yii::app()->db;
+        $sql = "SELECT A.TCPED_ID PedID,CONCAT(REPEAT( '0', 9 - LENGTH(A.TCPED_ID) ),A.TCPED_ID) Numero,
+                        A.TCPED_TOTAL Total,DATE(A.TCPED_FEC_CRE) FechaPedido,B.TIE_NOMBRE NombreTienda
+                        FROM " . $con->dbname . ".TEMP_CAB_PEDIDO A
+                                INNER JOIN " . $con->dbname . ".TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                WHERE A.TCPED_ID=$ids ;";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryRow();//Retorna solo 1
+        $con->active = false;
+        return $rawData;
+    }
+    
+    public function detallePedidoTemp($ids) {
+        $rawData = array();
+        $con = Yii::app()->db;
+        //$rawData[]=$this->rowProdList();
+        $sql = "SELECT A.TDPED_ID DetId,A.ART_ID ArtId,A.TDPED_CAN_PED Cantidad,A.TDPED_P_VENTA Precio,
+                        A.TDPED_T_VENTA TotVta,A.TDPED_EST_AUT EstAut,A.TDPED_OBSERVA Observacion,B.COD_ART Codigo,
+                        B.ART_DES_COM Nombre,B.ART_I_M_IVA ImIva
+                        FROM " . $con->dbname . ".TEMP_DET_PEDIDO A
+                                INNER JOIN " . $con->dbname . ".ARTICULO B
+                                        ON A.ART_ID=B.ART_ID
+                WHERE A.TCPED_ID=$ids ";
+        
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+
+        return new CArrayDataProvider($rawData, array(
+            'keyField' => 'DetId',
+            'sort' => array(
+                'attributes' => array(
+                    'DetId','ArtId','Cantidad','Precio','TotVta','EstAut','Observacion','Codigo','Nombre','ImIva'
+                ),
+            ),
+            'totalItemCount' => count($rawData),
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
+        ));
+    }
 
 }

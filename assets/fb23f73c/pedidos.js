@@ -26,16 +26,6 @@ function verificaAcciones(){
     }
 }
 
-function accionPedido(){
-    var ids = String($.fn.yiiGridView.getSelection('TbG_PEDIDO'));
-    var count=ids.split(",");
-    if(count.length>0 && ids!=""){
-        $("#btn_anular").removeClass("disabled");
-    }else{
-        $("#btn_anular").addClass("disabled");
-    }
-}
-
 function pedidoEnterGrid(valor,control,Ids){
     if (valor) {//Si el usuario Presiono Enter= True
          control.value = redondea(control.value, Ndecimal);
@@ -165,24 +155,6 @@ function actualizarTbG_PEDIDO(){
     }); */
 }
 
-function fun_Update(){
-    var link="";
-    var id = base64_encode(String($.fn.yiiGridView.getSelection('TbG_PEDIDO')));
-    var count=id.split(",");
-    if(count.length==1 && id!=""){
-        link=$('#txth_controlador').val()+"/Update?";
-        $('#btn_Update').attr("href", link+"id="+id); 
-        //alert(link+"id="+id);
-        //window.location =  link+"id="+id;
-    }
-}
-
-
-function loadDataUpdate(){
-        mostrarTienda(varData);
-        //sessionStorage.detalleGrid = JSON.stringify(arr_detalleGrid);
-}
-
 function listaPedido() {
     var TbGtable = 'TbG_PEDIDO';
     var arrayList = new Array;
@@ -206,32 +178,4 @@ function listaPedido() {
         }
     });
     return JSON.stringify(arrayList);
-}
-
-/**********************  PEDIDOS TEMPORALES  *********************/
-function fun_AnularItemPedido(){
-    var ids = String($.fn.yiiGridView.getSelection('TbG_PEDIDO'));
-    var count=ids.split(",");
-    if(count.length>0 && ids!=""){
-        if(!confirm(mgEliminar)) return false;
-        var link=$('#txth_controlador').val()+"/AnuItemPedTemp";
-        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $.ajax({
-            type: 'POST',
-            url: link,
-            data:{
-                "ids": ids
-            } ,
-            success: function(data){
-                if (data.status=="OK"){ 
-                    $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();
-                    //actualizarTbG_PEDIDO();
-                    $.fn.yiiGridView.update('TbG_PEDIDO');
-                }
-            },
-            dataType: "json"
-        });
-    }
-    return true;
 }
