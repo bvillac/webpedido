@@ -347,7 +347,7 @@ function fun_guardarPedidoAut(){
                     $("#messageInfo").html(data.message+buttonAlert); 
                     alerMessage();
                     $.fn.yiiGridView.update('TbG_PEDIDO');
-                    //alert(data.data.toSource());
+                    alert(data.data.toSource());
                     
                 }
             },

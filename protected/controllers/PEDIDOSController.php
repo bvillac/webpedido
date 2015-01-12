@@ -114,6 +114,7 @@ class PEDIDOSController extends Controller {
             'tienda' => $tienda->recuperarTiendasRol(),
             'estado' => $this->tipoAprobacion(),
         ));
+        
     }
     
     public function actionDelete() {
@@ -141,17 +142,25 @@ class PEDIDOSController extends Controller {
     }
     
     public function actionEnvPedAut() {
-            if (Yii::app()->request->isPostRequest) {
-                //$ids = base64_decode($_POST['ids']);
-                $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
-                $res = new CABPEDIDO;
-                $arroout=$res->insertarPedidos($ids);
-                header('Content-type: application/json');
-                echo CJavaScript::jsonEncode($arroout);
+        if (Yii::app()->request->isPostRequest) {
+            //$ids = base64_decode($_POST['ids']);
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
+            $res = new CABPEDIDO;
+            $dataMail = new mailSystem;
+            $arroout = $res->insertarPedidos($ids);
+            $IdCab=$arroout["data"];
+            //print_r($IdCab);
+            for ($i = 0; $i < sizeof($IdCab); $i++) {
+                $htmlMail = $this->renderPartial('mensaje', array(
+                'CabPed' => $res->sendMailPedidos($IdCab[$i]['ids']),
+                    ), true);
+                $dataMail->enviarMail($htmlMail);
             }
-
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+        }
     }
-    
+
     public function actionBuscaDataIndex() {
         if (Yii::app()->request->isAjaxRequest) {
             $arrayData = array();

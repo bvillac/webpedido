@@ -34,6 +34,8 @@
  * @property USUARIOTIENDA $uTIE
  * @property DETPEDIDO[] $dETPEDIDOs
  */
+//Yii::import('system.vendors.PHPMailer.*');//Usar de Forma nativa.
+//require_once('class.phpmailer.php');
 class CABPEDIDO extends CActiveRecord {
 
     /**
@@ -167,20 +169,24 @@ class CABPEDIDO extends CActiveRecord {
     public function insertarPedidos($Ids) {
         $msg = new VSexception();
         $valida = new VSValidador();
+        $idsReturn = array();
         $con = Yii::app()->db;
         $trans = $con->beginTransaction();
         try {
-            $cabFact = $this->buscarCabPedidosTemp($con,$Ids);
+            $cabFact = $this->buscarCabPedidosTemp($con, $Ids);
             for ($i = 0; $i < sizeof($cabFact); $i++) {
                 $this->InsertarCabFactura($con, $cabFact, $i);
                 $idCab = $con->getLastInsertID($con->dbname . '.CAB_PEDIDO');
-                $detFact = $this->buscarDetPedidosTemp($con,$cabFact[$i]['TCPED_ID']);
+                $detFact = $this->buscarDetPedidosTemp($con, $cabFact[$i]['TCPED_ID']);
                 $this->InsertarDetFactura($con, $detFact, $idCab, $cabFact[$i]['TIE_ID']);
-                $this->actTemCabPed($con,$cabFact[$i]['TCPED_ID']);
+                $this->actTemCabPed($con, $cabFact[$i]['TCPED_ID']);
+                $idsReturn[] = array(
+                    "ids" => $idCab,
+                );
             }
             $trans->commit();
             $con->active = false;
-            return $msg->messageSystem('OK', null, 30, null, null);
+            return $msg->messageSystem('OK', null, 30, null, $idsReturn);
         } catch (Exception $e) {
             $trans->rollback();
             $con->active = false;
@@ -188,6 +194,7 @@ class CABPEDIDO extends CActiveRecord {
             return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
         }
     }
+    
 
     private function buscarCabPedidosTemp($con,$ids) {
         //$con = yii::app()->db;
@@ -241,6 +248,36 @@ class CABPEDIDO extends CActiveRecord {
         $sql = "UPDATE " . $con->dbname . ".TEMP_CAB_PEDIDO SET TCPED_EST_LOG='3' WHERE TCPED_ID=$ids";
         $command = $con->createCommand($sql);
         $command->execute();
+    }
+    
+    public function sendMailPedidos($ids) {
+        $con = yii::app()->db;
+        $rawData = array();
+        $sql = "SELECT A.CPED_ID PedID,CONCAT(REPEAT( '0', 9 - LENGTH(A.CPED_ID) ),A.CPED_ID) Numero,
+                        A.CPED_VAL_NET ValorNeto,DATE(A.CPED_FEC_PED) FechaPedido,B.TIE_NOMBRE NombreTienda,
+                        CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) NombrePersona,
+                        CONCAT(H.PER_NOMBRE,' ',H.PER_APELLIDO) NombreUser
+                        FROM " . $con->dbname . ".CAB_PEDIDO A
+                                INNER JOIN " . $con->dbname . ".TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                                INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA C
+                                                INNER JOIN (" . $con->dbname . ".USUARIO D
+                                                                INNER JOIN " . $con->dbname . ".PERSONA E
+                                                                        ON D.PER_ID=E.PER_ID)
+                                                        ON C.USU_ID=D.USU_ID)
+                                        ON C.UTIE_ID=A.UTIE_ID_PED
+                                INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA F
+                                                INNER JOIN (" . $con->dbname . ".USUARIO G
+                                                                INNER JOIN " . $con->dbname . ".PERSONA H
+                                                                        ON G.PER_ID=H.PER_ID)
+                                                        ON F.USU_ID=G.USU_ID)
+                                        ON F.UTIE_ID=A.UTIE_ID
+                WHERE A.CPED_ID=$ids AND CPED_EST_LOG=1;";
+        
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
     }
 
 }

@@ -12,6 +12,7 @@ return array(
     'Approved orders' => 'Aprobar Pedidos',
     'Quota' => 'Cupo',
     'Number' => 'Nº',
+    'Number Order' => 'Orden Num',
     'Quantity' => 'Cantidad',
     'Total' => 'Total',
     'Cost' => 'Precio',
@@ -42,6 +43,9 @@ return array(
     'Store name' => 'Tienda',
     'To order' => 'Hacer Pedido',
     'User order' => 'Usuario Pedido',
+    'Summary' => 'Resumen',
+    'Issue date' => 'Fecha emisi&oacute;n',
+    'Net amount' => 'Valor Neto',
     
     
 );

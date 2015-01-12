@@ -12,5 +12,5 @@ $valida = new VSValidador();
 
 </div>
 <div class="col-lg-12">
-<?php echo $this->renderPartial('_indexGridPedidos', array('model' => $model)); ?>
+    <?php echo $this->renderPartial('_indexGridPedidos', array('model' => $model)); ?>
 </div>
