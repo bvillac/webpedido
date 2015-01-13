@@ -255,8 +255,8 @@ class CABPEDIDO extends CActiveRecord {
         $rawData = array();
         $sql = "SELECT A.CPED_ID PedID,CONCAT(REPEAT( '0', 9 - LENGTH(A.CPED_ID) ),A.CPED_ID) Numero,
                         A.CPED_VAL_NET ValorNeto,DATE(A.CPED_FEC_PED) FechaPedido,B.TIE_NOMBRE NombreTienda,
-                        CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) NombrePersona,
-                        CONCAT(H.PER_NOMBRE,' ',H.PER_APELLIDO) NombreUser
+                        CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) NombrePersona,D.USU_CORREO CorreoPersona,
+                        CONCAT(H.PER_NOMBRE,' ',H.PER_APELLIDO) NombreUser,G.USU_CORREO CorreoUser
                         FROM " . $con->dbname . ".CAB_PEDIDO A
                                 INNER JOIN " . $con->dbname . ".TIENDA B
                                         ON A.TIE_ID=B.TIE_ID

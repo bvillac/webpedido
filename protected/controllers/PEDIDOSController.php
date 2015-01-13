@@ -151,10 +151,11 @@ class PEDIDOSController extends Controller {
             $IdCab=$arroout["data"];
             //print_r($IdCab);
             for ($i = 0; $i < sizeof($IdCab); $i++) {
+                $CabPed=$res->sendMailPedidos($IdCab[$i]['ids']);
                 $htmlMail = $this->renderPartial('mensaje', array(
-                'CabPed' => $res->sendMailPedidos($IdCab[$i]['ids']),
+                'CabPed' => $CabPed,
                     ), true);
-                $dataMail->enviarMail($htmlMail);
+                $dataMail->enviarMail($htmlMail,$CabPed);
             }
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);
