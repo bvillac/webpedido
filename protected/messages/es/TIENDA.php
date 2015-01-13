@@ -37,16 +37,23 @@ return array(
     'Unauthorized' => 'No autorizado',
     'Returned' => 'Devuelto',
     'Approved' => 'Aprobados',
-    'Code' => 'Código',
     'Observation' => 'Observación',
     'List orders' => 'Listar pedidos',
     'Store name' => 'Tienda',
     'To order' => 'Hacer Pedido',
+    'Attend' => 'Despachar',
+    'Mail' => 'Correo',
+    'Address Store' => 'Dirección Tienda',
     'User order' => 'Usuario Pedido',
     'Summary' => 'Resumen',
-    'Issue date' => 'Fecha emisi&oacute;n',
+    'Issue date' => 'Fecha emisión',
     'Net amount' => 'Valor Neto',
-    
+    'Liquidate order' => 'Liquidar pedido',
+    /*** DATOS PDF ****/
+    'Code' => 'Código',
+    'Unit price' => 'P.Unitario',
+    'Total' => 'Total',
+    'Description' => 'Descripción',
     
 );
 ?>

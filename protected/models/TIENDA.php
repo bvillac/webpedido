@@ -297,7 +297,7 @@ class TIENDA extends CActiveRecord {
         
         $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         $sql = "SELECT B.PCLI_ID IdsPre,B.ART_ID IdsArt,C.COD_ART Codigo,C.ART_DES_COM Nombre,
-                    (SELECT IF(D.PCLI_ID=NULL,0,1) FROM " . $con->dbname . ".ARTICULO_TIENDA D WHERE D.PCLI_ID=B.PCLI_ID AND D.TIE_ID=$ids) AS Estado
+                    (SELECT D.ARTIE_EST_LOG FROM " . $con->dbname . ".ARTICULO_TIENDA D WHERE D.PCLI_ID=B.PCLI_ID AND D.TIE_ID=$ids) AS Estado
                     FROM " . $con->dbname . ".PRECIO_CLIENTE B
                         INNER JOIN " . $con->dbname . ".ARTICULO C
                             ON C.ART_ID=B.ART_ID
@@ -370,7 +370,7 @@ class TIENDA extends CActiveRecord {
         $trans = $con->beginTransaction();
         try {
             $tieId=$objEnt['TIE_ID'];
-            $ids = explode(",", $objEnt['IDS']);
+            $ids = explode(",", $objEnt['IDS']);//Recibe Ids Concatenados
             for ($i = 0; $i < count($ids); $i++) {
                 $preId=$ids[$i];
                 if($this->existeProductoTienda($con,$tieId,$preId)){
@@ -386,7 +386,8 @@ class TIENDA extends CActiveRecord {
                 $command = $con->createCommand($sql);
                 $command->execute();
             }
-            $trans->commit();
+            $this->actualizaItemsTiendas($con,$tieId,$objEnt['IDS']);
+            $trans->commit(); 
             $con->active = false;
             return $msg->messageSystem('OK',null,10,null, null);
         } catch (Exception $e) {
@@ -395,6 +396,12 @@ class TIENDA extends CActiveRecord {
             //throw $e;
             return $msg->messageSystem('NO_OK',$e->getMessage(),11,null, null);
         }
+    }
+    private function actualizaItemsTiendas($con,$tieId,$ids) {
+        $sql = "UPDATE " . $con->dbname . ".ARTICULO_TIENDA SET ARTIE_EST_LOG=0 WHERE TIE_ID=$tieId AND PCLI_ID NOT IN($ids)";
+        //echo $sql;
+        $command = $con->createCommand($sql);
+        $command->execute();
     }
     
     private function existeProductoTienda($con,$TieId,$PreID) {

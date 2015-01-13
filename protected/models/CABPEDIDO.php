@@ -179,7 +179,7 @@ class CABPEDIDO extends CActiveRecord {
                 $idCab = $con->getLastInsertID($con->dbname . '.CAB_PEDIDO');
                 $detFact = $this->buscarDetPedidosTemp($con, $cabFact[$i]['TCPED_ID']);
                 $this->InsertarDetFactura($con, $detFact, $idCab, $cabFact[$i]['TIE_ID']);
-                $this->actTemCabPed($con, $cabFact[$i]['TCPED_ID']);
+                $this->actTemCabPed($con, $cabFact[$i]['TCPED_ID'],'3');
                 $idsReturn[] = array(
                     "ids" => $idCab,
                 );
@@ -206,6 +206,18 @@ class CABPEDIDO extends CActiveRecord {
         //$con->active = false;
         return $rawData;
     }
+    
+    private function buscarCabPedidos($con,$ids) {
+        //$con = yii::app()->db;
+        $rawData = array();
+        //Lista solo los que estan listos a envair.. 
+        $sql = "SELECT * FROM " . $con->dbname . ".CAB_PEDIDO WHERE CPED_ID IN($ids) AND  CPED_EST_LOG=1";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        //$con->active = false;
+        return $rawData;
+    }
+    
 
     private function buscarDetPedidosTemp($con,$ids) {
         //$con = yii::app()->db;
@@ -244,8 +256,14 @@ class CABPEDIDO extends CActiveRecord {
         }
     }
     
-    private function actTemCabPed($con,$ids) {
-        $sql = "UPDATE " . $con->dbname . ".TEMP_CAB_PEDIDO SET TCPED_EST_LOG='3' WHERE TCPED_ID=$ids";
+    private function actTemCabPed($con,$ids,$estado) {
+        $sql = "UPDATE " . $con->dbname . ".TEMP_CAB_PEDIDO SET TCPED_EST_LOG='$estado' WHERE TCPED_ID=$ids";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
+    private function actCabPedido($con,$ids,$estado) {
+        $sql = "UPDATE " . $con->dbname . ".CAB_PEDIDO SET CPED_EST_LOG='$estado' WHERE CPED_ID=$ids";
         $command = $con->createCommand($sql);
         $command->execute();
     }
@@ -275,6 +293,120 @@ class CABPEDIDO extends CActiveRecord {
                 WHERE A.CPED_ID=$ids AND CPED_EST_LOG=1;";
         
         //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    }
+    
+    public function mostrarPedidos($control) {
+        $rawData = array();
+        $con = Yii::app()->db;
+        $limitrowsql = Yii::app()->params['limitRowSQL'];
+        //$rawData[]=$this->rowProdList();
+        $sql = "SELECT A.CPED_ID PedID,A.TIE_ID TieID,A.CPED_VAL_NET ValorNeto,DATE(A.CPED_FEC_PED) FechaPedido, 
+                        B.TIE_NOMBRE NombreTienda,B.TIE_DIRECCION DireccionTienda,E.PER_NOMBRE NombrePersona,
+                        CONCAT(REPEAT( '0', 9 - LENGTH(A.CPED_ID) ),A.CPED_ID) Numero,A.CPED_EST_LOG Estado
+                        FROM " . $con->dbname . ".CAB_PEDIDO A
+                                INNER JOIN " . $con->dbname . ".TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                                INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA C
+                                                INNER JOIN (" . $con->dbname . ".USUARIO D
+                                                                INNER JOIN " . $con->dbname . ".PERSONA E
+                                                                        ON D.PER_ID=E.PER_ID)
+                                                        ON C.USU_ID=D.USU_ID)
+                                        ON C.UTIE_ID=A.UTIE_ID
+                WHERE  "; //A.TCPED_EST_LOG=1 AND
+
+        if (!empty($control)) {//Verifica la Opcion op para los filtros
+            $sql .= ($control[0]['EST_LOG'] != "0") ? " A.CPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : " A.CPED_EST_LOG<>'' ";
+            $sql .= ($control[0]['TIE_ID'] > 0) ? "AND A.TIE_ID = '" . $control[0]['TIE_ID'] . "' " : "";
+            //$sql .= ($control[0]['COD_PACIENTE'] != "0") ? "AND CDOR_ID_PACIENTE='".$control[0]['COD_PACIENTE']."' " : "";
+            //$sql .= ($control[0]['PACIENTE'] != "") ? "AND CONCAT(B.PER_APELLIDO,' ',B.PER_NOMBRE) LIKE '%" . $control[0]['PACIENTE'] . "%' " : "";
+            $sql .= "AND DATE(A.CPED_FEC_PED) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "'  ";
+        }else{
+            $sql .= "A.CPED_EST_LOG<>'' ";
+        }
+        $sql .= "ORDER BY A.CPED_ID DESC LIMIT $limitrowsql";
+
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+
+        return new CArrayDataProvider($rawData, array(
+            'keyField' => 'PedID',
+            'sort' => array(
+                'attributes' => array(
+                    'PedID', 'Numero', 'TieID', 'ValorNeto', 'FechaPedido', 'NombreTienda', 'DireccionTienda', 'NombrePersona', 'Estado'
+                ),
+            ),
+            'totalItemCount' => count($rawData),
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
+        ));
+    }
+    
+    public function despacharPedido($ids) {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $cabFact = $this->buscarCabPedidos($con, $ids);
+            for ($i = 0; $i < sizeof($cabFact); $i++) {
+                $this->actCabPedido($con, $cabFact[$i]['CPED_ID'],'2');//Actualiza Cab de Pedido
+                $this->actTemCabPed($con, $cabFact[$i]['TCPED_ID'],'2');//Actualiza Temporal
+            }
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,10,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+    
+    public function mostrarCabPedido($ids) {
+        $rawData = array();
+        $con = Yii::app()->db;
+        $sql = "SELECT  A.CPED_ID PedID,CONCAT(REPEAT( '0', 9 - LENGTH(A.CPED_ID) ),A.CPED_ID) Numero,
+                        A.CPED_VAL_NET ValorNeto,DATE(A.CPED_FEC_PED) FechaPedido,B.TIE_NOMBRE NombreTienda,
+                        CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) NombrePersona,D.USU_CORREO CorreoPersona,
+                        CONCAT(H.PER_NOMBRE,' ',H.PER_APELLIDO) NombreUser,G.USU_CORREO CorreoUser,
+                        B.TIE_DIRECCION DirTienda,B.TIE_TELEFONO TelTienda,B.TIE_LUG_ENTREGA LugEntrega,
+                        B.TIE_CONTACTO ContactoTienda
+                        FROM " . $con->dbname . ".CAB_PEDIDO A
+                                INNER JOIN " . $con->dbname . ".TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                                INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA C
+                                                INNER JOIN (" . $con->dbname . ".USUARIO D
+                                                                INNER JOIN " . $con->dbname . ".PERSONA E
+                                                                        ON D.PER_ID=E.PER_ID)
+                                                        ON C.USU_ID=D.USU_ID)
+                                        ON C.UTIE_ID=A.UTIE_ID_PED
+                                INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA F
+                                                INNER JOIN (" . $con->dbname . ".USUARIO G
+                                                                INNER JOIN " . $con->dbname . ".PERSONA H
+                                                                        ON G.PER_ID=H.PER_ID)
+                                                        ON F.USU_ID=G.USU_ID)
+                                        ON F.UTIE_ID=A.UTIE_ID
+                WHERE A.CPED_ID=$ids AND CPED_EST_LOG=1;";
+        $rawData = $con->createCommand($sql)->queryRow(); //Recupera Solo 1
+        $con->active = false;
+        return $rawData;
+    }
+    
+    public function mostrarDetPedido($ids) {
+        $rawData = array();
+        $con = Yii::app()->db;
+        $sql = "SELECT A.DPED_ID DetId,A.ART_ID ArtId,A.DPED_CAN_PED Cant,A.DPED_P_VENTA Precio,
+                        A.DPED_T_VENTA TotVta,A.DPED_EST_LOG EstAut,B.COD_ART Codigo,
+                        B.ART_DES_COM Nombre,B.ART_I_M_IVA ImIva
+                        FROM " . $con->dbname . ".DET_PEDIDO A
+                                INNER JOIN " . $con->dbname . ".ARTICULO B
+                                        ON A.ART_ID=B.ART_ID
+                WHERE A.CPED_ID=$ids ";
+        
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
         return $rawData;
