@@ -26,6 +26,9 @@ return array(
     'Failed to send the document, check with your Web Manager.' => 'Error al enviar el documento, consultar con su Administrador Web.',
     'Error document was not found.' => 'Error el documento no se encontró.',
     'Gender xml file correctly.' => 'Error el documento no se encontró.',
+    'Monthly allowance not available.' => 'Cupo mensual no disponible.',
+    'Your store has an available balance:' => 'Su tienda tiene un saldo disponible :',
+    'Set the date range for the store to expired therefore we can not fulfill your order!!!' => 'El rango de fecha establecido para la tienda a expirado por lo tanto no podemos atender su pedido!!!',
     'We can not find the information you are requesting.'=> 'No podemos encontrar los datos que está solicitando.',
     '<strong>Well done!</strong> your order was successfully saved.' => '<strong>Bien Hecho!</strong> Su Orden fue guardada correctamente.',
     

@@ -118,54 +118,46 @@ function buscarDataTienda(ids) {
             ids: ids,
         },
         success: function (data) {
-            $('#lbl_pedido').text('Pedido Nº');
-            $('#lbl_total').text('0.00');
             if (data.status == "OK") {
                 $('#lbl_cupo').text(redondea(data.data['SALDO'], Ndecimal))
-                $("#messageInfo").html(data.message + buttonAlert);
-                alerMessage();
             }
+            $('#lbl_pedido').text('Pedido Nº');
+            $('#lbl_total').text('0.00');
+            
         }
     })
 }
 
 /**************** GUARDAR DATOS PEDIDOS  ******************/
 function guardarListaPedido(accion) {
-    var total = parseFloat($('#lbl_total').text());
-    if ($('#cmb_tienda option:selected').val() != 0 && total > 0) {
-        var cupo = parseFloat($('#lbl_cupo').text());
-        var saldo = cupo - total;//El cupo Disponible - el Total a pedir
-        if (saldo > 0) {
-            var ID = (accion == "Update") ? $('#txth_PedID').val() : 0;
-            var tieId = (accion == "Create") ? $('#cmb_tienda option:selected').val() : ID;//Cuando Es Actualizacion Retorno el Id Cabecera
-            var link = $('#txth_controlador').val() + "/Save";
-            $.ajax({
-                type: 'POST',
-                url: link,
-                data: {
-                    "DTS_LISTA": (accion == "Create") ? listaPedido() : listaPedidoDetTemp(),
-                    "TIE_ID": tieId,
-                    "TOTAL": total,
-                    "ACCION": accion
-                },
-                success: function (data) {
-                    if (data.status == "OK") {
-                        $("#messageInfo").html(data.message + data.documento + buttonAlert);
-                        $('#lbl_pedido').text(data.documento);
-                        alerMessage();
-                    } else {
-                        $("#messageInfo").html(data.message + buttonAlert);
-                        $('#lbl_pedido').text('');
-                        alerMessage();
-                    }
-                },
-                dataType: "json"
-            });
-        }else{
-            alert(mgSaldoNoDis);
-        }
-
-    } else {
+    var total=parseFloat($('#lbl_total').text());
+    if ($('#cmb_tienda option:selected').val()!=0 && total>0 ) {
+        var ID = (accion == "Update") ? $('#txth_PedID').val() : 0;
+        var tieId=(accion == "Create") ?$('#cmb_tienda option:selected').val():ID;//Cuando Es Actualizacion Retorno el Id Cabecera
+        var link = $('#txth_controlador').val() + "/Save";
+        $.ajax({
+            type: 'POST',
+            url: link,
+            data: {
+                "DTS_LISTA": (accion == "Create") ?listaPedido():listaPedidoDetTemp(),
+                "TIE_ID": tieId,
+                "TOTAL": total,
+                "ACCION": accion
+            },
+            success: function (data) {
+                if (data.status == "OK") {
+                    $("#messageInfo").html(data.message+data.documento+buttonAlert);
+                    $('#lbl_pedido').text(data.documento);
+                    alerMessage();
+                } else {
+                    $("#messageInfo").html(data.message+buttonAlert); 
+                    $('#lbl_pedido').text('');
+                    alerMessage();
+                }
+            },
+            dataType: "json"
+        });
+    }else{
         alert(mgDatoNoVal);
     }
 }
@@ -399,29 +391,4 @@ function fun_guardarPedidoAtendido(){
         });
     }
     return true;
-}
-
-
-/************************ BUSCAR PERSONALIZADO PEDIDO A LIQUIDAR *******************/
-function buscarDataliquidar(op){ 
-    var link=$('#txth_controlador').val()+"/BuscaDataLiquidar";
-    $.fn.yiiGridView.update('TbG_PEDIDO', {
-        type: 'POST',
-        url:link,
-        data:{
-            "CONT_BUSCAR": controlBuscarLiquidar(op)
-        }
-    }); 
-}
-
-function controlBuscarLiquidar(op){
-    var buscarArray = new Array();
-    var buscarIndex=new Object();
-    buscarIndex.OP=op;
-    buscarIndex.TIE_ID=$('#cmb_tienda option:selected').val();
-    buscarIndex.EST_LOG=$('#cmb_estado option:selected').val();
-    buscarIndex.F_INI=$('#dtp_fec_ini').val();
-    buscarIndex.F_FIN=$('#dtp_fec_fin').val();
-    buscarArray[0] = buscarIndex;
-    return JSON.stringify(buscarArray);
 }

@@ -118,13 +118,12 @@ function buscarDataTienda(ids) {
             ids: ids,
         },
         success: function (data) {
-            $('#lbl_pedido').text('Pedido Nº');
-            $('#lbl_total').text('0.00');
             if (data.status == "OK") {
                 $('#lbl_cupo').text(redondea(data.data['SALDO'], Ndecimal))
-                $("#messageInfo").html(data.message + buttonAlert);
-                alerMessage();
             }
+            $('#lbl_pedido').text('Pedido Nº');
+            $('#lbl_total').text('0.00');
+            
         }
     })
 }
@@ -162,7 +161,7 @@ function guardarListaPedido(accion) {
                 dataType: "json"
             });
         }else{
-            alert(mgSaldoNoDis);
+            
         }
 
     } else {
@@ -399,29 +398,4 @@ function fun_guardarPedidoAtendido(){
         });
     }
     return true;
-}
-
-
-/************************ BUSCAR PERSONALIZADO PEDIDO A LIQUIDAR *******************/
-function buscarDataliquidar(op){ 
-    var link=$('#txth_controlador').val()+"/BuscaDataLiquidar";
-    $.fn.yiiGridView.update('TbG_PEDIDO', {
-        type: 'POST',
-        url:link,
-        data:{
-            "CONT_BUSCAR": controlBuscarLiquidar(op)
-        }
-    }); 
-}
-
-function controlBuscarLiquidar(op){
-    var buscarArray = new Array();
-    var buscarIndex=new Object();
-    buscarIndex.OP=op;
-    buscarIndex.TIE_ID=$('#cmb_tienda option:selected').val();
-    buscarIndex.EST_LOG=$('#cmb_estado option:selected').val();
-    buscarIndex.F_INI=$('#dtp_fec_ini').val();
-    buscarIndex.F_FIN=$('#dtp_fec_fin').val();
-    buscarArray[0] = buscarIndex;
-    return JSON.stringify(buscarArray);
 }

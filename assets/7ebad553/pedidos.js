@@ -118,13 +118,12 @@ function buscarDataTienda(ids) {
             ids: ids,
         },
         success: function (data) {
-            $('#lbl_pedido').text('Pedido Nº');
-            $('#lbl_total').text('0.00');
             if (data.status == "OK") {
                 $('#lbl_cupo').text(redondea(data.data['SALDO'], Ndecimal))
-                $("#messageInfo").html(data.message + buttonAlert);
-                alerMessage();
             }
+            $('#lbl_pedido').text('Pedido Nº');
+            $('#lbl_total').text('0.00');
+            
         }
     })
 }
@@ -162,7 +161,7 @@ function guardarListaPedido(accion) {
                 dataType: "json"
             });
         }else{
-            alert(mgSaldoNoDis);
+            
         }
 
     } else {

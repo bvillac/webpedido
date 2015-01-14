@@ -120,8 +120,12 @@ class SiteController extends Controller {
             $session = Yii::app()->getSession();
             $idTie = isset($_POST['idTie']) ? $_POST['idTie'] : '';
             $idCli = isset($_POST['idCli']) ? $_POST['idCli'] : '';
+            $nomTie = isset($_POST['idTie']) ? $_POST['nomTie'] : '';
+            $nomCli = isset($_POST['nomCli']) ? $_POST['nomCli'] : '';
             $session->add('TieID', $idTie);
             $session->add('CliID', $idCli);
+            $session->add('TieNom', $nomTie);
+            $session->add('CliNom', $nomCli);
             $arroout = $msg->messageSystem('OK',null,10,null, null);
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);

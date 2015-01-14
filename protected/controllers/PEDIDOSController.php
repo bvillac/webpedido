@@ -218,6 +218,19 @@ class PEDIDOSController extends Controller {
         }
     }
     
+    public function actionBuscaDataLiquidar() {
+        if (Yii::app()->request->isAjaxRequest) {
+            $arrayData = array();
+            $model = new CABPEDIDO;
+            $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
+            $arrayData = $model->mostrarPedidos($contBuscar);
+            $this->renderPartial('_indexGridLiquidar', array(
+                'model' => $arrayData,
+                    ), false, true);
+            return;
+        }
+    }
+    
     public function actionGenerarPdf($ids) {
         try {
             $ids = isset($_GET['ids']) ? base64_decode($_GET['ids']) : NULL;

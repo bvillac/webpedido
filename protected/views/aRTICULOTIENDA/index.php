@@ -21,7 +21,7 @@
         <div class="panel-heading">
             <?php //echo Yii::t('GENERAL', 'List of price') ?>
             <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Save'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'guardarTiendasPrecio("Create")')); ?>
-            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Clear'), array('id' => 'btn_limpiar', 'name' => 'btn_limpiar', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_limpiarServer()')); ?>
+            <?php //echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Clear'), array('id' => 'btn_limpiar', 'name' => 'btn_limpiar', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_limpiarServer()')); ?>
         </div>
         <div class="panel-body">
             <?php $this->renderPartial('_frm_listaPrecio', array('model' => $model)); ?>

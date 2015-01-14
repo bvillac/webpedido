@@ -244,15 +244,48 @@ class TIENDA extends CActiveRecord {
     }
     
     public function recuperarTiendasCupo($id) {
+        $valida = new VSValidador;
+        $msg = new VSexception();
         $con = yii::app()->db;
-        $sql = "SELECT A.TIE_CUPO FROM " . $con->dbname . ".TIENDA A
+        $mensaje = "";
+        //BUSCAR DATOS DE LA TIENDA
+        $sql = "SELECT A.TIE_CUPO,A.FEC_INI_PED,A.FEC_FIN_PED FROM " . $con->dbname . ".TIENDA A
                 WHERE A.TIE_EST_LOG=1 AND A.TIE_ID='$id' ";
         //echo $sql;
-        $rawData = $con->createCommand($sql)->queryRow();//Retorna solo 1
-        $con->active = false;
-        return $rawData;
+        $rawData = $con->createCommand($sql)->queryRow(); //Retorna solo 1
+        $anoMes = date("Y-m-");
+        $dia = date("Y-m-d");
+        $cupo = (float) $rawData["TIE_CUPO"];
+        $f_ini = $anoMes . $valida->ajusteNumDoc($rawData["FEC_INI_PED"], 2);
+        $f_fin = $anoMes . $valida->ajusteNumDoc($rawData["FEC_FIN_PED"], 2);
+        //VERIFICAR FECHA DISPINIBLE DE ACUERDO A RANGO DE FECHAS DE LA TIENDA
+        if ($dia > date($f_ini) AND $dia < date($f_fin)) {//Si esta Dentro del Rango
+            //OBTENER SALDO DISPONIBLE
+            $sql = "SELECT IFNULL(SUM(B.CPED_VAL_NET),0) ValNeto 
+                        FROM VSSEAPEDIDO.CAB_PEDIDO B 
+                WHERE  B.CPED_EST_LOG IN(1,2) AND B.TIE_ID='$id' 
+                        AND DATE(B.CPED_FEC_PED) BETWEEN '$f_ini' AND  '$f_fin' ";
+            //echo $sql;
+            $rawData = $con->createCommand($sql)->queryRow(); //Retorna solo 1
+            $con->active = false;
+
+            $valNeto = (float) $rawData["ValNeto"];
+            $saldo = $cupo - $valNeto; //Saldo Disponible
+            if ($saldo > 0) {
+                $arroout["SALDO"] = $saldo; //Saldo Disonible
+                $mensaje = Yii::t('EXCEPTION', 'Your store has an available balance:').' $ '.$saldo;
+            } else {
+                $arroout["SALDO"] = 0; //No tiene Cupo
+                $mensaje = Yii::t('EXCEPTION', 'Monthly allowance not available.'); //Saldo No Disponible.
+            }
+            
+        }else{//No esta dentro del Rango establecido
+            $arroout["SALDO"] = 0; //No tiene Cupo
+            $mensaje = Yii::t('EXCEPTION', 'Set the date range for the store to expired therefore we can not fulfill your order!!!'); //Saldo No Disponible.
+        }
+        return $msg->messageSystem('OK', null, null, $mensaje, $arroout); //Mensaje Personalizado.
     }
-    
+
     public function removerTienda($ids) {
         $msg= new VSexception();
         $con = Yii::app()->db;
@@ -424,7 +457,7 @@ class TIENDA extends CActiveRecord {
                                         ON A.TIE_ID=B.TIE_ID
                 WHERE A.UTIE_EST_LOG=1 AND A.ROL_ID=$rol_Id AND USU_ID=$usu_Id ";
         //echo $sql;
-        $rawData =$con->createCommand($sql)->query();
+        $rawData =$con->createCommand($sql)->queryAll();
         $con->active = false;
         return $rawData;
     }
@@ -450,12 +483,12 @@ class TIENDA extends CActiveRecord {
             'keyField' => 'ARTIE_ID',
             'sort' => array(
                 'attributes' => array(
-                    'Codigo', 'Nombre', 'Estado',
+                    //'Codigo', 'Nombre', 'Estado',
                 ),
             ),
             'totalItemCount' => count($rawData),
             'pagination' => array(
-                'pageSize' => Yii::app()->params['pageSize'],
+                //'pageSize' => Yii::app()->params['pageSize'],
             ),
         ));
     }

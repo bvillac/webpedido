@@ -12,7 +12,7 @@
 $this->widget('zii.widgets.grid.CGridView', array(
     'id' => 'TbG_PEDIDO',
     'dataProvider' => $model,
-    //'template' => "{items}",
+    'template' => "{items}",
     'htmlOptions' => array('style' => 'cursor: pointer;'),
     //'selectableRows' => 2,
     //'selectionChanged' => 'verificaAcciones',

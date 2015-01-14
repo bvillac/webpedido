@@ -4,7 +4,7 @@ $valida = new VSValidador();
 ?>
 <div class="col-lg-10">
     <?php
-    $this->renderPartial('_frm_dataPedido', array(
+    $this->renderPartial('_frm_dataLiquidar', array(
         'tienda' => $tienda,
         'estado' => $estado
     ));

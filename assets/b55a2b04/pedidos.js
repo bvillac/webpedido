@@ -118,13 +118,12 @@ function buscarDataTienda(ids) {
             ids: ids,
         },
         success: function (data) {
-            $('#lbl_pedido').text('Pedido Nº');
-            $('#lbl_total').text('0.00');
             if (data.status == "OK") {
                 $('#lbl_cupo').text(redondea(data.data['SALDO'], Ndecimal))
-                $("#messageInfo").html(data.message + buttonAlert);
-                alerMessage();
             }
+            $('#lbl_pedido').text('Pedido Nº');
+            $('#lbl_total').text('0.00');
+            
         }
     })
 }
@@ -162,7 +161,7 @@ function guardarListaPedido(accion) {
                 dataType: "json"
             });
         }else{
-            alert(mgSaldoNoDis);
+            
         }
 
     } else {
@@ -404,7 +403,7 @@ function fun_guardarPedidoAtendido(){
 
 /************************ BUSCAR PERSONALIZADO PEDIDO A LIQUIDAR *******************/
 function buscarDataliquidar(op){ 
-    var link=$('#txth_controlador').val()+"/BuscaDataLiquidar";
+    var link=$('#txth_controlador').val()+"/BuscaDataIndex";
     $.fn.yiiGridView.update('TbG_PEDIDO', {
         type: 'POST',
         url:link,

@@ -80,6 +80,7 @@
                 <!-- /.dropdown -->
                 
                 <!-- /.dropdown -->
+                <label class="text-info"><?php echo Yii::app()->getSession()->get('CliNom', FALSE).' => '.Yii::app()->getSession()->get('TieNom', FALSE); ?> </label>
                 <label><?php echo Yii::app()->getSession()->get('RolNombre', FALSE); ?>  </label>
                 <label><?php echo Yii::t('GENERAL', 'User') ?>:</label>
                 <label><?php echo Yii::app()->getSession()->get('user_name', FALSE); ?></label>

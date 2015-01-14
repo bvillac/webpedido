@@ -89,7 +89,6 @@ function setDatosTienda(){
                 "idTie": idTie,
                 "idCli": idCli,
                 "nomTie": $('#cmb_tienda option:selected').text(),
-                "nomCli": $('#cmb_cliente option:selected').text(),
             },
             success: function (data) {
                 if (data.status == "OK") {

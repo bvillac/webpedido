@@ -162,7 +162,7 @@ function guardarListaPedido(accion) {
                 dataType: "json"
             });
         }else{
-            alert(mgSaldoNoDis);
+            
         }
 
     } else {
