@@ -32,7 +32,10 @@ class VSacceso {
         $auxCierre=0;
         $auxInicio3=0;
         $auxCierre3=0;
-        $menulat='';
+        //$menulat='<li><a href="site/index.php"><i class="fa fa-dashboard fa-fw"></i>'.Yii::t('MENU','Begin').'</a></li>';
+        $menulat='<li>';
+            $menulat.=CHtml::link(Yii::t('MENU','Begin'),array('/site/index'),array('class' => 'fa fa-dashboard fa-fw'));;
+        $menulat.='</li>';
         for ($i = 0; $i < count($rawData); $i++) {
             if($auxInicio!=$rawData[$i]['MOD_ID']){
                 $auxInicio=$rawData[$i]['MOD_ID'];

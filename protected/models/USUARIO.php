@@ -118,15 +118,49 @@ class USUARIO extends CActiveRecord {
         return parent::model($className);
     }
     
-    public function recuperarTiendasUsuario($ids) {
+    public function recuperarTiendasUsuario($idstie) {
+        $ids=Yii::app()->getSession()->get('user_id', FALSE);
         $con = yii::app()->db;
-        $sql = "SELECT B.TIE_ID,C.TIE_NOMBRE FROM VSSEAPEDIDO.USUARIO A
-                        INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA B
-                                        INNER JOIN " . $con->dbname . ".TIENDA C
+//        $sql = "SELECT B.TIE_ID,C.TIE_NOMBRE "
+//                . " FROM " . $con->dbname . ".USUARIO A
+//                        INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA B
+//                                        INNER JOIN " . $con->dbname . ".TIENDA C
+//                                                ON B.TIE_ID=C.TIE_ID)
+//                                ON A.USU_ID=B.USU_ID
+//                WHERE A.USU_EST_LOG=1 ";
+//        $sql .= ($ids != "") ? "AND A.USU_ID=$ids " : " ";
+
+        $sql = "SELECT B.TIE_ID,B.TIE_NOMBRE 
+                        FROM VSSEAPEDIDO.CLIENTE A
+                                INNER JOIN (VSSEAPEDIDO.TIENDA B
+                                                INNER JOIN VSSEAPEDIDO.USUARIO_TIENDA C
+                                                        ON B.TIE_ID=C.TIE_ID)
+                                        ON A.CLI_ID=B.CLI_ID
+                WHERE A.CLI_EST_LOG=1 ";
+        $sql .= ($ids != "") ? "AND C.USU_ID=$ids " : "";
+        $sql .= ($idstie != "") ? "AND A.CLI_ID=$idstie " : "";
+        
+        //echo $sql;
+        $rawData =$con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    }
+    
+    public function recuperarClienteUsuario() {
+        $ids=Yii::app()->getSession()->get('user_id', FALSE);
+        $con = yii::app()->db;  
+        $sql = "SELECT DISTINCT(D.CLI_ID) CLI_ID,D.CLI_NOMBRE 
+                        FROM " . $con->dbname . ".USUARIO A
+                                INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA B
+                                        INNER JOIN (" . $con->dbname . ".TIENDA C
+                                                INNER JOIN " . $con->dbname . ".CLIENTE D
+                                                        ON D.CLI_ID=C.CLI_ID)
                                                 ON B.TIE_ID=C.TIE_ID)
                                 ON A.USU_ID=B.USU_ID
-                WHERE A.USU_EST_LOG=1 AND A.USU_ID=$ids;";
-        $rawData =$con->createCommand($sql)->query();
+                WHERE A.USU_EST_LOG=1 ";
+        $sql .= ($ids != "") ? "AND A.USU_ID=$ids " : " ";
+        //echo $sql;
+        $rawData =$con->createCommand($sql)->queryAll();
         $con->active = false;
         return $rawData;
     }

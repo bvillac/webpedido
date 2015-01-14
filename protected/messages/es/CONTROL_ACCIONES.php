@@ -9,6 +9,7 @@ return array(
     'Add' => 'Agregar',
     'Approve' => 'Aprobar',
     'Audit' => 'Auditar',
+    'Accept' => 'Aceptar',
     'Cancel' => 'Anular',
     'Back' => 'Atrás',
     'Clear' => 'Limpiar',

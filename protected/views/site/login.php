@@ -2,13 +2,13 @@
 /* @var $this SiteController */
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
+//$this->renderPartial('_include');
 
 $this->pageTitle = Yii::app()->name . ' - Login';
 $this->breadcrumbs = array(
     'Login',
 );
 ?>
-
 <!--<p><?php //echo Yii::t('GENERAL', 'Please fill out the following form with your login credentials:')   ?></p>-->
 <div class="form">
     <?php
@@ -29,7 +29,7 @@ $this->breadcrumbs = array(
         echo $form->textField($model, 'username', array(
             'class' => 'form-control',
             'placeholder' => Yii::t('TIENDA', 'E-mail'),
-            'onkeydown' => "fun_loginTienda(isEnter(event),this)",
+            //'onkeydown' => "fun_loginTienda(isEnter(event),this)",
         ));
         ?>
         <?php echo $form->error($model, 'username'); ?>
@@ -59,48 +59,3 @@ $this->breadcrumbs = array(
 
     <?php $this->endWidget(); ?>
 </div><!-- form -->
-
-<!--<script>
-    function isEnter(e) {
-        //retornar verdadereo si presiona Enter
-        var key;
-        if (window.event) // IE
-        {
-            key = e.keyCode;
-            if (key == 13 || key == 9) {
-                return true;
-            }
-        } else if (e.which) { // Netscape/Firefox/Opera
-            key = e.which;
-            // NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57	
-            //var key = nav4 ? evt.which : evt.keyCode;	
-            if (key == 13 || key == 9) {
-                return true;
-            }
-        }
-        return false;
-    }
-    function fun_loginTienda(valor, control) {
-        if (control.value.length > 0) {
-            var link = "site/LoginTienda";
-            $.ajax({
-                type: 'POST',
-                dataType: 'json',
-                url: link,
-                data: {
-                    "DATA": control.value,
-                },
-                success: function (data) {
-                    if (data.status == "OK") {
-                        //alert('hola');
-                        //$("#messageInfo").html(data.message + buttonAlert);
-                        //alerMessage();
-                    } else {
-                        //$("#messageInfo").html(data.message + buttonAlert);
-                        //alerMessage();
-                    }
-                },
-            });
-        }
-    }
-</script>-->

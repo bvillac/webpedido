@@ -3,7 +3,8 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
-
+<?php
+/*
 <h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
 <p>Congratulations! You have successfully created your Yii application.</p>
@@ -18,3 +19,16 @@ $this->pageTitle=Yii::app()->name;
 the <a href="http://www.yiiframework.com/doc/">documentation</a>.
 Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
 should you have any questions.</p>
+ */
+?>
+
+<?php echo $this->renderPartial('_include'); ?>
+
+<div class="col-lg-5">
+    <div class="panel panel-default">
+        <div class="panel-heading"><?php echo Yii::t('GENERAL', 'Data Start') ?></div>
+        <div class="panel-body">
+            <?php $this->renderPartial('_frm_dataIndex', array('cliente' => $cliente,'tienda' => $tienda)); ?>
+        </div>
+    </div>
+</div>

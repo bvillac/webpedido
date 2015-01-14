@@ -27,7 +27,12 @@ class SiteController extends Controller {
     public function actionIndex() {
         // renders the view file 'protected/views/site/index.php'
         // using the default layout 'protected/views/layouts/main.php'
-        $this->render('index');
+        $model=new USUARIO;
+        //$this->render('index');
+        $this->render('index', array(
+            'cliente' => $model->recuperarClienteUsuario(),
+            'tienda' => $model->recuperarTiendasUsuario('0'),
+        ));
     }
 
     /**
@@ -100,11 +105,31 @@ class SiteController extends Controller {
     public function actionLoginTienda() {
         if (Yii::app()->request->isPostRequest) {
             $model = new USUARIO;
-            $tienda = isset($_POST['DATA']) ? $_POST['DATA'] :'';
-            $arroout = $model->recuperarTiendasUsuario($tienda);
+            $user = isset($_POST['DATA']) ? $_POST['DATA'] :'';
+            $arroout = $model->recuperarTiendasUsuario($user);
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);
             return;
+        }
+    }
+    
+    public function actionLoginData() {
+        if (Yii::app()->request->isPostRequest) {
+            $msg = new VSexception();
+            $model=new USUARIO;
+            $session = Yii::app()->getSession();
+            $idTie = isset($_POST['idTie']) ? $_POST['idTie'] : '';
+            $idCli = isset($_POST['idCli']) ? $_POST['idCli'] : '';
+            $session->add('TieID', $idTie);
+            $session->add('CliID', $idCli);
+            $arroout = $msg->messageSystem('OK',null,10,null, null);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+            return;
+            //$this->render('index', array(
+            //    'cliente' => $model->recuperarClienteUsuario(),
+            //    'tienda' => $model->recuperarTiendasUsuario($idCli),
+            //));
         }
     }
 

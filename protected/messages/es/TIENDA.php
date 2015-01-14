@@ -18,6 +18,7 @@ return array(
     'Cost' => 'Precio',
     'Client' => 'Cliente',
     'Contact' => 'Contacto',
+    'Customer' => 'Cliente',
     'Stores' => 'Tienda',
     'Phone' => 'Teléfono',
     'Place of delivery' => 'Lugar/Entrega',

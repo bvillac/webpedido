@@ -44,7 +44,8 @@ class UserIdentity extends CUserIdentity
                 
                 if($user===null)
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		elseif($this->password!==$user->USU_PASSWORD)
+		//elseif($this->password!==$user->USU_PASSWORD) Modo Original
+                elseif(md5 ($this->password)!==$user->USU_PASSWORD)//Validacion Clave con MD5
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
                 else{
                     //yii::app()->user->_id;
@@ -60,8 +61,8 @@ class UserIdentity extends CUserIdentity
                     //Yii::app()->getSession()->get('user_name', FALSE);
                     //INFORMACION EMPRESAS
                     
-                    $session->add('TieID', '1');
-                    $session->add('CliID', '2');
+                    //$session->add('TieID', '1');
+                    //$session->add('CliID', '2');
                    
                     
                     $tipoUser=$empresa->buscarTipoUser($user->USU_ID); 
