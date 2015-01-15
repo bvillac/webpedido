@@ -59,6 +59,7 @@ return array(
     'From'  => 'Desde',
     'To'  => 'Hasta',
     'Monthly sales per store.' => 'Ventas Mensuales por Tienda',
+    'Items per store' => 'Items por Tienda',
     
 );
 ?>

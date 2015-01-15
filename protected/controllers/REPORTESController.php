@@ -3,7 +3,11 @@
 class REPORTESController extends Controller {
 
     public function actionIndex() {
-        $this->render('index');
+        $tienda=new TIENDA;
+        $this->render('index', array(
+             'tienda' => $tienda->recuperarTiendasRol(),
+            //'DetPed' => $model->detallePedidoTemp($ids),
+        ));
     }
 
     public function actionGenerarPdf($ids) {
@@ -52,6 +56,27 @@ class REPORTESController extends Controller {
                         'titulo' => Yii::t('TIENDA', 'Monthly sales per store.'),
                             ), true)); //hacemos un render partial a una vista preparada, en este caso es la vista docPDF
             $mPDF1->Output(Yii::t('TIENDA', 'Monthly sales per store.')."-".date('YmdHis'), 'I');
+            //exit;
+        } catch (Exception $e) {
+            $this->errorControl($e);
+        }
+    }
+    public function actionRep_ItemTienda($data) {
+        try {
+            $control = base64_decode($data);
+            print_r($control);
+            $rep=new REPORTES;
+            $modelo = new CABPEDIDO;
+            $report = $modelo->Rep_ItemTienda($control);
+            $mPDF1=$rep->crearBaseReport();
+            $mPDF1->SetTitle(Yii::t('TIENDA', 'Items per store'));
+            $mPDF1->WriteHTML(
+                    $this->renderPartial('itemTienda_Rep', array(
+                        'data' => $report,
+                        'control' => $control,
+                        'titulo' => Yii::t('TIENDA', 'Items per store'),
+                            ), true)); //hacemos un render partial a una vista preparada, en este caso es la vista docPDF
+            $mPDF1->Output(Yii::t('TIENDA', 'Items per store')."-".date('YmdHis'), 'I');
             //exit;
         } catch (Exception $e) {
             $this->errorControl($e);

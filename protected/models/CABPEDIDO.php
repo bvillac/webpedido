@@ -418,11 +418,13 @@ class CABPEDIDO extends CActiveRecord {
     
     /**************************** REPORTES CONSULTAS ***************************/
     public function Rep_VentMax($control) {
+        $objPed=new TEMP_CABPEDIDO;
         $data = explode(",",$control);//Recibe Datos y los separa
         $f_ini=$data[0];//Fecha Inicio
         $f_fin=$data[1];//Fecha Inicio
         $rawData = array();
         $con = Yii::app()->db;
+        $idsTie=$objPed->recuperarIdsTiendasRol($con);
         $sql = "SELECT IFNULL(SUM(A.CPED_VAL_NET),0) ValorNeto,B.TIE_NOMBRE NombreTienda,
                         A.TIE_ID TieID,B.TIE_CUPO Cupo
                         FROM " . $con->dbname . ".CAB_PEDIDO A
@@ -432,7 +434,38 @@ class CABPEDIDO extends CActiveRecord {
         if (!empty($control)) {//Verifica la Opcion op para los filtros
             $sql .= "AND DATE(A.CPED_FEC_PED) BETWEEN '" . date("Y-m-d", strtotime($f_ini)) . "' AND '" . date("Y-m-d", strtotime($f_fin)) . "'  ";
         }
+        $sqlTieId=($idsTie!='') ? "AND A.TIE_ID IN ($idsTie)" : "";
         $sql .= "GROUP BY A.TIE_ID ORDER BY  ValorNeto Desc ";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    }
+    
+    public function Rep_ItemTienda($control) {
+        $objPed=new TEMP_CABPEDIDO;
+        $data = explode(",",$control);//Recibe Datos y los separa
+        $f_ini=$data[0];//Fecha Inicio
+        $f_fin=$data[1];//Fecha Inicio
+        $tienda=$data[2];//Id Tienda Personalizado
+        $rawData = array();
+        $con = Yii::app()->db;
+        $idsTie=$objPed->recuperarIdsTiendasRol($con);
+        
+        $sql = "SELECT B.COD_ART CodArt,B.ART_DES_COM Nombre,IFNULL(SUM(A.DPED_CAN_PED),0) CantPed,
+                        C.TIE_NOMBRE Tienda
+                        FROM " . $con->dbname . ".DET_PEDIDO A
+                                INNER JOIN " . $con->dbname . ".ARTICULO B
+                                        ON A.ART_ID=B.ART_ID
+                                INNER JOIN " . $con->dbname . ".TIENDA C
+                                        ON A.TIE_ID=C.TIE_ID
+                WHERE A.DPED_EST_LOG IN (1,2,3)  ";
+        //AND A.TIE_ID=1
+        //if (!empty($control)) {//Verifica la Opcion op para los filtros
+            $sql .= "AND DATE(A.DPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($f_ini)) . "' AND '" . date("Y-m-d", strtotime($f_fin)) . "'  ";
+        //}
+        $sql .=($tienda=='0') ? "AND A.TIE_ID IN ($idsTie)" : " AND A.TIE_ID=$tienda ";
+        $sql .= "GROUP BY A.ART_ID,A.TIE_ID ORDER BY  CantPed Desc  ";
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
