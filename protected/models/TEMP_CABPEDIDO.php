@@ -271,7 +271,8 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         $con = Yii::app()->db;
         $trans = $con->beginTransaction();
         try {
-            $sql = "UPDATE " . $con->dbname . ".TEMP_CAB_PEDIDO SET TCPED_EST_LOG='4' WHERE TCPED_ID IN($ids)";
+            $sql = "UPDATE " . $con->dbname . ".TEMP_CAB_PEDIDO SET TCPED_EST_LOG='4' "
+                    . "WHERE TCPED_ID IN($ids) AND TCPED_EST_LOG IN(1)";//Anula solo los peidos
             $comando = $con->createCommand($sql);
             $comando->execute();
             $trans->commit();

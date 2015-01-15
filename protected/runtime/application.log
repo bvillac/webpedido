@@ -3834,3 +3834,301 @@ Stack trace:
 REQUEST_URI=/webpedido/pEDIDOS/liquidar.jsp
 HTTP_REFERER=http://localhost/webpedido/pEDIDOS/liquidar.jsp
 ---
+2015/01/14 18:02:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "Reportes/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('Reportes/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/Reportes/index.jsp
+HTTP_REFERER=http://localhost/webpedido/
+---
+2015/01/14 18:03:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "Reportes/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('Reportes/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/Reportes/index.jsp
+HTTP_REFERER=http://localhost/webpedido/Reportes/index.jsp
+---
+2015/01/14 18:03:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "Reportes/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('Reportes/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/Reportes/index.jsp
+HTTP_REFERER=http://localhost/webpedido/Reportes/index.jsp
+---
+2015/01/14 18:07:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "Reportes/index"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('Reportes/index')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/Reportes/index.jsp
+HTTP_REFERER=http://localhost/webpedido/Reportes/index.jsp
+---
+2015/01/14 19:21:24 [error] [system.db.CDbCommand] CDbCommand::fetch() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND CPED_EST_LOG IN (1,2,3,4)' at line 22. La sentencia SQL ejecutada fue: SELECT  A.CPED_ID PedID,CONCAT(REPEAT( '0', 9 - LENGTH(A.CPED_ID) ),A.CPED_ID) Numero,
+                        A.CPED_VAL_NET ValorNeto,DATE(A.CPED_FEC_PED) FechaPedido,B.TIE_NOMBRE NombreTienda,
+                        CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) NombrePersona,D.USU_CORREO CorreoPersona,
+                        CONCAT(H.PER_NOMBRE,' ',H.PER_APELLIDO) NombreUser,G.USU_CORREO CorreoUser,
+                        B.TIE_DIRECCION DirTienda,B.TIE_TELEFONO TelTienda,B.TIE_LUG_ENTREGA LugEntrega,
+                        B.TIE_CONTACTO ContactoTienda
+                        FROM VSSEAPEDIDO.CAB_PEDIDO A
+                                INNER JOIN VSSEAPEDIDO.TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                                INNER JOIN (VSSEAPEDIDO.USUARIO_TIENDA C
+                                                INNER JOIN (VSSEAPEDIDO.USUARIO D
+                                                                INNER JOIN VSSEAPEDIDO.PERSONA E
+                                                                        ON D.PER_ID=E.PER_ID)
+                                                        ON C.USU_ID=D.USU_ID)
+                                        ON C.UTIE_ID=A.UTIE_ID_PED
+                                INNER JOIN (VSSEAPEDIDO.USUARIO_TIENDA F
+                                                INNER JOIN (VSSEAPEDIDO.USUARIO G
+                                                                INNER JOIN VSSEAPEDIDO.PERSONA H
+                                                                        ON G.PER_ID=H.PER_ID)
+                                                        ON F.USU_ID=G.USU_ID)
+                                        ON F.UTIE_ID=A.UTIE_ID
+                WHERE A.CPED_ID= AND CPED_EST_LOG IN (1,2,3,4).
+in /var/www/html/webpedido/protected/models/CABPEDIDO.php (397)
+in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (238)
+in /var/www/html/webpedido/index.php (13)
+2015/01/14 19:21:24 [error] [exception.CHttpException.42000] exception 'CHttpException' with message 'Petición inválida. Por favor, no repita esta solicitud de nuevo.' in /var/www/html/webpedido/protected/components/Controller.php:66
+Stack trace:
+#0 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(261): Controller->errorControl(Object(CDbException))
+#1 [internal function]: PEDIDOSController->actionGenerarPdf('')
+#2 /opt/sisweb/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PEDIDOSController), Array)
+#3 /opt/sisweb/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PEDIDOSController), Object(ReflectionMethod), Array)
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/Generar...')
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/webpedido/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/webpedido/pEDIDOS/GenerarPdf.jsp?ids=
+HTTP_REFERER=http://localhost/webpedido/rEPORTES/index.jsp
+---
+2015/01/14 19:22:42 [error] [system.db.CDbCommand] CDbCommand::fetch() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND CPED_EST_LOG IN (1,2,3,4)' at line 22. La sentencia SQL ejecutada fue: SELECT  A.CPED_ID PedID,CONCAT(REPEAT( '0', 9 - LENGTH(A.CPED_ID) ),A.CPED_ID) Numero,
+                        A.CPED_VAL_NET ValorNeto,DATE(A.CPED_FEC_PED) FechaPedido,B.TIE_NOMBRE NombreTienda,
+                        CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) NombrePersona,D.USU_CORREO CorreoPersona,
+                        CONCAT(H.PER_NOMBRE,' ',H.PER_APELLIDO) NombreUser,G.USU_CORREO CorreoUser,
+                        B.TIE_DIRECCION DirTienda,B.TIE_TELEFONO TelTienda,B.TIE_LUG_ENTREGA LugEntrega,
+                        B.TIE_CONTACTO ContactoTienda
+                        FROM VSSEAPEDIDO.CAB_PEDIDO A
+                                INNER JOIN VSSEAPEDIDO.TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                                INNER JOIN (VSSEAPEDIDO.USUARIO_TIENDA C
+                                                INNER JOIN (VSSEAPEDIDO.USUARIO D
+                                                                INNER JOIN VSSEAPEDIDO.PERSONA E
+                                                                        ON D.PER_ID=E.PER_ID)
+                                                        ON C.USU_ID=D.USU_ID)
+                                        ON C.UTIE_ID=A.UTIE_ID_PED
+                                INNER JOIN (VSSEAPEDIDO.USUARIO_TIENDA F
+                                                INNER JOIN (VSSEAPEDIDO.USUARIO G
+                                                                INNER JOIN VSSEAPEDIDO.PERSONA H
+                                                                        ON G.PER_ID=H.PER_ID)
+                                                        ON F.USU_ID=G.USU_ID)
+                                        ON F.UTIE_ID=A.UTIE_ID
+                WHERE A.CPED_ID= AND CPED_EST_LOG IN (1,2,3,4).
+in /var/www/html/webpedido/protected/models/CABPEDIDO.php (397)
+in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (238)
+in /var/www/html/webpedido/index.php (13)
+2015/01/14 19:22:42 [error] [exception.CHttpException.42000] exception 'CHttpException' with message 'Petición inválida. Por favor, no repita esta solicitud de nuevo.' in /var/www/html/webpedido/protected/components/Controller.php:66
+Stack trace:
+#0 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(261): Controller->errorControl(Object(CDbException))
+#1 [internal function]: PEDIDOSController->actionGenerarPdf('')
+#2 /opt/sisweb/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(PEDIDOSController), Array)
+#3 /opt/sisweb/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PEDIDOSController), Object(ReflectionMethod), Array)
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#6 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/Generar...')
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/webpedido/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/webpedido/pEDIDOS/GenerarPdf.jsp?ids=
+HTTP_REFERER=http://localhost/webpedido/rEPORTES/index.jsp
+---
+2015/01/14 19:23:33 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/Generar...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/webpedido/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/webpedido/pEDIDOS/GenerarPdf.jsp
+HTTP_REFERER=http://localhost/webpedido/rEPORTES/index.jsp
+---
+2015/01/14 19:43:58 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('GenerarPdf')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/Generar...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/webpedido/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/webpedido/pEDIDOS/GenerarPdf.jsp
+HTTP_REFERER=http://localhost/webpedido/rEPORTES/index.jsp
+---
+2015/01/14 19:44:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "ventasMes_Rep" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('ventasMes_Rep')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('ventasMes_Rep')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('rEPORTES/ventas...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/webpedido/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/webpedido/rEPORTES/ventasMes_Rep.jsp
+HTTP_REFERER=http://localhost/webpedido/rEPORTES/index.jsp
+---
+2015/01/14 19:46:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "ventasMes_Rep" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('ventasMes_Rep')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('ventasMes_Rep')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('rEPORTES/ventas...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/webpedido/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/webpedido/rEPORTES/ventasMes_Rep.jsp
+HTTP_REFERER=http://localhost/webpedido/rEPORTES/index.jsp
+---
+2015/01/14 19:47:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "ventasMes_Rep"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('ventasMes_Rep')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/ventasMes_Rep.jsp
+HTTP_REFERER=http://localhost/webpedido/rEPORTES/index.jsp
+---
+2015/01/14 19:48:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "ventasMes_Rep"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('ventasMes_Rep')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/ventasMes_Rep.jsp
+HTTP_REFERER=http://localhost/webpedido/rEPORTES/index.jsp
+---
+2015/01/14 21:50:04 [error] [php] Undefined variable: dtp_fec_fin (/var/www/html/webpedido/protected/views/rEPORTES/_frm_dataRepo1.php:60)
+Stack trace:
+#0 /opt/sisweb/web/CController.php(869): REPORTESController->renderFile()
+#1 /var/www/html/webpedido/protected/views/rEPORTES/index.php(7): REPORTESController->renderPartial()
+#2 /opt/sisweb/web/CBaseController.php(126): require()
+#3 /opt/sisweb/web/CBaseController.php(95): REPORTESController->renderInternal()
+#4 /opt/sisweb/web/CController.php(869): REPORTESController->renderFile()
+#5 /opt/sisweb/web/CController.php(782): REPORTESController->renderPartial()
+#6 /var/www/html/webpedido/protected/controllers/REPORTESController.php(6): REPORTESController->render()
+#7 /opt/sisweb/web/actions/CInlineAction.php(49): REPORTESController->actionIndex()
+#8 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#9 /opt/sisweb/web/CController.php(286): REPORTESController->runAction()
+#10 /opt/sisweb/web/CController.php(265): REPORTESController->runActionWithFilters()
+#11 /opt/sisweb/web/CWebApplication.php(282): REPORTESController->run()
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/rEPORTES/index.jsp
+in /var/www/html/webpedido/protected/views/rEPORTES/_frm_dataRepo1.php (60)
+in /var/www/html/webpedido/protected/views/rEPORTES/index.php (7)
+in /var/www/html/webpedido/protected/controllers/REPORTESController.php (6)
+2015/01/14 22:27:28 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('Rep_VentMax')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('rEPORTES/Rep_Ve...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/webpedido/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/webpedido/rEPORTES/Rep_VentMax?id=TWFyaWE=
+HTTP_REFERER=http://localhost/webpedido/rEPORTES/index.jsp
+---
+2015/01/14 22:27:34 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('Rep_VentMax')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('rEPORTES/Rep_Ve...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/webpedido/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/webpedido/rEPORTES/Rep_VentMax?id=TWFyaWE=
+HTTP_REFERER=http://localhost/webpedido/rEPORTES/index.jsp
+---
+2015/01/14 22:27:59 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('Rep_VentMax')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('rEPORTES/Rep_Ve...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/webpedido/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/webpedido/rEPORTES/Rep_VentMax.jsp
+HTTP_REFERER=http://localhost/webpedido/rEPORTES/index.jsp
+---
+2015/01/14 22:29:10 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('Rep_VentMax')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('rEPORTES/Rep_Ve...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/webpedido/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/webpedido/rEPORTES/Rep_VentMax?data=TWFyaWE=
+HTTP_REFERER=http://localhost/webpedido/rEPORTES/index.jsp
+---
+2015/01/14 22:30:24 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('Rep_VentMax')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('rEPORTES/Rep_Ve...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/webpedido/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/webpedido/rEPORTES/Rep_VentMax?data=TWFyaWE=
+HTTP_REFERER=http://localhost/webpedido/rEPORTES/index.jsp
+---
+2015/01/14 22:32:28 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('Rep_VentMax')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('rEPORTES/Rep_Ve...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/webpedido/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/webpedido/rEPORTES/Rep_VentMax.jsp
+HTTP_REFERER=http://localhost/webpedido/rEPORTES/index.jsp
+---
+2015/01/14 22:32:39 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /opt/sisweb/web/CController.php:336
+Stack trace:
+#0 /opt/sisweb/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#2 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 /opt/sisweb/web/CWebApplication.php(282): CController->run('Rep_VentMax')
+#4 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('rEPORTES/Rep_Ve...')
+#5 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#6 /var/www/html/webpedido/index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/webpedido/rEPORTES/Rep_VentMax.jsp
+HTTP_REFERER=http://localhost/webpedido/rEPORTES/index.jsp
+---

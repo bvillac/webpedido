@@ -393,7 +393,7 @@ class CABPEDIDO extends CActiveRecord {
                                                                         ON G.PER_ID=H.PER_ID)
                                                         ON F.USU_ID=G.USU_ID)
                                         ON F.UTIE_ID=A.UTIE_ID
-                WHERE A.CPED_ID=$ids AND CPED_EST_LOG=1;";
+                WHERE A.CPED_ID=$ids AND CPED_EST_LOG IN (1,2,3,4)";
         $rawData = $con->createCommand($sql)->queryRow(); //Recupera Solo 1
         $con->active = false;
         return $rawData;
@@ -410,6 +410,30 @@ class CABPEDIDO extends CActiveRecord {
                                         ON A.ART_ID=B.ART_ID
                 WHERE A.CPED_ID=$ids ";
         
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    }
+    
+    
+    /**************************** REPORTES CONSULTAS ***************************/
+    public function Rep_VentMax($control) {
+        $data = explode(",",$control);//Recibe Datos y los separa
+        $f_ini=$data[0];//Fecha Inicio
+        $f_fin=$data[1];//Fecha Inicio
+        $rawData = array();
+        $con = Yii::app()->db;
+        $sql = "SELECT IFNULL(SUM(A.CPED_VAL_NET),0) ValorNeto,B.TIE_NOMBRE NombreTienda,
+                        A.TIE_ID TieID,B.TIE_CUPO Cupo
+                        FROM " . $con->dbname . ".CAB_PEDIDO A
+                                INNER JOIN " . $con->dbname . ".TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                WHERE A.CPED_EST_LOG IN (1,2,3,4)  ";
+        if (!empty($control)) {//Verifica la Opcion op para los filtros
+            $sql .= "AND DATE(A.CPED_FEC_PED) BETWEEN '" . date("Y-m-d", strtotime($f_ini)) . "' AND '" . date("Y-m-d", strtotime($f_fin)) . "'  ";
+        }
+        $sql .= "GROUP BY A.TIE_ID ORDER BY  ValorNeto Desc ";
+        //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
         return $rawData;

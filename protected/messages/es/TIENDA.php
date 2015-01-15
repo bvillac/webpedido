@@ -55,6 +55,10 @@ return array(
     'Unit price' => 'P.Unitario',
     'Total' => 'Total',
     'Description' => 'Descripción',
+    /**** REPORTE *****/
+    'From'  => 'Desde',
+    'To'  => 'Hasta',
+    'Monthly sales per store.' => 'Ventas Mensuales por Tienda',
     
 );
 ?>
