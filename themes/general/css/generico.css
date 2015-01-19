@@ -184,9 +184,16 @@ and open the template in the editor.
     vertical-align:middle;
     display: table-cell;
 }
+
+
 .txt_TextboxNumber2{
     width:70px !important; 
     text-align: right;
+}
+.rowTdCenter{
+    //vertical-align:central;
+    //display: table-cell;
+    text-align: center;
 }
 
 /* Clase para tablas en fomrularios */

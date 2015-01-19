@@ -16,5 +16,5 @@
     <?php echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Edit'),array('uSUARIO/update'), array('id' => 'btn_Update', 'name' => 'btn_Update','title' => Yii::t('CONTROL_ACCIONES', 'Edit'),'class' => 'btn btn-primary btn-sm disabled','onclick' => 'fun_Update()'));    ?>
 </div>
 <div class="col-lg-12">
-    <?php echo $this->renderPartial('_indexGrid', array('model' => $model)); ?>
+    <?php echo $this->renderPartial('_indexGridTienda', array('model' => $model)); ?>
 </div>

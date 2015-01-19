@@ -117,9 +117,9 @@ class USUARIO extends CActiveRecord {
     public static function model($className = __CLASS__) {
         return parent::model($className);
     }
-    
+
     public function recuperarTiendasUsuario($idstie) {
-        $ids=Yii::app()->getSession()->get('user_id', FALSE);
+        $ids = Yii::app()->getSession()->get('user_id', FALSE);
         $con = yii::app()->db;
 //        $sql = "SELECT B.TIE_ID,C.TIE_NOMBRE "
 //                . " FROM " . $con->dbname . ".USUARIO A
@@ -139,16 +139,16 @@ class USUARIO extends CActiveRecord {
                 WHERE A.CLI_EST_LOG=1 ";
         $sql .= ($ids != "") ? "AND C.USU_ID=$ids " : "";
         $sql .= ($idstie != "") ? "AND A.CLI_ID=$idstie " : "";
-        
+
         //echo $sql;
-        $rawData =$con->createCommand($sql)->queryAll();
+        $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
         return $rawData;
     }
-    
+
     public function recuperarClienteUsuario() {
-        $ids=Yii::app()->getSession()->get('user_id', FALSE);
-        $con = yii::app()->db;  
+        $ids = Yii::app()->getSession()->get('user_id', FALSE);
+        $con = yii::app()->db;
         $sql = "SELECT DISTINCT(D.CLI_ID) CLI_ID,D.CLI_NOMBRE 
                         FROM " . $con->dbname . ".USUARIO A
                                 INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA B
@@ -160,9 +160,11 @@ class USUARIO extends CActiveRecord {
                 WHERE A.USU_EST_LOG=1 ";
         $sql .= ($ids != "") ? "AND A.USU_ID=$ids " : " ";
         //echo $sql;
-        $rawData =$con->createCommand($sql)->queryAll();
+        $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
         return $rawData;
     }
+
+    
 
 }

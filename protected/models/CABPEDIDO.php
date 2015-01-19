@@ -232,7 +232,7 @@ class CABPEDIDO extends CActiveRecord {
 
     private function InsertarCabFactura($con, $objEnt, $i) {
         $utieId = Yii::app()->getSession()->get('UtieId', FALSE);
-        $sql = "INSERT INTO VSSEAPEDIDO.CAB_PEDIDO
+        $sql = "INSERT INTO " . $con->dbname . ".CAB_PEDIDO
                 (TDOC_ID,TIE_ID,TCPED_ID,CPED_FEC_PED,CPED_VAL_BRU,CPED_POR_DES,CPED_VAL_DES,CPED_POR_IVA,CPED_VAL_IVA,
                  CPED_BAS_IVA,CPED_BAS_IV0,CPED_VAL_FLE,CPED_VAL_NET,CPED_EST_PED,CPED_EST_LOG,UTIE_ID_PED,UTIE_ID)VALUES
                 (2,'" . $objEnt[$i]['TIE_ID'] . "','" . $objEnt[$i]['TCPED_ID'] . "',CURRENT_TIMESTAMP(),

@@ -120,4 +120,219 @@ class PERSONA extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+        
+        public function mostrarUsuarioPersona() {
+        $rawData = array();
+        $con = Yii::app()->db;
+
+        $sql = "SELECT A.PER_ID PerId,CONCAT(A.PER_NOMBRE,' ',A.PER_APELLIDO) Nombre,A.PER_GENERO Genero,
+                B.USU_NOMBRE User,B.USU_CORREO Correo,A.PER_EST_LOG Estado
+                FROM " . $con->dbname . ".PERSONA A
+                        INNER JOIN  " . $con->dbname . ".USUARIO B
+                                ON A.PER_ID=B.PER_ID
+        WHERE A.PER_EST_LOG=1 ";
+
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+
+        return new CArrayDataProvider($rawData, array(
+            'keyField' => 'PerId',
+            'sort' => array(
+                'attributes' => array(
+                    'PerId', 'Nombre', 'User', 'Correo', 'Genero', 'Estado',
+                ),
+            ),
+            'totalItemCount' => count($rawData),
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
+        ));
+    }
+
+    public function insertarDatosPersona($objEnt) {
+        $msg = new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $this->InsertarPersona($con, $objEnt);
+            $IdPer = $con->getLastInsertID($con->dbname . '.PERSONA');
+            $this->InsertarUsuario($con, $objEnt, $IdPer);
+            $this->InsertarDataPer($con, $objEnt, $IdPer);
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK', null, 10, null, null);
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            //throw $e;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+
+    private function InsertarPersona($con, $objEnt) {
+        $sql = "INSERT INTO " . $con->dbname . ".PERSONA
+                (PER_CED_RUC,PER_NOMBRE,PER_APELLIDO,PER_FEC_NACIMIENTO,PER_GENERO,PER_EST_LOG,PER_FEC_CRE)VALUES
+                ('" . $objEnt['dni'] . "','" . $objEnt['nombre'] . "','" . $objEnt['apellido'] . "',
+                 '" . $objEnt['fec_nac'] . "','" . $objEnt['genero'] . "','1',CURRENT_TIMESTAMP()) ";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+
+    private function InsertarDataPer($con, $objEnt, $IdPer) {
+        $sql = "INSERT INTO " . $con->dbname . ".DATA_PERSONA 
+                (PER_ID,DPER_DESCRIPCION,DPER_DIRECCION,DPER_TELEFONO,DPER_CONTACTO,DPER_EST_LOG,DPER_FEC_CRE)VALUES
+                ($IdPer,'DATOS','" . $objEnt['direccion'] . "','" . $objEnt['telefono'] . "','" . $objEnt['contacto'] . "',
+                  '1',CURRENT_TIMESTAMP()) ";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+
+    private function InsertarUsuario($con, $objEnt, $IdPer) {
+        $usuNombre = $objEnt['usuario'];
+        $correo = $objEnt['correo'];
+        $pass = $objEnt['password'];
+        $sql = "INSERT INTO " . $con->dbname . ".USUARIO
+                (PER_ID,USU_NOMBRE,USU_ALIAS,USU_CORREO,USU_PASSWORD,USU_EST_LOG,USU_FEC_CRE)VALUES
+                ($IdPer,'$usuNombre','$usuNombre','$correo',MD5('$pass'),'1',CURRENT_TIMESTAMP()) ";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+
+    public function recuperarPersonas($id) {
+        $con = yii::app()->db;
+        $sql = "SELECT A.PER_ID,A.PER_NOMBRE,A.PER_APELLIDO,A.PER_CED_RUC,A.PER_FEC_NACIMIENTO,
+                        A.PER_GENERO,C.DPER_DIRECCION,C.DPER_TELEFONO,C.DPER_CONTACTO,
+                        B.USU_NOMBRE,B.USU_CORREO,A.PER_EST_LOG,MD5(B.USU_PASSWORD) PASS,C.DPER_ID
+                        FROM " . $con->dbname . ".PERSONA A
+                                INNER JOIN  " . $con->dbname . ".USUARIO B
+                                        ON A.PER_ID=B.PER_ID
+                                LEFT JOIN  " . $con->dbname . ".DATA_PERSONA C
+                                        ON A.PER_ID=C.PER_ID
+                WHERE A.PER_EST_LOG=1 AND A.PER_ID='$id' ";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryRow();//Retorna solo 1
+        $con->active = false;
+        return $rawData;
+    }
+    
+    
+    public function actualizarDatosPersona($objEnt) {
+        $msg= new VSexception();
+        $con = yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $this->modificaPersona($con, $objEnt);
+            $ids=$objEnt['dperId'];//$this->idTabla($con,'DATA_PERSONA',$objEnt['perId'],'PER_ID','DPER_ID');
+            $this->modificarDataPer($con, $objEnt,$ids);
+            
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK', null, 10, null, null);
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            //throw $e;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+    
+    private function modificaPersona($con, $objEnt) {        
+        $sql = "UPDATE " . $con->dbname . ".PERSONA
+                    SET  PER_CED_RUC = '" . $objEnt['dni'] . "',
+                    PER_NOMBRE = '" . $objEnt['nombre'] . "',
+                    PER_APELLIDO = '" . $objEnt['apellido'] . "',
+                    PER_FEC_NACIMIENTO = '" . date("Y-m-d", strtotime($objEnt['fec_nac'])) . "',
+                    PER_GENERO = '" . $objEnt['genero'] . "',
+                    PER_EST_LOG = '" . $objEnt['estado'] . "',
+                    PER_FEC_MOD = CURRENT_TIMESTAMP()
+                    WHERE PER_ID= '" . $objEnt['perId'] . "'";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
+     private function idTabla($con,$tabla,$ids,$campoIds,$returcampo) {
+        $rawData = array();
+        $sql = "SELECT $returcampo FROM " . $con->dbname . ".$tabla "
+                . "WHERE $campoIds=$ids  ";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryRow();
+        if ($rawData === false)
+            return false; //en caso de que existe problema o no retorne nada tiene false por defecto 
+        return true;//$rawData['PCLI_ID'];
+    }
+    
+    
+    private function modificarDataPer($con, $objEnt, $Ids) {
+        $sql = "UPDATE " . $con->dbname . ".DATA_PERSONA
+                    SET
+                    DPER_DESCRIPCION = 'DATOS',
+                    DPER_DIRECCION = '" . $objEnt['direccion'] . "',
+                    DPER_TELEFONO = '" . $objEnt['telefono'] . "',
+                    DPER_CELULAR = '',
+                    DPER_CONTACTO = '" . $objEnt['contacto'] . "',
+                    DPER_EST_LOG = 1,
+                    DPER_FEC_MOD = CURRENT_TIMESTAMP()
+                    WHERE DPER_ID=$Ids";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
+    public function removerPersona($ids) {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $sql = "UPDATE " . $con->dbname . ".PERSONA SET PER_EST_LOG='0' WHERE PER_ID IN($ids)";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            $sql = "UPDATE " . $con->dbname . ".USUARIO SET USU_EST_LOG='0' WHERE PER_ID IN($ids)";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            //echo $sql;
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,12,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+    
+    
+    public function mostrarUsuarioTienda() {
+        $rawData = array();
+        $con = Yii::app()->db;
+        
+        $sql = "SELECT A.UTIE_ID UtieId,B.USU_NOMBRE Usuario,A.UTIE_FEC_CRE Fecha,
+                        C.TIE_NOMBRE TiendaNombre,D.ROL_NOMBRE Rol,A.UTIE_EST_LOG Estado
+                        FROM " . $con->dbname . ".USUARIO_TIENDA A
+                                INNER JOIN " . $con->dbname . ".USUARIO B
+                                        ON A.USU_ID=B.USU_ID
+                                INNER JOIN " . $con->dbname . ".TIENDA C
+                                        ON A.TIE_ID=C.TIE_ID
+                                INNER JOIN " . $con->dbname . ".ROL D
+                                        ON A.ROL_ID=D.ROL_ID
+                WHERE A.UTIE_EST_LOG=1 ";
+
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+
+        return new CArrayDataProvider($rawData, array(
+            'keyField' => 'UtieId',
+            'sort' => array(
+                'attributes' => array(
+                    'Usuario', 'TiendaNombre', 'Rol', 'Fecha', 'Estado',
+                ),
+            ),
+            'totalItemCount' => count($rawData),
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
+        ));
+    }
+        
+        
 }
