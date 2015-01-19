@@ -7,13 +7,16 @@
  */
 ?>
 <?php echo $this->renderPartial('_include'); ?>
-<div class="col-lg-12">
-    <?php //echo CHtml::submitButton('Submit'); ?>
-    <?php //echo CHtml::link('Delete', array('wsrecruiteducation/delete', 'id' => '$model->EducID'), array('confirm' => 'Are you sure?')    );    ?>
-    <?php //echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Create'), array('id' => 'btn_nuevo', 'name' => 'btn_nuevo', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_Nuevo("Create")')); ?>
-    <?php echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Create'),array('uSUARIO/create'), array('title' => Yii::t('CONTROL_ACCIONES', 'Create'),'class' => 'btn btn-primary btn-sm',)  );    ?>
-    <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Delete'), array('id' => 'btn_Delete', 'name' => 'btn_Delete', 'class' => 'btn btn-primary btn-sm disabled', 'onclick' => 'fun_Delete()')); ?>
-    <?php echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Edit'),array('uSUARIO/update'), array('id' => 'btn_Update', 'name' => 'btn_Update','title' => Yii::t('CONTROL_ACCIONES', 'Edit'),'class' => 'btn btn-primary btn-sm disabled','onclick' => 'fun_Update()'));    ?>
+<div class="col-lg-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">        
+            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Add'), array('id' => 'btn_add', 'name' => 'btn_add', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_agregarUserTienda("Create")')); ?>
+        </div>
+        <div class="panel-body">
+            <?php $this->renderPartial('_frm_dataUsuTie', 
+                    array('model' => $model, 'cliente' => $cliente,'tienda' => $tienda,'rol' => $rol)); ?>
+        </div>
+    </div>
 </div>
 <div class="col-lg-12">
     <?php echo $this->renderPartial('_indexGridTienda', array('model' => $model)); ?>

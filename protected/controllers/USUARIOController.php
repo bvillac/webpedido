@@ -30,7 +30,8 @@ class USUARIOController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update','Save','Delete','UserTienda'),
+                'actions' => array('create', 'update','Save','Delete','UserTienda',
+                                    'ClienteTienda','BuscarUsuario','SaveUserTie'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -186,10 +187,57 @@ class USUARIOController extends Controller {
     
     public function actionUserTienda() {
         $modelo = new PERSONA;
+        $usurio = new USUARIO;
+        $rol= new ROL;
+        $cliente = new ARTICULOTIENDA;
         $this->titleWindows = Yii::t('USUARIO', 'User Admin');
         $this->render('usertienda', array(
             'model' => $modelo->mostrarUsuarioTienda(),
+            'cliente' => $cliente->recuperarClientes(),
+            'rol' => $rol->recuperarRolTienda(),
+            'tienda' => $usurio->recuperarTiendasUsuario('0'),
         ));
     }
+    
+    public function actionClienteTienda() {
+        if (Yii::app()->request->isPostRequest) {
+            $model = new USUARIO;
+            $user = isset($_POST['DATA']) ? $_POST['DATA'] :'';
+            $arroout = $model->recuperarTiendasUsuario($user);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+            return;
+        }
+    }
+    
+    public function actionBuscarUsuario() {
+        if (Yii::app()->request->isAjaxRequest) {
+            $valor = isset($_POST['valor']) ? $_POST['valor'] : "";
+            $op = isset($_POST['op']) ? $_POST['op'] : "";
+            $arrayData = array();
+            $data = new USUARIO;
+            $arrayData = $data->retornarBuscarUser($valor, $op);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arrayData);
+        }
+    }
+    
+    public function actionSaveUserTie() {
+        if (Yii::app()->request->isPostRequest) {
+            $model = new USUARIO;
+            $arroout=array();
+            $data = isset($_POST['DATA']) ? CJavaScript::jsonDecode($_POST['DATA']) : array();
+            //print_r($data['IDS']);
+            $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
+            if ($accion == "Create") {
+                $arroout = $model->insertarUsuTiendas($data);
+            }
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+            return;
+        }
+    }
+    
+    
 
 }

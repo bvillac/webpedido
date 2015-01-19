@@ -10,18 +10,6 @@ function fun_Nuevo(accion){
     $('#btn_nuevo').attr("href", link);
 }
 
-function retornarIndexArray(array, property, value) {
-    var index = -1;
-    for (var i = 0; i < array.length; i++) {
-        //alert(array[i][property]+'-'+value)
-        if (array[i][property] == value) {
-            index = i;
-            return index;
-        }
-    }
-    return index;
-}
-
 function verificaAcciones(){
     var ids = String($.fn.yiiGridView.getSelection('TbG_USUARIO'));
     var count=ids.split(",");
@@ -270,64 +258,19 @@ function autocompletarBuscarUser(request, response, control, op) {
             var arrayList = new Array;
             var count = data.length;
             for (var i = 0; i < count; i++) {
-                var row = new Object();
-                row.Ids = data[i]['Ids'];
-                row.Nombre = data[i]['Nombre'];
+                row = new Object();
+                row.ART_ID = data[i]['ART_ID'];
+                row.COD_ART = data[i]['COD_ART'];
+                row.ART_DES_COM = data[i]['ART_DES_COM'];
 
                 // Campos Importandes relacionados con el  CJuiAutoComplete
-                row.id = data[i]['Ids'];
-                row.label = data[i]['Nombre'];
-                row.value = data[i]['Nombre'];//lo que se almacena en en la caja de texto
+                row.id = data[i]['ART_ID'];
+                row.label = data[i]['ART_DES_COM'] + ' - ' + data[i]['COD_ART'];//Lo sugerido
+                row.value = data[i]['ART_DES_COM'];//lo que se almacena en en la caja de texto
                 arrayList[i] = row;
             }
-            sessionStorage.src_buscUsuario = JSON.stringify(arrayList);//dss=>DataSessionStore
+            sessionStorage.src_buscArticulo = JSON.stringify(arrayList);//dss=>DataSessionStore
             response(arrayList);
         }
     })
-}
-
-/****************AGREGAR USUARIO TIENDA***********/
-
-function fun_agregarUserTienda(accion) {
-    if ($('#cmb_tienda option:selected').val() > 0) {
-
-        //if (count.length > 0 && ids != "") {
-            //var ID = (accion == "Update") ? $('#txth_TIE_ID').val() : 0;
-            var link = $('#txth_controlador').val() + "/SaveUserTie";
-            $.ajax({
-                type: 'POST',
-                dataType: 'json',
-                url: link,
-                data: {
-                    "DATA": objetoUsuarioTie(),
-                    "ACCION": accion
-                },
-                success: function (data) {
-                    if (data.status == "OK") {
-                        $("#messageInfo").html(data.message + buttonAlert);
-                        alerMessage();
-                        $.fn.yiiGridView.update('TbG_USUARIO');
-                    } else {
-                        $("#messageInfo").html(data.message + buttonAlert);
-                        alerMessage();
-                    }
-                },
-            });
-
-        //}
-    }else{
-        alert('Seleccionar Tienda');
-    }
-}
-
-function objetoUsuarioTie(){
-    var data=new Object();
-    data.CLI=$('#cmb_cliente option:selected').val();
-    data.TIE=$('#cmb_tienda option:selected').val();
-    data.ROL=$('#cmb_rol option:selected').val();
-    var valor=$('#txt_nombreUser').val();
-    var Grid=JSON.parse(sessionStorage.src_buscUsuario)
-    var ind=retornarIndexArray(Grid, 'Nombre', valor)
-    data.IDS=Grid[ind]['Ids'];
-    return JSON.stringify(data);
 }

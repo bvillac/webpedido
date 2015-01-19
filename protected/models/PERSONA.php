@@ -315,7 +315,7 @@ class PERSONA extends CActiveRecord
                                         ON A.TIE_ID=C.TIE_ID
                                 INNER JOIN " . $con->dbname . ".ROL D
                                         ON A.ROL_ID=D.ROL_ID
-                WHERE A.UTIE_EST_LOG=1 ";
+                WHERE A.UTIE_EST_LOG=1 ORDER BY A.UTIE_ID DESC";
 
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;

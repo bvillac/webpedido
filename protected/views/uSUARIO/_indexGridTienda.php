@@ -28,19 +28,20 @@ $this->widget('zii.widgets.grid.CGridView', array(
         ),
         array(
             'name' => 'TiendaNombre',
-            'header' => Yii::t('USUARIO', 'Name'),
+            'header' => Yii::t('USUARIO', 'Name store'),
             'value' => '$data["TiendaNombre"]',
         ),
         array(
             'name' => 'Rol',
-            'header' => Yii::t('USUARIO', 'Mail'),
+            'header' => Yii::t('USUARIO', 'User role'),
             'value' => '$data["Rol"]',
-            //'htmlOptions' => array('style' => 'text-align:right', 'width' => '8px'),
+            //'htmlOptions' => array('style' => 'text-align:left'),
         ),
         array(
             'name' => 'Fecha',
-            'header' => Yii::t('USUARIO', 'Issuance date'),
+            'header' => Yii::t('USUARIO', 'Creation date'),
             'value' => 'date(Yii::app()->params["datebydefault"],strtotime($data["Fecha"]))',
+            'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
         ),
         array(
             'name' => 'Estado',

@@ -24,6 +24,9 @@ return array(
     'Password' => 'Contraseña',
     'Confirm' => 'Confirmar',
     'Date of birth' => 'Fec Nac',
+    'Creation date' => 'F.Creación',
+    'User role' => 'Usuario Rol',
+    'Name store' => 'Nombre Tienda',
     
 );
 ?>

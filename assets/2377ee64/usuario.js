@@ -306,7 +306,6 @@ function fun_agregarUserTienda(accion) {
                     if (data.status == "OK") {
                         $("#messageInfo").html(data.message + buttonAlert);
                         alerMessage();
-                        $.fn.yiiGridView.update('TbG_USUARIO');
                     } else {
                         $("#messageInfo").html(data.message + buttonAlert);
                         alerMessage();

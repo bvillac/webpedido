@@ -164,6 +164,63 @@ class USUARIO extends CActiveRecord {
         $con->active = false;
         return $rawData;
     }
+    
+    
+     public function retornarBuscarUser($valor, $op) {
+        $con = Yii::app()->db;
+        $rawData = array();
+
+        $sql = "SELECT USU_ID Ids,USU_NOMBRE Nombre "
+                . "FROM " . $con->dbname . ".USUARIO "
+                . "WHERE USU_EST_LOG=1 AND USU_NOMBRE LIKE '%$valor%' ";
+        $sql .= " LIMIT " . Yii::app()->params['limitRow'];
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    }
+    
+    
+    public function insertarUsuTiendas($objEnt) {
+        $msg = new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $tie = $objEnt['TIE'];
+            $rol = $objEnt['ROL'];
+            $ids = $objEnt['IDS'];
+            if (!$this->existeUsuTienda($con, $ids, $tie, $rol)) {
+                //Si No existe
+                $sql = "INSERT INTO " . $con->dbname . ".USUARIO_TIENDA
+                        (USU_ID,TIE_ID,ROL_ID,UTIE_EST_LOG,UTIE_FEC_CRE)VALUES
+                        ($ids,$tie,$rol,'1',CURRENT_TIMESTAMP()) ";
+                $command = $con->createCommand($sql);
+                $command->execute();
+            }
+
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK', null, 10, null, null);
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            //throw $e;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+
+    private function existeUsuTienda($con,$ids,$tie,$rol) {
+        $rawData = array();
+        $sql = "SELECT UTIE_ID FROM " . $con->dbname . ".USUARIO_TIENDA 
+                    WHERE USU_ID=$ids AND TIE_ID=$tie AND ROL_ID=$rol ";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryRow();
+        if ($rawData === false)
+            return false; //en caso de que existe problema o no retorne nada tiene false por defecto 
+        return true;//$rawData['UTIE_ID'];
+    }
+
+
 
     
 
