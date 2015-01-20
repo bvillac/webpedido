@@ -41,11 +41,16 @@ class PEDIDOSController extends Controller {
     public function actionUpdate($id) {
         $ids = base64_decode($id);
         $model = new TEMP_CABPEDIDO;
+        $tienda = new TIENDA;
         $model->TDOC_ID = $ids; //mantiene el ID  Actualizar
+        $CabPed=$model->cabeceraPedidoTemp($ids);
+        $DetPed=$model->detallePedidoTemp($ids);
+        $cupo=$tienda->recuperarTiendasCupo($CabPed["TieID"]);
         //$this->titleWindows = Yii::t('TIENDA', 'Store');
         $this->render('update', array(
-            'CabPed' => $model->cabeceraPedidoTemp($ids),
-            'DetPed' => $model->detallePedidoTemp($ids),
+            'CabPed' => $CabPed,
+            'DetPed' => $DetPed,
+            'cupo' => $cupo["data"]["SALDO"],
         ));
     }
 
@@ -98,8 +103,7 @@ class PEDIDOSController extends Controller {
     
     public function actionAprobar() {
         $model = new TEMP_CABPEDIDO;
-        $tienda = new TIENDA;
-        
+        $tienda = new TIENDA;        
         $arrayData = array();
         if (Yii::app()->request->isAjaxRequest) {
             $ids = isset($_POST['ids']) ? $_POST['ids'] : "";

@@ -72,6 +72,7 @@ return array(
     'Store' => 'Tiendas',
     '-Select-' => 'Seleccionar',
     'Find articles by code or name' => 'Buscar artículos por código o nombre',
+    'Find user by code or name' => 'Buscar usuario por código o nombre',
     'Price' => 'Precio',
     'List of price' => 'Lista de Precio',
     'Data Start' => 'Datos Inicio',

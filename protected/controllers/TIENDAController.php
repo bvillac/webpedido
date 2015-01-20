@@ -114,7 +114,6 @@ class TIENDAController extends Controller {
             'model' => $model,
             'rangodia' => $this->cantArray('DIA'),
             'cliente' => $dataCliente->recuperarClientes(),
-            //'data' => CJavaScript::jsonEncode($empresa),
             'data' => base64_encode(CJavaScript::jsonEncode($tienda)),
         ));
     }

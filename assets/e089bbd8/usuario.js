@@ -64,7 +64,7 @@ function fun_limpiarUser(){
 }
 
 function fun_GuardarUser(accion) {
-    if (validateForm(accion)) {
+    if (validateForm()) {
         var ID = (accion == "Update") ? $('#txth_PER_ID').val() : 0;
         var link = $('#txth_controlador').val() + "/Save";
         $.ajax({
@@ -111,7 +111,7 @@ function objetoPersona(ID){
     return JSON.stringify(persona);
 }
 
-function validateForm(accion) {
+function validateForm() {
     var result = true;
     var message = '';
 //    if ($('#cmb_cliente option:selected').val()==0) {
@@ -127,51 +127,32 @@ function validateForm(accion) {
 //        result = false;
 //    }
     if ($('#txt_dni').val().length==0) {
-        message += 'Dni,\n ';
+        message += 'Ingresar Dni,\n ';
         result = false;
     }
     if ($('#txt_nombre').val().length==0) {
-        message += 'Nombre,\n ';
+        message += 'Ingresar Nombre,\n ';
         result = false;
     }
     if ($('#txt_apellido').val().length==0) {
-        message += 'Apellido,\n ';
+        message += 'Ingresar Apellido,\n ';
         result = false;
     }
     if ($('#txt_direccion').val().length==0) {
-        message += 'Dirección,\n ';
+        message += 'Ingresar Dirección,\n ';
         result = false;
     }
     if ($('#txt_telefono').val().length==0) {
-        message += 'Teléfono,\n ';
+        message += 'Ingresar Teléfono,\n ';
         result = false;
     }
     if ($('#txt_correo').val().length==0) {
-        message += 'Correo,\n ';
+        message += 'Ingresar Correo,\n ';
         result = false;
     }
     if ($('#txt_contacto').val().length==0) {
-        message += 'Contacto,\n ';
+        message += 'Ingresar Contacto,\n ';
         result = false;
-    }
-    
-    if (accion == "Create") {
-        if ($('#txt_usuario').val().length == 0) {
-            message += 'Usuario,\n ';
-            result = false;
-        }
-        if ($('#txt_password').val().length == 0) {
-            message += 'Contrasena,\n ';
-            result = false;
-        }
-        if ($('#txt_confirma').val().length == 0) {
-            message += 'Confirmar contrasena,\n ';
-            result = false;
-        }
-        if ($('#txt_confirma').val() == $('#txt_password').val()) {
-            message += 'La Contraseña no es igual,\n ';
-            result = false;
-        }
     }
 
   
@@ -313,39 +294,34 @@ function autocompletarBuscarUser(request, response, control, op) {
 /****************AGREGAR USUARIO TIENDA***********/
 
 function fun_agregarUserTienda(accion) {
-    if ($('#cmb_cliente option:selected').val() > 0) {
-        if ($('#cmb_tienda option:selected').val() > 0) {
-            if ($('#cmb_rol option:selected').val() > 0 && $('#txt_nombreUser').val().length != 0) {
-                //var ID = (accion == "Update") ? $('#txth_TIE_ID').val() : 0;
-                var link = $('#txth_controlador').val() + "/SaveUserTie";
-                $.ajax({
-                    type: 'POST',
-                    dataType: 'json',
-                    url: link,
-                    data: {
-                        "DATA": objetoUsuarioTie(),
-                        "ACCION": accion
-                    },
-                    success: function (data) {
-                        if (data.status == "OK") {
-                            $("#messageInfo").html(data.message + buttonAlert);
-                            alerMessage();
-                            $.fn.yiiGridView.update('TbG_USUARIO');
-                        } else {
-                            $("#messageInfo").html(data.message + buttonAlert);
-                            alerMessage();
-                        }
-                    },
-                });
+    if ($('#cmb_tienda option:selected').val() > 0) {
 
-            } else {
-                alert('Seleccionar Rol y Usuario');
-            }
-        } else {
-            alert('Seleccionar Tienda');
-        }
-    } else {
-        alert('Seleccionar Cliente');
+        //if (count.length > 0 && ids != "") {
+            //var ID = (accion == "Update") ? $('#txth_TIE_ID').val() : 0;
+            var link = $('#txth_controlador').val() + "/SaveUserTie";
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: link,
+                data: {
+                    "DATA": objetoUsuarioTie(),
+                    "ACCION": accion
+                },
+                success: function (data) {
+                    if (data.status == "OK") {
+                        $("#messageInfo").html(data.message + buttonAlert);
+                        alerMessage();
+                        $.fn.yiiGridView.update('TbG_USUARIO');
+                    } else {
+                        $("#messageInfo").html(data.message + buttonAlert);
+                        alerMessage();
+                    }
+                },
+            });
+
+        //}
+    }else{
+        alert('Seleccionar Tienda');
     }
 }
 

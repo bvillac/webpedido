@@ -248,7 +248,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
             $sql .= $sqlTieId;
         }
         $sql .= "ORDER BY A.TCPED_ID DESC LIMIT $limitrowsql";
-
+        //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
 
@@ -307,7 +307,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
     
     public function cabeceraPedidoTemp($ids) {
         $con = yii::app()->db;
-        $sql = "SELECT A.TCPED_ID PedID,CONCAT(REPEAT( '0', 9 - LENGTH(A.TCPED_ID) ),A.TCPED_ID) Numero,
+        $sql = "SELECT A.TCPED_ID PedID,CONCAT(REPEAT( '0', 9 - LENGTH(A.TCPED_ID) ),A.TCPED_ID) Numero,B.TIE_ID TieID,
                         A.TCPED_TOTAL Total,DATE(A.TCPED_FEC_CRE) FechaPedido,B.TIE_NOMBRE NombreTienda
                         FROM " . $con->dbname . ".TEMP_CAB_PEDIDO A
                                 INNER JOIN " . $con->dbname . ".TIENDA B

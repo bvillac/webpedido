@@ -315,7 +315,7 @@ function autocompletarBuscarUser(request, response, control, op) {
 function fun_agregarUserTienda(accion) {
     if ($('#cmb_cliente option:selected').val() > 0) {
         if ($('#cmb_tienda option:selected').val() > 0) {
-            if ($('#cmb_rol option:selected').val() > 0 && $('#txt_nombreUser').val().length != 0) {
+            if ($('#cmb_rol option:selected').val() > 0) {
                 //var ID = (accion == "Update") ? $('#txth_TIE_ID').val() : 0;
                 var link = $('#txth_controlador').val() + "/SaveUserTie";
                 $.ajax({
@@ -339,7 +339,7 @@ function fun_agregarUserTienda(accion) {
                 });
 
             } else {
-                alert('Seleccionar Rol y Usuario');
+                alert('Seleccionar Rol');
             }
         } else {
             alert('Seleccionar Tienda');

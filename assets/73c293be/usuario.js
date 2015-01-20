@@ -313,39 +313,35 @@ function autocompletarBuscarUser(request, response, control, op) {
 /****************AGREGAR USUARIO TIENDA***********/
 
 function fun_agregarUserTienda(accion) {
-    if ($('#cmb_cliente option:selected').val() > 0) {
-        if ($('#cmb_tienda option:selected').val() > 0) {
-            if ($('#cmb_rol option:selected').val() > 0 && $('#txt_nombreUser').val().length != 0) {
-                //var ID = (accion == "Update") ? $('#txth_TIE_ID').val() : 0;
-                var link = $('#txth_controlador').val() + "/SaveUserTie";
-                $.ajax({
-                    type: 'POST',
-                    dataType: 'json',
-                    url: link,
-                    data: {
-                        "DATA": objetoUsuarioTie(),
-                        "ACCION": accion
-                    },
-                    success: function (data) {
-                        if (data.status == "OK") {
-                            $("#messageInfo").html(data.message + buttonAlert);
-                            alerMessage();
-                            $.fn.yiiGridView.update('TbG_USUARIO');
-                        } else {
-                            $("#messageInfo").html(data.message + buttonAlert);
-                            alerMessage();
-                        }
-                    },
-                });
+    if ($('#cmb_tienda option:selected').val() > 0) {
+        if ($('#cmb_rol option:selected').val() > 0) {
+            //var ID = (accion == "Update") ? $('#txth_TIE_ID').val() : 0;
+            var link = $('#txth_controlador').val() + "/SaveUserTie";
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: link,
+                data: {
+                    "DATA": objetoUsuarioTie(),
+                    "ACCION": accion
+                },
+                success: function (data) {
+                    if (data.status == "OK") {
+                        $("#messageInfo").html(data.message + buttonAlert);
+                        alerMessage();
+                        $.fn.yiiGridView.update('TbG_USUARIO');
+                    } else {
+                        $("#messageInfo").html(data.message + buttonAlert);
+                        alerMessage();
+                    }
+                },
+            });
 
-            } else {
-                alert('Seleccionar Rol y Usuario');
-            }
-        } else {
-            alert('Seleccionar Tienda');
+        }else{
+             alert('Seleccionar Rol');
         }
-    } else {
-        alert('Seleccionar Cliente');
+    }else{
+        alert('Seleccionar Tienda');
     }
 }
 

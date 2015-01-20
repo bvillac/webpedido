@@ -201,9 +201,9 @@ class USUARIOController extends Controller {
     
     public function actionClienteTienda() {
         if (Yii::app()->request->isPostRequest) {
-            $model = new USUARIO;
+            $model = new TIENDA;
             $user = isset($_POST['DATA']) ? $_POST['DATA'] :'';
-            $arroout = $model->recuperarTiendasUsuario($user);
+            $arroout = $model->recuperarTiendasAdmin($user);
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);
             return;

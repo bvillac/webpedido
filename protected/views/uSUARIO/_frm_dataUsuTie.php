@@ -74,7 +74,7 @@
                 'class' => 'form-control',
                 "data-type" => "number",
                 'size' => 35,
-                'placeholder' => Yii::t('GENERAL', 'Find articles by code or name'),
+                'placeholder' => Yii::t('GENERAL', 'Find user by code or name'),
             ),
         ));
         ?>
