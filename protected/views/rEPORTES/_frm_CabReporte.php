@@ -1,8 +1,3 @@
-<?php
-$data = explode(",", $control); //Recibe Datos y los separa
-$f_ini = $data[0]; //Fecha Inicio
-$f_fin = $data[1]; //Fecha fin
-?>
 <div>
     <table style="width:200mm;" class="">
         <tbody>

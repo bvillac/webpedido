@@ -60,13 +60,13 @@
             ?>
         </div>
         <div class="tcol-td form-group">
-            
             <?php
-                //echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Accept'),array("rEPORTES/Rep_VentMax","f_ini"=>"2015-01-01","f_fin"=>"2015-01-01"),array("class" => "btn btn-success","target"=>"_blank"));
-                //echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Accept'),Yii::app()->createUrl("rEPORTES/Rep_VentMax",array("f_ini"=>"2015-01-01","f_fin"=>"2015-01-01")),array("class" => "btn btn-success","target"=>"_blank"));
-                //echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Accept'),Yii::app()->createUrl("pEDIDOS/GenerarPdf",array("ids"=>base64_encode($data["PedID"]))),array("class" => "btn btn-success","target"=>"_blank"));
-                //echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Accept'), array('id' => 'btn_aceptar', 'name' => 'btn_aceptar', 'class' => 'btn btn-success', 'onclick' => 'ventasMes()'));
-                echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Accept'), array('rEPORTES/Rep_VentMax'), array('id' => 'btn_aceptar', 'name' => 'btn_aceptar', 'title' => Yii::t('CONTROL_ACCIONES', 'Accept'), 'class' => 'btn btn-primary btn-sm', "target"=>"_blank",'onclick' => 'fun_ventasMes()'));
+                echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Accept'), array('rEPORTES/Rep_VentMax'), array('id' => 'btn_aceptar', 'name' => 'btn_aceptar', 'title' => Yii::t('CONTROL_ACCIONES', 'Accept'), 'class' => 'btn btn-primary btn-sm', "target"=>"_blank",'onclick' => 'fun_ventasMes(1)'));
+            ?>
+        </div>
+        <div class="tcol-td form-group">
+            <?php
+                echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Excel'), array('rEPORTES/Rep_VentMax'), array('id' => 'btn_aceptar_excel', 'name' => 'btn_aceptar_excel', 'title' => Yii::t('CONTROL_ACCIONES', 'Excel'), 'class' => 'btn btn-primary btn-sm', "target"=>"_blank",'onclick' => 'fun_ventasMes(2)'));
             ?>
         </div>
     </div>

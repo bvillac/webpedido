@@ -20,6 +20,7 @@ return array(
     'Deny' => 'Negar',
     'Edit' => 'Editar',
     'Export' => 'Exportar',
+    'Excel' => 'Excel',
     'Export Pdf' => 'Exportar PDF',
     'Pdf' => 'PDF',
     'Import' => 'Importar',

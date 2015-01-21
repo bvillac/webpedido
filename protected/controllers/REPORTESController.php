@@ -47,15 +47,26 @@ class REPORTESController extends Controller {
             $rep=new REPORTES;
             $modelo = new CABPEDIDO;
             $report = $modelo->Rep_VentMax($control);
+            $op = explode(",", $control); //Recibe Datos y los separa
             $mPDF1=$rep->crearBaseReport();
-            $mPDF1->SetTitle(Yii::t('TIENDA', 'Monthly sales per store.'));
-            $mPDF1->WriteHTML(
-                    $this->renderPartial('ventasMes_Rep', array(
-                        'data' => $report,
-                        'control' => $control,
-                        'titulo' => Yii::t('TIENDA', 'Monthly sales per store.'),
-                            ), true)); //hacemos un render partial a una vista preparada, en este caso es la vista docPDF
-            $mPDF1->Output(Yii::t('TIENDA', 'Monthly sales per store.')."-".date('YmdHis'), 'I');
+            $nameFile=Yii::t('TIENDA', 'Monthly sales per store.') . "-" . date('YmdHis');
+            $Titulo=Yii::t('TIENDA', 'Monthly sales per store.');
+            
+            $Contenido=$this->renderPartial('ventasMes_Rep', array(
+                            'data' => $report,
+                            'control' => $control,
+                            'titulo' => $Titulo,
+                            'f_ini'=> $op[1],//Fecha Inicio
+                            'f_fin'=> $op[2],//Fecha Fin
+                                ), true);
+            
+            if ($op[0] == 1) {
+                $mPDF1->SetTitle($Titulo);
+                $mPDF1->WriteHTML($Contenido); //hacemos un render partial a una vista preparada, en este caso es la vista docPDF
+                $mPDF1->Output($nameFile, 'I');
+            } else {
+                yii::app()->request->sendFile($nameFile.'.xls', $Contenido);
+            }
             //exit;
         } catch (Exception $e) {
             $this->errorControl($e);
@@ -65,18 +76,29 @@ class REPORTESController extends Controller {
         try {
             $control = base64_decode($data);
             print_r($control);
-            $rep=new REPORTES;
+            $rep = new REPORTES;
             $modelo = new CABPEDIDO;
             $report = $modelo->Rep_ItemTienda($control);
-            $mPDF1=$rep->crearBaseReport();
-            $mPDF1->SetTitle(Yii::t('TIENDA', 'Items per store'));
-            $mPDF1->WriteHTML(
-                    $this->renderPartial('itemTienda_Rep', array(
-                        'data' => $report,
-                        'control' => $control,
-                        'titulo' => Yii::t('TIENDA', 'Items per store'),
-                            ), true)); //hacemos un render partial a una vista preparada, en este caso es la vista docPDF
-            $mPDF1->Output(Yii::t('TIENDA', 'Items per store')."-".date('YmdHis'), 'I');
+            $op = explode(",", $control); //Recibe Datos y los separa
+            $mPDF1 = $rep->crearBaseReport();
+            $nameFile=Yii::t('TIENDA', 'Items per store') . "-" . date('YmdHis');
+            $Titulo=Yii::t('TIENDA', 'Items per store');
+            $Contenido=$this->renderPartial('itemTienda_Rep', array(
+                            'data' => $report,
+                            'control' => $control,
+                            'titulo' => $Titulo,
+                            'f_ini'=> $op[1],//Fecha Inicio
+                            'f_fin'=> $op[2],//Fecha Fin
+                                ), true);
+            if ($op[0] == 1) {
+                $mPDF1->SetTitle($Titulo);
+                $mPDF1->WriteHTML($Contenido); //hacemos un render partial a una vista preparada, en este caso es la vista docPDF
+                $mPDF1->Output($nameFile, 'I');
+            } else {
+                yii::app()->request->sendFile($nameFile.'.xls', $Contenido);
+            }
+
+
             //exit;
         } catch (Exception $e) {
             $this->errorControl($e);

@@ -420,8 +420,8 @@ class CABPEDIDO extends CActiveRecord {
     public function Rep_VentMax($control) {
         $objPed=new TEMP_CABPEDIDO;
         $data = explode(",",$control);//Recibe Datos y los separa
-        $f_ini=$data[0];//Fecha Inicio
-        $f_fin=$data[1];//Fecha Inicio
+        $f_ini=$data[1];//Fecha Inicio
+        $f_fin=$data[2];//Fecha Inicio
         $rawData = array();
         $con = Yii::app()->db;
         $idsTie=$objPed->recuperarIdsTiendasRol($con);
@@ -445,15 +445,15 @@ class CABPEDIDO extends CActiveRecord {
     public function Rep_ItemTienda($control) {
         $objPed=new TEMP_CABPEDIDO;
         $data = explode(",",$control);//Recibe Datos y los separa
-        $f_ini=$data[0];//Fecha Inicio
-        $f_fin=$data[1];//Fecha Inicio
-        $tienda=$data[2];//Id Tienda Personalizado
+        $f_ini=$data[1];//Fecha Inicio
+        $f_fin=$data[2];//Fecha Inicio
+        $tienda=$data[3];//Id Tienda Personalizado
         $rawData = array();
         $con = Yii::app()->db;
         $idsTie=$objPed->recuperarIdsTiendasRol($con);
         
         $sql = "SELECT B.COD_ART CodArt,B.ART_DES_COM Nombre,IFNULL(SUM(A.DPED_CAN_PED),0) CantPed,
-                        C.TIE_NOMBRE Tienda
+                        C.TIE_NOMBRE Tienda,A.DPED_P_VENTA Pventa,IFNULL(SUM(A.DPED_T_VENTA),0) Tventa
                         FROM " . $con->dbname . ".DET_PEDIDO A
                                 INNER JOIN " . $con->dbname . ".ARTICULO B
                                         ON A.ART_ID=B.ART_ID

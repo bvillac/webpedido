@@ -78,7 +78,12 @@
         <div class="tcol-td form-group">
             
             <?php
-                echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Accept'), array('rEPORTES/Rep_ItemTienda'), array('id' => 'btn_aceptar_item', 'name' => 'btn_aceptar_item', 'title' => Yii::t('CONTROL_ACCIONES', 'Accept'), 'class' => 'btn btn-primary btn-sm', "target"=>"_blank",'onclick' => 'fun_ItemTienda()'));
+                echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Accept'), array('rEPORTES/Rep_ItemTienda'), array('id' => 'btn_aceptar_item', 'name' => 'btn_aceptar_item', 'title' => Yii::t('CONTROL_ACCIONES', 'Accept'), 'class' => 'btn btn-primary btn-sm', "target"=>"_blank",'onclick' => 'fun_ItemTienda(1)'));
+            ?>
+        </div>
+        <div class="tcol-td form-group">
+            <?php
+                echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Excel'), array('rEPORTES/Rep_ItemTienda'), array('id' => 'btn_excel_item', 'name' => 'btn_excel_item', 'title' => Yii::t('CONTROL_ACCIONES', 'Excel'), 'class' => 'btn btn-primary btn-sm', "target"=>"_blank",'onclick' => 'fun_ItemTienda(2)'));
             ?>
         </div>
     </div>

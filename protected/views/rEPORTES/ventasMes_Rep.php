@@ -68,7 +68,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <?php echo $this->renderPartial('_frm_CabReporte', array('titulo' => $titulo,'control' => $control)); ?>
+                            <?php $this->renderPartial('_frm_CabReporte', array('titulo' => $titulo,'f_ini' => $f_ini,'f_fin' => $f_fin)); ?>
                         </td>
                     </tr>
                 </tbody>

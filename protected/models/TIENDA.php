@@ -135,6 +135,27 @@ class TIENDA extends CActiveRecord {
     public static function model($className = __CLASS__) {
         return parent::model($className);
     }
+    
+    public function recuperarTiendasRol() {
+        $rol_Id = Yii::app()->getSession()->get('RolId', FALSE);
+        $usu_Id = Yii::app()->getSession()->get('user_id', FALSE);
+        try {
+            $con = yii::app()->db;
+            $sql = "SELECT B.TIE_ID,B.TIE_NOMBRE
+                        FROM " . $con->dbname . ".USUARIO_TIENDA A
+                                INNER JOIN " . $con->dbname . ".TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                WHERE A.UTIE_EST_LOG=1 AND A.ROL_ID=$rol_Id AND USU_ID=$usu_Id ";
+            //echo $sql;
+            $rawData = $con->createCommand($sql)->queryAll();
+            $con->active = false;
+            return $rawData;
+        } catch (Exception $e) {
+            //throw $e;
+            throw new CHttpException(400,'Acción no permitida, Ud. no tiene acceso');
+
+        }
+    }
 
     public function mostrarTiendas() {
         $rawData = array();
@@ -454,20 +475,7 @@ class TIENDA extends CActiveRecord {
         return true;//$rawData['PCLI_ID'];
     }
     
-    public function recuperarTiendasRol() {
-        $rol_Id=Yii::app()->getSession()->get('RolId', FALSE);
-        $usu_Id=Yii::app()->getSession()->get('user_id', FALSE);
-        $con = yii::app()->db;
-        $sql = "SELECT B.TIE_ID,B.TIE_NOMBRE
-                        FROM " . $con->dbname . ".USUARIO_TIENDA A
-                                INNER JOIN " . $con->dbname . ".TIENDA B
-                                        ON A.TIE_ID=B.TIE_ID
-                WHERE A.UTIE_EST_LOG=1 AND A.ROL_ID=$rol_Id AND USU_ID=$usu_Id ";
-        //echo $sql;
-        $rawData =$con->createCommand($sql)->queryAll();
-        $con->active = false;
-        return $rawData;
-    }
+    
     
     public function listarItemsTiendas($ids) {
         $rawData = array();

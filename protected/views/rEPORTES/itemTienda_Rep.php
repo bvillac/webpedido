@@ -19,6 +19,11 @@
                 padding: 1mm;
 
             }
+            .marcoCelSup{
+                border-top: 1px solid #165480;
+                padding: 1mm;
+
+            }
             .dataNumber{
                 text-align: right;
                 padding-right: 5px;
@@ -68,7 +73,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <?php echo $this->renderPartial('_frm_CabReporte', array('titulo' => $titulo,'control' => $control)); ?>
+                            <?php $this->renderPartial('_frm_CabReporte', array('titulo' => $titulo,'f_ini' => $f_ini,'f_fin' => $f_fin)); ?>
                         </td>
                     </tr>
                 </tbody>
@@ -83,6 +88,9 @@
                                 <tbody>
                                     <tr>
                                         <td class="marcoCel titleDetalle">
+                                            <span><?php echo Yii::t('TIENDA', 'Stores') ?></span>
+                                        </td>
+                                        <td class="marcoCel titleDetalle">
                                             <span><?php echo Yii::t('TIENDA', 'Code') ?></span>
                                         </td>
                                         <td class="marcoCel titleDetalle">
@@ -92,25 +100,33 @@
                                             <span><?php echo Yii::t('TIENDA', 'Quantity') ?></span>
                                         </td>
                                         <td class="marcoCel titleDetalle">
-                                            <span><?php echo Yii::t('TIENDA', 'Stores') ?></span>
-                                        </td>        
+                                            <span><?php echo Yii::t('TIENDA', 'Cost') ?></span>
+                                        </td>
+                                        <td class="marcoCel titleDetalle">
+                                            <span><?php echo Yii::t('TIENDA', 'Total') ?></span>
+                                        </td>
+                                                
                                     </tr>
-                                    <?php
+                                    <?php 
                                     for ($i = 0; $i < sizeof($data); $i++) {
+                                        $ValorNeto+=  (float)$data[$i]['Tventa'];
                                         ?>
-                                        <tr>       
+                                        <tr>
+                                            <td ><?php echo $data[$i]['Tienda'] ?></td>
                                             <td class=""><?php echo $data[$i]['CodArt'] ?></td>
                                             <td class=""><?php echo $data[$i]['Nombre'] ?></td>
                                             <td class="dataNumber"><?php echo intval($data[$i]['CantPed']) ?></td>
-                                            <td ><?php echo $data[$i]['Tienda'] ?></td>
+                                            <td class="dataNumber"><?php echo Yii::app()->format->formatNumber($data[$i]['Pventa']) ?></td>
+                                            <td class="dataNumber"><?php echo Yii::app()->format->formatNumber($data[$i]['Tventa']) ?></td>
+                                            
                                         </tr>
                                     <?php } ?>
-<!--                                    <tr>
-                                        <td class="marcoCel dataNumber" colspan="5">
-                                            <?php //echo Yii::app()->format->formatNumber($ValorNeto) ?>
+                                    <tr>
+                                        <td class="marcoCelSup dataNumber" colspan="6">
+                                            <?php echo Yii::app()->format->formatNumber($ValorNeto) ?>
                                         </td>
 
-                                    </tr>-->
+                                    </tr>
                                 </tbody>
                             </table>
                         </td>
