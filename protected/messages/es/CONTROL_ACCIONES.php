@@ -33,6 +33,7 @@ return array(
     'Delete Selection' => 'Eliminar Selecionado',
     'Start' => 'Inicio',
     'Process' => 'Procesar',
+    'Update' => 'Actualizar',
     'Send' => 'Enviar',
     'Cancel Item' => 'Anular Item',
     'Authorizing document' => 'Autorizar',

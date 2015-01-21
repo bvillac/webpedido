@@ -247,6 +247,7 @@ class TIENDA extends CActiveRecord {
         $valida = new VSValidador;
         $msg = new VSexception();
         $con = yii::app()->db;
+        $idRol=Yii::app()->getSession()->get('RolId', FALSE);//Rol del Usuario.
         $mensaje = "";
         //BUSCAR DATOS DE LA TIENDA
         $sql = "SELECT A.TIE_CUPO,A.FEC_INI_PED,A.FEC_FIN_PED FROM " . $con->dbname . ".TIENDA A
@@ -272,8 +273,13 @@ class TIENDA extends CActiveRecord {
             $valNeto = (float) $rawData["ValNeto"];
             $saldo = $cupo - $valNeto; //Saldo Disponible
             if ($saldo > 0) {
+                if($idRol!='7'){//USUARIO TIENDA NO PUEDE VER SU CUPO
+                    $mensaje = Yii::t('EXCEPTION', 'Your store has an available balance:').' $ '.$saldo;
+                }else{
+                    $mensaje = Yii::t('EXCEPTION', 'Your store has available balance');
+                }
                 $arroout["SALDO"] = $saldo; //Saldo Disonible
-                $mensaje = Yii::t('EXCEPTION', 'Your store has an available balance:').' $ '.$saldo;
+                
             } else {
                 $arroout["SALDO"] = 0; //No tiene Cupo
                 $mensaje = Yii::t('EXCEPTION', 'Monthly allowance not available.'); //Saldo No Disponible.
@@ -283,6 +289,7 @@ class TIENDA extends CActiveRecord {
             $arroout["SALDO"] = 0; //No tiene Cupo
             $mensaje = Yii::t('EXCEPTION', 'Set the date range for the store to expired therefore we can not fulfill your order!!!'); //Saldo No Disponible.
         }
+        $arroout["MOSTRAR"] = ($idRol!='7')?'SI':'NO';//Retona SI O NO DEPENDIDENDO DEL ROL PARA VER CUPOS DE TIENDAS
         return $msg->messageSystem('OK', null, null,$mensaje , $arroout); //Mensaje Personalizado.
     }
 
@@ -500,6 +507,26 @@ class TIENDA extends CActiveRecord {
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
         return $rawData;
+    }
+    
+    
+    public function updateCupoTienda($tieId,$cupo) {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $sql = "UPDATE " . $con->dbname . ".TIENDA SET TIE_CUPO='$cupo' WHERE TIE_ID IN($tieId)";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,10,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
     }
     
 

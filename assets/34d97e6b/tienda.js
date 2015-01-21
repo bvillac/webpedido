@@ -281,13 +281,12 @@ function objetoItemsTienda(ids){
 function fun_guardarCupoTienda() {
     if ($('#cmb_tienda option:selected').val() > 0 && $('#txt_cupo').val().length != 0) {
         var link = $('#txth_controlador').val() + "/SaveCupoTie";
-        var cupo =redondea($('#txt_cupo').val(), Ndecimal);
         $.ajax({
             type: 'POST',
             dataType: 'json',
             url: link,
             data: {
-                "CUP": cupo,
+                "CUP": $('#txt_cupo').val(),
                 "TIE": $('#cmb_tienda option:selected').val()
             },
             success: function (data) {

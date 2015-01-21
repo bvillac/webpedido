@@ -50,6 +50,8 @@ return array(
     'Issue date' => 'Fecha emisión',
     'Net amount' => 'Valor Neto',
     'Liquidate order' => 'Liquidar pedido',
+    'Quota Store' => 'Tienda Cupo',
+    'View orders' => 'Consultar pedidos',
     /*** DATOS PDF ****/
     'Code' => 'Código',
     'Unit price' => 'P.Unitario',

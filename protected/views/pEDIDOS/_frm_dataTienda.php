@@ -22,7 +22,7 @@
             <label><?php echo Yii::t('TIENDA', 'Total') ?>:</label>
             <label id="lbl_total">0.00</label>
         </div>
-        <div class="rowTd">
+        <div id="div_cupo" class="rowTd">
             <label>Cupo:</label>
             <label id="lbl_cupo">0.00</label>
         </div>

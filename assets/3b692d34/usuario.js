@@ -168,11 +168,11 @@ function validateForm(accion) {
             message += 'Confirmar contrasena,\n ';
             result = false;
         }
-//        alert($('#txt_confirma').val()+' '+$('#txt_password').val());
-//        if ($('#txt_confirma').val() == $('#txt_password').val()) {
-//            message += 'La Contraseña no es igual,\n ';
-//            result = false;
-//        }
+        alert($('#txt_confirma').val()+' '+$('#txt_password').val());
+        if ($('#txt_confirma').val() == $('#txt_password').val()) {
+            message += 'La Contraseña no es igual,\n ';
+            result = false;
+        }
     }
 
   

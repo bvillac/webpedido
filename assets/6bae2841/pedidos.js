@@ -121,9 +121,9 @@ function buscarDataTienda(ids) {
             $('#lbl_pedido').text('Pedido Nº');
             $('#lbl_total').text('0.00');
             if(data.data['MOSTRAR']=="SI"){
-                $('#div_cupo').show();
+                $('#div_cupo').hide();
             }else{
-                $('#div_cupo').hide(); 
+                $('#div_cupo').show(); 
             }
             if (data.status == "OK") {
                 $('#lbl_cupo').text(redondea(data.data['SALDO'], Ndecimal))

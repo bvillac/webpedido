@@ -30,7 +30,8 @@ class TIENDAController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update','Save','Delete','Producto','BuscarItemTienda','SaveItems'),
+                'actions' => array('create', 'update','Save','Delete','Producto','SaveCupoTie',
+                                    'BuscarItemTienda','SaveItems','TiendaCupo'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -242,6 +243,27 @@ class TIENDAController extends Controller {
             } else {
                 //$arroout = $model->actualizarTienda($tienda);
             }
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+            return;
+        }
+    }
+    
+    public function actionTiendaCupo() {
+        $modelo = new TIENDA;
+        $this->titleWindows = Yii::t('TIENDA', 'Quota Store');
+        $this->render('tiendacupo', array(
+            'tienda' => $modelo->recuperarTiendasRol(),
+        ));
+    }
+    
+    public function actionSaveCupoTie() {
+        if (Yii::app()->request->isPostRequest) {
+            $model = new TIENDA;
+            $arroout=array();
+            $cupo = isset($_POST['CUP']) ? $_POST['CUP'] : "0";
+            $tieId = isset($_POST['TIE']) ? $_POST['TIE'] : "0";
+            $arroout = $model->updateCupoTienda($tieId,$cupo);
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);
             return;

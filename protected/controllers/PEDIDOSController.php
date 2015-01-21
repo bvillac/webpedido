@@ -12,7 +12,7 @@ class PEDIDOSController extends Controller {
                 'actions' => array(
                     'create', 'update','Save','Listar','DataTienda',
                     'Aprobar','Delete','AnuItemPedTemp','EnvPedAut',
-                    'Liquidar','GenerarPdf'),
+                    'Liquidar','GenerarPdf','Consultar'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -264,6 +264,27 @@ class PEDIDOSController extends Controller {
         } catch (Exception $e) {
             $this->errorControl($e);
         }
+    }
+    
+    public function actionConsultar() {
+        $model = new TEMP_CABPEDIDO;
+        $tienda = new TIENDA;        
+        $arrayData = array();
+        if (Yii::app()->request->isAjaxRequest) {
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
+            $arrayData = $model->listarPedidosTiendas(null);
+            $this->renderPartial('_indexGridPedidos', array(
+                'model' => $arrayData,
+            ),false, true);
+            return;
+        }
+        $this->titleWindows = Yii::t('TIENDA', 'View orders');
+        $this->render('consultar', array(
+            'model' => $model->listarPedidosTiendas(null),
+            'tienda' => $tienda->recuperarTiendasRol(),
+            'estado' => $this->tipoAprobacion(),
+        ));
+        
     }
     
     
