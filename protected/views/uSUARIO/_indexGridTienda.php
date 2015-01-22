@@ -32,6 +32,16 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'value' => '$data["TiendaNombre"]',
         ),
         array(
+            'name' => 'Cliente',
+            'header' => Yii::t('USUARIO', 'Name store'),
+            'value' => '$data["Cliente"]',
+        ),
+        array(
+            'name' => 'Persona',
+            'header' => Yii::t('USUARIO', 'Name'),
+            'value' => '$data["Persona"]',
+        ),
+        array(
             'name' => 'Rol',
             'header' => Yii::t('USUARIO', 'User role'),
             'value' => '$data["Rol"]',

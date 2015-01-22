@@ -51,6 +51,7 @@ class PEDIDOSController extends Controller {
             'CabPed' => $CabPed,
             'DetPed' => $DetPed,
             'cupo' => $cupo["data"]["SALDO"],
+            'mostrar' => $cupo["data"]["MOSTRAR"],
         ));
     }
 
@@ -128,17 +129,26 @@ class PEDIDOSController extends Controller {
         
         $arrayData = array();
         if (Yii::app()->request->isAjaxRequest) {
-            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
+            /*$ids = isset($_POST['ids']) ? $_POST['ids'] : "";
             $arrayData = $model->mostrarPedidos(null);
             $this->renderPartial('_indexGridLiquidar', array(
                 'model' => $arrayData,
             ),false, true);
+            return;*/
+            //$arrayData = array();
+            //$model = new CABPEDIDO;
+            $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
+            $arrayData = $model->mostrarPedidos($contBuscar);
+            $this->renderPartial('_indexGridLiquidar', array(
+                'model' => $arrayData,
+                    ), false, true);
             return;
         }
         $this->titleWindows = Yii::t('TIENDA', 'Liquidate order');
         $this->render('liquidar', array(
             'model' => $model->mostrarPedidos(null),
-            'tienda' => $tienda->recuperarTiendasRol(),
+            //'tienda' => $tienda->recuperarTiendasRol(),
+            'tienda' => $tienda->recuperarTiendasCliente(),
             'estado' => $this->tipoAprobacion(),
         ));
         

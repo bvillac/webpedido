@@ -30,7 +30,7 @@ class USUARIOController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update','Save','Delete','UserTienda',
+                'actions' => array('create', 'update','Save','Delete','DeleteUserTie','UserTienda',
                                     'ClienteTienda','BuscarUsuario','SaveUserTie'),
                 'users' => array('@'),
             ),
@@ -118,6 +118,17 @@ class USUARIOController extends Controller {
             echo CJavaScript::jsonEncode($arroout);
         }
     }
+    
+    public function actionDeleteUserTie() {
+        if (Yii::app()->request->isPostRequest) {
+            //$ids = base64_decode($_POST['ids']);
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
+            $res = new USUARIO;
+            $arroout = $res->removerUserTie($ids);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+        }
+    }
 
     /**
      * Lists all models.
@@ -189,10 +200,20 @@ class USUARIOController extends Controller {
         $modelo = new PERSONA;
         $usurio = new USUARIO;
         $rol= new ROL;
-        $cliente = new ARTICULOTIENDA;
+        $cliente = new ARTICULOTIENDA;       
+        if (Yii::app()->request->isAjaxRequest) {
+            $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
+            //$arrayData = $model->mostrarPedidos($contBuscar);
+            $arrayData = $modelo->mostrarUsuarioTienda($contBuscar);
+            $this->renderPartial('_indexGridTienda', array(
+                'model' => $arrayData,
+                    ), false, true);
+            return;
+        }
+        
         $this->titleWindows = Yii::t('USUARIO', 'User Admin');
         $this->render('usertienda', array(
-            'model' => $modelo->mostrarUsuarioTienda(),
+            'model' => $modelo->mostrarUsuarioTienda(null),
             'cliente' => $cliente->recuperarClientes(),
             'rol' => $rol->recuperarRolTienda(),
             'tienda' => $usurio->recuperarTiendasUsuario('0'),

@@ -15,6 +15,7 @@ return array(
     'Clear' => 'Limpiar',
     'Close' => 'Cerrar',
     'Create' => 'Nuevo',
+    'New' => 'Nuevo',
     'Delete' => 'Eliminar',
     'Deliver' => 'Entregar',
     'Deny' => 'Negar',

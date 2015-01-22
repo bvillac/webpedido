@@ -242,32 +242,6 @@ function fun_Delete(){
     return true;
 }
 
-function fun_DeleteUserTie(){
-    var ids = String($.fn.yiiGridView.getSelection('TbG_USUARIO'));
-    var count=ids.split(",");
-    if(count.length>0 && ids!=""){
-        if(!confirm(mgEliminar)) return false;
-        var link=$('#txth_controlador').val()+"/DeleteUserTie";
-        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $.ajax({
-            type: 'POST',
-            url: link,
-            data:{
-                "ids": ids
-            } ,
-            success: function(data){
-                if (data.status=="OK"){ 
-                    $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();
-                    actualizarTbG_USUARIO();
-                }
-            },
-            dataType: "json"
-        });
-    }
-    return true;
-}
-
 function actualizarTbG_USUARIO(){
     $.fn.yiiGridView.update('TbG_USUARIO');
     /*var link=$('#txth_controlador').val()+"/Index";

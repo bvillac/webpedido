@@ -134,7 +134,7 @@ class USUARIO extends CActiveRecord {
                         FROM VSSEAPEDIDO.CLIENTE A
                                 INNER JOIN (VSSEAPEDIDO.TIENDA B
                                                 INNER JOIN VSSEAPEDIDO.USUARIO_TIENDA C
-                                                        ON B.TIE_ID=C.TIE_ID)
+                                                        ON B.TIE_ID=C.TIE_ID AND UTIE_EST_LOG=1)
                                         ON A.CLI_ID=B.CLI_ID
                 WHERE A.CLI_EST_LOG=1 ";
         $sql .= ($ids != "") ? "AND C.USU_ID=$ids " : "";
@@ -218,6 +218,26 @@ class USUARIO extends CActiveRecord {
         if ($rawData === false)
             return false; //en caso de que existe problema o no retorne nada tiene false por defecto 
         return true;//$rawData['UTIE_ID'];
+    }
+    
+    public function removerUserTie($ids) {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $sql = "UPDATE " . $con->dbname . ".USUARIO_TIENDA SET UTIE_EST_LOG='0' WHERE UTIE_ID IN($ids)";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            //echo $sql;
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,12,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
     }
 
 

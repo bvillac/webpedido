@@ -300,9 +300,10 @@ class CABPEDIDO extends CActiveRecord {
     
     public function mostrarPedidos($control) {
         $rawData = array();
-        $objPed=new TEMP_CABPEDIDO;
+        $objPed=new TIENDA;
         $con = Yii::app()->db;
-        $idsTie=$objPed->recuperarIdsTiendasRol($con);
+        //$idsTie=$objPed->recuperarIdsTiendasRol($con);
+        $idsTie=$objPed->recuperarIdsTieCliente($con);//Muestra todos los datos de clientes tiendas.
         $limitrowsql = Yii::app()->params['limitRowSQL'];
         //$rawData[]=$this->rowProdList();
         $sql = "SELECT A.CPED_ID PedID,A.TIE_ID TieID,A.CPED_VAL_NET ValorNeto,DATE(A.CPED_FEC_PED) FechaPedido, 

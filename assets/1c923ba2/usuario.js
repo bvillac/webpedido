@@ -242,32 +242,6 @@ function fun_Delete(){
     return true;
 }
 
-function fun_DeleteUserTie(){
-    var ids = String($.fn.yiiGridView.getSelection('TbG_USUARIO'));
-    var count=ids.split(",");
-    if(count.length>0 && ids!=""){
-        if(!confirm(mgEliminar)) return false;
-        var link=$('#txth_controlador').val()+"/DeleteUserTie";
-        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $.ajax({
-            type: 'POST',
-            url: link,
-            data:{
-                "ids": ids
-            } ,
-            success: function(data){
-                if (data.status=="OK"){ 
-                    $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();
-                    actualizarTbG_USUARIO();
-                }
-            },
-            dataType: "json"
-        });
-    }
-    return true;
-}
-
 function actualizarTbG_USUARIO(){
     $.fn.yiiGridView.update('TbG_USUARIO');
     /*var link=$('#txth_controlador').val()+"/Index";
@@ -386,27 +360,4 @@ function objetoUsuarioTie(){
     var ind=retornarIndexArray(Grid, 'Nombre', valor)
     data.IDS=Grid[ind]['Ids'];
     return JSON.stringify(data);
-}
-
-/************** BUSCAR USUARIO TIENDA **************/
-function fun_buscarDataUseTie(op){ 
-    var link=$('#txth_controlador').val()+"/usertienda";
-    $.fn.yiiGridView.update('TbG_USUARIO', {
-        type: 'POST',
-        url:link,
-        data:{
-            "CONT_BUSCAR": controlBuscarUseTie(op)
-        }
-    }); 
-}
-
-function controlBuscarUseTie(op){
-    //var buscarArray = new Array();
-    var buscarIndex=new Object();
-    buscarIndex.OP=op;
-    buscarIndex.TIE_ID=$('#cmb_tienda option:selected').val();
-    buscarIndex.CLI_ID=$('#cmb_cliente option:selected').val();
-    buscarIndex.ROL_ID=$('#cmb_rol option:selected').val();
-    //buscarArray[0] = buscarIndex;
-    return JSON.stringify(buscarIndex);
 }

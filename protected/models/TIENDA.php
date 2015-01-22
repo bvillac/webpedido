@@ -537,5 +537,16 @@ class TIENDA extends CActiveRecord {
         }
     }
     
+    public function recuperarIdsTieCliente($con) {
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        $sql = "SELECT TIE_ID FROM " . $con->dbname . ".TIENDA WHERE CLI_ID=$cli_Id AND TIE_EST_LOG=1 ";
+        $rawData =$con->createCommand($sql)->queryAll();
+        $tieId="";
+        for ($i = 0; $i < sizeof($rawData); $i++) {
+            $tieId .= ($i == 0)?$rawData[$i]['TIE_ID']:','.$rawData[$i]['TIE_ID'];
+        }
+        return $tieId;
+    }
+    
 
 }

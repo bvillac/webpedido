@@ -217,6 +217,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         return $tieId;
     }
     
+    
     public function listarPedidosTiendas($control) {
         $rawData = array();
         $con = Yii::app()->db;

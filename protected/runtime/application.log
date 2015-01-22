@@ -5865,3 +5865,129 @@ Stack trace:
 REQUEST_URI=/webpedido/pEDIDOS/listar.jsp
 HTTP_REFERER=http://localhost/webpedido/
 ---
+2015/01/21 22:51:47 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND USU_ID=' at line 5. La sentencia SQL ejecutada fue: SELECT B.TIE_ID,B.TIE_NOMBRE
+                        FROM VSSEAPEDIDO.USUARIO_TIENDA A
+                                INNER JOIN VSSEAPEDIDO.TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                WHERE A.UTIE_EST_LOG=1 AND A.ROL_ID= AND USU_ID= .
+in /var/www/html/webpedido/protected/models/TIENDA.php (150)
+in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (73)
+in /var/www/html/webpedido/index.php (13)
+2015/01/21 22:51:47 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Acción no permitida, Ud. no tiene acceso' in /var/www/html/webpedido/protected/models/TIENDA.php:155
+Stack trace:
+#0 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(73): TIENDA->recuperarTiendasRol()
+#1 /opt/sisweb/web/actions/CInlineAction.php(49): PEDIDOSController->actionListar()
+#2 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#4 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /opt/sisweb/web/CWebApplication.php(282): CController->run('listar')
+#6 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/listar')
+#7 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#8 /var/www/html/webpedido/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/webpedido/pEDIDOS/listar.jsp
+---
+2015/01/21 23:16:05 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(JOIN VSSEAPEDIDO.USUARIO B
+                                            INNER JO' at line 5. La sentencia SQL ejecutada fue: SELECT A.UTIE_ID UtieId,B.USU_NOMBRE Usuario,A.UTIE_FEC_CRE Fecha,
+                        CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) Persona,
+                        C.TIE_NOMBRE TiendaNombre,D.ROL_NOMBRE Rol,A.UTIE_EST_LOG Estado
+                        FROM VSSEAPEDIDO.USUARIO_TIENDA A
+                                INNER (JOIN VSSEAPEDIDO.USUARIO B
+                                            INNER JOIN VSSEAPEDIDO.PERSONA E
+						ON B.PER_ID=E.PER_ID)
+                                        ON A.USU_ID=B.USU_ID
+                                INNER JOIN VSSEAPEDIDO.TIENDA C
+                                        ON A.TIE_ID=C.TIE_ID
+                                INNER JOIN VSSEAPEDIDO.ROL D
+                                        ON A.ROL_ID=D.ROL_ID
+                WHERE A.UTIE_EST_LOG=1 ORDER BY A.UTIE_ID DESC.
+in /var/www/html/webpedido/protected/models/PERSONA.php (323)
+in /var/www/html/webpedido/protected/controllers/USUARIOController.php (195)
+in /var/www/html/webpedido/index.php (13)
+2015/01/21 23:16:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(JOIN VSSEAPEDIDO.USUARIO B
+                                            INNER JO' at line 5. The SQL statement executed was: SELECT A.UTIE_ID UtieId,B.USU_NOMBRE Usuario,A.UTIE_FEC_CRE Fecha,
+                        CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) Persona,
+                        C.TIE_NOMBRE TiendaNombre,D.ROL_NOMBRE Rol,A.UTIE_EST_LOG Estado
+                        FROM VSSEAPEDIDO.USUARIO_TIENDA A
+                                INNER (JOIN VSSEAPEDIDO.USUARIO B
+                                            INNER JOIN VSSEAPEDIDO.PERSONA E
+						ON B.PER_ID=E.PER_ID)
+                                        ON A.USU_ID=B.USU_ID
+                                INNER JOIN VSSEAPEDIDO.TIENDA C
+                                        ON A.TIE_ID=C.TIE_ID
+                                INNER JOIN VSSEAPEDIDO.ROL D
+                                        ON A.ROL_ID=D.ROL_ID
+                WHERE A.UTIE_EST_LOG=1 ORDER BY A.UTIE_ID DESC' in /opt/sisweb/db/CDbCommand.php:543
+Stack trace:
+#0 /opt/sisweb/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /var/www/html/webpedido/protected/models/PERSONA.php(323): CDbCommand->queryAll()
+#2 /var/www/html/webpedido/protected/controllers/USUARIOController.php(195): PERSONA->mostrarUsuarioTienda()
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): USUARIOController->actionUserTienda()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /opt/sisweb/web/CWebApplication.php(282): CController->run('usertienda')
+#13 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIO/usertie...')
+#14 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/html/webpedido/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/webpedido/uSUARIO/usertienda.jsp
+HTTP_REFERER=http://localhost/webpedido/
+---
+2015/01/21 23:16:34 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(JOIN VSSEAPEDIDO.USUARIO B
+                                            INNER JO' at line 5. La sentencia SQL ejecutada fue: SELECT A.UTIE_ID UtieId,B.USU_NOMBRE Usuario,A.UTIE_FEC_CRE Fecha,
+                        CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) Persona,
+                        C.TIE_NOMBRE TiendaNombre,D.ROL_NOMBRE Rol,A.UTIE_EST_LOG Estado
+                        FROM VSSEAPEDIDO.USUARIO_TIENDA A
+                                INNER (JOIN VSSEAPEDIDO.USUARIO B
+                                            INNER JOIN VSSEAPEDIDO.PERSONA E
+						ON B.PER_ID=E.PER_ID)
+                                        ON A.USU_ID=B.USU_ID
+                                INNER JOIN VSSEAPEDIDO.TIENDA C
+                                        ON A.TIE_ID=C.TIE_ID
+                                INNER JOIN VSSEAPEDIDO.ROL D
+                                        ON A.ROL_ID=D.ROL_ID
+                WHERE A.UTIE_EST_LOG=1 ORDER BY A.UTIE_ID DESC.
+in /var/www/html/webpedido/protected/models/PERSONA.php (323)
+in /var/www/html/webpedido/protected/controllers/USUARIOController.php (195)
+in /var/www/html/webpedido/index.php (13)
+2015/01/21 23:16:34 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(JOIN VSSEAPEDIDO.USUARIO B
+                                            INNER JO' at line 5. The SQL statement executed was: SELECT A.UTIE_ID UtieId,B.USU_NOMBRE Usuario,A.UTIE_FEC_CRE Fecha,
+                        CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) Persona,
+                        C.TIE_NOMBRE TiendaNombre,D.ROL_NOMBRE Rol,A.UTIE_EST_LOG Estado
+                        FROM VSSEAPEDIDO.USUARIO_TIENDA A
+                                INNER (JOIN VSSEAPEDIDO.USUARIO B
+                                            INNER JOIN VSSEAPEDIDO.PERSONA E
+						ON B.PER_ID=E.PER_ID)
+                                        ON A.USU_ID=B.USU_ID
+                                INNER JOIN VSSEAPEDIDO.TIENDA C
+                                        ON A.TIE_ID=C.TIE_ID
+                                INNER JOIN VSSEAPEDIDO.ROL D
+                                        ON A.ROL_ID=D.ROL_ID
+                WHERE A.UTIE_EST_LOG=1 ORDER BY A.UTIE_ID DESC' in /opt/sisweb/db/CDbCommand.php:543
+Stack trace:
+#0 /opt/sisweb/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /var/www/html/webpedido/protected/models/PERSONA.php(323): CDbCommand->queryAll()
+#2 /var/www/html/webpedido/protected/controllers/USUARIOController.php(195): PERSONA->mostrarUsuarioTienda()
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): USUARIOController->actionUserTienda()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /opt/sisweb/web/CWebApplication.php(282): CController->run('usertienda')
+#13 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIO/usertie...')
+#14 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/html/webpedido/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/webpedido/uSUARIO/usertienda.jsp
+HTTP_REFERER=http://localhost/webpedido/
+---

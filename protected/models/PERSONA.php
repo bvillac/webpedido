@@ -302,21 +302,33 @@ class PERSONA extends CActiveRecord
     }
     
     
-    public function mostrarUsuarioTienda() {
+    public function mostrarUsuarioTienda($control) {
         $rawData = array();
+        $limitrowsql = Yii::app()->params['limitRowSQL'];
         $con = Yii::app()->db;
         
         $sql = "SELECT A.UTIE_ID UtieId,B.USU_NOMBRE Usuario,A.UTIE_FEC_CRE Fecha,
+                        CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) Persona,F.CLI_NOMBRE Cliente,
                         C.TIE_NOMBRE TiendaNombre,D.ROL_NOMBRE Rol,A.UTIE_EST_LOG Estado
                         FROM " . $con->dbname . ".USUARIO_TIENDA A
-                                INNER JOIN " . $con->dbname . ".USUARIO B
+                                INNER JOIN (" . $con->dbname . ".USUARIO B
+                                            INNER JOIN " . $con->dbname . ".PERSONA E
+						ON B.PER_ID=E.PER_ID)
                                         ON A.USU_ID=B.USU_ID
-                                INNER JOIN " . $con->dbname . ".TIENDA C
+                                INNER JOIN (" . $con->dbname . ".TIENDA C
+                                            INNER JOIN VSSEAPEDIDO.CLIENTE F
+						ON C.CLI_ID=F.CLI_ID)
                                         ON A.TIE_ID=C.TIE_ID
                                 INNER JOIN " . $con->dbname . ".ROL D
                                         ON A.ROL_ID=D.ROL_ID
-                WHERE A.UTIE_EST_LOG=1 ORDER BY A.UTIE_ID DESC";
-
+                WHERE A.UTIE_EST_LOG=1 ";
+        if (!empty($control)) {//Verifica la Opcion op para los filtros
+            $sql .= ($control['TIE_ID'] != "0") ? "AND C.TIE_ID='".$control['TIE_ID']."' " : "";
+            $sql .= ($control['CLI_ID'] != "0") ? "AND C.CLI_ID='".$control['CLI_ID']."' " : "";
+            $sql .= ($control['ROL_ID'] != "0") ? "AND D.ROL_ID='".$control['ROL_ID']."' " : "";
+        }
+        $sql .= "ORDER BY A.UTIE_ID DESC LIMIT $limitrowsql";
+        //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
 
@@ -324,7 +336,7 @@ class PERSONA extends CActiveRecord
             'keyField' => 'UtieId',
             'sort' => array(
                 'attributes' => array(
-                    'Usuario', 'TiendaNombre', 'Rol', 'Fecha', 'Estado',
+                    'Usuario', 'TiendaNombre', 'Rol', 'Fecha', 'Estado','Cliente','Persona'
                 ),
             ),
             'totalItemCount' => count($rawData),

@@ -1,6 +1,6 @@
 <?php echo $this->renderPartial('_include'); ?>
 <div class="col-lg-8">
-    <?php echo $this->renderPartial('_frm_CabPedTemp', array('CabPed' => $CabPed,'cupo' => $cupo)); ?>
+    <?php echo $this->renderPartial('_frm_CabPedTemp', array('CabPed' => $CabPed,'cupo' => $cupo,'mostrar' => $mostrar)); ?>
 </div>
 <div class="col-lg-4">
     <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Save'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'guardarListaPedido("Update")')); ?>

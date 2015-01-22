@@ -252,16 +252,12 @@ function listaPedido() {
 }
 
 function nuevaListaPedTemp() {
-    location.reload();
-//    var TbGtable = 'TbG_PEDIDO';
-//    $('#' + TbGtable + ' tr').each(function () {
-//        var idstable = $(this).find("td").eq(0).html();
-//        $('#txt_cat_' + idstable).val(redondea(0, Ndecimal));
-//        $(this).find("td").eq(6).html(redondea(0, Ndecimal));
-//    });
-//    $('#lbl_total').text('0.00');
-//    $('#lbl_cupo').text('0.00');
-//    $('#lbl_pedido').text('Pedido Nº');
+    var TbGtable = 'TbG_PEDIDO';
+    $('#' + TbGtable + ' tr').each(function () {
+        var idstable = $(this).find("td").eq(0).html();
+        $('#txt_cat_' + idstable).val(redondea(0, Ndecimal));
+        $(this).find("td").eq(6).html(redondea(0, Ndecimal));
+    });
 }
 
 function listaPedidoDetTemp() {
