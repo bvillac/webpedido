@@ -118,6 +118,7 @@ return array(
         // uncomment the following to use a MySQL database
         'db' => array(
             'connectionString' => 'mysql:host=localhost;dbname=VSSEAPEDIDO',
+            //'connectionString' => 'mysql:host=200.124.246.218;dbname=VSSEAPEDIDO',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => 'root00',
@@ -127,8 +128,8 @@ return array(
         ),
         'dbcont' => array(//Contribuyente
             'class' => 'CDbConnection',
-            'connectionString' => 'mysql:host=localhost;dbname=utimpor2014',
-            //'connectionString' => 'mysql:host=192.168.10.101;dbname=utimpor2014',
+            //'connectionString' => 'mysql:host=localhost;dbname=utimpor2014',
+            'connectionString' => 'mysql:host=192.168.10.101;dbname=utimpor2014',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => 'root00',

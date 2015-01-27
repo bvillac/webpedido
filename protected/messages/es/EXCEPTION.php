@@ -12,7 +12,7 @@ return array(
     '<strong>Well done!</strong> your information was successfully saved.' => '<strong>Bien Hecho!</strong> Su informacion fue guardada correctamente.',
     'your information was successfully update.' => 'su informacion fue actualizada correctamente.',
     'your information was successfully verified.' => 'su informacion fue verificada correctamente.',
-    'The request was completed successfully.' => 'La solicitud fÚe realizada correctamente.',
+    'The request was completed successfully.' => 'La solicitud fúe realizada correctamente.',
     'Please come back in a while.' => 'Por favor vuelva a intentar despues de unos minutos',
     '<strong>Well done!</strong>' => '<strong>Bien Hecho!</strong>',
     'We are fixing it!' => 'Estamos solucionando este inconveniente',

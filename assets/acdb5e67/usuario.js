@@ -413,7 +413,7 @@ function controlBuscarUseTie(op){
 
 function fun_CambiaPass() {
     var pass = $('#txt_password').val();
-    if ($('#txt_confirma').val()==pass) {
+    if (validateForm()) {
         pass = base64_encode(pass);
         var link = $('#txth_controlador').val() + "/Contrasena";
         $.ajax({
@@ -433,8 +433,6 @@ function fun_CambiaPass() {
                 }
             },
         });
-    }else{
-        alert('Los Datos No son Iguales');
     }
 
 }

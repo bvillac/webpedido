@@ -14,7 +14,7 @@
 $this->widget('zii.widgets.grid.CGridView', array(
     'id' => 'TbG_TIENDA',
     'dataProvider' => $model,
-    'template' => "{items}",
+    //'template' => "{items}",
     'htmlOptions' => array('style' => 'cursor: pointer;'),
     'selectableRows' => 2,
     //'selectionChanged' => 'verificaAcciones',

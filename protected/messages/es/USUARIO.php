@@ -22,6 +22,7 @@ return array(
     'Last name' => 'Apellido',
     'Address' => 'Dirección',
     'Password' => 'Contraseña',
+    'New password' => 'Nueva Contraseña',
     'Confirm' => 'Confirmar',
     'Date of birth' => 'Fec Nac',
     'Creation date' => 'F.Creación',

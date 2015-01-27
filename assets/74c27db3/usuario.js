@@ -433,8 +433,6 @@ function fun_CambiaPass() {
                 }
             },
         });
-    }else{
-        alert('Los Datos No son Iguales');
     }
 
 }

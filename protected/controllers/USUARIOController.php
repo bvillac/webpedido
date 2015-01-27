@@ -31,7 +31,7 @@ class USUARIOController extends Controller {
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions' => array('create', 'update','Save','Delete','DeleteUserTie','UserTienda',
-                                    'ClienteTienda','BuscarUsuario','SaveUserTie'),
+                                    'ClienteTienda','BuscarUsuario','SaveUserTie','Contrasena'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -257,6 +257,18 @@ class USUARIOController extends Controller {
             echo CJavaScript::jsonEncode($arroout);
             return;
         }
+    }
+    
+    public function actionContrasena() {
+        $model = new USUARIO;
+        if (Yii::app()->request->isAjaxRequest) {;
+            $pass = base64_decode($_POST['DATA']);
+            $arrayData = $model->cambiarPassword($pass);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arrayData);
+            return;
+        }
+        $this->render('contrasena');
     }
     
     

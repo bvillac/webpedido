@@ -239,6 +239,27 @@ class USUARIO extends CActiveRecord {
             return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
         }
     }
+    
+    public function cambiarPassword($pass) {
+        $ids = Yii::app()->getSession()->get('user_id', FALSE);
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $sql = "UPDATE " . $con->dbname . ".USUARIO SET USU_PASSWORD=MD5('$pass') WHERE USU_ID=$ids ";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            //echo $sql;
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,20,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
 
 
 

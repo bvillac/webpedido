@@ -24,6 +24,7 @@ return array(
     'User' => 'Usuario',
     'Login' => 'Entrar',
     'Password' => 'Contraseña',
+    'Change password' => 'Cambiar Contraseña',
     /*Correos*/
     'Mail' => 'Correo',
     'E-mail' => 'E-mail',
