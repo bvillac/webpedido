@@ -225,6 +225,7 @@ class PERSONA extends CActiveRecord
             $this->modificaPersona($con, $objEnt);
             $ids=$objEnt['dperId'];//$this->idTabla($con,'DATA_PERSONA',$objEnt['perId'],'PER_ID','DPER_ID');
             $this->modificarDataPer($con, $objEnt,$ids);
+            $this->modificarDataUser($con, $objEnt);
             
             $trans->commit();
             $con->active = false;
@@ -274,6 +275,16 @@ class PERSONA extends CActiveRecord
                     DPER_EST_LOG = 1,
                     DPER_FEC_MOD = CURRENT_TIMESTAMP()
                     WHERE DPER_ID=$Ids";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
+    private function modificarDataUser($con, $objEnt) {  
+        //USU_NOMBRE = '" . $objEnt['usuario'] . "',
+        $sql = "UPDATE " . $con->dbname . ".USUARIO
+                    SET  USU_CORREO = '" . $objEnt['correo'] . "',
+                    USU_FEC_MOD = CURRENT_TIMESTAMP()
+                    WHERE PER_ID= '" . $objEnt['perId'] . "'";
         $command = $con->createCommand($sql);
         $command->execute();
     }
