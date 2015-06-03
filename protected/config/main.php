@@ -117,6 +117,7 @@ return array(
           ), */
         // uncomment the following to use a MySQL database
         'db' => array(
+            //'connectionString' => 'mysql:host=192.168.10.200;dbname=VSSEAPEDIDO',
             'connectionString' => 'mysql:host=localhost;dbname=VSSEAPEDIDO',
             //'connectionString' => 'mysql:host=200.124.246.218;dbname=VSSEAPEDIDO',
             'emulatePrepare' => true,
@@ -124,40 +125,6 @@ return array(
             'password' => 'root00',
             'charset' => 'utf8',
             'dbname' => "VSSEAPEDIDO",
-            'dbserver' => "192.168.10.101"
-        ),
-        'dbcont' => array(//Contribuyente
-            'class' => 'CDbConnection',
-            //'connectionString' => 'mysql:host=localhost;dbname=utimpor2014',
-            'connectionString' => 'mysql:host=192.168.10.101;dbname=utimpor2014',
-            'emulatePrepare' => true,
-            'username' => 'root',
-            'password' => 'root00',
-            'charset' => 'utf8',
-            'dbname' => 'utimpor2014',
-            'dbserver' => "192.168.10.101"
-        ),
-        'dbvssea' => array(
-            'class' => 'CDbConnection',
-            'connectionString' => 'mysql:host=localhost;dbname=VSSEA',
-            //'connectionString' => 'mysql:host=192.168.10.101;dbname=VSSEA',
-            'emulatePrepare' => true,
-            'username' => 'root',
-            'password' => 'root00',
-            'charset' => 'utf8',
-            'dbname' => 'VSSEA',
-            'dbserver' => "192.168.10.101"
-        ),
-        'dbvsseaint' => array(
-            'class' => 'CDbConnection',
-            'connectionString' => 'mysql:host=localhost;dbname=VSSEAINTERMEDIA',
-            //'connectionString' => 'mysql:host=192.168.10.101;dbname=VSSEAINTERMEDIA',
-            'emulatePrepare' => true,
-            'username' => 'root',
-            'password' => 'root00',
-            'charset' => 'utf8',
-            'dbname' => 'VSSEAINTERMEDIA',
-            //'dbserver' => "localhost"
             'dbserver' => "192.168.10.101"
         ),
         'errorHandler' => array(
