@@ -452,10 +452,20 @@ class CABPEDIDO extends CActiveRecord {
         $rawData = array();
         $con = Yii::app()->db;
         $idsTie=$objPed->recuperarIdsTiendasRol($con);
-        
+        //Cambio = 4-06-2015
+        //Se agrego la Fecha del Pedido y el Nombre del Usuario tienda que pidio
         $sql = "SELECT B.COD_ART CodArt,B.ART_DES_COM Nombre,IFNULL(SUM(A.DPED_CAN_PED),0) CantPed,
-                        C.TIE_NOMBRE Tienda,A.DPED_P_VENTA Pventa,IFNULL(SUM(A.DPED_T_VENTA),0) Tventa
+                        C.TIE_NOMBRE Tienda,A.DPED_P_VENTA Pventa,IFNULL(SUM(A.DPED_T_VENTA),0) Tventa,
+                        G.PER_NOMBRE NomUser, DATE(D.CPED_FEC_PED) Fec_Ped
                         FROM " . $con->dbname . ".DET_PEDIDO A
+                                INNER JOIN (" . $con->dbname . ".CAB_PEDIDO D
+                                        INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA E
+                                                INNER JOIN (" . $con->dbname . ".USUARIO F
+                                                                INNER JOIN " . $con->dbname . ".PERSONA G
+                                                                        ON F.PER_ID=G.PER_ID)
+                                                        ON E.USU_ID=F.USU_ID)
+                                                ON D.UTIE_ID_PED=E.UTIE_ID)
+                                    ON A.CPED_ID=D.CPED_ID
                                 INNER JOIN " . $con->dbname . ".ARTICULO B
                                         ON A.ART_ID=B.ART_ID
                                 INNER JOIN " . $con->dbname . ".TIENDA C

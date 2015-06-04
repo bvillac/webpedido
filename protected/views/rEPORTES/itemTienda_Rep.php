@@ -91,6 +91,12 @@
                                             <span><?php echo Yii::t('TIENDA', 'Stores') ?></span>
                                         </td>
                                         <td class="marcoCel titleDetalle">
+                                            <span><?php echo Yii::t('TIENDA', 'Name') ?></span>
+                                        </td>
+                                        <td class="marcoCel titleDetalle">
+                                            <span><?php echo Yii::t('TIENDA', 'Date') ?></span>
+                                        </td>
+                                        <td class="marcoCel titleDetalle">
                                             <span><?php echo Yii::t('TIENDA', 'Code') ?></span>
                                         </td>
                                         <td class="marcoCel titleDetalle">
@@ -113,6 +119,8 @@
                                         ?>
                                         <tr>
                                             <td ><?php echo $data[$i]['Tienda'] ?></td>
+                                            <td ><?php echo $data[$i]['NomUser'] ?></td>
+                                            <td ><?php echo $data[$i]['Fec_Ped'] ?></td>
                                             <td class=""><?php echo $data[$i]['CodArt'] ?></td>
                                             <td class=""><?php echo $data[$i]['Nombre'] ?></td>
                                             <td class="dataNumber"><?php echo intval($data[$i]['CantPed']) ?></td>
@@ -122,7 +130,7 @@
                                         </tr>
                                     <?php } ?>
                                     <tr>
-                                        <td class="marcoCelSup dataNumber" colspan="6">
+                                        <td class="marcoCelSup dataNumber" colspan="8">
                                             <?php echo Yii::app()->format->formatNumber($ValorNeto) ?>
                                         </td>
 

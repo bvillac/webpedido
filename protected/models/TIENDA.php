@@ -503,7 +503,7 @@ class TIENDA extends CActiveRecord {
             ),
             'totalItemCount' => count($rawData),
             'pagination' => array(
-                //'pageSize' => Yii::app()->params['pageSize'],
+                'pageSize' => 1000,//Yii::app()->params['pageSize'],//Solo para que salgan todos
             ),
         ));
     }
