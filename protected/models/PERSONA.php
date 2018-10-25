@@ -166,16 +166,18 @@ class PERSONA extends CActiveRecord
         $trans = $con->beginTransaction();
         try {
             $this->InsertarPersona($con, $objEnt);
-            $IdPer = $con->getLastInsertID($con->dbname . '.PERSONA');
+            $IdPer = $con->getLastInsertID($con->dbname . '.PERSONA');            
             $this->InsertarUsuario($con, $objEnt, $IdPer);
+            $IdUsu = $con->getLastInsertID($con->dbname . '.USUARIO');  
             $this->InsertarDataPer($con, $objEnt, $IdPer);
+            $this->insertarUserTienda($con, $objEnt, $IdUsu);
             $trans->commit();
             $con->active = false;
             return $msg->messageSystem('OK', null, 10, null, null);
         } catch (Exception $e) {
             $trans->rollback();
             $con->active = false;
-            //throw $e;
+            throw $e;
             return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
         }
     }
@@ -184,7 +186,7 @@ class PERSONA extends CActiveRecord
         $sql = "INSERT INTO " . $con->dbname . ".PERSONA
                 (PER_CED_RUC,PER_NOMBRE,PER_APELLIDO,PER_FEC_NACIMIENTO,PER_GENERO,PER_EST_LOG,PER_FEC_CRE)VALUES
                 ('" . $objEnt['dni'] . "','" . $objEnt['nombre'] . "','" . $objEnt['apellido'] . "',
-                 '" . $objEnt['fec_nac'] . "','" . $objEnt['genero'] . "','1',CURRENT_TIMESTAMP()) ";
+                 '" . date("Y-m-d", strtotime($objEnt['fec_nac'])). "','" . $objEnt['genero'] . "','1',CURRENT_TIMESTAMP()) ";
         $command = $con->createCommand($sql);
         $command->execute();
     }
@@ -208,6 +210,24 @@ class PERSONA extends CActiveRecord
         $command = $con->createCommand($sql);
         $command->execute();
     }
+    
+    private function insertarUserTienda($con, $objEnt, $IdUser){
+        //$perUser=new USUARIO();
+        
+        $tie = 160;//$objEnt['TIE'];//Tienda de Prueba
+        $rol = 7;//$objEnt['ROL'];//CLIENTE TIENDA
+        $ids = $IdUser;//$objEnt['IDS'];        
+        //if (!$perUser->existeUsuTienda($con, $IdUser, $tie, $rol)) {
+            //Si No existe            
+            $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+            $sql = "INSERT INTO " . $con->dbname . ".USUARIO_TIENDA
+                    (USU_ID,TIE_ID,ROL_ID,CLI_ID,UTIE_EST_LOG,UTIE_FEC_CRE)VALUES
+                    ($ids,$tie,$rol,$cli_Id,'1',CURRENT_TIMESTAMP()) ";
+            $command = $con->createCommand($sql);
+            $command->execute();
+        //}
+    }
+            
 
     public function recuperarPersonas($id) {
         $con = yii::app()->db;
