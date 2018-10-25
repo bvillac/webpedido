@@ -6449,3 +6449,289 @@ Stack trace:
 #17 {main}
 REQUEST_URI=/webpedido/
 ---
+2018/10/25 19:27:21 [error] [php] date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. (/var/www/html/webpedido/themes/seablue/views/layouts/main.php:89)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(95): SiteController->renderInternal()
+#1 /opt/sisweb/web/widgets/CContentDecorator.php(76): SiteController->renderFile()
+#2 /opt/sisweb/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#3 /opt/sisweb/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#4 /opt/sisweb/web/CBaseController.php(206): CContentDecorator->run()
+#5 /opt/sisweb/web/CBaseController.php(300): SiteController->endWidget()
+#6 /var/www/html/webpedido/themes/seablue/views/layouts/column1.php(6): SiteController->endContent()
+#7 /opt/sisweb/web/CBaseController.php(126): require()
+#8 /opt/sisweb/web/CBaseController.php(95): SiteController->renderInternal()
+#9 /opt/sisweb/web/CController.php(784): SiteController->renderFile()
+#10 /var/www/html/webpedido/protected/controllers/SiteController.php(35): SiteController->render()
+#11 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#12 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#13 /opt/sisweb/web/CController.php(286): SiteController->runAction()
+#14 /opt/sisweb/web/CController.php(265): SiteController->runActionWithFilters()
+#15 /opt/sisweb/web/CWebApplication.php(282): SiteController->run()
+#16 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#17 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#18 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/
+in /var/www/html/webpedido/themes/seablue/views/layouts/main.php (89)
+in /var/www/html/webpedido/themes/seablue/views/layouts/column1.php (6)
+in /var/www/html/webpedido/protected/controllers/SiteController.php (35)
+2018/10/25 19:28:25 [error] [php] date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. (/var/www/html/webpedido/themes/seablue/views/layouts/main.php:89)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(95): SiteController->renderInternal()
+#1 /opt/sisweb/web/widgets/CContentDecorator.php(76): SiteController->renderFile()
+#2 /opt/sisweb/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#3 /opt/sisweb/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#4 /opt/sisweb/web/CBaseController.php(206): CContentDecorator->run()
+#5 /opt/sisweb/web/CBaseController.php(300): SiteController->endWidget()
+#6 /var/www/html/webpedido/themes/seablue/views/layouts/column1.php(6): SiteController->endContent()
+#7 /opt/sisweb/web/CBaseController.php(126): require()
+#8 /opt/sisweb/web/CBaseController.php(95): SiteController->renderInternal()
+#9 /opt/sisweb/web/CController.php(784): SiteController->renderFile()
+#10 /var/www/html/webpedido/protected/controllers/SiteController.php(35): SiteController->render()
+#11 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#12 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#13 /opt/sisweb/web/CController.php(286): SiteController->runAction()
+#14 /opt/sisweb/web/CController.php(265): SiteController->runActionWithFilters()
+#15 /opt/sisweb/web/CWebApplication.php(282): SiteController->run()
+#16 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#17 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#18 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/
+in /var/www/html/webpedido/themes/seablue/views/layouts/main.php (89)
+in /var/www/html/webpedido/themes/seablue/views/layouts/column1.php (6)
+in /var/www/html/webpedido/protected/controllers/SiteController.php (35)
+2018/10/25 19:29:17 [error] [php] date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. (/var/www/html/webpedido/themes/seablue/views/layouts/main.php:89)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(95): SiteController->renderInternal()
+#1 /opt/sisweb/web/widgets/CContentDecorator.php(76): SiteController->renderFile()
+#2 /opt/sisweb/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#3 /opt/sisweb/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#4 /opt/sisweb/web/CBaseController.php(206): CContentDecorator->run()
+#5 /opt/sisweb/web/CBaseController.php(300): SiteController->endWidget()
+#6 /var/www/html/webpedido/themes/seablue/views/layouts/column1.php(6): SiteController->endContent()
+#7 /opt/sisweb/web/CBaseController.php(126): require()
+#8 /opt/sisweb/web/CBaseController.php(95): SiteController->renderInternal()
+#9 /opt/sisweb/web/CController.php(784): SiteController->renderFile()
+#10 /var/www/html/webpedido/protected/controllers/SiteController.php(35): SiteController->render()
+#11 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#12 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#13 /opt/sisweb/web/CController.php(286): SiteController->runAction()
+#14 /opt/sisweb/web/CController.php(265): SiteController->runActionWithFilters()
+#15 /opt/sisweb/web/CWebApplication.php(282): SiteController->run()
+#16 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#17 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#18 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/
+in /var/www/html/webpedido/themes/seablue/views/layouts/main.php (89)
+in /var/www/html/webpedido/themes/seablue/views/layouts/column1.php (6)
+in /var/www/html/webpedido/protected/controllers/SiteController.php (35)
+2018/10/25 19:29:18 [error] [php] date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. (/var/www/html/webpedido/themes/seablue/views/layouts/main.php:89)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(95): SiteController->renderInternal()
+#1 /opt/sisweb/web/widgets/CContentDecorator.php(76): SiteController->renderFile()
+#2 /opt/sisweb/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#3 /opt/sisweb/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#4 /opt/sisweb/web/CBaseController.php(206): CContentDecorator->run()
+#5 /opt/sisweb/web/CBaseController.php(300): SiteController->endWidget()
+#6 /var/www/html/webpedido/themes/seablue/views/layouts/column1.php(6): SiteController->endContent()
+#7 /opt/sisweb/web/CBaseController.php(126): require()
+#8 /opt/sisweb/web/CBaseController.php(95): SiteController->renderInternal()
+#9 /opt/sisweb/web/CController.php(784): SiteController->renderFile()
+#10 /var/www/html/webpedido/protected/controllers/SiteController.php(35): SiteController->render()
+#11 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#12 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#13 /opt/sisweb/web/CController.php(286): SiteController->runAction()
+#14 /opt/sisweb/web/CController.php(265): SiteController->runActionWithFilters()
+#15 /opt/sisweb/web/CWebApplication.php(282): SiteController->run()
+#16 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#17 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#18 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/
+in /var/www/html/webpedido/themes/seablue/views/layouts/main.php (89)
+in /var/www/html/webpedido/themes/seablue/views/layouts/column1.php (6)
+in /var/www/html/webpedido/protected/controllers/SiteController.php (35)
+2018/10/25 19:34:50 [error] [php] date(): Invalid date.timezone value 'Guayaquil/Ecuador', we selected the timezone 'UTC' for now. (/var/www/html/webpedido/themes/seablue/views/layouts/main.php:89)
+Stack trace:
+#0 /opt/sisweb/web/CBaseController.php(95): SiteController->renderInternal()
+#1 /opt/sisweb/web/widgets/CContentDecorator.php(76): SiteController->renderFile()
+#2 /opt/sisweb/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#3 /opt/sisweb/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#4 /opt/sisweb/web/CBaseController.php(206): CContentDecorator->run()
+#5 /opt/sisweb/web/CBaseController.php(300): SiteController->endWidget()
+#6 /var/www/html/webpedido/themes/seablue/views/layouts/column1.php(6): SiteController->endContent()
+#7 /opt/sisweb/web/CBaseController.php(126): require()
+#8 /opt/sisweb/web/CBaseController.php(95): SiteController->renderInternal()
+#9 /opt/sisweb/web/CController.php(784): SiteController->renderFile()
+#10 /var/www/html/webpedido/protected/controllers/SiteController.php(35): SiteController->render()
+#11 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#12 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#13 /opt/sisweb/web/CController.php(286): SiteController->runAction()
+#14 /opt/sisweb/web/CController.php(265): SiteController->runActionWithFilters()
+#15 /opt/sisweb/web/CWebApplication.php(282): SiteController->run()
+#16 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#17 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#18 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/
+in /var/www/html/webpedido/themes/seablue/views/layouts/main.php (89)
+in /var/www/html/webpedido/themes/seablue/views/layouts/column1.php (6)
+in /var/www/html/webpedido/protected/controllers/SiteController.php (35)
+2018/10/25 14:56:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "NubeFactura/create"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('NubeFactura/cre...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/NubeFactura/create.jsp
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/aprobar.jsp
+---
+2018/10/25 16:13:50 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'USUARIO_TIENDA C ON B.USU_ID=C.USU_ID )
+                                ON A.PER' at line 5. La sentencia SQL ejecutada fue: SELECT A.PER_ID PerId,CONCAT(A.PER_NOMBRE,' ',A.PER_APELLIDO) Nombre,A.PER_GENERO Genero,
+                B.USU_NOMBRE User,B.USU_CORREO Correo,A.PER_EST_LOG Estado
+                FROM VSSEAPEDIDO.PERSONA A
+                        INNER JOIN  (VSSEAPEDIDO.USUARIO B
+                                    USUARIO_TIENDA C ON B.USU_ID=C.USU_ID )
+                                ON A.PER_ID=B.PER_ID
+        WHERE A.PER_EST_LOG=1 AND C.CLI_ID=4 .
+in /var/www/html/webpedido/protected/models/PERSONA.php (146)
+in /var/www/html/webpedido/protected/controllers/USUARIOController.php (140)
+in /var/www/html/webpedido/index.php (13)
+2018/10/25 16:13:50 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'USUARIO_TIENDA C ON B.USU_ID=C.USU_ID )
+                                ON A.PER' at line 5. The SQL statement executed was: SELECT A.PER_ID PerId,CONCAT(A.PER_NOMBRE,' ',A.PER_APELLIDO) Nombre,A.PER_GENERO Genero,
+                B.USU_NOMBRE User,B.USU_CORREO Correo,A.PER_EST_LOG Estado
+                FROM VSSEAPEDIDO.PERSONA A
+                        INNER JOIN  (VSSEAPEDIDO.USUARIO B
+                                    USUARIO_TIENDA C ON B.USU_ID=C.USU_ID )
+                                ON A.PER_ID=B.PER_ID
+        WHERE A.PER_EST_LOG=1 AND C.CLI_ID=4 ' in /opt/sisweb/db/CDbCommand.php:543
+Stack trace:
+#0 /opt/sisweb/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /var/www/html/webpedido/protected/models/PERSONA.php(146): CDbCommand->queryAll()
+#2 /var/www/html/webpedido/protected/controllers/USUARIOController.php(140): PERSONA->mostrarUsuarioPersona()
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): USUARIOController->actionIndex()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#13 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIO/index')
+#14 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/html/webpedido/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/webpedido/uSUARIO/index.jsp
+HTTP_REFERER=http://localhost/webpedido/tIENDA/producto.jsp
+---
+2018/10/25 16:15:08 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'VSSEAPEDIDO.USUARIO_TIENDA C ON B.USU_ID=C.USU_ID )
+                            ' at line 5. La sentencia SQL ejecutada fue: SELECT A.PER_ID PerId,CONCAT(A.PER_NOMBRE,' ',A.PER_APELLIDO) Nombre,A.PER_GENERO Genero,
+                B.USU_NOMBRE User,B.USU_CORREO Correo,A.PER_EST_LOG Estado
+                FROM VSSEAPEDIDO.PERSONA A
+                        INNER JOIN  (VSSEAPEDIDO.USUARIO B
+                                    VSSEAPEDIDO.USUARIO_TIENDA C ON B.USU_ID=C.USU_ID )
+                                ON A.PER_ID=B.PER_ID
+        WHERE A.PER_EST_LOG=1 AND C.CLI_ID=4 .
+in /var/www/html/webpedido/protected/models/PERSONA.php (146)
+in /var/www/html/webpedido/protected/controllers/USUARIOController.php (140)
+in /var/www/html/webpedido/index.php (13)
+2018/10/25 16:15:08 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'VSSEAPEDIDO.USUARIO_TIENDA C ON B.USU_ID=C.USU_ID )
+                            ' at line 5. The SQL statement executed was: SELECT A.PER_ID PerId,CONCAT(A.PER_NOMBRE,' ',A.PER_APELLIDO) Nombre,A.PER_GENERO Genero,
+                B.USU_NOMBRE User,B.USU_CORREO Correo,A.PER_EST_LOG Estado
+                FROM VSSEAPEDIDO.PERSONA A
+                        INNER JOIN  (VSSEAPEDIDO.USUARIO B
+                                    VSSEAPEDIDO.USUARIO_TIENDA C ON B.USU_ID=C.USU_ID )
+                                ON A.PER_ID=B.PER_ID
+        WHERE A.PER_EST_LOG=1 AND C.CLI_ID=4 ' in /opt/sisweb/db/CDbCommand.php:543
+Stack trace:
+#0 /opt/sisweb/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /var/www/html/webpedido/protected/models/PERSONA.php(146): CDbCommand->queryAll()
+#2 /var/www/html/webpedido/protected/controllers/USUARIOController.php(140): PERSONA->mostrarUsuarioPersona()
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): USUARIOController->actionIndex()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#13 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('uSUARIO/index')
+#14 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/html/webpedido/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/webpedido/uSUARIO/index.jsp
+HTTP_REFERER=http://localhost/webpedido/tIENDA/producto.jsp
+---
+2018/10/25 16:22:38 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '/                WHERE A.TIE_EST_LOG=1 AND A.CLI_ID=4' at line 6. La sentencia SQL ejecutada fue: SELECT A.TIE_ID,A.CLI_ID,A.TIE_NOMBRE,A.TIE_DIRECCION,A.TIE_CUPO,
+                    B.CLI_NOMBRE,A.TIE_CONTACTO,A.TIE_TELEFONO,TIE_LUG_ENTREGA
+                        FROM VSSEAPEDIDO.TIENDA A
+                                INNER JOIN VSSEAPEDIDO.CLIENTE B
+                                        ON A.CLI_ID=B.CLI_ID
+//                WHERE A.TIE_EST_LOG=1 AND A.CLI_ID=4 .
+in /var/www/html/webpedido/protected/models/TIENDA.php (172)
+in /var/www/html/webpedido/protected/controllers/TIENDAController.php (146)
+in /var/www/html/webpedido/index.php (13)
+2018/10/25 16:22:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '/                WHERE A.TIE_EST_LOG=1 AND A.CLI_ID=4' at line 6. The SQL statement executed was: SELECT A.TIE_ID,A.CLI_ID,A.TIE_NOMBRE,A.TIE_DIRECCION,A.TIE_CUPO,
+                    B.CLI_NOMBRE,A.TIE_CONTACTO,A.TIE_TELEFONO,TIE_LUG_ENTREGA
+                        FROM VSSEAPEDIDO.TIENDA A
+                                INNER JOIN VSSEAPEDIDO.CLIENTE B
+                                        ON A.CLI_ID=B.CLI_ID
+//                WHERE A.TIE_EST_LOG=1 AND A.CLI_ID=4 ' in /opt/sisweb/db/CDbCommand.php:543
+Stack trace:
+#0 /opt/sisweb/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /var/www/html/webpedido/protected/models/TIENDA.php(172): CDbCommand->queryAll()
+#2 /var/www/html/webpedido/protected/controllers/TIENDAController.php(146): TIENDA->mostrarTiendas()
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): TIENDAController->actionIndex()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#13 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('tIENDA/index')
+#14 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/html/webpedido/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/webpedido/tIENDA/index.jsp
+HTTP_REFERER=http://localhost/webpedido/
+---
+2018/10/25 16:24:35 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '/                WHERE A.TIE_EST_LOG=1 AND A.CLI_ID=4' at line 6. La sentencia SQL ejecutada fue: SELECT A.TIE_ID,A.CLI_ID,A.TIE_NOMBRE,A.TIE_DIRECCION,A.TIE_CUPO,
+                    B.CLI_NOMBRE,A.TIE_CONTACTO,A.TIE_TELEFONO,TIE_LUG_ENTREGA
+                        FROM VSSEAPEDIDO.TIENDA A
+                                INNER JOIN VSSEAPEDIDO.CLIENTE B
+                                        ON A.CLI_ID=B.CLI_ID
+//                WHERE A.TIE_EST_LOG=1 AND A.CLI_ID=4 .
+in /var/www/html/webpedido/protected/models/TIENDA.php (172)
+in /var/www/html/webpedido/protected/controllers/TIENDAController.php (146)
+in /var/www/html/webpedido/index.php (13)
+2018/10/25 16:24:35 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '/                WHERE A.TIE_EST_LOG=1 AND A.CLI_ID=4' at line 6. The SQL statement executed was: SELECT A.TIE_ID,A.CLI_ID,A.TIE_NOMBRE,A.TIE_DIRECCION,A.TIE_CUPO,
+                    B.CLI_NOMBRE,A.TIE_CONTACTO,A.TIE_TELEFONO,TIE_LUG_ENTREGA
+                        FROM VSSEAPEDIDO.TIENDA A
+                                INNER JOIN VSSEAPEDIDO.CLIENTE B
+                                        ON A.CLI_ID=B.CLI_ID
+//                WHERE A.TIE_EST_LOG=1 AND A.CLI_ID=4 ' in /opt/sisweb/db/CDbCommand.php:543
+Stack trace:
+#0 /opt/sisweb/db/CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 /var/www/html/webpedido/protected/models/TIENDA.php(172): CDbCommand->queryAll()
+#2 /var/www/html/webpedido/protected/controllers/TIENDAController.php(146): TIENDA->mostrarTiendas()
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): TIENDAController->actionIndex()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /opt/sisweb/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /opt/sisweb/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /opt/sisweb/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /opt/sisweb/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /opt/sisweb/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /opt/sisweb/web/CController.php(291): CFilterChain->run()
+#11 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /opt/sisweb/web/CWebApplication.php(282): CController->run('index')
+#13 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('tIENDA/index')
+#14 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /var/www/html/webpedido/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/webpedido/tIENDA/index.jsp
+HTTP_REFERER=http://localhost/webpedido/aRTICULOTIENDA/index.jsp
+---

@@ -157,15 +157,17 @@ class TIENDA extends CActiveRecord {
         }
     }
 
-    public function mostrarTiendas() {
+    public function mostrarTiendas() {//
         $rawData = array();
         $con = Yii::app()->db;
+        //$TieId=Yii::app()->getSession()->get('TieID', FALSE);
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         $sql = "SELECT A.TIE_ID,A.CLI_ID,A.TIE_NOMBRE,A.TIE_DIRECCION,A.TIE_CUPO,
-                        B.CLI_NOMBRE,A.TIE_CONTACTO,A.TIE_TELEFONO,TIE_LUG_ENTREGA
+                    B.CLI_NOMBRE,A.TIE_CONTACTO,A.TIE_TELEFONO,TIE_LUG_ENTREGA
                         FROM " . $con->dbname . ".TIENDA A
                                 INNER JOIN " . $con->dbname . ".CLIENTE B
                                         ON A.CLI_ID=B.CLI_ID
-                WHERE A.TIE_EST_LOG=1 ";
+                WHERE A.TIE_EST_LOG=1 AND A.CLI_ID=$cli_Id ";
 
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;

@@ -126,10 +126,9 @@ function retornaFilaTiendas(c, Grid, TbGtable, op) {
     strFila += '<td style="display:none; border:none;">' + Grid[c]['ART_ID'] + '</td>';
     strFila += '<td width="5px" style="text-align: left">' + Grid[c]['COD_ART'] + '</td>';
     strFila += '<td width="100px" style="text-align:left">' + Grid[c]['ART_DES_COM'] + '</td>';
-    //strFila += '<td width="100px" style="text-align:left"><input class="form-control" size="auto" value="' + Grid[c]['ART_DES_COM'] + '"  id="txt_nom_' + Grid[c]['ART_ID'] + '" type="text"></td>';
     //strFila += '<td width="20px" style="text-align:right">' + Grid[c]['ART_P_VENTA'] + '</td>';
     strFila += '<td width="10px"><input id="txt_p_' + Grid[c]['ART_ID'] + '" name="'+ Grid[c]['ART_ID'] + '" class="form-control txt_TextboxNumber2 validation_Vs"' ;
-            strFila += ' value="' + redondea(Grid[c]['ART_P_VENTA'], Nprodecimal) + '" maxlength="10" ';
+            strFila += ' value="' + redondea(Grid[c]['ART_P_VENTA'], Nprodecimal) + '" maxlength="6" ';
             //strFila += 'onkeypress="javascript:return validateFloatKeyPress(this, event, 4, 6);"';
             strFila += 'onblur="javascript:return pedidoVentasEnterGrid(isEnter(event),this)" ';
             strFila += 'onkeydown="javascript:return pedidoVentasEnterGrid(isEnter(event),this)" ';
@@ -226,7 +225,7 @@ function objTiendas(c, Grid,condicion) {
     rowGrid = new Object();
     rowGrid.ART_ID = Grid[c]['ART_ID'];
     rowGrid.COD_ART = Grid[c]['COD_ART'];
-    rowGrid.ART_DES_COM = Grid[c]['ART_DES_COM'];//(condicion)?$('#txt_PCLI_P_VENTA').val():Grid[c]['PCLI_P_VENTA'];//Grid[c]['ART_DES_COM'];
+    rowGrid.ART_DES_COM = Grid[c]['ART_DES_COM'];
     rowGrid.ART_P_VENTA =(condicion)?parseFloat($('#txt_PCLI_P_VENTA').val()).toFixed(Nprodecimal):Grid[c]['PCLI_P_VENTA'];
     //rowGrid.ART_P_VENTA = parseFloat($('#txt_PCLI_P_VENTA').val()).toFixed(Ndecimal);//valorTotal.toFixed(Ndecimal)
     rowGrid.ART_ESTADO = '1';

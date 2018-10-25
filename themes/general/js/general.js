@@ -5,6 +5,7 @@
  */
 
 var Ndecimal = 2;
+var Nprodecimal = 4;
 var PorIva = 12;
 var RutaImagenAccion = $('#txth_base').val() + "/themes/" + $('#txth_theme').val() + "/images/acciones/";
 

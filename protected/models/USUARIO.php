@@ -185,6 +185,7 @@ class USUARIO extends CActiveRecord {
         $msg = new VSexception();
         $con = Yii::app()->db;
         $trans = $con->beginTransaction();
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         try {
             $tie = $objEnt['TIE'];
             $rol = $objEnt['ROL'];
@@ -192,8 +193,8 @@ class USUARIO extends CActiveRecord {
             if (!$this->existeUsuTienda($con, $ids, $tie, $rol)) {
                 //Si No existe
                 $sql = "INSERT INTO " . $con->dbname . ".USUARIO_TIENDA
-                        (USU_ID,TIE_ID,ROL_ID,UTIE_EST_LOG,UTIE_FEC_CRE)VALUES
-                        ($ids,$tie,$rol,'1',CURRENT_TIMESTAMP()) ";
+                        (USU_ID,TIE_ID,ROL_ID,CLI_ID,UTIE_EST_LOG,UTIE_FEC_CRE)VALUES
+                        ($ids,$tie,$rol,$cli_Id,'1',CURRENT_TIMESTAMP()) ";
                 $command = $con->createCommand($sql);
                 $command->execute();
             }
