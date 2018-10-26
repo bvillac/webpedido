@@ -170,7 +170,7 @@ class PERSONA extends CActiveRecord
             $this->InsertarUsuario($con, $objEnt, $IdPer);
             $IdUsu = $con->getLastInsertID($con->dbname . '.USUARIO');  
             $this->InsertarDataPer($con, $objEnt, $IdPer);
-            $this->insertarUserTienda($con, $objEnt, $IdUsu);
+            //$this->insertarUserTienda($con, $objEnt, $IdUsu);
             $trans->commit();
             $con->active = false;
             return $msg->messageSystem('OK', null, 10, null, null);
