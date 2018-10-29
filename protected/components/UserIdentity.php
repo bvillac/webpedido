@@ -39,6 +39,7 @@ class UserIdentity extends CUserIdentity
                 $empresa=new ROL;
                 $session = Yii::app()->getSession();
                 $user= USUARIO::model()->find('LOWER(USU_NOMBRE)=?', array(strtolower($this->username)));
+                //echo var_dump($user);
 
                 $session->add('isuser', FALSE);
                 

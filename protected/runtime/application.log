@@ -6957,3 +6957,76 @@ Stack trace:
 REQUEST_URI=/webpedido/uSUARIO/Save
 HTTP_REFERER=http://localhost/webpedido/uSUARIO/create.jsp
 ---
+2018/10/26 11:19:18 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '200.124.246.218' (110)' in /opt/sisweb/db/CDbConnection.php:392
+Stack trace:
+#0 /opt/sisweb/db/CDbConnection.php(340): CDbConnection->open()
+#1 /opt/sisweb/db/CDbConnection.php(318): CDbConnection->setActive(true)
+#2 /opt/sisweb/base/CModule.php(387): CDbConnection->init()
+#3 /opt/sisweb/base/CApplication.php(450): CModule->getComponent('db')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(636): CApplication->getDb()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(2365): CActiveRecord->getDbConnection()
+#6 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(ROL))
+#7 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#8 /var/www/html/webpedido/protected/components/UserIdentity.php(39): CActiveRecord->__construct()
+#9 /var/www/html/webpedido/protected/models/LoginForm.php(54): UserIdentity->authenticate()
+#10 /opt/sisweb/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#11 /opt/sisweb/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#12 /opt/sisweb/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#13 /var/www/html/webpedido/protected/controllers/SiteController.php(90): CModel->validate()
+#14 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#15 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#17 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /opt/sisweb/web/CWebApplication.php(282): CController->run('login')
+#19 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#20 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#21 /var/www/html/webpedido/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/webpedido/site/login
+HTTP_REFERER=http://localhost/webpedido/site/login
+---
+2018/10/26 11:21:02 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [2003] Can't connect to MySQL server on '200.124.246.218' (110)' in /opt/sisweb/db/CDbConnection.php:392
+Stack trace:
+#0 /opt/sisweb/db/CDbConnection.php(340): CDbConnection->open()
+#1 /opt/sisweb/db/CDbConnection.php(318): CDbConnection->setActive(true)
+#2 /opt/sisweb/base/CModule.php(387): CDbConnection->init()
+#3 /opt/sisweb/base/CApplication.php(450): CModule->getComponent('db')
+#4 /opt/sisweb/db/ar/CActiveRecord.php(636): CApplication->getDb()
+#5 /opt/sisweb/db/ar/CActiveRecord.php(2365): CActiveRecord->getDbConnection()
+#6 /opt/sisweb/db/ar/CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(ROL))
+#7 /opt/sisweb/db/ar/CActiveRecord.php(81): CActiveRecord->getMetaData()
+#8 /var/www/html/webpedido/protected/components/UserIdentity.php(39): CActiveRecord->__construct()
+#9 /var/www/html/webpedido/protected/models/LoginForm.php(54): UserIdentity->authenticate()
+#10 /opt/sisweb/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#11 /opt/sisweb/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#12 /opt/sisweb/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#13 /var/www/html/webpedido/protected/controllers/SiteController.php(90): CModel->validate()
+#14 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#15 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#17 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /opt/sisweb/web/CWebApplication.php(282): CController->run('login')
+#19 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#20 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#21 /var/www/html/webpedido/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/webpedido/site/login
+HTTP_REFERER=http://localhost/webpedido/site/login
+---
+2018/10/29 14:31:36 [error] [php] Object of class USUARIO could not be converted to string (/var/www/html/webpedido/protected/components/UserIdentity.php:42)
+Stack trace:
+#0 /opt/sisweb/validators/CValidator.php(213): CInlineValidator->validateAttribute()
+#1 /opt/sisweb/base/CModel.php(159): CInlineValidator->validate()
+#2 /var/www/html/webpedido/protected/controllers/SiteController.php(90): LoginForm->validate()
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#5 /opt/sisweb/web/CController.php(286): SiteController->runAction()
+#6 /opt/sisweb/web/CController.php(265): SiteController->runActionWithFilters()
+#7 /opt/sisweb/web/CWebApplication.php(282): SiteController->run()
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/site/login
+in /var/www/html/webpedido/protected/components/UserIdentity.php (42)
+in /var/www/html/webpedido/protected/models/LoginForm.php (54)
+in /var/www/html/webpedido/protected/controllers/SiteController.php (90)

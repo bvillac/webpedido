@@ -493,6 +493,7 @@ class TIENDA extends CActiveRecord {
                 WHERE A.ARTIE_EST_LOG=1 AND A.TIE_ID=$ids ";
         //$sql.=($ids!=0)?"AND A.TIE_ID=$ids":"";
         $sql.=" ORDER BY C.ART_DES_COM";
+        //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
 

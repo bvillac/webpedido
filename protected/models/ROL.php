@@ -105,11 +105,11 @@ class ROL extends CActiveRecord {
         $rawData = array();
         $sql = "SELECT A.UTIE_ID,A.USU_ID,B.USU_NOMBRE,C.ROL_ID,C.ROL_NOMBRE "
                 . "FROM " . $conApp->dbname . ".USUARIO_TIENDA A "
-                . "INNER JOIN " . $conApp->dbname . ".USUARIO B "
-                . "ON A.USU_ID=B.USU_ID "
-                . "INNER JOIN  " . $conApp->dbname . ".ROL C "
-                . "ON A.ROL_ID=C.ROL_ID "
-                . "WHERE A.USU_ID=$IdUser AND B.USU_EST_LOG=1 ";
+                . " INNER JOIN " . $conApp->dbname . ".USUARIO B "
+                . "     ON A.USU_ID=B.USU_ID "
+                . " INNER JOIN  " . $conApp->dbname . ".ROL C "
+                . "     ON A.ROL_ID=C.ROL_ID "
+                . "WHERE A.USU_ID=$IdUser AND B.USU_EST_LOG=1 AND A.UTIE_EST_LOG=1 ";
         //echo $sql;
         //$rawData = $conApp->createCommand($sql)->queryAll(); //Varios registros =>  $rawData[0]['RazonSocial']
         $rawData = $conApp->createCommand($sql)->queryRow();  //Un solo Registro => $rawData['RazonSocial']
