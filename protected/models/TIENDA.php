@@ -296,11 +296,12 @@ class TIENDA extends CActiveRecord {
             $valNeto = (float) $rawData["ValNeto"];
             $saldo = $cupo - $valNeto; //Saldo Disponible
             if ($saldo > 0) {
-                if($idRol!='7'){//USUARIO TIENDA NO PUEDE VER SU CUPO
+                $mensaje = Yii::t('EXCEPTION', 'Your store has an available balance:').' $ '.$saldo;
+                /*if($idRol!='7'){//USUARIO TIENDA NO PUEDE VER SU CUPO
                     $mensaje = Yii::t('EXCEPTION', 'Your store has an available balance:').' $ '.$saldo;
                 }else{
                     $mensaje = Yii::t('EXCEPTION', 'Your store has available balance');
-                }
+                }*/
                 $arroout["SALDO"] = $saldo; //Saldo Disonible
                 
             } else {

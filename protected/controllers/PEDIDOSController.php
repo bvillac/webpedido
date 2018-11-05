@@ -86,6 +86,7 @@ class PEDIDOSController extends Controller {
     }
     
     public function actionSave() {
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);        
         if (Yii::app()->request->isPostRequest) {
             $model = new TEMP_CABPEDIDO;
             $dts_Lista = isset($_POST['DTS_LISTA']) ? CJavaScript::jsonDecode($_POST['DTS_LISTA']) : array();
@@ -94,14 +95,40 @@ class PEDIDOSController extends Controller {
             $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
             if ($accion == "Create") {
                 $arroout = $model->insertarLista($tieId,$total,$dts_Lista);
+                //Nota solo Para cliente Marximex puede Enviar los pedidos
+                //directamentes para autorizar sin necesidad e una aprobacion
+                //es decir se guardara la tabla temp y la tablas de comunicacion.
+                if( $cli_Id=="4"){//Solo para Clientes Marcimex
+                    $arroout=$this->pedidoAprobado($arroout);
+                }
             } else {
                 $arroout = $model->actualizarLista($tieId,$total,$dts_Lista);
             }
+            
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);
         }
     }
     
+    private function pedidoAprobado($arroout) {
+        $valida = new VSValidador();
+        $msg = new VSexception();
+        $model = new CABPEDIDO;
+        $dataMail = new mailSystem;
+        $IdsTemp = $arroout['data']; //Obtiene Id insertar temporarl
+        $arroout = array();
+
+        $arroout = $model->insertarPedidos($IdsTemp);
+        $IdCab = $arroout['data']; //Obtiene el Id de Cab de Pedido
+        //$valida->putMessageLogFile($arroout);
+        $CabPed = $model->sendMailPedidos($IdCab[0]['ids']);
+        $htmlMail = $this->renderPartial('mensaje', array(
+            'CabPed' => $CabPed,
+                ), true);
+        $dataMail->enviarMail($htmlMail, $CabPed);
+        return $msg->messagePedidos('OK',$valida->ajusteNumDoc($IdsTemp, 9),'PE',null, 30, null, null);
+    }
+
     public function actionAprobar() {
         $model = new TEMP_CABPEDIDO;
         $tienda = new TIENDA;        
@@ -280,6 +307,7 @@ class PEDIDOSController extends Controller {
         $model = new TEMP_CABPEDIDO;
         $tienda = new TIENDA;        
         $arrayData = array();
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         if (Yii::app()->request->isAjaxRequest) {
             $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
             $arrayData = $model->listarPedidosTiendas(null);
@@ -293,6 +321,7 @@ class PEDIDOSController extends Controller {
             'model' => $model->listarPedidosTiendas(null),
             'tienda' => $tienda->recuperarTiendasRol(),
             'estado' => $this->tipoAprobacion(),
+            'cliID' => $cli_Id,
         ));
         
     }

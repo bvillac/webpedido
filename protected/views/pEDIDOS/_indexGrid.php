@@ -66,7 +66,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
         array(
             'name' => 'Precio',
             'header' => Yii::t('TIENDA', 'Cost'),
-            'value' => 'Yii::app()->format->formatNumber($data["Precio"])',
+            //'value' => 'Yii::app()->format->number4Format($data["Precio"])',
+            'value' => '$data["Precio"]',
             'htmlOptions' => array('style' => 'text-align:right', 'width' => '8px'),
         ),
         array(

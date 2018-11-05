@@ -25,7 +25,7 @@
                 <td class="marcoCel"><?php echo $detFact[$i]['Codigo'] ?></td>
                 <td class="marcoCel "><?php echo $detFact[$i]['Nombre'] ?></td>
                 <td class="marcoCel dataNumber"><?php echo intval($detFact[$i]['Cant']) ?></td>
-                <td class="marcoCel dataNumber"><?php echo Yii::app()->format->formatNumber($detFact[$i]['Precio']) ?></td>
+                <td class="marcoCel dataNumber"><?php echo $detFact[$i]['Precio'] ?></td>
                 <td class="marcoCel dataNumber"><?php echo Yii::app()->format->formatNumber($detFact[$i]['TotVta'])  ?></td>
             </tr>
         <?php } ?>

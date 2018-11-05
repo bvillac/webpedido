@@ -46,4 +46,17 @@ class VSValidador {
         return $insertar_ceros .= $numero;
     }
     
+    public static function putMessageLogFile($message) {
+        if (is_array($message))
+            $message = CJavaScript::jsonEncode($message);
+        $message = date("Y-m-d H:i:s") . " " . $message . "\n";
+        if (!is_dir(dirname(Yii::app()->params["logfile"]))) {
+            mkdir(dirname(Yii::app()->params["logfile"]), 0777, true);
+            chmod(dirname(Yii::app()->params["logfile"]), 0777);
+            touch(Yii::app()->params["logfile"]);
+        }
+        //se escribe en el fichero
+        file_put_contents(Yii::app()->params["logfile"], $message, FILE_APPEND | LOCK_EX);
+    }
+    
 }
