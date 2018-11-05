@@ -59,6 +59,7 @@ class PEDIDOSController extends Controller {
     public function actionListar() {
         $model = new TIENDA;
         $arrayData = array();
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         if (Yii::app()->request->isAjaxRequest) {
             $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
             $arrayData = $model->listarItemsTiendas($ids);
@@ -71,6 +72,7 @@ class PEDIDOSController extends Controller {
         $this->render('listar', array(
             'model' => $model->listarItemsTiendas(0),
             'tienda' => $model->recuperarTiendasRol(),
+            'cliID' => $cli_Id,
         ));
     }
     

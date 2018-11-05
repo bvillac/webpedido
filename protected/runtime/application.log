@@ -1,0 +1,17 @@
+2018/11/05 12:29:17 [error] [php] Undefined variable: cliID (/var/www/html/webpedido/protected/views/pEDIDOS/listar.php:3)
+Stack trace:
+#0 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#1 /opt/sisweb/web/CController.php(782): PEDIDOSController->renderPartial()
+#2 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(74): PEDIDOSController->render()
+#3 /opt/sisweb/web/actions/CInlineAction.php(49): PEDIDOSController->actionListar()
+#4 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#5 /opt/sisweb/web/CController.php(286): PEDIDOSController->runAction()
+#6 /opt/sisweb/web/CController.php(265): PEDIDOSController->runActionWithFilters()
+#7 /opt/sisweb/web/CWebApplication.php(282): PEDIDOSController->run()
+#8 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/pEDIDOS/listar.jsp
+in /var/www/html/webpedido/protected/views/pEDIDOS/listar.php (3)
+in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (74)
+in /var/www/html/webpedido/index.php (13)
