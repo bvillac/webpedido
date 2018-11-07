@@ -46,11 +46,12 @@ class mailSystem {
         //$mail->AddAddress("byronvillacreses@gmail.com", "Byron Villa");
         
         /******** COPIA OCULTA PARA VENTAS  ***************/
-        $mail->addBCC('ventas@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+        //$mail->addBCC('ventas@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+        $mail->addBCC('ncastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
         $mail->addBCC('yalava@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
         $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
         
-        $mail->addBCC('byronvillacreses@gmail.com', 'Byron Villa'); //Para con copia 
+        //$mail->addBCC('byronvillacreses@gmail.com', 'Byron Villa'); //Para con copia 
         //$mail->addCC('byronvillacreses@gmail.com', 'ByronV'); //Para con copia
         //$mail->addReplyTo('byronvillacreses@gmail.com', 'First Last');
         //

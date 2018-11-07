@@ -101,7 +101,7 @@ class PEDIDOSController extends Controller {
                 //directamentes para autorizar sin necesidad e una aprobacion
                 //es decir se guardara la tabla temp y la tablas de comunicacion.
                 if( $cli_Id=="4"){//Solo para Clientes Marcimex
-                    $arroout=$this->pedidoAprobado($arroout);
+                    //$arroout=$this->pedidoAprobado($arroout);
                 }
             } else {
                 $arroout = $model->actualizarLista($tieId,$total,$dts_Lista);
