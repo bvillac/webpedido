@@ -147,17 +147,35 @@ function guardarListaPedido(accion) {
         var cupo = parseFloat($('#lbl_cupo').text());
         var saldo = cupo - total;//El cupo Disponible - el Total a pedir
         if (saldo > 0) {
-            /*var statusConfirm = confirm("Opciones de envío!! \n - Presione ACEPTAR para Autorizar y enviar su Pedido \n - Presion Cancelar ");
+            /*var statusConfirm = confirm("Menu de Opciones");
             if (statusConfirm == true){
                 alert("Eliminas");
             } else {
                 alert("Haces otra cosa");
             } */
             
-                
+                $.confirm({
+        content: 'Time to use your keyboard, press shift, alert, A or B',
+        buttons: {
+            specialKey: {
+                text: 'On behalf of shift',
+                keys: ['shift', 'alt'],
+                action: function(){
+                    $.alert('Shift or Alt was pressed');
+                }
+            },
+            alphabet: {
+                text: 'A, B',
+                keys: ['a', 'b'],
+                action: function(){
+                    $.alert('A or B was pressed');
+                }
+            }
+        }
+    });
             
             
-            var ID = (accion == "Update") ? $('#txth_PedID').val() : 0;
+            /*var ID = (accion == "Update") ? $('#txth_PedID').val() : 0;
             var tieId = (accion == "Create") ? $('#cmb_tienda option:selected').val() : ID;//Cuando Es Actualizacion Retorno el Id Cabecera
             var link = $('#txth_controlador').val() + "/Save";
             $.ajax({
@@ -181,7 +199,7 @@ function guardarListaPedido(accion) {
                     }
                 },
                 dataType: "json"
-            });
+            });*/
         }else{
             alert(mgSaldoNoDis);
         }
