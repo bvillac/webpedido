@@ -303,12 +303,13 @@ class CABPEDIDO extends CActiveRecord {
         $objPed=new TIENDA;
         $con = Yii::app()->db;
         //$idsTie=$objPed->recuperarIdsTiendasRol($con);
-        $idsTie=$objPed->recuperarIdsTieCliente($con);//Muestra todos los datos de clientes tiendas.
+        $idsTie=$objPed->recuperarIdsTieCliente($con);//Muestra todos los datos de clientes tiendas. DATE(A.CPED_FEC_PED)
         $limitrowsql = Yii::app()->params['limitRowSQL'];
         //$rawData[]=$this->rowProdList();
-        $sql = "SELECT A.CPED_ID PedID,A.TIE_ID TieID,A.CPED_VAL_NET ValorNeto,DATE(A.CPED_FEC_PED) FechaPedido, 
+        $sql = "SELECT A.CPED_ID PedID,A.TIE_ID TieID,A.CPED_VAL_NET ValorNeto,A.CPED_FEC_PED FechaPedido, 
                         B.TIE_NOMBRE NombreTienda,B.TIE_DIRECCION DireccionTienda,E.PER_NOMBRE NombrePersona,
-                        CONCAT(REPEAT( '0', 9 - LENGTH(A.CPED_ID) ),A.CPED_ID) Numero,A.CPED_EST_LOG Estado
+                        CONCAT(REPEAT( '0', 9 - LENGTH(A.CPED_ID) ),A.CPED_ID) Numero,A.CPED_EST_LOG Estado,
+                        A.TCPED_ID
                         FROM " . $con->dbname . ".CAB_PEDIDO A
                                 INNER JOIN " . $con->dbname . ".TIENDA B
                                         ON A.TIE_ID=B.TIE_ID

@@ -39,6 +39,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
         ),
         array(
+            'name' => 'Orden',
+            'header' => Yii::t('TIENDA', 'Orden'),
+            'value' => '$data["TCPED_ID"]',
+        ),
+        array(
             'name' => 'FechaPedido',
             'header' => Yii::t('TIENDA', 'Date'),
             'value' => '$data["FechaPedido"]',
