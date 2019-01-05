@@ -116,8 +116,8 @@ return array(
           ), */
         // uncomment the following to use a MySQL database
         'db' => array(
-            //'connectionString' => 'mysql:host=192.168.10.200;dbname=VSSEAPEDIDO',
-            'connectionString' => 'mysql:host=localhost;dbname=VSSEAPEDIDO',
+            'connectionString' => 'mysql:host=192.168.10.200;dbname=VSSEAPEDIDO',
+            //'connectionString' => 'mysql:host=localhost;dbname=VSSEAPEDIDO',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => 'root00',
@@ -161,7 +161,8 @@ return array(
         'datebydefault' => "d-m-Y",
         'dateXML' => "d/m/Y",
         'datepicker' => 'dd-mm-yy',
-        'datebytime' => 'Y-m-d h:i:s',  
+        'datebytime' => 'Y-m-d h:i:s',
+        'rutapro' => '/opt/productos/',
         'logfile' => __DIR__ . '/../runtime/logs/webped.log',
         'consumidorfinal' => '9999999999',
     ),

@@ -15,3 +15,284 @@ REQUEST_URI=/webpedido/pEDIDOS/listar.jsp
 in /var/www/html/webpedido/protected/views/pEDIDOS/listar.php (3)
 in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (74)
 in /var/www/html/webpedido/index.php (13)
+2019/01/04 12:57:39 [error] [php] Use of undefined constant _G_01 - assumed '_G_01' (/opt/sisweb/base/CComponent.php(612) : eval()'d code:1)
+Stack trace:
+#0 /opt/sisweb/zii/widgets/grid/CGridColumn.php(151): CDataColumn->renderDataCellContent()
+#1 /opt/sisweb/zii/widgets/grid/CGridView.php(616): CDataColumn->renderDataCell()
+#2 /opt/sisweb/zii/widgets/grid/CGridView.php(572): CGridView->renderTableRow()
+#3 /opt/sisweb/zii/widgets/grid/CGridView.php(482): CGridView->renderTableBody()
+#4 /opt/sisweb/zii/widgets/CBaseListView.php(167): CGridView->renderItems()
+#5 unknown(0): CGridView->renderSection()
+#6 /opt/sisweb/zii/widgets/CBaseListView.php(150): preg_replace_callback()
+#7 /opt/sisweb/zii/widgets/CBaseListView.php(135): CGridView->renderContent()
+#8 /opt/sisweb/web/CBaseController.php(173): CGridView->run()
+#9 /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php(102): PEDIDOSController->widget()
+#10 /opt/sisweb/web/CBaseController.php(126): require()
+#11 /opt/sisweb/web/CBaseController.php(95): PEDIDOSController->renderInternal()
+#12 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#13 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(68): PEDIDOSController->renderPartial()
+#14 /opt/sisweb/web/actions/CInlineAction.php(49): PEDIDOSController->actionListar()
+#15 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#16 /opt/sisweb/web/CController.php(286): PEDIDOSController->runAction()
+#17 /opt/sisweb/web/CController.php(265): PEDIDOSController->runActionWithFilters()
+#18 /opt/sisweb/web/CWebApplication.php(282): PEDIDOSController->run()
+#19 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#20 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#21 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/pEDIDOS/listar?ajax=TbG_PEDIDO
+in /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php (102)
+in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (68)
+in /var/www/html/webpedido/index.php (13)
+2019/01/04 13:13:13 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDataColumn"."target" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('target', '_blank')
+#1 /opt/sisweb/zii/widgets/grid/CGridView.php(388): YiiBase::createComponent(Array, Object(CGridView))
+#2 /opt/sisweb/zii/widgets/grid/CGridView.php(359): CGridView->initColumns()
+#3 /opt/sisweb/web/CBaseController.php(147): CGridView->init()
+#4 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.gri...', Array)
+#5 /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php(103): CBaseController->widget('zii.widgets.gri...', Array)
+#6 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#7 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#8 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#9 /var/www/html/webpedido/protected/views/pEDIDOS/listar.php(15): CController->renderPartial('_indexGrid', Array)
+#10 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#11 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#12 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#13 /opt/sisweb/web/CController.php(782): CController->renderPartial('listar', Array, true)
+#14 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(76): CController->render('listar', Array)
+#15 /opt/sisweb/web/actions/CInlineAction.php(49): PEDIDOSController->actionListar()
+#16 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#18 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 /opt/sisweb/web/CWebApplication.php(282): CController->run('listar')
+#20 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/listar')
+#21 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#22 /var/www/html/webpedido/index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/webpedido/pEDIDOS/listar.jsp
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/listar.jsp
+---
+2019/01/04 13:14:24 [error] [exception.CException] exception 'CException' with message 'La propiedad "CDataColumn"."options" no se encuentra definida.' in /opt/sisweb/base/CComponent.php:173
+Stack trace:
+#0 /opt/sisweb/YiiBase.php(220): CComponent->__set('options', Array)
+#1 /opt/sisweb/zii/widgets/grid/CGridView.php(388): YiiBase::createComponent(Array, Object(CGridView))
+#2 /opt/sisweb/zii/widgets/grid/CGridView.php(359): CGridView->initColumns()
+#3 /opt/sisweb/web/CBaseController.php(147): CGridView->init()
+#4 /opt/sisweb/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.gri...', Array)
+#5 /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php(107): CBaseController->widget('zii.widgets.gri...', Array)
+#6 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#7 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#8 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#9 /var/www/html/webpedido/protected/views/pEDIDOS/listar.php(15): CController->renderPartial('_indexGrid', Array)
+#10 /opt/sisweb/web/CBaseController.php(126): require('/var/www/html/w...')
+#11 /opt/sisweb/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#12 /opt/sisweb/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#13 /opt/sisweb/web/CController.php(782): CController->renderPartial('listar', Array, true)
+#14 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(76): CController->render('listar', Array)
+#15 /opt/sisweb/web/actions/CInlineAction.php(49): PEDIDOSController->actionListar()
+#16 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /opt/sisweb/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#18 /opt/sisweb/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 /opt/sisweb/web/CWebApplication.php(282): CController->run('listar')
+#20 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/listar')
+#21 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#22 /var/www/html/webpedido/index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/webpedido/pEDIDOS/listar.jsp
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/listar.jsp
+---
+2019/01/04 13:34:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "<img style="width:25px;height:25px;" src="" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('<img style="wid...')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('<img style="wid...')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/<img st...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/webpedido/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/webpedido/pEDIDOS/%3Cimg%20style=%22width:25px;height:25px;%22%20src=%22/opt/productos/B0017_G-01.jpg%22%20alt=%22img%22%20/%3E
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/listar.jsp
+---
+2019/01/04 13:34:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "<img style="width:25px;height:25px;" src="" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('<img style="wid...')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('<img style="wid...')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/<img st...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/webpedido/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/webpedido/pEDIDOS/%3Cimg%20style=%22width:25px;height:25px;%22%20src=%22/opt/productos/B0005_G-01.jpg%22%20alt=%22img%22%20/%3E
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/listar.jsp
+---
+2019/01/04 13:34:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "<img style="width:25px;height:25px;" src="" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('<img style="wid...')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('<img style="wid...')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/<img st...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/webpedido/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/webpedido/pEDIDOS/%3Cimg%20style=%22width:25px;height:25px;%22%20src=%22/opt/productos/B0004_G-01.jpg%22%20alt=%22img%22%20/%3E
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/listar.jsp
+---
+2019/01/04 13:34:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "<img style="width:25px;height:25px;" src="" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('<img style="wid...')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('<img style="wid...')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/<img st...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/webpedido/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/webpedido/pEDIDOS/%3Cimg%20style=%22width:25px;height:25px;%22%20src=%22/opt/productos/A0093_G-01.jpg%22%20alt=%22img%22%20/%3E
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/listar.jsp
+---
+2019/01/04 13:34:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "<img style="width:25px;height:25px;" src="" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('<img style="wid...')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('<img style="wid...')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/<img st...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/webpedido/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/webpedido/pEDIDOS/%3Cimg%20style=%22width:25px;height:25px;%22%20src=%22/opt/productos/C0456_G-01.jpg%22%20alt=%22img%22%20/%3E
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/listar.jsp
+---
+2019/01/04 13:34:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "<img style="width:25px;height:25px;" src="" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('<img style="wid...')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('<img style="wid...')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/<img st...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/webpedido/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/webpedido/pEDIDOS/%3Cimg%20style=%22width:25px;height:25px;%22%20src=%22/opt/productos/C0411_G-01.jpg%22%20alt=%22img%22%20/%3E
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/listar.jsp
+---
+2019/01/04 13:44:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "<img style="width:25px;height:25px;" src="" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('<img style="wid...')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('<img style="wid...')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/<img st...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/webpedido/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/webpedido/pEDIDOS/%3Cimg%20style=%22width:25px;height:25px;%22%20src=%22/opt/productos/C0456_G-01.jpg%22%20alt=%22img%22%20/%3E
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/listar.jsp
+---
+2019/01/04 13:44:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "<img style="width:25px;height:25px;" src="" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('<img style="wid...')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('<img style="wid...')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/<img st...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/webpedido/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/webpedido/pEDIDOS/%3Cimg%20style=%22width:25px;height:25px;%22%20src=%22/opt/productos/B0004_G-01.jpg%22%20alt=%22img%22%20/%3E
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/listar.jsp
+---
+2019/01/04 13:44:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "<img style="width:25px;height:25px;" src="" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('<img style="wid...')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('<img style="wid...')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/<img st...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/webpedido/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/webpedido/pEDIDOS/%3Cimg%20style=%22width:25px;height:25px;%22%20src=%22/opt/productos/C0411_G-01.jpg%22%20alt=%22img%22%20/%3E
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/listar.jsp
+---
+2019/01/04 13:44:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "<img style="width:25px;height:25px;" src="" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('<img style="wid...')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('<img style="wid...')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/<img st...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/webpedido/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/webpedido/pEDIDOS/%3Cimg%20style=%22width:25px;height:25px;%22%20src=%22/opt/productos/B0017_G-01.jpg%22%20alt=%22img%22%20/%3E
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/listar.jsp
+---
+2019/01/04 13:44:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "<img style="width:25px;height:25px;" src="" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('<img style="wid...')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('<img style="wid...')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/<img st...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/webpedido/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/webpedido/pEDIDOS/%3Cimg%20style=%22width:25px;height:25px;%22%20src=%22/opt/productos/B0005_G-01.jpg%22%20alt=%22img%22%20/%3E
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/listar.jsp
+---
+2019/01/04 13:44:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "<img style="width:25px;height:25px;" src="" solicitada.' in /opt/sisweb/web/CController.php:483
+Stack trace:
+#0 /opt/sisweb/web/CController.php(270): CController->missingAction('<img style="wid...')
+#1 /opt/sisweb/web/CWebApplication.php(282): CController->run('<img style="wid...')
+#2 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('pEDIDOS/<img st...')
+#3 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /var/www/html/webpedido/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/webpedido/pEDIDOS/%3Cimg%20style=%22width:25px;height:25px;%22%20src=%22/opt/productos/A0093_G-01.jpg%22%20alt=%22img%22%20/%3E
+HTTP_REFERER=http://localhost/webpedido/pEDIDOS/listar.jsp
+---
+2019/01/04 13:45:39 [error] [php] Undefined variable: data (/var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php:97)
+Stack trace:
+#0 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#1 /var/www/html/webpedido/protected/views/pEDIDOS/listar.php(15): PEDIDOSController->renderPartial()
+#2 /opt/sisweb/web/CBaseController.php(126): require()
+#3 /opt/sisweb/web/CBaseController.php(95): PEDIDOSController->renderInternal()
+#4 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#5 /opt/sisweb/web/CController.php(782): PEDIDOSController->renderPartial()
+#6 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(76): PEDIDOSController->render()
+#7 /opt/sisweb/web/actions/CInlineAction.php(49): PEDIDOSController->actionListar()
+#8 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#9 /opt/sisweb/web/CController.php(286): PEDIDOSController->runAction()
+#10 /opt/sisweb/web/CController.php(265): PEDIDOSController->runActionWithFilters()
+#11 /opt/sisweb/web/CWebApplication.php(282): PEDIDOSController->run()
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/pEDIDOS/listar.jsp
+in /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php (97)
+in /var/www/html/webpedido/protected/views/pEDIDOS/listar.php (15)
+in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (76)
+2019/01/04 13:45:40 [error] [php] Undefined variable: data (/var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php:97)
+Stack trace:
+#0 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#1 /var/www/html/webpedido/protected/views/pEDIDOS/listar.php(15): PEDIDOSController->renderPartial()
+#2 /opt/sisweb/web/CBaseController.php(126): require()
+#3 /opt/sisweb/web/CBaseController.php(95): PEDIDOSController->renderInternal()
+#4 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#5 /opt/sisweb/web/CController.php(782): PEDIDOSController->renderPartial()
+#6 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(76): PEDIDOSController->render()
+#7 /opt/sisweb/web/actions/CInlineAction.php(49): PEDIDOSController->actionListar()
+#8 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#9 /opt/sisweb/web/CController.php(286): PEDIDOSController->runAction()
+#10 /opt/sisweb/web/CController.php(265): PEDIDOSController->runActionWithFilters()
+#11 /opt/sisweb/web/CWebApplication.php(282): PEDIDOSController->run()
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/pEDIDOS/listar.jsp
+in /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php (97)
+in /var/www/html/webpedido/protected/views/pEDIDOS/listar.php (15)
+in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (76)
+2019/01/04 13:45:40 [error] [php] Undefined variable: data (/var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php:97)
+Stack trace:
+#0 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#1 /var/www/html/webpedido/protected/views/pEDIDOS/listar.php(15): PEDIDOSController->renderPartial()
+#2 /opt/sisweb/web/CBaseController.php(126): require()
+#3 /opt/sisweb/web/CBaseController.php(95): PEDIDOSController->renderInternal()
+#4 /opt/sisweb/web/CController.php(869): PEDIDOSController->renderFile()
+#5 /opt/sisweb/web/CController.php(782): PEDIDOSController->renderPartial()
+#6 /var/www/html/webpedido/protected/controllers/PEDIDOSController.php(76): PEDIDOSController->render()
+#7 /opt/sisweb/web/actions/CInlineAction.php(49): PEDIDOSController->actionListar()
+#8 /opt/sisweb/web/CController.php(308): CInlineAction->runWithParams()
+#9 /opt/sisweb/web/CController.php(286): PEDIDOSController->runAction()
+#10 /opt/sisweb/web/CController.php(265): PEDIDOSController->runActionWithFilters()
+#11 /opt/sisweb/web/CWebApplication.php(282): PEDIDOSController->run()
+#12 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /var/www/html/webpedido/index.php(13): CWebApplication->run()
+REQUEST_URI=/webpedido/pEDIDOS/listar.jsp
+in /var/www/html/webpedido/protected/views/pEDIDOS/_indexGrid.php (97)
+in /var/www/html/webpedido/protected/views/pEDIDOS/listar.php (15)
+in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (76)

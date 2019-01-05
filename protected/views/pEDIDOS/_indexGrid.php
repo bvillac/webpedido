@@ -87,7 +87,20 @@ $this->widget('zii.widgets.grid.CGridView', array(
             //'headerHtmlOptions' => array('style' => 'width:30px;'),
             'htmlOptions'=>array('width'=>'30px'),      
         ),
-
+        array(
+            'name' => 'Imagen',
+            'header' => Yii::t('TIENDA', 'img'),
+            //'value' => CHtml::image(Yii::app()->request->baseUrl . '/path/' . $model->filename),
+            //'value' => CHtml::image(Yii::app()->params['rutapro']  ),
+            'value'=> '(!empty($data["Codigo"]))?CHtml::image(Yii::app()->params["rutapro"].$data["Codigo"]."_G-01.jpg","img",array("style"=>"width:25px;height:25px;")):"no image"',
+            //'value'=> 'CHtml::image(Yii::app()->params["rutapro"].$data["Codigo"]."_G-01.jpg","img",array("style"=>"width:25px;height:25px;"))',
+            //'value' => Yii::app()->params["rutapro"].'$data["Codigo"]'."_G-01.jpg",    
+            //'type' => 'raw',
+            'type'=>'html',
+            //'type'=>'image',
+            //'htmlOptions'=>array('class'=>'myclass'),
+        ),
+        
     ),
 ));
 ?>
