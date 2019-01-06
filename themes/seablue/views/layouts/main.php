@@ -17,6 +17,7 @@
 
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/main.css" />
             <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/form.css" />
+            <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/lightbox.css" />
 
 
             <!-- Core CSS - Include with every bootstrap -->
@@ -101,7 +102,7 @@
 
             <!-- SB Admin Scripts - Include with every page -->
             <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/sb-admin.js"></script>
-
+            <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/lightbox.js"></script>
             <!-- Page-Level Demo Scripts - Blank - Use for reference -->
 
         </body>

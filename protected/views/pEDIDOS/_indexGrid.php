@@ -6,6 +6,9 @@
  * @copyright Copyright &copy; SolucionesVillacreses 2014-09-24
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  */
+
+//$image = CHtml::image(Yii::app()->baseUrl.'/images/thumb-1.jpg');
+//echo CHtml::link($image, Yii::app()->baseUrl.'/images/image-1.jpg');
 ?>
 
 <?php
@@ -92,13 +95,17 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'header' => Yii::t('TIENDA', 'img'),
             //'value' => CHtml::image(Yii::app()->request->baseUrl . '/path/' . $model->filename),
             //'value' => CHtml::image(Yii::app()->params['rutapro']  ),
-            'value'=> '(!empty($data["Codigo"]))?CHtml::image(Yii::app()->params["rutapro"].$data["Codigo"]."_G-01.jpg","img",array("style"=>"width:25px;height:25px;")):"no image"',
+            //'value'=> '(!empty($data["Codigo"]))?CHtml::image(Yii::app()->params["rutapro"].$data["Codigo"]."_G-01.jpg","<i class="icon-search"></i>",array("style"=>"width:25px;height:25px;")):"no image"',
             //'value'=> 'CHtml::image(Yii::app()->params["rutapro"].$data["Codigo"]."_G-01.jpg","img",array("style"=>"width:25px;height:25px;"))',
-            //'value' => Yii::app()->params["rutapro"].'$data["Codigo"]'."_G-01.jpg",    
-            //'type' => 'raw',
-            'type'=>'html',
+            //'value' => Yii::app()->params["rutapro"].'$data["Codigo"]'."_G-01.jpg",  
+            //'value'=> 'CHtml::image(Yii::app()->params["rutapro"].$data["Codigo"]."_G-01.jpg","img")',
+            //'value' => CHtml::image(Yii::app()->params['rutapro']  ),
+            //'value' => 'CHtml::link(CHtml::image(Yii::app()->theme->baseUrl.Yii::app()->params["rutapro"].$data["Codigo"]."_G-01.jpg"),Yii::app()->theme->baseUrl.Yii::app()->params["rutapro"].$data["Codigo"]."_G-01.jpg",array("data-lightbox"=>$data["Codigo"]."_G-01"))',
+            'value' => 'CHtml::link("ver",Yii::app()->theme->baseUrl.Yii::app()->params["rutapro"].$data["Codigo"]."_G-01.jpg",array("data-lightbox"=>$data["Codigo"]."_G-01"))',
+            'type' => 'raw',
+            //'type'=>'html',
             //'type'=>'image',
-            //'htmlOptions'=>array('class'=>'myclass'),
+            //'htmlOptions'=>array('class'=>'icon-th'),
         ),
         
     ),
