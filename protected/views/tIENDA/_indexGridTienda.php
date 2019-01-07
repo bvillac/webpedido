@@ -37,6 +37,13 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'header' => Yii::t('TIENDA', 'Name'),
             'value' => '$data["Nombre"]',
         ),
+	array(
+            'name' => 'Imagen',
+            'header' => Yii::t('TIENDA', 'img'),
+            'value' => 'VSValidador::mostrarProductos($data["Codigo"])',
+            'type' => 'raw',
+            //'htmlOptions'=>array('class'=>'icon-th'),
+        ),
     ),
 ));
 ?>
