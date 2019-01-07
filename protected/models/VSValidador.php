@@ -63,7 +63,8 @@ class VSValidador {
         $rutaFileWeb=Yii::app()->theme->baseUrl.Yii::app()->params["rutapro"].$codigo."_G-01.jpg";
         $rutaFile=YiiBase::getPathOfAlias("webroot").Yii::app()->params["rutafilePro"].$codigo."_G-01.jpg"; 
         if(file_exists($rutaFile)){
-          return CHtml::link(CHtml::image(Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'] . 'search.png'),$rutaFileWeb,array("data-lightbox"=>$codigo."_G-01"));
+          //return CHtml::link(CHtml::image(Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'] . 'search.png'),$rutaFileWeb,array("data-lightbox"=>$codigo."_G-01"));
+          return CHtml::link(CHtml::image($rutaFileWeb,null,array('width'=>40,'height'=>40)),$rutaFileWeb,array("data-lightbox"=>$codigo."_G-01"));
         }else{
           return ;
         }
