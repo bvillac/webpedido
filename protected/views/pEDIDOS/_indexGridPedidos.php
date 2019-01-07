@@ -64,6 +64,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'value' => '($data["Estado"]=="1")?Yii::t("TIENDA", "Order"):(($data["Estado"]=="2")?Yii::t("TIENDA", "Dressed"):(($data["Estado"]=="3")?Yii::t("TIENDA", "Authorized"):Yii::t("TIENDA", "Canceled")))',
             'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
         ),
+        
     ),
 ));
 ?>

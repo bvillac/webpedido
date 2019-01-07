@@ -58,5 +58,16 @@ class VSValidador {
         //se escribe en el fichero
         file_put_contents(Yii::app()->params["logfile"], $message, FILE_APPEND | LOCK_EX);
     }
+    public static function mostrarProductos($codigo) {
+        //'value' => 'CHtml::link("ver",Yii::app()->theme->baseUrl.Yii::app()->params["rutapro"].$data["Codigo"]."_G-01.jpg",array("data-lightbox"=>$data["Codigo"]."_G-01"))',
+        $rutaFileWeb=Yii::app()->theme->baseUrl.Yii::app()->params["rutapro"].$codigo."_G-01.jpg";
+        $rutaFile=YiiBase::getPathOfAlias("webroot").Yii::app()->params["rutafilePro"].$codigo."_G-01.jpg"; 
+        if(file_exists($rutaFile)){
+          return CHtml::link(CHtml::image(Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'] . 'search.png'),$rutaFileWeb,array("data-lightbox"=>$codigo."_G-01"));
+        }else{
+          return ;
+        }
+        
+    }
     
 }

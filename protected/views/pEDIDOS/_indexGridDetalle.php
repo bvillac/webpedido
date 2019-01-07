@@ -95,6 +95,13 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'value' => '($data["EstAut"]=="1")?Yii::t("TIENDA", "Active"):Yii::t("TIENDA", "Inactive")',
             'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
         ),
+        array(
+            'name' => 'Imagen',
+            'header' => Yii::t('TIENDA', 'img'),
+            'value' => 'VSValidador::mostrarProductos($data["Codigo"])',
+            'type' => 'raw',
+            //'htmlOptions'=>array('class'=>'icon-th'),
+        ),
 
     ),
 ));
