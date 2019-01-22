@@ -173,5 +173,56 @@ class ARTICULO extends CActiveRecord {
         $con->active = false;
         return $rawData;
     }
+    
+    public function retornarBusArticuloTienda($valor, $op) {
+        $con = Yii::app()->db;
+        $rawData = array();
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        //Patron de Busqueda
+        /* http://www.mclibre.org/consultar/php/lecciones/php_expresiones_regulares.html */
+        $patron = "/^[[:digit:]]+$/"; //Los patrones deben empezar y acabar con el carácter / (barra).
+        if (preg_match($patron, $valor)) {
+            $op = "COD"; //La cadena son sólo números.
+        } else {
+            $op = "NOM"; //La cadena son Alfanumericos.
+            //Las separa en un array 
+            $aux = explode(" ", $valor);
+            $condicion = " ";
+            for ($i = 0; $i < count($aux); $i++) {
+                //Crea la Sentencia de Busqueda
+                //$condicion .=" AND (PER_NOMBRE LIKE '%$aux[$i]%' OR PER_APELLIDO LIKE '%$aux[$i]%' ) ";
+                $condicion .=" AND (A.ART_DES_COM LIKE '%$aux[$i]%' OR A.COD_ART LIKE '%$aux[$i]%' )";
+            }
+        }
+
+            $sql = "SELECT A.ART_ID,A.COD_ART,A.ART_DES_COM
+                        FROM " . $con->dbname . ".ARTICULO A
+                    INNER JOIN " . $con->dbname . ".PRECIO_CLIENTE B ON A.ART_ID=B.ART_ID
+                WHERE A.ART_EST_LOG=1 AND B.CLI_ID=$cli_Id ";
+       
+//        $sql = "SELECT ART_ID,COD_ART,ART_DES_COM"
+//                . " FROM " . $con->dbname . ".ARTICULO "
+//                . "WHERE ART_EST_LOG=1 ";
+
+        switch ($op) {
+            case 'COD':
+                $sql .=" AND A.COD_ART LIKE '%$valor%' ";
+                break;
+            case 'NOM':
+                $sql .=$condicion;
+                break;
+            default:
+        }
+        $sql .= " LIMIT " . Yii::app()->params['limitRow'];
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    }
+    
+    
+    
+    
+    
 
 }

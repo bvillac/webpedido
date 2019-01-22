@@ -328,6 +328,21 @@ class PEDIDOSController extends Controller {
         
     }
     
+    public function actionBuscarItemsTienda() {
+        if (Yii::app()->request->isAjaxRequest) {
+            $valor = isset($_POST['valor']) ? $_POST['valor'] : "";
+            $op = isset($_POST['op']) ? $_POST['op'] : "";
+            $arrayData = array();
+            $data = new ARTICULO();
+            $arrayData = $data->retornarBusArticuloTienda($valor, $op);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arrayData);
+        }
+    }
+
+    
+    
+    
     
     
     
