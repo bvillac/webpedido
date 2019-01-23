@@ -138,12 +138,15 @@ function buscarDataTienda(ids) {
                 
                 //Implementado Byron 22-01-2019
                 if (data.length > 0) {
+                    //$('#' + tGrid + ' tbody').html("");
                     sessionStorage.removeItem('dts_precioTienda');
                     for (var i = 0; i < data.length; i++) {
                         arr_Grid[i] = objTiendas(i, data, false)
                         sessionStorage.dts_precioTienda = JSON.stringify(arr_Grid);
+                        //$('#' + tGrid).append(retornaFilaTiendas(i, arr_Grid, tGrid, true));
                     }
                 } else {
+                    //$('#' + tGrid + ' tbody').html("");
                     sessionStorage.removeItem('dts_precioTienda');
                 }
                 //Implementado Byron 22-01-2019
