@@ -70,7 +70,6 @@ function calculaTotal( cant,Ids) {
             precio = $(this).find("td").eq(5).html();
             valor=redondea(precio * cant, Ndecimal);
             $(this).find("td").eq(6).html(valor);
-            editarDataItem(Ids,cant,valor)
         }
         if (idstable!='') {
             vtot=parseFloat($(this).find("td").eq(6).html());
@@ -78,34 +77,6 @@ function calculaTotal( cant,Ids) {
         }
     });
     $('#lbl_total').text(redondea(total, Ndecimal))
-}
-
-function editarDataItem(Ids,cant,total) {
-    //Implementado Byron 28-01-2019
-    var ids = "";
-    if (sessionStorage.dts_precioTienda) {
-        var Grid = JSON.parse(sessionStorage.dts_precioTienda);
-        if (Grid.length > 0) {
-            var arr_Grid = objEditTiendas(retornarIndexArray(JSON.parse(sessionStorage.dts_precioTienda), 'ARTIE_ID', Ids), JSON.parse(sessionStorage.dts_precioTienda), true);
-            sessionStorage.dts_precioTienda = JSON.stringify(arr_Grid);
-
-        }
-    }
-}
-
-function objEditTiendas(c, Grid,condicion) {
-    var rowGrid = new Object();
-    rowGrid.ARTIE_ID = Grid[c]['ARTIE_ID'];
-    rowGrid.ART_ID = Grid[c]['ART_ID'];
-    rowGrid.COD_ART = Grid[c]['COD_ART'];
-    rowGrid.ART_DES_COM = Grid[c]['ART_DES_COM'];//(condicion)?$('#txt_PCLI_P_VENTA').val():Grid[c]['PCLI_P_VENTA'];//Grid[c]['ART_DES_COM'];
-    rowGrid.ART_P_VENTA =(condicion)?parseFloat($('#txt_PCLI_P_VENTA').val()).toFixed(Nprodecimal):Grid[c]['PCLI_P_VENTA'];
-    rowGrid.CAN_DES = (condicion)?parseFloat($('#txt_cat_'.Grid[c]['ARTIE_ID']).val()).toFixed(Nprodecimal):0;
-    rowGrid.ART_I_M_IVA = Grid[c]['ART_I_M_IVA'];
-    rowGrid.TOTAL = (condicion)?rowGrid.CAN_DES*rowGrid.ART_P_VENTA:0;
-    rowGrid.EST_MOD ="";
-    rowGrid.ART_ESTADO = '1';
-    return rowGrid;
 }
 
 function calculaTotalPedTemp(cant,Ids) {
@@ -330,6 +301,15 @@ function listaPedido() {
 
 function nuevaListaPedTemp() {
     location.reload();
+//    var TbGtable = 'TbG_PEDIDO';
+//    $('#' + TbGtable + ' tr').each(function () {
+//        var idstable = $(this).find("td").eq(0).html();
+//        $('#txt_cat_' + idstable).val(redondea(0, Ndecimal));
+//        $(this).find("td").eq(6).html(redondea(0, Ndecimal));
+//    });
+//    $('#lbl_total').text('0.00');
+//    $('#lbl_cupo').text('0.00');
+//    $('#lbl_pedido').text('Pedido Nº');
 }
 
 function listaPedidoDetTemp() {

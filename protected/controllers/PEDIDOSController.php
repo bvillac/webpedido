@@ -61,8 +61,23 @@ class PEDIDOSController extends Controller {
         $arrayData = array();
         $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         if (Yii::app()->request->isAjaxRequest) {
-            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
-            $arrayData = $model->listarItemsTiendas($ids);
+            //VSValidador::putMessageLogFile("llego");
+            $op = isset($_POST['op']) ? $_POST['op'] : "";
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : "0";
+            $des_com = isset($_POST['des_com']) ? $_POST['des_com'] : "";
+            switch ($op) {
+                case 'Tienda':
+                    $arrayData = $model->listarItemsTiendas($ids,$des_com);
+                    break;
+                case 'Buscar':
+                    $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
+                    $ids=($contBuscar[0]['TIE_ID']!='')?$contBuscar[0]['TIE_ID']:"0";
+                    $des_com=($contBuscar[0]['DES_COM']!='')?$contBuscar[0]['DES_COM']:"0";
+                    $arrayData = $model->listarItemsTiendas($ids,$des_com);
+                    break;
+                default: 
+            }
+            
             $this->renderPartial('_indexGrid', array(
                 'model' => $arrayData,
             ),false, true);
@@ -70,7 +85,7 @@ class PEDIDOSController extends Controller {
         }
         $this->titleWindows = Yii::t('TIENDA', 'List orders');
         $this->render('listar', array(
-            'model' => $model->listarItemsTiendas(0),
+            'model' => $model->listarItemsTiendas(0,""),
             'tienda' => $model->recuperarTiendasRol(),
             'cliID' => $cli_Id,
         ));
