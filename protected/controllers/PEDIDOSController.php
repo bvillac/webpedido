@@ -346,10 +346,11 @@ class PEDIDOSController extends Controller {
     public function actionBuscarItemsTienda() {
         if (Yii::app()->request->isAjaxRequest) {
             $valor = isset($_POST['valor']) ? $_POST['valor'] : "";
-            $op = isset($_POST['op']) ? $_POST['op'] : "";
+            $op = isset($_POST['op']) ? $_POST['op'] : "";//tie_id
+            $tieId = isset($_POST['tie_id']) ? $_POST['tie_id'] : "";//
             $arrayData = array();
             $data = new ARTICULO();
-            $arrayData = $data->retornarBusArticuloTienda($valor, $op);
+            $arrayData = $data->retornarBusArticuloTienda($valor,$tieId,$op);
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arrayData);
         }

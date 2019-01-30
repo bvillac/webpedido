@@ -174,7 +174,7 @@ class ARTICULO extends CActiveRecord {
         return $rawData;
     }
     
-    public function retornarBusArticuloTienda($valor, $op) {
+    public function retornarBusArticuloTienda($valor,$tieId,$op) {
         $con = Yii::app()->db;
         $rawData = array();
         $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
@@ -191,22 +191,25 @@ class ARTICULO extends CActiveRecord {
             for ($i = 0; $i < count($aux); $i++) {
                 //Crea la Sentencia de Busqueda
                 //$condicion .=" AND (PER_NOMBRE LIKE '%$aux[$i]%' OR PER_APELLIDO LIKE '%$aux[$i]%' ) ";
-                $condicion .=" AND (A.ART_DES_COM LIKE '%$aux[$i]%' OR A.COD_ART LIKE '%$aux[$i]%' )";
+                $condicion .=" AND (C.ART_DES_COM LIKE '%$aux[$i]%' OR C.COD_ART LIKE '%$aux[$i]%' )";
             }
         }
 
-            $sql = "SELECT A.ART_ID,A.COD_ART,A.ART_DES_COM
-                        FROM " . $con->dbname . ".ARTICULO A
-                    INNER JOIN " . $con->dbname . ".PRECIO_CLIENTE B ON A.ART_ID=B.ART_ID
-                WHERE A.ART_EST_LOG=1 AND B.CLI_ID=$cli_Id ";
+//            $sql = "SELECT A.ART_ID,A.COD_ART,A.ART_DES_COM
+//                        FROM " . $con->dbname . ".ARTICULO A
+//                    INNER JOIN " . $con->dbname . ".PRECIO_CLIENTE B ON A.ART_ID=B.ART_ID
+//                WHERE A.ART_EST_LOG=1 AND B.CLI_ID=$cli_Id ";
        
-//        $sql = "SELECT ART_ID,COD_ART,ART_DES_COM"
-//                . " FROM " . $con->dbname . ".ARTICULO "
-//                . "WHERE ART_EST_LOG=1 ";
-
+        $sql = "SELECT A.ARTIE_ID,B.ART_ID,C.COD_ART,C.ART_DES_COM                        
+                    FROM " . $con->dbname . ".ARTICULO_TIENDA A
+                            INNER JOIN (" . $con->dbname . ".PRECIO_CLIENTE B
+                                            INNER JOIN " . $con->dbname . ".ARTICULO C
+                                                    ON C.ART_ID=B.ART_ID)
+                                    ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
+            WHERE A.ARTIE_EST_LOG=1 AND B.CLI_ID=$cli_Id AND A.TIE_ID=$tieId ";
         switch ($op) {
             case 'COD':
-                $sql .=" AND A.COD_ART LIKE '%$valor%' ";
+                $sql .=" AND C.COD_ART LIKE '%$valor%' ";
                 break;
             case 'NOM':
                 $sql .=$condicion;
