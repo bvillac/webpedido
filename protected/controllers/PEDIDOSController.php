@@ -72,7 +72,7 @@ class PEDIDOSController extends Controller {
                 case 'Buscar':
                     $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
                     $ids=($contBuscar[0]['TIE_ID']!='')?$contBuscar[0]['TIE_ID']:"0";
-                    $des_com=($contBuscar[0]['DES_COM']!='')?$contBuscar[0]['DES_COM']:"0";
+                    $des_com=($contBuscar[0]['DES_COM']!='')?$contBuscar[0]['DES_COM']:"";
                     $arrayData = $model->listarItemsTiendas($ids,$des_com);
                     break;
                 default: 
