@@ -573,42 +573,35 @@ function controlBuscarLiquidar(op){
 
 
 /************************ BUSCAR PERSONALIZADO DE ITEMS *******************/
-function autocompletarBuscarItems(request, response, control, op) {
-    if ($('#cmb_tienda option:selected').val() != 0) {
-        var link = $('#txth_controlador').val() + "/BuscarItemsTienda";
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            url: link,
-            data: {
-                valor: $('#' + control).val(),
-                tie_id: $('#cmb_tienda option:selected').val(),
-                op: op
-            },
-            success: function (data) {
-                var arrayList = new Array;
-                var count = data.length;
-                for (var i = 0; i < count; i++) {
-                    row = new Object();
-                    row.COD_ART = data[i]['COD_ART'];
-                    row.ART_DES_COM = data[i]['ART_DES_COM'];
+function autocompletarBuscarItems(request, response,control,op){
+    var link=$('#txth_controlador').val()+"/BuscarItemsTienda";
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url:link,
+        data:{
+            valor: $('#'+control).val(),
+            op: op
+        },
+        success:function(data){
+            var arrayList =new Array;
+            var count=data.length;
+            for(var i=0;i<count;i++){
+                row=new Object();
+                row.COD_ART=data[i]['COD_ART'];
+                row.ART_DES_COM=data[i]['ART_DES_COM'];
 
-                    // Campos Importandes relacionados con el  CJuiAutoComplete
-                    row.id = data[i]['COD_ART'];
-                    row.label = data[i]['ART_DES_COM'] + ' - ' + data[i]['COD_ART'];//+' - '+data[i]['SEGURO_SOCIAL'];//Lo sugerido
-                    //row.value=data[i]['IdentificacionComprador'];//lo que se almacena en en la caja de texto
-                    row.value = data[i]['ART_DES_COM'];//lo que se almacena en en la caja de texto
-                    arrayList[i] = row;
-                }
-                sessionStorage.src_buscItemIndex = JSON.stringify(arrayList);//dss=>DataSessionStore
-                response(arrayList);
+                // Campos Importandes relacionados con el  CJuiAutoComplete
+                row.id=data[i]['COD_ART'];
+                row.label=data[i]['ART_DES_COM']+' - '+data[i]['COD_ART'];//+' - '+data[i]['SEGURO_SOCIAL'];//Lo sugerido
+                //row.value=data[i]['IdentificacionComprador'];//lo que se almacena en en la caja de texto
+                row.value=data[i]['ART_DES_COM'];//lo que se almacena en en la caja de texto
+                arrayList[i] = row;
             }
-        })
-
-    } else {
-
-    }
-
+            sessionStorage.src_buscItemIndex = JSON.stringify(arrayList);//dss=>DataSessionStore
+            response(arrayList);  
+        }
+    })            
 }
 
 function buscarDataItem(control, op) {

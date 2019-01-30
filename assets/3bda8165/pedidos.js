@@ -16,24 +16,12 @@ function retornarIndexArray(array, property, value) {
     return index;
 }
 
-$(document).ready(function () {
-    $("#txt_codigoBuscar").keyup(function () {
-        if($('#txt_codigoBuscar').val()==""){
-            //alert("Handler for .keydown() called.");
-            buscarDataItem("","Buscar")
-        }
-    });
-    
-});
-
 
 function fun_Nuevo(accion){
     var link="";
     link=$('#txth_controlador').val()+"/create";
     $('#btn_nuevo').attr("href", link);
 }
-
-
 
 function verificaAcciones(){   
     //if($('#txth_cliId').val()!='4'){//Solo para clientes Marcimex
@@ -73,7 +61,6 @@ function pedidoEnterGrid(valor,control,Ids){
          //var p_venta=parseFloat(control.value);
          var cant=control.value;
          calculaTotal(cant,Ids);
-         calcularTotalGrid();
     }
 }
 function pedidoEnterGridTemp(valor,control,Ids){
@@ -145,6 +132,53 @@ function calcularTotalGrid(){
     $('#lbl_total').text(redondea(sumTotal, Ndecimal))
     
 }
+
+
+function actualizarDataTienda() {
+    var ids='';
+    var cant=0;
+    if (sessionStorage.dts_precioTienda) {
+        var Grid = JSON.parse(sessionStorage.dts_precioTienda);
+        if (Grid.length > 0) {
+            for (var i = 0; i < Grid.length; i++) {                
+                if(parseFloat(Grid[i]['CAN_DES'])>0){//$('#txt_cat_'.Grid[c]['ARTIE_ID']).val()
+                    ids=Grid[i]['ARTIE_ID'];
+                    cant=Grid[i]['CAN_DES'];
+                    //alert(Grid[i]['CAN_DES']);                    
+                    if ($('#txt_cat_'+ids).length) {
+                        $('#txt_cat_'+ids).val(cant);
+                        calTotal(cant,ids);
+                    } 
+                    
+                }
+               
+            }    
+        }
+
+    }
+
+}
+
+function calTotal(cant,Ids) {
+    var precio = 0;
+    var valor=0;
+    var total=0;
+    var vtot=0;
+    var TbGtable = 'TbG_PEDIDO';
+    $('#' + TbGtable + ' tr').each(function () {
+        var idstable = $(this).find("td").eq(0).html();
+        if (idstable==Ids) {
+            precio = $(this).find("td").eq(5).html();
+            valor=redondea(precio * cant, Ndecimal);
+            $(this).find("td").eq(6).html(valor);
+            return;
+        }
+        
+    });
+    
+}
+
+
 
 function calculaTotalPedTemp(cant,Ids) {
     var precio = 0;
@@ -343,8 +377,7 @@ function fun_Update(){
 function listaPedido() {
     var TbGtable = 'TbG_PEDIDO';
     var arrayList = new Array;
-    var c=0;
-    /*var i = -1;
+    var i = -1;
     $('#' + TbGtable + ' tr').each(function () {
         var idstable = $(this).find("td").eq(0).html();
         if (idstable != '') {
@@ -362,27 +395,7 @@ function listaPedido() {
             }
 
         }
-    });*/
-    //Usa los datos del Session Stores
-    if (sessionStorage.dts_precioTienda) {
-        var Grid = JSON.parse(sessionStorage.dts_precioTienda);
-        if (Grid.length > 0) {
-            for (var i = 0; i < Grid.length; i++) {                
-                if(parseFloat(Grid[i]['CAN_DES'])>0){//$('#txt_cat_'.Grid[c]['ARTIE_ID']).val()
-                    var ids=Grid[i]['ARTIE_ID'];
-                    var rowGrid = new Object();
-                    rowGrid.ARTIE_ID = Grid[i]['ARTIE_ID'];
-                    rowGrid.ART_ID = Grid[i]['ART_ID'];
-                    rowGrid.CANT = Grid[i]['CAN_DES'];
-                    rowGrid.PRECIO = Grid[i]['ART_P_VENTA'];
-                    rowGrid.TOTAL = redondea(Grid[i]['TOTAL'], Ndecimal);
-                    rowGrid.OBSERV = $('#txt_obs_' + ids).val();
-                    arrayList[c] = rowGrid;
-                    c += 1;
-                }
-            }    
-        }
-    }
+    });
     return JSON.stringify(arrayList);
 }
 
@@ -573,98 +586,59 @@ function controlBuscarLiquidar(op){
 
 
 /************************ BUSCAR PERSONALIZADO DE ITEMS *******************/
-function autocompletarBuscarItems(request, response, control, op) {
-    if ($('#cmb_tienda option:selected').val() != 0) {
-        var link = $('#txth_controlador').val() + "/BuscarItemsTienda";
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            url: link,
-            data: {
-                valor: $('#' + control).val(),
-                tie_id: $('#cmb_tienda option:selected').val(),
-                op: op
-            },
-            success: function (data) {
-                var arrayList = new Array;
-                var count = data.length;
-                for (var i = 0; i < count; i++) {
-                    row = new Object();
-                    row.COD_ART = data[i]['COD_ART'];
-                    row.ART_DES_COM = data[i]['ART_DES_COM'];
+function autocompletarBuscarItems(request, response,control,op){
+    var link=$('#txth_controlador').val()+"/BuscarItemsTienda";
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url:link,
+        data:{
+            valor: $('#'+control).val(),
+            op: op
+        },
+        success:function(data){
+            var arrayList =new Array;
+            var count=data.length;
+            for(var i=0;i<count;i++){
+                row=new Object();
+                row.COD_ART=data[i]['COD_ART'];
+                row.ART_DES_COM=data[i]['ART_DES_COM'];
 
-                    // Campos Importandes relacionados con el  CJuiAutoComplete
-                    row.id = data[i]['COD_ART'];
-                    row.label = data[i]['ART_DES_COM'] + ' - ' + data[i]['COD_ART'];//+' - '+data[i]['SEGURO_SOCIAL'];//Lo sugerido
-                    //row.value=data[i]['IdentificacionComprador'];//lo que se almacena en en la caja de texto
-                    row.value = data[i]['ART_DES_COM'];//lo que se almacena en en la caja de texto
-                    arrayList[i] = row;
-                }
-                sessionStorage.src_buscItemIndex = JSON.stringify(arrayList);//dss=>DataSessionStore
-                response(arrayList);
+                // Campos Importandes relacionados con el  CJuiAutoComplete
+                row.id=data[i]['COD_ART'];
+                row.label=data[i]['ART_DES_COM']+' - '+data[i]['COD_ART'];//+' - '+data[i]['SEGURO_SOCIAL'];//Lo sugerido
+                //row.value=data[i]['IdentificacionComprador'];//lo que se almacena en en la caja de texto
+                row.value=data[i]['ART_DES_COM'];//lo que se almacena en en la caja de texto
+                arrayList[i] = row;
             }
-        })
-
-    } else {
-
-    }
-
+            sessionStorage.src_buscItemIndex = JSON.stringify(arrayList);//dss=>DataSessionStore
+            response(arrayList);  
+        }
+    })            
 }
 
 function buscarDataItem(control, op) {
-    control = (control == '') ? 'txt_codigoBuscar' : control;
-    var link = $('#txth_controlador').val() + "/listar";
-    $.fn.yiiGridView.update('TbG_PEDIDO', {
-        type: 'POST',
-        url: link,
-        data: {
-            "op": op, //solo tiendas
-            "CONT_BUSCAR": controlBuscarItems(control, op)
-        },
-        complete:function() {
-             //$.fn.yiiGridView.update('item-grid');
-             actualizarDataTienda();
-             calcularTotalGrid();
-           },
-    });
-}
+    //if ($('#' + control).val() != '') {
+        control = (control == '') ? 'txt_codigoBuscar' : control;
+        var link = $('#txth_controlador').val() + "/listar";
+        $.fn.yiiGridView.update('TbG_PEDIDO', {
+            type: 'POST',
+            url: link,
+            data: {
+                "op": op, //solo tiendas
+                "CONT_BUSCAR": controlBuscarItems(control, op)
+            }
+        });
 
-function actualizarDataTienda() {
-    var ids='';
-    var cant=0;
-    if (sessionStorage.dts_precioTienda) {
-        var Grid = JSON.parse(sessionStorage.dts_precioTienda);
-        if (Grid.length > 0) {
-            for (var i = 0; i < Grid.length; i++) {                
-                if(parseFloat(Grid[i]['CAN_DES'])>0){//$('#txt_cat_'.Grid[c]['ARTIE_ID']).val()
-                    ids=Grid[i]['ARTIE_ID'];
-                    cant=Grid[i]['CAN_DES'];
-                    $('#txt_cat_'+ids).val(cant);
-                     calTotalItem(cant,ids);
-                }
-            }    
-        }
-    }
-
-}
-
-function calTotalItem(cant,Ids) {
-    var precio = 0;
-    var valor=0;
-    var total=0;
-    var vtot=0;
-    var TbGtable = 'TbG_PEDIDO';
-    $('#' + TbGtable + ' tr').each(function () {
-        var idstable = $(this).find("td").eq(0).html();
-        if (idstable==Ids) {
-            precio = $(this).find("td").eq(5).html();
-            valor=redondea(precio * cant, Ndecimal);
-            $(this).find("td").eq(6).html(valor);
-            return;
-        }
-        
-    });
-    
+    /*}else{
+        if ($('#cmb_tienda option:selected').val()!=0) {
+            mostrarListaTiendaBuscar($('#cmb_tienda option:selected').val())
+        } 
+    }*/
+    //alert('paso1')
+    actualizarDataTienda();
+    //alert('paso2')
+    calcularTotalGrid();
 }
 
 function mostrarListaTiendaBuscar(ids) {
@@ -690,7 +664,7 @@ function controlBuscarItems(control,op){
 //        buscarIndex.CEDULA='';
 //    }
     buscarIndex.OP=op;
-    buscarIndex.DES_COM=($('#'+control).val()!="")?$('#'+control).val():"";
+    buscarIndex.DES_COM=$('#'+control).val(),
     buscarIndex.TIE_ID=$('#cmb_tienda option:selected').val();
    
     //buscarIndex.F_INI=$('#dtp_fec_ini').val();

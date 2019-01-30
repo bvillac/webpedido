@@ -271,7 +271,7 @@ class TIENDA extends CActiveRecord {
         $msg = new VSexception();
         $con = yii::app()->db;
         $idRol=Yii::app()->getSession()->get('RolId', FALSE);//Rol del Usuario.
-        $mensaje = "";
+        $mensaje = "";        
         //BUSCAR DATOS DE LA TIENDA
         $sql = "SELECT A.TIE_CUPO,A.FEC_INI_PED,A.FEC_FIN_PED FROM " . $con->dbname . ".TIENDA A
                 WHERE A.TIE_EST_LOG=1 AND A.TIE_ID='$id' ";
@@ -286,7 +286,7 @@ class TIENDA extends CActiveRecord {
         if ($dia >= date($f_ini) AND $dia <= date($f_fin)) {//Si esta Dentro del Rango
             //OBTENER SALDO DISPONIBLE
             $sql = "SELECT IFNULL(SUM(B.CPED_VAL_NET),0) ValNeto 
-                        FROM VSSEAPEDIDO.CAB_PEDIDO B 
+                        FROM " . $con->dbname . ".CAB_PEDIDO B 
                 WHERE  B.CPED_EST_LOG IN(1,2) AND B.TIE_ID='$id' 
                         AND DATE(B.CPED_FEC_PED) BETWEEN '$f_ini' AND  '$f_fin' ";
             //echo $sql;
@@ -312,6 +312,11 @@ class TIENDA extends CActiveRecord {
         }else{//No esta dentro del Rango establecido $mensaje
             $arroout["SALDO"] = 0; //No tiene Cupo
             $mensaje = Yii::t('EXCEPTION', 'Set the date range for the store to expired therefore we can not fulfill your order!!!'); //Saldo No Disponible.
+        }
+        $arroout["TIENDA"] =array();
+        //VSValidador::putMessageLogFile('llego xxx'.$id);
+        if ($id!=''){            
+            $arroout["TIENDA"] = $this->recuperarItemsTiendas($id);
         }
         $arroout["MOSTRAR"] = ($idRol!='7')?'SI':'NO';//Retona SI O NO DEPENDIDENDO DEL ROL PARA VER CUPOS DE TIENDAS
         return $msg->messageSystem('OK', null, null,$mensaje , $arroout); //Mensaje Personalizado.
@@ -350,14 +355,6 @@ class TIENDA extends CActiveRecord {
         $msg= new VSexception();
         $rawData = array();
         $con = Yii::app()->db;
-        //$sql = "SELECT B.PCLI_ID IdsPre
-//        $sql = "SELECT B.PCLI_ID IdsPre,B.ART_ID IdsArt,C.COD_ART Codigo,C.ART_DES_COM Nombre,A.ARTIE_EST_LOG Estado
-//                        FROM " . $con->dbname . ".ARTICULO_TIENDA A
-//                                INNER JOIN (" . $con->dbname . ".PRECIO_CLIENTE B
-//                                                INNER JOIN " . $con->dbname . ".ARTICULO C
-//                                                        ON C.ART_ID=B.ART_ID)
-//                                        ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
-//                WHERE A.TIE_ID=$ids ";
         
         $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         $sql = "SELECT B.PCLI_ID IdsPre,B.ART_ID IdsArt,C.COD_ART Codigo,C.ART_DES_COM Nombre,
@@ -382,12 +379,7 @@ class TIENDA extends CActiveRecord {
                 'pageSize' => 1000,//Yii::app()->params['pageSize'],//Solo para que salgan todos
             ),
         ));
-//        if(count($rawData)>0){
-//            return $msg->messageSystem('OK',null,20,null, $rawData);
-//        }else{
-//            return $msg->messageSystem('NO_OK',null,21,null, null);
-//        }
-        //return $rawData;
+
     }
 
     public function mostrarItemsTiendas() {
@@ -478,9 +470,29 @@ class TIENDA extends CActiveRecord {
         return true;//$rawData['PCLI_ID'];
     }
     
-    
-    
-    public function listarItemsTiendas($ids) {
+    public function recuperarItemsTiendas($ids) {
+        $rawData = array();
+        $con = Yii::app()->db;
+        $sql = "SELECT A.ARTIE_ID,A.PCLI_ID,B.ART_ID,C.COD_ART, C.ART_DES_COM ,B.PCLI_P_VENTA,
+                        '0' Cantidad,'0' Total,C.ART_I_M_IVA Iva,'' Observacion,A.ARTIE_EST_LOG Estado
+                        FROM " . $con->dbname . ".ARTICULO_TIENDA A
+                                INNER JOIN (" . $con->dbname . ".PRECIO_CLIENTE B
+                                                INNER JOIN " . $con->dbname . ".ARTICULO C
+                                                        ON C.ART_ID=B.ART_ID)
+                                        ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
+                WHERE A.ARTIE_EST_LOG=1 AND A.TIE_ID='$ids' ";
+        //$sql.=($ids!=0)?"AND A.TIE_ID=$ids":"";
+        $sql.=" ORDER BY C.ART_DES_COM ";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    } 
+
+
+
+
+    public function listarItemsTiendas($ids,$desCom) {
         $rawData = array();
         $con = Yii::app()->db;
         //$rawData[]=$this->rowProdList();
@@ -492,7 +504,8 @@ class TIENDA extends CActiveRecord {
                                                         ON C.ART_ID=B.ART_ID)
                                         ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
                 WHERE A.ARTIE_EST_LOG=1 AND A.TIE_ID=$ids ";
-        //$sql.=($ids!=0)?"AND A.TIE_ID=$ids":"";
+        //$sql.=($ids!=0)?"AND A.TIE_ID=$ids":""; 
+        $sql.=($desCom!="")?" AND C.ART_DES_COM LIKE '%$desCom%' ":"";
         $sql.=" ORDER BY C.ART_DES_COM";
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
