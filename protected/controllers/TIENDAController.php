@@ -234,8 +234,15 @@ class TIENDAController extends Controller {
             $data = isset($_POST['DATA']) ? CJavaScript::jsonDecode($_POST['DATA']) : array();
             //print_r($data['IDS']);
             $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
+            $op = isset($_POST['OP']) ? $_POST['OP'] : "";
             if ($accion == "Create") {
-                $arroout = $model->insertarTiendaItems($data);
+                if($op=="U"){//guarda solo a una tienda seleccionada
+                    $arroout = $model->insertarTiendaItems($data);
+                }else{
+                    //Agrega para todas las tiendas del cliente
+                    $arroout = $model->insertarItemsTodasTiendas($data);
+                }
+                
             } else {
                 //$arroout = $model->actualizarTienda($tienda);
             }

@@ -237,7 +237,9 @@ function mostrarProductosTienda(ids) {
 }
 
 
-function fun_GuardarProductos(accion) {
+function fun_GuardarProductos(accion,op) {
+    //U=UNO
+    //T=TODOS
     if ($('#cmb_tienda option:selected').val() > 0) {
         var ids = String($.fn.yiiGridView.getSelection('TbG_TIENDA'));
         var count = ids.split(",");
@@ -250,6 +252,7 @@ function fun_GuardarProductos(accion) {
                 url: link,
                 data: {
                     "DATA": objetoItemsTienda(ids),
+                    "OP": op,
                     "ACCION": accion
                 },
                 success: function (data) {

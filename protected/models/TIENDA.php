@@ -346,7 +346,8 @@ class TIENDA extends CActiveRecord {
         $con = yii::app()->db;
         $sql = "SELECT TIE_ID,TIE_NOMBRE FROM " . $con->dbname . ".TIENDA WHERE CLI_ID=$cli_Id AND TIE_EST_LOG=1 ";
         //echo $sql;
-        $rawData =$con->createCommand($sql)->query();
+        //$rawData =$con->createCommand($sql)->query();
+        $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
         return $rawData;
     }
@@ -456,6 +457,48 @@ class TIENDA extends CActiveRecord {
             return $msg->messageSystem('NO_OK',$e->getMessage(),11,null, null);
         }
     }
+    
+    public function insertarItemsTodasTiendas($objEnt) {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $dTienda= $this->recuperarTiendasCliente();
+            //VSValidador::putMessageLogFile($dTienda);
+            //$tieId=$objEnt['TIE_ID'];
+            $ids = explode(",", $objEnt['IDS']);//Recibe Ids Concatenados
+            for ($x = 0; $x < sizeof($dTienda); $x++) {
+                $tieId =$dTienda[$x]['TIE_ID'];
+                //VSValidador::putMessageLogFile($tieId);
+                for ($i = 0; $i < count($ids); $i++) {
+                    $preId=$ids[$i];
+                    if($this->existeProductoTienda($con,$tieId,$preId)){
+                        //SI existe
+                        $sql = "UPDATE " . $con->dbname . ".ARTICULO_TIENDA SET ARTIE_EST_LOG='1' "
+                                . "WHERE PCLI_ID=$preId AND TIE_ID=$tieId ";
+
+                    }else{
+                        //Si No existe
+                        $sql="INSERT INTO " . $con->dbname . ".ARTICULO_TIENDA 
+                            (TIE_ID,PCLI_ID,ARTIE_EST_LOG)VALUES($tieId,$preId,'1')";
+                    }
+                    $command = $con->createCommand($sql);
+                    $command->execute();
+                }
+                //$this->actualizaItemsTiendas($con,$tieId,$objEnt['IDS']);
+            }
+            
+            $trans->commit(); 
+            $con->active = false;
+            return $msg->messageSystem('OK',null,10,null, null);
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            //throw $e;
+            return $msg->messageSystem('NO_OK',$e->getMessage(),11,null, null);
+        }
+    }
+    
     private function actualizaItemsTiendas($con,$tieId,$ids) {
         $sql = "UPDATE " . $con->dbname . ".ARTICULO_TIENDA SET ARTIE_EST_LOG=0 WHERE TIE_ID=$tieId AND PCLI_ID NOT IN($ids)";
         //echo $sql;
