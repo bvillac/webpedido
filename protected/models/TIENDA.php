@@ -351,7 +351,7 @@ class TIENDA extends CActiveRecord {
         return $rawData;
     }
     
-    public function mostrarItemsCheckTiendas($ids) {
+    public function mostrarItemsCheckTiendas($ids,$desCom) {
         $msg= new VSexception();
         $rawData = array();
         $con = Yii::app()->db;
@@ -363,6 +363,9 @@ class TIENDA extends CActiveRecord {
                         INNER JOIN " . $con->dbname . ".ARTICULO C
                             ON C.ART_ID=B.ART_ID
                 WHERE B.CLI_ID=$cli_Id AND PCLI_EST_LOG=1 ";
+        
+        $sql.=($desCom!="")?" AND C.ART_DES_COM LIKE '%$desCom%' ":"";
+        $sql.=" ORDER BY C.ART_DES_COM";
         
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
@@ -408,7 +411,7 @@ class TIENDA extends CActiveRecord {
             ),
         ));
     }
-    
+
     public function rowProdList() {
         return array(
             "IdsPre" => '', //0

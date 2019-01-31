@@ -31,7 +31,7 @@ class TIENDAController extends Controller {
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions' => array('create', 'update','Save','Delete','Producto','SaveCupoTie',
-                                    'BuscarItemTienda','SaveItems','TiendaCupo'),
+                                    'BuscarItemTienda','BuscarProductoTienda','SaveItems','TiendaCupo'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -213,23 +213,19 @@ class TIENDAController extends Controller {
     
     public function actionBuscarItemTienda() {
         if (Yii::app()->request->isAjaxRequest) {
-//            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
-//            $arrayData = array();
-//            $data = new TIENDA;
-//            $arrayData = $data->mostrarItemsCheckTiendas($ids);
-//            header('Content-type: application/json');
-//            echo CJavaScript::jsonEncode($arrayData);
-            
             $arrayData = array();
             $data = new TIENDA;
             $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
-            $arrayData = $data->mostrarItemsCheckTiendas($ids);
+            $des_com=isset($_POST['DES_COM']) ? $_POST['DES_COM'] : "";
+            $arrayData = $data->mostrarItemsCheckTiendas($ids,$des_com);
             $this->renderPartial('_indexGridTienda', array(
                 'model' => $arrayData,
             ),false, true);
             return;
         }
     }
+    
+      
     
     public function actionSaveItems() {
         if (Yii::app()->request->isPostRequest) {
@@ -267,6 +263,19 @@ class TIENDAController extends Controller {
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);
             return;
+        }
+    }
+    
+    public function actionBuscarProductoTienda() {
+        if (Yii::app()->request->isAjaxRequest) {
+            $valor = isset($_POST['valor']) ? $_POST['valor'] : "";
+            $op = isset($_POST['op']) ? $_POST['op'] : "";//tie_id
+            $tieId = isset($_POST['tie_id']) ? $_POST['tie_id'] : "";//
+            $arrayData = array();
+            $data = new ARTICULO();
+            $arrayData = $data->retornarBusArticuloTienda($valor,$tieId,$op);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arrayData);
         }
     }
 
