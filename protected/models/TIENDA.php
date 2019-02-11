@@ -145,7 +145,7 @@ class TIENDA extends CActiveRecord {
                         FROM " . $con->dbname . ".USUARIO_TIENDA A
                                 INNER JOIN " . $con->dbname . ".TIENDA B
                                         ON A.TIE_ID=B.TIE_ID
-                WHERE A.UTIE_EST_LOG=1 AND A.ROL_ID=$rol_Id AND USU_ID=$usu_Id ";
+                WHERE A.UTIE_EST_LOG=1 AND A.ROL_ID=$rol_Id AND USU_ID=$usu_Id ORDER BY B.TIE_NOMBRE ASC";
             //echo $sql;
             $rawData = $con->createCommand($sql)->queryAll();
             $con->active = false;
