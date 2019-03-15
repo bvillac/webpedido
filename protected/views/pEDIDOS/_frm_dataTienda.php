@@ -1,7 +1,13 @@
 <form role="form">
     <div class="form-group rowLine">
         <div class="rowTd">
-            <label><?php echo Yii::t('GENERAL', 'Store') ?></label>
+            <label><?php echo Yii::t('GENERAL', 'Descargar Manuales') ?></label>            
+        </div>
+    </div>    
+    <div class="form-group rowLine">
+        
+        <div class="rowTd">
+            <label><?php echo Yii::t('GENERAL', 'Store') ?></label>            
         </div>
         <div class="rowTd">
             <?php

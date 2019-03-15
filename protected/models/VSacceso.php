@@ -72,6 +72,11 @@ class VSacceso {
             }
             $menulat.=($auxCierre==$maxCierre)?'</ul></li>':'';//Cierre del Menu Modulo
         }
+        //MANUALES DEL SISTEMA
+        $menulat.='<li>';
+            $menulat.=CHtml::link(Yii::t('MENU',' Manuales (PDF)'),array('/pEDIDOS/manuales','op'=>$id),array('class' => 'fa fa-download'));//Manual segun Rol
+            $menulat.=CHtml::link(Yii::t('MENU',' Conexión (PDF)'),array('/pEDIDOS/manuales','op'=>10),array('class' => 'fa fa-download'));//Conexion Segura
+        $menulat.='</li>';
         return $menulat;
     }
     
@@ -91,7 +96,7 @@ class VSacceso {
         $result='';
         $result.='<a href="#">';
                 $result.='<i class="fa fa-sitemap fa-fw"></i>'; 
-                        $result.=$key[$i]['MOD_NOMBRE'];
+                    $result.=$key[$i]['MOD_NOMBRE'];
                 $result.='<span class="fa arrow"></span>';
         $result.='</a>';
         $result.='<ul class="nav nav-second-level collapse" style="height: 0px;">';

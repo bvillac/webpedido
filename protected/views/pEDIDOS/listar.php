@@ -8,8 +8,7 @@
     <?php }  ?>
     <?php $this->renderPartial('_frm_dataTienda', 
                     array(
-                        'tienda' =>$tienda)); ?>
-    
+                        'tienda' =>$tienda)); ?>    
 </div>
 <div class="col-lg-12">
     <?php echo $this->renderPartial('_indexGrid', array('model' => $model)); ?>

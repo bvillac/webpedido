@@ -12,7 +12,7 @@ class PEDIDOSController extends Controller {
                 'actions' => array(
                     'create', 'update','Save','Listar','DataTienda',
                     'Aprobar','Delete','AnuItemPedTemp','EnvPedAut',
-                    'Liquidar','GenerarPdf','Consultar'),
+                    'Liquidar','GenerarPdf','Consultar','Manuales'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -355,12 +355,28 @@ class PEDIDOSController extends Controller {
             echo CJavaScript::jsonEncode($arrayData);
         }
     }
-
     
-    
-    
-    
-    
-    
+    public function actionManuales($op) {
+        switch ($op) {
+            case '7':
+                $nombreDocumento='Pedidos_Tienda.pdf';
+                $ruta=Yii::app()->basePath.'../../themes/seablue/images/manuales/Pedidos_Tienda.pdf';
+                break;
+            case '8':
+                $nombreDocumento='Pedidos_Tienda.pdf';
+                $ruta=Yii::app()->basePath.'../../themes/seablue/images/manuales/Pedidos_Tienda.pdf';
+                break;
+            case '10':
+                $nombreDocumento='Conexion_Segura.pdf';
+                $ruta=Yii::app()->basePath.'../../themes/seablue/images/manuales/Conexion_Segura.pdf';
+                break;
+            default:
+        }
+        
+        $this->renderPartial('descargarManual', array(
+            'ruta' => $ruta,
+            'nombreDocumento' => $nombreDocumento,
+        ));
+    }
 
 }

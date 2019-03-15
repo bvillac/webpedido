@@ -119,9 +119,8 @@
                             </span>
                             </div>
                             <!-- /input-group -->
-                        </li>
-
-                        <?php echo $this->menuModulos(); ?>
+                        </li>                       
+                        <?php echo $this->menuModulos(); ?>                                              
                         <!-- /#Menu de pedidos -->
                         
                         

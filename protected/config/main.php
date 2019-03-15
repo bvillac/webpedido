@@ -163,6 +163,7 @@ return array(
         'datepicker' => 'dd-mm-yy',
         'datebytime' => 'Y-m-d h:i:s',
         //'rutapro' => '/opt/productos/',
+        //'rutafilePro' => '/opt/productos/',
         'rutafilePro' => '/themes/seablue/images/productos/',
         'rutapro' => '/images/productos/',
         'logfile' => __DIR__ . '/../runtime/logs/webped.log',
