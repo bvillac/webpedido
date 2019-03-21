@@ -247,10 +247,10 @@ class CABPEDIDO extends CActiveRecord {
         for ($i = 0; $i < sizeof($detFact); $i++) {
             $sql = "INSERT INTO " . $con->dbname . ".DET_PEDIDO
                     (CPED_ID,ART_ID,TIE_ID,DPED_CAN_PED,DPED_P_VENTA,DPED_I_M_IVA,DPED_VAL_DES,
-                     DPED_POR_DES,DPED_T_VENTA,DPED_FEC_CRE,DPED_EST_LOG)VALUES($idCab,
+                     DPED_POR_DES,DPED_T_VENTA,DPED_OBSERVA,DPED_FEC_CRE,DPED_EST_LOG)VALUES($idCab,
                      '" . $detFact[$i]['ART_ID'] . "','$tieId','" . $detFact[$i]['TDPED_CAN_PED'] . "',
                      '" . $detFact[$i]['TDPED_P_VENTA'] . "','0','0','0',
-                     '" . $detFact[$i]['TDPED_T_VENTA'] . "',CURRENT_TIMESTAMP(),'1');";
+                     '" . $detFact[$i]['TDPED_T_VENTA'] . "','" . $detFact[$i]['TDPED_OBSERVA'] . "',CURRENT_TIMESTAMP(),'1');";
             $command = $con->createCommand($sql);
             $command->execute();
         }
@@ -406,7 +406,7 @@ class CABPEDIDO extends CActiveRecord {
         $con = Yii::app()->db;
         $sql = "SELECT A.DPED_ID DetId,A.ART_ID ArtId,A.DPED_CAN_PED Cant,A.DPED_P_VENTA Precio,
                         A.DPED_T_VENTA TotVta,A.DPED_EST_LOG EstAut,B.COD_ART Codigo,
-                        B.ART_DES_COM Nombre,B.ART_I_M_IVA ImIva
+                        B.ART_DES_COM Nombre,B.ART_I_M_IVA ImIva, A.DPED_OBSERVA Observa
                         FROM " . $con->dbname . ".DET_PEDIDO A
                                 INNER JOIN " . $con->dbname . ".ARTICULO B
                                         ON A.ART_ID=B.ART_ID

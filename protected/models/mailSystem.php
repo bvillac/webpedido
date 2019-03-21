@@ -46,10 +46,19 @@ class mailSystem {
         //$mail->AddAddress("byronvillacreses@gmail.com", "Byron Villa");
         
         /******** COPIA OCULTA PARA VENTAS  ***************/
-        //$mail->addBCC('ventas@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
-        $mail->addBCC('ncastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
-        $mail->addBCC('yalava@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
-        $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+        //Verifica por CLiente el Correo del Administrados 2019-03-01
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE); 
+        if($cli_Id==5){
+            $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
+            $mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
+        }else{
+            //Para el Resto de Clientes los siguientes correos.
+            //$mail->addBCC('ventas@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+            $mail->addBCC('ncastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+            $mail->addBCC('yalava@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+            $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta 
+        }
+        
         
         //$mail->addBCC('byronvillacreses@gmail.com', 'Byron Villa'); //Para con copia 
         //$mail->addCC('byronvillacreses@gmail.com', 'ByronV'); //Para con copia
