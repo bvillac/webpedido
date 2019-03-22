@@ -357,6 +357,7 @@ class PEDIDOSController extends Controller {
     }
     
     public function actionManuales($op) {
+        $ruta='';
         switch ($op) {
             case '7':
                 $nombreDocumento='Pedidos_Tienda.pdf';
@@ -371,6 +372,8 @@ class PEDIDOSController extends Controller {
                 $ruta=Yii::app()->basePath.'../../themes/seablue/images/manuales/Conexion_Segura.pdf';
                 break;
             default:
+                $nombreDocumento='Pedidos_Tienda.pdf';
+                $ruta=Yii::app()->basePath.'../../themes/seablue/images/manuales/Pedidos_Tienda.pdf';
         }
         
         $this->renderPartial('descargarManual', array(
