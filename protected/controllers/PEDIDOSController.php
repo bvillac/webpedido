@@ -12,7 +12,7 @@ class PEDIDOSController extends Controller {
                 'actions' => array(
                     'create', 'update','Save','Listar','DataTienda',
                     'Aprobar','Delete','AnuItemPedTemp','EnvPedAut',
-                    'Liquidar','GenerarPdf','Consultar','Manuales'),
+                    'Liquidar','GenerarPdf','Consultar','Manuales','RevisarAdmin'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -379,6 +379,43 @@ class PEDIDOSController extends Controller {
         $this->renderPartial('descargarManual', array(
             'ruta' => $ruta,
             'nombreDocumento' => $nombreDocumento,
+        ));
+    }
+    
+    public function actionRevisarAdmin() {
+        $model = new TIENDA;
+        $cliente = new ARTICULOTIENDA; 
+        $arrayData = array();
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        if (Yii::app()->request->isAjaxRequest) {
+            //VSValidador::putMessageLogFile("llego");
+            /*$op = isset($_POST['op']) ? $_POST['op'] : "";
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : "0";
+            $des_com = isset($_POST['des_com']) ? $_POST['des_com'] : "";
+            switch ($op) {
+                case 'Tienda':
+                    $arrayData = $model->listarItemsTiendas($ids,$des_com);
+                    break;
+                case 'Buscar':
+                    $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
+                    $ids=($contBuscar[0]['TIE_ID']!='')?$contBuscar[0]['TIE_ID']:"0";
+                    $des_com=($contBuscar[0]['DES_COM']!='')?$contBuscar[0]['DES_COM']:"";
+                    $arrayData = $model->listarItemsTiendas($ids,$des_com);
+                    break;
+                default: 
+            }
+            
+            $this->renderPartial('_indexGrid', array(
+                'model' => $arrayData,
+            ),false, true);
+            return;*/
+        }
+        $this->titleWindows = Yii::t('TIENDA', 'Administración de Pedidos');
+        $this->render('revisaradmin', array(
+            //'model' => $model->listarItemsTiendas(0,""),
+            'tienda' => $model->recuperarTiendasRolCliente(),
+            'cliente' => $cliente->recuperarClientes(),
+            //'cliID' => $cli_Id,
         ));
     }
 

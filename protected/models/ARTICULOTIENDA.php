@@ -110,7 +110,13 @@ class ARTICULOTIENDA extends CActiveRecord {
 
     public function recuperarClientes() {
         $con = yii::app()->db;
-        $sql = "SELECT CLI_ID,CLI_NOMBRE FROM " . $con->dbname . ".CLIENTE WHERE CLI_EST_LOG=1 ";
+        $idRol=Yii::app()->getSession()->get('RolId', FALSE);//Rol del Usuario.
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        if($idRol==1){
+            $sql = "SELECT CLI_ID,CLI_NOMBRE FROM " . $con->dbname . ".CLIENTE WHERE CLI_EST_LOG=1 ";
+        } else {
+            $sql = "SELECT CLI_ID,CLI_NOMBRE FROM " . $con->dbname . ".CLIENTE WHERE CLI_ID=$cli_Id AND CLI_EST_LOG=1 ";
+        }
         return $con->createCommand($sql)->query();
     }
 
