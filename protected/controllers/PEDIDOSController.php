@@ -383,12 +383,15 @@ class PEDIDOSController extends Controller {
     }
     
     public function actionRevisarAdmin() {
-        $model = new TIENDA;
+        $model = new TEMP_CABPEDIDO();
+        $tienda = new TIENDA;
         $cliente = new ARTICULOTIENDA; 
         $arrayData = array();
-        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        //$cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         if (Yii::app()->request->isAjaxRequest) {
-            //VSValidador::putMessageLogFile("llego");
+            VSValidador::putMessageLogFile("llego");
+            $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
+            VSValidador::putMessageLogFile($contBuscar);
             /*$op = isset($_POST['op']) ? $_POST['op'] : "";
             $ids = isset($_POST['ids']) ? $_POST['ids'] : "0";
             $des_com = isset($_POST['des_com']) ? $_POST['des_com'] : "";
@@ -408,12 +411,21 @@ class PEDIDOSController extends Controller {
             $this->renderPartial('_indexGrid', array(
                 'model' => $arrayData,
             ),false, true);
+             * 
+             * 
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
+            $arrayData = $model->listarPedidosTiendas(null);
+            $this->renderPartial('_indexGridPedidos', array(
+                'model' => $arrayData,
+            ),false, true);
+            return;
+             * 
             return;*/
         }
         $this->titleWindows = Yii::t('TIENDA', 'Administración de Pedidos');
         $this->render('revisaradmin', array(
-            //'model' => $model->listarItemsTiendas(0,""),
-            'tienda' => $model->recuperarTiendasRolCliente(),
+            'model' => $model->listarPedidosTiendasResumen(null),
+            'tienda' => $tienda->recuperarTiendasRolCliente(),
             'cliente' => $cliente->recuperarClientes(),
             //'cliID' => $cli_Id,
         ));

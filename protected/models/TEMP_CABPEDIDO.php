@@ -348,5 +348,55 @@ class TEMP_CABPEDIDO extends CActiveRecord {
             ),
         ));
     }
+    
+    
+    public function listarPedidosTiendasResumen($control) {
+        $rawData = array();
+        $con = Yii::app()->db;
+        $idsTie=$this->recuperarIdsTiendasRol($con);
+        $limitrowsql = Yii::app()->params['limitRowSQL'];
+        //$rawData[]=$this->rowProdList();
+        $sql = "SELECT A.TCPED_ID PedID,A.TIE_ID TieID,A.TCPED_TOTAL Total,DATE(A.TCPED_FEC_CRE) FechaPedido, 
+                        B.TIE_NOMBRE NombreTienda,B.TIE_DIRECCION DireccionTienda,E.PER_NOMBRE NombrePersona,
+                        CONCAT(REPEAT( '0', 9 - LENGTH(A.TCPED_ID) ),A.TCPED_ID) Numero,A.TCPED_EST_LOG Estado
+                        FROM " . $con->dbname . ".TEMP_CAB_PEDIDO A
+                                INNER JOIN " . $con->dbname . ".TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                                INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA C
+                                                INNER JOIN (" . $con->dbname . ".USUARIO D
+                                                                INNER JOIN " . $con->dbname . ".PERSONA E
+                                                                        ON D.PER_ID=E.PER_ID)
+                                                        ON C.USU_ID=D.USU_ID)
+                                        ON C.UTIE_ID=A.UTIE_ID
+                WHERE  "; //A.TCPED_EST_LOG=1 AND
+        $sqlTieId=($idsTie!='') ? "AND A.TIE_ID IN ($idsTie)" : "";
+        if (!empty($control)) {//Verifica la Opcion op para los filtros
+            $sql .= ($control[0]['EST_LOG'] != "0") ? " A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : " A.TCPED_EST_LOG<>'' ";
+            $sql .= ($control[0]['TIE_ID'] > 0) ? "AND A.TIE_ID = '" . $control[0]['TIE_ID'] . "' " : $sqlTieId;
+            //$sql .= ($control[0]['COD_PACIENTE'] != "0") ? "AND CDOR_ID_PACIENTE='".$control[0]['COD_PACIENTE']."' " : "";
+            //$sql .= ($control[0]['PACIENTE'] != "") ? "AND CONCAT(B.PER_APELLIDO,' ',B.PER_NOMBRE) LIKE '%" . $control[0]['PACIENTE'] . "%' " : "";
+            $sql .= "AND DATE(A.TCPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "'  ";
+        }else{
+            $sql .= "A.TCPED_EST_LOG<>'' ";
+            $sql .= $sqlTieId;
+        }
+        $sql .= "ORDER BY A.TCPED_ID DESC LIMIT $limitrowsql";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+
+        return new CArrayDataProvider($rawData, array(
+            'keyField' => 'PedID',
+            'sort' => array(
+                'attributes' => array(
+                    'PedID', 'Numero', 'TieID', 'Total', 'FechaPedido', 'NombreTienda', 'DireccionTienda', 'NombrePersona', 'Estado'
+                ),
+            ),
+            'totalItemCount' => count($rawData),
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
+        ));
+    }
 
 }

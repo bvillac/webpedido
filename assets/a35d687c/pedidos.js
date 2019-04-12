@@ -699,31 +699,4 @@ function controlBuscarItems(control,op){
     return JSON.stringify(buscarArray);
 }
 
-/************** BUSCAR USUARIO TIENDA **************/
-function fun_buscarDataRol(op){ 
-    var link=$('#txth_controlador').val()+"/revisaradmin";
-    alert(link);
-    $.fn.yiiGridView.update('TbG_RESUMEN', {
-        type: 'POST',
-        url:link,
-        data:{
-            "CONT_BUSCAR": controlBuscarResumen(op)
-        }
-    }); 
-}
-
-function controlBuscarResumen(op){
-    //var buscarArray = new Array();
-    var buscarIndex=new Object();
-    buscarIndex.OP=op;
-    buscarIndex.TIE_ID=$('#cmb_tienda option:selected').val();
-    buscarIndex.CLI_ID=$('#cmb_cliente option:selected').val();
-    buscarIndex.F_INI=$('#dtp_fec_ini').val();
-    buscarIndex.F_FIN=$('#dtp_fec_fin').val();
-    //buscarIndex.ROL_ID=$('#cmb_rol option:selected').val();
-    //buscarArray[0] = buscarIndex;
-    return JSON.stringify(buscarIndex);
-}
-
-
 

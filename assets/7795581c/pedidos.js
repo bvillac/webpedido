@@ -701,8 +701,7 @@ function controlBuscarItems(control,op){
 
 /************** BUSCAR USUARIO TIENDA **************/
 function fun_buscarDataRol(op){ 
-    var link=$('#txth_controlador').val()+"/revisaradmin";
-    alert(link);
+    var link=$('#txth_controlador').val()+"/usertienda";
     $.fn.yiiGridView.update('TbG_RESUMEN', {
         type: 'POST',
         url:link,
