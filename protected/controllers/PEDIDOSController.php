@@ -87,6 +87,7 @@ class PEDIDOSController extends Controller {
         $this->render('listar', array(
             'model' => $model->listarItemsTiendas(0,""),
             'tienda' => $model->recuperarTiendasRol(),
+            'area' => $model->recuperarUserArea(),
             'cliID' => $cli_Id,
         ));
     }
@@ -110,8 +111,9 @@ class PEDIDOSController extends Controller {
             $tieId = isset($_POST['TIE_ID']) ? $_POST['TIE_ID'] : 0;
             $total = isset($_POST['TOTAL']) ? $_POST['TOTAL'] : 0;
             $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
+            $idsAre=($_POST['IDS_ARE']<>'')?$_POST['IDS_ARE']:1;//Valor 1 por defecto en area
             if ($accion == "Create") {
-                $arroout = $model->insertarLista($tieId,$total,$dts_Lista);
+                $arroout = $model->insertarLista($tieId,$idsAre,$total,$dts_Lista);
                 //Nota solo Para cliente Marximex puede Enviar los pedidos
                 //directamentes para autorizar sin necesidad e una aprobacion
                 //es decir se guardara la tabla temp y la tablas de comunicacion.
@@ -389,9 +391,27 @@ class PEDIDOSController extends Controller {
         $arrayData = array();
         //$cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         if (Yii::app()->request->isAjaxRequest) {
-            VSValidador::putMessageLogFile("llego");
+            //VSValidador::putMessageLogFile("llego");
             $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
-            VSValidador::putMessageLogFile($contBuscar);
+            //VSValidador::putMessageLogFile($contBuscar);
+            $grupo = $contBuscar[0]['IDS_ARE'];
+            if($grupo==0){
+                //Presenta por grupo
+                $arrayData = $model->listarPedidosTiendasGrupoResumen($contBuscar);
+                $this->renderPartial('_indexGridTiendaGrupoRes', array(
+                    'model' => $arrayData,
+                        ), false, true);
+            }else{
+                //Presenta independiente
+                $arrayData = $model->listarPedidosTiendasResumen($contBuscar);
+                $this->renderPartial('_indexGridTiendaRes', array(
+                    'model' => $arrayData,
+                        ), false, true);
+            }
+            
+            
+            return;
+            
             /*$op = isset($_POST['op']) ? $_POST['op'] : "";
             $ids = isset($_POST['ids']) ? $_POST['ids'] : "0";
             $des_com = isset($_POST['des_com']) ? $_POST['des_com'] : "";
@@ -425,10 +445,62 @@ class PEDIDOSController extends Controller {
         $this->titleWindows = Yii::t('TIENDA', 'Administración de Pedidos');
         $this->render('revisaradmin', array(
             'model' => $model->listarPedidosTiendasResumen(null),
-            'tienda' => $tienda->recuperarTiendasRolCliente(),
+            'tienda' => $tienda->recuperarTiendasRolCliente(0),
+            'area' => $tienda->recuperarClienteArea(0),
             'cliente' => $cliente->recuperarClientes(),
             //'cliID' => $cli_Id,
         ));
+        
+        
+        
+    }
+    
+    
+    public function actionClienteTienda() {
+        if (Yii::app()->request->isPostRequest) {
+            $model = new TIENDA;
+            $ids = isset($_POST['DATA']) ? $_POST['DATA'] :'';
+            //$arroout = $model->recuperarTiendasAdmin($ids);
+            $arroout = $model->recuperarTiendasRolCliente($ids);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+            return;
+        }
+    }
+    public function actionClienteAreas() {
+        if (Yii::app()->request->isPostRequest) {
+            $model = new TIENDA;
+            $ids = isset($_POST['DATA']) ? $_POST['DATA'] :'';
+            $arroout = $model->recuperarClienteArea($ids);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+            return;
+        }
+    }
+    
+    public function actionEnvPedAutGrupo() {
+        if (Yii::app()->request->isPostRequest) {
+            //$ids = base64_decode($_POST['ids']);
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
+            $op = isset($_POST['op']) ? $_POST['op'] : '';
+            $f_ini = isset($_POST['f_ini']) ? $_POST['f_ini'] : '';
+            $f_fin = isset($_POST['f_fin']) ? $_POST['f_fin'] : '';
+            $res = new CABPEDIDO;
+            $dataMail = new mailSystem;
+            $arroout = $res->insertarPedidosGrupo($ids,$op,$f_ini,$f_fin);
+            VSValidador::putMessageLogFile($arroout);
+            $IdCab=$arroout["data"];
+            //print_r($IdCab);
+            for ($i = 0; $i < sizeof($IdCab); $i++) {
+                $CabPed=$res->sendMailPedidos($IdCab[$i]['ids']);
+                $htmlMail = $this->renderPartial('mensaje', array(
+                'CabPed' => $CabPed,
+                    ), true);
+                //$dataMail->enviarMail($htmlMail,$CabPed);
+            }
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+        }
     }
 
 }

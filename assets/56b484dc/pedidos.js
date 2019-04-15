@@ -256,7 +256,7 @@ function guardarListaPedido(accion) {
             } */
 
             var ID = (accion == "Update") ? $('#txth_PedID').val() : 0;
-            var idsAre =($('#cmb_area option:selected').val()!=0)?$('#cmb_area option:selected').val():1; 
+            var idsAre =1; //(accion == "Update") ? $('#txth_PedID').val() : 0;
             var tieId = (accion == "Create") ? $('#cmb_tienda option:selected').val() : ID;//Cuando Es Actualizacion Retorno el Id Cabecera
             var link = $('#txth_controlador').val() + "/Save";
             $.ajax({
@@ -274,8 +274,6 @@ function guardarListaPedido(accion) {
                         $("#messageInfo").html(data.message + data.documento + buttonAlert);
                         $('#lbl_pedido').text(data.documento);
                         alerMessage();
-                        //link=$('#txth_controlador').val()+"/consultar";
-                        //window.location =  link;
                     } else {
                         $("#messageInfo").html(data.message + buttonAlert);
                         $('#lbl_pedido').text('');
@@ -520,8 +518,6 @@ function fun_guardarPedidoAut(){
 }
 
 
-
-
 /************************ ATTENDER PEDIDOS *******************/
 function fun_guardarPedidoAtendido(){
     var ids = String($.fn.yiiGridView.getSelection('TbG_PEDIDO'));
@@ -705,10 +701,10 @@ function controlBuscarItems(control,op){
     return JSON.stringify(buscarArray);
 }
 
-/************** BUSCAR REVISAR **************/
-function fun_buscarDataRevisar(op){ 
+/************** BUSCAR USUARIO TIENDA **************/
+function fun_buscarDataRol(op){ 
     var link=$('#txth_controlador').val()+"/revisaradmin";
-    //alert(link);
+    alert(link);
     $.fn.yiiGridView.update('TbG_RESUMEN', {
         type: 'POST',
         url:link,
@@ -719,21 +715,19 @@ function fun_buscarDataRevisar(op){
 }
 
 function controlBuscarResumen(op){
-    var buscarArray = new Array();
+    //var buscarArray = new Array();
     var buscarIndex=new Object();
     buscarIndex.OP=op;
     buscarIndex.TIE_ID=$('#cmb_tienda option:selected').val();
     buscarIndex.CLI_ID=$('#cmb_cliente option:selected').val();
-    buscarIndex.IDS_ARE=$('#cmb_area option:selected').val();
     buscarIndex.F_INI=$('#dtp_fec_ini').val();
     buscarIndex.F_FIN=$('#dtp_fec_fin').val();
-    buscarIndex.EST_LOG=1;
     //buscarIndex.ROL_ID=$('#cmb_rol option:selected').val();
-    buscarArray[0] = buscarIndex;
-    return JSON.stringify(buscarArray);
+    //buscarArray[0] = buscarIndex;
+    return JSON.stringify(buscarIndex);
 }
 
-function mostrarListaTiendaAdmin(ids) {
+function mostrarListaTienda(ids) {
     if (ids > 0) {
         var link=$('#txth_controlador').val()+"/ClienteTienda";
         $.ajax({
@@ -770,7 +764,7 @@ function mostrarListaArea() {
                 "DATA": ids,
             },
             success: function (data) {
-                var str='<option value="0">AGRUPADO</option>';
+                var str='<option value="0">TODOS</option>';
                 if (data.length>0){
                     for (var i = 0; i < data.length; i++) {
                         str+='<option value="'+data[i]['IDS_ARE']+'">'+data[i]['NOM_ARE']+'</option>';
@@ -781,37 +775,6 @@ function mostrarListaArea() {
         });
     }
 
-}
-
-function fun_guardarPedidoAutGrupo(){
-    var ids = String($.fn.yiiGridView.getSelection('TbG_RESUMEN'));
-    var count=ids.split(",");
-    if(count.length>0 && ids!=""){
-        if(!confirm(mgEnvPedid)) return false;
-        var link=$('#txth_controlador').val()+"/EnvPedAutGrupo";
-        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $.ajax({
-            type: 'POST',
-            url: link,
-            data:{
-                "ids": ids,
-                "op": $('#cmb_area option:selected').val(),
-                "f_ini":$('#dtp_fec_ini').val(),
-                "f_fin":$('#dtp_fec_fin').val()
-            } ,
-            success: function(data){
-                if (data.status=="OK"){ 
-                    $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();
-                    $.fn.yiiGridView.update('TbG_PEDIDO');
-                    //alert(data.data.toSource());
-                    
-                }
-            },
-            dataType: "json"
-        });
-    }
-    return true;
 }
 
 

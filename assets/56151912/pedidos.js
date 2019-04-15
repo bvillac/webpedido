@@ -520,8 +520,6 @@ function fun_guardarPedidoAut(){
 }
 
 
-
-
 /************************ ATTENDER PEDIDOS *******************/
 function fun_guardarPedidoAtendido(){
     var ids = String($.fn.yiiGridView.getSelection('TbG_PEDIDO'));
@@ -781,37 +779,6 @@ function mostrarListaArea() {
         });
     }
 
-}
-
-function fun_guardarPedidoAutGrupo(){
-    var ids = String($.fn.yiiGridView.getSelection('TbG_RESUMEN'));
-    var count=ids.split(",");
-    if(count.length>0 && ids!=""){
-        if(!confirm(mgEnvPedid)) return false;
-        var link=$('#txth_controlador').val()+"/EnvPedAutGrupo";
-        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $.ajax({
-            type: 'POST',
-            url: link,
-            data:{
-                "ids": ids,
-                "op": $('#cmb_area option:selected').val(),
-                "f_ini":$('#dtp_fec_ini').val(),
-                "f_fin":$('#dtp_fec_fin').val()
-            } ,
-            success: function(data){
-                if (data.status=="OK"){ 
-                    $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();
-                    $.fn.yiiGridView.update('TbG_PEDIDO');
-                    //alert(data.data.toSource());
-                    
-                }
-            },
-            dataType: "json"
-        });
-    }
-    return true;
 }
 
 

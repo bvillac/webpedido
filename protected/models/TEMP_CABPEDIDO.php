@@ -119,13 +119,14 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         return parent::model($className);
     }
 
-    public function insertarLista($tieId,$total, $dts_Lista) {
+    public function insertarLista($tieId,$idsAre,$total, $dts_Lista) {
         $msg = new VSexception();
         $valida = new VSValidador();
         $con = Yii::app()->db;
         $trans = $con->beginTransaction();
         try {
-            $this->InsertarCabListPedTemp($con,$total, $tieId);
+            
+            $this->InsertarCabListPedTemp($con,$total, $tieId,$idsAre);
             $idCab = $con->getLastInsertID($con->dbname . '.TEMP_CAB_PEDIDO');
             for ($i = 0; $i < sizeof($dts_Lista); $i++) {
                 $artieId = $dts_Lista[$i]['ARTIE_ID'];
@@ -183,11 +184,11 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         }
     }
     
-    private function InsertarCabListPedTemp($con,$total,$tieId) {
-        $utieId=Yii::app()->getSession()->get('UtieId', FALSE);
+    private function InsertarCabListPedTemp($con,$total,$tieId,$idsAre) {
+        $utieId=Yii::app()->getSession()->get('UtieId', FALSE);        
         $sql="INSERT INTO " . $con->dbname . ".TEMP_CAB_PEDIDO
-                (TDOC_ID,TIE_ID,UTIE_ID,TCPED_TOTAL,TCPED_EST_LOG,TCPED_FEC_CRE)VALUES
-                (1,$tieId,$utieId,$total,1,CURRENT_TIMESTAMP());";
+                (TDOC_ID,TIE_ID,UTIE_ID,TCPED_TOTAL,TCPED_EST_LOG,TCPED_FEC_CRE,IDS_ARE)VALUES
+                (1,$tieId,$utieId,$total,1,CURRENT_TIMESTAMP(),$idsAre);";
         $command = $con->createCommand($sql);
         $command->execute();
     }
@@ -351,17 +352,21 @@ class TEMP_CABPEDIDO extends CActiveRecord {
     
     
     public function listarPedidosTiendasResumen($control) {
+        VSValidador::putMessageLogFile("llego");
+        //VSValidador::putMessageLogFile($control);
         $rawData = array();
         $con = Yii::app()->db;
         $idsTie=$this->recuperarIdsTiendasRol($con);
         $limitrowsql = Yii::app()->params['limitRowSQL'];
         //$rawData[]=$this->rowProdList();
         $sql = "SELECT A.TCPED_ID PedID,A.TIE_ID TieID,A.TCPED_TOTAL Total,DATE(A.TCPED_FEC_CRE) FechaPedido, 
-                        B.TIE_NOMBRE NombreTienda,B.TIE_DIRECCION DireccionTienda,E.PER_NOMBRE NombrePersona,
+                        B.TIE_NOMBRE NombreTienda,F.NOM_ARE Area,B.TIE_DIRECCION DireccionTienda,E.PER_NOMBRE NombrePersona,
                         CONCAT(REPEAT( '0', 9 - LENGTH(A.TCPED_ID) ),A.TCPED_ID) Numero,A.TCPED_EST_LOG Estado
                         FROM " . $con->dbname . ".TEMP_CAB_PEDIDO A
                                 INNER JOIN " . $con->dbname . ".TIENDA B
                                         ON A.TIE_ID=B.TIE_ID
+                                INNER JOIN " . $con->dbname . ".AREAS F
+                                        ON A.IDS_ARE=F.IDS_ARE
                                 INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA C
                                                 INNER JOIN (" . $con->dbname . ".USUARIO D
                                                                 INNER JOIN " . $con->dbname . ".PERSONA E
@@ -372,8 +377,9 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         $sqlTieId=($idsTie!='') ? "AND A.TIE_ID IN ($idsTie)" : "";
         if (!empty($control)) {//Verifica la Opcion op para los filtros
             $sql .= ($control[0]['EST_LOG'] != "0") ? " A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : " A.TCPED_EST_LOG<>'' ";
-            $sql .= ($control[0]['TIE_ID'] > 0) ? "AND A.TIE_ID = '" . $control[0]['TIE_ID'] . "' " : $sqlTieId;
-            //$sql .= ($control[0]['COD_PACIENTE'] != "0") ? "AND CDOR_ID_PACIENTE='".$control[0]['COD_PACIENTE']."' " : "";
+            //$sql .= ($control[0]['TIE_ID'] > 0) ? "AND A.TIE_ID = '" . $control[0]['TIE_ID'] . "' " : $sqlTieId;
+            $sql .= ($control[0]['TIE_ID'] != 0) ? "AND A.TIE_ID = '" . $control[0]['TIE_ID'] . "' " : "";
+            $sql .= ($control[0]['IDS_ARE'] != "0") ? "AND A.IDS_ARE='".$control[0]['IDS_ARE']."' " : "";
             //$sql .= ($control[0]['PACIENTE'] != "") ? "AND CONCAT(B.PER_APELLIDO,' ',B.PER_NOMBRE) LIKE '%" . $control[0]['PACIENTE'] . "%' " : "";
             $sql .= "AND DATE(A.TCPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "'  ";
         }else{
@@ -389,7 +395,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
             'keyField' => 'PedID',
             'sort' => array(
                 'attributes' => array(
-                    'PedID', 'Numero', 'TieID', 'Total', 'FechaPedido', 'NombreTienda', 'DireccionTienda', 'NombrePersona', 'Estado'
+                    'PedID', 'Numero', 'TieID', 'Total', 'FechaPedido', 'NombreTienda','Area', 'DireccionTienda', 'NombrePersona', 'Estado'
                 ),
             ),
             'totalItemCount' => count($rawData),
@@ -398,5 +404,49 @@ class TEMP_CABPEDIDO extends CActiveRecord {
             ),
         ));
     }
+    
+    
+    public function listarPedidosTiendasGrupoResumen($control) {
+        VSValidador::putMessageLogFile("llego");
+        //VSValidador::putMessageLogFile($control);
+        $rawData = array();
+        $con = Yii::app()->db;
+        $idsTie=$this->recuperarIdsTiendasRol($con);
+        $limitrowsql = Yii::app()->params['limitRowSQL'];
+        
+        $sql = "SELECT A.IDS_ARE IDS,F.NOM_ARE AREA,COUNT(A.TCPED_ID)TOT_DOC,SUM(A.TCPED_TOTAL) TOTAL                        
+                    FROM " . $con->dbname . ".TEMP_CAB_PEDIDO A
+                            INNER JOIN " . $con->dbname . ".TIENDA B
+                                    ON A.TIE_ID=B.TIE_ID
+                            INNER JOIN " . $con->dbname . ".AREAS F
+                                    ON A.IDS_ARE=F.IDS_ARE
+                            INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA C
+                                            INNER JOIN (" . $con->dbname . ".USUARIO D
+                                                            INNER JOIN " . $con->dbname . ".PERSONA E
+                                                                    ON D.PER_ID=E.PER_ID)
+                                                    ON C.USU_ID=D.USU_ID)
+                                    ON C.UTIE_ID=A.UTIE_ID
+                WHERE  A.TCPED_EST_LOG=1 ";        
+            $sql .= " AND DATE(A.TCPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "'  ";
+            $sql .= " GROUP BY A.IDS_ARE ";
+            $sql .= " ORDER BY A.IDS_ARE DESC LIMIT $limitrowsql";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+
+        return new CArrayDataProvider($rawData, array(
+            'keyField' => 'IDS',
+            'sort' => array(
+                'attributes' => array(
+                    'IDS', 'AREA', 'TOT_DOC', 'TOTAL',
+                ),
+            ),
+            'totalItemCount' => count($rawData),
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
+        ));
+    }
+
 
 }

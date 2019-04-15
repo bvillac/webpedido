@@ -1,9 +1,9 @@
 <div id="div-table">
-    <div class="trow">
-        <div class="tcol-td form-group">
+    <div class="form-group rowLine">
+        <div class="col-lg-1">
             <label><?php echo Yii::t('TIENDA', 'Stores') ?></label>
         </div>
-        <div class="tcol-td form-group">
+        <div class="col-lg-3">
             <?php
             echo CHtml::dropDownList(
                     'cmb_tienda', '0'
@@ -15,10 +15,10 @@
             );
             ?> 
         </div>
-        <div class="tcol-td form-group">
+        <div class="col-lg-1">
             <label><?php echo Yii::t('TIENDA', 'Status') ?></label>
         </div>
-        <div class="tcol-td form-group">
+        <div class="col-lg-3">
             <?php
             echo CHtml::dropDownList(
                     'cmb_estado', '0'
@@ -27,10 +27,13 @@
             );
             ?> 
         </div>
-        <div class="tcol-td form-group">
+        <div class="4"></div>
+    </div>
+    <div class="form-group rowLine">
+        <div class="col-lg-1">
             <span> <?php echo Yii::t('COMPANIA', 'Date Start') ?></span>
         </div>
-        <div class="tcol-td form-group">
+        <div class="col-lg-3">
             <?php
             $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                 'name' => 'dtp_fec_ini',
@@ -56,10 +59,10 @@
             ));
             ?>
         </div>
-        <div class="tcol-td form-group">
+        <div class="col-lg-1">
             <span> <?php echo Yii::t('COMPANIA', 'Date End') ?></span>
         </div>
-        <div class="tcol-td form-group">
+        <div class="col-lg-3">
             <?php
             $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                 'name' => 'dtp_fec_fin',
@@ -85,7 +88,8 @@
             ));
             ?>
         </div>
-        <div class="tcol-td form-group">
+        <div class="4">
+            &nbsp;&nbsp;
             <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Search'), array('id' => 'btn_buscar', 'name' => 'btn_buscar', 'class' => 'btn btn-success', 'onclick' => 'buscarDataIndex("")')); ?>
         </div>
     </div>

@@ -195,6 +195,55 @@ class CABPEDIDO extends CActiveRecord {
         }
     }
     
+    public function insertarPedidosGrupo($Ids,$op,$f_ini,$f_fin) {
+        $msg = new VSexception();
+        $valida = new VSValidador();
+        $idsReturn = array();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            if($op==0){
+                //se envia por grupo 
+                $cabFact = $this->buscarCabPedidosTempGrupo($con, $Ids,$op,$f_ini,$f_fin);
+            }else{
+                //se envia uno por uno
+                $cabFact = $this->buscarCabPedidosTemp($con, $Ids);
+            }
+            
+            for ($i = 0; $i < sizeof($cabFact); $i++) {
+                $this->InsertarCabFactura($con, $cabFact, $i);
+                $idCab = $con->getLastInsertID($con->dbname . '.CAB_PEDIDO');
+                $detFact = $this->buscarDetPedidosTemp($con, $cabFact[$i]['TCPED_ID']);
+                $this->InsertarDetFactura($con, $detFact, $idCab, $cabFact[$i]['TIE_ID']);
+                $this->actTemCabPed($con, $cabFact[$i]['TCPED_ID'],'3');
+                $idsReturn[] = array(
+                    "ids" => $idCab,
+                );
+            }
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK', null, 30, null, $idsReturn);
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            //throw $e;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+    private function buscarCabPedidosTempGrupo($con,$ids,$op,$f_ini,$f_fin) {
+        //$con = yii::app()->db;
+        $rawData = array();
+        //Lista solo los que estan listos a envair.. 
+        $sql = "SELECT * FROM " . $con->dbname . ".TEMP_CAB_PEDIDO "
+                . " WHERE IDS_ARE IN($ids)  "
+                . " AND TCPED_EST_LOG=1 ";
+        $sql .= " AND DATE(TCPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($f_ini)) . "' AND '" . date("Y-m-d", strtotime($f_fin)) . "'  ";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        //$con->active = false;
+        return $rawData;
+    }
+    
 
     private function buscarCabPedidosTemp($con,$ids) {
         //$con = yii::app()->db;
@@ -232,12 +281,13 @@ class CABPEDIDO extends CActiveRecord {
 
     private function InsertarCabFactura($con, $objEnt, $i) {
         $utieId = Yii::app()->getSession()->get('UtieId', FALSE);
+        $idsAre=($objEnt[$i]['IDS_ARE']<>'')?$objEnt[$i]['IDS_ARE']:1;//Valor 1 por defecto en area
         $sql = "INSERT INTO " . $con->dbname . ".CAB_PEDIDO
                 (TDOC_ID,TIE_ID,TCPED_ID,CPED_FEC_PED,CPED_VAL_BRU,CPED_POR_DES,CPED_VAL_DES,CPED_POR_IVA,CPED_VAL_IVA,
-                 CPED_BAS_IVA,CPED_BAS_IV0,CPED_VAL_FLE,CPED_VAL_NET,CPED_EST_PED,CPED_EST_LOG,UTIE_ID_PED,UTIE_ID)VALUES
+                 CPED_BAS_IVA,CPED_BAS_IV0,CPED_VAL_FLE,CPED_VAL_NET,CPED_EST_PED,CPED_EST_LOG,UTIE_ID_PED,UTIE_ID,IDS_ARE)VALUES
                 (2,'" . $objEnt[$i]['TIE_ID'] . "','" . $objEnt[$i]['TCPED_ID'] . "',CURRENT_TIMESTAMP(),
                    '" . $objEnt[$i]['TCPED_TOTAL'] . "',0,0,0,0,0,0,0,'" . $objEnt[$i]['TCPED_TOTAL'] . "','1','1',
-                    '" . $objEnt[$i]['UTIE_ID'] . "','$utieId') ";
+                    '" . $objEnt[$i]['UTIE_ID'] . "','$utieId',$idsAre) ";
 
         $command = $con->createCommand($sql);
         $command->execute();

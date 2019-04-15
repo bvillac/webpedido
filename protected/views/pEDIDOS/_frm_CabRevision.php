@@ -18,7 +18,7 @@
                     'cmb_cliente', '0'
                     , array('0' => Yii::t('GENERAL', '-Select-')) + CHtml::listData($cliente, 'CLI_ID', 'CLI_NOMBRE')
                     , array('class' => 'form-control',
-                'onchange' => 'js:mostrarListaTienda(this.value)'
+                'onchange' => 'js:mostrarListaTiendaAdmin(this.value)'
                     )
             );
             ?> 
@@ -27,15 +27,32 @@
 
 <div class="form-group rowLine">
     <div class="txt_label">
-        <label><?php echo Yii::t('TIENDA', 'Tienda/Area') ?></label>
+        <label><?php echo Yii::t('TIENDA', 'Tienda') ?></label>
     </div>
     <div class="rowTd">
         <?php
         echo CHtml::dropDownList(
                 'cmb_tienda', '0'
-                , array('0' => Yii::t('GENERAL', '-Select-')) + CHtml::listData($tienda, 'TIE_ID', 'TIE_NOMBRE')
+                , array('0' => Yii::t('GENERAL', '-TODOS-')) + CHtml::listData($tienda, 'TIE_ID', 'TIE_NOMBRE')
                 , array(
             //'onchange' => 'js:mostrarListaTienda(this.value)',
+            'class' => 'form-control'
+                )
+        );
+        ?> 
+    </div>
+</div> 
+<div class="form-group rowLine">
+    <div class="txt_label">
+        <label><?php echo Yii::t('TIENDA', 'Area') ?></label>
+    </div>
+    <div class="rowTd">
+        <?php
+        echo CHtml::dropDownList(
+                'cmb_area', '0'
+                , array('0' => Yii::t('GENERAL', 'AGRUPADO')) + CHtml::listData($area, 'IDS_ARE', 'NOM_ARE')
+                , array(
+            //'onchange' => 'js:mostrarListaArea()',
             'class' => 'form-control'
                 )
         );
