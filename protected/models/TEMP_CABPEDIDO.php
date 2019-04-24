@@ -447,6 +447,52 @@ class TEMP_CABPEDIDO extends CActiveRecord {
             ),
         ));
     }
+    
+    public function mostrarCabPedidoTemp($ids) {
+        $rawData = array();
+        $con = Yii::app()->db;
+        $sql = "SELECT  A.TCPED_ID PedID,CONCAT(REPEAT( '0', 9 - LENGTH(A.TCPED_ID) ),A.TCPED_ID) Numero,
+                        A.TCPED_TOTAL ValorNeto,DATE(A.TCPED_FEC_CRE) FechaPedido,B.TIE_NOMBRE NombreTienda,
+                        CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) NombrePersona,D.USU_CORREO CorreoPersona,
+                        CONCAT(H.PER_NOMBRE,' ',H.PER_APELLIDO) NombreUser,G.USU_CORREO CorreoUser,
+                        B.TIE_DIRECCION DirTienda,B.TIE_TELEFONO TelTienda,B.TIE_LUG_ENTREGA LugEntrega,
+                        B.TIE_CONTACTO ContactoTienda
+                        FROM " . $con->dbname . ".TEMP_CAB_PEDIDO A
+                                INNER JOIN " . $con->dbname . ".TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                                INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA C
+                                                INNER JOIN (" . $con->dbname . ".USUARIO D
+                                                                INNER JOIN " . $con->dbname . ".PERSONA E
+                                                                        ON D.PER_ID=E.PER_ID)
+                                                        ON C.USU_ID=D.USU_ID)
+                                        ON C.UTIE_ID=A.UTIE_ID
+                                INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA F
+                                                INNER JOIN (" . $con->dbname . ".USUARIO G
+                                                                INNER JOIN " . $con->dbname . ".PERSONA H
+                                                                        ON G.PER_ID=H.PER_ID)
+                                                        ON F.USU_ID=G.USU_ID)
+                                        ON F.UTIE_ID=A.UTIE_ID
+                WHERE A.TCPED_ID=$ids AND TCPED_EST_LOG IN (1,2,3,4)";
+        $rawData = $con->createCommand($sql)->queryRow(); //Recupera Solo 1
+        $con->active = false;
+        return $rawData;
+    }
+    
+    public function mostrarDetPedidoTemp($ids) {
+        $rawData = array();
+        $con = Yii::app()->db;
+        $sql = "SELECT A.TDPED_ID DetId,A.ART_ID ArtId,A.TDPED_CAN_PED Cant,A.TDPED_P_VENTA Precio,
+                        A.TDPED_T_VENTA TotVta,A.TDPED_EST_LOG EstAut,B.COD_ART Codigo,
+                        B.ART_DES_COM Nombre,B.ART_I_M_IVA ImIva, A.TDPED_OBSERVA Observa
+                        FROM " . $con->dbname . ".TEMP_DET_PEDIDO A
+                                INNER JOIN " . $con->dbname . ".ARTICULO B
+                                        ON A.ART_ID=B.ART_ID
+                WHERE A.TCPED_ID=$ids ";
+        
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    }
 
 
 }

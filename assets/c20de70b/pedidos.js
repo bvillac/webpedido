@@ -821,16 +821,11 @@ function fun_guardarPedidoAutGrupo(){
 }
 
 function calTotalGrupo(col) { 
+    alert(col);
     var total=0;
     var TbGtable = 'TbG_RESUMEN';
     $('#' + TbGtable + ' tr').each(function () {
-        var valor = $(this).find("td").eq(col).html();
-        //alert(valor);
-        if (typeof valor !== "undefined") {
-            //alert($(this).find("td").eq(col).html());
-            total=total+parseFloat(valor);
-        }
-        
+        total+=parseFloat($(this).find("td").eq(col).html());
     });
     $('#lbl_total').text(redondea(total, Ndecimal))
     

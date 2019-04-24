@@ -1,42 +1,57 @@
-2019-04-15 00:02:03 llego
-2019-04-15 00:02:09 llego
-2019-04-15 00:02:14 llego
-2019-04-15 00:02:34 llego
-2019-04-15 00:04:15 llego
-2019-04-15 00:04:16 llego
-2019-04-15 00:11:31 llego
-2019-04-15 00:11:42 llego
-2019-04-15 00:11:53 llego
-2019-04-15 00:17:32 llego
-2019-04-15 00:18:28 llego
-2019-04-15 00:19:38 llego
-2019-04-15 00:20:24 llego
-2019-04-15 00:21:05 llego
-2019-04-15 00:21:29 llego
-2019-04-15 00:21:32 llego
-2019-04-15 00:21:40 llego
-2019-04-15 00:50:50 llego
-2019-04-15 00:51:01 llego
-2019-04-15 00:51:15 llego
-2019-04-15 00:51:28 llego
-2019-04-15 00:51:34 llego
-2019-04-15 00:51:41 llego
-2019-04-15 00:52:27 llego
-2019-04-15 00:52:33 llego
-2019-04-15 00:53:11 llego
-2019-04-15 01:01:45 llego
-2019-04-15 01:03:06 llego
-2019-04-15 01:03:22 llego
-2019-04-15 01:03:28 llego
-2019-04-15 01:07:05 llego
-2019-04-15 01:09:05 llego
-2019-04-15 01:09:14 llego
-2019-04-15 01:09:21 llego
-2019-04-15 01:42:25 llego
-2019-04-15 01:42:49 llego
-2019-04-15 01:43:19 {"status":"NO_OK","error":"CDbCommand fall\u00f3 al ejecutar la sentencia SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'A.TCPED_FEC_CRE' in 'where clause'. The SQL statement executed was: SELECT * FROM VSSEAPEDIDO.TEMP_CAB_PEDIDO  WHERE IDS_ARE IN(4,3) AND  TCPED_EST_LOG=1  AND DATE(A.TCPED_FEC_CRE) BETWEEN '2019-04-01' AND '2019-04-15'  ","message":"Petici\u00f3n inv\u00e1lida. Por favor, no repita esta solicitud de nuevo.","data":null}
-2019-04-15 01:46:12 {"status":"OK","error":null,"message":"<strong>Bien Hecho!<\/strong> Su Orden fue guardada correctamente.","data":[{"ids":"1063"},{"ids":"1064"},{"ids":"1065"}]}
-2019-04-15 01:46:26 llego
-2019-04-15 01:49:20 llego
-2019-04-15 01:49:26 llego
-2019-04-15 01:51:13 llego
+2019-04-24 12:02:30 SELECT A.ARTIE_ID,A.PCLI_ID,B.ART_ID,C.COD_ART Codigo, C.ART_DES_COM Nombre,B.PCLI_P_VENTA Precio,
+                        '0' Cantidad,'0' Total,C.ART_I_M_IVA Iva,'' Observacion,A.ARTIE_EST_LOG Estado
+                        FROM VSSEAPEDIDO.ARTICULO_TIENDA A
+                                INNER JOIN (VSSEAPEDIDO.PRECIO_CLIENTE B
+                                                INNER JOIN VSSEAPEDIDO.ARTICULO C
+                                                        ON C.ART_ID=B.ART_ID)
+                                        ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
+                WHERE A.ARTIE_EST_LOG=1 AND A.TIE_ID=0  ORDER BY C.ART_DES_COM
+2019-04-24 12:02:35 SELECT A.ARTIE_ID,A.PCLI_ID,B.ART_ID,C.COD_ART Codigo, C.ART_DES_COM Nombre,B.PCLI_P_VENTA Precio,
+                        '0' Cantidad,'0' Total,C.ART_I_M_IVA Iva,'' Observacion,A.ARTIE_EST_LOG Estado
+                        FROM VSSEAPEDIDO.ARTICULO_TIENDA A
+                                INNER JOIN (VSSEAPEDIDO.PRECIO_CLIENTE B
+                                                INNER JOIN VSSEAPEDIDO.ARTICULO C
+                                                        ON C.ART_ID=B.ART_ID)
+                                        ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
+                WHERE A.ARTIE_EST_LOG=1 AND A.TIE_ID=283  ORDER BY C.ART_DES_COM
+2019-04-24 12:06:04 SELECT A.ARTIE_ID,A.PCLI_ID,B.ART_ID,C.COD_ART Codigo, C.ART_DES_COM Nombre,B.PCLI_P_VENTA Precio,
+                        '0' Cantidad,'0' Total,C.ART_I_M_IVA Iva,'' Observacion,A.ARTIE_EST_LOG Estado
+                        FROM VSSEAPEDIDO.ARTICULO_TIENDA A
+                                INNER JOIN (VSSEAPEDIDO.PRECIO_CLIENTE B
+                                                INNER JOIN VSSEAPEDIDO.ARTICULO C
+                                                        ON C.ART_ID=B.ART_ID)
+                                        ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
+                WHERE A.ARTIE_EST_LOG=1 AND A.TIE_ID=0  ORDER BY C.ART_DES_COM
+2019-04-24 12:06:36 SELECT A.ARTIE_ID,A.PCLI_ID,B.ART_ID,C.COD_ART Codigo, C.ART_DES_COM Nombre,B.PCLI_P_VENTA Precio,
+                        '0' Cantidad,'0' Total,C.ART_I_M_IVA Iva,'' Observacion,A.ARTIE_EST_LOG Estado
+                        FROM VSSEAPEDIDO.ARTICULO_TIENDA A
+                                INNER JOIN (VSSEAPEDIDO.PRECIO_CLIENTE B
+                                                INNER JOIN VSSEAPEDIDO.ARTICULO C
+                                                        ON C.ART_ID=B.ART_ID)
+                                        ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
+                WHERE A.ARTIE_EST_LOG=1 AND A.TIE_ID=283  ORDER BY C.ART_DES_COM
+2019-04-24 12:07:32 llego
+2019-04-24 12:07:32 SELECT A.ARTIE_ID,A.PCLI_ID,B.ART_ID,C.COD_ART Codigo, C.ART_DES_COM Nombre,B.PCLI_P_VENTA Precio,
+                        '0' Cantidad,'0' Total,C.ART_I_M_IVA Iva,'' Observacion,A.ARTIE_EST_LOG Estado
+                        FROM VSSEAPEDIDO.ARTICULO_TIENDA A
+                                INNER JOIN (VSSEAPEDIDO.PRECIO_CLIENTE B
+                                                INNER JOIN VSSEAPEDIDO.ARTICULO C
+                                                        ON C.ART_ID=B.ART_ID)
+                                        ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
+                WHERE A.ARTIE_EST_LOG=1 AND A.TIE_ID=0  ORDER BY C.ART_DES_COM
+2019-04-24 12:08:26 SELECT A.ARTIE_ID,A.PCLI_ID,B.ART_ID,C.COD_ART Codigo, C.ART_DES_COM Nombre,B.PCLI_P_VENTA Precio,
+                        '0' Cantidad,'0' Total,C.ART_I_M_IVA Iva,'' Observacion,A.ARTIE_EST_LOG Estado
+                        FROM VSSEAPEDIDO.ARTICULO_TIENDA A
+                                INNER JOIN (VSSEAPEDIDO.PRECIO_CLIENTE B
+                                                INNER JOIN VSSEAPEDIDO.ARTICULO C
+                                                        ON C.ART_ID=B.ART_ID)
+                                        ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
+                WHERE A.ARTIE_EST_LOG=1 AND A.TIE_ID=0  ORDER BY C.ART_DES_COM
+2019-04-24 12:10:12 SELECT A.ARTIE_ID,A.PCLI_ID,B.ART_ID,C.COD_ART Codigo, C.ART_DES_COM Nombre,B.PCLI_P_VENTA Precio,
+                        '0' Cantidad,'0' Total,C.ART_I_M_IVA Iva,'' Observacion,A.ARTIE_EST_LOG Estado
+                        FROM VSSEAPEDIDO.ARTICULO_TIENDA A
+                                INNER JOIN (VSSEAPEDIDO.PRECIO_CLIENTE B
+                                                INNER JOIN VSSEAPEDIDO.ARTICULO C
+                                                        ON C.ART_ID=B.ART_ID)
+                                        ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
+                WHERE A.ARTIE_EST_LOG=1 AND A.TIE_ID=0  ORDER BY C.ART_DES_COM

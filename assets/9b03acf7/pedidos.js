@@ -825,7 +825,7 @@ function calTotalGrupo(col) {
     var TbGtable = 'TbG_RESUMEN';
     $('#' + TbGtable + ' tr').each(function () {
         var valor = $(this).find("td").eq(col).html();
-        //alert(valor);
+        alert(valor);
         if (typeof valor !== "undefined") {
             //alert($(this).find("td").eq(col).html());
             total=total+parseFloat(valor);

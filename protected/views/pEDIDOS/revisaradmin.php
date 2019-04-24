@@ -18,7 +18,12 @@
             
     </div>
 </div>
-
+<div class="col-lg-12">
+    <div class="col-lg-9"></div>
+    <div class="col-lg-1">Total:</div>
+    <div id="lbl_total" class="col-lg-2">0.00</div>
+    
+</div>
 <div class="col-lg-12">
    <?php echo $this->renderPartial('_indexGridTiendaRes', array('model' => $model)); ?>
 </div>

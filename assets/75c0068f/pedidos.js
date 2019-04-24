@@ -714,14 +714,11 @@ function fun_buscarDataRevisar(op){
         url:link,
         data:{
             "CONT_BUSCAR": controlBuscarResumen(op)
-        }
+        },
+        success: function (data) {
+            alert(data);
+        },
     }); 
-    if($('#cmb_area option:selected').val()==0){
-        calTotalGrupo(4);
-    }else{
-        calTotalGrupo(7);
-    }
-    
 }
 
 function controlBuscarResumen(op){
@@ -818,22 +815,6 @@ function fun_guardarPedidoAutGrupo(){
         });
     }
     return true;
-}
-
-function calTotalGrupo(col) { 
-    var total=0;
-    var TbGtable = 'TbG_RESUMEN';
-    $('#' + TbGtable + ' tr').each(function () {
-        var valor = $(this).find("td").eq(col).html();
-        //alert(valor);
-        if (typeof valor !== "undefined") {
-            //alert($(this).find("td").eq(col).html());
-            total=total+parseFloat(valor);
-        }
-        
-    });
-    $('#lbl_total').text(redondea(total, Ndecimal))
-    
 }
 
 

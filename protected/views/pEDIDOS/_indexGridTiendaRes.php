@@ -20,6 +20,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
         array(
             'class' => 'CCheckBoxColumn',
         ),
+        
         array(
             'name' => 'PedID',
             'header' => Yii::t('TIENDA', 'Number'),
@@ -32,9 +33,17 @@ $this->widget('zii.widgets.grid.CGridView', array(
         array(
             'name' => 'Numero',
             'header' => Yii::t('TIENDA', 'Number'),
-            'value' => '$data["Numero"]',
+            //'value' => '$data["Numero"]',
+            'value' => 'CHtml::link($data["Numero"],Yii::app()->createUrl("pEDIDOS/GenerarTempPdf",array("ids"=>base64_encode($data["PedID"]))),array("target"=>"_blank"))',
+            'type'  => 'raw',
             'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
         ),
+//        array(
+//            'name' => 'Numero',
+//            'header' => Yii::t('TIENDA', 'Number'),
+//            'value' => '$data["Numero"]',
+//            'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
+//        ),
         array(
             'name' => 'FechaPedido',
             'header' => Yii::t('TIENDA', 'Date'),

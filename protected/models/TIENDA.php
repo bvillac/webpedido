@@ -564,6 +564,8 @@ class TIENDA extends CActiveRecord {
         $rawData = array();
         $con = Yii::app()->db;
         //$rawData[]=$this->rowProdList();
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        
         $sql = "SELECT A.ARTIE_ID,A.PCLI_ID,B.ART_ID,C.COD_ART Codigo, C.ART_DES_COM Nombre,B.PCLI_P_VENTA Precio,
                         '0' Cantidad,'0' Total,C.ART_I_M_IVA Iva,'' Observacion,A.ARTIE_EST_LOG Estado
                         FROM " . $con->dbname . ".ARTICULO_TIENDA A
@@ -571,11 +573,12 @@ class TIENDA extends CActiveRecord {
                                                 INNER JOIN " . $con->dbname . ".ARTICULO C
                                                         ON C.ART_ID=B.ART_ID)
                                         ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
-                WHERE A.ARTIE_EST_LOG=1 AND A.TIE_ID=$ids ";
+                WHERE A.ARTIE_EST_LOG=1 AND A.TIE_ID=$ids AND B.CLI_ID = $cli_Id ";
         //$sql.=($ids!=0)?"AND A.TIE_ID=$ids":""; 
         $sql.=($desCom!="")?" AND C.ART_DES_COM LIKE '%$desCom%' ":"";
         $sql.=" ORDER BY C.ART_DES_COM";
         //echo $sql;
+        //VSValidador::putMessageLogFile($sql);
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
 

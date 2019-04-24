@@ -322,6 +322,37 @@ class PEDIDOSController extends Controller {
         }
     }
     
+    public function actionGenerarTempPdf($ids) {
+        try {
+            $ids = isset($_GET['ids']) ? base64_decode($_GET['ids']) : NULL;
+            $modelo = new TEMP_CABPEDIDO; 
+            $cabFact = $modelo->mostrarCabPedidoTemp($ids);
+            $detFact = $modelo->mostrarDetPedidoTemp($ids);
+            $mPDF1 = Yii::app()->ePdf->mpdf('utf-8', 'A4', '', '', 15, 15, 16, 16, 9, 9, 'P'); //Esto lo pueden configurar como quieren, para eso deben de entrar en la web de MPDF para ver todo lo que permite.
+            $mPDF1->useOnlyCoreFonts = true;
+            $mPDF1->SetTitle("ORDEN NUM: " . $cabFact['Numero']);
+            $mPDF1->SetAuthor("Utimpor");
+            //$mPDF1->SetWatermarkText(Yii::t('DOCUMENTOS', 'PRINTED INFORMATION PROVIDED IS VOID IN PROOF TEST ENVIRONMENT'));
+            //$mPDF1->showWatermarkText = true;
+            //$mPDF1->watermark_font = 'DejaVuSansCondensed';
+            $mPDF1->watermarkTextAlpha = 0.5;
+            $mPDF1->SetDisplayMode('fullpage');
+            //Load a stylesheet
+            //$stylesheet = file_get_contents(Yii::app()->theme->baseUrl.'/css/print.css');
+            //$mPDF1->WriteHTML($stylesheet, 1);
+            $mPDF1->WriteHTML(
+                        $this->renderPartial('ordenPDF', array(
+                                'cabFact' => $cabFact,
+                                'detFact' => $detFact,
+                            ), true)); //hacemos un render partial a una vista preparada, en este caso es la vista docPDF
+            //$mPDF1->Output('FACTURA' . date('YmdHis'), 'I');  //Nombre del pdf y parámetro para ver pdf o descargarlo directamente.
+            $mPDF1->Output('ORDEN NUM:' . $cabFact['Numero'], 'I');
+            //exit;
+        } catch (Exception $e) {
+            $this->errorControl($e);
+        }
+    }
+    
     public function actionConsultar() {
         $model = new TEMP_CABPEDIDO;
         $tienda = new TIENDA;        
@@ -488,7 +519,7 @@ class PEDIDOSController extends Controller {
             $res = new CABPEDIDO;
             $dataMail = new mailSystem;
             $arroout = $res->insertarPedidosGrupo($ids,$op,$f_ini,$f_fin);
-            VSValidador::putMessageLogFile($arroout);
+            //VSValidador::putMessageLogFile($arroout);
             $IdCab=$arroout["data"];
             //print_r($IdCab);
             for ($i = 0; $i < sizeof($IdCab); $i++) {
@@ -496,7 +527,7 @@ class PEDIDOSController extends Controller {
                 $htmlMail = $this->renderPartial('mensaje', array(
                 'CabPed' => $CabPed,
                     ), true);
-                //$dataMail->enviarMail($htmlMail,$CabPed);
+                $dataMail->enviarMail($htmlMail,$CabPed);
             }
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);
