@@ -28,7 +28,7 @@ $this->breadcrumbs = array(
         <?php
         echo $form->textField($model, 'username', array(
             'class' => 'form-control',
-            'placeholder' => Yii::t('TIENDA', 'E-mail'),
+            'placeholder' => Yii::t('TIENDA', 'Usuario'),
             //'onkeydown' => "fun_loginTienda(isEnter(event),this)",
         ));
         ?>
@@ -36,7 +36,7 @@ $this->breadcrumbs = array(
     </div>
     <div class="form-group">
         <?php //echo $form->labelEx($model,'password');  ?>
-        <?php echo $form->passwordField($model, 'password', array('class' => 'form-control', 'placeholder' => Yii::t('TIENDA', 'Password'))); ?>
+        <?php echo $form->passwordField($model, 'password', array('class' => 'form-control', 'placeholder' => Yii::t('TIENDA', 'Clave'))); ?>
         <?php echo $form->error($model, 'password'); ?>
         <p class="hint">
             <!--Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.-->

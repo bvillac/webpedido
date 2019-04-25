@@ -2820,3 +2820,516 @@ Stack trace:
 REQUEST_URI=/webpedido/pEDIDOS/Save
 in /var/www/html/webpedido/protected/controllers/PEDIDOSController.php (114)
 in /var/www/html/webpedido/index.php (13)
+2019/04/25 13:51:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/prev.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/prev.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 13:51:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/next.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/next.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 13:51:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/close.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/close.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 13:51:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/loading.gif
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 13:51:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/productos/F0035_P-01.jpg"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/productos/F0035_P-01.jpg
+HTTP_REFERER=http://192.168.10.156/webpedido/pEDIDOS/listar.jsp
+---
+2019/04/25 16:33:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/prev.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/prev.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:33:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/close.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/close.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:33:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/loading.gif
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:33:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/next.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/next.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:34:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/next.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/next.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:34:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/close.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/close.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:34:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/prev.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/prev.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:34:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/loading.gif
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:34:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/next.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/next.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:34:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/loading.gif
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:34:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/prev.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/prev.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:34:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/close.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/close.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:44:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/prev.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/prev.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:44:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/next.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/next.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:44:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/loading.gif
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:44:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/close.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/close.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:44:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/prev.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/prev.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:44:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/loading.gif
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:44:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/next.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/next.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:44:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/close.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/close.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:44:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/prev.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/prev.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:44:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/close.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/close.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:44:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/next.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/next.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:44:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/loading.gif
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:52:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/prev.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/prev.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:52:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/close.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/close.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:52:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/next.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/next.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 16:52:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/loading.gif
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:09:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/prev.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/prev.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:09:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/close.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/close.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:09:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/loading.gif
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:09:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/next.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/next.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:09:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/prev.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/prev.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:09:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/next.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/next.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:09:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/close.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/close.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:09:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/loading.gif
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:12:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/prev.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/prev.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:12:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/loading.gif
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:12:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/close.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/close.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:12:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/next.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/next.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:17:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/next.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/next.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:17:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/loading.gif
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:17:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/close.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/close.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:17:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/prev.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/prev.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:18:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/prev.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/prev.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:18:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/next.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/next.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:18:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/loading.gif
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:18:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/close.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/close.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:18:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/prev.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/prev.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:18:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/close.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/close.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:18:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/next.png"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/next.png
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---
+2019/04/25 17:18:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "themes/seablue/images/loading.gif"' in /opt/sisweb/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/sisweb/web/CWebApplication.php(141): CWebApplication->runController('themes/seablue/...')
+#1 /opt/sisweb/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /var/www/html/webpedido/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/webpedido/themes/seablue/images/loading.gif
+HTTP_REFERER=http://192.168.10.156/webpedido/themes/seablue/css/lightbox.css
+---

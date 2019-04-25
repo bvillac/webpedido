@@ -837,33 +837,6 @@ function calTotalGrupo(col) {
     
 }
 
-function fun_enviarComentario(){
-    
-    var Coment = $('#txt_mensaje').val();
-    if(Coment !=""){
-        if(!confirm('Está seguro que desea Enviar este Mensaje')) return false;
-        var link=$('#txth_controlador').val()+"/comentario";
-        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
-        $.ajax({
-            type: 'POST',
-            url: link,
-            data:{
-                "info": Coment             
-            } ,
-            success: function(data){
-                if (data.status=="OK"){ 
-                    $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();                    
-                    //alert(data.data.toSource());
-                }
-            },
-            dataType: "json"
-        });
-    }
-    return true;
-    
-}
-
 
 
 

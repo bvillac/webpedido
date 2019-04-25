@@ -855,6 +855,7 @@ function fun_enviarComentario(){
                     $("#messageInfo").html(data.message+buttonAlert); 
                     alerMessage();                    
                     //alert(data.data.toSource());
+                    
                 }
             },
             dataType: "json"

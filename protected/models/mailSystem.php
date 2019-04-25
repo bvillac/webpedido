@@ -10,6 +10,12 @@ Yii::import('system.vendors.PHPMailer.*'); //Usar de Forma nativa.
 require_once('PHPMailerAutoload.php');
 
 class mailSystem {
+    private $SMTPSecure="ssl";
+    private $Port = 465;
+    private $Host = "mail.utimpor.com";
+    private $Username = "no-responder@utimpor.com";
+    private $Password = "ect{UZCJ6hvR";
+    private $CharSet = 'UTF-8';
 
     //put your code here
     public function enviarMail($body,$CabPed) {
@@ -78,6 +84,37 @@ class mailSystem {
         } else {
             //echo "¡¡Enviado!!";
             return $msg->messageSystem('OK', "¡¡Enviado!!", 30, null, null);
+        }
+    }
+    
+    public function enviarMensaje($body) {
+        $msg = new VSexception();
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+        $mail->SMTPSecure = $this->SMTPSecure;
+        $mail->Port = $this->Port;
+        $mail->Host = $this->Host;
+        $mail->setFrom('no-responder@utimpor.com', 'Servicio de envío automático Utimpor.com');
+        // asunto y cuerpo alternativo del mensaje
+        $mail->Subject = "Ha Recibido un Correo!!!";
+        $mail->AltBody = "Data alternativao";
+        // si el cuerpo del mensaje es HTML
+        $mail->MsgHTML($body);       
+        $mail->AddAddress('bvillacreses@utimpor.com', "Byron Villacreses");
+        // si el SMTP necesita autenticación
+        $mail->SMTPAuth = true;
+
+        // credenciales usuario
+        $mail->Username = $this->Username;
+        $mail->Password = $this->Password;
+        $mail->CharSet = $this->CharSet;
+
+        if (!$mail->Send()) {
+            //echo "Error enviando: " . $mail->ErrorInfo;
+            return $msg->messageSystem('NO_OK', "Error enviando: " . $mail->ErrorInfo, 11, null, null);
+        } else {
+            //echo "¡¡Enviado!!";
+            return $msg->messageSystem('OK', "¡¡Enviado!!", 20, null, null);
         }
     }
 

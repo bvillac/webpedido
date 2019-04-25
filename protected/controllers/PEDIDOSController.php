@@ -506,7 +506,27 @@ class PEDIDOSController extends Controller {
         }
     }
     
-    public function actionComentario() {        
+    public function actionComentario() { 
+        if (Yii::app()->request->isPostRequest) {
+            $info = isset($_POST['info']) ? $_POST['info'] : "";
+            $dataMail = new mailSystem;            
+            $htmlMail='<div id="div-table">';
+                $htmlMail.='<div class="trow">';
+                        $htmlMail.='<p>';
+                            $htmlMail.='<label class="titleLabel">Usuario: </label>'. Yii::app()->getSession()->get('user_name', FALSE) .'<br>     Nuestro Usuario hace el siguiente comentario!!! ';
+                        $htmlMail.='</p>';
+                $htmlMail.='</div>';
+                $htmlMail.='<div class="trow">';
+                        $htmlMail.='<p>';
+                            $htmlMail.=$info;
+                        $htmlMail.='</p>';
+                $htmlMail.='</div>';
+            $htmlMail.='</div>';            
+            $arroout=$dataMail->enviarMensaje($htmlMail);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout); 
+            return;
+        }
         $this->titleWindows = Yii::t('TIENDA', 'Comentarios');
         $this->render('comentario', array(         
             //'cliID' => $cli_Id,
