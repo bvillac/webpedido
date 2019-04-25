@@ -42,9 +42,10 @@
         ?> 
     </div>
 </div> 
+
 <div class="form-group rowLine">
     <div class="txt_label">
-        <label><?php echo Yii::t('TIENDA', 'Area') ?></label>
+        <label><?php echo Yii::t('TIENDA', 'Área') ?></label>
     </div>
     <div class="rowTd">
         <?php
@@ -57,6 +58,20 @@
                 )
         );
         ?> 
+    </div>
+</div>
+<div class="form-group rowLine">
+    <div class="txt_label">
+        <label><?php echo Yii::t('TIENDA', 'Status') ?></label>
+    </div>
+    <div class="rowTd">
+        <?php
+            echo CHtml::dropDownList(
+                    'cmb_estado', '0'
+                    , array('0' => Yii::t('TIENDA', 'All')) + $estado
+                    , array('class' => 'form-control')
+            );
+            ?> 
     </div>
 </div> 
 <div class="form-group rowLine">

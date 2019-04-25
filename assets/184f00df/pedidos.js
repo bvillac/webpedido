@@ -256,7 +256,7 @@ function guardarListaPedido(accion) {
             } */
 
             var ID = (accion == "Update") ? $('#txth_PedID').val() : 0;
-            var idsAre =($('#cmb_area option:selected').val()!=0)?$('#cmb_area option:selected').val():1;          
+            var idsAre =($('#cmb_area option:selected').val()!=0)?$('#cmb_area option:selected').val():1; 
             var tieId = (accion == "Create") ? $('#cmb_tienda option:selected').val() : ID;//Cuando Es Actualizacion Retorno el Id Cabecera
             var link = $('#txth_controlador').val() + "/Save";
             $.ajax({

@@ -656,7 +656,7 @@ class TIENDA extends CActiveRecord {
         $sql = "SELECT B.IDS_ARE,B.NOM_ARE
                     FROM " . $con->dbname . ".AREAS_USUARIO A
                       INNER JOIN " . $con->dbname . ".AREAS B ON A.IDS_ARE=B.IDS_ARE
-                 WHERE A.EST_LOG=1 AND B.EST_LOG=1 AND A.USU_ID=$ids;";
+                 WHERE A.EST_LOG=1 AND B.EST_LOG=1 AND A.USU_ID=$ids ORDER BY B.IDS_ARE ;";
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;

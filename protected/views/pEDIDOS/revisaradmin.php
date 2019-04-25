@@ -9,7 +9,7 @@
         </div>
         <div class="panel-body">
             <?php $this->renderPartial('_frm_CabRevision', 
-                    array('cliente' => $cliente,'tienda' => $tienda,'area' => $area)); ?>
+                    array('cliente' => $cliente,'tienda' => $tienda,'area' => $area,'estado' => $estado)); ?>
         </div>
         <div class="panel-footer">
             <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Search'), array('id' => 'btn_add', 'name' => 'btn_add', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_buscarDataRevisar("")')); ?>

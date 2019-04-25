@@ -55,3 +55,11 @@
                                                         ON C.ART_ID=B.ART_ID)
                                         ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
                 WHERE A.ARTIE_EST_LOG=1 AND A.TIE_ID=0  ORDER BY C.ART_DES_COM
+2019-04-24 16:27:32 llego
+2019-04-24 16:36:26 llego
+2019-04-24 16:39:25 llego
+2019-04-24 16:57:54 llego
+2019-04-24 17:01:09 llego
+2019-04-24 17:01:18 llego
+2019-04-24 17:01:24 llego
+2019-04-24 17:01:28 llego

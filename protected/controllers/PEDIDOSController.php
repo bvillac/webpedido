@@ -12,7 +12,7 @@ class PEDIDOSController extends Controller {
                 'actions' => array(
                     'create', 'update','Save','Listar','DataTienda',
                     'Aprobar','Delete','AnuItemPedTemp','EnvPedAut',
-                    'Liquidar','GenerarPdf','Consultar','Manuales','RevisarAdmin'),
+                    'Liquidar','GenerarPdf','Consultar','Manuales','RevisarAdmin','Comentario'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -111,7 +111,7 @@ class PEDIDOSController extends Controller {
             $tieId = isset($_POST['TIE_ID']) ? $_POST['TIE_ID'] : 0;
             $total = isset($_POST['TOTAL']) ? $_POST['TOTAL'] : 0;
             $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
-            $idsAre=($_POST['IDS_ARE']<>'')?$_POST['IDS_ARE']:1;//Valor 1 por defecto en area
+            $idsAre=isset($_POST['IDS_ARE'])? $_POST['IDS_ARE']:1;//Valor 1 por defecto en area
             if ($accion == "Create") {
                 $arroout = $model->insertarLista($tieId,$idsAre,$total,$dts_Lista);
                 //Nota solo Para cliente Marximex puede Enviar los pedidos
@@ -121,7 +121,7 @@ class PEDIDOSController extends Controller {
                     //$arroout=$this->pedidoAprobado($arroout);
                 }
             } else {
-                $arroout = $model->actualizarLista($tieId,$total,$dts_Lista);
+                $arroout = $model->actualizarLista($tieId,$idsAre,$total,$dts_Lista);
             }
             
             header('Content-type: application/json');
@@ -443,35 +443,6 @@ class PEDIDOSController extends Controller {
             
             return;
             
-            /*$op = isset($_POST['op']) ? $_POST['op'] : "";
-            $ids = isset($_POST['ids']) ? $_POST['ids'] : "0";
-            $des_com = isset($_POST['des_com']) ? $_POST['des_com'] : "";
-            switch ($op) {
-                case 'Tienda':
-                    $arrayData = $model->listarItemsTiendas($ids,$des_com);
-                    break;
-                case 'Buscar':
-                    $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
-                    $ids=($contBuscar[0]['TIE_ID']!='')?$contBuscar[0]['TIE_ID']:"0";
-                    $des_com=($contBuscar[0]['DES_COM']!='')?$contBuscar[0]['DES_COM']:"";
-                    $arrayData = $model->listarItemsTiendas($ids,$des_com);
-                    break;
-                default: 
-            }
-            
-            $this->renderPartial('_indexGrid', array(
-                'model' => $arrayData,
-            ),false, true);
-             * 
-             * 
-            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
-            $arrayData = $model->listarPedidosTiendas(null);
-            $this->renderPartial('_indexGridPedidos', array(
-                'model' => $arrayData,
-            ),false, true);
-            return;
-             * 
-            return;*/
         }
         $this->titleWindows = Yii::t('TIENDA', 'Administración de Pedidos');
         $this->render('revisaradmin', array(
@@ -479,6 +450,7 @@ class PEDIDOSController extends Controller {
             'tienda' => $tienda->recuperarTiendasRolCliente(0),
             'area' => $tienda->recuperarClienteArea(0),
             'cliente' => $cliente->recuperarClientes(),
+            'estado' => $this->tipoAprobacion(),
             //'cliID' => $cli_Id,
         ));
         
@@ -532,6 +504,13 @@ class PEDIDOSController extends Controller {
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);
         }
+    }
+    
+    public function actionComentario() {        
+        $this->titleWindows = Yii::t('TIENDA', 'Comentarios');
+        $this->render('comentario', array(         
+            //'cliID' => $cli_Id,
+        ));
     }
 
 }

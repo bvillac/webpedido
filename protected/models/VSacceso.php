@@ -74,8 +74,10 @@ class VSacceso {
         }
         //MANUALES DEL SISTEMA
         $menulat.='<li>';
-            $menulat.=CHtml::link(Yii::t('MENU',' Manuales (PDF)'),array('/pEDIDOS/manuales','op'=>$id),array('class' => 'fa fa-download'));//Manual segun Rol
-            $menulat.=CHtml::link(Yii::t('MENU',' Conexión (PDF)'),array('/pEDIDOS/manuales','op'=>10),array('class' => 'fa fa-download'));//Conexion Segura
+            //https://fontawesome.com/v4.7.0/icons/
+            //$menulat.=CHtml::link(Yii::t('MENU',' Manuales (PDF)'),array('/pEDIDOS/manuales','op'=>$id),array('class' => 'fa fa-download'));//Manual segun Rol
+            //$menulat.=CHtml::link(Yii::t('MENU',' Conexión (PDF)'),array('/pEDIDOS/manuales','op'=>10),array('class' => 'fa fa-download'));//Conexion Segura
+            $menulat.=CHtml::link(Yii::t('MENU',' Comentarios'),array('/pEDIDOS/comentario'),array('class' => 'fa fa-book'));//Comentarios
         $menulat.='</li>';
         return $menulat;
     }
