@@ -99,8 +99,11 @@ class mailSystem {
         $mail->Subject = "Ha Recibido un Correo!!!";
         $mail->AltBody = "Data alternativao";
         // si el cuerpo del mensaje es HTML
-        $mail->MsgHTML($body);       
-        $mail->AddAddress('bvillacreses@utimpor.com', "Byron Villacreses");
+        $mail->MsgHTML($body);   
+        $mail->AddAddress('ncastro@utimpor.com', "Byron Villacreses");
+        $mail->addBCC('bvillacreses@utimpor.com', "Byron Villacreses");
+        $mail->addBCC('ecastro@utimpor.com', "Byron Villacreses");
+        $mail->addBCC('ljaramillo@utimpor.com', "Byron Villacreses");
         // si el SMTP necesita autenticación
         $mail->SMTPAuth = true;
 
