@@ -38,7 +38,7 @@
             $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                 'name' => 'dtp_fec_ini',
                 'attribute' => 'dtp_fec_ini',
-                'value' => date(Yii::app()->params['dateStart']),
+                'value' => date(Yii::app()->params['datebydefault']),//date(Yii::app()->params['dateStart']),
                 'language' => Yii::app()->language,
                 'options' => array(
                     'showAnim' => 'fold',

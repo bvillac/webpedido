@@ -226,7 +226,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         $limitrowsql = Yii::app()->params['limitRowSQL'];
         //$rawData[]=$this->rowProdList();
         $sql = "SELECT A.TCPED_ID PedID,A.TIE_ID TieID,A.TCPED_TOTAL Total,DATE(A.TCPED_FEC_CRE) FechaPedido, 
-                        B.TIE_NOMBRE NombreTienda,B.TIE_DIRECCION DireccionTienda,E.PER_NOMBRE NombrePersona,
+                        B.TIE_NOMBRE NombreTienda,B.TIE_DIRECCION DireccionTienda,D.USU_NOMBRE NombrePersona,
                         CONCAT(REPEAT( '0', 9 - LENGTH(A.TCPED_ID) ),A.TCPED_ID) Numero,A.TCPED_EST_LOG Estado
                         FROM " . $con->dbname . ".TEMP_CAB_PEDIDO A
                                 INNER JOIN " . $con->dbname . ".TIENDA B
