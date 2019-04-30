@@ -26,6 +26,16 @@ $(document).ready(function () {
     
 });
 
+/*function pedidoEnterBuscar(valor,control,Ids){
+    if (valor) {//Si el usuario Presiono Enter= True
+        buscarDataItem("","Buscar");
+         /*control.value = redondea(control.value, Ndecimal);
+         //var p_venta=parseFloat(control.value);
+         var cant=control.value;
+         calculaTotal(cant,Ids);
+         calcularTotalGrid();
+    }
+}*/
 
 
 function fun_Nuevo(accion){

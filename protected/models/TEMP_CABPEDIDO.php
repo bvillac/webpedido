@@ -412,11 +412,11 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         $con = Yii::app()->db;
         $idsTie=$this->recuperarIdsTiendasRol($con);
         $limitrowsql = Yii::app()->params['limitRowSQL'];
-        
+        $cliID = $control[0]['CLI_ID'];
         $sql = "SELECT A.IDS_ARE IDS,F.NOM_ARE AREA,COUNT(A.TCPED_ID)TOT_DOC,SUM(A.TCPED_TOTAL) TOTAL                        
                     FROM " . $con->dbname . ".TEMP_CAB_PEDIDO A
                             INNER JOIN " . $con->dbname . ".TIENDA B
-                                    ON A.TIE_ID=B.TIE_ID
+                                    ON A.TIE_ID=B.TIE_ID 
                             INNER JOIN " . $con->dbname . ".AREAS F
                                     ON A.IDS_ARE=F.IDS_ARE
                             INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA C
@@ -426,7 +426,9 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                                                     ON C.USU_ID=D.USU_ID)
                                     ON C.UTIE_ID=A.UTIE_ID
                 WHERE  A.TCPED_EST_LOG=1 "; 
-        //$sql .= ($control[0]['EST_LOG'] != "0") ? " A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : "";// A.TCPED_EST_LOG<>'' 
+        
+        $sql .= ($control[0]['CLI_ID'] != "0") ? " AND B.CLI_ID=$cliID ":"";
+        $sql .= ($control[0]['EST_LOG'] != "0") ? " A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : "";// A.TCPED_EST_LOG<>'' 
         $sql .= " AND DATE(A.TCPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "'  ";    
         $sql .= " GROUP BY A.IDS_ARE ";
         $sql .= " ORDER BY A.IDS_ARE DESC LIMIT $limitrowsql";

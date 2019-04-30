@@ -68,7 +68,8 @@
                     'minLength' => '2',
                     'showAnim' => 'fold',
                     'select' => "js:function(event, ui) {
-                    //actualizaBuscarPersona(ui.item.PER_ID);     
+                    //actualizaBuscarPersona(ui.item.PER_ID); 
+                    buscarDataItem('','Buscar');
                 }"
                 ),
                 'htmlOptions' => array(
