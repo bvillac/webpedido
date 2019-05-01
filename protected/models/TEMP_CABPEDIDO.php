@@ -48,7 +48,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
     }
 
     /**
-     * @return array relational rules.
+     * @return array relational rules. confi
      */
     public function relations() {
         // NOTE: you may need to adjust the relation name and the related

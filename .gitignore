@@ -4,7 +4,7 @@ web/assets/*
 protected/config/*
 assets/*
 #no se suban la carpeta de productos
-#themes/seablue/images/productos/*
+themes/seablue/images/productos/*
 
 
 # Compiled source #
