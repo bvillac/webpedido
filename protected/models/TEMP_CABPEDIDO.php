@@ -237,20 +237,22 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                                                                         ON D.PER_ID=E.PER_ID)
                                                         ON C.USU_ID=D.USU_ID)
                                         ON C.UTIE_ID=A.UTIE_ID
-                WHERE  "; //A.TCPED_EST_LOG=1 AND
+                WHERE  A.TCPED_EST_LOG<>4 "; //A.TCPED_EST_LOG=1 AND
         $sqlTieId=($idsTie!='') ? "AND A.TIE_ID IN ($idsTie)" : "";
         if (!empty($control)) {//Verifica la Opcion op para los filtros
-            $sql .= ($control[0]['EST_LOG'] != "0") ? " A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : " A.TCPED_EST_LOG<>'' ";
-            $sql .= ($control[0]['TIE_ID'] > 0) ? "AND A.TIE_ID = '" . $control[0]['TIE_ID'] . "' " : $sqlTieId;
+            //Est_log=4 son los anulados
+            $sql .= ($control[0]['EST_LOG'] != "0") ? " AND A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : "  ";//A.TCPED_EST_LOG<>'4'
+            $sql .= ($control[0]['TIE_ID'] > 0) ? " AND A.TIE_ID = '" . $control[0]['TIE_ID'] . "' " : $sqlTieId;
             //$sql .= ($control[0]['COD_PACIENTE'] != "0") ? "AND CDOR_ID_PACIENTE='".$control[0]['COD_PACIENTE']."' " : "";
             //$sql .= ($control[0]['PACIENTE'] != "") ? "AND CONCAT(B.PER_APELLIDO,' ',B.PER_NOMBRE) LIKE '%" . $control[0]['PACIENTE'] . "%' " : "";
             $sql .= "AND DATE(A.TCPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "'  ";
         }else{
-            $sql .= "A.TCPED_EST_LOG<>'' ";
+            $sql .= "AND A.TCPED_EST_LOG<>'4' ";
             $sql .= $sqlTieId;
         }
         $sql .= "ORDER BY A.TCPED_ID DESC LIMIT $limitrowsql";
         //echo $sql;
+        //$valida->putMessageLogFile($arroout);
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
 
@@ -373,16 +375,16 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                                                                         ON D.PER_ID=E.PER_ID)
                                                         ON C.USU_ID=D.USU_ID)
                                         ON C.UTIE_ID=A.UTIE_ID
-                WHERE  "; //A.TCPED_EST_LOG=1 AND
+                WHERE  A.TCPED_EST_LOG<>4 "; //A.TCPED_EST_LOG=1 AND
         $sqlTieId=($idsTie!='') ? "AND A.TIE_ID IN ($idsTie)" : "";
         if (!empty($control)) {//Verifica la Opcion op para los filtros
-            $sql .= ($control[0]['EST_LOG'] != "0") ? " A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : " A.TCPED_EST_LOG<>'' ";//A.TCPED_EST_LOG<>''
+            $sql .= ($control[0]['EST_LOG'] != "0") ? " A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : " ";//A.TCPED_EST_LOG<>''
             //$sql .= ($control[0]['TIE_ID'] > 0) ? "AND A.TIE_ID = '" . $control[0]['TIE_ID'] . "' " : $sqlTieId;
             $sql .= ($control[0]['TIE_ID'] != 0) ? "AND A.TIE_ID = '" . $control[0]['TIE_ID'] . "' " : "";
             $sql .= ($control[0]['IDS_ARE'] != "0") ? "AND A.IDS_ARE='".$control[0]['IDS_ARE']."' " : "";
             $sql .= "AND DATE(A.TCPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "'  ";
         }else{
-            $sql .= "A.TCPED_EST_LOG<>'' ";
+            $sql .= " AND A.TCPED_EST_LOG<>'4' ";
             $sql .= $sqlTieId;
         }
         $sql .= "ORDER BY A.TCPED_ID DESC LIMIT $limitrowsql";
@@ -425,7 +427,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                                                                     ON D.PER_ID=E.PER_ID)
                                                     ON C.USU_ID=D.USU_ID)
                                     ON C.UTIE_ID=A.UTIE_ID
-                WHERE  A.TCPED_EST_LOG=1 "; 
+                WHERE  A.TCPED_EST_LOG<>4 "; 
         
         $sql .= ($control[0]['CLI_ID'] != "0") ? " AND B.CLI_ID=$cliID ":"";
         $sql .= ($control[0]['EST_LOG'] != "0") ? " A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : "";// A.TCPED_EST_LOG<>'' 
