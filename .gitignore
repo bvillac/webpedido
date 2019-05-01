@@ -3,7 +3,7 @@ runtime/*
 web/assets/*
 protected/config/*
 assets/*
-#no se suban la carpeta de productos
+#no se suban la carpeta de productos en datos
 themes/seablue/images/productos/*
 
 
