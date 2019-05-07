@@ -688,6 +688,7 @@ function controlBuscarItems(control,op){
     return JSON.stringify(buscarArray);
 }
 
+
 /************** BUSCAR REVISAR **************/
 function fun_buscarDataRevisar(op){ 
     var link=$('#txth_controlador').val()+"/revisaradmin";
@@ -846,6 +847,118 @@ function fun_enviarComentario(){
     return true;
     
 }
+
+/****************** ACTUALIZAR ITEMS *******************/
+function autocompletarBuscarItemsUpdate(request, response, control, op) {
+    var link = $('#txth_controlador').val() + "/BuscarItemsTienda";
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url: link,
+        data: {
+            valor: $('#' + control).val(),
+            tie_id: $('#txth_TieID').val(),
+            op: op
+        },
+        success: function (data) {
+            var arrayList = new Array;
+            var count = data.length;
+            for (var i = 0; i < count; i++) {
+                row = new Object();
+                row.COD_ART = data[i]['COD_ART'];
+                row.ART_DES_COM = data[i]['ART_DES_COM'];
+
+                // Campos Importandes relacionados con el  CJuiAutoComplete
+                row.id = data[i]['COD_ART'];
+                row.label = data[i]['ART_DES_COM'] + ' - ' + data[i]['COD_ART'];//+' - '+data[i]['SEGURO_SOCIAL'];//Lo sugerido
+                //row.value=data[i]['IdentificacionComprador'];//lo que se almacena en en la caja de texto
+                row.value = data[i]['ART_DES_COM'];//lo que se almacena en en la caja de texto
+                arrayList[i] = row;
+            }
+            sessionStorage.src_buscItemIndex = JSON.stringify(arrayList);//dss=>DataSessionStore
+            response(arrayList);
+        }
+    })
+}
+
+/*function buscarDataItemUpdate(control, op) {
+    control = (control == '') ? 'txt_codigoBuscar' : control;
+    var link = $('#txth_controlador').val() + "/DataTiendaUpdate";
+    $.fn.yiiGridView.update('TbG_PEDIDO', {
+        type: 'POST',
+        url: link,
+        data: {
+            "op": op, //solo tiendas
+            "CONT_BUSCAR": controlBuscarItemsUpdate(control, op)
+        },
+        complete:function() {
+             //$.fn.yiiGridView.update('item-grid');
+             //actualizarDataTienda();
+             //calcularTotalGrid();
+             //agregar item al final
+           },
+    });
+}
+
+function controlBuscarItemsUpdate(control,op){
+    var buscarArray = new Array();
+    var buscarIndex=new Object();
+    buscarIndex.OP=op;
+    buscarIndex.DES_COM=($('#'+control).val()!="")?$('#'+control).val():"";
+    buscarIndex.TIE_ID=$('#txth_TieID').val(),
+    buscarArray[0] = buscarIndex;
+    return JSON.stringify(buscarArray);
+}*/
+
+function agregarItemsTiendasUpdate(opAccion) {
+    var tGrid = 'TbG_PEDIDO';
+    var nombre = $('#txt_codigoBuscar').val();
+    if ($('#txt_codigoBuscar').val() != "") {
+        var valor = $('#txt_codigoBuscar').val();
+        if (opAccion != "edit") {
+            //*********   AGREGAR ITEMS *********
+            var arr_Grid = new Array();
+            if (sessionStorage.dts_precioTienda) {
+                /*Agrego a la Sesion*/
+                arr_Grid = JSON.parse(sessionStorage.dts_precioTienda);
+                var size = arr_Grid.length;
+                if (size > 0) {
+                    //Varios Items
+                    if (codigoExiste(nombre, 'ART_DES_COM', sessionStorage.dts_precioTienda)) {//Verifico si el Codigo Existe  para no Dejar ingresar Repetidos
+                        arr_Grid[size] = objTiendas(retornarIndexArray(JSON.parse(sessionStorage.src_buscArticulo), 'ART_DES_COM', valor), JSON.parse(sessionStorage.src_buscArticulo),true);
+                        sessionStorage.dts_precioTienda = JSON.stringify(arr_Grid);
+                        addVariosItemTiendas(tGrid, arr_Grid, -1);
+                        limpiarTexbox();
+                    } else {
+                        $("#messageInfo").html('Item ya existe en su lista ' + buttonAlert);
+                        alerMessage();
+                    }
+                } else {
+                    /*Agrego a la Sesion*/
+                    //Primer Items
+                    arr_Grid[0] = objTiendas(retornarIndexArray(JSON.parse(sessionStorage.src_buscArticulo), 'ART_DES_COM', valor), JSON.parse(sessionStorage.src_buscArticulo),true);
+                    sessionStorage.dts_precioTienda = JSON.stringify(arr_Grid);
+                    addPrimerItemTiendas(tGrid, arr_Grid, 0);
+                    limpiarTexbox();
+                }
+            } else {
+                //No existe la Session
+                //Primer Items
+                arr_Grid[0] = objTiendas(retornarIndexArray(JSON.parse(sessionStorage.src_buscArticulo), 'ART_DES_COM', valor), JSON.parse(sessionStorage.src_buscArticulo),true);
+                sessionStorage.dts_precioTienda = JSON.stringify(arr_Grid);
+                addPrimerItemTiendas(tGrid, arr_Grid, 0);
+                limpiarTexbox();
+            }
+
+        } else {
+            //data
+        }
+    } else {
+        $("#messageInfo").html('No existe Informacion ' + buttonAlert);
+        alerMessage();
+    }
+}
+
 
 
 

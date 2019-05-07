@@ -10,7 +10,7 @@ class PEDIDOSController extends Controller {
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions' => array(
-                    'create', 'update','Save','Listar','DataTienda',
+                    'create', 'update','Save','Listar','DataTienda','DataTiendaUpdate',
                     'Aprobar','Delete','AnuItemPedTemp','EnvPedAut',
                     'Liquidar','GenerarPdf','Consultar','Manuales','RevisarAdmin','Comentario'),
                 'users' => array('@'),
@@ -54,6 +54,17 @@ class PEDIDOSController extends Controller {
             'mostrar' => $cupo["data"]["MOSTRAR"],
         ));
     }
+    
+    public function actionDataTiendaUpdate() {
+        if (Yii::app()->request->isAjaxRequest) {
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
+            $arrayData = array();
+            $data = new TIENDA;
+            $arrayData = $data->recuperarTiendasCupo($ids);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arrayData);
+        }
+    }
 
 
     public function actionListar() {
@@ -83,7 +94,8 @@ class PEDIDOSController extends Controller {
             ),false, true);
             return;
         }
-        $this->titleWindows = Yii::t('TIENDA', 'List orders');
+        //$this->titleWindows = Yii::t('TIENDA', 'List orders');
+        $this->titleWindows = Yii::t('TIENDA', 'Hacer Pedidos');
         $this->render('listar', array(
             'model' => $model->listarItemsTiendas(0,""),
             'tienda' => $model->recuperarTiendasRol(),
@@ -91,6 +103,8 @@ class PEDIDOSController extends Controller {
             'cliID' => $cli_Id,
         ));
     }
+    
+    
     
     public function actionDataTienda() {
         if (Yii::app()->request->isAjaxRequest) {

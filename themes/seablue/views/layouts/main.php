@@ -87,7 +87,7 @@
             <!--<div class="clear"></div>-->
             <div class="row">
                 <div id="footer">
-                    Copyright &copy; <?php echo date('Y'); ?> by SolucionesVillacreses.com.<br/>
+                    Copyright &copy; <?php echo date('Y'); ?> by Utimpor.com.<br/>
                     All Rights Reserved.<br/>
                     <?php //echo Yii::powered(); ?>
                 </div><!-- footer -->

@@ -2,14 +2,14 @@
     
     <div class="form-group rowLine">
         
-        <div class="col-lg-1">
-            <label><?php echo Yii::t('GENERAL', 'Store') ?></label>            
-        </div>
+<!--        <div class="col-lg-1">
+            <label><?php //echo Yii::t('GENERAL', 'Store') ?></label>            
+        </div>-->
         <div class="col-lg-3">
             <?php
             echo CHtml::dropDownList(
                     'cmb_tienda', '0'
-                    , array('0' => Yii::t('GENERAL', '-Select-')) + CHtml::listData($tienda, 'TIE_ID', 'TIE_NOMBRE')
+                    , array('0' => Yii::t('GENERAL', 'SELECCIONAR TIENDA')) + CHtml::listData($tienda, 'TIE_ID', 'TIE_NOMBRE')
                     , array(
                         'onchange' => 'js:mostrarListaTienda(this.value)',
                         'class' => 'form-control'
@@ -37,14 +37,14 @@
     </div>
     <div class="form-group rowLine">
             
-        <div class="col-lg-1">
-            <label><?php echo Yii::t('GENERAL', 'Area') ?></label>            
-        </div>
+<!--        <div class="col-lg-1">
+            <label><?php //echo Yii::t('GENERAL', 'Area') ?></label>            
+        </div>-->
         <div class="col-lg-3">
             <?php
             echo CHtml::dropDownList(
                     'cmb_area', '0'
-                    , CHtml::listData($area, 'IDS_ARE', 'NOM_ARE')
+                    , array('0' => Yii::t('GENERAL', 'SELECCIONAR AREA')) + CHtml::listData($area, 'IDS_ARE', 'NOM_ARE')
                     , array(
                         //'onchange' => 'js:mostrarListaTienda(this.value)',
                         'class' => 'form-control'
