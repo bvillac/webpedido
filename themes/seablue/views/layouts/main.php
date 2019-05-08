@@ -67,7 +67,7 @@
                         </div>
                         <!-- /.col-lg-12 -->
                         <div class="col-lg-12">
-                            <div id="messageInfo" style="display: none;" class="alert alert-info alert-dismissable">
+                            <div id="messageInfo" style="display: none;" class="alert alert-success alert-dismissable">
                             <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
                             </div>
                         </div>

@@ -11,5 +11,13 @@
                         'tienda' =>$tienda,'area' =>$area)); ?>    
 </div>
 <div class="col-lg-12">
+    <p>
+        <strong>
+            Ingrese las cantidades de los productos y luego haga clic en la opción de Guardar
+        </strong>
+    </p>
+</div>
+    
+<div class="col-lg-12">
     <?php echo $this->renderPartial('_indexGrid', array('model' => $model)); ?>
 </div>

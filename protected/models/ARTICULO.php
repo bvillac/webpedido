@@ -200,7 +200,7 @@ class ARTICULO extends CActiveRecord {
 //                    INNER JOIN " . $con->dbname . ".PRECIO_CLIENTE B ON A.ART_ID=B.ART_ID
 //                WHERE A.ART_EST_LOG=1 AND B.CLI_ID=$cli_Id ";
        
-        $sql = "SELECT A.ARTIE_ID,B.ART_ID,C.COD_ART,C.ART_DES_COM                        
+        $sql = "SELECT A.ARTIE_ID,B.ART_ID,C.COD_ART,C.ART_DES_COM,B.PCLI_P_VENTA                        
                     FROM " . $con->dbname . ".ARTICULO_TIENDA A
                             INNER JOIN (" . $con->dbname . ".PRECIO_CLIENTE B
                                             INNER JOIN " . $con->dbname . ".ARTICULO C

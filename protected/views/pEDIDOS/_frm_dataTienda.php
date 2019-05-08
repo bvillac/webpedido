@@ -18,7 +18,7 @@
             ?> 
         </div>
         <div class="col-lg-2">
-            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'New'), array('id' => 'btn_new', 'name' => 'btn_new', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'nuevaListaPedTemp()')); ?>
+            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Nuevo Pedido'), array('id' => 'btn_new', 'name' => 'btn_new', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'nuevaListaPedTemp()')); ?>
             <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Save'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'guardarListaPedido("Create")')); ?>
         </div>
         <div class="col-lg-2">

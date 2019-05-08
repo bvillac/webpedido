@@ -4,6 +4,18 @@
  * and open the template in the editor.
  */
 
+function codigoExiste(value, property, lista) {
+    if (lista) {
+        var array = JSON.parse(lista);
+        for (var i = 0; i < array.length; i++) {
+            if (array[i][property] == value) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 function retornarIndexArray(array, property, value) {
     var index = -1;
     for (var i = 0; i < array.length; i++) {
@@ -866,7 +878,9 @@ function autocompletarBuscarItemsUpdate(request, response, control, op) {
             for (var i = 0; i < count; i++) {
                 row = new Object();
                 row.COD_ART = data[i]['COD_ART'];
+                row.ART_ID = data[i]['ART_ID'];
                 row.ART_DES_COM = data[i]['ART_DES_COM'];
+                row.PCLI_P_VENTA = data[i]['PCLI_P_VENTA'];
 
                 // Campos Importandes relacionados con el  CJuiAutoComplete
                 row.id = data[i]['COD_ART'];
@@ -875,7 +889,7 @@ function autocompletarBuscarItemsUpdate(request, response, control, op) {
                 row.value = data[i]['ART_DES_COM'];//lo que se almacena en en la caja de texto
                 arrayList[i] = row;
             }
-            sessionStorage.src_buscItemIndex = JSON.stringify(arrayList);//dss=>DataSessionStore
+            sessionStorage.src_buscItemUpdate = JSON.stringify(arrayList);//dss=>DataSessionStore
             response(arrayList);
         }
     })
@@ -918,35 +932,39 @@ function agregarItemsTiendasUpdate(opAccion) {
         if (opAccion != "edit") {
             //*********   AGREGAR ITEMS *********
             var arr_Grid = new Array();
-            if (sessionStorage.dts_precioTienda) {
+            var indiceBusc = retornarIndexArray(JSON.parse(sessionStorage.src_buscItemUpdate), 'ART_DES_COM', valor);
+            if (sessionStorage.dts_proudate) {
                 /*Agrego a la Sesion*/
-                arr_Grid = JSON.parse(sessionStorage.dts_precioTienda);
+                arr_Grid = JSON.parse(sessionStorage.dts_proudate);
                 var size = arr_Grid.length;
                 if (size > 0) {
                     //Varios Items
-                    if (codigoExiste(nombre, 'ART_DES_COM', sessionStorage.dts_precioTienda)) {//Verifico si el Codigo Existe  para no Dejar ingresar Repetidos
-                        arr_Grid[size] = objTiendas(retornarIndexArray(JSON.parse(sessionStorage.src_buscArticulo), 'ART_DES_COM', valor), JSON.parse(sessionStorage.src_buscArticulo),true);
-                        sessionStorage.dts_precioTienda = JSON.stringify(arr_Grid);
-                        addVariosItemTiendas(tGrid, arr_Grid, -1);
+                    if (codigoExiste(nombre, 'ART_DES_COM', sessionStorage.dts_proudate)) {//Verifico si el Codigo Existe  para no Dejar ingresar Repetidos
+                        //alert('si entro');
+                        arr_Grid[size] = objProDetalle(indiceBusc, JSON.parse(sessionStorage.src_buscItemUpdate),true);
+                        sessionStorage.dts_proudate = JSON.stringify(arr_Grid);
+                        addVariosItemProDet(tGrid, arr_Grid, indiceBusc);
+                        
                         limpiarTexbox();
                     } else {
                         $("#messageInfo").html('Item ya existe en su lista ' + buttonAlert);
                         alerMessage();
                     }
                 } else {
+           
                     /*Agrego a la Sesion*/
                     //Primer Items
-                    arr_Grid[0] = objTiendas(retornarIndexArray(JSON.parse(sessionStorage.src_buscArticulo), 'ART_DES_COM', valor), JSON.parse(sessionStorage.src_buscArticulo),true);
-                    sessionStorage.dts_precioTienda = JSON.stringify(arr_Grid);
-                    addPrimerItemTiendas(tGrid, arr_Grid, 0);
+                    arr_Grid[0] = objProDetalle(indiceBusc, JSON.parse(sessionStorage.src_buscItemUpdate),true);
+                    sessionStorage.dts_proudate = JSON.stringify(arr_Grid);
+                    addPrimerItemProDet(tGrid, arr_Grid, 0);
                     limpiarTexbox();
                 }
             } else {
                 //No existe la Session
                 //Primer Items
-                arr_Grid[0] = objTiendas(retornarIndexArray(JSON.parse(sessionStorage.src_buscArticulo), 'ART_DES_COM', valor), JSON.parse(sessionStorage.src_buscArticulo),true);
-                sessionStorage.dts_precioTienda = JSON.stringify(arr_Grid);
-                addPrimerItemTiendas(tGrid, arr_Grid, 0);
+                arr_Grid[0] = objProDetalle(indiceBusc, JSON.parse(sessionStorage.src_buscItemUpdate),true);
+                sessionStorage.dts_proudate = JSON.stringify(arr_Grid);
+                addPrimerItemProDet(tGrid, arr_Grid, 0);
                 limpiarTexbox();
             }
 
@@ -958,6 +976,116 @@ function agregarItemsTiendasUpdate(opAccion) {
         alerMessage();
     }
 }
+
+
+function objProDetalle(c, Grid,condicion) {
+    //.TDPED_ID DetId,A.ART_ID ArtId,A.TDPED_CAN_PED Cantidad,A.TDPED_P_VENTA Precio,
+    //A.TDPED_T_VENTA TotVta,A.TDPED_EST_AUT EstAut,A.TDPED_OBSERVA Observacion,B.COD_ART Codigo,
+    //B.ART_DES_COM Nombre,B.ART_I_M_IVA ImIva
+    
+    var rowGrid = new Object();
+    rowGrid.TDPED_ID = Grid[c]['TDPED_ID'];
+    rowGrid.ART_ID = Grid[c]['ART_ID'];
+    rowGrid.COD_ART = Grid[c]['COD_ART'];    
+    rowGrid.ART_DES_COM = Grid[c]['ART_DES_COM'];    
+    rowGrid.TDPED_P_VENTA =Grid[c]['PCLI_P_VENTA'];//(condicion)?parseFloat($('#txt_TDPED_P_VENTA').val()).toFixed(Nprodecimal):Grid[c]['TDPED_P_VENTA'];
+    rowGrid.TDPED_CAN_PED = $('#txt_cantidad').val();//(condicion)?parseFloat($('#txt_cat_'+Grid[c]['TDPED_ID']).val()).toFixed(Nprodecimal):0;    
+    rowGrid.ART_I_M_IVA = Grid[c]['ART_I_M_IVA'];
+    rowGrid.TOTAL = (condicion)?rowGrid.TDPED_CAN_PED*rowGrid.TDPED_P_VENTA:0;
+    rowGrid.TDPED_OBSERVA =Grid[c]['TDPED_OBSERVA'];
+    rowGrid.EST_MOD ="";
+    rowGrid.TDPED_EST_AUT = '1';
+    return rowGrid;
+}
+
+function addPrimerItemProDet(TbGtable, lista, i) {
+    /*Remuevo la Primera fila*/
+    //$('#' + TbGtable + ' >table >tbody').html("");//borar toda el grid
+    /*Agrego a la Tabla de Detalle*/
+    //$('#'+TbGtable+' >table >tbody').append(retornaFilaTiendas(i,lista,TbGtable,true));
+    $('#' + TbGtable+' >table >tbody').append(retornaFilaItemProDet(i, lista, TbGtable, true));
+}
+
+function addVariosItemProDet(TbGtable, lista, i) {
+    //alert($('#' + TbGtable + ' tr').length);//extare el total de filas
+    //i = (i == -1) ? ($('#' + TbGtable + ' tr').length) - 1 : i;
+    //$('#'+TbGtable+' >table >tbody').append(retornaFilaTiendas(i,lista,TbGtable,true));
+    $('#' + TbGtable+ ' >table >tbody' ).append(retornaFilaItemProDet(i, lista, TbGtable, true));
+}
+
+function retornaFilaItemProDet(c, Grid, TbGtable, op) {
+    //alert("llega datos");
+    var RutaImagenAccion = $('#txth_rutaImg').val();    
+    var strFila = "";
+    var imgCol = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/delete.png" >';
+    //var imgCol2 = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/edit16.png" >';
+    strFila += '<td class="checkbox-column">';
+        //strFila += '<input class="select-on-check" value="' + Grid[c]['TDPED_ID'] + '" id="TbG_PEDIDO_c0_'+c+'" type="checkbox" name="TbG_PEDIDO_c'+c+'[]">';
+        strFila += '<input class="select-on-check" value="0" id="TbG_PEDIDO_c0_'+c+'" type="checkbox" name="TbG_PEDIDO_c'+c+'[]">';
+    strFila += '</td>';
+    //strFila += '<td style="display:none; border:none;">' + Grid[c]['TDPED_ID'] + '</td>'; 
+    strFila += '<td style="display:none; border:none;">0</td>'; 
+    strFila += '<td style="display:none; border:none;">' + Grid[c]['ART_ID'] + '</td>';    
+    strFila += '<td width="5px" style="text-align: left">' + Grid[c]['COD_ART'] + '</td>';
+    strFila += '<td style="text-align:left">' + Grid[c]['ART_DES_COM'] + '</td>';
+    
+    strFila += '<td style="text-align:right" width="8px">'; 
+        strFila += '<input size="8" maxlength="20" placeholder="0" class="txt_TextboxNumber2 validation_Vs" '; 
+        strFila += 'type="text" value="' + Grid[c]['TDPED_CAN_PED'] + '" name="txt_cat_' + Grid[c]['ART_ID'] + '" id="txt_cat_' + Grid[c]['ART_ID'] + '" ';
+        strFila += 'onkeydown="pedidoEnterGridTemp(isEnter(event),this,17397)" '; 
+        strFila += 'onblur="pedidoEnterGridTemp(isEnter(event),this,17397)" > '; 
+    strFila += '</td>';
+    strFila += '<td style="text-align:right" width="8px">' + Grid[c]['TDPED_P_VENTA'] + '</td>'; 
+    strFila += '<td style="text-align:right" width="30px">' + parseFloat(Grid[c]['TOTAL']).toFixed(Ndecimal) + '</td>';
+    
+    strFila += '<td style="text-align:center" width="200px"> '; 
+        strFila += '<input size="30" maxlength="300" placeholder="..." class="validation_Vs" type="text" value="" name="txt_obs_' + Grid[c]['ART_ID'] + '" id="txt_obs_' + Grid[c]['ART_ID'] + '"> '; 
+    strFila += '</td>'; 
+    strFila += '<td style="text-align:center" width="8px">Activo</td>';
+    strFila += '<td width="40px">';
+        strFila += '<a data-lightbox="' + Grid[c]['COD_ART'] + '_G-01" href="' + RutaImagenAccion + 'productos/' + Grid[c]['COD_ART'] + '_G-01.jpg">';
+            strFila += '<img src="' + RutaImagenAccion + 'productos/' + Grid[c]['COD_ART'] + '_P-01.jpg" width="40px" height="40px">';
+        strFila += '</a>';
+    strFila += '</td>';
+ 
+    if (op) {
+        strFila = '<tr class="odd">' + strFila + '</tr>';//gradeX
+    }
+    return strFila;
+}
+
+function limpiarTexbox() {
+    $('#txt_codigoBuscar').val("");
+    $('#txt_cantidad').val("0");
+}
+
+
+
+/*<tr class="odd">
+    <td class="checkbox-column">
+        <input class="select-on-check" value="17397" id="TbG_PEDIDO_c0_0" type="checkbox" name="TbG_PEDIDO_c0[]">
+    </td>
+    <td style="display:none; border:none;">17397</td>
+    <td style="display:none; border:none;">3796</td>
+    <td>P0592</td>
+    <td>RESMA PAPEL BOND 75GRS T/A-4 BRIO</td>
+    <td style="text-align:right" width="8px">
+        <input size="8" maxlength="100" placeholder="0.00" class=" txt_TextboxNumber2 validation_Vs" 
+               onkeydown="pedidoEnterGridTemp(isEnter(event),this,17397)" onblur="pedidoEnterGridTemp(isEnter(event),this,17397)" type="text" value="5.00" name="txt_cat_17397" id="txt_cat_17397">
+    </td>
+    <td style="text-align:right" width="8px">3.3600</td>
+    <td style="text-align:right" width="30px">16.80</td>
+    <td style="text-align:center" width="200px">
+        <input size="30" maxlength="300" placeholder="..." class="validation_Vs" type="text" value="" name="txt_obs_17397" id="txt_obs_17397">
+    </td>
+    <td style="text-align:center" width="8px">Activo</td>
+    <td>
+        <a data-lightbox="P0592_G-01" href="/webpedido/themes/seablue/images/productos/P0592_G-01.jpg">
+            <img src="/webpedido/themes/seablue/images/productos/P0592_P-01.jpg" width="40" height="40">
+        </a>
+    </td>
+</tr>*/
+
 
 
 

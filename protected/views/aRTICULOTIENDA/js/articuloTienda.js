@@ -19,29 +19,29 @@ function addCeros(tam, num) {
         return num;
 }
 
-function codigoExiste(value, property, lista) {
-    if (lista) {
-        var array = JSON.parse(lista);
-        for (var i = 0; i < array.length; i++) {
-            if (array[i][property] == value) {
-                return false;
+    function codigoExiste(value, property, lista) {
+        if (lista) {
+            var array = JSON.parse(lista);
+            for (var i = 0; i < array.length; i++) {
+                if (array[i][property] == value) {
+                    return false;
+                }
             }
         }
+        return true;
     }
-    return true;
-}
 
-function retornarIndexArray(array, property, value) {
-    var index = -1;
-    for (var i = 0; i < array.length; i++) {
-        //alert(array[i][property]+'-'+value)
-        if (array[i][property] == value) {
-            index = i;
-            return index;
+    function retornarIndexArray(array, property, value) {
+        var index = -1;
+        for (var i = 0; i < array.length; i++) {
+            //alert(array[i][property]+'-'+value)
+            if (array[i][property] == value) {
+                index = i;
+                return index;
+            }
         }
+        return index;
     }
-    return index;
-}
 
 /*  Funcion Retorna "retornarIndLista"
  *  Recibe: Lista Json, Propieda o Campo,Valor Comparacion, Campo del Valor a Retornar
