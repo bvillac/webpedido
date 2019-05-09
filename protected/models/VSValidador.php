@@ -76,4 +76,10 @@ class VSValidador {
         
     }
     
+    public static function mostrarIconos($TbGtable,$codigo,$icono) {        
+        $rutaIconos=Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'];
+        //VSValidador::putMessageLogFile($rutaIconos);
+        return CHtml::link(CHtml::image($rutaIconos.$icono),null,array("onclick"=>"javascript:eliminarItemsListas('$codigo','$TbGtable')"));
+    }
+    
 }

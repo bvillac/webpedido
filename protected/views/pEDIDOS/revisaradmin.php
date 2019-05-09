@@ -13,7 +13,7 @@
         </div>
         <div class="panel-footer">
             <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Search'), array('id' => 'btn_add', 'name' => 'btn_add', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_buscarDataRevisar("")')); ?>
-            <?php echo CHtml::button(Yii::t('TIENDA', 'To order'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_guardarPedidoAutGrupo()')); ?>
+            <?php echo CHtml::button(Yii::t('TIENDA', 'Aprobar & Enviar'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_guardarPedidoAutGrupo()')); ?>
         </div>
             
     </div>

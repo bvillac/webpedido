@@ -14,7 +14,7 @@
                 <label id="lbl_total"><?php echo Yii::app()->format->formatNumber($CabPed["Total"]) ?></label>
             </div>
             <div id="div_cupo" class="tcol-td form-group">
-                <span><?php echo Yii::t('TIENDA', 'Quota') ?> : </span>
+                <span><?php echo Yii::t('TIENDA', 'Quota') ?> :$ </span>
                 <label id="lbl_cupo"><?php echo Yii::app()->format->formatNumber($cupo) ?></label>
             </div>
         </div>

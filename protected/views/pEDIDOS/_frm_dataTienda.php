@@ -22,11 +22,11 @@
             <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Save'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'guardarListaPedido("Create")')); ?>
         </div>
         <div class="col-lg-2">
-            <label><?php echo Yii::t('TIENDA', 'Total') ?>:</label>
+            <label><?php echo Yii::t('TIENDA', 'Total') ?>:$</label>
             <label id="lbl_total">0.00</label>
         </div>
         <div id="div_cupo" class="col-lg-2">
-            <label>Cupo:</label>
+            <label>Cupo:$</label>
             <label id="lbl_cupo">0.00</label>
         </div>
          <div class="col-lg-2">

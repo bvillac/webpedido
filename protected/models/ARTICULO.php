@@ -206,7 +206,7 @@ class ARTICULO extends CActiveRecord {
                                             INNER JOIN " . $con->dbname . ".ARTICULO C
                                                     ON C.ART_ID=B.ART_ID)
                                     ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
-            WHERE A.ARTIE_EST_LOG=1 AND B.CLI_ID=$cli_Id AND A.TIE_ID=$tieId ";
+            WHERE A.ARTIE_EST_LOG=1 AND B.CLI_ID=$cli_Id AND A.TIE_ID=$tieId ";//GROUP BY A.ARTIE_ID
         switch ($op) {
             case 'COD':
                 $sql .=" AND C.COD_ART LIKE '%$valor%' ";
@@ -216,7 +216,8 @@ class ARTICULO extends CActiveRecord {
                 break;
             default:
         }
-        $sql .= " LIMIT " . Yii::app()->params['limitRow'];
+        $sql .= " GROUP BY C.COD_ART LIMIT " . Yii::app()->params['limitRow'];
+        //revisar porque se repiten
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;

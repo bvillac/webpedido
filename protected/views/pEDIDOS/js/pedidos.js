@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+function loadDataUpdate(){
+    sessionStorage.removeItem('dts_proudate');
+}
 
 function codigoExiste(value, property, lista) {
     if (lista) {
@@ -406,7 +409,6 @@ function listaPedidoDetTemp() {
         if (idstable != '') {
             //var subtotal = parseFloat($(this).find("td").eq(7).html());           
             var subtotal = parseFloat($(this).find("td").eq(6).html());//LA COLUMNA DE SUB-TOTAL
-             alert(subtotal);
             if (subtotal > 0) {
                 var rowGrid = new Object();
                 i += 1;
@@ -1006,9 +1008,9 @@ function controlBuscarItemsUpdate(control,op){
 
 function agregarItemsTiendasUpdate(opAccion) {
     var tGrid = 'TbG_PEDIDO';
-    var nombre = $('#txt_codigoBuscar').val();
-    if ($('#txt_codigoBuscar').val() != "") {
-        var valor = $('#txt_codigoBuscar').val();
+    var nombre = $('#txt_codigoBuscarItem').val();
+    if ($('#txt_codigoBuscarItem').val() != "") {
+        var valor = $('#txt_codigoBuscarItem').val();
         if (opAccion != "edit") {
             //*********   AGREGAR ITEMS *********
             var arr_Grid = new Array();
@@ -1051,6 +1053,7 @@ function agregarItemsTiendasUpdate(opAccion) {
         } else {
             //data
         }
+        recalculaTotalPedTemp();
     } else {
         $("#messageInfo").html('No existe Informacion ' + buttonAlert);
         alerMessage();
@@ -1114,8 +1117,8 @@ function retornaFilaItemProDet(c, Grid, TbGtable, op) {
     strFila += '<td style="text-align:right" width="8px">'; 
         strFila += '<input size="8" maxlength="20" placeholder="0" class="txt_TextboxNumber2 validation_Vs" '; 
         strFila += 'type="text" value="' + Grid[c]['TDPED_CAN_PED'] + '" name="txt_cat_' + Grid[c]['ART_ID'] + '" id="txt_cat_' + Grid[c]['ART_ID'] + '" ';
-        strFila += 'onkeydown="pedidoEnterGridTemp(isEnter(event),this,17397)" '; 
-        strFila += 'onblur="pedidoEnterGridTemp(isEnter(event),this,17397)" > '; 
+        strFila += 'onkeydown="pedidoEnterGridTemp(isEnter(event),this,' + Grid[c]['ART_ID'] + ')" '; 
+        strFila += 'onblur="pedidoEnterGridTemp(isEnter(event),this,' + Grid[c]['ART_ID'] + ')" > '; 
     strFila += '</td>';
     strFila += '<td style="text-align:right" width="8px">' + Grid[c]['TDPED_P_VENTA'] + '</td>'; 
     strFila += '<td style="text-align:right" width="30px">' + redondea(Grid[c]['TOTAL'],Ndecimal)+ '</td>';
@@ -1130,7 +1133,7 @@ function retornaFilaItemProDet(c, Grid, TbGtable, op) {
         strFila += '</a>';
     strFila += '</td>';
     strFila += '<td width="36px" style="text-align:center">';    
-    strFila += '<a class="btn-img" onclick="eliminarItemsTiendas(' + Grid[c]['ART_ID'] + ',\'' + TbGtable + '\')" >' + imgCol + '</a>';
+    strFila += '<a class="btn-img" onclick="eliminarItemsListas(' + Grid[c]['ART_ID'] + ',\'' + TbGtable + '\')" >' + imgCol + '</a>';
     strFila += '</td>';
  
     if (op) {
@@ -1140,34 +1143,72 @@ function retornaFilaItemProDet(c, Grid, TbGtable, op) {
 }
 
 function limpiarTexbox() {
-    $('#txt_codigoBuscar').val("");
-    $('#txt_cantidad').val("0");
+    $('#txt_codigoBuscarItem').val("");
+    $('#txt_cantidad').val("");
 }
 
-function eliminarItemsListas(val, TbGtable) {
+function eliminarItemsListas(val, TbGtable) {    
     var ids = "";
     if (sessionStorage.dts_proudate) {
         var Grid = JSON.parse(sessionStorage.dts_proudate);
         if (Grid.length > 0) {
             //$('#'+TbGtable+' >table >tbody >tr').each(function () {
             $('#' + TbGtable + ' tr').each(function () {
-                ids = $(this).find("td").eq(0).html();
+                ids = $(this).find("td").eq(1).html();
                 if (ids == val) {
                     var array = findAndRemove(Grid, 'ART_ID', ids);
                     sessionStorage.dts_proudate = JSON.stringify(array);
                     //if (count==0){sessionStorage.removeItem('detalleGrid')} 
                     $(this).remove();
+                    recalculaTotalPedTemp();
                 }
             });
         }else{
             //en el caso de que no este en el storage y se elimine directamente
-            $(this).remove();
+            //$(this).remove();
+            removerFila(val,TbGtable);
         }
     }else{
         //en el caso de que no este en el storage y se elimine directamente
-        $(this).remove();
+        removerFila(val,TbGtable);
     }
 }
+function removerFila(val,TbGtable){
+    var ids = "";
+    $('#' + TbGtable + ' tr').each(function () {
+        ids = $(this).find("td").eq(1).html();
+        if (ids == val) {
+            $(this).remove();
+            recalculaTotalPedTemp();
+        }
+        
+    });
+}
+
+function recalculaTotalPedTemp() {
+    var precio = 0;
+    var ids=0;
+    var valor=0;
+    var total=0;
+    var vtot=0;
+    var cant=0;
+    var TbGtable = 'TbG_PEDIDO';
+    $('#' + TbGtable + ' tr').each(function () {
+            ids=$(this).find("td").eq(1).html();            
+            precio = $(this).find("td").eq(5).html();
+            cant=$('#txt_cat_'+ids).val()
+            valor=redondea(precio * cant, Ndecimal);
+            $(this).find("td").eq(6).html(valor);  
+            //vtot=parseFloat($(this).find("td").eq(7).html());
+            total+=parseFloat(valor);//(vtot>0)?vtot:0;            
+    });
+    $('#lbl_total').text(redondea(total, Ndecimal))
+}
+
+function verp(data){
+    alert('se puedo '+data);
+}
+
 
 
 

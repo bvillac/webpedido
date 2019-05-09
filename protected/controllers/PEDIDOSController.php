@@ -46,6 +46,9 @@ class PEDIDOSController extends Controller {
         $CabPed=$model->cabeceraPedidoTemp($ids);
         $DetPed=$model->detallePedidoTemp($ids);
         $cupo=$tienda->recuperarTiendasCupo($CabPed["TieID"]);
+        if (Yii::app()->request->isAjaxRequest) {
+             return;
+        }
         //$this->titleWindows = Yii::t('TIENDA', 'Store');
         $this->render('update', array(
             'CabPed' => $CabPed,

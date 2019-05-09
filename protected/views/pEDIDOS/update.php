@@ -12,10 +12,10 @@
 
             <?php
             $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-                'name' => 'txt_codigoBuscar',
-                'id' => 'txt_codigoBuscar',
+                'name' => 'txt_codigoBuscarItem',
+                'id' => 'txt_codigoBuscarItem',
                 'source' => "js: function(request, response){ 
-                  autocompletarBuscarItemsUpdate(request, response,'txt_codigoBuscar','COD-NOM');
+                  autocompletarBuscarItemsUpdate(request, response,'txt_codigoBuscarItem','COD-NOM');
                 }",
                 'options' => array(
                     'minLength' => '2',
@@ -46,7 +46,7 @@
         <?php
         echo CHtml::textField('txt_cantidad', '', array('size' => 10, 'maxlength' => 6,
             'class' => 'form-control txt_TextboxNumber2',
-            'placeholder' => 'Cantidad',
+            'placeholder' => 'Cant.',
                 //'onchange' => 'return calcularItem()',
                 //'onkeydown' => "nextControl(isEnter(event),'txt_RUC')",
         ))
@@ -64,3 +64,7 @@
 <div class="col-lg-12">
     <?php echo $this->renderPartial('_indexGridDetalle', array('DetPed' => $DetPed)); ?>
 </div>
+
+<script>
+    loadDataUpdate();
+</script>

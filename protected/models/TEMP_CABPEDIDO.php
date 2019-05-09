@@ -403,7 +403,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                 WHERE  A.TCPED_EST_LOG<>4 "; //A.TCPED_EST_LOG=1 AND
         $sqlTieId=($idsTie!='') ? "AND A.TIE_ID IN ($idsTie)" : "";
         if (!empty($control)) {//Verifica la Opcion op para los filtros
-            $sql .= ($control[0]['EST_LOG'] != "0") ? " A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : " ";//A.TCPED_EST_LOG<>''
+            $sql .= ($control[0]['EST_LOG'] != "0") ? " AND A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : " ";//A.TCPED_EST_LOG<>''
             //$sql .= ($control[0]['TIE_ID'] > 0) ? "AND A.TIE_ID = '" . $control[0]['TIE_ID'] . "' " : $sqlTieId;
             $sql .= ($control[0]['TIE_ID'] != 0) ? "AND A.TIE_ID = '" . $control[0]['TIE_ID'] . "' " : "";
             $sql .= ($control[0]['IDS_ARE'] != "0") ? "AND A.IDS_ARE='".$control[0]['IDS_ARE']."' " : "";
@@ -455,7 +455,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                 WHERE  A.TCPED_EST_LOG<>4 "; 
         
         $sql .= ($control[0]['CLI_ID'] != "0") ? " AND B.CLI_ID=$cliID ":"";
-        $sql .= ($control[0]['EST_LOG'] != "0") ? " A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : "";// A.TCPED_EST_LOG<>'' 
+        $sql .= ($control[0]['EST_LOG'] != "0") ? " AND A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : "";// A.TCPED_EST_LOG<>'' 
         $sql .= " AND DATE(A.TCPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "'  ";    
         $sql .= " GROUP BY A.IDS_ARE ";
         $sql .= " ORDER BY A.IDS_ARE DESC LIMIT $limitrowsql";

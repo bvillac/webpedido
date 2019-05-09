@@ -16,7 +16,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
     'template' => "{items}",
     'htmlOptions' => array('style' => 'cursor: pointer;'),
     'selectableRows' => 2,
-    'selectionChanged' => 'accionPedido',
+    //'selectionChanged' => 'accionPedido',
     'columns' => array(
 //        array(
 //            'class' => 'CCheckBoxColumn',
@@ -99,18 +99,18 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'name' => 'Imagen',
             'header' => Yii::t('TIENDA', 'img'),
             'value' => 'VSValidador::mostrarProductos($data["Codigo"])',
+            'htmlOptions' => array('style' => 'text-align:center', 'width' => '4px'),
             'type' => 'raw',
             //'htmlOptions'=>array('class'=>'icon-th'),
-        ),
+        ),        
         array(
-            'name' => 'Imagen2',
+            'name' => 'Eliminar',
             'header' => Yii::t('TIENDA', 'Eliminar'),
-            'value' => 'CHtml::link(CHtml::image(Yii::app()->request->baseUrl."/themes/seablue/images/acciones/delete.png"))',//,array("onmouseover"=>"eliminarItemsTiendas();)
-            'type'  => 'raw',
-            //'click' => 'function(){fun_ReeEnviarDocumento($data->IdDoc)}',
-            'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
+            'value' => 'VSValidador::mostrarIconos("TbG_PEDIDO",$data["ArtId"],"delete.png")',
+            'type' => 'raw',
+            'htmlOptions' => array('style' => 'text-align:center', 'width' => '4px'),
+            //'htmlOptions'=>array('class'=>'icon-th'),
         ),
-
     ),
 ));
 ?>
