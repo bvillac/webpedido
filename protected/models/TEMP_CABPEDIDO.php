@@ -154,14 +154,31 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         }
     }
     
-    public function actualizarLista($cabId,$idsAre,$total, $dts_Lista) {
+    public function actualizarLista($cabId,$tieId,$total, $dts_Lista) {
         $msg = new VSexception();
         $valida = new VSValidador();
+        $valida->putMessageLogFile($dts_Lista);  
         $con = Yii::app()->db;
         $trans = $con->beginTransaction();
         try {
-            $this->actualizaCabListPedTemp($con,$total, $cabId);
+            $this->actualizaCabListPedTemp($con,$total,$cabId);
+            $this->deleteCabListPedTemp($con, $cabId);
             for ($i = 0; $i < sizeof($dts_Lista); $i++) {
+                $artieId = $dts_Lista[$i]['ARTIE_ID'];
+                $artId = $dts_Lista[$i]['ART_ID'];
+                $cant = $dts_Lista[$i]['CANT'];
+                $precio = $dts_Lista[$i]['PRECIO'];
+                $subtotal = $dts_Lista[$i]['TOTAL'];
+                $observ = $dts_Lista[$i]['OBSERV'];  
+                $sql = "INSERT INTO " . $con->dbname . ".TEMP_DET_PEDIDO
+                        (TCPED_ID,ARTIE_ID,ART_ID,TDPED_CAN_PED,TDPED_P_VENTA,TDPED_T_VENTA,
+                        TDPED_EST_AUT,TDPED_OBSERVA,TDPED_EST_LOG,TDPED_FEC_CRE)VALUES
+                        ($cabId,$artieId,$artId,$cant,$precio,$subtotal,'1','$observ','1',CURRENT_TIMESTAMP())";
+                //echo $sql;
+                $command = $con->createCommand($sql);
+                $command->execute();
+            }
+            /*for ($i = 0; $i < sizeof($dts_Lista); $i++) {
                 $detId = $dts_Lista[$i]['DetId'];
                 $cant = $dts_Lista[$i]['CANT'];
                 $subtotal = $dts_Lista[$i]['TOTAL'];
@@ -172,7 +189,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                 //echo $sql;
                 $command = $con->createCommand($sql);
                 $command->execute();
-            }
+            }*/
             $trans->commit();
             $con->active = false;
             return $msg->messagePedidos('OK',$valida->ajusteNumDoc($cabId, 9),'PE',null, 30, null, null);
@@ -182,6 +199,14 @@ class TEMP_CABPEDIDO extends CActiveRecord {
             //throw $e;
             return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
         }
+    }
+    
+    private function deleteCabListPedTemp($con,$cabId) {
+        //$sql = "UPDATE " . $con->dbname . ".TEMP_CAB_PEDIDO SET TCPED_TOTAL=$total "
+        //        . "WHERE TCPED_ID=$cabId";
+        $sql = "DELETE FROM " . $con->dbname . ".TEMP_DET_PEDIDO WHERE TCPED_ID=$cabId ";
+        $command = $con->createCommand($sql);
+        $command->execute();
     }
     
     private function InsertarCabListPedTemp($con,$total,$tieId,$idsAre) {

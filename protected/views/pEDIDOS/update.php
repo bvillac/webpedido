@@ -5,8 +5,8 @@
         <?php echo $this->renderPartial('_frm_CabPedTemp', array('CabPed' => $CabPed, 'cupo' => $cupo, 'mostrar' => $mostrar)); ?>
     </div>
     <div class="col-lg-4">
-        <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Save'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'guardarListaPedido("Update")')); ?>
-        <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Cancel Item'), array('id' => 'btn_anular', 'name' => 'btn_anular', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_AnularItemPedido()')); ?>
+        <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Save'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'guardarListaPedidoUpdate("Update")')); ?>
+        <?php //echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Cancel Item'), array('id' => 'btn_anular', 'name' => 'btn_anular', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_AnularItemPedido()')); ?>
     </div>
     <div class="col-lg-7">
 
@@ -46,7 +46,7 @@
         <?php
         echo CHtml::textField('txt_cantidad', '', array('size' => 10, 'maxlength' => 6,
             'class' => 'form-control txt_TextboxNumber2',
-            'placeholder' => 0,
+            'placeholder' => 'Cantidad',
                 //'onchange' => 'return calcularItem()',
                 //'onkeydown' => "nextControl(isEnter(event),'txt_RUC')",
         ))

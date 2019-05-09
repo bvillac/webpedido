@@ -118,6 +118,7 @@ class PEDIDOSController extends Controller {
     }
     
     public function actionSave() {
+        //$valida = new VSValidador();
         $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);        
         if (Yii::app()->request->isPostRequest) {
             $model = new TEMP_CABPEDIDO;
@@ -134,8 +135,10 @@ class PEDIDOSController extends Controller {
                 if( $cli_Id=="4"){//Solo para Clientes Marcimex
                     //$arroout=$this->pedidoAprobado($arroout);
                 }
-            } else {
-                $arroout = $model->actualizarLista($tieId,$idsAre,$total,$dts_Lista);
+            } else {                  
+                //Opcion para actualizar
+                $PedId = isset($_POST['PED_ID']) ? $_POST['PED_ID'] : 0;
+                $arroout = $model->actualizarLista($PedId,$tieId,$total,$dts_Lista);
             }
             
             header('Content-type: application/json');
@@ -390,8 +393,9 @@ class PEDIDOSController extends Controller {
         
     }
     
-    public function actionBuscarItemsTienda() {
-        if (Yii::app()->request->isAjaxRequest) {
+    public function actionBuscarItemsUpdate() {
+        //if (Yii::app()->request->isAjaxRequest) {
+        if (Yii::app()->request->isPostRequest) {
             $valor = isset($_POST['valor']) ? $_POST['valor'] : "";
             $op = isset($_POST['op']) ? $_POST['op'] : "";//tie_id
             $tieId = isset($_POST['tie_id']) ? $_POST['tie_id'] : "";//
@@ -400,6 +404,7 @@ class PEDIDOSController extends Controller {
             $arrayData = $data->retornarBusArticuloTienda($valor,$tieId,$op);
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arrayData);
+            return;
         }
     }
     

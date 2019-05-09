@@ -27,6 +27,14 @@ function retornarIndexArray(array, property, value) {
     }
     return index;
 }
+function findAndRemove(array, property, value) {
+    for (var i = 0; i < array.length; i++) {
+        if (array[i][property] == value) {
+            array.splice(i, 1);
+        }
+    }
+    return array;
+}
 
 $(document).ready(function () {
     $("#txt_codigoBuscar").keyup(function () {
@@ -396,20 +404,50 @@ function listaPedidoDetTemp() {
     $('#' + TbGtable + ' tr').each(function () {
         var idstable = $(this).find("td").eq(1).html();
         if (idstable != '') {
-            var subtotal = parseFloat($(this).find("td").eq(7).html());
+            //var subtotal = parseFloat($(this).find("td").eq(7).html());           
+            var subtotal = parseFloat($(this).find("td").eq(6).html());//LA COLUMNA DE SUB-TOTAL
+             alert(subtotal);
             if (subtotal > 0) {
                 var rowGrid = new Object();
                 i += 1;
-                rowGrid.DetId = idstable;
-                rowGrid.CANT = $('#txt_cat_' + idstable).val();
-                rowGrid.TOTAL = redondea(subtotal, Ndecimal);
+                rowGrid.ARTIE_ID = $(this).find("td").eq(0).html();//Grid[i]['ARTIE_ID'];
+                rowGrid.ART_ID = $(this).find("td").eq(1).html();//Grid[i]['ART_ID'];
+                rowGrid.CANT = $('#txt_cat_' + idstable).val();//Grid[i]['CAN_DES'];
+                rowGrid.PRECIO = $(this).find("td").eq(5).html();//Grid[i]['ART_P_VENTA'];
+                rowGrid.TOTAL = redondea(rowGrid.CANT*rowGrid.PRECIO, Ndecimal);//redondea(Grid[i]['TOTAL'], Ndecimal);
                 rowGrid.OBSERV = $('#txt_obs_' + idstable).val();
+                //rowGrid.DetId = 0;//idstable;
+                //rowGrid.CANT = $('#txt_cat_' + idstable).val();
+                //rowGrid.TOTAL = redondea(subtotal, Ndecimal);
+                //rowGrid.OBSERV = $('#txt_obs_' + idstable).val();
                 arrayList[i] = rowGrid;
             }
 
         }
     });
     return JSON.stringify(arrayList);
+    
+    
+     if (sessionStorage.dts_precioTienda) {
+        var Grid = JSON.parse(sessionStorage.dts_precioTienda);
+        if (Grid.length > 0) {
+            for (var i = 0; i < Grid.length; i++) {                
+                if(parseFloat(Grid[i]['CAN_DES'])>0){//$('#txt_cat_'.Grid[c]['ARTIE_ID']).val()
+                    var ids=Grid[i]['ARTIE_ID'];
+                    var rowGrid = new Object();
+                    rowGrid.ARTIE_ID = Grid[i]['ARTIE_ID'];
+                    rowGrid.ART_ID = Grid[i]['ART_ID'];
+                    rowGrid.CANT = Grid[i]['CAN_DES'];
+                    rowGrid.PRECIO = Grid[i]['ART_P_VENTA'];
+                    rowGrid.TOTAL = redondea(Grid[i]['TOTAL'], Ndecimal);
+                    rowGrid.OBSERV = $('#txt_obs_' + ids).val();
+                    arrayList[c] = rowGrid;
+                    c += 1;
+                }
+            }    
+        }
+    }
+    
 }
 
 /**********************  PEDIDOS TEMPORALES  *********************/
@@ -862,7 +900,7 @@ function fun_enviarComentario(){
 
 /****************** ACTUALIZAR ITEMS *******************/
 function autocompletarBuscarItemsUpdate(request, response, control, op) {
-    var link = $('#txth_controlador').val() + "/BuscarItemsTienda";
+    var link = $('#txth_controlador').val() + "/BuscarItemsUpdate";
     $.ajax({
         type: 'POST',
         dataType: 'json',
@@ -879,6 +917,7 @@ function autocompletarBuscarItemsUpdate(request, response, control, op) {
                 row = new Object();
                 row.COD_ART = data[i]['COD_ART'];
                 row.ART_ID = data[i]['ART_ID'];
+                row.ARTIE_ID = data[i]['ARTIE_ID'];
                 row.ART_DES_COM = data[i]['ART_DES_COM'];
                 row.PCLI_P_VENTA = data[i]['PCLI_P_VENTA'];
 
@@ -893,6 +932,47 @@ function autocompletarBuscarItemsUpdate(request, response, control, op) {
             response(arrayList);
         }
     })
+}
+
+function guardarListaPedidoUpdate(accion) {
+    var total = parseFloat($('#lbl_total').text());
+    var cupo = parseFloat($('#lbl_cupo').text());
+    var saldo = cupo - total;//El cupo Disponible - el Total a pedir
+    if (saldo > 0) {       
+        var ID = $('#txth_PedID').val();//(accion == "Update") ? $('#txth_PedID').val() : 0;       
+        var tieId = $('#txth_TieID').val();// (accion == "Create") ?  $('#txth_TieID').val() : 0;  
+        var link = $('#txth_controlador').val() + "/Save";
+        //"DTS_LISTA": (accion == "Create") ? listaPedido() : listaPedidoDetTemp(),
+        $.ajax({
+            type: 'POST',
+            url: link,
+            data: {
+                "PED_ID": ID,
+                "DTS_LISTA": listaPedidoDetTemp(),
+                "TIE_ID": tieId,
+                "TOTAL": total,
+                "ACCION": accion
+            },
+            success: function (data) {
+                if (data.status == "OK") {
+                    $("#messageInfo").html(data.message + data.documento + buttonAlert);
+                    $('#lbl_pedido').text(data.documento);
+                    alerMessage();
+                    //link=$('#txth_controlador').val()+"/consultar";
+                    //window.location =  link;
+                } else {
+                    $("#messageInfo").html(data.message + buttonAlert);
+                    $('#lbl_pedido').text('');
+                    alerMessage();
+                }
+            },
+            dataType: "json"
+        });
+    } else {
+        alert(mgSaldoNoDis);
+    }
+
+
 }
 
 /*function buscarDataItemUpdate(control, op) {
@@ -943,7 +1023,7 @@ function agregarItemsTiendasUpdate(opAccion) {
                         //alert('si entro');
                         arr_Grid[size] = objProDetalle(indiceBusc, JSON.parse(sessionStorage.src_buscItemUpdate),true);
                         sessionStorage.dts_proudate = JSON.stringify(arr_Grid);
-                        addVariosItemProDet(tGrid, arr_Grid, indiceBusc);
+                        addVariosItemProDet(tGrid, arr_Grid, size);
                         
                         limpiarTexbox();
                     } else {
@@ -986,12 +1066,14 @@ function objProDetalle(c, Grid,condicion) {
     var rowGrid = new Object();
     rowGrid.TDPED_ID = Grid[c]['TDPED_ID'];
     rowGrid.ART_ID = Grid[c]['ART_ID'];
+    rowGrid.ARTIE_ID = Grid[c]['ARTIE_ID'];
     rowGrid.COD_ART = Grid[c]['COD_ART'];    
     rowGrid.ART_DES_COM = Grid[c]['ART_DES_COM'];    
     rowGrid.TDPED_P_VENTA =Grid[c]['PCLI_P_VENTA'];//(condicion)?parseFloat($('#txt_TDPED_P_VENTA').val()).toFixed(Nprodecimal):Grid[c]['TDPED_P_VENTA'];
     rowGrid.TDPED_CAN_PED = $('#txt_cantidad').val();//(condicion)?parseFloat($('#txt_cat_'+Grid[c]['TDPED_ID']).val()).toFixed(Nprodecimal):0;    
     rowGrid.ART_I_M_IVA = Grid[c]['ART_I_M_IVA'];
-    rowGrid.TOTAL = (condicion)?rowGrid.TDPED_CAN_PED*rowGrid.TDPED_P_VENTA:0;
+    rowGrid.TOTAL = (condicion)?redondea(rowGrid.TDPED_CAN_PED*rowGrid.TDPED_P_VENTA,Ndecimal):0;
+
     rowGrid.TDPED_OBSERVA =Grid[c]['TDPED_OBSERVA'];
     rowGrid.EST_MOD ="";
     rowGrid.TDPED_EST_AUT = '1';
@@ -1014,17 +1096,17 @@ function addVariosItemProDet(TbGtable, lista, i) {
 }
 
 function retornaFilaItemProDet(c, Grid, TbGtable, op) {
-    //alert("llega datos");
+
     var RutaImagenAccion = $('#txth_rutaImg').val();    
     var strFila = "";
     var imgCol = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/delete.png" >';
     //var imgCol2 = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/edit16.png" >';
-    strFila += '<td class="checkbox-column">';
+    //strFila += '<td class="checkbox-column">';
         //strFila += '<input class="select-on-check" value="' + Grid[c]['TDPED_ID'] + '" id="TbG_PEDIDO_c0_'+c+'" type="checkbox" name="TbG_PEDIDO_c'+c+'[]">';
-        strFila += '<input class="select-on-check" value="0" id="TbG_PEDIDO_c0_'+c+'" type="checkbox" name="TbG_PEDIDO_c'+c+'[]">';
-    strFila += '</td>';
+        //strFila += '<input class="select-on-check" value="0" id="TbG_PEDIDO_c0_'+c+'" type="checkbox" name="TbG_PEDIDO_c'+c+'[]">';
+    //strFila += '</td>';
     //strFila += '<td style="display:none; border:none;">' + Grid[c]['TDPED_ID'] + '</td>'; 
-    strFila += '<td style="display:none; border:none;">0</td>'; 
+    strFila += '<td style="display:none; border:none;">' + Grid[c]['ARTIE_ID'] + '</td>'; 
     strFila += '<td style="display:none; border:none;">' + Grid[c]['ART_ID'] + '</td>';    
     strFila += '<td width="5px" style="text-align: left">' + Grid[c]['COD_ART'] + '</td>';
     strFila += '<td style="text-align:left">' + Grid[c]['ART_DES_COM'] + '</td>';
@@ -1036,8 +1118,8 @@ function retornaFilaItemProDet(c, Grid, TbGtable, op) {
         strFila += 'onblur="pedidoEnterGridTemp(isEnter(event),this,17397)" > '; 
     strFila += '</td>';
     strFila += '<td style="text-align:right" width="8px">' + Grid[c]['TDPED_P_VENTA'] + '</td>'; 
-    strFila += '<td style="text-align:right" width="30px">' + parseFloat(Grid[c]['TOTAL']).toFixed(Ndecimal) + '</td>';
-    
+    strFila += '<td style="text-align:right" width="30px">' + redondea(Grid[c]['TOTAL'],Ndecimal)+ '</td>';
+    //    redondea(Grid[i]['TOTAL'], Ndecimal);
     strFila += '<td style="text-align:center" width="200px"> '; 
         strFila += '<input size="30" maxlength="300" placeholder="..." class="validation_Vs" type="text" value="" name="txt_obs_' + Grid[c]['ART_ID'] + '" id="txt_obs_' + Grid[c]['ART_ID'] + '"> '; 
     strFila += '</td>'; 
@@ -1046,6 +1128,9 @@ function retornaFilaItemProDet(c, Grid, TbGtable, op) {
         strFila += '<a data-lightbox="' + Grid[c]['COD_ART'] + '_G-01" href="' + RutaImagenAccion + 'productos/' + Grid[c]['COD_ART'] + '_G-01.jpg">';
             strFila += '<img src="' + RutaImagenAccion + 'productos/' + Grid[c]['COD_ART'] + '_P-01.jpg" width="40px" height="40px">';
         strFila += '</a>';
+    strFila += '</td>';
+    strFila += '<td width="36px" style="text-align:center">';    
+    strFila += '<a class="btn-img" onclick="eliminarItemsTiendas(' + Grid[c]['ART_ID'] + ',\'' + TbGtable + '\')" >' + imgCol + '</a>';
     strFila += '</td>';
  
     if (op) {
@@ -1057,6 +1142,31 @@ function retornaFilaItemProDet(c, Grid, TbGtable, op) {
 function limpiarTexbox() {
     $('#txt_codigoBuscar').val("");
     $('#txt_cantidad').val("0");
+}
+
+function eliminarItemsListas(val, TbGtable) {
+    var ids = "";
+    if (sessionStorage.dts_proudate) {
+        var Grid = JSON.parse(sessionStorage.dts_proudate);
+        if (Grid.length > 0) {
+            //$('#'+TbGtable+' >table >tbody >tr').each(function () {
+            $('#' + TbGtable + ' tr').each(function () {
+                ids = $(this).find("td").eq(0).html();
+                if (ids == val) {
+                    var array = findAndRemove(Grid, 'ART_ID', ids);
+                    sessionStorage.dts_proudate = JSON.stringify(array);
+                    //if (count==0){sessionStorage.removeItem('detalleGrid')} 
+                    $(this).remove();
+                }
+            });
+        }else{
+            //en el caso de que no este en el storage y se elimine directamente
+            $(this).remove();
+        }
+    }else{
+        //en el caso de que no este en el storage y se elimine directamente
+        $(this).remove();
+    }
 }
 
 

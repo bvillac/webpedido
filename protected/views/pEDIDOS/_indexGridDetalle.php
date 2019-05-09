@@ -18,9 +18,9 @@ $this->widget('zii.widgets.grid.CGridView', array(
     'selectableRows' => 2,
     'selectionChanged' => 'accionPedido',
     'columns' => array(
-        array(
-            'class' => 'CCheckBoxColumn',
-        ),
+//        array(
+//            'class' => 'CCheckBoxColumn',
+//        ),
         array(
             'name' => 'DetId',
             'header' => Yii::t('TIENDA', 'Ids'),
@@ -54,11 +54,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'header' => Yii::t('TIENDA', 'Quantity'),
             //'value' => '$data["Cantidad"]',
             //'htmlOptions' => array('style' => 'text-align:right', 'width' => '8px'),
-            'value'=>'($data["EstAut"]=="1")?CHtml::textField("txt_cat_".$data["DetId"],$data["Cantidad"], array('
+            'value'=>'($data["EstAut"]=="1")?CHtml::textField("txt_cat_".$data["ArtId"],$data["Cantidad"], array('
                     . '"size" => 8, "maxlength" => 100,"placeholder" => Yii::app()->format->formatNumber(0),'
                     . '"class" => " txt_TextboxNumber2 validation_Vs",'
-                    . '"onkeydown" => "pedidoEnterGridTemp(isEnter(event),this,$data[DetId])",'
-                    . '"onblur" => "pedidoEnterGridTemp(isEnter(event),this,$data[DetId])"'
+                    . '"onkeydown" => "pedidoEnterGridTemp(isEnter(event),this,$data[ArtId])",'
+                    . '"onblur" => "pedidoEnterGridTemp(isEnter(event),this,$data[ArtId])"'
                     . ')):"0.00"',
             'type'=>'raw',
             'htmlOptions' => array('style' => 'text-align:right', 'width' => '8px'),
@@ -80,7 +80,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
         array(
             'name' => 'Observacion',
             'header' => Yii::t('TIENDA', 'Observation'),
-            'value'=>'CHtml::textField("txt_obs_".$data["DetId"],$data["Observacion"], array('
+            'value'=>'CHtml::textField("txt_obs_".$data["ArtId"],$data["Observacion"], array('
                     . '"size" => 30, "maxlength" => 300,"placeholder" => "...",'
                     . '"class" => "validation_Vs",'
                     . '))',
@@ -101,6 +101,14 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'value' => 'VSValidador::mostrarProductos($data["Codigo"])',
             'type' => 'raw',
             //'htmlOptions'=>array('class'=>'icon-th'),
+        ),
+        array(
+            'name' => 'Imagen2',
+            'header' => Yii::t('TIENDA', 'Eliminar'),
+            'value' => 'CHtml::link(CHtml::image(Yii::app()->request->baseUrl."/themes/seablue/images/acciones/delete.png"))',//,array("onmouseover"=>"eliminarItemsTiendas();)
+            'type'  => 'raw',
+            //'click' => 'function(){fun_ReeEnviarDocumento($data->IdDoc)}',
+            'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
         ),
 
     ),
