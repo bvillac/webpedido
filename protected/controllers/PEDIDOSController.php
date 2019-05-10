@@ -194,15 +194,7 @@ class PEDIDOSController extends Controller {
         $tienda = new TIENDA;
         
         $arrayData = array();
-        if (Yii::app()->request->isAjaxRequest) {
-            /*$ids = isset($_POST['ids']) ? $_POST['ids'] : "";
-            $arrayData = $model->mostrarPedidos(null);
-            $this->renderPartial('_indexGridLiquidar', array(
-                'model' => $arrayData,
-            ),false, true);
-            return;*/
-            //$arrayData = array();
-            //$model = new CABPEDIDO;
+        if (Yii::app()->request->isAjaxRequest) {            
             $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
             $arrayData = $model->mostrarPedidos($contBuscar);
             $this->renderPartial('_indexGridLiquidar', array(

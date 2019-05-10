@@ -19,7 +19,7 @@
         </div>
         <div class="col-lg-2">
             <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Nuevo Pedido'), array('id' => 'btn_new', 'name' => 'btn_new', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'nuevaListaPedTemp()')); ?>
-            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Save'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'guardarListaPedido("Create")')); ?>
+            <?php //echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Save'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'guardarListaPedido("Create")')); ?>
         </div>
         <div class="col-lg-2">
             <label><?php echo Yii::t('TIENDA', 'Total') ?>:$</label>
@@ -52,6 +52,9 @@
             );
             ?> 
         </div>
+    <div class="col-lg-2">            
+            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Save'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'guardarListaPedido("Create")')); ?>
+    </div>
     </div> 
     
     
