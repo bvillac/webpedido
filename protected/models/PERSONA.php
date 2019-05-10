@@ -140,8 +140,9 @@ class PERSONA extends CActiveRecord
                         INNER JOIN  (" . $con->dbname . ".USUARIO B
                                     INNER JOIN " . $con->dbname . ".USUARIO_TIENDA C ON B.USU_ID=C.USU_ID )
                                 ON A.PER_ID=B.PER_ID
-        WHERE A.PER_EST_LOG=1 AND C.CLI_ID=$cli_Id ORDER BY A.PER_ID ASC ";
+        WHERE A.PER_EST_LOG=1 AND C.CLI_ID=$cli_Id GROUP BY A.PER_ID  ORDER BY A.PER_ID ASC ";
         
+        //echo $sql;
 
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;

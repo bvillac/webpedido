@@ -157,12 +157,12 @@ class TEMP_CABPEDIDO extends CActiveRecord {
     public function actualizarLista($cabId,$tieId,$total, $dts_Lista) {
         $msg = new VSexception();
         $valida = new VSValidador();
-        $valida->putMessageLogFile($dts_Lista);  
+        //$valida->putMessageLogFile($cabId);  
         $con = Yii::app()->db;
         $trans = $con->beginTransaction();
         try {
             $this->actualizaCabListPedTemp($con,$total,$cabId);
-            $this->deleteCabListPedTemp($con, $cabId);
+            $this->deleteDetListPedTemp($con, $cabId);
             for ($i = 0; $i < sizeof($dts_Lista); $i++) {
                 $artieId = $dts_Lista[$i]['ARTIE_ID'];
                 $artId = $dts_Lista[$i]['ART_ID'];
@@ -196,14 +196,12 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         } catch (Exception $e) {
             $trans->rollback();
             $con->active = false;
-            //throw $e;
+            throw $e;
             return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
         }
     }
     
-    private function deleteCabListPedTemp($con,$cabId) {
-        //$sql = "UPDATE " . $con->dbname . ".TEMP_CAB_PEDIDO SET TCPED_TOTAL=$total "
-        //        . "WHERE TCPED_ID=$cabId";
+    private function deleteDetListPedTemp($con,$cabId) {
         $sql = "DELETE FROM " . $con->dbname . ".TEMP_DET_PEDIDO WHERE TCPED_ID=$cabId ";
         $command = $con->createCommand($sql);
         $command->execute();

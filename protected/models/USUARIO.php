@@ -121,15 +121,6 @@ class USUARIO extends CActiveRecord {
     public function recuperarTiendasUsuario($idstie) {
         $ids = Yii::app()->getSession()->get('user_id', FALSE);
         $con = yii::app()->db;
-//        $sql = "SELECT B.TIE_ID,C.TIE_NOMBRE "
-//                . " FROM " . $con->dbname . ".USUARIO A
-//                        INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA B
-//                                        INNER JOIN " . $con->dbname . ".TIENDA C
-//                                                ON B.TIE_ID=C.TIE_ID)
-//                                ON A.USU_ID=B.USU_ID
-//                WHERE A.USU_EST_LOG=1 ";
-//        $sql .= ($ids != "") ? "AND A.USU_ID=$ids " : " ";
-
         $sql = "SELECT B.TIE_ID,B.TIE_NOMBRE 
                         FROM VSSEAPEDIDO.CLIENTE A
                                 INNER JOIN (VSSEAPEDIDO.TIENDA B

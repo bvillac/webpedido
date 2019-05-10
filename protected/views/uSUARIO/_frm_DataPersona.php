@@ -48,7 +48,7 @@
         </div>
         <div class="rowTd">
             <?php
-            echo CHtml::textField('txt_direccion', '', array('size' => 20, 'maxlength' => 100,
+            echo CHtml::textField('txt_direccion', '', array('size' => 20, 'maxlength' => 150,
                 'class' => 'form-control',
             ))
             ?>
@@ -60,7 +60,7 @@
         </div>
         <div class="rowTd">
             <?php
-            echo CHtml::textField('txt_telefono', '', array('size' => 20, 'maxlength' => 20,
+            echo CHtml::textField('txt_telefono', '', array('size' => 20, 'maxlength' => 50,
                 'class' => 'form-control',
             ))
             ?>
@@ -114,7 +114,7 @@
         </div>
         <div class="rowTd">
             <?php
-            echo CHtml::textField('txt_correo', '', array('size' => 60, 'maxlength' => 40,
+            echo CHtml::textField('txt_correo', '', array('size' => 60, 'maxlength' => 100,
                 'class' => 'form-control',
             ))
             ?>

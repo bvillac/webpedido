@@ -29,6 +29,7 @@ class Controller extends CController {
     public $breadcrumbs = array();
 
     public function isSession() {
+        //VSValidador::putMessageLogFile("session");
         if (!Yii::app()->getSession()->get('isuser', FALSE)) {
             Yii::app()->getSession()->destroy();
             $this->redirect(Yii::app()->homeUrl . "site/login");

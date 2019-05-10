@@ -179,12 +179,12 @@ function calculaTotalPedTemp(cant,Ids) {
     $('#' + TbGtable + ' tr').each(function () {
         var idstable = $(this).find("td").eq(1).html();
         if (idstable==Ids) {
-            precio = $(this).find("td").eq(6).html();
+            precio = $(this).find("td").eq(5).html();
             valor=redondea(precio * cant, Ndecimal);
-            $(this).find("td").eq(7).html(valor);
+            $(this).find("td").eq(6).html(valor);
         }
         if (idstable!='') {
-            vtot=parseFloat($(this).find("td").eq(7).html());
+            vtot=parseFloat($(this).find("td").eq(6).html());
             total+=(vtot>0)?vtot:0;
         }
     });
@@ -925,7 +925,7 @@ function autocompletarBuscarItemsUpdate(request, response, control, op) {
 
                 // Campos Importandes relacionados con el  CJuiAutoComplete
                 row.id = data[i]['COD_ART'];
-                row.label = data[i]['ART_DES_COM'] + ' - ' + data[i]['COD_ART'];//+' - '+data[i]['SEGURO_SOCIAL'];//Lo sugerido
+                row.label = data[i]['ART_DES_COM'] + ' - ' + data[i]['COD_ART'] + ' - Precio:$' + data[i]['PCLI_P_VENTA'];
                 //row.value=data[i]['IdentificacionComprador'];//lo que se almacena en en la caja de texto
                 row.value = data[i]['ART_DES_COM'];//lo que se almacena en en la caja de texto
                 arrayList[i] = row;
@@ -977,40 +977,20 @@ function guardarListaPedidoUpdate(accion) {
 
 }
 
-/*function buscarDataItemUpdate(control, op) {
-    control = (control == '') ? 'txt_codigoBuscar' : control;
-    var link = $('#txth_controlador').val() + "/DataTiendaUpdate";
-    $.fn.yiiGridView.update('TbG_PEDIDO', {
-        type: 'POST',
-        url: link,
-        data: {
-            "op": op, //solo tiendas
-            "CONT_BUSCAR": controlBuscarItemsUpdate(control, op)
-        },
-        complete:function() {
-             //$.fn.yiiGridView.update('item-grid');
-             //actualizarDataTienda();
-             //calcularTotalGrid();
-             //agregar item al final
-           },
-    });
-}
 
-function controlBuscarItemsUpdate(control,op){
-    var buscarArray = new Array();
-    var buscarIndex=new Object();
-    buscarIndex.OP=op;
-    buscarIndex.DES_COM=($('#'+control).val()!="")?$('#'+control).val():"";
-    buscarIndex.TIE_ID=$('#txth_TieID').val(),
-    buscarArray[0] = buscarIndex;
-    return JSON.stringify(buscarArray);
-}*/
 
 function agregarItemsTiendasUpdate(opAccion) {
     var tGrid = 'TbG_PEDIDO';
     var nombre = $('#txt_codigoBuscarItem').val();
     if ($('#txt_codigoBuscarItem').val() != "") {
         var valor = $('#txt_codigoBuscarItem').val();
+        if(!existeItmeUpdate(valor,tGrid)){
+            //alert('ingreso');
+            //Compara con el Detalle de la lista
+            $("#messageInfo").html('Item ya existe en su lista ' + buttonAlert);
+            alerMessage();
+            return;
+        }
         if (opAccion != "edit") {
             //*********   AGREGAR ITEMS *********
             var arr_Grid = new Array();
@@ -1058,6 +1038,18 @@ function agregarItemsTiendasUpdate(opAccion) {
         $("#messageInfo").html('No existe Informacion ' + buttonAlert);
         alerMessage();
     }
+}
+
+function existeItmeUpdate(val,TbGtable){
+    var ids = "";
+    $('#' + TbGtable + ' tr').each(function () {
+        ids = $(this).find("td").eq(3).html();//Compara con el Detalle de la lista
+        if (val == ids) {
+            //alert('si existe')
+            return true;//si existe
+        }        
+    });
+    return false;
 }
 
 
@@ -1204,41 +1196,3 @@ function recalculaTotalPedTemp() {
     });
     $('#lbl_total').text(redondea(total, Ndecimal))
 }
-
-function verp(data){
-    alert('se puedo '+data);
-}
-
-
-
-
-/*<tr class="odd">
-    <td class="checkbox-column">
-        <input class="select-on-check" value="17397" id="TbG_PEDIDO_c0_0" type="checkbox" name="TbG_PEDIDO_c0[]">
-    </td>
-    <td style="display:none; border:none;">17397</td>
-    <td style="display:none; border:none;">3796</td>
-    <td>P0592</td>
-    <td>RESMA PAPEL BOND 75GRS T/A-4 BRIO</td>
-    <td style="text-align:right" width="8px">
-        <input size="8" maxlength="100" placeholder="0.00" class=" txt_TextboxNumber2 validation_Vs" 
-               onkeydown="pedidoEnterGridTemp(isEnter(event),this,17397)" onblur="pedidoEnterGridTemp(isEnter(event),this,17397)" type="text" value="5.00" name="txt_cat_17397" id="txt_cat_17397">
-    </td>
-    <td style="text-align:right" width="8px">3.3600</td>
-    <td style="text-align:right" width="30px">16.80</td>
-    <td style="text-align:center" width="200px">
-        <input size="30" maxlength="300" placeholder="..." class="validation_Vs" type="text" value="" name="txt_obs_17397" id="txt_obs_17397">
-    </td>
-    <td style="text-align:center" width="8px">Activo</td>
-    <td>
-        <a data-lightbox="P0592_G-01" href="/webpedido/themes/seablue/images/productos/P0592_G-01.jpg">
-            <img src="/webpedido/themes/seablue/images/productos/P0592_P-01.jpg" width="40" height="40">
-        </a>
-    </td>
-</tr>*/
-
-
-
-
-
-

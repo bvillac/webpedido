@@ -216,7 +216,7 @@ class ARTICULO extends CActiveRecord {
                 break;
             default:
         }
-        $sql .= " GROUP BY C.COD_ART LIMIT " . Yii::app()->params['limitRow'];
+        $sql .= " LIMIT " . Yii::app()->params['limitRow'];// GROUP BY C.COD_ART
         //revisar porque se repiten
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
