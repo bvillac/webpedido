@@ -382,6 +382,23 @@ class TIENDA extends CActiveRecord {
         return $rawData;
     }
     
+    public function recuperarTiendasClienteAdmin($cli_Id) {
+        //$cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        $con = yii::app()->db;        
+        
+        $sql = "SELECT GROUP_CONCAT(CONCAT('\'',TIE_ID,'\'') SEPARATOR ',') TIE_ID
+          FROM " . $con->dbname . ".TIENDA
+          WHERE TIE_EST_LOG=1 AND CLI_ID='$cli_Id';";
+
+        //echo $sql;
+        //$rawData =$con->createCommand($sql)->query();
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    }
+    
+    
+    
     public function mostrarItemsCheckTiendas($ids,$desCom) {
         $msg= new VSexception();
         $rawData = array();

@@ -377,13 +377,18 @@ class TEMP_CABPEDIDO extends CActiveRecord {
     
     
     public function listarPedidosTiendasResumen($control) {
-        //VSValidador::putMessageLogFile("llego");
+        //VSValidador::putMessageLogFile("llego1");
         //VSValidador::putMessageLogFile($control);
+        $tiendaDAO = new TIENDA;
+        $cliID=Yii::app()->getSession()->get('CliID', FALSE);
+        $tiendas=$tiendaDAO->recuperarTiendasClienteAdmin($cliID);
+        
         $rawData = array();
         $con = Yii::app()->db;
         $idsTie=$this->recuperarIdsTiendasRol($con);
         $limitrowsql = Yii::app()->params['limitRowSQL'];
         //$rawData[]=$this->rowProdList();
+        
         $sql = "SELECT A.TCPED_ID PedID,A.TIE_ID TieID,A.TCPED_TOTAL Total,DATE(A.TCPED_FEC_CRE) FechaPedido, 
                         B.TIE_NOMBRE NombreTienda,F.NOM_ARE Area,B.TIE_DIRECCION DireccionTienda,D.USU_NOMBRE NombrePersona,
                         CONCAT(REPEAT( '0', 9 - LENGTH(A.TCPED_ID) ),A.TCPED_ID) Numero,A.TCPED_EST_LOG Estado
@@ -399,6 +404,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                                                         ON C.USU_ID=D.USU_ID)
                                         ON C.UTIE_ID=A.UTIE_ID
                 WHERE  A.TCPED_EST_LOG<>4 "; //A.TCPED_EST_LOG=1 AND
+        $sql .= " AND B.CLI_ID=$cliID ";
         $sqlTieId=($idsTie!='') ? "AND A.TIE_ID IN ($idsTie)" : "";
         if (!empty($control)) {//Verifica la Opcion op para los filtros
             $sql .= ($control[0]['EST_LOG'] != "0") ? " AND A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : " ";//A.TCPED_EST_LOG<>''
@@ -430,14 +436,16 @@ class TEMP_CABPEDIDO extends CActiveRecord {
     }
     
     
+    
     public function listarPedidosTiendasGrupoResumen($control) {
-        //VSValidador::putMessageLogFile("llego");
+        //VSValidador::putMessageLogFile("llego2");
         //VSValidador::putMessageLogFile($control);
         $rawData = array();
         $con = Yii::app()->db;
         $idsTie=$this->recuperarIdsTiendasRol($con);
         $limitrowsql = Yii::app()->params['limitRowSQL'];
-        $cliID = $control[0]['CLI_ID'];
+        //$cliID = $control[0]['CLI_ID'];
+        $cliID=Yii::app()->getSession()->get('CliID', FALSE);
         $sql = "SELECT A.IDS_ARE IDS,F.NOM_ARE AREA,COUNT(A.TCPED_ID)TOT_DOC,SUM(A.TCPED_TOTAL) TOTAL                        
                     FROM " . $con->dbname . ".TEMP_CAB_PEDIDO A
                             INNER JOIN " . $con->dbname . ".TIENDA B
@@ -452,7 +460,9 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                                     ON C.UTIE_ID=A.UTIE_ID
                 WHERE  A.TCPED_EST_LOG<>4 "; 
         
-        $sql .= ($control[0]['CLI_ID'] != "0") ? " AND B.CLI_ID=$cliID ":"";
+        //$sql .= ($control[0]['CLI_ID'] != "0") ? " AND B.CLI_ID=$cliID ":"";
+        $sql .= " AND B.CLI_ID=$cliID ";
+        
         $sql .= ($control[0]['EST_LOG'] != "0") ? " AND A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : "";// A.TCPED_EST_LOG<>'' 
         $sql .= " AND DATE(A.TCPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "'  ";    
         $sql .= " GROUP BY A.IDS_ARE ";

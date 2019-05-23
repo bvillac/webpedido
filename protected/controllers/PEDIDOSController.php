@@ -449,9 +449,10 @@ class PEDIDOSController extends Controller {
         $tienda = new TIENDA;
         $cliente = new ARTICULOTIENDA; 
         $arrayData = array();
+        //VSValidador::putMessageLogFile("llego6689");
         //$cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         if (Yii::app()->request->isAjaxRequest) {
-            //VSValidador::putMessageLogFile("llego");
+            VSValidador::putMessageLogFile("llego6654");
             $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
             //VSValidador::putMessageLogFile($contBuscar);
             $grupo = $contBuscar[0]['IDS_ARE'];
