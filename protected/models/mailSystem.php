@@ -57,7 +57,8 @@ class mailSystem {
         if($cli_Id==5){
             $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
             $mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
-            $mail->addBCC('bodega@utimpor.com', 'Bodega Utimpor'); //Para copia Oculta Gerencia
+            //$mail->addBCC('bodega@utimpor.com', 'Bodega Utimpor'); //Para copia Oculta Gerencia
+            $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
         }else{
             //Para el Resto de Clientes los siguientes correos.
             //$mail->addBCC('ventas@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
