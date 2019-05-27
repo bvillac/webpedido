@@ -450,9 +450,9 @@ class PEDIDOSController extends Controller {
         $cliente = new ARTICULOTIENDA; 
         $arrayData = array();
         //VSValidador::putMessageLogFile("llego6689");
-        //$cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        
         if (Yii::app()->request->isAjaxRequest) {
-            VSValidador::putMessageLogFile("llego6654");
+            //VSValidador::putMessageLogFile("llego6654");
             $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
             //VSValidador::putMessageLogFile($contBuscar);
             $grupo = $contBuscar[0]['IDS_ARE'];
@@ -474,11 +474,12 @@ class PEDIDOSController extends Controller {
             return;
             
         }
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         $this->titleWindows = Yii::t('TIENDA', 'Administración de Pedidos');
         $this->render('revisaradmin', array(
             'model' => $model->listarPedidosTiendasResumen(null),
             'tienda' => $tienda->recuperarTiendasRolCliente(0),
-            'area' => $tienda->recuperarClienteArea(0),
+            'area' => $tienda->recuperarClienteArea($cli_Id),
             'cliente' => $cliente->recuperarClientes(),
             'estado' => $this->tipoAprobacion(),
             //'cliID' => $cli_Id,

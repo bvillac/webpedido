@@ -168,7 +168,7 @@ class TIENDA extends CActiveRecord {
     public function recuperarTiendasRolCliente($cli_Id) {
         //$rol_Id = Yii::app()->getSession()->get('RolId', FALSE);
         //$usu_Id = Yii::app()->getSession()->get('user_id', FALSE);
-        //$cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         try {
             $con = yii::app()->db;
             $sql = "SELECT B.TIE_ID,B.TIE_NOMBRE
@@ -664,6 +664,7 @@ class TIENDA extends CActiveRecord {
     public function recuperarClienteArea($ids) {
         $con = yii::app()->db;  
         $ids=($ids<>0)?$ids:0;
+        //$ids=Yii::app()->getSession()->get('CliID', FALSE);
         $sql = "SELECT B.IDS_ARE,B.NOM_ARE
                     FROM " . $con->dbname . ".AREAS_CLIENTE A
                       INNER JOIN " . $con->dbname . ".AREAS B ON A.IDS_ARE=B.IDS_ARE

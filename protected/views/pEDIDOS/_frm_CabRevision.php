@@ -8,22 +8,22 @@
 
 ?>
 
-<div class="form-group rowLine">
+<!--<div class="form-group rowLine">
         <div class="txt_label">
-            <label><?php echo Yii::t('GENERAL', 'Customer') ?></label>
+            <label><?php //echo Yii::t('GENERAL', 'Customer') ?></label>
         </div>
         <div class="rowTd">
             <?php
-            echo CHtml::dropDownList(
+            /*echo CHtml::dropDownList(
                     'cmb_cliente', '0'
                     , array('0' => Yii::t('GENERAL', '-Select-')) + CHtml::listData($cliente, 'CLI_ID', 'CLI_NOMBRE')
                     , array('class' => 'form-control',
                 'onchange' => 'js:mostrarListaTiendaAdmin(this.value)'
                     )
-            );
+            );*/
             ?> 
         </div>       
-</div>
+</div>-->
 
 <div class="form-group rowLine">
     <div class="txt_label">
