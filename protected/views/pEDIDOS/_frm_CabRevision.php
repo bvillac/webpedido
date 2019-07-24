@@ -45,7 +45,7 @@
 </div> 
 <div class="form-group rowLine">
     <div class="txt_label">
-        <label><?php echo Yii::t('TIENDA', 'Areas') ?></label>
+        <label><?php echo Yii::t('TIENDA', 'Agrupar Áreas') ?></label>
     </div>
     <div class="rowTd">
         <div class="form-check">

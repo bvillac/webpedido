@@ -25,14 +25,14 @@ class PEDIDOSController extends Controller {
         );
     }
     
-    private function tipoAprobacion() {
+    /*private function tipoAprobacion() {
         return array(
             '1' => Yii::t('TIENDA', 'Order'),
             '2' => Yii::t('TIENDA', 'Dressed'),
             '3' => Yii::t('TIENDA', 'Authorized'),
             '4' => Yii::t('TIENDA', 'Canceled'),
         );
-    }
+    }*/
 
     public function actionIndex() {
         $this->render('index');
@@ -184,7 +184,8 @@ class PEDIDOSController extends Controller {
         $this->render('aprobar', array(
             'model' => $model->listarPedidosTiendas(null),
             'tienda' => $tienda->recuperarTiendasRol(),
-            'estado' => $this->tipoAprobacion(),
+            //'estado' => $this->tipoAprobacion(),
+            'estado' => VSValidador::tipoAprobacion(),
         ));
         
     }
@@ -207,7 +208,7 @@ class PEDIDOSController extends Controller {
             'model' => $model->mostrarPedidos(null),
             //'tienda' => $tienda->recuperarTiendasRol(),
             'tienda' => $tienda->recuperarTiendasCliente(),
-            'estado' => $this->tipoAprobacion(),
+            'estado' => VSValidador::tipoAprobacion(),
         ));
         
     }
@@ -236,13 +237,17 @@ class PEDIDOSController extends Controller {
 
     }
     
+    //AUTORIZADO
     public function actionEnvPedAut() {
         if (Yii::app()->request->isPostRequest) {
             //$ids = base64_decode($_POST['ids']);
             $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
+            $estado = isset($_POST['EstPed']) ? $_POST['EstPed'] : "AUT";
+            //Opcion 1=PEDIDO Y 5=REVISADO
+            $EstAut=($estado=="AUT")?1:5;
             $res = new CABPEDIDO;
-            $dataMail = new mailSystem;
-            $arroout = $res->insertarPedidos($ids);
+            $dataMail = new mailSystem;         
+            $arroout = $res->insertarPedidos($ids,$EstAut);
             $IdCab=$arroout["data"];
             //print_r($IdCab);
             for ($i = 0; $i < sizeof($IdCab); $i++) {
@@ -382,7 +387,7 @@ class PEDIDOSController extends Controller {
         $this->render('consultar', array(
             'model' => $model->listarPedidosTiendas(null),
             'tienda' => $tienda->recuperarTiendasRol(),
-            'estado' => $this->tipoAprobacion(),
+            'estado' => VSValidador::tipoAprobacion(),
             'cliID' => $cli_Id,
         ));
         
@@ -482,7 +487,7 @@ class PEDIDOSController extends Controller {
             'tienda' => $tienda->recuperarTiendasRol(),
             'area' => $tienda->recuperarClienteArea($cli_Id),
             'cliente' => $cliente->recuperarClientes(),
-            'estado' => $this->tipoAprobacion(),
+            'estado' => VSValidador::tipoAprobacion(),
             //'cliID' => $cli_Id,
         ));
         

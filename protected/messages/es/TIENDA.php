@@ -32,6 +32,7 @@ return array(
     'Inactive' => 'Inactivo',
     'Canceled' => 'Anulado',
     'Dressed' => 'Atendido',
+    'Revised' => 'Revisado',
     'All' => 'Todos',
     'Send' => 'Enviado',
     'Authorized' => 'Autorizado',

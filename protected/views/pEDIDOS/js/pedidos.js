@@ -526,7 +526,7 @@ function controlBuscarIndex(op){
 
 
 /************************ GUARDAR PEDIDOS *******************/
-function fun_guardarPedidoAut(){
+function fun_guardarPedidoAut(EstPed){
     var ids = String($.fn.yiiGridView.getSelection('TbG_PEDIDO'));
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
@@ -537,7 +537,8 @@ function fun_guardarPedidoAut(){
             type: 'POST',
             url: link,
             data:{
-                "ids": ids
+                "ids": ids,
+                "EstPed": EstPed
             } ,
             success: function(data){
                 if (data.status=="OK"){ 
@@ -553,8 +554,6 @@ function fun_guardarPedidoAut(){
     }
     return true;
 }
-
-
 
 
 /************************ ATTENDER PEDIDOS *******************/
@@ -767,7 +766,15 @@ function controlBuscarResumen(op){
     buscarIndex.TIE_ID=$('#cmb_tienda option:selected').val();
     buscarIndex.CLI_ID=$('#cmb_cliente option:selected').val();
     buscarIndex.EST_LOG=$('#cmb_estado option:selected').val();
-    buscarIndex.IDS_ARE=$('#cmb_area option:selected').val();
+    //buscarIndex.IDS_ARE=$('#cmb_area option:selected').val();
+    //$("#radio_1").prop("checked", true);
+    
+    if($("#rbt_si").is(":checked")){
+        buscarIndex.IDS_ARE=0;
+    }else{
+        buscarIndex.IDS_ARE=$('#cmb_area option:selected').val();
+    }
+    
     buscarIndex.F_INI=$('#dtp_fec_ini').val();
     buscarIndex.F_FIN=$('#dtp_fec_fin').val();
     //buscarIndex.EST_LOG=1;

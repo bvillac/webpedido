@@ -82,4 +82,14 @@ class VSValidador {
         return CHtml::link(CHtml::image($rutaIconos.$icono),null,array("onclick"=>"javascript:eliminarItemsListas('$codigo','$TbGtable')"));
     }
     
+    public static function tipoAprobacion() {
+        return array(
+            '1' => Yii::t('TIENDA', 'Order'),//Pedido
+            '2' => Yii::t('TIENDA', 'Dressed'),//Atendido
+            '3' => Yii::t('TIENDA', 'Authorized'),//Autorizado
+            '4' => Yii::t('TIENDA', 'Canceled'),//Cancelado 
+            '5' => Yii::t('TIENDA', 'Revised'),//Revisado
+        );
+    }
+    
 }

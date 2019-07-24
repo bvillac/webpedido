@@ -166,7 +166,7 @@ class CABPEDIDO extends CActiveRecord {
         return parent::model($className);
     }
 
-    public function insertarPedidos($Ids) {
+    public function insertarPedidos($Ids,$EstAut) {
         $msg = new VSexception();
         $valida = new VSValidador();
         $idsReturn = array();
@@ -175,7 +175,7 @@ class CABPEDIDO extends CActiveRecord {
         try {
             $cabFact = $this->buscarCabPedidosTemp($con, $Ids);
             for ($i = 0; $i < sizeof($cabFact); $i++) {
-                $this->InsertarCabFactura($con, $cabFact, $i);
+                $this->InsertarCabFactura($con, $cabFact, $i,$EstAut);
                 $idCab = $con->getLastInsertID($con->dbname . '.CAB_PEDIDO');
                 $detFact = $this->buscarDetPedidosTemp($con, $cabFact[$i]['TCPED_ID']);
                 $this->InsertarDetFactura($con, $detFact, $idCab, $cabFact[$i]['TIE_ID']);
@@ -279,14 +279,14 @@ class CABPEDIDO extends CActiveRecord {
         return $rawData;
     }
 
-    private function InsertarCabFactura($con, $objEnt, $i) {
+    private function InsertarCabFactura($con, $objEnt, $i,$EstAut) {
         $utieId = Yii::app()->getSession()->get('UtieId', FALSE);
         $idsAre=($objEnt[$i]['IDS_ARE']<>'')?$objEnt[$i]['IDS_ARE']:1;//Valor 1 por defecto en area
         $sql = "INSERT INTO " . $con->dbname . ".CAB_PEDIDO
                 (TDOC_ID,TIE_ID,TCPED_ID,CPED_FEC_PED,CPED_VAL_BRU,CPED_POR_DES,CPED_VAL_DES,CPED_POR_IVA,CPED_VAL_IVA,
                  CPED_BAS_IVA,CPED_BAS_IV0,CPED_VAL_FLE,CPED_VAL_NET,CPED_EST_PED,CPED_EST_LOG,UTIE_ID_PED,UTIE_ID,IDS_ARE)VALUES
                 (2,'" . $objEnt[$i]['TIE_ID'] . "','" . $objEnt[$i]['TCPED_ID'] . "',CURRENT_TIMESTAMP(),
-                   '" . $objEnt[$i]['TCPED_TOTAL'] . "',0,0,0,0,0,0,0,'" . $objEnt[$i]['TCPED_TOTAL'] . "','1','1',
+                   '" . $objEnt[$i]['TCPED_TOTAL'] . "',0,0,0,0,0,0,0,'" . $objEnt[$i]['TCPED_TOTAL'] . "','$EstAut','1',
                     '" . $objEnt[$i]['UTIE_ID'] . "','$utieId',$idsAre) ";
 
         $command = $con->createCommand($sql);
