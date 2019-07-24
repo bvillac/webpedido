@@ -25,6 +25,7 @@
         </div>       
 </div>-->
 
+
 <div class="form-group rowLine">
     <div class="txt_label">
         <label><?php echo Yii::t('TIENDA', 'Tienda') ?></label>
@@ -42,6 +43,27 @@
         ?> 
     </div>
 </div> 
+<div class="form-group rowLine">
+    <div class="txt_label">
+        <label><?php echo Yii::t('TIENDA', 'Areas') ?></label>
+    </div>
+    <div class="rowTd">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="rbt_no" value="0" checked>
+            <label class="form-check-label" for="exampleRadios2">
+              No Agrupadao
+            </label>
+          </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="rbt_si" value="1" >
+            <label class="form-check-label" for="exampleRadios1">
+              Agrupado
+            </label>
+          </div>
+      
+        
+    </div>  
+</div>
 
 <div class="form-group rowLine">
     <div class="txt_label">
@@ -51,7 +73,8 @@
         <?php
         echo CHtml::dropDownList(
                 'cmb_area', '0'
-                , array('0' => Yii::t('GENERAL', 'AGRUPADO')) + CHtml::listData($area, 'IDS_ARE', 'NOM_ARE')
+                //, array('0' => Yii::t('GENERAL', 'AGRUPADO')) + CHtml::listData($area, 'IDS_ARE', 'NOM_ARE')
+                ,  CHtml::listData($area, 'IDS_ARE', 'NOM_ARE')
                 , array(
             //'onchange' => 'js:mostrarListaArea()',
             'class' => 'form-control'
@@ -132,6 +155,9 @@
             ));
             ?>
         </div>
+    
+    
+      
     
 </div>
 

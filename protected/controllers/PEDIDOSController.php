@@ -478,7 +478,8 @@ class PEDIDOSController extends Controller {
         $this->titleWindows = Yii::t('TIENDA', 'Administración de Pedidos');
         $this->render('revisaradmin', array(
             'model' => $model->listarPedidosTiendasResumen(null),
-            'tienda' => $tienda->recuperarTiendasRolCliente(0),
+            //'tienda' => $tienda->recuperarTiendasRolCliente(0),
+            'tienda' => $tienda->recuperarTiendasRol(),
             'area' => $tienda->recuperarClienteArea($cli_Id),
             'cliente' => $cliente->recuperarClientes(),
             'estado' => $this->tipoAprobacion(),
