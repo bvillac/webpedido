@@ -91,5 +91,28 @@ class VSValidador {
             '5' => Yii::t('TIENDA', 'Revised'),//Revisado
         );
     }
+    public static function estadoAprobacion($estado) {
+        switch ($estado) {
+            Case "1":
+                $valRes = Yii::t('TIENDA', 'Order');
+                break;
+            Case "2":
+                $valRes = Yii::t('TIENDA', 'Dressed');
+                break;
+            Case "3":
+                $valRes = Yii::t('TIENDA', 'Authorized');
+                break;
+            Case "4":
+                $valRes = Yii::t('TIENDA', 'Canceled');
+                break;
+            Case "5":
+                $valRes = Yii::t('TIENDA', 'Revised');
+                break;
+            
+            default:
+                $valRes = "Error";
+        }
+        return $valRes;
+    }
     
 }

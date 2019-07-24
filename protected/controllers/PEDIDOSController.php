@@ -473,8 +473,7 @@ class PEDIDOSController extends Controller {
                 $this->renderPartial('_indexGridTiendaRes', array(
                     'model' => $arrayData,
                         ), false, true);
-            }
-            
+            }          
             
             return;
             

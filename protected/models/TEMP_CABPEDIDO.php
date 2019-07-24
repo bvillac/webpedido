@@ -125,8 +125,8 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         $con = Yii::app()->db;
         $trans = $con->beginTransaction();
         try {
-            
-            $this->InsertarCabListPedTemp($con,$total, $tieId,$idsAre);
+            $cliID=Yii::app()->getSession()->get('CliID', FALSE);
+            $this->InsertarCabListPedTemp($con,$total, $tieId,$idsAre,$cliID);
             $idCab = $con->getLastInsertID($con->dbname . '.TEMP_CAB_PEDIDO');
             for ($i = 0; $i < sizeof($dts_Lista); $i++) {
                 $artieId = $dts_Lista[$i]['ARTIE_ID'];
@@ -137,8 +137,8 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                 $observ = $dts_Lista[$i]['OBSERV'];  
                 $sql = "INSERT INTO " . $con->dbname . ".TEMP_DET_PEDIDO
                         (TCPED_ID,ARTIE_ID,ART_ID,TDPED_CAN_PED,TDPED_P_VENTA,TDPED_T_VENTA,
-                        TDPED_EST_AUT,TDPED_OBSERVA,TDPED_EST_LOG,TDPED_FEC_CRE)VALUES
-                        ($idCab,$artieId,$artId,$cant,$precio,$subtotal,'1','$observ','1',CURRENT_TIMESTAMP())";
+                        TDPED_EST_AUT,TDPED_OBSERVA,TDPED_EST_LOG,TDPED_FEC_CRE,CLI_ID,TIE_ID)VALUES
+                        ($idCab,$artieId,$artId,$cant,$precio,$subtotal,'1','$observ','1',CURRENT_TIMESTAMP(),'$cliID','$tieId')";
                 //echo $sql;
                 $command = $con->createCommand($sql);
                 $command->execute();
@@ -207,11 +207,12 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         $command->execute();
     }
     
-    private function InsertarCabListPedTemp($con,$total,$tieId,$idsAre) {
-        $utieId=Yii::app()->getSession()->get('UtieId', FALSE);        
+    private function InsertarCabListPedTemp($con,$total,$tieId,$idsAre,$cliID) {
+        $utieId=Yii::app()->getSession()->get('UtieId', FALSE); 
+        $UserName=Yii::app()->getSession()->get('user_name', FALSE);
         $sql="INSERT INTO " . $con->dbname . ".TEMP_CAB_PEDIDO
-                (TDOC_ID,TIE_ID,UTIE_ID,TCPED_TOTAL,TCPED_EST_LOG,TCPED_FEC_CRE,IDS_ARE)VALUES
-                (1,$tieId,$utieId,$total,1,CURRENT_TIMESTAMP(),$idsAre);";
+                (TDOC_ID,TIE_ID,UTIE_ID,TCPED_TOTAL,TCPED_EST_LOG,TCPED_FEC_CRE,IDS_ARE,CLI_ID,USUARIO)VALUES
+                (1,$tieId,$utieId,$total,1,CURRENT_TIMESTAMP(),$idsAre,'$cliID','$UserName');";
         $command = $con->createCommand($sql);
         $command->execute();
     }
