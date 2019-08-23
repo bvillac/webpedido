@@ -47,6 +47,22 @@ $(document).ready(function () {
         }
     });
     
+    $('#rbt_si').click(function () {
+        if ($(this).is(':checked')) {
+            //alert("opcion si");
+             $("#cmb_area").prop("disabled", true);
+        }
+    });
+    $('#rbt_no').click(function () {
+        if ($(this).is(':checked')) {
+            //alert("opcion no");
+            $("#cmb_area").prop("disabled", false);
+        }
+    });
+    
+    
+    
+    
 });
 
 
@@ -770,10 +786,11 @@ function controlBuscarResumen(op){
     //$("#radio_1").prop("checked", true);
     
     if($("#rbt_si").is(":checked")){
-        buscarIndex.IDS_ARE=0;
+        buscarIndex.OP=0;
     }else{
-        buscarIndex.IDS_ARE=$('#cmb_area option:selected').val();
+        buscarIndex.OP=1;
     }
+    buscarIndex.IDS_ARE=$('#cmb_area option:selected').val();
     
     buscarIndex.F_INI=$('#dtp_fec_ini').val();
     buscarIndex.F_FIN=$('#dtp_fec_fin').val();
@@ -835,9 +852,15 @@ function mostrarListaArea() {
 
 function fun_guardarPedidoAutGrupo(){
     var ids = String($.fn.yiiGridView.getSelection('TbG_RESUMEN'));
+    var op =0;
     var count=ids.split(",");
     if(count.length>0 && ids!=""){
         if(!confirm(mgEnvPedid)) return false;
+        if($("#rbt_si").is(":checked")){
+            op=1;
+        }else{
+            op=0;
+        }
         var link=$('#txth_controlador').val()+"/EnvPedAutGrupo";
         //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
         $.ajax({
@@ -845,7 +868,7 @@ function fun_guardarPedidoAutGrupo(){
             url: link,
             data:{
                 "ids": ids,
-                "op": $('#cmb_area option:selected').val(),
+                "op": op,//$('#cmb_area option:selected').val(),
                 "f_ini":$('#dtp_fec_ini').val(),
                 "f_fin":$('#dtp_fec_fin').val()
             } ,

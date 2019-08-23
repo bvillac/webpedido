@@ -73,12 +73,15 @@ class USUARIOController extends Controller {
      */
     public function actionCreate() {
         $model = new USUARIO;
+        $tienda = new TIENDA;
         //$dataCliente = new ARTICULOTIENDA;
         //$this->titleWindows = Yii::t('COMPANIA', 'Create User');
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         $this->render('create', array(
             'model' => $model,
             'genero' => $this->genero(),
             'estado' => $this->estado(),
+            'area' => $tienda->recuperarClienteArea($cli_Id),
         ));
     }
 
@@ -90,16 +93,19 @@ class USUARIOController extends Controller {
     public function actionUpdate($id) {
         $ids = base64_decode($id);
         $model = new PERSONA;
+        $tienda = new TIENDA;
         $persona = $model->recuperarPersonas($ids);
         $model->PER_ID = $ids; //mantiene el ID del Descargo Actualizar
 
         //$this->titleWindows = Yii::t('TIENDA', 'Store');
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         $this->render('update', array(
             'model' => $model,
             'genero' => $this->genero(),
             'estado' => $this->estado(),
             'dperId' => $persona['DPER_ID'],
             'data' => base64_encode(CJavaScript::jsonEncode($persona)),
+            'area' => $tienda->recuperarClienteArea($cli_Id),
         ));
     }
 

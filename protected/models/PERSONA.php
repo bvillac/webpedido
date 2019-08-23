@@ -169,7 +169,8 @@ class PERSONA extends CActiveRecord
             $this->InsertarPersona($con, $objEnt);
             $IdPer = $con->getLastInsertID($con->dbname . '.PERSONA');            
             $this->InsertarUsuario($con, $objEnt, $IdPer);
-            $IdUsu = $con->getLastInsertID($con->dbname . '.USUARIO');  
+            $IdUsu = $con->getLastInsertID($con->dbname . '.USUARIO');
+            $this->InsertarAreaPer($con, $objEnt, $IdUsu);
             $this->InsertarDataPer($con, $objEnt, $IdPer);
             //$this->insertarUserTienda($con, $objEnt, $IdUsu);
             $trans->commit();
@@ -197,6 +198,14 @@ class PERSONA extends CActiveRecord
                 (PER_ID,DPER_DESCRIPCION,DPER_DIRECCION,DPER_TELEFONO,DPER_CONTACTO,DPER_EST_LOG,DPER_FEC_CRE)VALUES
                 ($IdPer,'DATOS','" . $objEnt['direccion'] . "','" . $objEnt['telefono'] . "','" . $objEnt['contacto'] . "',
                   '1',CURRENT_TIMESTAMP()) ";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
+    private function InsertarAreaPer($con, $objEnt, $IdUsu) {
+        $sql = "INSERT INTO " . $con->dbname . ".AREAS_USUARIO 
+                (IDS_ARE,USU_ID,EST_LOG)VALUES
+                ('" . $objEnt['area'] . "',$IdUsu,'1') ";
         $command = $con->createCommand($sql);
         $command->execute();
     }
@@ -256,6 +265,7 @@ class PERSONA extends CActiveRecord
             $this->modificaPersona($con, $objEnt);
             $ids=$objEnt['dperId'];//$this->idTabla($con,'DATA_PERSONA',$objEnt['perId'],'PER_ID','DPER_ID');
             $this->modificarDataPer($con, $objEnt,$ids);
+            //$this->modificarDataArea($con, $objEnt,$ids);
             $this->modificarDataUser($con, $objEnt);
             
             $trans->commit();
@@ -306,6 +316,16 @@ class PERSONA extends CActiveRecord
                     DPER_EST_LOG = 1,
                     DPER_FEC_MOD = CURRENT_TIMESTAMP()
                     WHERE DPER_ID=$Ids";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
+    private function modificarDataArea($con, $objEnt, $Ids) {
+        $sql = "UPDATE " . $con->dbname . ".AREAS_USUARIO
+                    SET                    
+                        IDS_ARE = '" . $objEnt['area'] . "',
+                        FEC_MOD = CURRENT_TIMESTAMP()
+                    WHERE USU_ID=$Ids";
         $command = $con->createCommand($sql);
         $command->execute();
     }

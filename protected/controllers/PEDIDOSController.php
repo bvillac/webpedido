@@ -243,19 +243,49 @@ class PEDIDOSController extends Controller {
             //$ids = base64_decode($_POST['ids']);
             $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
             $estado = isset($_POST['EstPed']) ? $_POST['EstPed'] : "AUT";
-            //Opcion 1=PEDIDO Y 5=REVISADO
-            $EstAut=($estado=="AUT")?1:5;
+            
+            //$EstAut=($estado=="AUT")?1:5;
             $res = new CABPEDIDO;
-            $dataMail = new mailSystem;         
-            $arroout = $res->insertarPedidos($ids,$EstAut);
+            $ModUsu = new USUARIO;
+            $dataMail = new mailSystem; 
+            //Opcion 1=PEDIDO Y 5=REVISADO
+            if($estado=="REV"){
+                $EstAut=5;//Revisado 
+                $arroout = $res->actulizaRevisado($ids,$EstAut);
+            }else{
+                $EstAut=1;//Autorizado 
+                $arroout = $res->insertarPedidos($ids,$EstAut);
+                
+            }
             $IdCab=$arroout["data"];
             //print_r($IdCab);
+            //VSValidador::putMessageLogFile($IdCab);
+            $idsUser = Yii::app()->getSession()->get('user_id', FALSE);
             for ($i = 0; $i < sizeof($IdCab); $i++) {
-                $CabPed=$res->sendMailPedidos($IdCab[$i]['ids']);
-                $htmlMail = $this->renderPartial('mensaje', array(
-                'CabPed' => $CabPed,
-                    ), true);
-                $dataMail->enviarMail($htmlMail,$CabPed);
+                if($EstAut==5){//REVISADO
+                    $CabPed=$res->sendMailPedidosTemp($IdCab[$i]['ids']);
+                    $objUser=$ModUsu->recuperarCorreoUsuario($idsUser);//Usuario que Revisa
+                
+                    $CabPed[0]["CorreoUser"]=$objUser[0]["USU_CORREO"];
+                    $CabPed[0]["NombreUser"]=$objUser[0]["USU_NOMBRE"];
+                            
+                    $htmlMail = $this->renderPartial(
+                        'mensaje', array(
+                        'CabPed' => $CabPed,
+                            ), true);
+                    $dataMail->enviarRevisado($htmlMail,$CabPed);
+                }else{
+                    $CabPed=$res->sendMailPedidos($IdCab[$i]['ids']);
+                    $htmlMail = $this->renderPartial(
+                        'mensaje', array(
+                        'CabPed' => $CabPed,
+                            ), true);
+                    $dataMail->enviarMail($htmlMail,$CabPed);
+                    
+                    
+                }
+                
+                
             }
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);
@@ -460,7 +490,7 @@ class PEDIDOSController extends Controller {
             //VSValidador::putMessageLogFile("llego6654");
             $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
             //VSValidador::putMessageLogFile($contBuscar);
-            $grupo = $contBuscar[0]['IDS_ARE'];
+            $grupo = $contBuscar[0]['OP'];
             if($grupo==0){
                 //Presenta por grupo
                 $arrayData = $model->listarPedidosTiendasGrupoResumen($contBuscar);

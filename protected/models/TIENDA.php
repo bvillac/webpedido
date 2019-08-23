@@ -387,7 +387,7 @@ class TIENDA extends CActiveRecord {
         $con = yii::app()->db;        
         
         $sql = "SELECT GROUP_CONCAT(CONCAT('\'',TIE_ID,'\'') SEPARATOR ',') TIE_ID
-          FROM " . $con->dbname . ".TIENDA
+                FROM " . $con->dbname . ".TIENDA
           WHERE TIE_EST_LOG=1 AND CLI_ID='$cli_Id';";
 
         //echo $sql;

@@ -252,6 +252,16 @@ class USUARIO extends CActiveRecord {
             return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
         }
     }
+    
+    public function recuperarCorreoUsuario($Ids) {
+        //$ids = Yii::app()->getSession()->get('user_id', FALSE);
+        $con = yii::app()->db;
+        $sql = "SELECT USU_CORREO,USU_NOMBRE FROM " . $con->dbname . ".USUARIO WHERE USU_ID=$Ids;";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    }
 
 
 

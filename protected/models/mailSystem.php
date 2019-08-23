@@ -58,7 +58,7 @@ class mailSystem {
             $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
             $mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
             //$mail->addBCC('bodega@utimpor.com', 'Bodega Utimpor'); //Para copia Oculta Gerencia
-            //$mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+            $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
         }else{
             //Para el Resto de Clientes los siguientes correos.
             //$mail->addBCC('ventas@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
@@ -106,6 +106,41 @@ class mailSystem {
         $mail->addBCC('bvillacreses@utimpor.com', "Byron Villacreses");
         $mail->addBCC('ecastro@utimpor.com', "Byron Villacreses");
         $mail->addBCC('ljaramillo@utimpor.com', "Byron Villacreses");
+        // si el SMTP necesita autenticación
+        $mail->SMTPAuth = true;
+
+        // credenciales usuario
+        $mail->Username = $this->Username;
+        $mail->Password = $this->Password;
+        $mail->CharSet = $this->CharSet;
+
+        if (!$mail->Send()) {
+            //echo "Error enviando: " . $mail->ErrorInfo;
+            return $msg->messageSystem('NO_OK', "Error enviando: " . $mail->ErrorInfo, 11, null, null);
+        } else {
+            //echo "¡¡Enviado!!";
+            return $msg->messageSystem('OK', "¡¡Enviado!!", 20, null, null);
+        }
+    }
+    
+    public function enviarRevisado($body,$CabPed) {
+        $msg = new VSexception();
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+        $mail->SMTPSecure = $this->SMTPSecure;
+        $mail->Port = $this->Port;
+        $mail->Host = $this->Host;
+        $mail->setFrom('no-responder@utimpor.com', 'Servicio de envío automático Utimpor.com');
+        // asunto y cuerpo alternativo del mensaje
+        $mail->Subject = "Correo de Confirmación. Su Orden fue Revisada";
+        $mail->AltBody = "Data alternativao";
+        // si el cuerpo del mensaje es HTML
+        $mail->MsgHTML($body); 
+        $mail->AddAddress($CabPed[0]["CorreoUser"], $CabPed[0]["NombreUser"]);//Usuario que Revisa
+        $mail->AddAddress($CabPed[0]["CorreoPersona"], $CabPed[0]["NombrePersona"]);//Usuario Genera Pedido
+        //$mail->AddAddress('ncastro@utimpor.com', "Byron Villacreses");
+        $mail->addBCC('bvillacreses@utimpor.com', "Byron Villacreses");
+        $mail->addBCC('ecastro@utimpor.com', "Byron Villacreses");
         // si el SMTP necesita autenticación
         $mail->SMTPAuth = true;
 

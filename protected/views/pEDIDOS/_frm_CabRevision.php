@@ -50,13 +50,13 @@
     <div class="rowTd">
         <div class="form-check">
             <input class="form-check-input" type="radio" name="exampleRadios" id="rbt_no" value="0" checked>
-            <label class="form-check-label" for="exampleRadios2">
+            <label class="form-check-label" for="rbt_no">
               No Agrupadao
             </label>
           </div>
         <div class="form-check">
             <input class="form-check-input" type="radio" name="exampleRadios" id="rbt_si" value="1" >
-            <label class="form-check-label" for="exampleRadios1">
+            <label class="form-check-label" for="rbt_si">
               Agrupado
             </label>
           </div>
@@ -73,11 +73,12 @@
         <?php
         echo CHtml::dropDownList(
                 'cmb_area', '0'
-                //, array('0' => Yii::t('GENERAL', 'AGRUPADO')) + CHtml::listData($area, 'IDS_ARE', 'NOM_ARE')
-                ,  CHtml::listData($area, 'IDS_ARE', 'NOM_ARE')
+                , array('0' => Yii::t('GENERAL', '-TODOS-')) + CHtml::listData($area, 'IDS_ARE', 'NOM_ARE')
+                //,  CHtml::listData($area, 'IDS_ARE', 'NOM_ARE')
                 , array(
-            //'onchange' => 'js:mostrarListaArea()',
-            'class' => 'form-control'
+                    //'onchange' => 'js:mostrarListaArea()',
+                    'class' => 'form-control',
+                    //'disabled' => true
                 )
         );
         ?> 

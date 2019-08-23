@@ -382,7 +382,9 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         //VSValidador::putMessageLogFile($control);
         $tiendaDAO = new TIENDA;
         $cliID=Yii::app()->getSession()->get('CliID', FALSE);
-        $tiendas=$tiendaDAO->recuperarTiendasClienteAdmin($cliID);
+        //$tiendas=$tiendaDAO->recuperarTiendasClienteAdmin($cliID);
+        //$tiendas= implode(',', $tiendas);
+        //VSValidador::putMessageLogFile($tiendas);
         
         $rawData = array();
         $con = Yii::app()->db;
@@ -404,9 +406,11 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                                                                         ON D.PER_ID=E.PER_ID)
                                                         ON C.USU_ID=D.USU_ID)
                                         ON C.UTIE_ID=A.UTIE_ID
-                WHERE  A.TCPED_EST_LOG<>4 "; //A.TCPED_EST_LOG=1 AND
-        $sql .= " AND B.CLI_ID=$cliID ";
-        $sqlTieId=($idsTie!='') ? "AND A.TIE_ID IN ($idsTie)" : "";
+                WHERE  ";// A.TCPED_EST_LOG<>4 "; //A.TCPED_EST_LOG=1 AND
+        $sql .= "  B.CLI_ID=$cliID ";
+        //$sqlTieId=($idsTie!='') ? "AND A.TIE_ID IN ($idsTie)" : "";
+        //$sqlTieId=($tiendas!='') ? "AND A.TIE_ID IN ($tiendas)" : "AND A.TIE_ID IN ($idsTie)";
+        $sqlTieId="";//"AND A.TIE_ID IN ($tiendas)" ;
         if (!empty($control)) {//Verifica la Opcion op para los filtros
             $sql .= ($control[0]['EST_LOG'] != "0") ? " AND A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : " ";//A.TCPED_EST_LOG<>''
             //$sql .= ($control[0]['TIE_ID'] > 0) ? "AND A.TIE_ID = '" . $control[0]['TIE_ID'] . "' " : $sqlTieId;
@@ -459,10 +463,10 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                                                                     ON D.PER_ID=E.PER_ID)
                                                     ON C.USU_ID=D.USU_ID)
                                     ON C.UTIE_ID=A.UTIE_ID
-                WHERE  A.TCPED_EST_LOG<>4 "; 
+                WHERE  "; //A.TCPED_EST_LOG<>4 "; 
         
         //$sql .= ($control[0]['CLI_ID'] != "0") ? " AND B.CLI_ID=$cliID ":"";
-        $sql .= " AND B.CLI_ID=$cliID ";
+        $sql .= " B.CLI_ID=$cliID ";
         
         $sql .= ($control[0]['EST_LOG'] != "0") ? " AND A.TCPED_EST_LOG = '" . $control[0]['EST_LOG'] . "' " : "";// A.TCPED_EST_LOG<>'' 
         $sql .= " AND DATE(A.TCPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($control[0]['F_INI'])) . "' AND '" . date("Y-m-d", strtotime($control[0]['F_FIN'])) . "'  ";    

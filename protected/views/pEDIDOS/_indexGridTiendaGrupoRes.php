@@ -16,7 +16,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
     'template' => "{items}",
     'htmlOptions' => array('style' => 'cursor: pointer;'),
     'selectableRows' => 2,
-    'selectionChanged' => 'verificaAcciones',
+    //'selectionChanged' => 'verificaAcciones',
     'columns' => array(
         array(
             'class' => 'CCheckBoxColumn',

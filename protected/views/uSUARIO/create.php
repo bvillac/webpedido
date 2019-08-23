@@ -14,7 +14,8 @@
             $this->renderPartial('_frm_DataPersona', array(
                 'model' => $model,
                 'genero' => $genero,
-                'estado' => $estado
+                'estado' => $estado,
+                'area' => $area
             ));
             ?>
         </div>

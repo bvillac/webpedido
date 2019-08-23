@@ -107,6 +107,7 @@ function objetoPersona(ID){
     persona.correo=$('#txt_correo').val();
     persona.genero=$('#cmb_genero option:selected').val();
     persona.estado=$('#cmb_estado option:selected').val();
+    persona.area=$('#cmb_area option:selected').val();
     sessionStorage.tienda = JSON.stringify(persona);
     return JSON.stringify(persona);
 }

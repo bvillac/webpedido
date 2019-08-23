@@ -197,6 +197,28 @@ class CABPEDIDO extends CActiveRecord {
         }
     }
     
+    public function actulizaRevisado($Ids,$EstAut) {
+        $msg = new VSexception();
+        $valida = new VSValidador();
+        $idsReturn = array();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {            
+            $this->actTemCabPed($con, $Ids,$EstAut);
+                $idsReturn[] = array(
+                    "ids" => $Ids,
+                );
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK', null, 30, null, $idsReturn);
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            //throw $e;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+    
     public function insertarPedidosGrupo($Ids,$op,$f_ini,$f_fin) {
         $msg = new VSexception();
         $valida = new VSValidador();
@@ -204,7 +226,9 @@ class CABPEDIDO extends CActiveRecord {
         $con = Yii::app()->db;
         $trans = $con->beginTransaction();
         try {
-            if($op==0){
+            $EstAut=3;
+            $cliID=Yii::app()->getSession()->get('CliID', FALSE);
+            if($op==1){
                 //se envia por grupo 
                 $cabFact = $this->buscarCabPedidosTempGrupo($con, $Ids,$op,$f_ini,$f_fin);
             }else{
@@ -212,11 +236,11 @@ class CABPEDIDO extends CActiveRecord {
                 $cabFact = $this->buscarCabPedidosTemp($con, $Ids);
             }
             
-            for ($i = 0; $i < sizeof($cabFact); $i++) {
-                $this->InsertarCabFactura($con, $cabFact, $i);
+            for ($i = 0; $i < sizeof($cabFact); $i++) {                
+                $this->InsertarCabFactura($con, $cabFact, $i,$EstAut,$cliID);
                 $idCab = $con->getLastInsertID($con->dbname . '.CAB_PEDIDO');
                 $detFact = $this->buscarDetPedidosTemp($con, $cabFact[$i]['TCPED_ID']);
-                $this->InsertarDetFactura($con, $detFact, $idCab, $cabFact[$i]['TIE_ID']);
+                $this->InsertarDetFactura($con, $detFact, $idCab, $cabFact[$i]['TIE_ID'],$cliID);                
                 $this->actTemCabPed($con, $cabFact[$i]['TCPED_ID'],'3');
                 $idsReturn[] = array(
                     "ids" => $idCab,
@@ -238,7 +262,7 @@ class CABPEDIDO extends CActiveRecord {
         //Lista solo los que estan listos a envair.. 
         $sql = "SELECT * FROM " . $con->dbname . ".TEMP_CAB_PEDIDO "
                 . " WHERE IDS_ARE IN($ids)  "
-                . " AND TCPED_EST_LOG=1 ";
+                . " AND TCPED_EST_LOG IN(1,5) ";
         $sql .= " AND DATE(TCPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($f_ini)) . "' AND '" . date("Y-m-d", strtotime($f_fin)) . "'  ";
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
@@ -251,7 +275,7 @@ class CABPEDIDO extends CActiveRecord {
         //$con = yii::app()->db;
         $rawData = array();
         //Lista solo los que estan listos a envair.. 
-        $sql = "SELECT * FROM " . $con->dbname . ".TEMP_CAB_PEDIDO WHERE TCPED_ID IN($ids) AND  TCPED_EST_LOG=1";
+        $sql = "SELECT * FROM " . $con->dbname . ".TEMP_CAB_PEDIDO WHERE TCPED_ID IN($ids) AND  TCPED_EST_LOG IN(1,5)";
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         //$con->active = false;
@@ -283,16 +307,15 @@ class CABPEDIDO extends CActiveRecord {
 
     private function InsertarCabFactura($con, $objEnt, $i,$EstAut,$cliID) {
         //Nota: UTIE_ID= User que revisa  y UTIE_ID_PED= User que hace el pedido
-        $utieId = Yii::app()->getSession()->get('UtieId', FALSE);
-        
-        //$UserName=Yii::app()->getSession()->get('user_name', FALSE);
+        $utieId = Yii::app()->getSession()->get('UtieId', FALSE);        
+        $UserName=Yii::app()->getSession()->get('user_name', FALSE);
         $idsAre=($objEnt[$i]['IDS_ARE']<>'')?$objEnt[$i]['IDS_ARE']:1;//Valor 1 por defecto en area
         $sql = "INSERT INTO " . $con->dbname . ".CAB_PEDIDO
                 (TDOC_ID,TIE_ID,TCPED_ID,CPED_FEC_PED,CPED_VAL_BRU,CPED_POR_DES,CPED_VAL_DES,CPED_POR_IVA,CPED_VAL_IVA,
-                 CPED_BAS_IVA,CPED_BAS_IV0,CPED_VAL_FLE,CPED_VAL_NET,CPED_EST_PED,CPED_EST_LOG,UTIE_ID_PED,UTIE_ID,IDS_ARE,CLI_ID)VALUES
+                 CPED_BAS_IVA,CPED_BAS_IV0,CPED_VAL_FLE,CPED_VAL_NET,CPED_EST_PED,CPED_EST_LOG,UTIE_ID_PED,UTIE_ID,IDS_ARE,CLI_ID,USUARIO)VALUES
                 (2,'" . $objEnt[$i]['TIE_ID'] . "','" . $objEnt[$i]['TCPED_ID'] . "',CURRENT_TIMESTAMP(),
                    '" . $objEnt[$i]['TCPED_TOTAL'] . "',0,0,0,0,0,0,0,'" . $objEnt[$i]['TCPED_TOTAL'] . "','$EstAut','1',
-                    '" . $objEnt[$i]['UTIE_ID'] . "','$utieId',$idsAre,'$cliID') ";
+                    '" . $objEnt[$i]['UTIE_ID'] . "','$utieId',$idsAre,'$cliID','$UserName') ";
 
         $command = $con->createCommand($sql);
         $command->execute();
@@ -348,6 +371,36 @@ class CABPEDIDO extends CActiveRecord {
                 WHERE A.CPED_ID=$ids AND CPED_EST_LOG=1;";
         
         //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    }
+    
+    public function sendMailPedidosTemp($ids) {
+        $con = yii::app()->db;
+        $rawData = array();
+        $sql = "SELECT A.TCPED_ID PedID,CONCAT(REPEAT( '0', 9 - LENGTH(A.TCPED_ID) ),A.TCPED_ID) Numero,
+                        A.TCPED_TOTAL ValorNeto,DATE(A.TCPED_FEC_CRE) FechaPedido,B.TIE_NOMBRE NombreTienda,
+                        CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) NombrePersona,D.USU_CORREO CorreoPersona,
+                        CONCAT(H.PER_NOMBRE,' ',H.PER_APELLIDO) NombreUser,G.USU_CORREO CorreoUser
+                        FROM " . $con->dbname . ".TEMP_CAB_PEDIDO A
+                                INNER JOIN " . $con->dbname . ".TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                                INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA C
+                                                INNER JOIN (" . $con->dbname . ".USUARIO D
+                                                                INNER JOIN " . $con->dbname . ".PERSONA E
+                                                                        ON D.PER_ID=E.PER_ID)
+                                                        ON C.USU_ID=D.USU_ID)
+                                       ON C.UTIE_ID=A.UTIE_ID
+                                INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA F
+                                                INNER JOIN (" . $con->dbname . ".USUARIO G
+                                                                INNER JOIN " . $con->dbname . ".PERSONA H
+                                                                        ON G.PER_ID=H.PER_ID)
+                                                        ON F.USU_ID=G.USU_ID)
+                                        ON F.UTIE_ID=A.UTIE_ID
+                WHERE A.TCPED_ID=$ids ;";
+        
+        echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
         return $rawData;
