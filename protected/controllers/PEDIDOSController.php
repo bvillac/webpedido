@@ -253,7 +253,7 @@ class PEDIDOSController extends Controller {
                 $EstAut=5;//Revisado 
                 $arroout = $res->actulizaRevisado($ids,$EstAut);
             }else{
-                $EstAut=1;//Autorizado 
+                $EstAut=2;//2=Autorizado 1=Pedido
                 $arroout = $res->insertarPedidos($ids,$EstAut);
                 
             }
@@ -261,6 +261,7 @@ class PEDIDOSController extends Controller {
             //print_r($IdCab);
             //VSValidador::putMessageLogFile($IdCab);
             $idsUser = Yii::app()->getSession()->get('user_id', FALSE);
+            //Para el envio de Correos
             for ($i = 0; $i < sizeof($IdCab); $i++) {
                 if($EstAut==5){//REVISADO
                     $CabPed=$res->sendMailPedidosTemp($IdCab[$i]['ids']);

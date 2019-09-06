@@ -663,7 +663,7 @@ class TIENDA extends CActiveRecord {
     
     public function recuperarClienteArea($ids) {
         $con = yii::app()->db;  
-        $ids=($ids<>0)?$ids:0;
+        $ids=($ids<>0)?$ids:1;
         //$ids=Yii::app()->getSession()->get('CliID', FALSE);
         $sql = "SELECT B.IDS_ARE,B.NOM_ARE
                     FROM " . $con->dbname . ".AREAS_CLIENTE A
