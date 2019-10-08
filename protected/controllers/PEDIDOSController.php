@@ -275,7 +275,7 @@ class PEDIDOSController extends Controller {
                 $EstAut=5;//Revisado 
                 $arroout = $res->actulizaRevisado($ids,$EstAut);
             }else{
-                $EstAut=2;//2=Autorizado 1=Pedido
+                $EstAut=3;//3=Autorizado 1=Pedido
                 $arroout = $res->insertarPedidos($ids,$EstAut);
                 
             }
