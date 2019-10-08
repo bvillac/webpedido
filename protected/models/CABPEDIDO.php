@@ -400,7 +400,7 @@ class CABPEDIDO extends CActiveRecord {
                                         ON F.UTIE_ID=A.UTIE_ID
                 WHERE A.TCPED_ID=$ids ;";
         
-        echo $sql;
+        //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
         return $rawData;

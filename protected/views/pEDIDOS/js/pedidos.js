@@ -1014,7 +1014,8 @@ function agregarItemsTiendasUpdate(opAccion) {
     var nombre = $('#txt_codigoBuscarItem').val();
     if ($('#txt_codigoBuscarItem').val() != "") {
         var valor = $('#txt_codigoBuscarItem').val();
-        if(!existeItmeUpdate(valor,tGrid)){
+        //if(!existeItmeUpdate(valor,tGrid)){
+        if(existeItmeUpdate(valor,tGrid)){
             //alert('ingreso');
             //Compara con el Detalle de la lista
             $("#messageInfo").html('Item ya existe en su lista ' + buttonAlert);
@@ -1074,6 +1075,7 @@ function existeItmeUpdate(val,TbGtable){
     var ids = "";
     $('#' + TbGtable + ' tr').each(function () {
         ids = $(this).find("td").eq(3).html();//Compara con el Detalle de la lista
+        //alert(val + ' '+ids)
         if (val == ids) {
             //alert('si existe')
             return true;//si existe
@@ -1166,7 +1168,7 @@ function retornaFilaItemProDet(c, Grid, TbGtable, op) {
 
 function limpiarTexbox() {
     $('#txt_codigoBuscarItem').val("");
-    $('#txt_cantidad').val("");
+    $('#txt_cantidad').val("1.00");
 }
 
 function eliminarItemsListas(val, TbGtable) {    

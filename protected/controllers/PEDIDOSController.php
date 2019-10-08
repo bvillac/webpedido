@@ -54,7 +54,7 @@ class PEDIDOSController extends Controller {
             'CabPed' => $CabPed,
             'DetPed' => $DetPed,
             'cupo' => $cupo["data"]["SALDO"],
-            'mostrar' => $cupo["data"]["MOSTRAR"],
+            'mostrar' => "SI",//$cupo["data"]["MOSTRAR"],
         ));
     }
     
@@ -182,6 +182,28 @@ class PEDIDOSController extends Controller {
         }
         $this->titleWindows = Yii::t('TIENDA', 'Approved orders');
         $this->render('aprobar', array(
+            'model' => $model->listarPedidosTiendas(null),
+            'tienda' => $tienda->recuperarTiendasRol(),
+            //'estado' => $this->tipoAprobacion(),
+            'estado' => VSValidador::tipoAprobacion(),
+        ));
+        
+    }
+    
+    public function actionRevisar() {
+        $model = new TEMP_CABPEDIDO;
+        $tienda = new TIENDA;        
+        $arrayData = array();
+        if (Yii::app()->request->isAjaxRequest) {
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
+            $arrayData = $model->listarPedidosTiendas(null);
+            $this->renderPartial('_indexGridPedidos', array(
+                'model' => $arrayData,
+            ),false, true);
+            return;
+        }
+        $this->titleWindows = Yii::t('TIENDA', 'Revisar Pedidos');
+        $this->render('revisar', array(
             'model' => $model->listarPedidosTiendas(null),
             'tienda' => $tienda->recuperarTiendasRol(),
             //'estado' => $this->tipoAprobacion(),

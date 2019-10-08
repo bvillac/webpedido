@@ -160,6 +160,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         //$valida->putMessageLogFile($cabId);  
         $con = Yii::app()->db;
         $trans = $con->beginTransaction();
+        $cliID=Yii::app()->getSession()->get('CliID', FALSE);
         try {
             $this->actualizaCabListPedTemp($con,$total,$cabId);
             $this->deleteDetListPedTemp($con, $cabId);
@@ -169,11 +170,12 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                 $cant = $dts_Lista[$i]['CANT'];
                 $precio = $dts_Lista[$i]['PRECIO'];
                 $subtotal = $dts_Lista[$i]['TOTAL'];
-                $observ = $dts_Lista[$i]['OBSERV'];  
+                $observ = $dts_Lista[$i]['OBSERV'];
+                
                 $sql = "INSERT INTO " . $con->dbname . ".TEMP_DET_PEDIDO
-                        (TCPED_ID,ARTIE_ID,ART_ID,TDPED_CAN_PED,TDPED_P_VENTA,TDPED_T_VENTA,
+                        (TCPED_ID,ARTIE_ID,CLI_ID,TIE_ID,ART_ID,TDPED_CAN_PED,TDPED_P_VENTA,TDPED_T_VENTA,
                         TDPED_EST_AUT,TDPED_OBSERVA,TDPED_EST_LOG,TDPED_FEC_CRE)VALUES
-                        ($cabId,$artieId,$artId,$cant,$precio,$subtotal,'1','$observ','1',CURRENT_TIMESTAMP())";
+                        ($cabId,$artieId,$cliID,$tieId,$artId,$cant,$precio,$subtotal,'1','$observ','1',CURRENT_TIMESTAMP())";
                 //echo $sql;
                 $command = $con->createCommand($sql);
                 $command->execute();
@@ -192,7 +194,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
             }*/
             $trans->commit();
             $con->active = false;
-            return $msg->messagePedidos('OK',$valida->ajusteNumDoc($cabId, 9),'PE',null, 30, null, null);
+            return $msg->messagePedidos('OK',$valida->ajusteNumDoc($cabId, 9),'PE',null, 30, null, $cabId);
         } catch (Exception $e) {
             $trans->rollback();
             $con->active = false;

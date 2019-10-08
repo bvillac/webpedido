@@ -44,9 +44,9 @@
     </div>
     <div class="col-lg-1">
         <?php
-        echo CHtml::textField('txt_cantidad', '', array('size' => 10, 'maxlength' => 6,
+        echo CHtml::textField('txt_cantidad', '1.00', array('size' => 10, 'maxlength' => 6,
             'class' => 'form-control txt_TextboxNumber2',
-            'placeholder' => 'Cant.',
+            'placeholder' => 'Cant.',            
                 //'onchange' => 'return calcularItem()',
                 //'onkeydown' => "nextControl(isEnter(event),'txt_RUC')",
         ))
