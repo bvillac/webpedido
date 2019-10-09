@@ -14,7 +14,7 @@ $cliID=Yii::app()->getSession()->get('CliID', FALSE);
 </div>
 <div class="col-lg-12">
     <div class="">
-        <?php echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Create'), array('pEDIDOS/listar'), array('title' => Yii::t('CONTROL_ACCIONES', 'Create'), 'class' => 'btn btn-primary btn-sm',)); ?>
+        <?php echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Nuevo Pedido'), array('pEDIDOS/listar'), array('title' => Yii::t('CONTROL_ACCIONES', 'Nuevo Pedido'), 'class' => 'btn btn-primary btn-sm',)); ?>
         <?php /*if($cliID=='5'){//Solo Para CLientes 4 no mostrar  ?>
             <?php echo CHtml::button(Yii::t('TIENDA', 'Revised'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_guardarPedidoAut("REV")')); ?>
         <?php } else{ ?>
