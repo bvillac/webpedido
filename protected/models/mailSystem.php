@@ -157,5 +157,39 @@ class mailSystem {
             return $msg->messageSystem('OK', "¡¡Enviado!!", 20, null, null);
         }
     }
+    
+    public function enviarAutoriza($body) {
+        $msg = new VSexception();
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+        $mail->SMTPSecure = $this->SMTPSecure;
+        $mail->Port = $this->Port;
+        $mail->Host = $this->Host;
+        $mail->setFrom('no-responder@utimpor.com', 'Servicio de envío automático Utimpor.com');
+        // asunto y cuerpo alternativo del mensaje
+        $mail->Subject = "Ha Recibido un Correo!!!";
+        $mail->AltBody = "Data alternativao";
+        // si el cuerpo del mensaje es HTML
+        $mail->MsgHTML($body);   
+        //$mail->AddAddress('ncastro@utimpor.com', "Byron Villacreses");
+        $mail->addBCC('bvillacreses@utimpor.com', "Byron Villacreses");
+        //$mail->addBCC('ecastro@utimpor.com', "Byron Villacreses");
+        //$mail->addBCC('ljaramillo@utimpor.com', "Byron Villacreses");
+        // si el SMTP necesita autenticación
+        $mail->SMTPAuth = true;
+
+        // credenciales usuario
+        $mail->Username = $this->Username;
+        $mail->Password = $this->Password;
+        $mail->CharSet = $this->CharSet;
+
+        if (!$mail->Send()) {
+            //echo "Error enviando: " . $mail->ErrorInfo;
+            return $msg->messageSystem('NO_OK', "Error enviando: " . $mail->ErrorInfo, 11, null, null);
+        } else {
+            //echo "¡¡Enviado!!";
+            return $msg->messageSystem('OK', "¡¡Enviado!!", 20, null, null);
+        }
+    }
 
 }

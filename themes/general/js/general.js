@@ -16,6 +16,7 @@ var buttonAlert = '<button aria-hidden="true" data-dismiss="alert" class="close"
 var selecDoc = 'Seleccionar documento para autorizar';
 var mgEliminar = 'Está seguro que desea Eliminar estos Item';
 var mgEnvDocum = 'Está seguro que desea Enviar estos Documentos';
+var mgEnvInfo = 'Está seguro que desea Enviar Información';
 var mgEnvPedid = 'Está seguro que desea Enviar estos Pedidos';
 var mgDatoNoVal = 'Los datos proporcionados no son validos!!';
 var mgSaldoNoDis = 'Cupo mensual no disponible.!!';

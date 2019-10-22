@@ -32,7 +32,8 @@ class USUARIOController extends Controller {
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions' => array('create', 'update','Save','Delete','DeleteUserTie','UserTienda',
                                     'ClienteTienda','BuscarUsuario','SaveUserTie','Contrasena','Upload',
-                                    'UsuarioCliente','DeleteUserCliente','DeleteItemCliente','ListaProducto'),
+                                    'UsuarioCliente','DeleteUserCliente','DeleteItemCliente','ListaProducto',
+                                    'AutorizaListadoUser','AutorizaListadoItem'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -387,6 +388,58 @@ class USUARIOController extends Controller {
         $fileName = $result['filename']; //GETTING FILE NAME //Retorna el Nombre del Archivo a subir
 
         echo $return; // it's array 
+    }
+    
+    public function actionAutorizaListadoUser() { 
+        if (Yii::app()->request->isPostRequest) {
+            //$info = isset($_POST['info']) ? $_POST['info'] : "";
+            $res = new PERSONA;
+            $arroout = $res->autorizarUserCliente();
+            $dataMail = new mailSystem;            
+            $htmlMail='<div id="div-table">';
+                $htmlMail.='<div class="trow">';
+                        $htmlMail.='<p>';
+                            $htmlMail.='<label class="titleLabel">Usuario: </label>'. Yii::app()->getSession()->get('user_name', FALSE) .'<br>     Nuestro Usuario Autorizo el listado Usuarios!!! ';
+                        $htmlMail.='</p>';
+                $htmlMail.='</div>';
+                $htmlMail.='<div class="trow">';
+                        $htmlMail.='<p>';
+                            //$htmlMail.=$info;
+                        $htmlMail.='</p>';
+                $htmlMail.='</div>';
+            $htmlMail.='</div>';            
+            $arroout=$dataMail->enviarAutoriza($htmlMail);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout); 
+            return;
+        }
+        
+    }
+    
+    public function actionAutorizaListadoItem() { 
+        if (Yii::app()->request->isPostRequest) {
+            //$info = isset($_POST['info']) ? $_POST['info'] : "";
+            $res = new PERSONA;
+            $arroout = $res->autorizarItemCliente();
+            $dataMail = new mailSystem;            
+            $htmlMail='<div id="div-table">';
+                $htmlMail.='<div class="trow">';
+                        $htmlMail.='<p>';
+                            $htmlMail.='<label class="titleLabel">Usuario: </label>'. Yii::app()->getSession()->get('user_name', FALSE) .'<br>     Nuestro Usuario Autorizo el listado Items!!! ';
+                        $htmlMail.='</p>';
+                $htmlMail.='</div>';
+                $htmlMail.='<div class="trow">';
+                        $htmlMail.='<p>';
+                            //$htmlMail.=$info;
+                        $htmlMail.='</p>';
+                $htmlMail.='</div>';
+            $htmlMail.='</div>';            
+            $arroout=$dataMail->enviarAutoriza($htmlMail);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout); 
+            return;
+        }
+        
     }
     
     

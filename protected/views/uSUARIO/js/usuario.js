@@ -520,6 +520,29 @@ function fun_DeleteUserCliente(ids){
     return true;
 }
 
+function fun_AutorizaUserCliente(){
+        if(!confirm(mgEnvInfo)) return false;
+        var link=$('#txth_controlador').val()+"/AutorizaListadoUser";        
+        $.ajax({
+            type: 'POST',
+            url: link,
+            data:{
+                "ids": 0
+            } ,
+            success: function(data){
+                if (data.status=="OK"){ 
+                    $("#messageInfo").html(data.message+buttonAlert); 
+                    alerMessage();
+                    //$.fn.yiiGridView.update('TbG_USUARIO');
+                    
+                }
+            },
+            dataType: "json"
+        });
+    
+    return true;
+}
+
 function fun_AgregarItemCliente(accion) {
     //if (validateForm(accion)) {
         var ID = (accion == "Update") ? $('#txth_PER_ID').val() : 0;
@@ -582,6 +605,29 @@ function fun_DeleteItemCliente(ids){
                     alerMessage();
                     $.fn.yiiGridView.update('TbG_USUARIO');
                     //actualizarTbG_USUARIO();
+                }
+            },
+            dataType: "json"
+        });
+    
+    return true;
+}
+
+function fun_AutorizaItemCliente(){
+        if(!confirm(mgEnvInfo)) return false;
+        var link=$('#txth_controlador').val()+"/AutorizaListadoItem";        
+        $.ajax({
+            type: 'POST',
+            url: link,
+            data:{
+                "ids": 0
+            } ,
+            success: function(data){
+                if (data.status=="OK"){ 
+                    $("#messageInfo").html(data.message+buttonAlert); 
+                    alerMessage();
+                    //$.fn.yiiGridView.update('TbG_USUARIO');
+                    
                 }
             },
             dataType: "json"

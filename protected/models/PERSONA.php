@@ -493,6 +493,28 @@ class PERSONA extends CActiveRecord
         }
     }
     
+    public function autorizarUserCliente() {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        //Estado 2 = Autorizado
+        try {
+            $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);//
+            $sql = "UPDATE " . $con->dbname . ".USUINI_EMPRESA SET EST_LOG='2' WHERE EST_LOG=1 AND CLI_ID='$cli_Id'";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            //echo $sql;
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,12,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+    
     
     public function insertarDatosItemCliente($objEnt) {
         $msg = new VSexception();
@@ -560,6 +582,28 @@ class PERSONA extends CActiveRecord
         $trans = $con->beginTransaction();
         try {
             $sql = "UPDATE " . $con->dbname . ".ART_EMPRESA SET EST_LOG='0' WHERE AEMP_ID IN($ids)";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            //echo $sql;
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,12,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+    
+    public function autorizarItemCliente() {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        //Estado 2 = Autorizado
+        try {
+            $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);//
+            $sql = "UPDATE " . $con->dbname . ".ART_EMPRESA SET EST_LOG='2' WHERE EST_LOG=1 AND CLI_ID='$cli_Id'";
             $comando = $con->createCommand($sql);
             $comando->execute();
             //echo $sql;
