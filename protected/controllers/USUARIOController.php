@@ -313,6 +313,7 @@ class USUARIOController extends Controller {
             return;
         }
         $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        $this->titleWindows = Yii::t('TIENDA', 'Información de la Empresa');
         $this->render('usuariocliente', array(
             'model' => $model->mostrarUserCliente(),
             'roles' => $this->roles(),
@@ -353,7 +354,7 @@ class USUARIOController extends Controller {
             echo CJavaScript::jsonEncode($arroout);
             return;
         }
-        
+        $this->titleWindows = Yii::t('TIENDA', 'Lista de Productos');
         $this->render('listaproducto', array(
             'model' => $model->mostrarItemCliente(),
         ));

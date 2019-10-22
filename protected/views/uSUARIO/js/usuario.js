@@ -477,7 +477,7 @@ function objetoUserCliente(ID){
     persona.TIE_ID=0;//NO EXISTE ANEXO TIENDA
     persona.CLI_ID=0;
     persona.ROL_ID=$('#cmb_roles option:selected').val();
-    persona.IDS_ARE=$('#cmb_area option:selected').val();
+    persona.IDS_ARE=1;//$('#cmb_area option:selected').val();
     persona.UEMP_NOMBRE=$('#txt_nombre').val();
     persona.UEMP_ALIAS=$('#txt_departamento').val();
     persona.UEMP_CORREO=$('#txt_correo').val();
@@ -493,7 +493,7 @@ function fun_limpiarUserCliente(){
     $('#txt_correo').val('');
     $('#txt_cupo').val('0');
     $("#cmb_roles option[value=1]").attr("selected",true);
-    $("#cmb_area option[value=1]").attr("selected",true);
+    //$("#cmb_area option[value=1]").attr("selected",true);
 }
 
 function fun_DeleteUserCliente(ids){

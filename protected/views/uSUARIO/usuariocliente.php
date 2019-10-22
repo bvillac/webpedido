@@ -4,7 +4,7 @@
 
 <div class="col-lg-8">
     <div class="panel panel-default">
-        <div class="panel-heading"><?php echo Yii::t('USUARIO', 'Información') ?></div>
+        <div class="panel-heading"><?php echo Yii::t('USUARIO', '') ?></div>
         <div class="panel-body">
             <?php
             $this->renderPartial('_frm_DataPerEmp', array(

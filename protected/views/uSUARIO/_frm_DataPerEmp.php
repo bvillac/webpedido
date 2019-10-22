@@ -29,7 +29,7 @@
             ?>
         </div>
     </div>
-    <div class="form-group rowLine">
+<!--    <div class="form-group rowLine">
         <div class="txt_label">
             <label><?php echo Yii::t('USUARIO', 'Area') ?></label>
         </div>
@@ -47,7 +47,7 @@
         );
         ?> 
         </div>
-    </div>
+    </div>-->
 
     <div class="form-group rowLine">
         <div class="txt_label">

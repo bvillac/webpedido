@@ -8,10 +8,18 @@
 ?>
 <?php echo $this->renderPartial('_include'); ?>
 
+<div class="col-lg-12">
+    <div class="alert alert-info alert-global-notice">
+        <strong>Estimado Cliente: </strong>En caso le sea posible y le interese acceder a un  mejor precio favor llene o adjunte la lista de los items que su empresa consuma o utiliza.
+    
+    </div>
+</div>
+
+
 <div class="col-lg-6">
     <div class="panel panel-default">
         <div class="panel-heading">        
-            <label>Lista de Productos</label>
+            <label></label>
         </div>
         <div class="panel-body">
             <div class="form-group rowLine">
