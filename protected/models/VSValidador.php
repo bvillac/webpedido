@@ -82,6 +82,12 @@ class VSValidador {
         return CHtml::link(CHtml::image($rutaIconos.$icono),null,array("onclick"=>"javascript:eliminarItemsListas('$codigo','$TbGtable')"));
     }
     
+public static function eliminarDatos($Funcion,$TbGtable,$codigo,$icono) {        
+        $rutaIconos=Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'];
+        //VSValidador::putMessageLogFile($rutaIconos);
+        return CHtml::link(CHtml::image($rutaIconos.$icono),null,array("onclick"=>"javascript:$Funcion('$codigo','$TbGtable')"));
+    }
+    
     public static function tipoAprobacion() {
         return array(
             '1' => Yii::t('TIENDA', 'Order'),//Pedido

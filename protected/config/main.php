@@ -162,6 +162,7 @@ return array(
         'dateXML' => "d/m/Y",
         'datepicker' => 'dd-mm-yy',
         'datebytime' => 'Y-m-d h:i:s',
+        'rutaDoc' => '/opt/documentos/',
         //'rutapro' => '/opt/productos/',
         //'rutafilePro' => '/opt/productos/',
         'rutafilePro' => '/themes/seablue/images/productos/',

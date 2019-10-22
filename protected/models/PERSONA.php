@@ -407,6 +407,174 @@ class PERSONA extends CActiveRecord
             ),
         ));
     }
+    
+    
+    public function insertarDatosUserCliente($objEnt) {
+        $msg = new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $this->InsertarUserCliente($con, $objEnt);
+            $IdPer = $con->getLastInsertID($con->dbname . '.USUINI_EMPRESA');            
+            //$this->InsertarUsuario($con, $objEnt, $IdPer);
+            //$IdUsu = $con->getLastInsertID($con->dbname . '.USUARIO');
+            //$this->InsertarAreaPer($con, $objEnt, $IdUsu);
+            //$this->InsertarDataPer($con, $objEnt, $IdPer);
+            //$this->insertarUserTienda($con, $objEnt, $IdUsu);
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK', null, 10, null, null);
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            //throw $e;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+    
+    private function InsertarUserCliente($con, $objEnt) {
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        $sql = "INSERT INTO " . $con->dbname . ".USUINI_EMPRESA
+                (TIE_ID,CLI_ID,ROL_ID,IDS_ARE,UEMP_NOMBRE,UEMP_ALIAS,UEMP_CORREO,TIE_CUPO,EST_LOG,FEC_CRE)VALUES
+                (0,$cli_Id,'" . $objEnt['ROL_ID'] . "','" . $objEnt['IDS_ARE'] . "','" . $objEnt['UEMP_NOMBRE'] . "','" . $objEnt['UEMP_ALIAS'] . "',
+                 '" . $objEnt['UEMP_CORREO'] . "','" . $objEnt['TIE_CUPO'] . "','1',CURRENT_TIMESTAMP()) ";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
+    
+    public function mostrarUserCliente() {
+        $rawData = array();
+        $limitrowsql = Yii::app()->params['limitRowSQL'];
+        $con = Yii::app()->db;
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        
+        $sql = "SELECT A.UEMP_ID Ids,IF(A.ROL_ID=1,'USUARIO','SUPERVISOR') Rol,B.NOM_ARE Area,A.UEMP_NOMBRE Nombre,A.UEMP_ALIAS Departamento,
+                    A.UEMP_CORREO Correo,A.TIE_CUPO Cupo,A.EST_LOG,DATE(A.FEC_CRE) Fecha 
+                    FROM " . $con->dbname . ".USUINI_EMPRESA A
+                            INNER JOIN " . $con->dbname . ".AREAS B ON A.IDS_ARE=B.IDS_ARE
+                WHERE A.EST_LOG=1 AND A.CLI_ID=$cli_Id ";
+        $sql .= " ORDER BY A.UEMP_ID DESC LIMIT $limitrowsql";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+
+        return new CArrayDataProvider($rawData, array(
+            'keyField' => 'Ids',
+            'sort' => array(
+                'attributes' => array(
+                    'Ids','Area' ,'Nombre', 'Rol', 'Departamento', 'Correo'
+                ),
+            ),
+            'totalItemCount' => count($rawData),
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
+        ));
+    }
+    
+    public function removerUserCliente($ids) {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $sql = "UPDATE " . $con->dbname . ".USUINI_EMPRESA SET EST_LOG='0' WHERE UEMP_ID IN($ids)";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            //echo $sql;
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,12,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+    
+    
+    public function insertarDatosItemCliente($objEnt) {
+        $msg = new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $this->InsertarItemCliente($con, $objEnt);
+            $IdPer = $con->getLastInsertID($con->dbname . '.USUINI_EMPRESA');            
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK', null, 10, null, null);
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            //throw $e;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+    
+    private function InsertarItemCliente($con, $objEnt) {
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);//AEMP_ID
+        $sql = "INSERT INTO " . $con->dbname . ".ART_EMPRESA
+                (CLI_ID,AEMP_NOMBRE,AEMP_OBSERVA,AEMP_ARCHIVO,AEMP_RUTA,EST_LOG,FEC_CRE)VALUES
+                ($cli_Id,'" . $objEnt['AEMP_NOMBRE'] . "','" . $objEnt['AEMP_OBSERVA'] . "','" . $objEnt['AEMP_ARCHIVO'] . "','" . $objEnt['AEMP_RUTA'] . "',
+                 '1',CURRENT_TIMESTAMP()) ";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
+    
+    public function mostrarItemCliente() {
+        $rawData = array();
+        $limitrowsql = Yii::app()->params['limitRowSQL'];
+        $con = Yii::app()->db;
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        
+        $sql = "SELECT AEMP_ID Ids,AEMP_NOMBRE Nombre,AEMP_OBSERVA Observa,AEMP_ARCHIVO Archivo,
+                    AEMP_RUTA Ruta,EST_LOG,DATE(FEC_CRE) Fecha 
+                    FROM " . $con->dbname . ".ART_EMPRESA
+                WHERE EST_LOG=1 AND CLI_ID=$cli_Id ";
+        $sql .= " ORDER BY AEMP_ID DESC LIMIT $limitrowsql";
+
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+
+        return new CArrayDataProvider($rawData, array(
+            'keyField' => 'Ids',
+            'sort' => array(
+                'attributes' => array(
+                    'Ids','Nombre', 'Observa', 'Archivo', 'Fecha'
+                ),
+            ),
+            'totalItemCount' => count($rawData),
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
+        ));
+    }
+    
+    
+    public function removerItemCliente($ids) {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $sql = "UPDATE " . $con->dbname . ".ART_EMPRESA SET EST_LOG='0' WHERE AEMP_ID IN($ids)";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            //echo $sql;
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,12,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+    
+
         
         
 }

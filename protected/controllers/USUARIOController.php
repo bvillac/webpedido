@@ -31,7 +31,8 @@ class USUARIOController extends Controller {
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions' => array('create', 'update','Save','Delete','DeleteUserTie','UserTienda',
-                                    'ClienteTienda','BuscarUsuario','SaveUserTie','Contrasena'),
+                                    'ClienteTienda','BuscarUsuario','SaveUserTie','Contrasena','Upload',
+                                    'UsuarioCliente','DeleteUserCliente','DeleteItemCliente','ListaProducto'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -48,6 +49,12 @@ class USUARIOController extends Controller {
         return array(
             'M' => Yii::t('USUARIO', 'Male'),
             'F' => Yii::t('USUARIO', 'Female'),
+        );
+    }
+    private function roles() {
+        return array(
+            '1' => Yii::t('USUARIO', 'Usuario'),
+            '2' => Yii::t('USUARIO', 'Supervisor'),
         );
     }
      private function estado() {
@@ -275,6 +282,111 @@ class USUARIOController extends Controller {
             return;
         }
         $this->render('contrasena');
+    }
+    
+    /**
+     * Creates a new model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     */
+    public function actionUsuarioCliente() {
+        $model = new PERSONA;
+        $tienda = new TIENDA;
+        //$dataCliente = new ARTICULOTIENDA;
+        //$this->titleWindows = Yii::t('COMPANIA', 'Create User');
+        if (Yii::app()->request->isPostRequest) {
+            //$model = new PERSONA;
+            $arroout=array();
+            $dataObj = isset($_POST['DATA']) ? CJavaScript::jsonDecode($_POST['DATA']) : array();
+            $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
+            //VSValidador::putMessageLogFile($dataObj);            
+            if ($accion == "Create") {
+                $arroout = $model->insertarDatosUserCliente($dataObj);
+                
+            } else {
+                //$arroout = $model->actualizarDatosPersona($tienda);
+            }
+            
+            
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+            return;
+        }
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        $this->render('usuariocliente', array(
+            'model' => $model->mostrarUserCliente(),
+            'roles' => $this->roles(),
+            'area' => $tienda->recuperarClienteArea($cli_Id),
+        ));
+    }
+    
+    public function actionDeleteUserCliente() {
+        if (Yii::app()->request->isPostRequest) {
+            //$ids = base64_decode($_POST['ids']);
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
+            $res = new PERSONA;
+            $arroout = $res->removerUserCliente($ids);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+        }
+    }
+    
+    /**
+     * Creates a new model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     */
+    public function actionListaProducto() {
+        $model = new PERSONA;
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        if (Yii::app()->request->isPostRequest) {
+            $arroout=array();
+            $dataObj = isset($_POST['DATA']) ? CJavaScript::jsonDecode($_POST['DATA']) : array();
+            $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
+            //VSValidador::putMessageLogFile($dataObj);            
+            if ($accion == "Create") {
+                $arroout = $model->insertarDatosItemCliente($dataObj);
+                
+            } else {
+                //$arroout = $model->actualizarDatosPersona($tienda);
+            }
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+            return;
+        }
+        
+        $this->render('listaproducto', array(
+            'model' => $model->mostrarItemCliente(),
+        ));
+        
+    }
+    
+    public function actionDeleteItemCliente() {
+        if (Yii::app()->request->isPostRequest) {
+            //$ids = base64_decode($_POST['ids']);
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
+            $res = new PERSONA;
+            $arroout = $res->removerItemCliente($ids);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+        }
+    }
+    
+    //Nota: Si tiene problema no olvidar los privilegios de la carpeta
+    public function actionUpload() {
+        Yii::import("ext.EAjaxUpload.qqFileUploader");
+        //$extfd =Yii::app()->params['seaFirext'];//Extension de firma electronica
+        $folder =Yii::app()->params['rutaDoc'];// folder for uploaded files
+        //$folder = getcwd()."/file/uploads/"; //mUESTRA TODA LA RUTA DEL PROYECTO
+        //$allowedExtensions = array($extfd, "pdf"); //array("jpg","jpeg","gif","exe","mov" and etc...
+        $allowedExtensions = array("jpg", "pdf"); //array("jpg","jpeg","gif","exe","mov" and etc...
+        $sizeLimit = 10 * 1024 * 1024; // maximum file size in bytes
+        $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+        $result = $uploader->handleUpload($folder);
+        $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+
+        $fileSize = filesize($folder . $result['filename']); //GETTING FILE SIZE
+        $fileName = $result['filename']; //GETTING FILE NAME //Retorna el Nombre del Archivo a subir
+
+        echo $return; // it's array 
     }
     
     

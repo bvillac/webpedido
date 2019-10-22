@@ -407,7 +407,7 @@ function controlBuscarUseTie(op){
     buscarIndex.OP=op;
     buscarIndex.TIE_ID=$('#cmb_tienda option:selected').val();
     buscarIndex.CLI_ID=$('#cmb_cliente option:selected').val();
-    buscarIndex.ROL_ID=$('#cmb_rol option:selected').val();
+    buscarIndex.ROL_ID=$('#cmb_rol option:selected').val();_indexGridCliente
     //buscarArray[0] = buscarIndex;
     return JSON.stringify(buscarIndex);
 }
@@ -438,4 +438,154 @@ function fun_CambiaPass() {
         alert('Los Datos No son Iguales');
     }
 
+}
+
+/************** AGREGAR LISTAS 2019-10-21 **************/
+function fun_AgregarUser(accion) {
+    //if (validateForm(accion)) {
+        var ID = (accion == "Update") ? $('#txth_PER_ID').val() : 0;
+        var link = $('#txth_controlador').val() + "/UsuarioCliente";
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: link,
+            data: {
+                "DATA": objetoUserCliente(ID),
+                "ACCION": accion
+            },
+            success: function (data) {
+                if (data.status == "OK") {
+                    $("#messageInfo").html(data.message + buttonAlert);
+                    alerMessage();
+                    $.fn.yiiGridView.update('TbG_USUARIO');
+                    fun_limpiarUserCliente();
+                } else {
+                    $("#messageInfo").html(data.message + buttonAlert);
+                    alerMessage();
+                }
+            },
+        });
+    //}
+
+}
+
+
+
+function objetoUserCliente(ID){
+    var persona=new Object();
+    persona.UEMP_ID=ID;
+    persona.TIE_ID=0;//NO EXISTE ANEXO TIENDA
+    persona.CLI_ID=0;
+    persona.ROL_ID=$('#cmb_roles option:selected').val();
+    persona.IDS_ARE=$('#cmb_area option:selected').val();
+    persona.UEMP_NOMBRE=$('#txt_nombre').val();
+    persona.UEMP_ALIAS=$('#txt_departamento').val();
+    persona.UEMP_CORREO=$('#txt_correo').val();
+    persona.TIE_CUPO=$('#txt_cupo').val();
+    persona.EST_LOG=1;
+    sessionStorage.dataObj = JSON.stringify(persona);
+    return JSON.stringify(persona);
+}
+
+function fun_limpiarUserCliente(){
+    $('#txt_nombre').val('');
+    $('#txt_departamento').val('');
+    $('#txt_correo').val('');
+    $('#txt_cupo').val('0');
+    $("#cmb_roles option[value=1]").attr("selected",true);
+    $("#cmb_area option[value=1]").attr("selected",true);
+}
+
+function fun_DeleteUserCliente(ids){
+        if(!confirm(mgEliminar)) return false;
+        var link=$('#txth_controlador').val()+"/DeleteUserCliente";
+        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
+        $.ajax({
+            type: 'POST',
+            url: link,
+            data:{
+                "ids": ids
+            } ,
+            success: function(data){
+                if (data.status=="OK"){ 
+                    $("#messageInfo").html(data.message+buttonAlert); 
+                    alerMessage();
+                    $.fn.yiiGridView.update('TbG_USUARIO');
+                    //actualizarTbG_USUARIO();
+                }
+            },
+            dataType: "json"
+        });
+    
+    return true;
+}
+
+function fun_AgregarItemCliente(accion) {
+    //if (validateForm(accion)) {
+        var ID = (accion == "Update") ? $('#txth_PER_ID').val() : 0;
+        var link = $('#txth_controlador').val() + "/ListaProducto";
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: link,
+            data: {
+                "DATA": objetoItemCliente(ID),
+                "ACCION": accion
+            },
+            success: function (data) {
+                if (data.status == "OK") {
+                    $("#messageInfo").html(data.message + buttonAlert);
+                    alerMessage();
+                    $.fn.yiiGridView.update('TbG_USUARIO');
+                    fun_limpiarItemCliente();
+                } else {
+                    $("#messageInfo").html(data.message + buttonAlert);
+                    alerMessage();
+                }
+            },
+        });
+    //}
+
+}
+
+function objetoItemCliente(ID){
+    var itemData=new Object();
+    itemData.AEMP_ID=ID;
+    itemData.CLI_ID=0;
+    itemData.AEMP_NOMBRE=$('#txt_nombre').val();
+    itemData.AEMP_OBSERVA=$('#txt_mensaje').val();
+    itemData.AEMP_ARCHIVO='';
+    itemData.AEMP_RUTA='';
+    itemData.EST_LOG=1;
+    sessionStorage.dataObjItem = JSON.stringify(itemData);
+    return JSON.stringify(itemData);
+}
+
+function fun_limpiarItemCliente(){
+    $('#txt_nombre').val('');
+    $('#txt_mensaje').val('');
+}
+
+function fun_DeleteItemCliente(ids){
+        if(!confirm(mgEliminar)) return false;
+        var link=$('#txth_controlador').val()+"/DeleteItemCliente";
+        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
+        $.ajax({
+            type: 'POST',
+            url: link,
+            data:{
+                "ids": ids
+            } ,
+            success: function(data){
+                if (data.status=="OK"){ 
+                    $("#messageInfo").html(data.message+buttonAlert); 
+                    alerMessage();
+                    $.fn.yiiGridView.update('TbG_USUARIO');
+                    //actualizarTbG_USUARIO();
+                }
+            },
+            dataType: "json"
+        });
+    
+    return true;
 }
