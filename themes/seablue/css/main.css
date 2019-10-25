@@ -241,3 +241,18 @@ div.search-form
 div.loading * {
     opacity: .8;
 }
+
+hr{
+    height: 1px;
+    background-color: red;
+}
+
+.rightPosicion{
+    float: right;
+}
+
+.titleData
+{
+	color:green;
+	font-size: 1.4em;
+}

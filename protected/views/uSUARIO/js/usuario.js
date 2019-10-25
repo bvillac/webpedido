@@ -489,9 +489,9 @@ function objetoUserCliente(ID){
 
 function fun_limpiarUserCliente(){
     $('#txt_nombre').val('');
-    $('#txt_departamento').val('');
+    //$('#txt_departamento').val('');
     $('#txt_correo').val('');
-    $('#txt_cupo').val('0');
+    //$('#txt_cupo').val('0');
     $("#cmb_roles option[value=1]").attr("selected",true);
     //$("#cmb_area option[value=1]").attr("selected",true);
 }
@@ -634,4 +634,40 @@ function fun_AutorizaItemCliente(){
         });
     
     return true;
+}
+
+/* OPCIONES DE INICIO */
+
+function fun_selecionar() {    
+    if ($('#txt_departamento').val().length!=0 && $('#txt_departamento').val().length!=0) {
+        $("#txt_nombre").removeAttr("disabled");
+        $("#txt_correo").removeAttr("disabled");
+        $("#cmb_roles").removeAttr("disabled");
+        $("#txt_departamento").attr("disabled","disabled");
+        $("#txt_cupo").attr("disabled","disabled");
+    }else{
+        $("#txt_nombre").attr("disabled","disabled");
+        $("#txt_correo").attr("disabled","disabled");
+        $("#cmb_roles").attr("disabled","disabled");
+        $("#txt_departamento").removeAttr("disabled");
+        $("#txt_cupo").removeAttr("disabled");
+        alert('Ingrese Departamento y Cupo..')
+    }
+}
+
+function fun_nuevodepart() {
+
+    $("#txt_departamento").removeAttr("disabled");
+    $("#txt_cupo").removeAttr("disabled");
+    limpiarDatos();
+}
+
+function limpiarDatos(){
+    $('#txt_departamento').val('');
+    $('#txt_cupo').val('');
+    $('#txt_nombre').val('');
+    $('#txt_correo').val('');
+    $("#txt_nombre").attr("disabled","disabled");
+    $("#txt_correo").attr("disabled","disabled");
+    $("#cmb_roles").attr("disabled","disabled");
 }

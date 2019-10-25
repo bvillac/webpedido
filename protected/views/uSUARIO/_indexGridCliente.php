@@ -26,11 +26,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'value' => '$data["Rol"]',
             //'htmlOptions' => array('style' => 'text-align:left'),
         ),
-        array(
-            'name' => 'Area',
-            'header' => Yii::t('USUARIO', 'Area'),
-            'value' => '$data["Area"]',
-        ),
+//        array(
+//            'name' => 'Area',
+//            'header' => Yii::t('USUARIO', 'Area'),
+//            'value' => '$data["Area"]',
+//        ),
         array(
             'name' => 'Nombre',
             'header' => Yii::t('USUARIO', 'Nombre'),

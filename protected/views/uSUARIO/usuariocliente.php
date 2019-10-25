@@ -4,7 +4,7 @@
 
 <div class="col-lg-8">
     <div class="panel panel-default">
-        <div class="panel-heading"><?php echo Yii::t('USUARIO', '') ?></div>
+        <div class="panel-heading"><?php echo Yii::t('USUARIO', 'Información del Usuario') ?></div>
         <div class="panel-body">
             <?php
             $this->renderPartial('_frm_DataPerEmp', array(
@@ -16,11 +16,15 @@
         </div>
         <div class="panel-footer">
             <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Agregar Usuario'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_AgregarUser("Create")')); ?>
-            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Autoriza Listado'), array('id' => 'btn_autoriza', 'name' => 'btn_autoriza', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_AutorizaUserCliente()')); ?>
+            
             <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Clear'), array('id' => 'btn_limpiar', 'name' => 'btn_limpiar', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_limpiarUserCliente()')); ?>
         </div>
     </div>
 </div>
+<div class="col-lg-12 " >
+    <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Enviar Lista de Usuarios'), array('id' => 'btn_autoriza', 'name' => 'btn_autoriza', 'class' => 'btn btn-primary btn-sm rightPosicion', 'onclick' => 'fun_AutorizaUserCliente()')); ?>
+</div>
+
 <div class="col-lg-12">
     <?php echo $this->renderPartial('_indexGridCliente', array('model' => $model)); ?>
 </div>

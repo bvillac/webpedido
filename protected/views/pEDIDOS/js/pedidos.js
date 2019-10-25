@@ -75,26 +75,57 @@ function fun_Nuevo(accion){
 
 
 
-function verificaAcciones(){   
+function verificaAcciones(){  
+    //alert('llego');
+    
     //if($('#txth_cliId').val()!='4'){//Solo para clientes Marcimex
         var ids = String($.fn.yiiGridView.getSelection('TbG_PEDIDO'));
+        
+        
         var count=ids.split(",");
         if(count.length>0 && ids!=""){
             if(count.length==1){
-                $("#btn_Update").removeClass("disabled");
+                //Solo verifica cuando Seleciona uno
+                var estado=verificarColumna(ids,'TbG_PEDIDO');
+                if(estado=="Autorizado" || estado=="Atendido" ){
+                    $("#btn_Update").addClass("disabled");
+                    $("#btn_save").addClass("disabled");
+                    $("#btn_anular").addClass("disabled");
+                    
+                }else{
+                    $("#btn_Update").removeClass("disabled");
+                    $("#btn_save").removeClass("disabled");
+                    $("#btn_anular").removeClass("disabled");
+                }
+                //$("#btn_Update").removeClass("disabled");
             }else{
                 $("#btn_Update").addClass("disabled");
             }
-            $("#btn_anular").removeClass("disabled");
+            //$("#btn_anular").removeClass("disabled");
         }else{
             $("#btn_Update").addClass("disabled");
             $("#btn_anular").addClass("disabled");
+            $("#btn_save").addClass("disabled");
+            //$("#btn_entregado").addClass("disabled");
         }
     //}else{
         //$("#btn_Update").addClass("disabled");
         //$("#btn_anular").addClass("disabled");
     //}
     
+}
+
+function verificarColumna(val,TbGtable){
+    var result = "";
+    var ids="";
+    $('#' + TbGtable + ' tr').each(function () {
+        ids = $(this).find("td").eq(1).html();//Compara con el Detalle de la lista
+        //alert(val + ' '+ids)
+        if (val == ids) {
+            result=$(this).find("td").eq(7).html();
+        }        
+    });
+    return result;
 }
 
 function accionPedido(){
@@ -579,6 +610,35 @@ function fun_guardarPedidoAtendido(){
     if(count.length>0 && ids!=""){
         if(!confirm(mgEnvPedid)) return false;
         var link=$('#txth_controlador').val()+"/AtenderPed";
+        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
+        $.ajax({
+            type: 'POST',
+            url: link,
+            data:{
+                "ids": ids
+            } ,
+            success: function(data){
+                if (data.status=="OK"){ 
+                    $("#messageInfo").html(data.message+buttonAlert); 
+                    alerMessage();
+                    $.fn.yiiGridView.update('TbG_PEDIDO');
+                    //alert(data.data.toSource());
+                    
+                }
+            },
+            dataType: "json"
+        });
+    }
+    return true;
+}
+
+/************************ ENTREGAR PEDIDOS *******************/
+function fun_guardarEntregado(){
+    var ids = String($.fn.yiiGridView.getSelection('TbG_PEDIDO'));
+    var count=ids.split(",");
+    if(count.length>0 && ids!=""){
+        if(!confirm(mgEnvPedid)) return false;
+        var link=$('#txth_controlador').val()+"/EntregarPed";
         //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
         $.ajax({
             type: 'POST',
@@ -1228,3 +1288,5 @@ function recalculaTotalPedTemp() {
     });
     $('#lbl_total').text(redondea(total, Ndecimal))
 }
+
+

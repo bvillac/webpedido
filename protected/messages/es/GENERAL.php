@@ -70,7 +70,7 @@ return array(
     'Customer' => 'Cliente',
     'Customer price' => 'Precio por Cliente',
     'Store items' => 'Items Tiendas',
-    'Store' => 'Tiendas',
+    'Store' => 'Departamento o Sucursal',
     '-Select-' => 'Seleccionar',
     'Find articles by code or name' => 'Buscar artículos por código o nombre',
     'Find user by code or name' => 'Buscar usuario por código o nombre',

@@ -253,7 +253,8 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         //$rawData[]=$this->rowProdList();
         $sql = "SELECT A.TCPED_ID PedID,A.TIE_ID TieID,A.TCPED_TOTAL Total,DATE(A.TCPED_FEC_CRE) FechaPedido, 
                         B.TIE_NOMBRE NombreTienda,B.TIE_DIRECCION DireccionTienda,D.USU_NOMBRE NombrePersona,
-                        CONCAT(REPEAT( '0', 9 - LENGTH(A.TCPED_ID) ),A.TCPED_ID) Numero,A.TCPED_EST_LOG Estado
+                        CONCAT(REPEAT( '0', 9 - LENGTH(A.TCPED_ID) ),A.TCPED_ID) Numero,A.TCPED_EST_LOG Estado,
+                        A.TCPED_EST_ENV EstEnv
                         FROM " . $con->dbname . ".TEMP_CAB_PEDIDO A
                                 INNER JOIN " . $con->dbname . ".TIENDA B
                                         ON A.TIE_ID=B.TIE_ID

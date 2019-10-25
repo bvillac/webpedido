@@ -30,10 +30,18 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'headerHtmlOptions' => array('style' => 'width:0px; display:none; border:none; textdecoration:none'),
             'htmlOptions' => array('style' => 'display:none; border:none;'),
         ),
+//        array(
+//            'name' => 'Numero',
+//            'header' => Yii::t('TIENDA', 'Number'),
+//            'value' => '$data["Numero"]',
+//            'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
+//        ),
         array(
             'name' => 'Numero',
             'header' => Yii::t('TIENDA', 'Number'),
-            'value' => '$data["Numero"]',
+            //'value' => '$data["Numero"]',
+            'value' => 'CHtml::link($data["Numero"],Yii::app()->createUrl("pEDIDOS/GenerarTempPdf",array("ids"=>base64_encode($data["PedID"]))),array("target"=>"_blank"))',
+            'type'  => 'raw',
             'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
         ),
         array(
@@ -63,6 +71,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'header' => Yii::t('TIENDA', 'Status'),
             'value' => 'VSValidador::estadoAprobacion($data["Estado"])',
             //'value' => '($data["Estado"]=="1")?Yii::t("TIENDA", "Order"):(($data["Estado"]=="2")?Yii::t("TIENDA", "Dressed"):(($data["Estado"]=="3")?Yii::t("TIENDA", "Authorized"):Yii::t("TIENDA", "Canceled")))',
+            'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
+        ),
+        array(
+            'name' => 'EstEnv',
+            'header' => Yii::t('TIENDA', 'Entregado'),            
+            'value' => '($data["EstEnv"]=="1")?Yii::t("TIENDA", "SI"):Yii::t("TIENDA", "NO")',
             'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
         ),
         

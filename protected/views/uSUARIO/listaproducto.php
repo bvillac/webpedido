@@ -9,8 +9,9 @@
 <?php echo $this->renderPartial('_include'); ?>
 
 <div class="col-lg-12">
-    <div class="alert alert-info alert-global-notice">
-        <strong>Estimado Cliente: </strong>En caso le sea posible y le interese acceder a un  mejor precio favor llene o adjunte la lista de los items que su empresa consuma o utiliza.
+    <div class="alert alert-info alert-global-notice titleData">
+        <strong>Estimado Cliente: </strong>En caso le sea posible y le interese acceder a un  mejor precio favor llene o adjunte la lista de los items  que su empresa consuma o utiliza,
+        esto con el fin de otorgar mejores precios y descuentos.
     
     </div>
 </div>
@@ -19,7 +20,7 @@
 <div class="col-lg-6">
     <div class="panel panel-default">
         <div class="panel-heading">        
-            <label></label>
+            <label>Listado de Items</label>
         </div>
         <div class="panel-body">
             <div class="form-group rowLine">
@@ -45,6 +46,30 @@
                     <textarea id="txt_mensaje" rows="3" cols="40" placeholder="Comentario.."></textarea> 
                 </div>
             </div>
+            
+            
+        </div>
+        <div class="panel-footer">
+            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Agregar Item'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_AgregarItemCliente("Create")')); ?>
+            
+            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Clear'), array('id' => 'btn_limpiar', 'name' => 'btn_limpiar', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_limpiarUserCliente()')); ?>
+            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Enviar lista de Items'), array('id' => 'btn_autoriza', 'name' => 'btn_autoriza', 'class' => 'btn btn-primary btn-sm rightPosicion', 'onclick' => 'fun_AutorizaItemCliente()')); ?>
+        </div>
+
+        <?php //echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Enviar'), array('id' => 'btn_add', 'name' => 'btn_add', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_enviarComentario()')); ?>
+           
+
+            
+    </div>
+</div>
+
+<div class="col-lg-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">        
+            <label>Permite adjuntar Archivo con Formato o extensión PDF</label>
+        </div>
+        <div class="panel-body">
+            
             <div class="form-group">
                 <label><?php echo Yii::t('PERSONA', 'Archivo') ?></label>
                 <?php
@@ -62,10 +87,9 @@
             </div>
             
         </div>
-        <div class="panel-footer">
-            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Agregar Item'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_AgregarItemCliente("Create")')); ?>
-            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Autoriza Listado'), array('id' => 'btn_autoriza', 'name' => 'btn_autoriza', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_AutorizaItemCliente()')); ?>
-            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Clear'), array('id' => 'btn_limpiar', 'name' => 'btn_limpiar', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_limpiarUserCliente()')); ?>
+        <div class="panel-footer"> 
+            <label>Usar esta opción para enviar el archivo adjuntado</label>
+            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Enviar Archivo'), array('id' => 'btn_autofile', 'name' => 'btn_autofile', 'class' => 'btn btn-primary btn-sm rightPosicion', 'onclick' => 'fun_AutorizaFile()')); ?>
         </div>
 
             <?php //echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Enviar'), array('id' => 'btn_add', 'name' => 'btn_add', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_enviarComentario()')); ?>
@@ -74,7 +98,6 @@
             
     </div>
 </div>
-
 <div class="col-lg-12">
     <?php echo $this->renderPartial('_indexGridClienteItem', array('model' => $model)); ?>
 </div>

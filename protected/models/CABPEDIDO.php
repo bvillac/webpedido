@@ -346,6 +346,18 @@ class CABPEDIDO extends CActiveRecord {
         $command->execute();
     }
     
+    private function actTempEntregadoCabPed($con,$ids,$estado) {
+        $sql = "UPDATE " . $con->dbname . ".TEMP_CAB_PEDIDO SET TCPED_EST_ENV='$estado' WHERE TCPED_ID=$ids";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
+    private function actCabEntregadoPedido($con,$ids,$estado) {
+        $sql = "UPDATE " . $con->dbname . ".CAB_PEDIDO SET CPED_EST_ENV='$estado' WHERE CPED_ID=$ids";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
     public function sendMailPedidos($ids) {
         $con = yii::app()->db;
         $rawData = array();
@@ -417,7 +429,7 @@ class CABPEDIDO extends CActiveRecord {
         $sql = "SELECT A.CPED_ID PedID,A.TIE_ID TieID,A.CPED_VAL_NET ValorNeto,A.CPED_FEC_PED FechaPedido, 
                         B.TIE_NOMBRE NombreTienda,B.TIE_DIRECCION DireccionTienda,E.PER_NOMBRE NombrePersona,
                         CONCAT(REPEAT( '0', 9 - LENGTH(A.CPED_ID) ),A.CPED_ID) Numero,A.CPED_EST_LOG Estado,
-                        A.TCPED_ID
+                        A.TCPED_ID,A.CPED_EST_ENV EstEnv
                         FROM " . $con->dbname . ".CAB_PEDIDO A
                                 INNER JOIN " . $con->dbname . ".TIENDA B
                                         ON A.TIE_ID=B.TIE_ID
@@ -468,6 +480,27 @@ class CABPEDIDO extends CActiveRecord {
             for ($i = 0; $i < sizeof($cabFact); $i++) {
                 $this->actCabPedido($con, $cabFact[$i]['CPED_ID'],'2');//Actualiza Cab de Pedido
                 $this->actTemCabPed($con, $cabFact[$i]['TCPED_ID'],'2');//Actualiza Temporal
+            }
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,10,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+    
+    public function entregarPedido($ids) {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $cabFact = $this->buscarCabPedidos($con, $ids);
+            for ($i = 0; $i < sizeof($cabFact); $i++) {
+                $this->actCabEntregadoPedido($con, $cabFact[$i]['CPED_ID'],'1');//Actualiza Cab de Pedido Entregado
+                $this->actTempEntregadoCabPed($con, $cabFact[$i]['TCPED_ID'],'1');//Actualiza Temporal Entregado
             }
             $trans->commit();
             $con->active = false;

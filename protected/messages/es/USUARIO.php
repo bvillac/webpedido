@@ -27,7 +27,7 @@ return array(
     'Date of birth' => 'Fec Nac',
     'Creation date' => 'F.Creación',
     'User role' => 'Usuario Rol',
-    'Name store' => 'Nombre Tienda',
+    'Name store' => 'Nombre Departamento o Sucursal ',
     
 );
 ?>

@@ -54,8 +54,8 @@ class USUARIOController extends Controller {
     }
     private function roles() {
         return array(
-            '1' => Yii::t('USUARIO', 'Usuario'),
-            '2' => Yii::t('USUARIO', 'Supervisor'),
+            '1' => Yii::t('USUARIO', 'Usuario (Puede hacer Pedidos)'),
+            '2' => Yii::t('USUARIO', 'Supervisor (Puede hacer Pedidos y Autorizar)'),
         );
     }
      private function estado() {
@@ -376,7 +376,10 @@ class USUARIOController extends Controller {
     public function actionUpload() {
         Yii::import("ext.EAjaxUpload.qqFileUploader");
         //$extfd =Yii::app()->params['seaFirext'];//Extension de firma electronica
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         $folder =Yii::app()->params['rutaDoc'];// folder for uploaded files
+        //$folder =Yii::app()->params['rutaDoc'].$cli_Id."/";// folder for uploaded files
+        //VSValidador::putMessageLogFile($folder);
         //$folder = getcwd()."/file/uploads/"; //mUESTRA TODA LA RUTA DEL PROYECTO
         //$allowedExtensions = array($extfd, "pdf"); //array("jpg","jpeg","gif","exe","mov" and etc...
         $allowedExtensions = array("jpg", "pdf"); //array("jpg","jpeg","gif","exe","mov" and etc...

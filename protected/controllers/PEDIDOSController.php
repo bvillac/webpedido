@@ -11,7 +11,7 @@ class PEDIDOSController extends Controller {
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions' => array(
                     'create', 'update','Save','Listar','DataTienda','DataTiendaUpdate',
-                    'Aprobar','Delete','AnuItemPedTemp','EnvPedAut',
+                    'Aprobar','Delete','AnuItemPedTemp','EnvPedAut','EntregarPed','Listarpedido',
                     'Liquidar','GenerarPdf','Consultar','Manuales','RevisarAdmin','Comentario'),
                 'users' => array('@'),
             ),
@@ -190,6 +190,28 @@ class PEDIDOSController extends Controller {
         
     }
     
+    public function actionListarpedido() {
+        $model = new TEMP_CABPEDIDO;
+        $tienda = new TIENDA;        
+        $arrayData = array();
+        if (Yii::app()->request->isAjaxRequest) {
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
+            $arrayData = $model->listarPedidosTiendas(null);
+            $this->renderPartial('_indexGridPedidos', array(
+                'model' => $arrayData,
+            ),false, true);
+            return;
+        }
+        $this->titleWindows = Yii::t('TIENDA', 'Listar Pedidos');
+        $this->render('listarpedido', array(
+            'model' => $model->listarPedidosTiendas(null),
+            'tienda' => $tienda->recuperarTiendasRol(),
+            //'estado' => $this->tipoAprobacion(),
+            'estado' => VSValidador::tipoAprobacion(),
+        ));
+        
+    }
+    
     public function actionRevisar() {
         $model = new TEMP_CABPEDIDO;
         $tienda = new TIENDA;        
@@ -322,6 +344,27 @@ class PEDIDOSController extends Controller {
             $res = new CABPEDIDO;
             //$dataMail = new mailSystem;
             $arroout = $res->despacharPedido($ids);
+//            $IdCab=$arroout["data"];
+//            for ($i = 0; $i < sizeof($IdCab); $i++) {
+//                $CabPed=$res->sendMailPedidos($IdCab[$i]['ids']);
+//                $htmlMail = $this->renderPartial('mensaje', array(
+//                'CabPed' => $CabPed,
+//                    ), true);
+//                $dataMail->enviarMail($htmlMail,$CabPed);
+//            }
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+        }
+    }
+    
+    //Actualiza el Estado de Pedido a Recibido
+    public function actionEntregarPed() {
+        if (Yii::app()->request->isPostRequest) {
+            //$ids = base64_decode($_POST['ids']);
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
+            $res = new CABPEDIDO;
+            //$dataMail = new mailSystem;
+            $arroout = $res->entregarPedido($ids);
 //            $IdCab=$arroout["data"];
 //            for ($i = 0; $i < sizeof($IdCab); $i++) {
 //                $CabPed=$res->sendMailPedidos($IdCab[$i]['ids']);
