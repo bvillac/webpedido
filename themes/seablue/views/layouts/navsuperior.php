@@ -18,7 +18,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!--<a class="navbar-brand" href="index"><?php //echo CHtml::encode($this->pageTitle); ?></a>-->
-                <a class="navbar-brand" href="index"><?php echo CHtml::image(Yii::app()->theme->baseUrl.'/images/plantilla/logo.png','Utimpor',array('width'=>'160px','height'=>'35px')); ?></a>
+                <a class="navbar-brand" href="site"><?php echo CHtml::image(Yii::app()->theme->baseUrl.'/images/plantilla/logo.png','Utimpor',array('width'=>'160px','height'=>'35px')); ?></a>
                 
             </div>
             <!-- /.navbar-header -->

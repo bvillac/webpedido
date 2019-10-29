@@ -42,6 +42,7 @@ return array(
     'Observation' => 'Observación',
     'List orders' => 'Listar pedidos',
     'Store name' => 'Departamento o Sucursal',
+    'Department or branch' => 'Departamento o Sucursal',
     'To order' => 'Hacer Pedido',
     'Attend' => 'Despachar',
     'Mail' => 'Correo',

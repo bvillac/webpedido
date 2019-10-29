@@ -139,11 +139,12 @@ class TIENDA extends CActiveRecord {
     public function recuperarTiendasRol() {
         $rol_Id = Yii::app()->getSession()->get('RolId', FALSE);
         $usu_Id = Yii::app()->getSession()->get('user_id', FALSE);
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         try {
             $con = yii::app()->db;
             //Verificacion por ROL PARA aministrador cod=9
             if($rol_Id==9){//Rol de Super Administrador
-                $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+                
                 $sql = "SELECT TIE_ID,TIE_NOMBRE FROM " . $con->dbname . ".TIENDA "
                         . " WHERE TIE_EST_LOG=1  AND CLI_ID=$cli_Id ORDER BY TIE_NOMBRE;";
             } else {
@@ -151,7 +152,8 @@ class TIENDA extends CActiveRecord {
                         FROM " . $con->dbname . ".USUARIO_TIENDA A
                                 INNER JOIN " . $con->dbname . ".TIENDA B
                                         ON A.TIE_ID=B.TIE_ID
-                    WHERE A.UTIE_EST_LOG=1 AND A.ROL_ID=$rol_Id AND USU_ID=$usu_Id ORDER BY B.TIE_NOMBRE ASC";
+                    WHERE A.UTIE_EST_LOG=1 AND A.ROL_ID=$rol_Id AND USU_ID=$usu_Id AND A.CLI_ID=$cli_Id "
+                            . " ORDER BY B.TIE_NOMBRE ASC";
             }
         
             //echo $sql;
@@ -623,7 +625,8 @@ class TIENDA extends CActiveRecord {
     
     public function recuperarTiendasAdmin($ids) {
         $con = yii::app()->db;
-        $sql = "SELECT TIE_ID,TIE_NOMBRE FROM " . $con->dbname . ".TIENDA WHERE TIE_EST_LOG=1 AND CLI_ID=$ids ";
+        $sql = "SELECT TIE_ID,TIE_NOMBRE FROM " . $con->dbname . ".TIENDA "
+                . "WHERE TIE_EST_LOG=1 AND CLI_ID=$ids ORDER BY TIE_NOMBRE ";
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;

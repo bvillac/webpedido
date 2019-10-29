@@ -130,7 +130,7 @@ class USUARIO extends CActiveRecord {
                 WHERE A.CLI_EST_LOG=1 ";
         $sql .= ($ids != "") ? "AND C.USU_ID=$ids " : "";
         $sql .= ($idstie != "") ? "AND A.CLI_ID=$idstie " : "";
-
+        $sql .= " ORDER BY B.TIE_NOMBRE DESC";
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;

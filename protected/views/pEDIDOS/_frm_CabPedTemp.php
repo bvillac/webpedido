@@ -2,7 +2,7 @@
     <div id="div-table">
         <div class="trow">
             <div class="tcol-td form-group">
-                <span><?php echo Yii::t('TIENDA', 'Store name') ?> : </span>
+                <span><?php echo Yii::t('TIENDA', 'Department or branch') ?> : </span>
                 <label><?php echo $CabPed["NombreTienda"] ?></label>
             </div>
             <div class="tcol-td form-group">

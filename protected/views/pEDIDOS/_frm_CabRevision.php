@@ -28,7 +28,7 @@
 
 <div class="form-group rowLine">
     <div class="txt_label">
-        <label><?php echo Yii::t('TIENDA', 'Tienda') ?></label>
+        <label><?php echo Yii::t('TIENDA', 'Department or branch') ?></label>
     </div>
     <div class="rowTd">
         <?php

@@ -18,7 +18,7 @@
             </tr>
             <tr>
                 <td>
-                    <span class="titleLabel"><?php echo Yii::t('TIENDA', 'Store name') ?></span>
+                    <span class="titleLabel"><?php echo Yii::t('TIENDA', 'Department or branch') ?></span>
                     <span><?php echo $cabFact['NombreTienda'] ?></span>
                 </td>
                 <td>
