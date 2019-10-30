@@ -62,6 +62,7 @@ class mailSystem {
         }else{
             //Para el Resto de Clientes los siguientes correos.
             //$mail->addBCC('ventas@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+            $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
             $mail->addBCC('ncastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
             $mail->addBCC('yalava@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
             $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta 
@@ -102,10 +103,10 @@ class mailSystem {
         $mail->AltBody = "Data alternativao";
         // si el cuerpo del mensaje es HTML
         $mail->MsgHTML($body);   
-        $mail->AddAddress('ncastro@utimpor.com', "Byron Villacreses");
-        $mail->addBCC('bvillacreses@utimpor.com', "Byron Villacreses");
-        $mail->addBCC('ecastro@utimpor.com', "Byron Villacreses");
-        $mail->addBCC('ljaramillo@utimpor.com', "Byron Villacreses");
+        $mail->AddAddress('ncastro@utimpor.com', 'Ventas Utimpor');
+        $mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor');
+        $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
+        $mail->addBCC('ljaramillo@utimpor.com', 'Ventas Utimpor');
         // si el SMTP necesita autenticación
         $mail->SMTPAuth = true;
 
@@ -140,7 +141,7 @@ class mailSystem {
         $mail->AddAddress($CabPed[0]["CorreoPersona"], $CabPed[0]["NombrePersona"]);//Usuario Genera Pedido
         //$mail->AddAddress('ncastro@utimpor.com', "Byron Villacreses");
         $mail->addBCC('bvillacreses@utimpor.com', "Byron Villacreses");
-        $mail->addBCC('ecastro@utimpor.com', "Byron Villacreses");
+        $mail->addBCC('ecastro@utimpor.com', "Enrique Castro");
         // si el SMTP necesita autenticación
         $mail->SMTPAuth = true;
 
@@ -173,7 +174,7 @@ class mailSystem {
         $mail->MsgHTML($body);   
         //$mail->AddAddress('ncastro@utimpor.com', "Byron Villacreses");
         $mail->addBCC('bvillacreses@utimpor.com', "Byron Villacreses");
-        //$mail->addBCC('ecastro@utimpor.com', "Byron Villacreses");
+        $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor');
         //$mail->addBCC('ljaramillo@utimpor.com', "Byron Villacreses");
         // si el SMTP necesita autenticación
         $mail->SMTPAuth = true;
