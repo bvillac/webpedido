@@ -377,8 +377,13 @@ class USUARIOController extends Controller {
         Yii::import("ext.EAjaxUpload.qqFileUploader");
         //$extfd =Yii::app()->params['seaFirext'];//Extension de firma electronica
         $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
-        $folder =Yii::app()->params['rutaDoc'];// folder for uploaded files
-        //$folder =Yii::app()->params['rutaDoc'].$cli_Id."/";// folder for uploaded files
+        //$folder =Yii::app()->params['rutaDoc'];// folder for uploaded files
+        $folder =Yii::app()->params['rutaDoc'].$cli_Id."/";// folder for uploaded files
+        if (!file_exists($folder)) {
+            mkdir($folder, 0777, true); //Se Crea la carpeta
+            chmod(dirname($folder), 0777);
+            //chmod($folder_path, 0777); 
+        }
         //VSValidador::putMessageLogFile($folder);
         //$folder = getcwd()."/file/uploads/"; //mUESTRA TODA LA RUTA DEL PROYECTO
         //$allowedExtensions = array($extfd, "pdf"); //array("jpg","jpeg","gif","exe","mov" and etc...
@@ -394,24 +399,16 @@ class USUARIOController extends Controller {
         echo $return; // it's array 
     }
     
+    //AUTORIZACIN DE LISLTA DE ARCHIVOS
     public function actionAutorizaListadoUser() { 
         if (Yii::app()->request->isPostRequest) {
             //$info = isset($_POST['info']) ? $_POST['info'] : "";
             $res = new PERSONA;
             $arroout = $res->autorizarUserCliente();
-            $dataMail = new mailSystem;            
-            $htmlMail='<div id="div-table">';
-                $htmlMail.='<div class="trow">';
-                        $htmlMail.='<p>';
-                            $htmlMail.='<label class="titleLabel">Usuario: </label>'. Yii::app()->getSession()->get('user_name', FALSE) .'<br>     Nuestro Usuario Autorizo el listado Usuarios!!! ';
-                        $htmlMail.='</p>';
-                $htmlMail.='</div>';
-                $htmlMail.='<div class="trow">';
-                        $htmlMail.='<p>';
-                            //$htmlMail.=$info;
-                        $htmlMail.='</p>';
-                $htmlMail.='</div>';
-            $htmlMail.='</div>';            
+            $dataMail = new mailSystem; 
+            $htmlMail = $this->renderPartial('mensajeautoriza', array(
+                //'CabPed' => $CabPed,
+            ), true);          
             $arroout=$dataMail->enviarAutoriza($htmlMail);
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout); 
@@ -420,24 +417,16 @@ class USUARIOController extends Controller {
         
     }
     
+    //AUTORIZACIN DE ITEMS
     public function actionAutorizaListadoItem() { 
         if (Yii::app()->request->isPostRequest) {
             //$info = isset($_POST['info']) ? $_POST['info'] : "";
             $res = new PERSONA;
             $arroout = $res->autorizarItemCliente();
-            $dataMail = new mailSystem;            
-            $htmlMail='<div id="div-table">';
-                $htmlMail.='<div class="trow">';
-                        $htmlMail.='<p>';
-                            $htmlMail.='<label class="titleLabel">Usuario: </label>'. Yii::app()->getSession()->get('user_name', FALSE) .'<br>     Nuestro Usuario Autorizo el listado Items!!! ';
-                        $htmlMail.='</p>';
-                $htmlMail.='</div>';
-                $htmlMail.='<div class="trow">';
-                        $htmlMail.='<p>';
-                            //$htmlMail.=$info;
-                        $htmlMail.='</p>';
-                $htmlMail.='</div>';
-            $htmlMail.='</div>';            
+            $dataMail = new mailSystem;  
+             $htmlMail = $this->renderPartial('mensajeautoriza', array(
+                //'CabPed' => $CabPed,
+            ), true);           
             $arroout=$dataMail->enviarAutoriza($htmlMail);
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout); 

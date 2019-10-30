@@ -520,7 +520,7 @@ function fun_DeleteUserCliente(ids){
     return true;
 }
 
-function fun_AutorizaUserCliente(){
+function fun_AutorizaFile(){
         if(!confirm(mgEnvInfo)) return false;
         var link=$('#txth_controlador').val()+"/AutorizaListadoUser";        
         $.ajax({
