@@ -23,6 +23,12 @@ for ($i = 0; $i < sizeof($CabPed); $i++) {
         </div>
         <div class="trow">
             <div class="tcol-td form-group">
+                <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Cliente') ?> : </label>
+                <span><?php echo Yii::app()->getSession()->get('CliNom', FALSE) ?></span>
+            </div>
+        </div>
+        <div class="trow">
+            <div class="tcol-td form-group">
                 <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Number Order') ?> : </label>
                 <span><?php echo $CabPed[$i]["Numero"] ?></span>
             </div>

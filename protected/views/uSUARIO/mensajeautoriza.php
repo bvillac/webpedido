@@ -17,7 +17,7 @@
         <div class="trow">
             <div class="tcol-td form-group">
                 <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Empresa') ?> : </label>
-                <span><?php echo Yii::app()->getSession()->get('CliNom', FALSE) ?></span>
+                <span><?php  echo Yii::app()->getSession()->get('CliNom', FALSE) ?></span>
             </div>
         </div>
         
