@@ -16,6 +16,7 @@ class mailSystem {
     private $Username = "no-responder@utimpor.com";
     private $Password = "ect{UZCJ6hvR";
     private $CharSet = 'UTF-8';
+    private $TituloEnvio = 'Pedido en Línea Utimpor.com';
 
     //put your code here
     public function enviarMail($body,$CabPed) {
@@ -35,7 +36,8 @@ class mailSystem {
 
         // dirección remitente, p. ej.: no-responder@miempresa.com
         // nombre remitente, p. ej.: "Servicio de envío automático"
-        $mail->setFrom('no-responder@utimpor.com', 'Servicio de envío automático Utimpor.com');
+        //$mail->setFrom('no-responder@utimpor.com', 'Servicio de envío automático Utimpor.com');
+        $mail->setFrom('no-responder@utimpor.com', $this->TituloEnvio);
         //$mail->setFrom('bvillacreses@utimpor.com', 'Utimpor.com');
 
         // asunto y cuerpo alternativo del mensaje
@@ -97,7 +99,7 @@ class mailSystem {
         $mail->SMTPSecure = $this->SMTPSecure;
         $mail->Port = $this->Port;
         $mail->Host = $this->Host;
-        $mail->setFrom('no-responder@utimpor.com', 'Servicio de envío automático Utimpor.com');
+        $mail->setFrom('no-responder@utimpor.com', $this->TituloEnvio);
         // asunto y cuerpo alternativo del mensaje
         $mail->Subject = "Ha Recibido un Correo!!!";
         $mail->AltBody = "Data alternativao";
@@ -131,7 +133,7 @@ class mailSystem {
         $mail->SMTPSecure = $this->SMTPSecure;
         $mail->Port = $this->Port;
         $mail->Host = $this->Host;
-        $mail->setFrom('no-responder@utimpor.com', 'Servicio de envío automático Utimpor.com');
+        $mail->setFrom('no-responder@utimpor.com', $this->TituloEnvio);
         // asunto y cuerpo alternativo del mensaje
         $mail->Subject = "Correo de Confirmación. Su Orden fue Revisada";
         $mail->AltBody = "Data alternativao";
@@ -166,7 +168,7 @@ class mailSystem {
         $mail->SMTPSecure = $this->SMTPSecure;
         $mail->Port = $this->Port;
         $mail->Host = $this->Host;
-        $mail->setFrom('no-responder@utimpor.com', 'Servicio de envío automático Utimpor.com');
+        $mail->setFrom('no-responder@utimpor.com', $this->TituloEnvio);
         // asunto y cuerpo alternativo del mensaje
         $mail->Subject = "Ha Recibido un Correo!!!";
         $mail->AltBody = "Data alternativao";

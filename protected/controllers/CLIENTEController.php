@@ -32,7 +32,7 @@ class CLIENTEController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','empresa','DeleteCliente','AgregarCliente'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -170,4 +170,79 @@ class CLIENTEController extends Controller
 			Yii::app()->end();
 		}
 	}
+        
+        
+        public function actionEmpresa() {
+            $model = new CLIENTE;
+            $tienda = new TIENDA;
+            //$dataCliente = new ARTICULOTIENDA;
+            //$this->titleWindows = Yii::t('COMPANIA', 'Create User');
+            if (Yii::app()->request->isPostRequest) {
+                //$model = new PERSONA;
+                $arroout = array();
+                $dataObj = isset($_POST['DATA']) ? CJavaScript::jsonDecode($_POST['DATA']) : array();
+                $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
+                //VSValidador::putMessageLogFile($dataObj);            
+                if ($accion == "Create") {
+                    $arroout = $model->insertarDatosUserCliente($dataObj);
+                } else {
+                    //$arroout = $model->actualizarDatosPersona($tienda);
+                }
+
+
+                header('Content-type: application/json');
+                echo CJavaScript::jsonEncode($arroout);
+                return;
+            }
+            $cli_Id = Yii::app()->getSession()->get('CliID', FALSE);
+            $this->titleWindows = Yii::t('TIENDA', 'Información del Cliente');
+            $this->render('empresa', array(
+                'model' => $model->mostrarCliente(),
+                //'roles' => $this->roles(),
+                'area' => $tienda->recuperarClienteArea($cli_Id),
+            ));
+        }
+        
+        public function actionDeleteCliente() {
+            if (Yii::app()->request->isPostRequest) {
+                //$ids = base64_decode($_POST['ids']);
+                $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
+                $res = new CLIENTE;
+                $arroout = $res->removerCliente($ids);
+                header('Content-type: application/json');
+                echo CJavaScript::jsonEncode($arroout);
+            }
+        }
+        
+        public function actionAgregarCliente() {
+        $model = new CLIENTE;
+        $tienda = new TIENDA;
+        //$dataCliente = new ARTICULOTIENDA;
+        //$this->titleWindows = Yii::t('COMPANIA', 'Create User');
+        if (Yii::app()->request->isPostRequest) {
+            //$model = new PERSONA;
+            $arroout=array();
+            $dataObj = isset($_POST['DATA']) ? CJavaScript::jsonDecode($_POST['DATA']) : array();
+            $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
+            //VSValidador::putMessageLogFile($dataObj);            
+            if ($accion == "Create") {
+                $arroout = $model->insertarDatosCliente($dataObj);
+                
+            } else {
+                //$arroout = $model->actualizarDatosPersona($tienda);
+            }
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+            return;
+        }
+//        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+//        $this->titleWindows = Yii::t('TIENDA', 'Información de la Empresa');
+//        $this->render('empresa', array(
+//            'model' => $model->mostrarCliente(),
+//            //'roles' => $this->roles(),
+//            //'area' => $tienda->recuperarClienteArea($cli_Id),
+//        ));
+    }
+    
+
 }

@@ -109,7 +109,7 @@ public static function eliminarDatos($Funcion,$TbGtable,$codigo,$icono) {
                 $valRes = Yii::t('TIENDA', 'Authorized');
                 break;
             Case "4":
-                $valRes = Yii::t('TIENDA', 'Canceled');
+                $valRes = Yii::t('TIENDA', 'Canceled');//USAR ESTE CODIGO PARA QUE APARESCA EN LA LISTA
                 break;
             Case "5":
                 $valRes = Yii::t('TIENDA', 'Revised');

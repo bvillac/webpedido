@@ -115,4 +115,83 @@ class CLIENTE extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        
+        public function mostrarCliente() {
+            $rawData = array();
+            $limitrowsql = Yii::app()->params['limitRowSQL'];
+            $con = Yii::app()->db;
+            //$cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+            $sql = "SELECT CLI_ID Ids,CLI_CED_RUC Cedula,CLI_NOMBRE Nombre,CLI_CORREO Correo,CLI_CONTACTO Contacto,CLI_TELEFONO Telefono
+                        FROM " . $con->dbname . ".CLIENTE                                 
+                    WHERE CLI_EST_LOG=1 ";
+            $sql .= " ORDER BY CLI_iD DESC LIMIT $limitrowsql";
+            //echo $sql;
+            $rawData = $con->createCommand($sql)->queryAll();
+            $con->active = false;
+
+            return new CArrayDataProvider($rawData, array(
+                'keyField' => 'Ids',
+                'sort' => array(
+                    'attributes' => array(
+                        'Ids','Nombre', 'Correo', 'Contacto', 'telefono'
+                    ),
+                ),
+                'totalItemCount' => count($rawData),
+                'pagination' => array(
+                    'pageSize' => Yii::app()->params['pageSize'],
+                ),
+            ));
+        }
+        
+        public function removerCliente($ids) {
+            $msg= new VSexception();
+            $con = Yii::app()->db;
+            $trans = $con->beginTransaction();
+            try {
+                $sql = "UPDATE " . $con->dbname . ".CLIENTE SET CLI_EST_LOG='0' WHERE CLI_ID IN($ids)";
+                $comando = $con->createCommand($sql);
+                $comando->execute();
+                //echo $sql;
+                $trans->commit();
+                $con->active = false;
+                return $msg->messageSystem('OK',null,12,null, null);
+            } catch (Exception $e) { // se arroja una excepción si una consulta falla
+                $trans->rollBack();
+                //throw $e;
+                $con->active = false;
+                return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+            }
+        }
+        
+        public function insertarDatosCliente($objEnt) {
+            $msg = new VSexception();
+            $con = Yii::app()->db;
+            $trans = $con->beginTransaction();
+            try {
+                $this->InsertarCliente($con, $objEnt);
+                //$IdPer = $con->getLastInsertID($con->dbname . '.USUINI_EMPRESA');            
+ 
+                $trans->commit();
+                $con->active = false;
+                return $msg->messageSystem('OK', null, 10, null, null);
+            } catch (Exception $e) {
+                $trans->rollback();
+                $con->active = false;
+                //throw $e;
+                return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+            }
+        }
+    
+     
+    private function InsertarCliente($con, $objEnt) {
+
+        //$cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        $sql = "INSERT INTO " . $con->dbname . ".CLIENTE
+                (COD_CLIE,CLI_CED_RUC,CLI_NOMBRE,CLI_CORREO,CLI_CONTACTO,CLI_TELEFONO,CLI_EST_LOG,CLI_FEC_CRE)VALUES
+                ('" . $objEnt['CEDULA'] . "','" . $objEnt['CEDULA'] . "','" . $objEnt['NOMBRE'] . "','" . $objEnt['CORREO'] . "','" . $objEnt['CONTACTO'] . "',
+                 '" . $objEnt['TELEFONO'] . "','1',CURRENT_TIMESTAMP()) ";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+    
 }
