@@ -23,6 +23,8 @@ class mailSystem {
         $msg = new VSexception();
         $mail = new PHPMailer();
         //$body = "Hola como estas";
+        
+        $nomEmpresa=Yii::app()->getSession()->get('CliNom', FALSE);
 
         $mail->IsSMTP();
         //Para tls
@@ -41,7 +43,7 @@ class mailSystem {
         //$mail->setFrom('bvillacreses@utimpor.com', 'Utimpor.com');
 
         // asunto y cuerpo alternativo del mensaje
-        $mail->Subject = "Ha Recibido un(a) Orden Nuevo(a)!!!";
+        $mail->Subject = "($nomEmpresa) Ha Recibido un(a) Orden Nuevo(a)!!!";
         $mail->AltBody = "Data alternativao";
 
         // si el cuerpo del mensaje es HTML
@@ -95,13 +97,14 @@ class mailSystem {
     public function enviarMensaje($body) {
         $msg = new VSexception();
         $mail = new PHPMailer();
+        $nomEmpresa=Yii::app()->getSession()->get('CliNom', FALSE);
         $mail->IsSMTP();
         $mail->SMTPSecure = $this->SMTPSecure;
         $mail->Port = $this->Port;
         $mail->Host = $this->Host;
         $mail->setFrom('no-responder@utimpor.com', $this->TituloEnvio);
         // asunto y cuerpo alternativo del mensaje
-        $mail->Subject = "Ha Recibido un Correo!!!";
+        $mail->Subject = "($nomEmpresa) Ha Recibido un Correo!!!";
         $mail->AltBody = "Data alternativao";
         // si el cuerpo del mensaje es HTML
         $mail->MsgHTML($body);   
@@ -129,13 +132,14 @@ class mailSystem {
     public function enviarRevisado($body,$CabPed) {
         $msg = new VSexception();
         $mail = new PHPMailer();
+        $nomEmpresa=Yii::app()->getSession()->get('CliNom', FALSE);
         $mail->IsSMTP();
         $mail->SMTPSecure = $this->SMTPSecure;
         $mail->Port = $this->Port;
         $mail->Host = $this->Host;
         $mail->setFrom('no-responder@utimpor.com', $this->TituloEnvio);
         // asunto y cuerpo alternativo del mensaje
-        $mail->Subject = "Correo de Confirmación. Su Orden fue Revisada";
+        $mail->Subject = "($nomEmpresa) Correo de Confirmación. Su Orden fue Revisada";
         $mail->AltBody = "Data alternativao";
         // si el cuerpo del mensaje es HTML
         $mail->MsgHTML($body); 
@@ -164,13 +168,14 @@ class mailSystem {
     public function enviarAutoriza($body) {
         $msg = new VSexception();
         $mail = new PHPMailer();
+        $nomEmpresa=Yii::app()->getSession()->get('CliNom', FALSE);
         $mail->IsSMTP();
         $mail->SMTPSecure = $this->SMTPSecure;
         $mail->Port = $this->Port;
         $mail->Host = $this->Host;
         $mail->setFrom('no-responder@utimpor.com', $this->TituloEnvio);
         // asunto y cuerpo alternativo del mensaje
-        $mail->Subject = "Ha Recibido un Correo!!!";
+        $mail->Subject = "($nomEmpresa) Ha Recibido un Correo!!!";
         $mail->AltBody = "Data alternativao";
         // si el cuerpo del mensaje es HTML
         $mail->MsgHTML($body);   
