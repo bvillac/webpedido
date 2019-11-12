@@ -25,6 +25,7 @@ class mailSystem {
         //$body = "Hola como estas";
         
         $nomEmpresa=Yii::app()->getSession()->get('CliNom', FALSE);
+        $valorNeto= Yii::app()->format->formatNumber($CabPed[0]["ValorNeto"]) ;
 
         $mail->IsSMTP();
         //Para tls
@@ -43,7 +44,7 @@ class mailSystem {
         //$mail->setFrom('bvillacreses@utimpor.com', 'Utimpor.com');
 
         // asunto y cuerpo alternativo del mensaje
-        $mail->Subject = "($nomEmpresa) Ha Recibido un(a) Orden Nuevo(a)!!!";
+        $mail->Subject = "($nomEmpresa)$ $valorNeto Ha Recibido un(a) Orden Nuevo(a)!!!";
         $mail->AltBody = "Data alternativao";
 
         // si el cuerpo del mensaje es HTML
@@ -70,6 +71,7 @@ class mailSystem {
             $mail->addBCC('ncastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
             $mail->addBCC('yalava@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
             $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta 
+            $mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor');
         }
         
         
