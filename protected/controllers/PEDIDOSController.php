@@ -101,8 +101,8 @@ class PEDIDOSController extends Controller {
         $this->titleWindows = Yii::t('TIENDA', 'Hacer Pedidos');
         $this->render('listar', array(
             'model' => $model->listarItemsTiendas(0,""),
-            //'tienda' => $model->recuperarTiendasRol(),
-            'tienda' => $model->recuperarTiendaAsig(),
+            'tienda' => $model->recuperarTiendasRol(),
+            //'tienda' => $model->recuperarTiendaAsig(),
             //'area' => $model->recuperarUserArea(),
             'cliID' => $cli_Id,
         ));
