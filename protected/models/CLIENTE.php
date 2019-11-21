@@ -169,7 +169,7 @@ class CLIENTE extends CActiveRecord
             $trans = $con->beginTransaction();
             try {
                 $this->InsertarCliente($con, $objEnt);
-                //$IdPer = $con->getLastInsertID($con->dbname . '.USUINI_EMPRESA');            
+                $IdCli = $con->getLastInsertID($con->dbname . '.CLIENTE');            
  
                 $trans->commit();
                 $con->active = false;

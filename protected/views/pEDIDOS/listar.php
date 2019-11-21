@@ -8,7 +8,7 @@
     <?php }  ?>
     <?php $this->renderPartial('_frm_dataTienda', 
                     array(
-                        'tienda' =>$tienda,'area' =>$area)); ?>    
+                        'tienda' =>$tienda)); ?>    
 </div>
 <div class="col-lg-12">
     <p>

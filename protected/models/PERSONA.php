@@ -170,7 +170,7 @@ class PERSONA extends CActiveRecord
             $IdPer = $con->getLastInsertID($con->dbname . '.PERSONA');            
             $this->InsertarUsuario($con, $objEnt, $IdPer);
             $IdUsu = $con->getLastInsertID($con->dbname . '.USUARIO');
-            $this->InsertarAreaPer($con, $objEnt, $IdUsu);
+            //$this->InsertarAreaPer($con, $objEnt, $IdUsu);
             $this->InsertarDataPer($con, $objEnt, $IdPer);
             //$this->insertarUserTienda($con, $objEnt, $IdUsu);
             $trans->commit();
@@ -371,7 +371,7 @@ class PERSONA extends CActiveRecord
         $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         $sql = "SELECT A.UTIE_ID UtieId,B.USU_NOMBRE Usuario,A.UTIE_FEC_CRE Fecha,
                         CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) Persona,F.CLI_NOMBRE Cliente,
-                        C.TIE_NOMBRE TiendaNombre,D.ROL_NOMBRE Rol,A.UTIE_EST_LOG Estado
+                        C.TIE_NOMBRE TiendaNombre,D.ROL_NOMBRE Rol,A.UTIE_EST_LOG Estado,A.UTIE_ASIG Asig
                         FROM " . $con->dbname . ".USUARIO_TIENDA A
                                 INNER JOIN (" . $con->dbname . ".USUARIO B
                                             INNER JOIN " . $con->dbname . ".PERSONA E
@@ -617,6 +617,8 @@ class PERSONA extends CActiveRecord
             return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
         }
     }
+    
+    
     
 
         

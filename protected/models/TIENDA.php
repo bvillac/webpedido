@@ -143,10 +143,47 @@ class TIENDA extends CActiveRecord {
         try {
             $con = yii::app()->db;
             //Verificacion por ROL PARA aministrador cod=9
-            if($rol_Id==9){//Rol de Super Administrador
-                
+            if($rol_Id==9){//Rol de Super Administrador                
                 $sql = "SELECT TIE_ID,TIE_NOMBRE FROM " . $con->dbname . ".TIENDA "
                         . " WHERE TIE_EST_LOG=1  AND CLI_ID=$cli_Id ORDER BY TIE_NOMBRE;";
+            
+            } else {
+                    $sql = "SELECT B.TIE_ID,B.TIE_NOMBRE
+                        FROM " . $con->dbname . ".USUARIO_TIENDA A
+                                INNER JOIN " . $con->dbname . ".TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                    WHERE A.UTIE_EST_LOG=1 AND A.ROL_ID=$rol_Id AND USU_ID=$usu_Id AND A.CLI_ID=$cli_Id "
+                            . " ORDER BY B.TIE_NOMBRE ASC";
+            }
+        
+            //echo $sql;
+            $rawData = $con->createCommand($sql)->queryAll();
+            $con->active = false;
+            return $rawData;
+        } catch (Exception $e) {
+            //throw $e;
+            throw new CHttpException(400,'Acción no permitida, Ud. no tiene acceso');
+
+        }
+    }
+    
+    public function recuperarTiendaAsig() {
+        $rol_Id = Yii::app()->getSession()->get('RolId', FALSE);
+        $usu_Id = Yii::app()->getSession()->get('user_id', FALSE);
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        try {
+            $con = yii::app()->db;
+            //Verificacion por ROL PARA aministrador cod=9
+            if($rol_Id==9){//Rol de Super Administrador                
+                $sql = "SELECT TIE_ID,TIE_NOMBRE FROM " . $con->dbname . ".TIENDA "
+                        . " WHERE TIE_EST_LOG=1  AND CLI_ID=$cli_Id ORDER BY TIE_NOMBRE;";
+            }elseif($rol_Id==8){//ROL DE SUPERVISOR
+                $sql = "SELECT B.TIE_ID,B.TIE_NOMBRE
+                        FROM " . $con->dbname . ".USUARIO_TIENDA A
+                                INNER JOIN " . $con->dbname . ".TIENDA B
+                                        ON A.TIE_ID=B.TIE_ID
+                    WHERE A.UTIE_EST_LOG=1 AND A.UTIE_ASIG=1 AND A.ROL_ID=$rol_Id AND USU_ID=$usu_Id AND A.CLI_ID=$cli_Id "
+                            . " ORDER BY B.TIE_NOMBRE ASC";
             } else {
                     $sql = "SELECT B.TIE_ID,B.TIE_NOMBRE
                         FROM " . $con->dbname . ".USUARIO_TIENDA A
@@ -692,6 +729,40 @@ class TIENDA extends CActiveRecord {
         return $rawData;
     }
     
+    private function recuperarUserTienda($con,$ids) { 
+        $sql = "SELECT * FROM " . $con->dbname . ".USUARIO_TIENDA WHERE UTIE_ID=$ids ;";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        return $rawData;
+    }
+    
+    public function asignarTienda($ids) {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $rawData=$this->recuperarUserTienda($con,$ids);
+            
+            $usuario=$rawData[0]['USU_ID'];
+            $cliente=$rawData[0]['CLI_ID'];
+            //VSValidador::putMessageLogFile($usuario.$cliente);
+            $sql = " UPDATE " . $con->dbname . ".USUARIO_TIENDA SET UTIE_ASIG=NULL WHERE USU_ID=$usuario AND CLI_ID=$cliente; ";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            $sql = " UPDATE " . $con->dbname . ".USUARIO_TIENDA SET UTIE_ASIG='1' WHERE UTIE_ID IN($ids);";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            //echo $sql;
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,10,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
     
 
 }

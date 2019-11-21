@@ -119,14 +119,14 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         return parent::model($className);
     }
 
-    public function insertarLista($tieId,$idsAre,$total, $dts_Lista) {
+    public function insertarLista($tieId,$total, $dts_Lista) {
         $msg = new VSexception();
         $valida = new VSValidador();
         $con = Yii::app()->db;
         $trans = $con->beginTransaction();
         try {
             $cliID=Yii::app()->getSession()->get('CliID', FALSE);
-            $this->InsertarCabListPedTemp($con,$total, $tieId,$idsAre,$cliID);
+            $this->InsertarCabListPedTemp($con,$total, $tieId,$cliID);
             $idCab = $con->getLastInsertID($con->dbname . '.TEMP_CAB_PEDIDO');
             for ($i = 0; $i < sizeof($dts_Lista); $i++) {
                 $artieId = $dts_Lista[$i]['ARTIE_ID'];
@@ -209,12 +209,12 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         $command->execute();
     }
     
-    private function InsertarCabListPedTemp($con,$total,$tieId,$idsAre,$cliID) {
+    private function InsertarCabListPedTemp($con,$total,$tieId,$cliID) {
         $utieId=Yii::app()->getSession()->get('UtieId', FALSE); 
         $UserName=Yii::app()->getSession()->get('user_name', FALSE);
         $sql="INSERT INTO " . $con->dbname . ".TEMP_CAB_PEDIDO
-                (TDOC_ID,TIE_ID,UTIE_ID,TCPED_TOTAL,TCPED_EST_LOG,TCPED_FEC_CRE,IDS_ARE,CLI_ID,USUARIO)VALUES
-                (1,$tieId,$utieId,$total,1,CURRENT_TIMESTAMP(),$idsAre,'$cliID','$UserName');";
+                (TDOC_ID,TIE_ID,UTIE_ID,TCPED_TOTAL,TCPED_EST_LOG,TCPED_FEC_CRE,CLI_ID,USUARIO)VALUES
+                (1,$tieId,$utieId,$total,1,CURRENT_TIMESTAMP(),'$cliID','$UserName');";
         $command = $con->createCommand($sql);
         $command->execute();
     }

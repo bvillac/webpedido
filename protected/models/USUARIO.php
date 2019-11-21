@@ -120,17 +120,19 @@ class USUARIO extends CActiveRecord {
 
     public function recuperarTiendasUsuario($idstie) {
         $ids = Yii::app()->getSession()->get('user_id', FALSE);
+        $rol_Id = Yii::app()->getSession()->get('RolId', FALSE);//se verifica el roll para mostrar todas las tiendas
         $con = yii::app()->db;
         $sql = "SELECT B.TIE_ID,B.TIE_NOMBRE 
-                        FROM VSSEAPEDIDO.CLIENTE A
-                                INNER JOIN (VSSEAPEDIDO.TIENDA B
-                                                INNER JOIN VSSEAPEDIDO.USUARIO_TIENDA C
+                        FROM " . $con->dbname . ".CLIENTE A
+                                INNER JOIN (" . $con->dbname . ".TIENDA B
+                                                INNER JOIN " . $con->dbname . ".USUARIO_TIENDA C
                                                         ON B.TIE_ID=C.TIE_ID AND UTIE_EST_LOG=1)
                                         ON A.CLI_ID=B.CLI_ID
                 WHERE A.CLI_EST_LOG=1 ";
         $sql .= ($ids != "") ? "AND C.USU_ID=$ids " : "";
         $sql .= ($idstie != "") ? "AND A.CLI_ID=$idstie " : "";
-        $sql .= " ORDER BY B.TIE_NOMBRE DESC";
+        //$sql .= ($rol_Id = "8") ? "AND C.UTIE_ASIG='1' " : "";
+        $sql .= " ORDER BY B.TIE_NOMBRE ASC";
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
@@ -141,7 +143,7 @@ class USUARIO extends CActiveRecord {
         $ids = Yii::app()->getSession()->get('user_id', FALSE);
         $con = yii::app()->db;
         $sql = "SELECT DISTINCT(D.CLI_ID) CLI_ID,D.CLI_NOMBRE 
-                        FROM " . $con->dbname . ".USUARIO A
+                            FROM " . $con->dbname . ".USUARIO A
                                 INNER JOIN (" . $con->dbname . ".USUARIO_TIENDA B
                                         INNER JOIN (" . $con->dbname . ".TIENDA C
                                                 INNER JOIN " . $con->dbname . ".CLIENTE D
@@ -205,6 +207,17 @@ class USUARIO extends CActiveRecord {
         $rawData = array();
         $sql = "SELECT UTIE_ID FROM " . $con->dbname . ".USUARIO_TIENDA 
                     WHERE USU_ID=$ids AND TIE_ID=$tie AND ROL_ID=$rol ";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryRow();
+        if ($rawData === false)
+            return false; //en caso de que existe problema o no retorne nada tiene false por defecto 
+        return true;//$rawData['UTIE_ID'];
+    }
+    
+    private function existeTieAsignada($con,$ids,$tie,$rol,$cli_Id) {
+        $rawData = array();
+        $sql = "SELECT UTIE_ID FROM " . $con->dbname . ".USUARIO_TIENDA 
+                    WHERE USU_ID=$ids AND TIE_ID=$tie AND ROL_ID=$rol AND CLI_ID=$cli_Id AND UTIE_ASIG=1 ";
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryRow();
         if ($rawData === false)

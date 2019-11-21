@@ -30,7 +30,7 @@ class USUARIOController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update','Save','Delete','DeleteUserTie','UserTienda',
+                'actions' => array('create', 'update','Save','Delete','DeleteUserTie','UserTienda','AsignarTienda',
                                     'ClienteTienda','BuscarUsuario','SaveUserTie','Contrasena','Upload',
                                     'UsuarioCliente','DeleteUserCliente','DeleteItemCliente','ListaProducto',
                                     'AutorizaListadoUser','AutorizaListadoItem'),
@@ -89,7 +89,7 @@ class USUARIOController extends Controller {
             'model' => $model,
             'genero' => $this->genero(),
             'estado' => $this->estado(),
-            'area' => $tienda->recuperarClienteArea($cli_Id),
+            
         ));
     }
 
@@ -433,6 +433,18 @@ class USUARIOController extends Controller {
             return;
         }
         
+    }
+    
+    
+    public function actionAsignarTienda() {
+        if (Yii::app()->request->isPostRequest) {
+            //$ids = base64_decode($_POST['ids']);
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
+            $res = new TIENDA;
+            $arroout = $res->asignarTienda($ids);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+        }
     }
     
     

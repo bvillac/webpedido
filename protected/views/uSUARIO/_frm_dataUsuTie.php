@@ -54,7 +54,8 @@
             );
             ?> 
         </div>
-    </div>  
+    </div> 
+    
     <div class="form-group">
         <?php
         $this->widget('zii.widgets.jui.CJuiAutoComplete', array(

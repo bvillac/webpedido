@@ -101,8 +101,9 @@ class PEDIDOSController extends Controller {
         $this->titleWindows = Yii::t('TIENDA', 'Hacer Pedidos');
         $this->render('listar', array(
             'model' => $model->listarItemsTiendas(0,""),
-            'tienda' => $model->recuperarTiendasRol(),
-            'area' => $model->recuperarUserArea(),
+            //'tienda' => $model->recuperarTiendasRol(),
+            'tienda' => $model->recuperarTiendaAsig(),
+            //'area' => $model->recuperarUserArea(),
             'cliID' => $cli_Id,
         ));
     }
@@ -129,9 +130,9 @@ class PEDIDOSController extends Controller {
             $tieId = isset($_POST['TIE_ID']) ? $_POST['TIE_ID'] : 0;
             $total = isset($_POST['TOTAL']) ? $_POST['TOTAL'] : 0;
             $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
-            $idsAre=isset($_POST['IDS_ARE'])? $_POST['IDS_ARE']:1;//Valor 1 por defecto en area
+            //$idsAre=isset($_POST['IDS_ARE'])? $_POST['IDS_ARE']:1;//Valor 1 por defecto en area
             if ($accion == "Create") {
-                $arroout = $model->insertarLista($tieId,$idsAre,$total,$dts_Lista);
+                $arroout = $model->insertarLista($tieId,$total,$dts_Lista);
                 //Nota solo Para cliente Marximex puede Enviar los pedidos
                 //directamentes para autorizar sin necesidad e una aprobacion
                 //es decir se guardara la tabla temp y la tablas de comunicacion.
@@ -482,7 +483,7 @@ class PEDIDOSController extends Controller {
         $this->titleWindows = Yii::t('TIENDA', 'View orders');
         $this->render('consultar', array(
             'model' => $model->listarPedidosTiendas(null),
-            'tienda' => $tienda->recuperarTiendasRol(),
+            'tienda' => $tienda->recuperarTiendaAsig(),
             'estado' => VSValidador::tipoAprobacion(),
             'cliID' => $cli_Id,
         ));

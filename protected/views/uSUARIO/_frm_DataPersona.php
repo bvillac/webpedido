@@ -147,26 +147,7 @@
             ?> 
         </div>
     </div>
-    <div class="form-group rowLine">
-        <div class="txt_label">
-            <label><?php echo Yii::t('USUARIO', 'Area') ?></label>
-        </div>
-        <div class="rowTd">
-            <?php
-        echo CHtml::dropDownList(
-                'cmb_area', '0'
-                //, array('0' => Yii::t('GENERAL', '-TODOS-')) + CHtml::listData($area, 'IDS_ARE', 'NOM_ARE')
-                ,  CHtml::listData($area, 'IDS_ARE', 'NOM_ARE')
-                , array(
-                    //'onchange' => 'js:mostrarListaArea()',
-                    'class' => 'form-control',
-                    //'disabled' => true
-                )
-        );
-        ?> 
-        </div>
-    </div>
-        
+    
         
     
 

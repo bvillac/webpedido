@@ -107,7 +107,7 @@ function objetoPersona(ID){
     persona.correo=$('#txt_correo').val();
     persona.genero=$('#cmb_genero option:selected').val();
     persona.estado=$('#cmb_estado option:selected').val();
-    persona.area=$('#cmb_area option:selected').val();
+    
     sessionStorage.tienda = JSON.stringify(persona);
     return JSON.stringify(persona);
 }
@@ -378,7 +378,7 @@ function fun_agregarUserTienda(accion) {
 }
 
 function objetoUsuarioTie(){
-    var data=new Object();
+    var data=new Object();   
     data.CLI=$('#cmb_cliente option:selected').val();
     data.TIE=$('#cmb_tienda option:selected').val();
     data.ROL=$('#cmb_rol option:selected').val();
@@ -476,8 +476,7 @@ function objetoUserCliente(ID){
     persona.UEMP_ID=ID;
     persona.TIE_ID=0;//NO EXISTE ANEXO TIENDA
     persona.CLI_ID=0;
-    persona.ROL_ID=$('#cmb_roles option:selected').val();
-    persona.IDS_ARE=1;//$('#cmb_area option:selected').val();
+    persona.ROL_ID=$('#cmb_roles option:selected').val();    
     persona.UEMP_NOMBRE=$('#txt_nombre').val();
     persona.UEMP_ALIAS=$('#txt_departamento').val();
     persona.UEMP_CORREO=$('#txt_correo').val();
@@ -670,4 +669,29 @@ function limpiarDatos(){
     $("#txt_nombre").attr("disabled","disabled");
     $("#txt_correo").attr("disabled","disabled");
     $("#cmb_roles").attr("disabled","disabled");
+}
+
+
+function fun_AsignarTienda(ids){
+        if(!confirm(mgAccion)) return false;
+        var link=$('#txth_controlador').val()+"/AsignarTienda";
+        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
+        $.ajax({
+            type: 'POST',
+            url: link,
+            data:{
+                "ids": ids
+            } ,
+            success: function(data){
+                if (data.status=="OK"){ 
+                    $("#messageInfo").html(data.message+buttonAlert); 
+                    alerMessage();
+                    $.fn.yiiGridView.update('TbG_USUARIO');
+                    //actualizarTbG_USUARIO();
+                }
+            },
+            dataType: "json"
+        });
+    
+    return true;
 }

@@ -33,7 +33,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
         ),
         array(
             'name' => 'Cliente',
-            'header' => Yii::t('USUARIO', 'Name store'),
+            'header' => Yii::t('USUARIO', 'Cliente'),
             'value' => '$data["Cliente"]',
         ),
         array(
@@ -58,6 +58,14 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'header' => Yii::t('USUARIO', 'Status'),
             'value' => '($data["Estado"]=="1")?Yii::t("USUARIO", "Active"):Yii::t("USUARIO", "Inactive")',
             'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
+        ),
+        array(
+            'name' => 'Asignada',
+            'header' => Yii::t('TIENDA', 'Asignada'),
+            'value' => 'VSValidador::asignarDatos("fun_AsignarTienda","TbG_USUARIO",$data["UtieId"],($data["Asig"]==1)?"visto_ok.png":"visto_no.png")',
+            'type' => 'raw',
+            'htmlOptions' => array('style' => 'text-align:center', 'width' => '4px'),
+            //'htmlOptions'=>array('class'=>'icon-th'),
         ),
     ),
 ));

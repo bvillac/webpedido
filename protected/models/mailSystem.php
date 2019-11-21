@@ -44,7 +44,7 @@ class mailSystem {
         //$mail->setFrom('bvillacreses@utimpor.com', 'Utimpor.com');
 
         // asunto y cuerpo alternativo del mensaje
-        $mail->Subject = "($nomEmpresa)$ $valorNeto Ha Recibido un(a) Orden Nuevo(a)!!!";
+        $mail->Subject = "$valorNeto ($nomEmpresa) Ha Recibido un(a) Orden Nuevo(a)!!!";
         $mail->AltBody = "Data alternativao";
 
         // si el cuerpo del mensaje es HTML
@@ -61,7 +61,7 @@ class mailSystem {
         $cli_Id=Yii::app()->getSession()->get('CliID', FALSE); 
         if($cli_Id==5){
             $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
-            $mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
+            //$mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
             //$mail->addBCC('bodega@utimpor.com', 'Bodega Utimpor'); //Para copia Oculta Gerencia
             $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
         }else{
@@ -71,7 +71,7 @@ class mailSystem {
             $mail->addBCC('ncastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
             $mail->addBCC('yalava@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
             $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta 
-            $mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor');
+            //$mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor');
         }
         
         

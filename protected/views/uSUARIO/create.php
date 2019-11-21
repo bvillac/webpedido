@@ -15,7 +15,7 @@
                 'model' => $model,
                 'genero' => $genero,
                 'estado' => $estado,
-                'area' => $area
+               
             ));
             ?>
         </div>

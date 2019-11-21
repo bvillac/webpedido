@@ -19,7 +19,7 @@
         </div>
         <div class="col-lg-2">
             <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Nuevo Pedido'), array('id' => 'btn_new', 'name' => 'btn_new', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'nuevaListaPedTemp()')); ?>
-            <?php //echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Save'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'guardarListaPedido("Create")')); ?>
+            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Save'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'guardarListaPedido("Create")')); ?>
         </div>
         <div class="col-lg-2">
             <label><?php echo Yii::t('TIENDA', 'Total') ?>:$</label>
@@ -35,27 +35,7 @@
             
         
     </div>
-    <div class="form-group rowLine">
-            
-<!--        <div class="col-lg-1">
-            <label><?php //echo Yii::t('GENERAL', 'Area') ?></label>            
-        </div>-->
-        <div class="col-lg-3">
-            <?php
-            echo CHtml::dropDownList(
-                    'cmb_area', '0'
-                    , array('0' => Yii::t('GENERAL', 'SELECCIONAR AREA')) + CHtml::listData($area, 'IDS_ARE', 'NOM_ARE')
-                    , array(
-                        //'onchange' => 'js:mostrarListaTienda(this.value)',
-                        'class' => 'form-control'
-                        )
-            );
-            ?> 
-        </div>
-    <div class="col-lg-2">            
-            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Save'), array('id' => 'btn_save', 'name' => 'btn_save', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'guardarListaPedido("Create")')); ?>
-    </div>
-    </div> 
+    
     
     
     <div class="form-group rowLine">

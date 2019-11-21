@@ -327,7 +327,7 @@ function guardarListaPedido(accion) {
             } */
 
             var ID = (accion == "Update") ? $('#txth_PedID').val() : 0;
-            var idsAre =($('#cmb_area option:selected').val()!=0)?$('#cmb_area option:selected').val():1;          
+            //var idsAre =($('#cmb_area option:selected').val()!=0)?$('#cmb_area option:selected').val():1;          
             var tieId = (accion == "Create") ? $('#cmb_tienda option:selected').val() : ID;//Cuando Es Actualizacion Retorno el Id Cabecera
             var link = $('#txth_controlador').val() + "/Save";
             $.ajax({
@@ -336,7 +336,7 @@ function guardarListaPedido(accion) {
                 data: {
                     "DTS_LISTA": (accion == "Create") ? listaPedido() : listaPedidoDetTemp(),
                     "TIE_ID": tieId,
-                    "IDS_ARE": idsAre,
+                    //"IDS_ARE": idsAre,
                     "TOTAL": total,
                     "ACCION": accion
                 },
@@ -827,11 +827,11 @@ function fun_buscarDataRevisar(op){
             "CONT_BUSCAR": controlBuscarResumen(op)
         }
     }); 
-    if($('#cmb_area option:selected').val()==0){
+    /*if($('#cmb_area option:selected').val()==0){
         calTotalGrupo(4);
     }else{
         calTotalGrupo(7);
-    }
+    }*/
     
 }
 
@@ -850,7 +850,7 @@ function controlBuscarResumen(op){
     }else{
         buscarIndex.OP=1;
     }
-    buscarIndex.IDS_ARE=$('#cmb_area option:selected').val();
+    //buscarIndex.IDS_ARE=$('#cmb_area option:selected').val();
     
     buscarIndex.F_INI=$('#dtp_fec_ini').val();
     buscarIndex.F_FIN=$('#dtp_fec_fin').val();

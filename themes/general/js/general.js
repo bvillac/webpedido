@@ -14,6 +14,7 @@ var t_hide = 5000;
 var t_transi = 1500;
 var buttonAlert = '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>';
 var selecDoc = 'Seleccionar documento para autorizar';
+var mgAccion = 'Está seguro que desea realizar esta acción';
 var mgEliminar = 'Está seguro que desea Eliminar estos Item';
 var mgEnvDocum = 'Está seguro que desea Enviar estos Documentos';
 var mgEnvInfo = 'Está seguro que desea Enviar Información';

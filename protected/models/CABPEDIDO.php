@@ -309,13 +309,13 @@ class CABPEDIDO extends CActiveRecord {
         //Nota: UTIE_ID= User que revisa  y UTIE_ID_PED= User que hace el pedido
         $utieId = Yii::app()->getSession()->get('UtieId', FALSE);        
         $UserName=Yii::app()->getSession()->get('user_name', FALSE);
-        $idsAre=($objEnt[$i]['IDS_ARE']<>'')?$objEnt[$i]['IDS_ARE']:1;//Valor 1 por defecto en area
+        //$idsAre=($objEnt[$i]['IDS_ARE']<>'')?$objEnt[$i]['IDS_ARE']:1;//Valor 1 por defecto en area
         $sql = "INSERT INTO " . $con->dbname . ".CAB_PEDIDO
                 (TDOC_ID,TIE_ID,TCPED_ID,CPED_FEC_PED,CPED_VAL_BRU,CPED_POR_DES,CPED_VAL_DES,CPED_POR_IVA,CPED_VAL_IVA,
-                 CPED_BAS_IVA,CPED_BAS_IV0,CPED_VAL_FLE,CPED_VAL_NET,CPED_EST_PED,CPED_EST_LOG,UTIE_ID_PED,UTIE_ID,IDS_ARE,CLI_ID,USUARIO)VALUES
+                 CPED_BAS_IVA,CPED_BAS_IV0,CPED_VAL_FLE,CPED_VAL_NET,CPED_EST_PED,CPED_EST_LOG,UTIE_ID_PED,UTIE_ID,CLI_ID,USUARIO)VALUES
                 (2,'" . $objEnt[$i]['TIE_ID'] . "','" . $objEnt[$i]['TCPED_ID'] . "',CURRENT_TIMESTAMP(),
                    '" . $objEnt[$i]['TCPED_TOTAL'] . "',0,0,0,0,0,0,0,'" . $objEnt[$i]['TCPED_TOTAL'] . "','$EstAut','1',
-                    '" . $objEnt[$i]['UTIE_ID'] . "','$utieId',$idsAre,'$cliID','$UserName') ";
+                    '" . $objEnt[$i]['UTIE_ID'] . "','$utieId','$cliID','$UserName') ";
 
         $command = $con->createCommand($sql);
         $command->execute();

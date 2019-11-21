@@ -235,13 +235,6 @@ class CLIENTEController extends Controller
             echo CJavaScript::jsonEncode($arroout);
             return;
         }
-//        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
-//        $this->titleWindows = Yii::t('TIENDA', 'Información de la Empresa');
-//        $this->render('empresa', array(
-//            'model' => $model->mostrarCliente(),
-//            //'roles' => $this->roles(),
-//            //'area' => $tienda->recuperarClienteArea($cli_Id),
-//        ));
     }
     
 
