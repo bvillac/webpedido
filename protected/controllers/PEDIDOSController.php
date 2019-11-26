@@ -101,8 +101,8 @@ class PEDIDOSController extends Controller {
         $this->titleWindows = Yii::t('TIENDA', 'Hacer Pedidos');
         $this->render('listar', array(
             'model' => $model->listarItemsTiendas(0,""),
-            'tienda' => $model->recuperarTiendasRol(),
-            //'tienda' => $model->recuperarTiendaAsig(),
+            //'tienda' => $model->recuperarTiendasRol(),
+            'tienda' => $model->recuperarTiendaAsig(),
             //'area' => $model->recuperarUserArea(),
             'cliID' => $cli_Id,
         ));
@@ -168,8 +168,34 @@ class PEDIDOSController extends Controller {
         $dataMail->enviarMail($htmlMail, $CabPed);
         return $msg->messagePedidos('OK',$valida->ajusteNumDoc($IdsTemp, 9),'PE',null, 30, null, null);
     }
+    
+    
+    public function actionConsultar() {//USUARIO FINAL
+        $model = new TEMP_CABPEDIDO;
+        $tienda = new TIENDA;        
+        $arrayData = array();
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        if (Yii::app()->request->isAjaxRequest) {
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
+            $datos['ids']=0;
+            $arrayData = $model->listarPedidosUsuario(null);
+            $this->renderPartial('_indexGridPedidos', array(
+                'model' => $arrayData,
+            ),false, true);
+            return;
+        }
+        $this->titleWindows = Yii::t('TIENDA', 'View orders');
+        $this->render('consultar', array(
+            'model' => $model->listarPedidosUsuario(null),
+            'tienda' => $tienda->recuperarTiendaAsig(),
+            //'tienda' => $tienda->recuperarTiendasRol(),
+            'estado' => VSValidador::tipoAprobacion(),
+            'cliID' => $cli_Id,
+        ));
+        
+    }
 
-    public function actionAprobar() {
+    public function actionAprobar() {//SUPERVISOR
         $model = new TEMP_CABPEDIDO;
         $tienda = new TIENDA;        
         $arrayData = array();
@@ -467,29 +493,7 @@ class PEDIDOSController extends Controller {
         }
     }
     
-    public function actionConsultar() {
-        $model = new TEMP_CABPEDIDO;
-        $tienda = new TIENDA;        
-        $arrayData = array();
-        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
-        if (Yii::app()->request->isAjaxRequest) {
-            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
-            $arrayData = $model->listarPedidosTiendas(null);
-            $this->renderPartial('_indexGridPedidos', array(
-                'model' => $arrayData,
-            ),false, true);
-            return;
-        }
-        $this->titleWindows = Yii::t('TIENDA', 'View orders');
-        $this->render('consultar', array(
-            'model' => $model->listarPedidosTiendas(null),
-            //'tienda' => $tienda->recuperarTiendaAsig(),
-            'tienda' => $tienda->recuperarTiendasRol(),
-            'estado' => VSValidador::tipoAprobacion(),
-            'cliID' => $cli_Id,
-        ));
-        
-    }
+    
     
     public function actionBuscarItemsUpdate() {
         //if (Yii::app()->request->isAjaxRequest) {

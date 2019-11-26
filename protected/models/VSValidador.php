@@ -99,7 +99,7 @@ class VSValidador {
             '2' => Yii::t('TIENDA', 'Dressed'),//Atendido
             '3' => Yii::t('TIENDA', 'Authorized'),//Autorizado
             '4' => Yii::t('TIENDA', 'Canceled'),//Cancelado 
-            '5' => Yii::t('TIENDA', 'Revised'),//Revisado
+            //'5' => Yii::t('TIENDA', 'Revised'),//Revisado
         );
     }
     public static function estadoAprobacion($estado) {
@@ -116,9 +116,9 @@ class VSValidador {
             Case "4":
                 $valRes = Yii::t('TIENDA', 'Canceled');//USAR ESTE CODIGO PARA QUE APARESCA EN LA LISTA
                 break;
-            Case "5":
-                $valRes = Yii::t('TIENDA', 'Revised');
-                break;
+//            Case "5":
+//                $valRes = Yii::t('TIENDA', 'Revised');
+//                break;
             
             default:
                 $valRes = "Error";

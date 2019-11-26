@@ -41,11 +41,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'header' => Yii::t('USUARIO', 'Departamento'),
             'value' => '$data["Departamento"]',
         ),
-        array(
-            'name' => 'Correo',
-            'header' => Yii::t('USUARIO', 'Correo'),
-            'value' => '$data["Correo"]',
-        ),
+//        array(
+//            'name' => 'Correo',
+//            'header' => Yii::t('USUARIO', 'Correo'),
+//            'value' => '$data["Correo"]',
+//        ),
         array(
             'name' => 'Cupo',
             'header' => Yii::t('TIENDA', 'Cupo'),

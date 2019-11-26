@@ -407,7 +407,8 @@ function controlBuscarUseTie(op){
     buscarIndex.OP=op;
     buscarIndex.TIE_ID=$('#cmb_tienda option:selected').val();
     buscarIndex.CLI_ID=$('#cmb_cliente option:selected').val();
-    buscarIndex.ROL_ID=$('#cmb_rol option:selected').val();_indexGridCliente
+    buscarIndex.ROL_ID=$('#cmb_rol option:selected').val();
+    buscarIndex.USU_NOMBRE=$('#txt_nombreUser').val();
     //buscarArray[0] = buscarIndex;
     return JSON.stringify(buscarIndex);
 }
@@ -479,7 +480,7 @@ function objetoUserCliente(ID){
     persona.ROL_ID=$('#cmb_roles option:selected').val();    
     persona.UEMP_NOMBRE=$('#txt_nombre').val();
     persona.UEMP_ALIAS=$('#txt_departamento').val();
-    persona.UEMP_CORREO=$('#txt_correo').val();
+    persona.UEMP_CORREO='';//$('#txt_correo').val();
     persona.TIE_CUPO=$('#txt_cupo').val();
     persona.EST_LOG=1;
     sessionStorage.dataObj = JSON.stringify(persona);
@@ -519,9 +520,31 @@ function fun_DeleteUserCliente(ids){
     return true;
 }
 
-function fun_AutorizaFile(){
+function fun_AutorizaUserCliente(){
         if(!confirm(mgEnvInfo)) return false;
         var link=$('#txth_controlador').val()+"/AutorizaListadoUser";        
+        $.ajax({
+            type: 'POST',
+            url: link,
+            data:{
+                "ids": 0
+            } ,
+            success: function(data){
+                if (data.status=="OK"){ 
+                    $("#messageInfo").html(data.message+buttonAlert); 
+                    alerMessage();
+                    //$.fn.yiiGridView.update('TbG_USUARIO');
+                    
+                }
+            },
+            dataType: "json"
+        });
+    
+    return true;
+}
+function fun_AutorizaFile(){
+        if(!confirm(mgEnvInfo)) return false;
+        var link=$('#txth_controlador').val()+"/Upload";        
         $.ajax({
             type: 'POST',
             url: link,

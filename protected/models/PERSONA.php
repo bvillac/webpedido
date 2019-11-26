@@ -388,7 +388,9 @@ class PERSONA extends CActiveRecord
             $sql .= ($control['TIE_ID'] != "0") ? "AND C.TIE_ID='".$control['TIE_ID']."' " : "";
             $sql .= ($control['CLI_ID'] != "0") ? "AND C.CLI_ID='".$control['CLI_ID']."' " : "";
             $sql .= ($control['ROL_ID'] != "0") ? "AND D.ROL_ID='".$control['ROL_ID']."' " : "";
+            $sql .= ($control['USU_NOMBRE'] != "") ? "AND B.USU_NOMBRE='".$control['USU_NOMBRE']."' " : "";
         }
+        
         $sql .= "ORDER BY A.UTIE_ID DESC LIMIT $limitrowsql";
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
@@ -403,7 +405,7 @@ class PERSONA extends CActiveRecord
             ),
             'totalItemCount' => count($rawData),
             'pagination' => array(
-                'pageSize' => Yii::app()->params['pageSize'],
+                'pageSize' => 100,//Yii::app()->params['pageSize'],
             ),
         ));
     }
@@ -435,9 +437,9 @@ class PERSONA extends CActiveRecord
     private function InsertarUserCliente($con, $objEnt) {
         $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         $sql = "INSERT INTO " . $con->dbname . ".USUINI_EMPRESA
-                (TIE_ID,CLI_ID,ROL_ID,IDS_ARE,UEMP_NOMBRE,UEMP_ALIAS,UEMP_CORREO,TIE_CUPO,EST_LOG,FEC_CRE)VALUES
-                (0,$cli_Id,'" . $objEnt['ROL_ID'] . "','" . $objEnt['IDS_ARE'] . "','" . $objEnt['UEMP_NOMBRE'] . "','" . $objEnt['UEMP_ALIAS'] . "',
-                 '" . $objEnt['UEMP_CORREO'] . "','" . $objEnt['TIE_CUPO'] . "','1',CURRENT_TIMESTAMP()) ";
+                (TIE_ID,CLI_ID,ROL_ID,UEMP_NOMBRE,UEMP_ALIAS,TIE_CUPO,EST_LOG,FEC_CRE)VALUES
+                (0,$cli_Id,'" . $objEnt['ROL_ID'] . "','" . $objEnt['UEMP_NOMBRE'] . "','" . $objEnt['UEMP_ALIAS'] . "',
+                 '" . $objEnt['TIE_CUPO'] . "','1',CURRENT_TIMESTAMP()) ";
         $command = $con->createCommand($sql);
         $command->execute();
     }
@@ -449,11 +451,17 @@ class PERSONA extends CActiveRecord
         $con = Yii::app()->db;
         $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         
-        $sql = "SELECT A.UEMP_ID Ids,IF(A.ROL_ID=1,'USUARIO','SUPERVISOR') Rol,B.NOM_ARE Area,A.UEMP_NOMBRE Nombre,A.UEMP_ALIAS Departamento,
+        /*$sql = "SELECT A.UEMP_ID Ids,IF(A.ROL_ID=1,'USUARIO','SUPERVISOR') Rol,B.NOM_ARE Area,A.UEMP_NOMBRE Nombre,A.UEMP_ALIAS Departamento,
                     A.UEMP_CORREO Correo,A.TIE_CUPO Cupo,A.EST_LOG,DATE(A.FEC_CRE) Fecha 
                     FROM " . $con->dbname . ".USUINI_EMPRESA A
                             INNER JOIN " . $con->dbname . ".AREAS B ON A.IDS_ARE=B.IDS_ARE
+                WHERE A.EST_LOG=1 AND A.CLI_ID=$cli_Id ";*/
+        
+        $sql = "SELECT A.UEMP_ID Ids,IF(A.ROL_ID=1,'USUARIO','SUPERVISOR') Rol,A.UEMP_NOMBRE Nombre,A.UEMP_ALIAS Departamento,
+                    A.UEMP_CORREO Correo,A.TIE_CUPO Cupo,A.EST_LOG,DATE(A.FEC_CRE) Fecha 
+                    FROM " . $con->dbname . ".USUINI_EMPRESA A                           
                 WHERE A.EST_LOG=1 AND A.CLI_ID=$cli_Id ";
+        
         $sql .= " ORDER BY A.UEMP_ID DESC LIMIT $limitrowsql";
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();

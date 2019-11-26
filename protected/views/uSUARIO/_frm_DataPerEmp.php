@@ -79,19 +79,19 @@
         </div>
     </div>-->
 
-    <div class="form-group rowLine">
+<!--    <div class="form-group rowLine">
         <div class="txt_label">
-            <label><?php echo Yii::t('USUARIO', 'Mail') ?></label>
+            <label><?php //echo Yii::t('USUARIO', 'Mail') ?></label>
         </div>
         <div class="rowTd">
             <?php
-            echo CHtml::textField('txt_correo', '', array('size' => 60, 'maxlength' => 100,
+            /*echo CHtml::textField('txt_correo', '', array('size' => 60, 'maxlength' => 100,
                 'class' => 'form-control',
                 'disabled' => 'disabled',
-            ))
+            ))*/
             ?>
         </div>
-    </div>
+    </div>-->
 
     <div class="form-group rowLine">
         <div class="txt_label">

@@ -74,7 +74,7 @@
                 <label><?php echo Yii::t('PERSONA', 'Archivo') ?></label>
                 <?php
                 $this->widget('application.extensions.EAjaxUpload.EAjaxUpload', array(
-                    'id' => 'fileUploader',
+                    'id' => 'fileUploader',                    
                     'config' => array(
                         'action' => Yii::app()->createUrl('/uSUARIO/upload'),
                         'allowedExtensions' => array("jpg", "pdf"), //array("jpg","jpeg","gif","exe","mov" and etc...
@@ -85,6 +85,7 @@
                         //        . "$('#botones').css('display','inline'); }",
                         //'minSizeLimit'=>10*1024*1024,// minimum file size in bytes
                         //'onComplete'=>"js:function(id, fileName, responseJSON){ alert(fileName); }",
+                        //'uploadButtonText' => 'Subir archivo',
                         'messages'=>array(
                               'typeError'=>"{file} Extensión no valida. extensiones permitidas {extensions} .",
                               'sizeError'=>"{file} demasiado grande, máximo permitido {sizeLimit}.",
