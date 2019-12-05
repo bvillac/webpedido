@@ -275,9 +275,20 @@ class USUARIO extends CActiveRecord {
         $con->active = false;
         return $rawData;
     }
-
-
-
     
+    
+    public function recuperarUserCorreoTiendaSUP($tie,$rol,$cli_Id) {
+        $rawData = array();
+        $con = yii::app()->db;
+        $sql = "SELECT B.USU_NOMBRE,B.USU_CORREO FROM " . $con->dbname . ".USUARIO_TIENDA A
+                    INNER JOIN VSSEAPEDIDO.USUARIO B ON B.USU_ID=A.USU_ID
+                WHERE A.CLI_ID=$cli_Id AND A.TIE_ID=$tie AND ROL_ID=$rol AND UTIE_EST_LOG=1;";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryRow();
+        if ($rawData === false)
+            return 0; //en caso de que existe problema o no retorne nada tiene false por defecto 
+        return $rawData;//$rawData['UTIE_ID'];
+    }
+
 
 }

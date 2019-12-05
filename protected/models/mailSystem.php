@@ -135,21 +135,25 @@ class mailSystem {
         $msg = new VSexception();
         $mail = new PHPMailer();
         $nomEmpresa=Yii::app()->getSession()->get('CliNom', FALSE);
+        $valorNeto= Yii::app()->format->formatNumber($CabPed[0]["ValorNeto"]) ;
+        
         $mail->IsSMTP();
         $mail->SMTPSecure = $this->SMTPSecure;
         $mail->Port = $this->Port;
         $mail->Host = $this->Host;
         $mail->setFrom('no-responder@utimpor.com', $this->TituloEnvio);
         // asunto y cuerpo alternativo del mensaje
-        $mail->Subject = "($nomEmpresa) Correo de Confirmación. Su Orden fue Revisada";
+        //$mail->Subject = "($nomEmpresa) Correo de Confirmación. Su Orden fue Revisada";
+        $mail->Subject = "$valorNeto ($nomEmpresa) Correo de Confirmación. Orden Realizada!!!";
         $mail->AltBody = "Data alternativao";
         // si el cuerpo del mensaje es HTML
         $mail->MsgHTML($body); 
-        $mail->AddAddress($CabPed[0]["CorreoUser"], $CabPed[0]["NombreUser"]);//Usuario que Revisa
+        $mail->AddAddress($CabPed[0]["CorreoUser"], $CabPed[0]["NombreUser"]);//Usuario Supervisor
         $mail->AddAddress($CabPed[0]["CorreoPersona"], $CabPed[0]["NombrePersona"]);//Usuario Genera Pedido
         //$mail->AddAddress('ncastro@utimpor.com', "Byron Villacreses");
         $mail->addBCC('bvillacreses@utimpor.com', "Byron Villacreses");
-        $mail->addBCC('ecastro@utimpor.com', "Enrique Castro");
+        //$mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor');
+        //$mail->addBCC('ecastro@utimpor.com', "Enrique Castro");
         // si el SMTP necesita autenticación
         $mail->SMTPAuth = true;
 

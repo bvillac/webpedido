@@ -60,7 +60,6 @@ for ($i = 0; $i < sizeof($CabPed); $i++) {
         <div class="trow">
             <div class="tcol-td form-group">
                 <p>
-                    Adem&aacute;s puede realizar la impresi&oacute;n su documento accediendo a nuestro portal aqui.<br>
                     Atentamente,<br>
                     <label class="titleLabel">Utimpor S.A.</label>
                     

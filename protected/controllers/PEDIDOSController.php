@@ -125,7 +125,11 @@ class PEDIDOSController extends Controller {
         //$valida = new VSValidador();
         $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);        
         if (Yii::app()->request->isPostRequest) {
-            $model = new TEMP_CABPEDIDO;
+            $model = new TEMP_CABPEDIDO;            
+            $res = new CABPEDIDO;
+            $ModUsu = new USUARIO;
+            $dataMail = new mailSystem; 
+            
             $dts_Lista = isset($_POST['DTS_LISTA']) ? CJavaScript::jsonDecode($_POST['DTS_LISTA']) : array();
             $tieId = isset($_POST['TIE_ID']) ? $_POST['TIE_ID'] : 0;
             $total = isset($_POST['TOTAL']) ? $_POST['TOTAL'] : 0;
@@ -133,11 +137,20 @@ class PEDIDOSController extends Controller {
             //$idsAre=isset($_POST['IDS_ARE'])? $_POST['IDS_ARE']:1;//Valor 1 por defecto en area
             if ($accion == "Create") {
                 $arroout = $model->insertarLista($tieId,$total,$dts_Lista);
-                //Nota solo Para cliente Marximex puede Enviar los pedidos
-                //directamentes para autorizar sin necesidad e una aprobacion
-                //es decir se guardara la tabla temp y la tablas de comunicacion.
-                if( $cli_Id=="4"){//Solo para Clientes Marcimex
-                    //$arroout=$this->pedidoAprobado($arroout);
+                //VSValidador::putMessageLogFile($arroout);
+                if ($arroout["status"]=="OK"){
+                    //Recupera infor de CabTemp  para enviar info al supervisor de tienda
+                    $CabPed=$res->sendMailPedidosTemp($arroout["data"]);                    
+                    $objUser=$ModUsu->recuperarUserCorreoTiendaSUP($tieId,8,$cli_Id );//Recupera Usuairos Superviswor
+                    //VSValidador::putMessageLogFile($objUser);
+                    $CabPed[0]["CorreoUser"]=$objUser["USU_CORREO"];
+                    $CabPed[0]["NombreUser"]=$objUser["USU_NOMBRE"];
+                    //VSValidador::putMessageLogFile($CabPed);       
+                    $htmlMail = $this->renderPartial(
+                        'mensaje', array(
+                        'CabPed' => $CabPed,
+                            ), true);
+                    $dataMail->enviarRevisado($htmlMail,$CabPed);
                 }
             } else {                  
                 //Opcion para actualizar
