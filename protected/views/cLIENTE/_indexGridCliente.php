@@ -42,6 +42,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'value' => '$data["Telefono"]',
         ),
         array(
+            'name' => 'Direccion',
+            'header' => Yii::t('USUARIO', 'Dirección'),
+            'value' => '$data["Direccion"]',
+        ),
+        array(
             'name' => 'Correo',
             'header' => Yii::t('USUARIO', 'Correo'),
             'value' => '$data["Correo"]',

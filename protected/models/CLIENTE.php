@@ -121,7 +121,7 @@ class CLIENTE extends CActiveRecord
             $limitrowsql = Yii::app()->params['limitRowSQL'];
             $con = Yii::app()->db;
             //$cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
-            $sql = "SELECT CLI_ID Ids,CLI_CED_RUC Cedula,CLI_NOMBRE Nombre,CLI_CORREO Correo,CLI_CONTACTO Contacto,CLI_TELEFONO Telefono
+            $sql = "SELECT CLI_ID Ids,CLI_CED_RUC Cedula,CLI_NOMBRE Nombre,CLI_CORREO Correo,CLI_DIRECCION Direccion,CLI_CONTACTO Contacto,CLI_TELEFONO Telefono
                         FROM " . $con->dbname . ".CLIENTE                                 
                     WHERE CLI_EST_LOG=1 ";
             $sql .= " ORDER BY CLI_iD DESC LIMIT $limitrowsql";
@@ -187,9 +187,9 @@ class CLIENTE extends CActiveRecord
 
         //$cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         $sql = "INSERT INTO " . $con->dbname . ".CLIENTE
-                (COD_CLIE,CLI_CED_RUC,CLI_NOMBRE,CLI_CORREO,CLI_CONTACTO,CLI_TELEFONO,CLI_EST_LOG,CLI_FEC_CRE)VALUES
+                (COD_CLIE,CLI_CED_RUC,CLI_NOMBRE,CLI_CORREO,CLI_CONTACTO,CLI_TELEFONO,CLI_DIRECCION,CLI_EST_LOG,CLI_FEC_CRE)VALUES
                 ('" . $objEnt['CEDULA'] . "','" . $objEnt['CEDULA'] . "','" . $objEnt['NOMBRE'] . "','" . $objEnt['CORREO'] . "','" . $objEnt['CONTACTO'] . "',
-                 '" . $objEnt['TELEFONO'] . "','1',CURRENT_TIMESTAMP()) ";
+                 '" . $objEnt['TELEFONO'] . "','" . $objEnt['DIRECCION'] . "','1',CURRENT_TIMESTAMP()) ";
         $command = $con->createCommand($sql);
         $command->execute();
     }

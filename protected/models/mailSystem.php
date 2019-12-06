@@ -131,6 +131,8 @@ class mailSystem {
         }
     }
     
+    
+    //AVISO PEDIDOS DE CLIENTES FINALES Y SUPERVISORES
     public function enviarRevisado($body,$CabPed) {
         $msg = new VSexception();
         $mail = new PHPMailer();
@@ -151,7 +153,7 @@ class mailSystem {
         $mail->AddAddress($CabPed[0]["CorreoUser"], $CabPed[0]["NombreUser"]);//Usuario Supervisor
         $mail->AddAddress($CabPed[0]["CorreoPersona"], $CabPed[0]["NombrePersona"]);//Usuario Genera Pedido
         //$mail->AddAddress('ncastro@utimpor.com', "Byron Villacreses");
-        $mail->addBCC('bvillacreses@utimpor.com', "Byron Villacreses");
+        //$mail->addBCC('bvillacreses@utimpor.com', "Byron Villacreses");
         //$mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor');
         //$mail->addBCC('ecastro@utimpor.com', "Enrique Castro");
         // si el SMTP necesita autenticación

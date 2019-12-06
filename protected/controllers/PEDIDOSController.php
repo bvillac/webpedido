@@ -333,14 +333,17 @@ class PEDIDOSController extends Controller {
             $ModUsu = new USUARIO;
             $dataMail = new mailSystem; 
             //Opcion 1=PEDIDO Y 5=REVISADO
-            if($estado=="REV"){
+            /*if($estado=="REV"){
                 $EstAut=5;//Revisado 
                 $arroout = $res->actulizaRevisado($ids,$EstAut);
             }else{
                 $EstAut=3;//3=Autorizado 1=Pedido
                 $arroout = $res->insertarPedidos($ids,$EstAut);
                 
-            }
+            }*/
+            
+            $EstAut=3;//3=Autorizado 1=Pedido
+            $arroout = $res->insertarPedidos($ids,$EstAut);
             $IdCab=$arroout["data"];
             //print_r($IdCab);
             //VSValidador::putMessageLogFile($IdCab);

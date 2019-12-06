@@ -51,6 +51,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
         ),
         array(
+            'name' => 'CPED_ID',
+            'header' => Yii::t('TIENDA', 'N.OC'),
+            'value' => '$data["CPED_ID"]',
+            'htmlOptions' => array('style' => 'text-align:center', 'width' => '8px'),
+        ),
+        array(
             'name' => 'NombreTienda',
             'header' => Yii::t('TIENDA', 'Store name'),
             'value' => '$data["NombreTienda"]',

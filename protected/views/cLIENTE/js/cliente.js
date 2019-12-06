@@ -68,7 +68,8 @@ function objetoCliente(ID){
     persona.NOMBRE=$('#txt_nombre').val();
     persona.CEDULA=$('#txt_cedula').val();
     persona.TELEFONO=$('#txt_telefono').val();
-    persona.CONTACTO=$('#txt_contacto').val();    
+    persona.CONTACTO=$('#txt_contacto').val();
+    persona.DIRECCION=$('#txt_direccion').val();
     //persona.UEMP_ALIAS=$('#txt_departamento').val();
     persona.CORREO=$('#txt_correo').val();
     persona.EST_LOG=1;
@@ -81,6 +82,7 @@ function fun_limpiarCliente(){
     $('#txt_cedula').val('');
     $('#txt_correo').val('');
     $('#txt_telefono').val('');
+    $('#txt_direccion').val('');
     $('#txt_contacto').val('');
     //$("#cmb_roles option[value=1]").attr("selected",true);
     //$("#cmb_area option[value=1]").attr("selected",true);

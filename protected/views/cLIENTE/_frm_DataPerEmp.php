@@ -61,6 +61,20 @@
             ?>
         </div>
     </div>
+    <div class="form-group rowLine">
+        <div class="txt_label">
+            <label><?php echo Yii::t('TIENDA', 'Dirección') ?></label>
+        </div>
+        <div class="rowTd">
+            <?php
+            echo CHtml::textField('txt_direccion', '', array('maxlength' => 200,
+                'class' => 'form-control',
+                    //'onchange' => 'return calcularItem()',
+                    //'onkeydown' => "nextControl(isEnter(event),'txt_RUC')",
+            ))
+            ?>
+        </div>
+    </div>
 
     <div class="form-group rowLine">
         <div class="txt_label">

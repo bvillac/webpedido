@@ -197,7 +197,7 @@ class CABPEDIDO extends CActiveRecord {
         }
     }
     
-    public function actulizaRevisado($Ids,$EstAut) {
+    /*public function actulizaRevisado($Ids,$EstAut) {
         $msg = new VSexception();
         $valida = new VSValidador();
         $idsReturn = array();
@@ -217,9 +217,9 @@ class CABPEDIDO extends CActiveRecord {
             //throw $e;
             return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
         }
-    }
+    }*/
     
-    public function insertarPedidosGrupo($Ids,$op,$f_ini,$f_fin) {
+    /*public function insertarPedidosGrupo($Ids,$op,$f_ini,$f_fin) {
         $msg = new VSexception();
         $valida = new VSValidador();
         $idsReturn = array();
@@ -255,8 +255,9 @@ class CABPEDIDO extends CActiveRecord {
             //throw $e;
             return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
         }
-    }
-    private function buscarCabPedidosTempGrupo($con,$ids,$op,$f_ini,$f_fin) {
+    }*/
+    
+    /*private function buscarCabPedidosTempGrupo($con,$ids,$op,$f_ini,$f_fin) {
         //$con = yii::app()->db;
         $rawData = array();
         //Lista solo los que estan listos a envair.. 
@@ -268,7 +269,7 @@ class CABPEDIDO extends CActiveRecord {
         $rawData = $con->createCommand($sql)->queryAll();
         //$con->active = false;
         return $rawData;
-    }
+    }*/
     
 
     private function buscarCabPedidosTemp($con,$ids) {
