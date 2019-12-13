@@ -153,6 +153,7 @@ function pedidoEnterGridTemp(valor,control,Ids){
          //var p_venta=parseFloat(control.value);
          var cant=control.value;         
          calculaTotalPedTemp(cant,Ids);
+         //calcularTotalGrid();//Agregado byron 13/12/2019
     }
 }
 function calculaTotal(cant,Ids) {
@@ -214,7 +215,6 @@ function calcularTotalGrid(){
         }
     }
     $('#lbl_total').text(redondea(sumTotal, Ndecimal))
-    
 }
 
 function calculaTotalPedTemp(cant,Ids) {
@@ -229,6 +229,7 @@ function calculaTotalPedTemp(cant,Ids) {
             precio = $(this).find("td").eq(5).html();
             valor=redondea(precio * cant, Ndecimal);
             $(this).find("td").eq(6).html(valor);
+            editarDataItem(Ids,cant,valor)//Agregado byron 13/12/2019
         }
         if (idstable!='') {
             vtot=parseFloat($(this).find("td").eq(6).html());
@@ -448,6 +449,7 @@ function nuevaListaPedTemp() {
 }
 
 function listaPedidoDetTemp() {
+    //var sumTotal=0;
     var TbGtable = 'TbG_PEDIDO';
     var arrayList = new Array;
     var i = -1;
@@ -465,38 +467,14 @@ function listaPedidoDetTemp() {
                 rowGrid.PRECIO = $(this).find("td").eq(5).html();//Grid[i]['ART_P_VENTA'];
                 rowGrid.TOTAL = redondea(rowGrid.CANT*rowGrid.PRECIO, Ndecimal);//redondea(Grid[i]['TOTAL'], Ndecimal);
                 rowGrid.OBSERV = $('#txt_obs_' + idstable).val();
-                //rowGrid.DetId = 0;//idstable;
-                //rowGrid.CANT = $('#txt_cat_' + idstable).val();
-                //rowGrid.TOTAL = redondea(subtotal, Ndecimal);
-                //rowGrid.OBSERV = $('#txt_obs_' + idstable).val();
+                //sumTotal=sumTotal+rowGrid.TOTAL ;
                 arrayList[i] = rowGrid;
             }
 
         }
     });
+    //$('#lbl_total').text(redondea(sumTotal, Ndecimal)) 
     return JSON.stringify(arrayList);
-    
-    
-     if (sessionStorage.dts_precioTienda) {
-        var Grid = JSON.parse(sessionStorage.dts_precioTienda);
-        if (Grid.length > 0) {
-            for (var i = 0; i < Grid.length; i++) {                
-                if(parseFloat(Grid[i]['CAN_DES'])>0){//$('#txt_cat_'.Grid[c]['ARTIE_ID']).val()
-                    var ids=Grid[i]['ARTIE_ID'];
-                    var rowGrid = new Object();
-                    rowGrid.ARTIE_ID = Grid[i]['ARTIE_ID'];
-                    rowGrid.ART_ID = Grid[i]['ART_ID'];
-                    rowGrid.CANT = Grid[i]['CAN_DES'];
-                    rowGrid.PRECIO = Grid[i]['ART_P_VENTA'];
-                    rowGrid.TOTAL = redondea(Grid[i]['TOTAL'], Ndecimal);
-                    rowGrid.OBSERV = $('#txt_obs_' + ids).val();
-                    arrayList[c] = rowGrid;
-                    c += 1;
-                }
-            }    
-        }
-    }
-    
 }
 
 /**********************  PEDIDOS TEMPORALES  *********************/
@@ -1183,7 +1161,8 @@ function addVariosItemProDet(TbGtable, lista, i) {
 }
 
 function retornaFilaItemProDet(c, Grid, TbGtable, op) {
-
+    
+    var evento =true;//evento true para activar el enter
     var RutaImagenAccion = $('#txth_rutaImg').val();    
     var strFila = "";
     var imgCol = '<img class="btn-img" src="' + RutaImagenAccion + '/acciones/delete.png" >';
@@ -1202,7 +1181,7 @@ function retornaFilaItemProDet(c, Grid, TbGtable, op) {
         strFila += '<input size="8" maxlength="20" placeholder="0" class="txt_TextboxNumber2 validation_Vs" '; 
         strFila += 'type="text" value="' + Grid[c]['TDPED_CAN_PED'] + '" name="txt_cat_' + Grid[c]['ART_ID'] + '" id="txt_cat_' + Grid[c]['ART_ID'] + '" ';
         strFila += 'onkeydown="pedidoEnterGridTemp(isEnter(event),this,' + Grid[c]['ART_ID'] + ')" '; 
-        strFila += 'onblur="pedidoEnterGridTemp(isEnter(event),this,' + Grid[c]['ART_ID'] + ')" > '; 
+        strFila += 'onblur="pedidoEnterGridTemp(\''+ evento +'\',this,' + Grid[c]['ART_ID'] + ')" > '; 
     strFila += '</td>';
     strFila += '<td style="text-align:right" width="8px">' + Grid[c]['TDPED_P_VENTA'] + '</td>'; 
     strFila += '<td style="text-align:right" width="30px">' + redondea(Grid[c]['TOTAL'],Ndecimal)+ '</td>';

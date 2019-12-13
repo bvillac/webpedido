@@ -58,7 +58,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
                     . '"size" => 8, "maxlength" => 100,"placeholder" => Yii::app()->format->formatNumber(0),'
                     . '"class" => " txt_TextboxNumber2 validation_Vs",'
                     . '"onkeydown" => "pedidoEnterGridTemp(isEnter(event),this,$data[ArtId])",'
-                    . '"onblur" => "pedidoEnterGridTemp(isEnter(event),this,$data[ArtId])"'
+                    . '"onblur" => "pedidoEnterGridTemp(true,this,$data[ArtId])"'
                     . ')):"0.00"',
             'type'=>'raw',
             'htmlOptions' => array('style' => 'text-align:right', 'width' => '8px'),
