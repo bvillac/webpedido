@@ -32,8 +32,8 @@ return array(
     'Deny' => 'Negado',
     'None' => 'Ninguno',
     'All' => 'Todos',
-    'Date Start' => 'FecIni',
-    'Date End' => 'FecFin',
+    'Date Start' => 'Desde',
+    'Date End' => 'Hasta',
     /*Botones*/
     'Download PDF document' => 'Descargar Documento PDF',
     'Download XML document' => 'Descargar Documento XML',

@@ -27,7 +27,7 @@ function ventasMesIndex(op){
     return objRep;
 }
 
-
+//Reporte anterior item tienda
 function fun_ItemTienda(op){
     var link="";
     var data = base64_encode(ItemTiendaIndex(op));
@@ -41,6 +41,21 @@ function fun_ItemTienda(op){
          
     }
 }
+
+function fun_ConsumoTienda(op){
+    var link="";
+    var data = base64_encode(ItemTiendaIndex(op));
+    if(data!=""){
+        link=$('#txth_controlador').val()+"/ConsumoTienda?";
+        if(op==1){
+            $('#btn_aceptar_item').attr("href", link+"data="+data);
+        }else{
+            $('#btn_excel_item').attr("href", link+"data="+data);
+        }
+         
+    }
+}
+
 function ItemTiendaIndex(op){
     var objRep = new Array();
     objRep[0]=op;

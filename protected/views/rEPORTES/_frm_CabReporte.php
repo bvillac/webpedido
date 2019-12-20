@@ -15,6 +15,13 @@
                 </td>-->
 
             </tr>
+            
+
+
+        </tbody>
+    </table>
+    <table style="width:200mm;" class="">
+        <tbody>
             <tr>
                 <td>
                     <span class="titleLabel"><?php echo Yii::t('TIENDA', 'Date')  ?> :</span>
@@ -22,8 +29,6 @@
                     <span><?php echo Yii::t('TIENDA', 'To').' '.date(Yii::app()->params["datebydefault"], strtotime($f_fin)) ?></span>
                 </td>
             </tr>
-
-
         </tbody>
     </table>
 </div>

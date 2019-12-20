@@ -1,9 +1,9 @@
 <div id="div-table">
-    <div class="trow">
-        <div class="rowTd form-group">
+    <div class="form-group rowLine">
+        <div class="col-lg-2">
             <label><?php echo Yii::t('TIENDA', 'Stores') ?></label>
         </div>
-        <div class="rowTd form-group">
+        <div class="col-lg-5">
             <?php
             echo CHtml::dropDownList(
                     'cmb_tienda', '0'
@@ -15,17 +15,18 @@
             );
             ?> 
         </div>
+        
     </div>
-    <div class="trow">
-        <div class="tcol-td form-group">
+    <div class="form-group rowLine">
+        <div class="col-lg-1">
             <span> <?php echo Yii::t('COMPANIA', 'Date Start') ?></span>
         </div>
-        <div class="tcol-td form-group">
+        <div class="col-lg-3">
             <?php
             $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                 'name' => 'dtp_fec_ini_item',
                 'attribute' => 'dtp_fec_ini_item',
-                'value' => date(Yii::app()->params['dateStart']),
+                'value' => date(Yii::app()->params['datebydefault']),
                 'language' => Yii::app()->language,
                 'options' => array(
                     'showAnim' => 'fold',
@@ -46,10 +47,10 @@
             ));
             ?>
         </div>
-        <div class="tcol-td form-group">
+        <div class="col-lg-1">
             <span> <?php echo Yii::t('COMPANIA', 'Date End') ?></span>
         </div>
-        <div class="tcol-td form-group">
+        <div class="col-lg-3">
             <?php
             $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                 'name' => 'dtp_fec_fin_item',
@@ -75,18 +76,18 @@
             ));
             ?>
         </div>
-        <div class="tcol-td form-group">
-            
-            <?php
-                echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Accept'), array('rEPORTES/Rep_ItemTienda'), array('id' => 'btn_aceptar_item', 'name' => 'btn_aceptar_item', 'title' => Yii::t('CONTROL_ACCIONES', 'Accept'), 'class' => 'btn btn-primary btn-sm', "target"=>"_blank",'onclick' => 'fun_ItemTienda(1)'));
-            ?>
-        </div>
-        <div class="tcol-td form-group">
-            <?php
-                echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Excel'), array('rEPORTES/Rep_ItemTienda'), array('id' => 'btn_excel_item', 'name' => 'btn_excel_item', 'title' => Yii::t('CONTROL_ACCIONES', 'Excel'), 'class' => 'btn btn-primary btn-sm', "target"=>"_blank",'onclick' => 'fun_ItemTienda(2)'));
-            ?>
-        </div>
     </div>
+    <div class="form-group rowLine">
+        <?php
+                echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Exportar PDF'), array('rEPORTES/Rep_ItemTienda'), array('id' => 'btn_aceptar_item', 'name' => 'btn_aceptar_item', 'title' => Yii::t('CONTROL_ACCIONES', 'Accept'), 'class' => 'btn btn-primary btn-sm', "target"=>"_blank",'onclick' => 'fun_ConsumoTienda(1)'));
+            ?>
+        <?php
+                echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Exportar Excel'), array('rEPORTES/Rep_ItemTienda'), array('id' => 'btn_excel_item', 'name' => 'btn_excel_item', 'title' => Yii::t('CONTROL_ACCIONES', 'Excel'), 'class' => 'btn btn-primary btn-sm', "target"=>"_blank",'onclick' => 'fun_ConsumoTienda(2)'));
+            ?>
+        
+    </div>
+    
+    
 
 </div>
 

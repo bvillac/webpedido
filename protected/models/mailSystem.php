@@ -113,7 +113,8 @@ class mailSystem {
         $mail->AddAddress('ncastro@utimpor.com', 'Ventas Utimpor');
         $mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor');
         $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
-        $mail->addBCC('ljaramillo@utimpor.com', 'Ventas Utimpor');
+        $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor');
+        $mail->addBCC('yalava@utimpor.com', 'Ventas Utimpor');
         // si el SMTP necesita autenticación
         $mail->SMTPAuth = true;
 

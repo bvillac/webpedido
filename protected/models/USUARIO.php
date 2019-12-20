@@ -122,7 +122,7 @@ class USUARIO extends CActiveRecord {
         $ids = Yii::app()->getSession()->get('user_id', FALSE);
         $rol_Id = Yii::app()->getSession()->get('RolId', FALSE);//se verifica el roll para mostrar todas las tiendas
         $con = yii::app()->db;
-        $sql = "SELECT B.TIE_ID,B.TIE_NOMBRE 
+        $sql = "SELECT B.TIE_ID,B.TIE_NOMBRE,C.ROL_ID 
                         FROM " . $con->dbname . ".CLIENTE A
                                 INNER JOIN (" . $con->dbname . ".TIENDA B
                                                 INNER JOIN " . $con->dbname . ".USUARIO_TIENDA C
@@ -134,7 +134,7 @@ class USUARIO extends CActiveRecord {
         //$sql .= ($rol_Id = "8") ? "AND C.UTIE_ASIG='1' " : "";
         $sql .= " ORDER BY B.TIE_NOMBRE ASC";
         //echo $sql;
-        $rawData = $con->createCommand($sql)->queryAll();
+        $rawData = $con->createCommand($sql)->queryAll();        
         $con->active = false;
         return $rawData;
     }

@@ -5,7 +5,7 @@ class REPORTESController extends Controller {
     public function actionIndex() {
         $tienda=new TIENDA;
         $this->render('index', array(
-             'tienda' => $tienda->recuperarTiendasRol(),
+            'tienda' => $tienda->recuperarTiendasRol(),
             //'DetPed' => $model->detallePedidoTemp($ids),
         ));
     }
@@ -84,6 +84,39 @@ class REPORTESController extends Controller {
             $nameFile=Yii::t('TIENDA', 'Items per store') . "-" . date('YmdHis');
             $Titulo=Yii::t('TIENDA', 'Items per store');
             $Contenido=$this->renderPartial('itemTienda_Rep', array(
+                            'data' => $report,
+                            'control' => $control,
+                            'titulo' => $Titulo,
+                            'f_ini'=> $op[1],//Fecha Inicio
+                            'f_fin'=> $op[2],//Fecha Fin
+                                ), true);
+            if ($op[0] == 1) {
+                $mPDF1->SetTitle($Titulo);
+                $mPDF1->WriteHTML($Contenido); //hacemos un render partial a una vista preparada, en este caso es la vista docPDF
+                $mPDF1->Output($nameFile, 'I');
+            } else {
+                yii::app()->request->sendFile($nameFile.'.xls', $Contenido);
+            }
+
+
+            //exit;
+        } catch (Exception $e) {
+            $this->errorControl($e);
+        }
+    }
+    
+    public function actionConsumoTienda($data) {
+        try {
+            $control = base64_decode($data);
+            print_r($control);
+            $rep = new REPORTES;
+            $modelo = new CABPEDIDO;
+            $report = $modelo->reporteConsumoTienda($control);
+            $op = explode(",", $control); //Recibe Datos y los separa
+            $mPDF1 = $rep->crearBaseReport();
+            $nameFile=Yii::t('TIENDA', 'CONSUMOS') . "-" . date('YmdHis');
+            $Titulo=Yii::t('TIENDA', 'CONSUMOS') ." - ". Yii::app()->getSession()->get('CliNom', FALSE);
+            $Contenido=$this->renderPartial('consumos_Rep', array(
                             'data' => $report,
                             'control' => $control,
                             'titulo' => $Titulo,
