@@ -65,79 +65,68 @@
     <body>
         <?php
         $contador = count($data);
-        if ($data !== null) {
-            ?>
-
-
-            <table style="width:100%;">
-                <tbody>
+        if ($data !== null) {?>
+            <div><span class="titleRepor"><?php echo $titulo ?></span></div>
+            <div>
+                <span class="titleLabel"><?php echo Yii::t('TIENDA', 'Date')  ?> :</span>
+                <span><?php echo Yii::t('TIENDA', 'From').' '.date(Yii::app()->params["datebydefault"], strtotime($f_ini)) ?></span>
+                <span><?php echo Yii::t('TIENDA', 'To').' '.date(Yii::app()->params["datebydefault"], strtotime($f_fin)) ?></span>
+            </div>
+            <table class="tabDetalle">
+                <thead>
                     <tr>
-                        <td>
-                            <?php $this->renderPartial('_frm_CabReporte', array('titulo' => $titulo,'f_ini' => $f_ini,'f_fin' => $f_fin)); ?>
+                        <th class="marcoCel titleDetalle">
+                            <span><?php echo Yii::t('TIENDA', 'Date') ?></span>
+                        </th>
+                        <th class="marcoCel titleDetalle">
+                            <span><?php echo Yii::t('TIENDA', 'Code') ?></span>
+                        </th>
+                        <th class="marcoCel titleDetalle">
+                            <span><?php echo Yii::t('TIENDA', 'Description') ?></span>
+                        </th>  
+                        <th class="marcoCel titleDetalle">
+                            <span><?php echo Yii::t('TIENDA', 'Quantity') ?></span>
+                        </th>
+                        <th class="marcoCel titleDetalle">
+                            <span><?php echo Yii::t('TIENDA', 'Cost') ?></span>
+                        </th>                                        
+                        <th class="marcoCel titleDetalle">
+                            <span><?php echo Yii::t('TIENDA', 'Total') ?></span>
+                        </th>      
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        $aux="";
+                        for ($i = 0; $i < sizeof($data); $i++) { 
+                            $ValorNeto+=(float)$data[$i]['TOTAL'];
+                            if($aux<>$data[$i]['Tienda']){
+                                $aux=$data[$i]['Tienda'];
+                                ?>
+                                <tr><td colspan="6">&nbsp;</td></tr>
+                                <tr>                                               
+                                    <td colspan="6"><b><?php echo $data[$i]['Tienda'] ?></b></td>
+                                </tr>                                    
+                                <?php
+                            }
+                            ?>
+                            <tr>
+                                <td ><?php echo $data[$i]['FECHA'] ?>&nbsp;</td>                                     
+                                <td class=""><?php echo $data[$i]['COD_ART'] ?></td>
+                                <td class=""><?php echo $data[$i]['DETALLE'] ?></td>                                                    
+                                <td class="dataNumber"><?php echo intval($data[$i]['CAN_PED']) ?></td>
+                                <td class="dataNumber"><?php echo $data[$i]['P_VENTA'] ?></td>
+                                <td class="dataNumber"><?php echo Yii::app()->format->formatNumber($data[$i]['TOTAL']) ?></td>       
+                            </tr>
+                    <?php } ?>
+                    <tr>
+                        <td class="marcoCelSup">TOTAL</td>
+                        <td class="marcoCelSup dataNumber" colspan="5">
+                            <?php echo Yii::app()->format->formatNumber($ValorNeto) ?>
                         </td>
                     </tr>
                 </tbody>
             </table>
-
-            <table style="width:100%;">
-                <tbody>
-                    <tr>
-                        <td style="width:50%">
-                            <?php //echo $this->renderPartial('_frm_DetFact', array('detFact' => $detFact, 'ValorNeto' => $cabFact['ValorNeto'])); ?>
-                            <table style="width:200mm" class="tabDetalle">
-                                <tbody>
-                                    <tr>
-                                        <td class="marcoCel titleDetalle">
-                                            <span><?php echo Yii::t('TIENDA', 'Date') ?></span>
-                                        </td>
-                                        <td class="marcoCel titleDetalle">
-                                            <span><?php echo Yii::t('TIENDA', 'Stores') ?></span>
-                                        </td>                                        
-                                        <td class="marcoCel titleDetalle">
-                                            <span><?php echo Yii::t('TIENDA', 'Code') ?></span>
-                                        </td>
-                                        <td class="marcoCel titleDetalle">
-                                            <span><?php echo Yii::t('TIENDA', 'Description') ?></span>
-                                        </td>                                        
-                                        <td class="marcoCel titleDetalle">
-                                            <span><?php echo Yii::t('TIENDA', 'Cost') ?></span>
-                                        </td>
-                                        <td class="marcoCel titleDetalle">
-                                            <span><?php echo Yii::t('TIENDA', 'Quantity') ?></span>
-                                        </td>
-                                        <td class="marcoCel titleDetalle">
-                                            <span><?php echo Yii::t('TIENDA', 'Total') ?></span>
-                                        </td>
-                                                
-                                    </tr>
-                                    <?php 
-                                    for ($i = 0; $i < sizeof($data); $i++) {
-                                        $ValorNeto+=  (float)$data[$i]['TOTAL'];
-                                        ?>
-                                        <tr>
-                                            <td ><?php echo $data[$i]['FECHA'] ?></td>
-                                            <td ><?php echo $data[$i]['Tienda'] ?></td>                                       
-                                            <td class=""><?php echo $data[$i]['COD_ART'] ?></td>
-                                            <td class=""><?php echo $data[$i]['DETALLE'] ?></td>
-                                            <td class="dataNumber"><?php echo Yii::app()->format->formatNumber($data[$i]['P_VENTA']) ?></td>
-                                            <td class="dataNumber"><?php echo intval($data[$i]['CAN_PED']) ?></td>                                           
-                                            <td class="dataNumber"><?php echo Yii::app()->format->formatNumber($data[$i]['TOTAL']) ?></td>
-                                            
-                                        </tr>
-                                    <?php } ?>
-                                    <tr>
-                                        <td class="marcoCelSup dataNumber" colspan="7">
-                                            <?php echo Yii::app()->format->formatNumber($ValorNeto) ?>
-                                        </td>
-
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
         <?php } ?>
     </body>
 </html>

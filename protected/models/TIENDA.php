@@ -143,7 +143,7 @@ class TIENDA extends CActiveRecord {
         try {
             $con = yii::app()->db;
             //Verificacion por ROL PARA aministrador cod=9
-            if($rol_Id==9){//Rol de Super Administrador                
+            if($rol_Id==9 || $rol_Id==1){//Rol de Super Administrador                
                 $sql = "SELECT TIE_ID,TIE_NOMBRE FROM " . $con->dbname . ".TIENDA "
                         . " WHERE TIE_EST_LOG=1  AND CLI_ID=$cli_Id ORDER BY TIE_NOMBRE;";
             

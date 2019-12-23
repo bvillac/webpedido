@@ -637,7 +637,7 @@ class CABPEDIDO extends CActiveRecord {
         $con = Yii::app()->db;
         $cliID=Yii::app()->getSession()->get('CliID', FALSE);
 
-        $sql = "SELECT DATE(A.TDPED_FEC_CRE) FECHA,C.TIE_NOMBRE Tienda,B.COD_ART,B.ART_DES_COM DETALLE,
+        $sql = "SELECT DATE(A.TDPED_FEC_CRE) FECHA,C.TIE_ID,C.TIE_NOMBRE Tienda,B.COD_ART,B.ART_DES_COM DETALLE,
                     MAX(A.TDPED_P_VENTA) P_VENTA,SUM(A.TDPED_CAN_PED) CAN_PED, MAX(A.TDPED_P_VENTA)*SUM(A.TDPED_CAN_PED) TOTAL
                     FROM " . $con->dbname . ".TEMP_DET_PEDIDO A
                         INNER JOIN " . $con->dbname . ".ARTICULO B ON A.ART_ID=B.ART_ID
@@ -645,7 +645,7 @@ class CABPEDIDO extends CActiveRecord {
                     WHERE A.TDPED_EST_LOG=1 AND A.CLI_ID=$cliID AND TDPED_EST_AUT=1 ";
                 $sql .= "AND DATE(A.TDPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($f_ini)) . "' AND '" . date("Y-m-d", strtotime($f_fin)) . "'  ";
                 $sql .=($tienda=='0') ? "" : " AND C.TIE_ID=$tienda ";
-                $sql .= "GROUP BY A.ART_ID,A.TIE_ID ";//ORDER BY  CantPed Desc  ";
+                $sql .= "GROUP BY A.TIE_ID,A.ART_ID ORDER BY  C.TIE_NOMBRE ASC  ";
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
