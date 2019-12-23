@@ -108,7 +108,7 @@ class SiteController extends Controller {
             $user = isset($_POST['DATA']) ? $_POST['DATA'] :'';
             $arroout = $model->recuperarTiendasUsuario($user);
             //20-12-2019 Actualiza el Rol segun la tienda selecionada
-            //Yii::app()->session['RolId']=$arroout[0]['ROL_ID'];
+            Yii::app()->session['RolId']=$arroout[0]['ROL_ID'];
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);
             return;
