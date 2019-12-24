@@ -112,7 +112,7 @@ class ARTICULOTIENDA extends CActiveRecord {
         $con = yii::app()->db;
         $idRol=Yii::app()->getSession()->get('RolId', FALSE);//Rol del Usuario.
         $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
-        if($idRol==1){
+        if($idRol==1 || $idRol==2){
             $sql = "SELECT CLI_ID,CLI_NOMBRE FROM " . $con->dbname . ".CLIENTE WHERE CLI_EST_LOG=1 ";
         } else {
             $sql = "SELECT CLI_ID,CLI_NOMBRE FROM " . $con->dbname . ".CLIENTE WHERE CLI_ID=$cli_Id AND CLI_EST_LOG=1 ";
