@@ -69,7 +69,7 @@ class mailSystem {
             //$mail->addBCC('ventas@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
             $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
             $mail->addBCC('ncastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
-            $mail->addBCC('yalava@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+            $mail->addBCC('dtroncoso@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
             $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta 
             //$mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor');
         }
