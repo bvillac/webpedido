@@ -126,6 +126,7 @@ class PRECIOCLIENTE extends CActiveRecord {
         try {
             for ($i = 0; $i < sizeof($dts_PrecioTienda); $i++) {
                 $artID=$dts_PrecioTienda[$i]['ART_ID'];
+                $codArt=$dts_PrecioTienda[$i]['COD_ART'];
                 $precio=$dts_PrecioTienda[$i]['ART_P_VENTA'];
                 if($this->existeProducto($con,$cliId,$artID)){
                     //Si existe actualizo los datos.
@@ -134,9 +135,9 @@ class PRECIOCLIENTE extends CActiveRecord {
                 }else{
                     //Si no Existe lo Inserto
                     $sql = "INSERT INTO " . $con->dbname . ".PRECIO_CLIENTE "
-                        . "(CLI_ID,ART_ID,PCLI_P_VENTA,PCLI_POR_DES,PCLI_VAL_DES,PCLI_EST_LOG)"
+                        . "(CLI_ID,ART_ID,COD_ART,PCLI_P_VENTA,PCLI_POR_DES,PCLI_VAL_DES,PCLI_EST_LOG)"
                         . "VALUES "
-                        . "($cliId,$artID,'$precio','0','0','1') ";
+                        . "($cliId,$artID,'$codArt','$precio','0','0','1') ";
                 }
                 //echo $sql;
                 $command = $con->createCommand($sql);
