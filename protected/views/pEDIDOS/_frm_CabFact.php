@@ -11,7 +11,7 @@
                     <span><?php echo date(Yii::app()->params["datebydefault"],strtotime($cabFact['FechaPedido'])) ?></span>
                 </td>
                 <td>
-                    <span class="titleLabel"><?php echo Yii::t('TIENDA', 'User order') ?></span>
+                    <span class="titleLabel"><?php echo Yii::t('TIENDA', 'Usuario Autoriza') ?></span>
                     <span><?php echo $cabFact['NombreUser'] ?></span>
                 </td>
                 
@@ -26,8 +26,8 @@
                     <span><?php echo $cabFact['DirTienda'] ?></span>
                 </td>
                 <td>
-                    <span class="titleLabel"><?php echo Yii::t('TIENDA', 'Contact') ?></span>
-                    <span><?php echo $cabFact['ContactoTienda'] ?></span>
+                    <span class="titleLabel"><?php echo Yii::t('TIENDA', 'Usuario Pedido') ?></span>
+                    <span><?php echo $cabFact['NombrePersona'] ?></span>
                 </td>
             </tr>
             <tr>
