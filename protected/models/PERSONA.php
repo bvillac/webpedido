@@ -405,7 +405,7 @@ class PERSONA extends CActiveRecord
             ),
             'totalItemCount' => count($rawData),
             'pagination' => array(
-                'pageSize' => 100,//Yii::app()->params['pageSize'],
+                'pageSize' => 300,//Yii::app()->params['pageSize'],
             ),
         ));
     }

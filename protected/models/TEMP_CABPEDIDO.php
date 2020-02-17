@@ -569,6 +569,8 @@ class TEMP_CABPEDIDO extends CActiveRecord {
     public function mostrarCabPedidoTemp($ids) {
         $rawData = array();
         $con = Yii::app()->db;
+        //(SELECT M.UTIE_ID FROM " . $con->dbname . ".CAB_PEDIDO M WHERE M.TCPED_ID=A.TCPED_ID) UTIE_ID,
+
         $sql = "SELECT  A.TCPED_ID PedID,CONCAT(REPEAT( '0', 9 - LENGTH(A.TCPED_ID) ),A.TCPED_ID) Numero,
                         A.TCPED_TOTAL ValorNeto,DATE(A.TCPED_FEC_CRE) FechaPedido,B.TIE_NOMBRE NombreTienda,
                         CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) NombrePersona,D.USU_CORREO CorreoPersona,
@@ -591,6 +593,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                                                         ON F.USU_ID=G.USU_ID)
                                         ON F.UTIE_ID=A.UTIE_ID
                 WHERE A.TCPED_ID=$ids AND TCPED_EST_LOG IN (1,2,3,4)";
+        
         $rawData = $con->createCommand($sql)->queryRow(); //Recupera Solo 1
         $con->active = false;
         return $rawData;
