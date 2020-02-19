@@ -69,6 +69,7 @@ class mailSystem {
             //$mail->addBCC('ventas@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
             $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
             $mail->addBCC('ncastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+            $mail->addBCC('gcastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
             $mail->addBCC('dtroncoso@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
             $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta 
             //$mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor');
@@ -114,6 +115,7 @@ class mailSystem {
         $mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor');
         $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
         $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor');
+        $mail->addBCC('gcastro@utimpor.com', 'Ventas Utimpor');
         $mail->addBCC('dtroncoso@utimpor.com', 'Ventas Utimpor');
         // si el SMTP necesita autenticación
         $mail->SMTPAuth = true;
@@ -191,6 +193,7 @@ class mailSystem {
         $mail->AddAddress('ncastro@utimpor.com', "Byron Villacreses");
         $mail->addBCC('bvillacreses@utimpor.com', "Byron Villacreses");
         $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor');
+        $mail->addBCC('gcastro@utimpor.com', 'Ventas Utimpor');
         //$mail->addBCC('ljaramillo@utimpor.com', "Byron Villacreses");
         // si el SMTP necesita autenticación
         $mail->SMTPAuth = true;

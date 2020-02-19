@@ -447,7 +447,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
             ),
             'totalItemCount' => count($rawData),
             'pagination' => array(
-                'pageSize' => Yii::app()->params['pageSize'],
+                'pageSize' => 100,//Yii::app()->params['pageSize'],
             ),
         ));
     }
