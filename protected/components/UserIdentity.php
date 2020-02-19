@@ -45,8 +45,8 @@ class UserIdentity extends CUserIdentity
                 
                 if($user===null)
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
-                if($user->USU_EST_LOG==0)//VERIFICACION DE estado de usuario
-			$this->errorCode=self::ERROR_USERNAME_INVALID;
+                //if($user->USU_EST_LOG==0)//VERIFICACION DE estado de usuario
+			//$this->errorCode=self::ERROR_USERNAME_INVALID; verificar esto
 		//elseif($this->password!==$user->USU_PASSWORD) Modo Original
                 elseif(md5 ($this->password)!==$user->USU_PASSWORD)//Validacion Clave con MD5
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
