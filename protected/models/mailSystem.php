@@ -14,7 +14,7 @@ class mailSystem {
     private $Port = 465;
     private $Host = "mail.utimpor.com";
     private $Username = "no-responder@utimpor.com";
-    private $Password = "ect{UZCJ6hvR";
+    private $Password = "MP1TQyb=PkcZ";//MP1TQyb=PkcZ
     private $CharSet = 'UTF-8';
     private $TituloEnvio = 'Pedido en Línea Utimpor.com';
 
