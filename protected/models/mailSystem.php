@@ -64,6 +64,7 @@ class mailSystem {
             //$mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
             //$mail->addBCC('bodega@utimpor.com', 'Bodega Utimpor'); //Para copia Oculta Gerencia
             $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+            $mail->addBCC('gcastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
         }else{
             //Para el Resto de Clientes los siguientes correos.
             //$mail->addBCC('ventas@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
@@ -72,8 +73,12 @@ class mailSystem {
             $mail->addBCC('gcastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
             $mail->addBCC('dtroncoso@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
             $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta 
+            $mail->addBCC('sochoa@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta 
             //$mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor');
         }
+        
+            
+            
         
         
         //$mail->addBCC('byronvillacreses@gmail.com', 'Byron Villa'); //Para con copia 
@@ -84,9 +89,9 @@ class mailSystem {
         $mail->SMTPAuth = true;
 
         // credenciales usuario
-        $mail->Username = "no-responder@utimpor.com";
-        $mail->Password = "ect{UZCJ6hvR";
-        $mail->CharSet = 'UTF-8';
+        $mail->Username = $this->Username;//"no-responder@utimpor.com";
+        $mail->Password = $this->Password;//"ect{UZCJ6hvR";
+        $mail->CharSet = $this->CharSet;//'UTF-8';
 
         if (!$mail->Send()) {
             //echo "Error enviando: " . $mail->ErrorInfo;

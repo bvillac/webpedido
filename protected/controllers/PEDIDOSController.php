@@ -148,7 +148,9 @@ class PEDIDOSController extends Controller {
                     //VSValidador::putMessageLogFile($CabPed);       
                     $htmlMail = $this->renderPartial(
                         'mensaje', array(
-                        'CabPed' => $CabPed,
+                            'CabPed' => $CabPed,
+                            'TituloData' => "PEDIDO EN LÍNEA REALIZADO CON ÉXITO",
+                            'Estado' => "R",
                             ), true);
                     $dataMail->enviarRevisado($htmlMail,$CabPed);
                 }
@@ -321,7 +323,7 @@ class PEDIDOSController extends Controller {
 
     }
     
-    //AUTORIZADO
+    //AUTORIZADO PEDIDOS
     public function actionEnvPedAut() {
         if (Yii::app()->request->isPostRequest) {
             //$ids = base64_decode($_POST['ids']);
@@ -350,7 +352,7 @@ class PEDIDOSController extends Controller {
             $idsUser = Yii::app()->getSession()->get('user_id', FALSE);
             //Para el envio de Correos
             for ($i = 0; $i < sizeof($IdCab); $i++) {
-                if($EstAut==5){//REVISADO
+                /*if($EstAut==5){//REVISADO
                     $CabPed=$res->sendMailPedidosTemp($IdCab[$i]['ids']);
                     $objUser=$ModUsu->recuperarCorreoUsuario($idsUser);//Usuario que Revisa
                 
@@ -362,16 +364,18 @@ class PEDIDOSController extends Controller {
                         'CabPed' => $CabPed,
                             ), true);
                     $dataMail->enviarRevisado($htmlMail,$CabPed);
-                }else{
+                }else{*/
                     $CabPed=$res->sendMailPedidos($IdCab[$i]['ids']);
                     $htmlMail = $this->renderPartial(
                         'mensaje', array(
-                        'CabPed' => $CabPed,
+                            'CabPed' => $CabPed,
+                            'TituloData' => "PEDIDO EN LÍNEA AUTORIZADO CON ÉXITO",
+                            'Estado' => "A",
                             ), true);
                     $dataMail->enviarMail($htmlMail,$CabPed);
                     
                     
-                }
+                //}
                 
                 
             }
@@ -682,7 +686,8 @@ class PEDIDOSController extends Controller {
             return;
         }
         $this->titleWindows = Yii::t('TIENDA', 'Comentarios');
-        $this->render('comentario', array(         
+        //$this->render('mensaje', array(   
+        $this->render('comentario', array(  
             //'cliID' => $cli_Id,
         ));
     }
