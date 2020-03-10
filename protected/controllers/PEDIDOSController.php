@@ -369,7 +369,7 @@ class PEDIDOSController extends Controller {
                     $htmlMail = $this->renderPartial(
                         'mensaje', array(
                             'CabPed' => $CabPed,
-                            'TituloData' => "PEDIDO EN LÍNEA AUTORIZADO CON ÉXITO",
+                            'TituloData' => "PEDIDO EN LÍNEA AUTORIZADO CON ÉXITON !!",
                             'Estado' => "A",
                             ), true);
                     $dataMail->enviarMail($htmlMail,$CabPed);
@@ -384,21 +384,32 @@ class PEDIDOSController extends Controller {
         }
     }
     
+    //LIQUIDACION DE PEDIDOS O FACTURACION
     public function actionAtenderPed() {
         if (Yii::app()->request->isPostRequest) {
             //$ids = base64_decode($_POST['ids']);
             $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
             $res = new CABPEDIDO;
-            //$dataMail = new mailSystem;
+            $dataMail = new mailSystem;
             $arroout = $res->despacharPedido($ids);
-//            $IdCab=$arroout["data"];
-//            for ($i = 0; $i < sizeof($IdCab); $i++) {
-//                $CabPed=$res->sendMailPedidos($IdCab[$i]['ids']);
-//                $htmlMail = $this->renderPartial('mensaje', array(
-//                'CabPed' => $CabPed,
-//                    ), true);
-//                $dataMail->enviarMail($htmlMail,$CabPed);
-//            }
+            //ACTUALIZACION BYRON 2020-03-09            
+            $IdCab=$arroout["data"];
+            //$cabFact[$i]['CPED_ID']
+            //VSValidador::putMessageLogFile($IdCab);
+            //VSValidador::putMessageLogFile($IdCab[0]['CPED_ID']);
+            for ($i = 0; $i < sizeof($IdCab); $i++) {
+                //$CabPed=$res->sendMailPedidos($IdCab[$i]['ids']);
+                $CabPed=$res->sendMailPedidos($IdCab[$i]['CPED_ID']);
+                //VSValidador::putMessageLogFile($CabPed);
+                $htmlMail = $this->renderPartial(
+                     'mensaje', array(
+                        'CabPed' => $CabPed,
+                        'TituloData' => "SU PEDIDO FUE FACTURADO !!",
+                        'Estado' => "F",
+                    ), true);
+                $dataMail->enviarMail($htmlMail,$CabPed);
+            }
+            //##########################
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);
         }

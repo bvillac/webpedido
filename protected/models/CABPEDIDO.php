@@ -381,7 +381,7 @@ class CABPEDIDO extends CActiveRecord {
                                                                         ON G.PER_ID=H.PER_ID)
                                                         ON F.USU_ID=G.USU_ID)
                                         ON F.UTIE_ID=A.UTIE_ID
-                WHERE A.CPED_ID=$ids AND CPED_EST_LOG=1;";
+                WHERE A.CPED_ID=$ids AND CPED_EST_LOG IN(1,2);";
         
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
@@ -484,7 +484,7 @@ class CABPEDIDO extends CActiveRecord {
             }
             $trans->commit();
             $con->active = false;
-            return $msg->messageSystem('OK',null,10,null, null);
+            return $msg->messageSystem('OK',null,10,null, $cabFact);
         } catch (Exception $e) { // se arroja una excepción si una consulta falla
             $trans->rollBack();
             //throw $e;
