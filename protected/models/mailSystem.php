@@ -18,33 +18,21 @@ class mailSystem {
     private $CharSet = 'UTF-8';
     private $TituloEnvio = 'Pedido en Línea Utimpor.com';
 
-    //put your code here
-    public function enviarMail($body,$CabPed) {
+    public function enviarNotificacion($body,$CabPed,$Asunto,$Titulo) {
         $msg = new VSexception();
         $mail = new PHPMailer();
-        //$body = "Hola como estas";
         
-        $nomEmpresa=Yii::app()->getSession()->get('CliNom', FALSE);
-        $valorNeto= Yii::app()->format->formatNumber($CabPed[0]["ValorNeto"]) ;
+        $this->TituloEnvio=($Titulo!="")?$Titulo:$this->TituloEnvio;
 
         $mail->IsSMTP();
-        //Para tls
-        //$mail->SMTPSecure = 'tls';
-        //$mail->Port = 587;
-        //Para ssl
-        $mail->SMTPSecure = "ssl";
-        $mail->Port = 465;
-        // la dirección del servidor, p. ej.: smtp.servidor.com
-        $mail->Host = "mail.utimpor.com";
+        $mail->SMTPSecure = $this->SMTPSecure;
+        $mail->Port = $this->Port;
+        $mail->Host = $this->Host;
 
-        // dirección remitente, p. ej.: no-responder@miempresa.com
-        // nombre remitente, p. ej.: "Servicio de envío automático"
-        //$mail->setFrom('no-responder@utimpor.com', 'Servicio de envío automático Utimpor.com');
-        $mail->setFrom('no-responder@utimpor.com', $this->TituloEnvio);
-        //$mail->setFrom('bvillacreses@utimpor.com', 'Utimpor.com');
-
+        $mail->setFrom($this->Username, $this->TituloEnvio);
         // asunto y cuerpo alternativo del mensaje
-        $mail->Subject = "$valorNeto ($nomEmpresa) Ha Recibido un(a) Orden Nuevo(a)!!!";
+        //$mail->Subject = "$valorNeto ($nomEmpresa) Ha Recibido un(a) Orden Nuevo(a)!!!";
+        $mail->Subject = $Asunto;
         $mail->AltBody = "Data alternativao";
 
         // si el cuerpo del mensaje es HTML
@@ -80,6 +68,85 @@ class mailSystem {
             $mail->addBCC('sochoa@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta 
             //$mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor');
         }*/
+        
+   
+        // si el SMTP necesita autenticación
+        $mail->SMTPAuth = true;
+
+        // credenciales usuario
+        $mail->Username = $this->Username;//"no-responder@utimpor.com";
+        $mail->Password = $this->Password;//"ect{UZCJ6hvR";
+        $mail->CharSet = $this->CharSet;//'UTF-8';
+
+        if (!$mail->Send()) {
+            //echo "Error enviando: " . $mail->ErrorInfo;
+            return $msg->messageSystem('NO_OK', "Error enviando: " . $mail->ErrorInfo, 11, null, null);
+        } else {
+            //echo "¡¡Enviado!!";
+            return $msg->messageSystem('OK', "¡¡Enviado!!", 30, null, null);
+        }
+    }
+    
+    //put your code here
+    public function enviarMail($body,$CabPed) {
+        $msg = new VSexception();
+        $mail = new PHPMailer();
+        //$body = "Hola como estas";
+        
+        $nomEmpresa=Yii::app()->getSession()->get('CliNom', FALSE);
+        $valorNeto= Yii::app()->format->formatNumber($CabPed[0]["ValorNeto"]) ;
+
+        $mail->IsSMTP();
+        //Para tls
+        //$mail->SMTPSecure = 'tls';
+        //$mail->Port = 587;
+        //Para ssl
+        $mail->SMTPSecure = "ssl";
+        $mail->Port = 465;
+        // la dirección del servidor, p. ej.: smtp.servidor.com
+        $mail->Host = "mail.utimpor.com";
+
+        // dirección remitente, p. ej.: no-responder@miempresa.com
+        // nombre remitente, p. ej.: "Servicio de envío automático"
+        //$mail->setFrom('no-responder@utimpor.com', 'Servicio de envío automático Utimpor.com');
+        $mail->setFrom('no-responder@utimpor.com', $this->TituloEnvio);
+        //$mail->setFrom('bvillacreses@utimpor.com', 'Utimpor.com');
+
+        // asunto y cuerpo alternativo del mensaje
+        $mail->Subject = "$valorNeto ($nomEmpresa) Ha Recibido un(a) Orden Nuevo(a)!!!";
+        $mail->AltBody = "Data alternativao";
+
+        // si el cuerpo del mensaje es HTML
+        $mail->MsgHTML($body);
+
+        // podemos hacer varios AddAdress 
+        $mail->AddAddress($CabPed[0]["CorreoUser"], $CabPed[0]["NombreUser"]);//Usuario Autoriza Pedido
+        $mail->AddAddress($CabPed[0]["CorreoPersona"], $CabPed[0]["NombrePersona"]);//Usuario Genera Pedido
+        //$mail->AddAddress("byron_villacresesf@hotmail.com", "Byron Villa");
+        //$mail->AddAddress("byronvillacreses@gmail.com", "Byron Villa");
+        $mail->AddAddress("bvillacreses@utimpor.com", "Byron Villa");
+        
+        
+        /******** COPIA OCULTA PARA VENTAS  ***************/
+        //Verifica por CLiente el Correo del Administrados 2019-03-01
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE); 
+        if($cli_Id==5){
+            $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
+            //$mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
+            //$mail->addBCC('bodega@utimpor.com', 'Bodega Utimpor'); //Para copia Oculta Gerencia
+            $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+            $mail->addBCC('gcastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+        }else{
+            //Para el Resto de Clientes los siguientes correos.
+            //$mail->addBCC('ventas@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+            $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
+            $mail->addBCC('ncastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+            $mail->addBCC('gcastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+            $mail->addBCC('dtroncoso@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+            $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta 
+            $mail->addBCC('sochoa@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta 
+            //$mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor');
+        }
         
             
             

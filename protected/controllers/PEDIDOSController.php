@@ -121,49 +121,7 @@ class PEDIDOSController extends Controller {
         }
     }
     
-    public function actionSave() {
-        //$valida = new VSValidador();
-        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);        
-        if (Yii::app()->request->isPostRequest) {
-            $model = new TEMP_CABPEDIDO;            
-            $res = new CABPEDIDO;
-            $ModUsu = new USUARIO;
-            $dataMail = new mailSystem; 
-            
-            $dts_Lista = isset($_POST['DTS_LISTA']) ? CJavaScript::jsonDecode($_POST['DTS_LISTA']) : array();
-            $tieId = isset($_POST['TIE_ID']) ? $_POST['TIE_ID'] : 0;
-            $total = isset($_POST['TOTAL']) ? $_POST['TOTAL'] : 0;
-            $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
-            //$idsAre=isset($_POST['IDS_ARE'])? $_POST['IDS_ARE']:1;//Valor 1 por defecto en area
-            if ($accion == "Create") {
-                $arroout = $model->insertarLista($tieId,$total,$dts_Lista);
-                //VSValidador::putMessageLogFile($arroout);
-                if ($arroout["status"]=="OK"){
-                    //Recupera infor de CabTemp  para enviar info al supervisor de tienda
-                    $CabPed=$res->sendMailPedidosTemp($arroout["data"]);                    
-                    $objUser=$ModUsu->recuperarUserCorreoTiendaSUP($tieId,8,$cli_Id );//Recupera Usuairos Superviswor
-                    //VSValidador::putMessageLogFile($objUser);
-                    $CabPed[0]["CorreoUser"]=$objUser["USU_CORREO"];
-                    $CabPed[0]["NombreUser"]=$objUser["USU_NOMBRE"];
-                    //VSValidador::putMessageLogFile($CabPed);       
-                    $htmlMail = $this->renderPartial(
-                        'mensaje', array(
-                            'CabPed' => $CabPed,
-                            'TituloData' => "PEDIDO EN LÍNEA REALIZADO CON ÉXITO",
-                            'Estado' => "R",
-                            ), true);
-                    $dataMail->enviarRevisado($htmlMail,$CabPed);
-                }
-            } else {                  
-                //Opcion para actualizar
-                $PedId = isset($_POST['PED_ID']) ? $_POST['PED_ID'] : 0;
-                $arroout = $model->actualizarLista($PedId,$tieId,$total,$dts_Lista);
-            }
-            
-            header('Content-type: application/json');
-            echo CJavaScript::jsonEncode($arroout);
-        }
-    }
+    
     
     private function pedidoAprobado($arroout) {
         $valida = new VSValidador();
@@ -323,7 +281,58 @@ class PEDIDOSController extends Controller {
 
     }
     
-    //AUTORIZADO PEDIDOS
+    //PEDIDOS REALIZADOS
+    public function actionSave() {
+        //$valida = new VSValidador();
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);        
+        if (Yii::app()->request->isPostRequest) {
+            $model = new TEMP_CABPEDIDO;            
+            $res = new CABPEDIDO;
+            $ModUsu = new USUARIO;
+            $dataMail = new mailSystem; 
+            
+            $dts_Lista = isset($_POST['DTS_LISTA']) ? CJavaScript::jsonDecode($_POST['DTS_LISTA']) : array();
+            $tieId = isset($_POST['TIE_ID']) ? $_POST['TIE_ID'] : 0;
+            $total = isset($_POST['TOTAL']) ? $_POST['TOTAL'] : 0;
+            $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
+            //$idsAre=isset($_POST['IDS_ARE'])? $_POST['IDS_ARE']:1;//Valor 1 por defecto en area
+            if ($accion == "Create") {
+                $arroout = $model->insertarLista($tieId,$total,$dts_Lista);
+                //VSValidador::putMessageLogFile($arroout);
+                if ($arroout["status"]=="OK"){
+                    //Recupera infor de CabTemp  para enviar info al supervisor de tienda
+                    $CabPed=$res->sendMailPedidosTemp($arroout["data"]);                    
+                    $objUser=$ModUsu->recuperarUserCorreoTiendaSUP($tieId,8,$cli_Id );//Recupera Usuairos Superviswor
+                    //VSValidador::putMessageLogFile($objUser);
+                    $CabPed[0]["CorreoUser"]=$objUser["USU_CORREO"];
+                    $CabPed[0]["NombreUser"]=$objUser["USU_NOMBRE"];
+                    //VSValidador::putMessageLogFile($CabPed);
+                    
+                    $nomEmpresa=Yii::app()->getSession()->get('CliNom', FALSE);
+                    $valorNeto= Yii::app()->format->formatNumber($CabPed[0]["ValorNeto"]) ;
+                    $Asunto= "$valorNeto ($nomEmpresa) Pedido en línea realizado con éxito!";
+                    $Titulo="";
+                    $htmlMail = $this->renderPartial(
+                        'mensaje', array(
+                            'CabPed' => $CabPed,
+                            'TituloData' => "PEDIDO EN LÍNEA REALIZADO CON ÉXITO",
+                            'Estado' => "R",
+                            ), true);
+                    //$dataMail->enviarRevisado($htmlMail,$CabPed);
+                    $dataMail->enviarNotificacion($htmlMail,$CabPed,$Asunto,$Titulo);
+                }
+            } else {                  
+                //Opcion para actualizar
+                $PedId = isset($_POST['PED_ID']) ? $_POST['PED_ID'] : 0;
+                $arroout = $model->actualizarLista($PedId,$tieId,$total,$dts_Lista);
+            }
+            
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+        }
+    }
+    
+    //AUTORIZACION DE PEDIDOS
     public function actionEnvPedAut() {
         if (Yii::app()->request->isPostRequest) {
             //$ids = base64_decode($_POST['ids']);
@@ -366,13 +375,17 @@ class PEDIDOSController extends Controller {
                     $dataMail->enviarRevisado($htmlMail,$CabPed);
                 }else{*/
                     $CabPed=$res->sendMailPedidos($IdCab[$i]['ids']);
+                    $nomEmpresa=Yii::app()->getSession()->get('CliNom', FALSE);
+                    $valorNeto= Yii::app()->format->formatNumber($CabPed[0]["ValorNeto"]) ;
+                    $Asunto= "$valorNeto ($nomEmpresa) Pedido en línea autorizado con éxito!";
+                    $Titulo="";
                     $htmlMail = $this->renderPartial(
                         'mensaje', array(
                             'CabPed' => $CabPed,
                             'TituloData' => "PEDIDO EN LÍNEA AUTORIZADO CON ÉXITO!!",
                             'Estado' => "A",
                             ), true);
-                    $dataMail->enviarMail($htmlMail,$CabPed);
+                    $dataMail->enviarNotificacion($htmlMail,$CabPed,$Asunto,$Titulo);
                     
                     
                 //}
@@ -401,13 +414,20 @@ class PEDIDOSController extends Controller {
                 //$CabPed=$res->sendMailPedidos($IdCab[$i]['ids']);
                 $CabPed=$res->sendMailPedidos($IdCab[$i]['CPED_ID']);
                 //VSValidador::putMessageLogFile($CabPed);
+                
+                $nomEmpresa=Yii::app()->getSession()->get('CliNom', FALSE);
+                $valorNeto= Yii::app()->format->formatNumber($CabPed[0]["ValorNeto"]) ;
+                $Asunto= "$valorNeto ($nomEmpresa) Pedido en línea facturado con éxito!";
+                $Titulo="";
+                
                 $htmlMail = $this->renderPartial(
                      'mensaje', array(
                         'CabPed' => $CabPed,
                         'TituloData' => "SU PEDIDO FUE FACTURADO !!",
                         'Estado' => "F",
                     ), true);
-                $dataMail->enviarMail($htmlMail,$CabPed);
+                //$dataMail->enviarMail($htmlMail,$CabPed);
+                $dataMail->enviarNotificacion($htmlMail,$CabPed,$Asunto,$Titulo);
             }
             //##########################
             header('Content-type: application/json');

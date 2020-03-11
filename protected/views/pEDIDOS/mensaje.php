@@ -53,7 +53,7 @@
         /*font-family: sans-serif, serif, EmojiFont; */
         font-weight: bold;
     }
-    
+
     .estado-pedido{
         font-size:15px;vertical-align:top;margin-right:5px;
     }
@@ -63,100 +63,112 @@
 
 
 <?php
-if(sizeof($CabPed)>0){
-?>
+if (sizeof($CabPed) > 0) {
+    $tipoMensaje="";
+    switch ($Estado) {
+        case "R":
+            $tipoMensaje= "realizado";
+            break;
+        case "A":
+            $tipoMensaje= "autorizado";
+            break;
+        case "F":
+            $tipoMensaje= "facturado";
+            break;
+    }
+    ?>
 
 
 
 
 
-<div id="div-noti-table">
-    <div class="trow-titulo">
-        <?php //echo CHtml::image(Yii::app()->theme->baseUrl . '/images/plantilla/logo.png', 'Utimpor', array('width' => '200px', 'height' => '50px')); ?>
-        <?php //echo CHtml::image('https://190.111.83.186'.Yii::app()->theme->baseUrl . '/images/plantilla/logo.png', 'Utimpor', array('width' => '200px', 'height' => '50px')); ?>
-        
-        <a href="http://pedidos.utimpor.com/" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" title="Utimpor.com">
-            <img data-imagetype="External" src="http://www.utimpor.com/images/utimporImg/Logo2.jpg" originalsrc="http://www.utimpor.com/images/utimporImg/Logo2.jpg" width="200px" height="50px" alt="Utimpor" title="Utimpor" border="0">
-        </a>
-    </div>
-    <div class="trow">
-        <h3 class="sub-title">pedidos.utimpor.com</h3>
-    </div>
+    <div id="div-noti-table">
+        <div class="trow-titulo">
+            <?php //echo CHtml::image(Yii::app()->theme->baseUrl . '/images/plantilla/logo.png', 'Utimpor', array('width' => '200px', 'height' => '50px'));  ?>
+            <?php //echo CHtml::image('https://190.111.83.186'.Yii::app()->theme->baseUrl . '/images/plantilla/logo.png', 'Utimpor', array('width' => '200px', 'height' => '50px')); ?>
 
-    <div class="trow">
-        <div class="sub-title-mensaje">            
-            <?php echo $TituloData; ?>
+            <a href="http://pedidos.utimpor.com/" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" title="Utimpor.com">
+                <img data-imagetype="External" src="http://www.utimpor.com/images/utimporImg/Logo2.jpg" originalsrc="http://www.utimpor.com/images/utimporImg/Logo2.jpg" width="200px" height="50px" alt="Utimpor" title="Utimpor" border="0">
+            </a>
         </div>
-        <p>
-            <label class="titleLabel">Estimad@:</label><br>  <?php echo $CabPed[0]["NombreUser"]   ?> <br> 
-        </p>
-
-        <!--<span style="color:#4D4D4D;font-size:20px;font-weight:400;">Hola <strong>Lorena </strong>.</span><br>-->
-        <div style="color:#666666;font-size:17px;padding-top:5px;padding-bottom:5px;">
-            Gracias por su compra, A continuación encuentre los detalles de su pedido realizado:
+        <div class="trow">
+            <h3 class="sub-title">pedidos.utimpor.com</h3>
         </div>
-    </div>
+
+        <div class="trow">
+            <div class="sub-title-mensaje">            
+                <?php echo $TituloData; ?>
+            </div>
+            <p>
+                <label class="titleLabel">Estimad@:</label><br>  <?php echo $CabPed[0]["NombreUser"] ?> <br> 
+            </p>
+
+            <!--<span style="color:#4D4D4D;font-size:20px;font-weight:400;">Hola <strong>Lorena </strong>.</span><br>-->
+            <div style="color:#666666;font-size:17px;padding-top:5px;padding-bottom:5px;">
+                Gracias por su compra, A continuación encuentre los detalles de su pedido <?php echo $tipoMensaje ?>:
+            </div>
+        </div>
 
 
-    <div class="trow-noti-left">
-        <!--        <div style="color:#787878;font-size:14px;font-weight:700;text-transform:uppercase;margin-bottom:10px;">
-                    Datos del cliente 
-                </div>
-                <div style="color: rgb(102, 102, 102); font-size: 13px; font-family: Arial-BoldMT, Arial, serif, EmojiFont;">Lorena Palma <br>
-                    CI: 1204111510<br>
-                </div>-->
-        <p>
-            <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Cliente') ?> : </label>
-            <span><?php echo Yii::app()->getSession()->get('CliNom', FALSE) ?></span><br>
-            <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Pedido Num') ?> : </label>
-            <span><?php echo $CabPed[0]["Numero"]   ?></span><br>
-            <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Store name') ?> : </label>
-            <span><?php echo $CabPed[0]["NombreTienda"]   ?></span><br>
-            <label class="titleLabel"><?php echo Yii::t('TIENDA', 'User order') ?> : </label>
-            <span><?php echo $CabPed[0]["NombrePersona"]   ?></span><br>
-            <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Issue date') ?> : </label>
-            <span><?php echo $CabPed[0]["FechaPedido"]   ?></span>
-        </p>
+        <div class="trow-noti-left">
+            <!--        <div style="color:#787878;font-size:14px;font-weight:700;text-transform:uppercase;margin-bottom:10px;">
+                        Datos del cliente 
+                    </div>
+                    <div style="color: rgb(102, 102, 102); font-size: 13px; font-family: Arial-BoldMT, Arial, serif, EmojiFont;">Lorena Palma <br>
+                        CI: 1204111510<br>
+                    </div>-->
+            <p>
+                <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Cliente') ?> : </label>
+                <span><?php echo Yii::app()->getSession()->get('CliNom', FALSE) ?></span><br>
+                <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Pedido Num') ?> : </label>
+                <span><?php echo $CabPed[0]["Numero"] ?></span><br>
+                <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Store name') ?> : </label>
+                <span><?php echo $CabPed[0]["NombreTienda"] ?></span><br>
+                <label class="titleLabel"><?php echo Yii::t('TIENDA', 'User order') ?> : </label>
+                <span><?php echo $CabPed[0]["NombrePersona"] ?></span><br>
+                <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Issue date') ?> : </label>
+                <span><?php echo $CabPed[0]["FechaPedido"] ?></span>
+            </p>
 
-    </div>
-    <br>
-    <div class="trow-noti-left">
-        <p>
-            Atentamente,<br>
-            <label class="titleLabel">Utimpor S.A.</label>
-        </p>
-    </div>
+        </div>
+        <br>
+        <div class="trow-noti-left">
+            <p>
+                Atentamente,<br>
+                <label class="titleLabel">Utimpor S.A.</label>
+            </p>
+        </div>
 
-    <div class="line-noti"></div>
-    <div class="trow-noti-tr">
-        <div class="tcol-td">
-            <th scope="row" style="color:#BCBCBC;font-size:15px;text-align:left;padding-left:10px;float:left;">
-                <?php if($Estado=='R'){ ?>
-                    <p style="color:#52BC00;"><strong class="estado-pedido">✓</strong>PEDIDO REALIZADO</p>
-                <?php } else { ?>
-                    <p><strong class="estado-pedido">►</strong>PEDIDO REALIZADO</p>
-                <?php } ?>
-                <?php if($Estado=="A"){ ?>
-                    <p style="color:#52BC00;"><strong class="estado-pedido">✓</strong>PEDIDO AUTORIZADO</p>
-                <?php } else { ?>
-                    <p><strong class="estado-pedido">►</strong>PEDIDO AUTORIZADO</p>
-                <?php } ?>
-                <?php if($Estado=="F"){ ?>
-                    <p style="color:#52BC00;"><strong class="estado-pedido">✓</strong>PEDIDO FACTURADO</p>
-                <?php } else { ?>
-                    <p><strong class="estado-pedido">►</strong>PEDIDO FACTURADO</p>
-                <?php } ?>
+        <div class="line-noti"></div>
+        <div class="trow-noti-tr">
+            <div class="tcol-td">
+                <th scope="row" style="color:#BCBCBC;font-size:15px;text-align:left;padding-left:10px;float:left;">
+                    <?php if ($Estado == 'R') { ?>
+                        <p style="color:#52BC00;"><strong class="estado-pedido">✓</strong>PEDIDO REALIZADO</p>
+                    <?php } else { ?>
+                        <p><strong class="estado-pedido">►</strong>PEDIDO REALIZADO</p>
+                    <?php } ?>
+                    <?php if ($Estado == "A") { ?>
+                        <p style="color:#52BC00;"><strong class="estado-pedido">✓</strong>PEDIDO AUTORIZADO</p>
+                    <?php } else { ?>
+                        <p><strong class="estado-pedido">►</strong>PEDIDO AUTORIZADO</p>
+                    <?php } ?>
+                    <?php if ($Estado == "F") { ?>
+                        <p style="color:#52BC00;"><strong class="estado-pedido">✓</strong>PEDIDO FACTURADO</p>
+                    <?php } else { ?>
+                        <p><strong class="estado-pedido">►</strong>PEDIDO FACTURADO</p>
+                    <?php } ?>
                 <!--<p><strong class="estado-pedido">►</strong>PEDIDO ENVIADO</p>-->
-            </th>
+                </th>
+            </div>
         </div>
-    </div>
-    <div class="trow-right-tr">
-        <div class="tcol-td">
-            <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Total $') ?> : </label>
-            <span><?php echo Yii::app()->format->formatNumber($CabPed[0]["ValorNeto"]) ?></span>
+        <div class="trow-right-tr">
+            <div class="tcol-td">
+                <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Total $') ?> : </label>
+                <span><?php echo Yii::app()->format->formatNumber($CabPed[0]["ValorNeto"]) ?></span>
+            </div>
         </div>
-    </div>
 
-</div>
+    </div>
 
 <?php } ?>
