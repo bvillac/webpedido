@@ -9,7 +9,7 @@
     }
     .trow-noti-tr{
         padding:12px 0 12px 12px;
-        background: #F9F4F4;
+        /*background: #F9F4F4;*/
         width:100%;
         margin-top:15px;
         margin-bottom:15px;
@@ -17,7 +17,7 @@
     }
     .trow-right-tr{
         padding:12px;
-        background: #F9F4F4;
+        /*background: #F9F4F4;*/
         float: right;
         /*width:100%;*/
         margin-top:15px;
@@ -25,6 +25,7 @@
         border:1px solid #CCCCCC;
     }
     .trow-noti-left{
+        /*padding:5px 0 5px 17px;border-left:4px solid #CCCCCC;*/
         padding:5px 0 5px 17px;border-left:4px solid #CCCCCC;
     }
     .line-noti{

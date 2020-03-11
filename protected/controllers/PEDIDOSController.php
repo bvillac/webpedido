@@ -369,7 +369,7 @@ class PEDIDOSController extends Controller {
                     $htmlMail = $this->renderPartial(
                         'mensaje', array(
                             'CabPed' => $CabPed,
-                            'TituloData' => "PEDIDO EN LÍNEA AUTORIZADO CON ÉXITON !!",
+                            'TituloData' => "PEDIDO EN LÍNEA AUTORIZADO CON ÉXITO!!",
                             'Estado' => "A",
                             ), true);
                     $dataMail->enviarMail($htmlMail,$CabPed);
