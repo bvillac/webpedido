@@ -32,6 +32,8 @@ return array(
     'Set the date range for the store to expired therefore we can not fulfill your order!!!' => 'El rango de fecha establecido para la tienda a expirado por lo tanto no podemos atender su pedido!!!',
     'We can not find the information you are requesting.'=> 'No podemos encontrar los datos que está solicitando.',
     '<strong>Well done!</strong> your order was successfully saved.' => '<strong>Bien Hecho!</strong> Su Pedido fue guardado correctamente.',
+    '<strong>Well done!</strong> your order was successfully realized.' => '<strong>Bien Hecho!</strong> Su Pedido fue Realizado y guardado correctamente.',
+    '<strong>Well done!</strong> your order was successfully authorized.' => '<strong>Bien Hecho!</strong> Su Pedido fue Autorizado y guardado correctamente.',
     
 );
 ?>

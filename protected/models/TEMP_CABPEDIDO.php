@@ -145,7 +145,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
             }
             $trans->commit();
             $con->active = false;
-            return $msg->messagePedidos('OK',$valida->ajusteNumDoc($idCab, 9),'PE',null, 30, null, $idCab);
+            return $msg->messagePedidos('OK',$valida->ajusteNumDoc($idCab, 9),'PE',null, 31, null, $idCab);
         } catch (Exception $e) {
             $trans->rollback();
             $con->active = false;

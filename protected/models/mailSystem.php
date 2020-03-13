@@ -45,8 +45,8 @@ class mailSystem {
         $mail->AddAddress("byronvillacreses@gmail.com", "Byron Villa");
         $mail->AddAddress("bvillacreses@utimpor.com", "Byron Villa");
         $mail->addBCC('gcastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
-        $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
-        $mail->addBCC('ncastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+        //$mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
+        //$mail->addBCC('ncastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
         
         /******** COPIA OCULTA PARA VENTAS  ***************/
         //Verifica por CLiente el Correo del Administrados 2019-03-01

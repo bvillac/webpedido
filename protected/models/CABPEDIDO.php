@@ -188,7 +188,7 @@ class CABPEDIDO extends CActiveRecord {
             }
             $trans->commit();
             $con->active = false;
-            return $msg->messageSystem('OK', null, 30, null, $idsReturn);
+            return $msg->messageSystem('OK', null, 32, null, $idsReturn);
         } catch (Exception $e) {
             $trans->rollback();
             $con->active = false;
