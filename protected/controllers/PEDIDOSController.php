@@ -315,7 +315,7 @@ class PEDIDOSController extends Controller {
                     $htmlMail = $this->renderPartial(
                         'mensaje', array(
                             'CabPed' => $CabPed,
-                            'TituloData' => "PEDIDO EN LÍNEA REALIZADO CON ÉXITO",
+                            'TituloData' => "PEDIDO EN LÍNEA REALIZADO CON ÉXITO!!",
                             'Estado' => "R",
                             ), true);
                     //$dataMail->enviarRevisado($htmlMail,$CabPed);
@@ -423,7 +423,7 @@ class PEDIDOSController extends Controller {
                 $htmlMail = $this->renderPartial(
                      'mensaje', array(
                         'CabPed' => $CabPed,
-                        'TituloData' => "SU PEDIDO FUE FACTURADO !!",
+                        'TituloData' => "SU PEDIDO FUE FACTURADO CON ÉXITO!!",
                         'Estado' => "F",
                     ), true);
                 //$dataMail->enviarMail($htmlMail,$CabPed);

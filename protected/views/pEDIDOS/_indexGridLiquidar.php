@@ -32,7 +32,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
         ),
         array(
             'name' => 'Numero',
-            'header' => Yii::t('TIENDA', 'Number'),
+            'header' => Yii::t('TIENDA', 'Orden'),
             //'value' => '$data["Numero"]',
             'value' => 'CHtml::link($data["Numero"],Yii::app()->createUrl("pEDIDOS/GenerarPdf",array("ids"=>base64_encode($data["PedID"]))),array("target"=>"_blank"))',
             'type'  => 'raw',
@@ -40,7 +40,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
         ),
         array(
             'name' => 'Orden',
-            'header' => Yii::t('TIENDA', 'Orden'),
+            'header' => Yii::t('TIENDA', 'Number'),
             'value' => '$data["TCPED_ID"]',
         ),
         array(

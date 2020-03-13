@@ -91,16 +91,17 @@ if (sizeof($CabPed) > 0) {
                 <img data-imagetype="External" src="http://www.utimpor.com/images/utimporImg/Logo2.jpg" originalsrc="http://www.utimpor.com/images/utimporImg/Logo2.jpg" width="200px" height="50px" alt="Utimpor" title="Utimpor" border="0">
             </a>
         </div>
+        
         <div class="trow">
-            <h3 class="sub-title">pedidos.utimpor.com</h3>
+            <h3 class="sub-title" style="font-size:13pt;color:#787878;font-weight: bold;margin-top:8px;">pedidos.utimpor.com</h3>
         </div>
 
         <div class="trow">
-            <div class="sub-title-mensaje">            
+            <div class="sub-title-mensaje" style="font-size:13pt;color:#787878;font-weight:bold;margin-top:8px;">            
                 <?php echo $TituloData; ?>
             </div>
             <p>
-                <label class="titleLabel">Estimad@:</label><br>  <?php echo $CabPed[0]["NombreUser"] ?> <br> 
+                <label class="titleLabel" style="font-weight: bold;">Estimad@:</label><br>  <?php echo $CabPed[0]["NombreUser"] ?> <br> 
             </p>
 
             <!--<span style="color:#4D4D4D;font-size:20px;font-weight:400;">Hola <strong>Lorena </strong>.</span><br>-->
@@ -110,37 +111,32 @@ if (sizeof($CabPed) > 0) {
         </div>
 
 
-        <div class="trow-noti-left">
-            <!--        <div style="color:#787878;font-size:14px;font-weight:700;text-transform:uppercase;margin-bottom:10px;">
-                        Datos del cliente 
-                    </div>
-                    <div style="color: rgb(102, 102, 102); font-size: 13px; font-family: Arial-BoldMT, Arial, serif, EmojiFont;">Lorena Palma <br>
-                        CI: 1204111510<br>
-                    </div>-->
+        <div class="trow-noti-left" style="padding:5px 0 5px 17px;border-left:4px solid #CCCCCC;">
             <p>
-                <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Cliente') ?> : </label>
+                <label class="titleLabel" style="font-weight: bold;"><?php echo Yii::t('TIENDA', 'Cliente') ?> : </label>
                 <span><?php echo Yii::app()->getSession()->get('CliNom', FALSE) ?></span><br>
-                <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Pedido Num') ?> : </label>
+                <label class="titleLabel" style="font-weight: bold;"><?php echo Yii::t('TIENDA', 'Pedido Num') ?> : </label>
                 <span><?php echo $CabPed[0]["Numero"] ?></span><br>
-                <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Store name') ?> : </label>
+                <label class="titleLabel" style="font-weight: bold;"><?php echo Yii::t('TIENDA', 'Store name') ?> : </label>
                 <span><?php echo $CabPed[0]["NombreTienda"] ?></span><br>
-                <label class="titleLabel"><?php echo Yii::t('TIENDA', 'User order') ?> : </label>
+                <label class="titleLabel" style="font-weight: bold;"><?php echo Yii::t('TIENDA', 'User order') ?> : </label>
                 <span><?php echo $CabPed[0]["NombrePersona"] ?></span><br>
-                <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Issue date') ?> : </label>
+                <label class="titleLabel" style="font-weight: bold;"><?php echo Yii::t('TIENDA', 'Issue date') ?> : </label>
                 <span><?php echo $CabPed[0]["FechaPedido"] ?></span>
             </p>
 
         </div>
         <br>
-        <div class="trow-noti-left">
+        <div class="trow-noti-left" style="padding:5px 0 5px 17px;border-left:4px solid #CCCCCC;">
             <p>
                 Atentamente,<br>
-                <label class="titleLabel">Utimpor S.A.</label>
+                <label class="titleLabel" style="font-weight: bold;">Utimpor S.A.</label>
             </p>
         </div>
+        
 
-        <div class="line-noti"></div>
-        <div class="trow-noti-tr">
+        <div class="line-noti" style="padding-bottom:10px;border-style:none none solid none;border-bottom-width:1px;border-bottom-color:#E4002B;"></div>
+        <div class="trow-noti-tr" style="padding:12px 0 12px 12px;width:100%;margin-top:15px;margin-bottom:15px;border:1px solid #CCCCCC;">
             <div class="tcol-td">
                 <th scope="row" style="color:#BCBCBC;font-size:15px;text-align:left;padding-left:10px;float:left;">
                     <?php if ($Estado == 'R') { ?>
@@ -162,7 +158,7 @@ if (sizeof($CabPed) > 0) {
                 </th>
             </div>
         </div>
-        <div class="trow-right-tr">
+        <div class="trow-right-tr" style="padding:12px 0 12px 12px;margin-top:15px;margin-bottom:15px;border:1px solid #CCCCCC;">
             <div class="tcol-td">
                 <label class="titleLabel"><?php echo Yii::t('TIENDA', 'Total $') ?> : </label>
                 <span><?php echo Yii::app()->format->formatNumber($CabPed[0]["ValorNeto"]) ?></span>
