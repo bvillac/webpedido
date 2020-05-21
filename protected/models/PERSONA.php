@@ -122,26 +122,26 @@ class PERSONA extends CActiveRecord
 	}
         
         
-        public function mostrarUsuarioPersona() {
+        public function mostrarUsuarioPersona($control) {
         $rawData = array();
         $con = Yii::app()->db;
-
-        /*$sql = "SELECT A.PER_ID PerId,CONCAT(A.PER_NOMBRE,' ',A.PER_APELLIDO) Nombre,A.PER_GENERO Genero,
-                B.USU_NOMBRE User,B.USU_CORREO Correo,A.PER_EST_LOG Estado
-                FROM " . $con->dbname . ".PERSONA A
-                        INNER JOIN  " . $con->dbname . ".USUARIO B
-                                ON A.PER_ID=B.PER_ID
-        WHERE A.PER_EST_LOG=1 ";*/
-        
+        $limitrowsql = Yii::app()->params['limitRowSQL'];
         $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
-        $sql = "SELECT A.PER_ID PerId,CONCAT(A.PER_NOMBRE,' ',A.PER_APELLIDO) Nombre,A.PER_GENERO Genero,
+        $sql = "SELECT DISTINCT(A.PER_ID) PerId,CONCAT(A.PER_NOMBRE,' ',A.PER_APELLIDO) Nombre,A.PER_GENERO Genero,
                 B.USU_NOMBRE User,B.USU_CORREO Correo,A.PER_EST_LOG Estado
                 FROM " . $con->dbname . ".PERSONA A
                         INNER JOIN  (" . $con->dbname . ".USUARIO B
                                     INNER JOIN " . $con->dbname . ".USUARIO_TIENDA C ON B.USU_ID=C.USU_ID )
                                 ON A.PER_ID=B.PER_ID
-        WHERE A.PER_EST_LOG=1 AND C.CLI_ID=$cli_Id GROUP BY A.PER_ID  ORDER BY A.PER_ID ASC ";
+        WHERE A.PER_EST_LOG=1 AND B.USU_EST_LOG=1 AND C.CLI_ID=$cli_Id ";//GROUP BY A.PER_ID  ORDER BY A.PER_ID ASC ";
         
+        if (!empty($control)) {//Verifica la Opcion op para los filtros
+            //$sql .= ($control['TIE_ID'] != "0") ? "AND C.TIE_ID='".$control['TIE_ID']."' " : "";
+            //$sql .= ($control['CLI_ID'] != "0") ? "AND C.CLI_ID='".$control['CLI_ID']."' " : "";
+            //$sql .= ($control['ROL_ID'] != "0") ? "AND D.ROL_ID='".$control['ROL_ID']."' " : "";
+            $sql .= ($control['USU_NOMBRE'] != "") ? "AND B.USU_NOMBRE='".$control['USU_NOMBRE']."' " : "";
+        }
+        $sql .= "ORDER BY A.PER_ID ASC LIMIT $limitrowsql";
         //echo $sql;
 
         $rawData = $con->createCommand($sql)->queryAll();
@@ -159,6 +159,50 @@ class PERSONA extends CActiveRecord
                 'pageSize' => Yii::app()->params['pageSize'],
             ),
         ));
+        
+        /*$rawData = array();
+        $limitrowsql = Yii::app()->params['limitRowSQL'];
+        $con = Yii::app()->db;
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        $sql = "SELECT A.UTIE_ID UtieId,B.USU_NOMBRE Usuario,A.UTIE_FEC_CRE Fecha,
+                        CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) Persona,F.CLI_NOMBRE Cliente,
+                        C.TIE_NOMBRE TiendaNombre,D.ROL_NOMBRE Rol,A.UTIE_EST_LOG Estado,A.UTIE_ASIG Asig
+                        FROM " . $con->dbname . ".USUARIO_TIENDA A
+                                INNER JOIN (" . $con->dbname . ".USUARIO B
+                                            INNER JOIN " . $con->dbname . ".PERSONA E
+						ON B.PER_ID=E.PER_ID)
+                                        ON A.USU_ID=B.USU_ID
+                                INNER JOIN (" . $con->dbname . ".TIENDA C
+                                            INNER JOIN VSSEAPEDIDO.CLIENTE F
+						ON C.CLI_ID=F.CLI_ID)
+                                        ON A.TIE_ID=C.TIE_ID
+                                INNER JOIN " . $con->dbname . ".ROL D
+                                        ON A.ROL_ID=D.ROL_ID
+                WHERE A.UTIE_EST_LOG=1   ";
+        if (!empty($control)) {//Verifica la Opcion op para los filtros
+            $sql .= ($control['TIE_ID'] != "0") ? "AND C.TIE_ID='".$control['TIE_ID']."' " : "";
+            $sql .= ($control['CLI_ID'] != "0") ? "AND C.CLI_ID='".$control['CLI_ID']."' " : "";
+            $sql .= ($control['ROL_ID'] != "0") ? "AND D.ROL_ID='".$control['ROL_ID']."' " : "";
+            $sql .= ($control['USU_NOMBRE'] != "") ? "AND B.USU_NOMBRE='".$control['USU_NOMBRE']."' " : "";
+        }
+        
+        $sql .= "ORDER BY A.UTIE_ID DESC LIMIT $limitrowsql";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+
+        return new CArrayDataProvider($rawData, array(
+            'keyField' => 'UtieId',
+            'sort' => array(
+                'attributes' => array(
+                    'Usuario', 'TiendaNombre', 'Rol', 'Fecha', 'Estado','Cliente','Persona'
+                ),
+            ),
+            'totalItemCount' => count($rawData),
+            'pagination' => array(
+                'pageSize' => 300,//Yii::app()->params['pageSize'],
+            ),
+        ));*/
     }
 
     public function insertarDatosPersona($objEnt) {
@@ -320,22 +364,17 @@ class PERSONA extends CActiveRecord
         $command->execute();
     }
     
-    private function modificarDataArea($con, $objEnt, $Ids) {
-        $sql = "UPDATE " . $con->dbname . ".AREAS_USUARIO
-                    SET                    
-                        IDS_ARE = '" . $objEnt['area'] . "',
-                        FEC_MOD = CURRENT_TIMESTAMP()
-                    WHERE USU_ID=$Ids";
-        $command = $con->createCommand($sql);
-        $command->execute();
-    }
+   
     
     private function modificarDataUser($con, $objEnt) {  
         //USU_NOMBRE = '" . $objEnt['usuario'] . "',
+        $pass= ($objEnt['password'] != "") ? " USU_PASSWORD=MD5('".$objEnt['password']."'), " : "";
         $sql = "UPDATE " . $con->dbname . ".USUARIO
-                    SET  USU_CORREO = '" . $objEnt['correo'] . "',
+                    SET $pass USU_CORREO = '" . $objEnt['correo'] . "',
                     USU_FEC_MOD = CURRENT_TIMESTAMP()
                     WHERE PER_ID= '" . $objEnt['perId'] . "'";
+        
+        //echo $sql;
         $command = $con->createCommand($sql);
         $command->execute();
     }

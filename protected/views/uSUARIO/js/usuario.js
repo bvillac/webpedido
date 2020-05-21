@@ -210,8 +210,8 @@ function mostrarPersona(Data){
     $('#dtp_fec_nacimiento').val(Data['PER_FEC_NACIMIENTO']);
     $('#txt_contacto').val(Data['DPER_CONTACTO']);
     $('#txt_usuario').val(Data['USU_NOMBRE']);
-    $('#txt_password').val(Data['PASS']);
-    $('#txt_confirma').val(Data['PASS']);
+    //$('#txt_password').val(Data['PASS']);
+    //$('#txt_confirma').val(Data['PASS']);
     $('#txt_correo').val(Data['USU_CORREO']);
     $("#cmb_genero option[value="+Data['PER_GENERO']+"]").attr("selected",true);
     $("#cmb_estado option[value="+Data['PER_EST_LOG']+"]").attr("selected",true);
@@ -388,7 +388,29 @@ function objetoUsuarioTie(){
     data.IDS=Grid[ind]['Ids'];
     return JSON.stringify(data);
 }
+/************** BUSCAR USUARIO PERSONA **************/
+function fun_buscarDataUserPer(op){ 
+    var link=$('#txth_controlador').val()+"/index";
+    $.fn.yiiGridView.update('TbG_USUARIO', {
+        type: 'POST',
+        url:link,
+        data:{
+            "CONT_BUSCAR": controlBuscarUsePer(op)
+        }
+    }); 
+}
 
+function controlBuscarUsePer(op){
+    //var buscarArray = new Array();
+    var buscarIndex=new Object();
+    buscarIndex.OP=op;
+    //buscarIndex.TIE_ID=$('#cmb_tienda option:selected').val();
+    //buscarIndex.CLI_ID=$('#cmb_cliente option:selected').val();
+    //buscarIndex.ROL_ID=$('#cmb_rol option:selected').val();
+    buscarIndex.USU_NOMBRE=$('#txt_nombreUser').val();
+    //buscarArray[0] = buscarIndex;
+    return JSON.stringify(buscarIndex);
+}
 /************** BUSCAR USUARIO TIENDA **************/
 function fun_buscarDataUseTie(op){ 
     var link=$('#txth_controlador').val()+"/usertienda";

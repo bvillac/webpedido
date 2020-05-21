@@ -149,9 +149,18 @@ class USUARIOController extends Controller {
      */
     public function actionIndex() {
         $modelo = new PERSONA;
+        if (Yii::app()->request->isAjaxRequest) {
+            $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
+            //$arrayData = $model->mostrarPedidos($contBuscar);
+            $arrayData = $modelo->mostrarUsuarioPersona($contBuscar);
+            $this->renderPartial('_indexGrid', array(
+                'model' => $arrayData,
+                    ), false, true);
+            return;
+        }
         $this->titleWindows = Yii::t('USUARIO', 'User Admin');
         $this->render('index', array(
-            'model' => $modelo->mostrarUsuarioPersona(),
+            'model' => $modelo->mostrarUsuarioPersona(null),
         ));
     }
 
