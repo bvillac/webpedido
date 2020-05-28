@@ -187,11 +187,23 @@ class CLIENTE extends CActiveRecord
 
         //$cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
         $sql = "INSERT INTO " . $con->dbname . ".CLIENTE
-                (COD_CLIE,CLI_CED_RUC,CLI_NOMBRE,CLI_CORREO,CLI_CONTACTO,CLI_TELEFONO,CLI_DIRECCION,CLI_EST_LOG,CLI_FEC_CRE)VALUES
+                (COD_CLIE,CLI_CED_RUC,CLI_NOMBRE,CLI_CORREO,CLI_CONTACTO,CLI_TELEFONO,CLI_DIRECCION,CLI_VAL_POR,CLI_EST_LOG,CLI_FEC_CRE)VALUES
                 ('" . $objEnt['CEDULA'] . "','" . $objEnt['CEDULA'] . "','" . $objEnt['NOMBRE'] . "','" . $objEnt['CORREO'] . "','" . $objEnt['CONTACTO'] . "',
-                 '" . $objEnt['TELEFONO'] . "','" . $objEnt['DIRECCION'] . "','1',CURRENT_TIMESTAMP()) ";
+                 '" . $objEnt['TELEFONO'] . "','" . $objEnt['DIRECCION'] . "','" . $objEnt['VAL_POR'] . "','1',CURRENT_TIMESTAMP()) ";
         $command = $con->createCommand($sql);
         $command->execute();
+    }
+    
+    public function buscarPorcentajeCliente($cliId) {
+        //$rawData = array();
+        $con = Yii::app()->db;
+        $sql = "SELECT IFNULL(CLI_VAL_POR,0) VAL_POR FROM " . $con->dbname . ".CLIENTE "
+                . " WHERE CLI_ID=$cliId  ";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryRow();        
+        if ($rawData === false)
+            return 0; //en caso de que existe problema o no retorne nada tiene false por defecto 
+        return $rawData['VAL_POR'];
     }
     
 }

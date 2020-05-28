@@ -72,6 +72,7 @@ function objetoCliente(ID){
     persona.DIRECCION=$('#txt_direccion').val();
     //persona.UEMP_ALIAS=$('#txt_departamento').val();
     persona.CORREO=$('#txt_correo').val();
+    persona.VAL_POR=$('#txt_val_por').val();
     persona.EST_LOG=1;
     sessionStorage.dataObj = JSON.stringify(persona);
     return JSON.stringify(persona);
@@ -84,6 +85,7 @@ function fun_limpiarCliente(){
     $('#txt_telefono').val('');
     $('#txt_direccion').val('');
     $('#txt_contacto').val('');
+    $('#txt_val_por').val('0');
     //$("#cmb_roles option[value=1]").attr("selected",true);
     //$("#cmb_area option[value=1]").attr("selected",true);
 }

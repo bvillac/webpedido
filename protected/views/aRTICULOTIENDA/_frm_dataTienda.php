@@ -54,7 +54,7 @@
         <div class="rowTd">
             
             <?php
-            echo CHtml::textField('txt_PCLI_P_VENTA', '', array('size' => 10, 'maxlength' => 6,
+            echo CHtml::textField('txt_PCLI_P_VENTA', '', array('size' => 10, 'maxlength' => 10,
                 'class' => 'form-control txt_TextboxNumber2 validation_Vs',
                 'data-type' => 'dinero',
                 'placeholder' => Yii::app()->format->formatNumber(0),

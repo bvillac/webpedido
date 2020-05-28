@@ -89,6 +89,20 @@
             ?>
         </div>
     </div>
+    
+    <div class="form-group rowLine">
+        <div class="txt_label">
+            <label><?php echo Yii::t('USUARIO', '% DCTO.') ?></label>
+        </div>
+        <div class="rowTd">
+            <?php
+            echo CHtml::textField('txt_val_por', '', array('size' => 10, 'maxlength' => 100,
+                'class' => 'form-control',
+                //'disabled' => 'disabled',
+            ))
+            ?>
+        </div>
+    </div>
 
     
 

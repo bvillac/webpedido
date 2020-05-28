@@ -187,8 +187,11 @@ class ARTICULOTIENDAController extends Controller {
             $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
             if ($accion == "Create") {
                 $arroout = $model->insertarPrecioTienda($cliId,$dts_PrecioTienda);
-            } else {
-                //$arroout = $model->insertarPrecioTienda($cliId,$dts_PrecioTienda);
+            } elseif($accion == "calcular") {
+                $valPor = isset($_POST['VAL_POR']) ? $_POST['VAL_POR'] : 0;
+                $arroout = $model->calcularPrecioTienda($cliId,$valPor);
+            }else{
+                 //$arroout = $model->insertarPrecioTienda($cliId,$dts_PrecioTienda);
             }
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);

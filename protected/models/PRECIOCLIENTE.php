@@ -202,5 +202,38 @@ class PRECIOCLIENTE extends CActiveRecord {
         $con->active = false;
         return $rawData;
     }
+    
+    public function calcularPrecioTienda($cliId,$vPor) {
+        $msg= new VSexception();
+        $cliente=new CLIENTE();
+        //$vPor=$cliente->buscarPorcentajeCliente($cliId);
+        //Temina la funcion si el resultado =0 Para no calcular nada
+        if($vPor==0){return $msg->messageSystem('NO_OK','Porcentaje = 0 No existe Calculo',11,null, null);}
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {            
+            //CALCUALR PORCENTAJE CLIENTAS AMBAS FORMULAS DAN EL MISMO RESULTADO
+            //=(Pv * (1 - (Desc_Global) / 100))	
+            //=P_COSTO/((100-POR_N01)/100) ;	
+            //## APLICA EL 18% 25% 28% 
+            $sql = "UPDATE " . $con->dbname . ".PRECIO_CLIENTE A
+                        INNER JOIN " . $con->dbname . ".ARTICULO B
+                            ON A.ART_ID=B.ART_ID
+                        SET A.PCLI_P_VENTA=(B.ART_P_VENTA * (1 - ($vPor) / 100))
+                    WHERE A.CLI_ID=$cliId AND A.PCLI_EST_LOG=1;";
+            $command = $con->createCommand($sql);
+            $command->execute();
+            
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,10,null, null);
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            //throw $e;
+            return $msg->messageSystem('NO_OK',$e->getMessage(),11,null, null);
+            
+        }
+    }
 
 }
