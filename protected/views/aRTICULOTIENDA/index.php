@@ -35,7 +35,7 @@ $rol_Id = Yii::app()->getSession()->get('RolId', FALSE);
             ?>
             
             <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Actualizar Precios'), array('id' => 'btn_calcular', 'name' => 'btn_calcular', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'calcularPrecio()')); ?>
-            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Agregar Items'), array('id' => 'btn_addItems', 'name' => 'btn_addItems', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'calcularPrecioxx()')); ?>
+            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Agregar Items'), array('id' => 'btn_addItems', 'name' => 'btn_addItems', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'copiarItems()')); ?>
             <?php } ?>
             <?php //echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Clear'), array('id' => 'btn_limpiar', 'name' => 'btn_limpiar', 'class' => 'btn btn-primary btn-sm', 'onclick' => 'fun_limpiarServer()')); ?>
         </div>

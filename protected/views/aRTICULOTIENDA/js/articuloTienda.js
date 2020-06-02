@@ -382,6 +382,38 @@ function guardarTiendasPrecio(accion) {
 
 function calcularPrecio() {
     var accion='calcular';
+    if(!confirm(mgAccion)) return false;
+    //if (validateForm()) {
+        //var ID = (accion == "Update") ? $('#txth_CDOR_ID').val() : 0;
+        var cliId=$('#cmb_cliente option:selected').val();
+        var valPor=$('#txt_val_por').val();
+        var link = $('#txth_controlador').val() + "/Save";
+        $.ajax({
+            type: 'POST',
+            url: link,
+            data: {
+                //"DTS_PRECIO_TIENDA": sessionStorage.dts_precioTienda,
+                "CLI_ID": cliId,
+                "VAL_POR": valPor,
+                "ACCION": accion
+            },
+            success: function (data) {
+                if (data.status == "OK") {
+                    $("#messageInfo").html(data.message+buttonAlert); 
+                    alerMessage();
+                } else {
+                    $("#messageInfo").html(data.message+buttonAlert); 
+                    alerMessage();
+                }
+            },
+            dataType: "json"
+        });
+    //}
+}
+
+function copiarItems() {
+    var accion='calcular';
+    if(!confirm(mgAccion)) return false;
     //if (validateForm()) {
         //var ID = (accion == "Update") ? $('#txth_CDOR_ID').val() : 0;
         var cliId=$('#cmb_cliente option:selected').val();
