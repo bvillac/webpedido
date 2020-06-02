@@ -39,18 +39,13 @@ class mailSystem {
         $mail->MsgHTML($body);
 
         // podemos hacer varios AddAdress 
-        //$mail->AddAddress($CabPed[0]["CorreoUser"], $CabPed[0]["NombreUser"]);//Usuario Autoriza Pedido
-        //$mail->AddAddress($CabPed[0]["CorreoPersona"], $CabPed[0]["NombrePersona"]);//Usuario Genera Pedido
-        $mail->AddAddress("byron_villacresesf@hotmail.com", "Byron Villa");
-        $mail->AddAddress("byronvillacreses@gmail.com", "Byron Villa");
-        $mail->AddAddress("bvillacreses@utimpor.com", "Byron Villa");
-        $mail->addBCC('gcastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
-        //$mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
-        //$mail->addBCC('ncastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta
+        $mail->AddAddress($CabPed[0]["CorreoUser"], $CabPed[0]["NombreUser"]);//Usuario Autoriza Pedido
+        $mail->AddAddress($CabPed[0]["CorreoPersona"], $CabPed[0]["NombrePersona"]);//Usuario Genera Pedido
+     
         
         /******** COPIA OCULTA PARA VENTAS  ***************/
         //Verifica por CLiente el Correo del Administrados 2019-03-01
-        /*$cli_Id=Yii::app()->getSession()->get('CliID', FALSE); 
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE); 
         if($cli_Id==5){
             $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
             //$mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
@@ -67,7 +62,7 @@ class mailSystem {
             $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta 
             $mail->addBCC('sochoa@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta 
             //$mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor');
-        }*/
+        }
         
    
         // si el SMTP necesita autenticación
