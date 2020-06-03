@@ -188,8 +188,6 @@ class CLIENTEController extends Controller
                 } else {
                     //$arroout = $model->actualizarDatosPersona($tienda);
                 }
-
-
                 header('Content-type: application/json');
                 echo CJavaScript::jsonEncode($arroout);
                 return;

@@ -51,6 +51,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'header' => Yii::t('USUARIO', 'Correo'),
             'value' => '$data["Correo"]',
         ),
+        array(
+            'name' => '%Desc',
+            'header' => Yii::t('USUARIO', '%Desc'),
+            'value' => '$data["Porcentaje"]',
+        ),
         
         array(
             'name' => 'Eliminar',

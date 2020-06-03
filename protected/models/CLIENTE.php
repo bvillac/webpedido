@@ -121,7 +121,8 @@ class CLIENTE extends CActiveRecord
             $limitrowsql = Yii::app()->params['limitRowSQL'];
             $con = Yii::app()->db;
             //$cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
-            $sql = "SELECT CLI_ID Ids,CLI_CED_RUC Cedula,CLI_NOMBRE Nombre,CLI_CORREO Correo,CLI_DIRECCION Direccion,CLI_CONTACTO Contacto,CLI_TELEFONO Telefono
+            $sql = "SELECT CLI_ID Ids,CLI_CED_RUC Cedula,CLI_NOMBRE Nombre,CLI_CORREO Correo,CLI_DIRECCION Direccion,
+                        CLI_CONTACTO Contacto,CLI_TELEFONO Telefono,CLI_VAL_POR Porcentaje
                         FROM " . $con->dbname . ".CLIENTE                                 
                     WHERE CLI_EST_LOG=1 ";
             $sql .= " ORDER BY CLI_iD DESC LIMIT $limitrowsql";
@@ -204,6 +205,19 @@ class CLIENTE extends CActiveRecord
         if ($rawData === false)
             return 0; //en caso de que existe problema o no retorne nada tiene false por defecto 
         return $rawData['VAL_POR'];
+    }
+    
+    public function existPrecioCliente($cliId) {
+        //$rawData = array();
+        //Retonra si Existe CLiente cuando se realiza una copia de precios
+        $con = Yii::app()->db;
+        $sql = "SELECT CLI_ID FROM " . $con->dbname . ".PRECIO_CLIENTE "
+                . " WHERE CLI_ID=$cliId  ";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryRow();        
+        if ($rawData === false)
+            return false; //en caso de que existe problema o no retorne nada tiene false por defecto 
+        return true;
     }
     
 }

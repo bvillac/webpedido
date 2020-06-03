@@ -190,6 +190,9 @@ class ARTICULOTIENDAController extends Controller {
             } elseif($accion == "calcular") {
                 $valPor = isset($_POST['VAL_POR']) ? $_POST['VAL_POR'] : 0;
                 $arroout = $model->calcularPrecioTienda($cliId,$valPor);
+            } elseif($accion == "copiar") {
+                $valPor = isset($_POST['VAL_POR']) ? $_POST['VAL_POR'] : 0;
+                $arroout = $model->copiarPrecioTienda($cliId,$valPor);
             }else{
                  //$arroout = $model->insertarPrecioTienda($cliId,$dts_PrecioTienda);
             }

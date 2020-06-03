@@ -401,6 +401,7 @@ function calcularPrecio() {
                 if (data.status == "OK") {
                     $("#messageInfo").html(data.message+buttonAlert); 
                     alerMessage();
+                    mostrarPrecioTienda();
                 } else {
                     $("#messageInfo").html(data.message+buttonAlert); 
                     alerMessage();
@@ -412,7 +413,7 @@ function calcularPrecio() {
 }
 
 function copiarItems() {
-    var accion='calcular';
+    var accion='copiar';
     if(!confirm(mgAccion)) return false;
     //if (validateForm()) {
         //var ID = (accion == "Update") ? $('#txth_CDOR_ID').val() : 0;
@@ -432,6 +433,7 @@ function copiarItems() {
                 if (data.status == "OK") {
                     $("#messageInfo").html(data.message+buttonAlert); 
                     alerMessage();
+                    mostrarPrecioTienda();
                 } else {
                     $("#messageInfo").html(data.message+buttonAlert); 
                     alerMessage();

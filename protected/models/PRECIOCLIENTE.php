@@ -208,7 +208,7 @@ class PRECIOCLIENTE extends CActiveRecord {
         $cliente=new CLIENTE();
         //$vPor=$cliente->buscarPorcentajeCliente($cliId);
         //Temina la funcion si el resultado =0 Para no calcular nada
-        if($vPor==0){return $msg->messageSystem('NO_OK','Porcentaje = 0 No existe Calculo',11,null, null);}
+        if($vPor==0){return $msg->messageSystem('NO_OK',null,null,'Porcentaje = 0 No existe Calculo', null);}
         $con = Yii::app()->db;
         $trans = $con->beginTransaction();
         try {            
@@ -219,8 +219,9 @@ class PRECIOCLIENTE extends CActiveRecord {
             $sql = "UPDATE " . $con->dbname . ".PRECIO_CLIENTE A
                         INNER JOIN " . $con->dbname . ".ARTICULO B
                             ON A.ART_ID=B.ART_ID
-                        SET A.PCLI_P_VENTA=(B.ART_P_VENTA * (1 - ($vPor) / 100))
-                    WHERE A.CLI_ID=$cliId AND A.PCLI_EST_LOG=1;";
+                        SET A.PCLI_P_VENTA=(B.ART_P_VENTA * (1 - ($vPor) / 100)),A.PCLI_FEC_MOD=CURRENT_TIMESTAMP()
+                    WHERE A.CLI_ID=$cliId AND A.PCLI_EST_LOG=1; ";
+            //echo $sql;
             $command = $con->createCommand($sql);
             $command->execute();
             
@@ -235,5 +236,42 @@ class PRECIOCLIENTE extends CActiveRecord {
             
         }
     }
-
+    
+    public function copiarPrecioTienda($cliId,$vPor) {
+        $msg= new VSexception();
+        $cliSesion=Yii::app()->getSession()->get('CliID', FALSE);// a este cliete se copiaran los Items
+        $cliente=new CLIENTE();
+        $valor=$cliente->existPrecioCliente($cliSesion);
+        //Temina la funcion si el resultado =0 Para no calcular nada
+        if($valor){return $msg->messageSystem('NO_OK',null,null,'Ya Existe una copia de Items para cliente selecionado', null);}
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+       
+        try {            
+            //CALCUALR PORCENTAJE CLIENTAS AMBAS FORMULAS DAN EL MISMO RESULTADO
+            //=(Pv * (1 - (Desc_Global) / 100))	
+            //=P_COSTO/((100-POR_N01)/100) ;	
+            //## APLICA EL 18% 25% 28% 
+            
+            $sql = "INSERT INTO " . $con->dbname . ".PRECIO_CLIENTE 
+                          (CLI_ID,ART_ID,COD_ART,PCLI_P_VENTA,PCLI_I_M_IVA,PCLI_POR_DES,PCLI_VAL_DES,PCLI_EST_LOG)
+                SELECT $cliSesion,ART_ID,COD_ART,PCLI_P_VENTA,PCLI_I_M_IVA,0,0,'1' 
+                        FROM " . $con->dbname . ".PRECIO_CLIENTE
+                WHERE CLI_ID=$cliId;";
+            
+            //echo $sql;
+            $command = $con->createCommand($sql);
+            $command->execute();
+            
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,10,null, null);
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            //throw $e;
+            return $msg->messageSystem('NO_OK',$e->getMessage(),11,null, null);
+            
+        }
+    }
 }
