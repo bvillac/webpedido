@@ -12,7 +12,8 @@ require_once('PHPMailerAutoload.php');
 class mailSystem {
     private $SMTPSecure="ssl";
     private $Port = 465;
-    private $Host = "mail.utimpor.com";
+    //private $Host = "mail.utimpor.com";
+    private $Host='marquis.websitewelcome.com';
     private $Username = "no-responder@utimpor.com";
     private $Password = "MP1TQyb=PkcZ";//MP1TQyb=PkcZ
     private $CharSet = 'UTF-8';
@@ -99,7 +100,7 @@ class mailSystem {
         $mail->SMTPSecure = "ssl";
         $mail->Port = 465;
         // la dirección del servidor, p. ej.: smtp.servidor.com
-        $mail->Host = "mail.utimpor.com";
+        $mail->Host = $this->Host;//"mail.utimpor.com";
 
         // dirección remitente, p. ej.: no-responder@miempresa.com
         // nombre remitente, p. ej.: "Servicio de envío automático"
