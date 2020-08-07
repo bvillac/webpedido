@@ -95,8 +95,8 @@ class VSValidador {
     
     public static function tipoAprobacion() {
         return array(
-            '1' => Yii::t('TIENDA', 'Order'),//Pedido
-            '2' => Yii::t('TIENDA', 'Dressed'),//Atendido
+            '1' => Yii::t('TIENDA', 'Realizado'),//Pedido
+            '2' => Yii::t('TIENDA', 'Facturado'),//Atendido
             '3' => Yii::t('TIENDA', 'Authorized'),//Autorizado
             '4' => Yii::t('TIENDA', 'Canceled'),//Cancelado 
             //'5' => Yii::t('TIENDA', 'Revised'),//Revisado
@@ -105,10 +105,10 @@ class VSValidador {
     public static function estadoAprobacion($estado) {
         switch ($estado) {
             Case "1":
-                $valRes = Yii::t('TIENDA', 'Order');
+                $valRes = Yii::t('TIENDA', 'Realizado');//Order
                 break;
             Case "2":
-                $valRes = Yii::t('TIENDA', 'Dressed');
+                $valRes = Yii::t('TIENDA', 'Facturado');
                 break;
             Case "3":
                 $valRes = Yii::t('TIENDA', 'Authorized');
