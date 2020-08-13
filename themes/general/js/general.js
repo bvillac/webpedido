@@ -21,6 +21,7 @@ var mgEnvInfo = 'Está seguro que desea Enviar Información';
 var mgEnvPedid = 'Está seguro que desea Enviar estos Pedidos';
 var mgDatoNoVal = 'Los datos proporcionados no son validos!!';
 var mgSaldoNoDis = 'Cupo mensual no disponible.!!';
+var mgDatosProceso = 'Su pedido se esta procesando Por favor espere...!!';
 
 function alerMessage() {
     setTimeout(function () {

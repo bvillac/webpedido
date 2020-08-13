@@ -326,7 +326,8 @@ function guardarListaPedido(accion) {
             } else {
                 alert("Haces otra cosa");
             } */
-
+            $("#btn_save").attr('disabled', true);
+            $("#messageInfo").html(mgDatosProceso);
             var ID = (accion == "Update") ? $('#txth_PedID').val() : 0;
             //var idsAre =($('#cmb_area option:selected').val()!=0)?$('#cmb_area option:selected').val():1;          
             var tieId = (accion == "Create") ? $('#cmb_tienda option:selected').val() : ID;//Cuando Es Actualizacion Retorno el Id Cabecera
@@ -1008,7 +1009,8 @@ function guardarListaPedidoUpdate(accion) {
     var total = parseFloat($('#lbl_total').text());
     var cupo = parseFloat($('#lbl_cupo').text());
     var saldo = cupo - total;//El cupo Disponible - el Total a pedir
-    if (saldo > 0) {       
+    if (saldo > 0) { 
+        
         var ID = $('#txth_PedID').val();//(accion == "Update") ? $('#txth_PedID').val() : 0;       
         var tieId = $('#txth_TieID').val();// (accion == "Create") ?  $('#txth_TieID').val() : 0;  
         var link = $('#txth_controlador').val() + "/Save";
