@@ -41,3 +41,13 @@ function nuevoItem() {
     //$('#btn_add').attr("href", link+"&acc=new&id=0");
 //limpiarItems();
 }
+
+window.Trengo = window.Trengo || {};
+window.Trengo.key = 'tJI7dEBNQSvWGO88n5Cz';
+(function(d, script, t) {
+    script = d.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = 'https://static.widget.trengo.eu/embed.js';
+    d.getElementsByTagName('head')[0].appendChild(script);
+}(document));
