@@ -427,7 +427,9 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         $rawData = array();
         $con = Yii::app()->db;
         //$rawData[]=$this->rowProdList();
-        $sql = "SELECT A.TDPED_ID DetId,A.ART_ID ArtId,A.TDPED_CAN_PED Cantidad,A.TDPED_P_VENTA Precio,
+        //$sql = "SELECT A.TDPED_ID DetId,A.ART_ID ArtId,A.TDPED_CAN_PED Cantidad,A.TDPED_P_VENTA Precio,
+        //Cambio para obtener el codigo de ARTICULO_TIENDA
+        $sql = "SELECT A.ARTIE_ID DetId,A.ART_ID ArtId,A.TDPED_CAN_PED Cantidad,A.TDPED_P_VENTA Precio,
                         A.TDPED_T_VENTA TotVta,A.TDPED_EST_AUT EstAut,A.TDPED_OBSERVA Observacion,B.COD_ART Codigo,
                         B.ART_DES_COM Nombre,B.ART_I_M_IVA ImIva
                         FROM " . $con->dbname . ".TEMP_DET_PEDIDO A

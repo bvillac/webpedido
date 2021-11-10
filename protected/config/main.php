@@ -117,7 +117,7 @@ return array(
         // uncomment the following to use a MySQL database
         'db' => array(
             //'connectionString' => 'mysql:host=192.168.10.200;dbname=VSSEAPEDIDO',
-            //'connectionString' => 'mysql:host=192.168.0.100;dbname=VSSEAPEDIDO',
+            //'connectionString' => 'mysql:host=192.168.1.100;dbname=VSSEAPEDIDO',
             'connectionString' => 'mysql:host=localhost;dbname=VSSEAPEDIDO',
             'emulatePrepare' => true,
             'username' => 'root',
