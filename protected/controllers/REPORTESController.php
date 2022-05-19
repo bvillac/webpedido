@@ -138,4 +138,13 @@ class REPORTESController extends Controller {
         }
     }
 
+    public function actionResumen() {
+        $tienda=new TIENDA;
+        $this->render('resumen', array(
+            'tienda' => $tienda->recuperarTiendasRol(),
+            'tipo' => $tienda->recuperarTipoItem(),
+            'marca' => $tienda->recuperarMarcaItem(),
+        ));
+    }
+
 }

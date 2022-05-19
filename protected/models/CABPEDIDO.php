@@ -652,4 +652,39 @@ class CABPEDIDO extends CActiveRecord {
         return $rawData;
     }
 
+    public function reporteConsumoTiendaPedido($control) {
+        $objPed=new TEMP_CABPEDIDO;
+        $data = explode(",",$control);//Recibe Datos y los separa
+        $f_ini=$data[1];//Fecha Inicio
+        $f_fin=$data[2];//Fecha Inicio
+        $tienda=$data[3];//Id Tienda Personalizado
+        $rawData = array();
+        $con = Yii::app()->db;
+        $cliID=Yii::app()->getSession()->get('CliID', FALSE);
+
+        /*$sql = "SELECT DATE(A.TDPED_FEC_CRE) FECHA,C.TIE_ID,C.TIE_NOMBRE Tienda,B.COD_ART,B.ART_DES_COM DETALLE,
+                    MAX(A.TDPED_P_VENTA) P_VENTA,SUM(A.TDPED_CAN_PED) CAN_PED, MAX(A.TDPED_P_VENTA)*SUM(A.TDPED_CAN_PED) TOTAL
+                    FROM " . $con->dbname . ".TEMP_DET_PEDIDO A
+                        INNER JOIN " . $con->dbname . ".ARTICULO B ON A.ART_ID=B.ART_ID
+                        INNER JOIN " . $con->dbname . ".TIENDA C ON A.TIE_ID=C.TIE_ID
+                    WHERE A.TDPED_EST_LOG=1 AND A.CLI_ID=$cliID AND TDPED_EST_AUT=1 ";
+                $sql .= "AND DATE(A.TDPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($f_ini)) . "' AND '" . date("Y-m-d", strtotime($f_fin)) . "'  ";
+                $sql .=($tienda=='0') ? "" : " AND C.TIE_ID=$tienda ";
+                $sql .= "GROUP BY A.TIE_ID,A.ART_ID ORDER BY  C.TIE_NOMBRE ASC  ";*/
+        
+        $sql = "SELECT DATE(A.DPED_FEC_CRE) FECHA,B.COD_ART,B.ART_DES_COM DETALLE,SUM(A.DPED_CAN_PED) CANT,B.COD_TIP,B.COD_MAR,
+                        MAX(A.DPED_P_VENTA) PRECIO,SUM(A.DPED_T_VENTA) TOTAL
+                        FROM " . $con->dbname . ".DET_PEDIDO A
+                            INNER JOIN " . $con->dbname . ".ARTICULO B ON A.ART_ID=B.ART_ID
+                    WHERE A.DPED_EST_LOG=1 AND A.CLI_ID=$cliID "; 
+                $sql .= " AND DATE(A.DPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($f_ini)) . "' AND '" . date("Y-m-d", strtotime($f_fin)) . "'  ";
+                $sql .= " AND A.TIE_ID=442 AND (B.COD_TIP IN ('A1','A2') OR B.COD_MAR IN ('L5')) ";
+                $sql .= " GROUP BY A.ART_ID ORDER BY A.ART_ID ASC; ";
+
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    }
+
 }
