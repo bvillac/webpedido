@@ -126,13 +126,14 @@ class USUARIO extends CActiveRecord {
                         FROM " . $con->dbname . ".CLIENTE A
                                 INNER JOIN (" . $con->dbname . ".TIENDA B
                                                 INNER JOIN " . $con->dbname . ".USUARIO_TIENDA C
-                                                        ON B.TIE_ID=C.TIE_ID AND UTIE_EST_LOG=1)
+                                                        ON B.TIE_ID=C.TIE_ID AND C.UTIE_EST_LOG=1)
                                         ON A.CLI_ID=B.CLI_ID
                 WHERE A.CLI_EST_LOG=1 ";
         $sql .= ($ids != "") ? "AND C.USU_ID=$ids " : "";
         $sql .= ($idstie != "") ? "AND A.CLI_ID=$idstie " : "";
         //$sql .= ($rol_Id = "8") ? "AND C.UTIE_ASIG='1' " : "";
         $sql .= " ORDER BY B.TIE_NOMBRE ASC";
+        //VSValidador::putMessageLogFile($sql);
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();        
         $con->active = false;
@@ -148,10 +149,11 @@ class USUARIO extends CActiveRecord {
                                         INNER JOIN (" . $con->dbname . ".TIENDA C
                                                 INNER JOIN " . $con->dbname . ".CLIENTE D
                                                         ON D.CLI_ID=C.CLI_ID)
-                                                ON B.TIE_ID=C.TIE_ID)
+                                                ON B.TIE_ID=C.TIE_ID AND B.UTIE_EST_LOG=1)
                                 ON A.USU_ID=B.USU_ID
                 WHERE A.USU_EST_LOG=1 ";
         $sql .= ($ids != "") ? "AND A.USU_ID=$ids " : " ";
+        //VSValidador::putMessageLogFile($sql);
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
