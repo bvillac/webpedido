@@ -654,10 +654,36 @@ class CABPEDIDO extends CActiveRecord {
 
     public function reporteConsumoTiendaPedido($control) {
         $objPed=new TEMP_CABPEDIDO;
-        $data = explode(",",$control);//Recibe Datos y los separa
-        $f_ini=$data[1];//Fecha Inicio
-        $f_fin=$data[2];//Fecha Inicio
-        $tienda=$data[3];//Id Tienda Personalizado
+        //echo $control;
+        $f_ini=$control['FEC_INI'];//Fecha Inicio
+        $f_fin=$control['FEC_FIN'];//Fecha Inicio
+        $tienda=$control['TIE_ID'];//Id Tienda Personalizado
+
+        $tipoData = isset($control['TIPO']) ?CJavaScript::jsonDecode($control['TIPO']) : array();
+        $marcaData = isset($control['MARCA']) ?CJavaScript::jsonDecode($control['MARCA']) : array();
+
+
+        $cadenaTIPO="";
+        for ($i = 0; $i < sizeof($tipoData); $i++) {
+            if($i == 0){
+                $cadenaTIPO="'" . $tipoData[0]['COD_TIP']  ."'";
+            }else{
+                $cadenaTIPO .=",'" . $tipoData[$i]['COD_TIP']  ."'";
+            }
+            
+        }
+
+        $cadenaMARCA="";
+        for ($i = 0; $i < sizeof($marcaData); $i++) {
+            //$cadenaMARCA =($i == 0)? "'" .$marcaData[0]['COD_MAR']."'":",'".$marcaData[$i]['COD_MAR']."'";
+            if($i == 0){
+                $cadenaMARCA="'" . $marcaData[0]['COD_MAR']  ."'";
+            }else{
+                $cadenaMARCA .=",'" . $marcaData[$i]['COD_MAR']  ."'";
+            }
+        }
+
+
         $rawData = array();
         $con = Yii::app()->db;
         $cliID=Yii::app()->getSession()->get('CliID', FALSE);
@@ -672,16 +698,30 @@ class CABPEDIDO extends CActiveRecord {
                 $sql .=($tienda=='0') ? "" : " AND C.TIE_ID=$tienda ";
                 $sql .= "GROUP BY A.TIE_ID,A.ART_ID ORDER BY  C.TIE_NOMBRE ASC  ";*/
         
-        $sql = "SELECT DATE(A.DPED_FEC_CRE) FECHA,B.COD_ART,B.ART_DES_COM DETALLE,SUM(A.DPED_CAN_PED) CANT,B.COD_TIP,B.COD_MAR,
-                        MAX(A.DPED_P_VENTA) PRECIO,SUM(A.DPED_T_VENTA) TOTAL
+        $sql = "SELECT DATE(A.DPED_FEC_CRE) FECHA,B.COD_ART,B.ART_DES_COM DETALLE,SUM(A.DPED_CAN_PED) CAN_PED,B.COD_TIP,B.COD_MAR,
+                        MAX(A.DPED_P_VENTA) P_VENTA,SUM(A.DPED_T_VENTA) TOTAL,COUNT(A.ART_ID) NCANT
                         FROM " . $con->dbname . ".DET_PEDIDO A
                             INNER JOIN " . $con->dbname . ".ARTICULO B ON A.ART_ID=B.ART_ID
-                    WHERE A.DPED_EST_LOG=1 AND A.CLI_ID=$cliID "; 
+                    WHERE A.DPED_EST_LOG=1 AND A.CLI_ID=$cliID AND A.TIE_ID=$tienda "; 
                 $sql .= " AND DATE(A.DPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($f_ini)) . "' AND '" . date("Y-m-d", strtotime($f_fin)) . "'  ";
-                $sql .= " AND A.TIE_ID=442 AND (B.COD_TIP IN ('A1','A2') OR B.COD_MAR IN ('L5')) ";
+                //$sql .= "  AND (B.COD_TIP IN ($cadenaTIPO) OR B.COD_MAR IN ($cadenaMARCA)) ";
+                if($cadenaTIPO!='' || $cadenaMARCA!=''){
+                    $sql .= " AND (";
+                    if($cadenaTIPO!=''){
+                        $sql .= " B.COD_TIP IN ($cadenaTIPO) ";
+                    }
+                    if($cadenaMARCA!=''){
+                        $sql .=($cadenaTIPO!='') ? " OR " : "";
+                        $sql .= " B.COD_MAR IN ($cadenaMARCA) ";
+                    }
+                    $sql .= ")";
+                }
                 $sql .= " GROUP BY A.ART_ID ORDER BY A.ART_ID ASC; ";
 
+        //VSValidador::putMessageLogFile($sql);
         //echo $sql;
+        
+   
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
         return $rawData;

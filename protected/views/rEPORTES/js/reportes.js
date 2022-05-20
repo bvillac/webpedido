@@ -46,7 +46,7 @@ function fun_ConsumoTienda(op){
     var link="";
     var data = base64_encode(ItemTiendaIndex(op));
     if(data!=""){
-        link=$('#txth_controlador').val()+"/ConsumoTienda?";
+        link=$('#txth_controlador').val()+"/ConsumoResumen?";
         if(op==1){
             $('#btn_aceptar_item').attr("href", link+"data="+data);
         }else{
@@ -57,12 +57,24 @@ function fun_ConsumoTienda(op){
 }
 
 function ItemTiendaIndex(op){
-    var objRep = new Array();
+    /*var objRep = new Array();
     objRep[0]=op;
     objRep[1]=$('#dtp_fec_ini_item').val();
     objRep[2]=$('#dtp_fec_fin_item').val();
     objRep[3]=$('#cmb_tienda option:selected').val();
-    return objRep;
+    objRep[4]= sessionStorage.dts_itemTipo;
+    objRep[5]= sessionStorage.dts_itemMarca;*/
+
+    row = new Object();
+    row.OP = op;
+    row.FEC_INI = $('#dtp_fec_ini_item').val();
+    row.FEC_FIN = $('#dtp_fec_fin_item').val();
+    row.TIE_ID = $('#cmb_tienda option:selected').val();
+    row.TIE_NOM = $('#cmb_tienda option:selected').text();
+    row.TIPO = sessionStorage.dts_itemTipo;
+    row.MARCA = sessionStorage.dts_itemMarca;
+    return JSON.stringify(row);
+    //return objRep;
 }
 
 

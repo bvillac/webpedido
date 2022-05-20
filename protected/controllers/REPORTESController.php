@@ -108,7 +108,7 @@ class REPORTESController extends Controller {
     public function actionConsumoTienda($data) {
         try {
             $control = base64_decode($data);
-            print_r($control);
+            //print_r($control);
             $rep = new REPORTES;
             $modelo = new CABPEDIDO;
             $report = $modelo->reporteConsumoTienda($control);
@@ -146,5 +146,49 @@ class REPORTESController extends Controller {
             'marca' => $tienda->recuperarMarcaItem(),
         ));
     }
+
+    public function actionConsumoResumen($data) {
+        try {
+            //VSValidador::putMessageLogFile("llego");
+            $control = base64_decode($data);
+            $control =CJavaScript::jsonDecode($control);
+            //print_r($control);
+            //echo $control[0]['FEC_INI'];
+            //echo $control['FEC_INI'];
+            //$tipoData = isset($control) ? CJavaScript::jsonDecode($control) : array();
+            $rep = new REPORTES;
+            $modelo = new CABPEDIDO;
+            $report = $modelo->reporteConsumoTiendaPedido($control);
+            
+            //$valida->putMessageLogFile($report);
+            //VSValidador::putMessageLogFile($report);
+        
+            
+            //print_r($report);
+            $mPDF1 = $rep->crearBaseReport();
+            $nameFile=Yii::t('TIENDA', 'RESUMEN_PEDIDO') . "-" . date('YmdHis');
+            $Titulo=Yii::t('TIENDA', 'RESUMEN PEDIDO') ." - ". Yii::app()->getSession()->get('CliNom', FALSE);
+            $Contenido=$this->renderPartial('consumos_Resumen', array(
+                            'data' => $report,
+                            'control' => $control,
+                            'titulo' => $Titulo,
+                            'Ntienda'=> $control['TIE_NOM'],
+                            'f_ini'=> $control['FEC_INI'],//Fecha Inicio
+                            'f_fin'=> $control['FEC_FIN'],//Fecha Fin
+                                ), true);
+            if ($control['OP'] == 1) {
+                $mPDF1->SetTitle($Titulo);
+                $mPDF1->WriteHTML($Contenido); //hacemos un render partial a una vista preparada, en este caso es la vista docPDF
+                $mPDF1->Output($nameFile, 'I');
+            } else {
+                yii::app()->request->sendFile($nameFile.'.xls', $Contenido);
+            }
+
+            //exit;
+        } catch (Exception $e) {
+            $this->errorControl($e);
+        }
+    }
+
 
 }

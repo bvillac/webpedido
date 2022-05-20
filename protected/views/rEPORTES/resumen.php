@@ -19,7 +19,7 @@
 
 <div class="col-lg-6">
     <div class="panel panel-default">
-        <div class="panel-heading"><?php echo Yii::t('TIENDA', 'Tipo') ?></div>
+        <div class="panel-heading"><?php echo Yii::t('TIENDA', 'Filtro por Tipo') ?></div>
         <div class="panel-body">
             <?php $this->renderPartial('_frm_dataResumenTipo', array('tipo' => $tipo)); ?>
         </div>
@@ -27,7 +27,7 @@
 </div>
 <div class="col-lg-6">
     <div class="panel panel-default">
-        <div class="panel-heading"><?php echo Yii::t('TIENDA', 'Marca') ?></div>
+        <div class="panel-heading"><?php echo Yii::t('TIENDA', 'Filtro por Marca') ?></div>
         <div class="panel-body">
             <?php $this->renderPartial('_frm_dataResumenMarca', array('marca' => $marca)); ?>
         </div>

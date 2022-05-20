@@ -1,9 +1,9 @@
 <div id="div-table">
     <div class="form-group rowLine">
-        <div class="col-lg-4">
+        <div class="col-lg-2">
             <label><?php echo Yii::t('TIENDA', 'Stores') ?></label>
         </div>
-        <div class="col-lg-8">
+        <div class="col-lg-5">
             <?php
             echo CHtml::dropDownList(
                     'cmb_tienda', '0'
@@ -15,13 +15,14 @@
             );
             ?> 
         </div>
+        <div class="col-lg-5"></div>
         
     </div>
     <div class="form-group rowLine">
-        <div class="col-lg-3">
+        <div class="col-lg-1">
             <span> <?php echo Yii::t('COMPANIA', 'Date Start') ?></span>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <?php
             $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                 'name' => 'dtp_fec_ini_item',
@@ -47,10 +48,10 @@
             ));
             ?>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-1">
             <span> <?php echo Yii::t('COMPANIA', 'Date End') ?></span>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-2">
             <?php
             $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                 'name' => 'dtp_fec_fin_item',
@@ -76,6 +77,7 @@
             ));
             ?>
         </div>
+        <div class="col-lg-6"></div>
     </div>
     <div class="form-group rowLine">
         <?php
