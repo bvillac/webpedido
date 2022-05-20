@@ -96,6 +96,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                            <tr><td colspan="6">&nbsp;</td></tr>
+                            <tr>                                               
+                                <td colspan="6"><b><?php echo $Ntienda ?></b></td>
+                            </tr>         
                     <?php 
                         $aux="";
                         for ($i = 0; $i < sizeof($data); $i++) { 
@@ -110,10 +114,7 @@
                                 <?php
                             }*/
                             ?>
-                            <tr><td colspan="6">&nbsp;</td></tr>
-                            <tr>                                               
-                                <td colspan="6"><b><?php echo $Ntienda ?></b></td>
-                            </tr>                               
+                                                  
                             <tr>
                                 <td ><?php echo $data[$i]['FECHA'] ?>&nbsp;</td>                                     
                                 <td class=""><?php echo $data[$i]['COD_ART'] ?></td>

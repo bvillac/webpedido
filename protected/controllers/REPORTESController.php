@@ -160,10 +160,6 @@ class REPORTESController extends Controller {
             $modelo = new CABPEDIDO;
             $report = $modelo->reporteConsumoTiendaPedido($control);
             
-            //$valida->putMessageLogFile($report);
-            //VSValidador::putMessageLogFile($report);
-        
-            
             //print_r($report);
             $mPDF1 = $rep->crearBaseReport();
             $nameFile=Yii::t('TIENDA', 'RESUMEN_PEDIDO') . "-" . date('YmdHis');
