@@ -763,6 +763,39 @@ class TIENDA extends CActiveRecord {
             return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
         }
     }
+
+
+    public function recuperarTipoItem() {
+        try {
+            $con = yii::app()->db;            
+            $sql = "SELECT COD_TIP Ids,NOM_TIP Nombre FROM " . $con->dbname . ".TIPO_ARTICULO "
+                        . " WHERE EST_LOG=1  ORDER BY NOM_TIP;";
+            //echo $sql;
+            $rawData = $con->createCommand($sql)->queryAll();
+            $con->active = false;
+            return $rawData;
+        } catch (Exception $e) {
+            //throw $e;
+            throw new CHttpException(400,'Acción no permitida, Ud. no tiene acceso');
+
+        }
+    }
+
+    public function recuperarMarcaItem() {
+        try {
+            $con = yii::app()->db;            
+            $sql = "SELECT COD_MAR Ids,NOM_MAR Nombre FROM " . $con->dbname . ".MARCA_ARTICULO "
+                        . " WHERE EST_LOG=1  ORDER BY NOM_MAR;";
+            //echo $sql;
+            $rawData = $con->createCommand($sql)->queryAll();
+            $con->active = false;
+            return $rawData;
+        } catch (Exception $e) {
+            //throw $e;
+            throw new CHttpException(400,'Acción no permitida, Ud. no tiene acceso');
+
+        }
+    }
     
 
 }
