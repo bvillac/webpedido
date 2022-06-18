@@ -158,6 +158,7 @@ class REPORTESController extends Controller {
             //$tipoData = isset($control) ? CJavaScript::jsonDecode($control) : array();
             $rep = new REPORTES;
             $modelo = new CABPEDIDO;
+            
             $report = $modelo->reporteConsumoTiendaPedido($control);
             
             //print_r($report);
@@ -168,6 +169,8 @@ class REPORTESController extends Controller {
                             'data' => $report,
                             'control' => $control,
                             'titulo' => $Titulo,
+                            'TIPOS' => $this->nombreTipo($control),
+                            'MARCAS' => $this->nombreMarca($control),
                             'Ntienda'=> $control['TIE_NOM'],
                             'f_ini'=> $control['FEC_INI'],//Fecha Inicio
                             'f_fin'=> $control['FEC_FIN'],//Fecha Fin
@@ -184,6 +187,33 @@ class REPORTESController extends Controller {
         } catch (Exception $e) {
             $this->errorControl($e);
         }
+    }
+
+    private function nombreTipo($control){
+        $tipoData = isset($control['TIPO']) ?CJavaScript::jsonDecode($control['TIPO']) : array();
+        $cadenaTIPO="";
+        for ($i = 0; $i < sizeof($tipoData); $i++) {
+            if($i == 0){
+                $cadenaTIPO=$tipoData[0]['NOM_TIP']  ;
+            }else{
+                $cadenaTIPO .=", " . $tipoData[$i]['NOM_TIP']  ;
+            }
+            
+        }
+        return $cadenaTIPO;
+    }
+
+    private function nombreMarca($control){
+        $marcaData = isset($control['MARCA']) ?CJavaScript::jsonDecode($control['MARCA']) : array();
+        $cadenaMARCA="";
+        for ($i = 0; $i < sizeof($marcaData); $i++) {
+            if($i == 0){
+                $cadenaMARCA= $marcaData[0]['NOM_MAR'] ;
+            }else{
+                $cadenaMARCA .=", " . $marcaData[$i]['NOM_MAR']  ;
+            }
+        }
+        return $cadenaMARCA;
     }
 
 

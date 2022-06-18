@@ -72,6 +72,10 @@
                 <span><?php echo Yii::t('TIENDA', 'From').' '.date(Yii::app()->params["datebydefault"], strtotime($f_ini)) ?></span>
                 <span><?php echo Yii::t('TIENDA', 'To').' '.date(Yii::app()->params["datebydefault"], strtotime($f_fin)) ?></span>
             </div>
+            <div>
+                <span class="titleLabel"><?php echo Yii::t('TIENDA', 'TIPOS')  ?> : <?php echo $TIPOS ?></span><BR>
+                <span class="titleLabel"><?php echo Yii::t('TIENDA', 'MARCA')  ?> : <?php echo $MARCAS ?></span><BR>
+            </div>
             <table class="tabDetalle">
                 <thead>
                     <tr>

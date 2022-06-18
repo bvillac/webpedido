@@ -705,20 +705,23 @@ class CABPEDIDO extends CActiveRecord {
                     WHERE A.DPED_EST_LOG=1 AND A.CLI_ID=$cliID AND A.TIE_ID=$tienda "; 
                 $sql .= " AND DATE(A.DPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($f_ini)) . "' AND '" . date("Y-m-d", strtotime($f_fin)) . "'  ";
                 //$sql .= "  AND (B.COD_TIP IN ($cadenaTIPO) OR B.COD_MAR IN ($cadenaMARCA)) ";
-                if($cadenaTIPO!='' || $cadenaMARCA!=''){
+                /*if($cadenaTIPO!='' || $cadenaMARCA!=''){
                     $sql .= " AND (";
                     if($cadenaTIPO!=''){
                         $sql .= " B.COD_TIP IN ($cadenaTIPO) ";
                     }
                     if($cadenaMARCA!=''){
-                        $sql .=($cadenaTIPO!='') ? " OR " : "";
+                        $sql .=($cadenaTIPO!='') ? " AND " : "";//OR
                         $sql .= " B.COD_MAR IN ($cadenaMARCA) ";
                     }
                     $sql .= ")";
-                }
-                $sql .= " GROUP BY A.ART_ID ORDER BY A.ART_ID ASC; ";
+                }*/
+                $sql .=($cadenaTIPO!='') ? " AND B.COD_TIP IN ($cadenaTIPO) " : "  ";
+                $sql .=($cadenaMARCA!='') ? " AND B.COD_MAR IN ($cadenaMARCA) " : "  ";
+                //$sql .= " GROUP BY A.ART_ID ORDER BY A.ART_ID ASC; ";
+                $sql .= " GROUP BY A.ART_ID ORDER BY B.ART_DES_COM ASC; ";
 
-        //VSValidador::putMessageLogFile($sql);
+       //VSValidador::putMessageLogFile($sql);
         //echo $sql;
         
    
