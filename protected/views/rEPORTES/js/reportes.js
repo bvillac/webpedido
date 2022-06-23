@@ -43,17 +43,23 @@ function fun_ItemTienda(op){
 }
 
 function fun_ConsumoTienda(op){
-    var link="";
-    var data = base64_encode(ItemTiendaIndex(op));
-    if(data!=""){
-        link=$('#txth_controlador').val()+"/ConsumoResumen?";
-        if(op==1){
-            $('#btn_aceptar_item').attr("href", link+"data="+data);
-        }else{
-            $('#btn_excel_item').attr("href", link+"data="+data);
+    //if ($('#cmb_tienda option:selected').val() != 0) {
+        var link="";
+        var data = base64_encode(ItemTiendaIndex(op));
+        if(data!=""){
+            link=$('#txth_controlador').val()+"/ConsumoResumen?";
+            if(op==1){
+                $('#btn_aceptar_item').attr("href", link+"data="+data);
+            }else{
+                $('#btn_excel_item').attr("href", link+"data="+data);
+            }
         }
-         
-    }
+    //}else{
+    //    $("#messageInfo").html('Seleccionar una tienda!' + buttonAlert);
+    //    alerMessage();
+    //}
+
+        
 }
 
 function ItemTiendaIndex(op){
@@ -113,6 +119,13 @@ function findAndRemove(array, property, value) {
 
 /*################  TIPO PRODUCTOS ###########################*/
 function agregarItemsTipo(opAccion) {
+    if($('#cmb_tipo').is(':disabled')){
+        //alert('disabled');
+        $("#messageInfo").html("No tiene  permitido seleccionar  mas de un Tipo en el reporte..." + buttonAlert); 
+        alerMessage();
+        return;
+    }
+
     var tGrid = 'TbG_Tipo';
     var nombre = $('#cmb_tipo option:selected').text();
     var ids = $('#cmb_tipo option:selected').val();
@@ -125,6 +138,7 @@ function agregarItemsTipo(opAccion) {
                 /*Agrego a la Sesion*/
                 arr_Grid = JSON.parse(sessionStorage.dts_itemTipo);
                 var size = arr_Grid.length;
+                validarControlSelectTipo(size,'cmb_marca');
                 if (size > 0) {
                     //Varios Items
                     if (codigoExiste(nombre, 'NOM_TIP', sessionStorage.dts_itemTipo)) {//Verifico si el Codigo Existe  para no Dejar ingresar Repetidos
@@ -163,6 +177,23 @@ function agregarItemsTipo(opAccion) {
         $("#messageInfo").html('No existe Informacion ' + buttonAlert);
         alerMessage();
     }
+}
+
+function validarControlSelectTipo(size,control){
+    let mensaje="";
+    if (size >= 1) {
+        //alert('tiene myaor '+size);
+        $('#'+control).prop("disabled", true);
+        //mensaje=(control=="cmb_tipo")?"No tiene  permitido seleccionar  mas de un Tipo en el reporte...":"";
+        //mensaje=(control=="cmb_marca")?"No tiene  permitido seleccionar  mas de una  Marca en el reporte...":"";
+        //$("#messageInfo").html(mensaje + buttonAlert); 
+        //alerMessage();
+    }else{
+        //alert('tiene valor '+size);
+        $('#'+control).prop("disabled", false);
+    }
+    
+    
 }
 
 function limpiarTexboxTipo() {
@@ -210,7 +241,7 @@ function retornaFilaTipo(c, Grid, TbGtable, op) {
 function eliminarItemsTipo(val, TbGtable) {
     var ids = "";
     if (sessionStorage.dts_itemTipo) {
-        var Grid = JSON.parse(sessionStorage.dts_itemTipo);
+        var Grid = JSON.parse(sessionStorage.dts_itemTipo);       
         if (Grid.length > 0) {
             //$('#'+TbGtable+' >table >tbody >tr').each(function () {
             $('#' + TbGtable + ' tr').each(function () {
@@ -219,9 +250,12 @@ function eliminarItemsTipo(val, TbGtable) {
                     var array = findAndRemove(Grid, 'COD_TIP', ids);
                     sessionStorage.dts_itemTipo = JSON.stringify(array);
                     $(this).remove();
+                    Grid = JSON.parse(sessionStorage.dts_itemTipo);
+                    validarControlSelectTipo(Grid.length-1,'cmb_marca');
                 }
             });
         }
+       
     }
 }
 
@@ -242,6 +276,12 @@ function recargarGridTipo() {
 
 /*################  MARCA PRODUCTOS ###########################*/
 function agregarItemsMarca(opAccion) {
+    if($('#cmb_marca').is(':disabled')){
+        //alert('disabled');
+        $("#messageInfo").html("No tiene  permitido seleccionar  mas de una Marca en el reporte..." + buttonAlert); 
+        alerMessage();
+        return;
+    }
     var tGrid = 'TbG_Marca';
     var nombre = $('#cmb_marca option:selected').text();
     var ids = $('#cmb_marca option:selected').val();
@@ -254,6 +294,7 @@ function agregarItemsMarca(opAccion) {
                 /*Agrego a la Sesion*/
                 arr_Grid = JSON.parse(sessionStorage.dts_itemMarca);
                 var size = arr_Grid.length;
+                validarControlSelectTipo(size,'cmb_tipo');
                 if (size > 0) {
                     //Varios Items
                     if (codigoExiste(nombre, 'NOM_MAR', sessionStorage.dts_itemMarca)) {//Verifico si el Codigo Existe  para no Dejar ingresar Repetidos
@@ -348,6 +389,8 @@ function eliminarItemsMarca(val, TbGtable) {
                     var array = findAndRemove(Grid, 'COD_MAR', ids);
                     sessionStorage.dts_itemMarca = JSON.stringify(array);
                     $(this).remove();
+                    Grid = JSON.parse(sessionStorage.dts_itemTipo);
+                    validarControlSelectTipo(Grid.length-1,'cmb_tipo');
                 }
             });
         }
