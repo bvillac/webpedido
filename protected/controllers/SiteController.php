@@ -99,7 +99,8 @@ class SiteController extends Controller {
      */
     public function actionLogout() {
         Yii::app()->user->logout();
-        $this->redirect(Yii::app()->homeUrl);
+        //$this->redirect(Yii::app()->homeUrl);
+        $this->redirect('login');
     }
 
     public function actionLoginTienda() {
@@ -136,6 +137,29 @@ class SiteController extends Controller {
             //    'cliente' => $model->recuperarClienteUsuario(),
             //    'tienda' => $model->recuperarTiendasUsuario($idCli),
             //));
+        }
+    }
+
+    /**
+     * Displays the Recuperar clave page
+     */
+    public function actionRecuperar() {
+        //$model = new LoginForm;
+        //$this->render('recuperar', array('model' => $model));
+        $this->render('recuperar');
+    }
+
+    public function actionRecuperarClave() {
+        if (Yii::app()->request->isPostRequest) {
+            //$model = new USUARIO;
+            $correo = isset($_POST['correo']) ? $_POST['correo'] :'';
+            VSValidador::putMessageLogFile($correo);
+            //$arroout = $model->recuperarTiendasUsuario($user);
+            //20-12-2019 Actualiza el Rol segun la tienda selecionada
+            //Yii::app()->session['RolId']=$arroout[0]['ROL_ID'];
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+            return;
         }
     }
 

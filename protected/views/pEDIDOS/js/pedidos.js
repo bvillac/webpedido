@@ -326,6 +326,9 @@ function guardarListaPedido(accion) {
             } else {
                 alert("Haces otra cosa");
             } */
+
+            var receptor = ($('#txt_receptor').val() != "") ? $('#txt_receptor').val(): "";
+
             $("#btn_save").attr('disabled', true);
             $("#messageInfo").html(mgDatosProceso);
             var ID = (accion == "Update") ? $('#txth_PedID').val() : 0;
@@ -338,6 +341,7 @@ function guardarListaPedido(accion) {
                 data: {
                     "DTS_LISTA": (accion == "Create") ? listaPedido() : listaPedidoDetTemp(),
                     "TIE_ID": tieId,
+                    "RECEPTOR": receptor,
                     //"IDS_ARE": idsAre,
                     "TOTAL": total,
                     "ACCION": accion

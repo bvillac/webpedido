@@ -76,6 +76,33 @@ function mostrarListaTienda(ids) {
 
 }
 
+function setRecuperar(){
+    var contenido = document.getElementById("txt_correo").value;
+    if(contenido !="") {
+        var link = "site/RecuperarClave";
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: link,
+            data: {
+                "correo": contenido,
+            },
+            success: function (data) {
+                if (data.status == "OK") {
+                        //$("#messageInfo").html(data.message + buttonAlert);
+                        //alerMessage();
+                        //location.reload();
+                    } else {
+                        //$("#messageInfo").html(data.message + buttonAlert);
+                        //alerMessage();
+                    }
+            },
+        });
+    }else{
+        alert('Ingresar Correo...!');
+    }
+}
+
 function setDatosTienda(){
     var idTie=$('#cmb_tienda option:selected').val();
     var idCli=$('#cmb_cliente option:selected').val();

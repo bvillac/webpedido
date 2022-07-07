@@ -18,6 +18,12 @@
                 <label id="lbl_cupo"><?php echo Yii::app()->format->formatNumber($cupo) ?></label>
             </div>
         </div>
+        <div class="trow">
+            <div class="tcol-td form-group">
+                <span><?php echo Yii::t('TIENDA', 'Nombre de Receptor') ?> : </span>
+                <label><?php echo $CabPed["Receptor"] ?></label>
+            </div>
+        </div>
     </div>
 </div>
 <script>

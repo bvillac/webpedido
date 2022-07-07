@@ -10,6 +10,7 @@
                     array(
                         'tienda' =>$tienda)); ?>    
 </div>
+
 <div class="col-lg-12">
     <p>
         <strong>

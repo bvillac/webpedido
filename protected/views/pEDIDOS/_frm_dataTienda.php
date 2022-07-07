@@ -35,6 +35,17 @@
             
         
     </div>
+    <div class="form-group rowLine">
+        <div class="col-lg-6">
+            <?php
+                echo CHtml::textField('txt_receptor', '', array('maxlength' => 60,
+                    'class' => 'form-control',
+                    'placeholder' => Yii::t('COMPANIA', 'Nombre de Receptor'),
+                ))
+            ?>
+        </div>
+        <div class="col-lg-6"></div>
+    </div>
     
     
     

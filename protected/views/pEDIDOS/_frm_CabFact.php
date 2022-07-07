@@ -45,6 +45,14 @@
                     <span><?php echo $cabFact['CorreoPersona'] ?></span>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <span class="titleLabel"><?php echo Yii::t('TIENDA', 'Nombre de Receptor') ?></span>
+                    <span><?php echo $cabFact['Receptor'] ?></span>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
         </tbody>
     </table>
 </div>

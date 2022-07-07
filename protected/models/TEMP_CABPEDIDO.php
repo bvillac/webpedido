@@ -119,14 +119,14 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         return parent::model($className);
     }
 
-    public function insertarLista($tieId,$total, $dts_Lista) {
+    public function insertarLista($tieId,$total, $dts_Lista,$receptor) {
         $msg = new VSexception();
         $valida = new VSValidador();
         $con = Yii::app()->db;
         $trans = $con->beginTransaction();
         try {
             $cliID=Yii::app()->getSession()->get('CliID', FALSE);
-            $this->InsertarCabListPedTemp($con,$total, $tieId,$cliID);
+            $this->InsertarCabListPedTemp($con,$total, $tieId,$cliID,$receptor);
             $idCab = $con->getLastInsertID($con->dbname . '.TEMP_CAB_PEDIDO');
             for ($i = 0; $i < sizeof($dts_Lista); $i++) {
                 $artieId = $dts_Lista[$i]['ARTIE_ID'];
@@ -209,12 +209,12 @@ class TEMP_CABPEDIDO extends CActiveRecord {
         $command->execute();
     }
     
-    private function InsertarCabListPedTemp($con,$total,$tieId,$cliID) {
+    private function InsertarCabListPedTemp($con,$total,$tieId,$cliID,$receptor) {
         $utieId=Yii::app()->getSession()->get('UtieId', FALSE); 
         $UserName=Yii::app()->getSession()->get('user_name', FALSE);
         $sql="INSERT INTO " . $con->dbname . ".TEMP_CAB_PEDIDO
-                (TDOC_ID,TIE_ID,UTIE_ID,TCPED_TOTAL,TCPED_EST_LOG,TCPED_FEC_CRE,CLI_ID,USUARIO)VALUES
-                (1,$tieId,$utieId,$total,1,CURRENT_TIMESTAMP(),'$cliID','$UserName');";
+                (TDOC_ID,TIE_ID,UTIE_ID,TCPED_TOTAL,TCPED_EST_LOG,TCPED_FEC_CRE,CLI_ID,TCPED_RECEPTOR,USUARIO)VALUES
+                (1,$tieId,$utieId,$total,1,CURRENT_TIMESTAMP(),'$cliID','$receptor','$UserName');";
         $command = $con->createCommand($sql);
         $command->execute();
     }
@@ -412,7 +412,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
     public function cabeceraPedidoTemp($ids) {
         $con = yii::app()->db;
         $sql = "SELECT A.TCPED_ID PedID,CONCAT(REPEAT( '0', 9 - LENGTH(A.TCPED_ID) ),A.TCPED_ID) Numero,B.TIE_ID TieID,
-                        A.TCPED_TOTAL Total,DATE(A.TCPED_FEC_CRE) FechaPedido,B.TIE_NOMBRE NombreTienda
+                        A.TCPED_TOTAL Total,DATE(A.TCPED_FEC_CRE) FechaPedido,B.TIE_NOMBRE NombreTienda, A.TCPED_RECEPTOR Receptor
                         FROM " . $con->dbname . ".TEMP_CAB_PEDIDO A
                                 INNER JOIN " . $con->dbname . ".TIENDA B
                                         ON A.TIE_ID=B.TIE_ID
@@ -578,7 +578,7 @@ class TEMP_CABPEDIDO extends CActiveRecord {
                         CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) NombrePersona,D.USU_CORREO CorreoPersona,
                         CONCAT(H.PER_NOMBRE,' ',H.PER_APELLIDO) NombreUser,G.USU_CORREO CorreoUser,
                         B.TIE_DIRECCION DirTienda,B.TIE_TELEFONO TelTienda,B.TIE_LUG_ENTREGA LugEntrega,
-                        B.TIE_CONTACTO ContactoTienda
+                        B.TIE_CONTACTO ContactoTienda,A.TCPED_RECEPTOR Receptor
                         FROM " . $con->dbname . ".TEMP_CAB_PEDIDO A
                                 INNER JOIN " . $con->dbname . ".TIENDA B
                                         ON A.TIE_ID=B.TIE_ID

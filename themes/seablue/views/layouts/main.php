@@ -111,8 +111,8 @@
 } else {
     //echo "NO Ingreso";
     $route = $this->getRoute();
-    if ($route != "site/login")
-        $this->isSession();
+    if ($route != "site/login" && $route != "site/recuperar")
+        $this->isSession();//Verifica la session en Controler
     else
         require_once("login.php");
 }

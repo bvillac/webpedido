@@ -53,6 +53,12 @@ $this->breadcrumbs = array(
         <?php echo $form->error($model, 'rememberMe'); ?>
     </div>
 
+    <div class="form-group">
+        <span><?php echo CHtml::link(Yii::t('TIENDA', '¿Recuperar su Clave?'), array('/site/recuperar'));?></span>
+
+        
+    </div>
+
     <div class="form-group buttons">
         <?php echo CHtml::submitButton(Yii::t('GENERAL', 'Login'), array('class' => 'btn btn-lg btn-success btn-block')); ?>
     </div>

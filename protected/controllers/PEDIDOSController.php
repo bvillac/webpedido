@@ -294,10 +294,11 @@ class PEDIDOSController extends Controller {
             $dts_Lista = isset($_POST['DTS_LISTA']) ? CJavaScript::jsonDecode($_POST['DTS_LISTA']) : array();
             $tieId = isset($_POST['TIE_ID']) ? $_POST['TIE_ID'] : 0;
             $total = isset($_POST['TOTAL']) ? $_POST['TOTAL'] : 0;
+            $receptor = isset($_POST['RECEPTOR']) ? $_POST['RECEPTOR'] : "";
             $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
             //$idsAre=isset($_POST['IDS_ARE'])? $_POST['IDS_ARE']:1;//Valor 1 por defecto en area
             if ($accion == "Create") {
-                $arroout = $model->insertarLista($tieId,$total,$dts_Lista);
+                $arroout = $model->insertarLista($tieId,$total,$dts_Lista,$receptor);
                 //VSValidador::putMessageLogFile($arroout);
                 if ($arroout["status"]=="OK"){
                     //Recupera infor de CabTemp  para enviar info al supervisor de tienda
