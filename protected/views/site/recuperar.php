@@ -11,6 +11,11 @@ $this->breadcrumbs = array(
 ?>
 <h4>Recuperar Clave</h4>
 <div class="col-lg-12">
+    <div id="messageInfo" style="display: none;" class="alert alert-success alert-dismissable">
+        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+    </div>
+</div>
+<div class="col-lg-12">
     <div class="form-group rowLine">
         <div class="rowTd">
             <?php
@@ -37,4 +42,3 @@ $this->breadcrumbs = array(
     </div>
 </div>
 <script src="<?php echo Yii::app()->baseUrl; ?>/themes/general/jquery/jquery.min.js" type="text/javascript"></script>
-

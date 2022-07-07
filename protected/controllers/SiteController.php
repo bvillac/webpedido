@@ -150,13 +150,41 @@ class SiteController extends Controller {
     }
 
     public function actionRecuperarClave() {
+        //VSValidador::putMessageLogFile("llego");
         if (Yii::app()->request->isPostRequest) {
-            //$model = new USUARIO;
+            $msg = new VSexception();
+            $model = new USUARIO;
+            //cambiarPassword
             $correo = isset($_POST['correo']) ? $_POST['correo'] :'';
-            VSValidador::putMessageLogFile($correo);
-            //$arroout = $model->recuperarTiendasUsuario($user);
-            //20-12-2019 Actualiza el Rol segun la tienda selecionada
-            //Yii::app()->session['RolId']=$arroout[0]['ROL_ID'];
+            if($model->existeCorreoUsuario($correo)){//si Retorna 1 existe
+                $NuevaClave=VSValidador::generateRandomString(8);
+                VSValidador::putMessageLogFile("correo existe ".$correo.' '.$NuevaClave);
+                $arroout=$model->cambiarPasswordLogin($correo,$NuevaClave);
+                if($arroout["status"]=="OK"){
+                    $dataMail = new mailSystem;            
+                    $htmlMail='<div id="div-table">';
+                        $htmlMail.='<div class="trow">';
+                                $htmlMail.='<p>';
+                                    //$htmlMail.=$info;
+                                    //$htmlMail.='<p style="font-family:Verdana,Geneva,sans-serif; font-size:12">Estimado Usuario, <br aria-hidden="true"><br aria-hidden="true">Su contraseña ha sido reseteada exitosamente. Por favor ingrese a <a href="http://edocstvcable.com/contrasena.php?variable=saXtV5z4oAJ7ld9G4XfTV5q6ccD7CpWvF7XDJQUij08suWbAHa3kgZLeDSA672eeTAdGW2QB9fvf902wv67%2FlA%3D%3D" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" data-linkindex="0" id="LPlnk129798">edocstvcable.com/</a> e ingrese la contraseña indicada a continuación para iniciar el proceso de reseteo:<br aria-hidden="true"><br aria-hidden="true">Contraseña temporal: '. $NuevaClave .'<br aria-hidden="true"></p>';
+                                    $htmlMail.='<p style="font-family:Verdana,Geneva,sans-serif; font-size:12">Estimado Usuario, ';
+                                    $htmlMail.='<br aria-hidden="true"><br aria-hidden="true">Su contraseña ha sido reseteada exitosamente. ';
+                                    $htmlMail.=' Por favor ingrese a <a href="https://pedidos.utimpor.com/" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" data-linkindex="0" id="">pedidos.utimpor.com/</a> ';
+                                    $htmlMail.=' e ingrese la contraseña indicada a continuación:<br aria-hidden="true"><br aria-hidden="true">';
+                                    $htmlMail.=' Contraseña temporal: '. $NuevaClave .'<br aria-hidden="true"></p>';
+                                $htmlMail.='</p>';
+                        $htmlMail.='</div>';
+                    $htmlMail.='</div>';      
+                    $titulo="Utimpor S.A. - Contrasena Restablecida";      
+                    $arroout=$dataMail->enviarCorreoClave($htmlMail,$titulo,$correo);
+                    $arroout = $msg->messageSystem('OK',null,19,null, null);
+                }else{
+                    $arroout = $msg->messageSystem('NO_OK',null,21,null, null);
+                }
+            }else{
+                //VSValidador::putMessageLogFile(" NO EXISTE correo  ".$correo);
+                $arroout = $msg->messageSystem('NO_OK',null,21,null, null);
+            }
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout);
             return;

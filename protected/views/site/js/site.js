@@ -4,6 +4,19 @@
  * and open the template in the editor.
  */
 
+var t_show = 0;
+var t_hide = 5000;
+var t_transi = 1500;
+var buttonAlert = '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>';
+
+function alerMessage() {
+    setTimeout(function () {
+        $("#messageInfo").fadeIn(t_transi);
+    }, t_show);
+    setTimeout(function () {
+        $("#messageInfo").fadeOut(t_transi);
+    }, t_hide);
+}
 
 function isEnter(e) {
     //retornar verdadereo si presiona Enter
@@ -63,10 +76,10 @@ function mostrarListaTienda(ids) {
                 "DATA": ids,
             },
             success: function (data) {
-                var str='<option value="0">Seleccionar</option>';
-                if (data.length>0){
+                var str = '<option value="0">Seleccionar</option>';
+                if (data.length > 0) {
                     for (var i = 0; i < data.length; i++) {
-                        str+='<option value="'+data[i]['TIE_ID']+'">'+data[i]['TIE_NOMBRE']+'</option>';
+                        str += '<option value="' + data[i]['TIE_ID'] + '">' + data[i]['TIE_NOMBRE'] + '</option>';
                     }
                 }
                 $("#cmb_tienda").html(str);
@@ -76,10 +89,10 @@ function mostrarListaTienda(ids) {
 
 }
 
-function setRecuperar(){
+function setRecuperar() {
     var contenido = document.getElementById("txt_correo").value;
-    if(contenido !="") {
-        var link = "site/RecuperarClave";
+    if (contenido != "") {
+        var link = "RecuperarClave";
         $.ajax({
             type: 'POST',
             dataType: 'json',
@@ -89,24 +102,27 @@ function setRecuperar(){
             },
             success: function (data) {
                 if (data.status == "OK") {
-                        //$("#messageInfo").html(data.message + buttonAlert);
-                        //alerMessage();
-                        //location.reload();
-                    } else {
-                        //$("#messageInfo").html(data.message + buttonAlert);
-                        //alerMessage();
-                    }
+                    $('#txt_correo').val('');
+                    $("#messageInfo").html(data.message + buttonAlert);
+                    alerMessage();
+                    //location.reload();
+                } else {
+                    $("#messageInfo").html(data.message + buttonAlert);
+                    alerMessage();
+                }
             },
         });
-    }else{
-        alert('Ingresar Correo...!');
+    } else {
+        //alert('Ingresar Correo...!');
+        $("#messageInfo").html('Ingrese su Correo...!' + buttonAlert);
+        alerMessage();
     }
 }
 
-function setDatosTienda(){
-    var idTie=$('#cmb_tienda option:selected').val();
-    var idCli=$('#cmb_cliente option:selected').val();
-    if (idTie!=0 && idCli!=0 ) {
+function setDatosTienda() {
+    var idTie = $('#cmb_tienda option:selected').val();
+    var idCli = $('#cmb_cliente option:selected').val();
+    if (idTie != 0 && idCli != 0) {
         var link = "site/LoginData";
         $.ajax({
             type: 'POST',
@@ -120,16 +136,16 @@ function setDatosTienda(){
             },
             success: function (data) {
                 if (data.status == "OK") {
-                        $("#messageInfo").html(data.message + buttonAlert);
-                        alerMessage();
-                        location.reload();
-                    } else {
-                        $("#messageInfo").html(data.message + buttonAlert);
-                        alerMessage();
-                    }
+                    $("#messageInfo").html(data.message + buttonAlert);
+                    alerMessage();
+                    location.reload();
+                } else {
+                    $("#messageInfo").html(data.message + buttonAlert);
+                    alerMessage();
+                }
             },
         });
-    }else{
+    } else {
         alert('Seleccionar datos!!');
     }
 }

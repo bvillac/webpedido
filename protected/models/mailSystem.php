@@ -285,4 +285,38 @@ class mailSystem {
         }
     }
 
+    public function enviarCorreoClave($body,$Titulo,$Correo) {
+        $msg = new VSexception();
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+        $mail->SMTPSecure = $this->SMTPSecure;
+        $mail->Port = $this->Port;
+        $mail->Host = $this->Host;
+        $mail->setFrom($this->Username, $Titulo);
+        // asunto y cuerpo alternativo del mensaje
+        $mail->Subject = " Ha Recibido un Correo!!!";
+        $mail->AltBody = "Data alternativao";
+        // si el cuerpo del mensaje es HTML
+        $mail->MsgHTML($body);   
+
+        $mail->AddAddress($Correo, 'Usuario Utimpor');
+        //$mail->addBCC('bvillacreses@utimpor.com', "Byron Villacreses");
+        // si el SMTP necesita autenticación
+        $mail->SMTPAuth = true;
+
+        // credenciales usuario
+        $mail->Username = $this->Username;
+        $mail->Password = $this->Password;
+        $mail->CharSet = $this->CharSet;
+
+        if (!$mail->Send()) {
+            //echo "Error enviando: " . $mail->ErrorInfo;
+            return $msg->messageSystem('NO_OK', "Error enviando: " . $mail->ErrorInfo, 11, null, null);
+        } else {
+            //echo "¡¡Enviado!!";
+            return $msg->messageSystem('OK', "¡¡Enviado!!", 20, null, null);
+        }
+    }
+
+
 }

@@ -292,5 +292,41 @@ class USUARIO extends CActiveRecord {
         return $rawData;//$rawData['UTIE_ID'];
     }
 
+    public function existeCorreoUsuario($Correo) {
+        $rawData = array();
+        $con = yii::app()->db;
+        $sql = "SELECT USU_CORREO,USU_NOMBRE FROM " . $con->dbname . ".USUARIO WHERE USU_CORREO='$Correo';";
+        //echo $sql;
+        /*$rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;*/
+        $rawData = $con->createCommand($sql)->queryRow();
+        if ($rawData === false)
+            return 0; //en caso de que existe problema o no retorne nada tiene false por defecto 
+        return 1;//$rawData;//$rawData['UTIE_ID'];//si retorna 1 existe
+    }
+
+    public function cambiarPasswordLogin($Correo,$pass) {
+        VSValidador::putMessageLogFile("llego");
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $sql = "UPDATE " . $con->dbname . ".USUARIO SET USU_PASSWORD=MD5('$pass') WHERE USU_CORREO='$Correo' ";
+            VSValidador::putMessageLogFile($sql);
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            //echo $sql;
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,20,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+
 
 }

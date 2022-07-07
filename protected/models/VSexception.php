@@ -72,6 +72,9 @@ class VSexception {
             case 12://Datos eliminados Correctamente
                 $messageError=Yii::t('EXCEPTION', '<strong>Well done!</strong> your information was successfully delete.');
                 break;
+            case 19://La solicitud fÚe realizada correctamente.
+                $messageError=Yii::t('EXCEPTION', '<strong>Bien Hecho!</strong> La solicitud fÚe realizada correctamente. <br> Por favor Revisar su correo');
+                break;
             case 20://La solicitud fÚe realizada correctamente.
                 $messageError=Yii::t('EXCEPTION', 'The request was completed successfully.');
                 break;
