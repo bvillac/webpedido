@@ -307,13 +307,12 @@ class USUARIO extends CActiveRecord {
     }
 
     public function cambiarPasswordLogin($Correo,$pass) {
-        VSValidador::putMessageLogFile("llego");
         $msg= new VSexception();
         $con = Yii::app()->db;
         $trans = $con->beginTransaction();
         try {
             $sql = "UPDATE " . $con->dbname . ".USUARIO SET USU_PASSWORD=MD5('$pass') WHERE USU_CORREO='$Correo' ";
-            VSValidador::putMessageLogFile($sql);
+            //VSValidador::putMessageLogFile($sql);
             $comando = $con->createCommand($sql);
             $comando->execute();
             //echo $sql;

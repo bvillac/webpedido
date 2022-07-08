@@ -698,12 +698,14 @@ class PEDIDOSController extends Controller {
     
     public function actionComentario() { 
         if (Yii::app()->request->isPostRequest) {
+            $model=new ARTICULO;
+            $nombreUser=Yii::app()->getSession()->get('user_name', FALSE);
             $info = isset($_POST['info']) ? $_POST['info'] : "";
             $dataMail = new mailSystem;            
             $htmlMail='<div id="div-table">';
                 $htmlMail.='<div class="trow">';
                         $htmlMail.='<p>';
-                            $htmlMail.='<label class="titleLabel">Usuario: </label>'. Yii::app()->getSession()->get('user_name', FALSE) .'<br>     Nuestro Usuario hace el siguiente comentario!!! ';
+                            $htmlMail.='<label class="titleLabel">Usuario: </label>'. $nombreUser .'<br>     Nuestro Usuario hace el siguiente comentario!!! ';
                         $htmlMail.='</p>';
                 $htmlMail.='</div>';
                 $htmlMail.='<div class="trow">';
@@ -712,7 +714,11 @@ class PEDIDOSController extends Controller {
                         $htmlMail.='</p>';
                 $htmlMail.='</div>';
             $htmlMail.='</div>';            
-            $arroout=$dataMail->enviarMensaje($htmlMail);
+
+            $ruta =Yii::app()->params['rutaFileComent'].$nombreUser."/";// Ruta de Usuario Imagenes
+            //VSValidador::putMessageLogFile($ruta);
+            $imagenes=$model->mostrarImagComentario($nombreUser);         
+            $arroout=$dataMail->enviarMensaje($htmlMail,$ruta,$imagenes);
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout); 
             return;
@@ -722,6 +728,41 @@ class PEDIDOSController extends Controller {
         $this->render('comentario', array(  
             //'cliID' => $cli_Id,
         ));
+    }
+
+
+    //Nota: Si tiene problema no olvidar los privilegios de la carpeta
+    public function actionUpload() {
+        Yii::import("ext.EAjaxUpload.qqFileUploader");
+        $model=new ARTICULO;
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        $nombreUser=Yii::app()->getSession()->get('user_name', FALSE);
+        $folder =Yii::app()->params['rutaFileComent'].$nombreUser."/";// folder for uploaded files
+        if (!file_exists($folder)) {
+            mkdir($folder, 0777, true); //Se Crea la carpeta
+            chmod(dirname($folder), 0777);
+            //chmod($folder_path, 0777); 
+        }
+        //VSValidador::putMessageLogFile($folder);
+        $allowedExtensions = array("jpg", "jpeg"); //array("jpg","jpeg","gif","exe","mov" and etc...
+        $sizeLimit = 2 * 1024 * 1024; // maximum file size in bytes
+        $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+        $result = $uploader->handleUpload($folder);
+        
+        $fileSize = filesize($folder . $result['filename']); //GETTING FILE SIZE
+        $fileName = $result['filename']; //GETTING FILE NAME //Retorna el Nombre del Archivo a subir
+        
+        //VSValidador::putMessageLogFile($result);
+        if ($result['success']){//Si todo es correcto y es true
+            $arroout=$model->insertarImgComentario($fileName,$nombreUser);
+            if ($arroout["status"]=="NO_OK"){
+                $result['success']=false;
+            }
+        }else{
+            //$result['filename']="Vueva a intentar";
+        }
+        $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+        echo $return; // it's array 
     }
 
 }

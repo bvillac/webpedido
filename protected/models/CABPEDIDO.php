@@ -219,43 +219,7 @@ class CABPEDIDO extends CActiveRecord {
         }
     }*/
     
-    /*public function insertarPedidosGrupo($Ids,$op,$f_ini,$f_fin) {
-        $msg = new VSexception();
-        $valida = new VSValidador();
-        $idsReturn = array();
-        $con = Yii::app()->db;
-        $trans = $con->beginTransaction();
-        try {
-            $EstAut=3;
-            $cliID=Yii::app()->getSession()->get('CliID', FALSE);
-            if($op==1){
-                //se envia por grupo 
-                $cabFact = $this->buscarCabPedidosTempGrupo($con, $Ids,$op,$f_ini,$f_fin);
-            }else{
-                //se envia uno por uno
-                $cabFact = $this->buscarCabPedidosTemp($con, $Ids);
-            }
-            
-            for ($i = 0; $i < sizeof($cabFact); $i++) {                
-                $this->InsertarCabFactura($con, $cabFact, $i,$EstAut,$cliID);
-                $idCab = $con->getLastInsertID($con->dbname . '.CAB_PEDIDO');
-                $detFact = $this->buscarDetPedidosTemp($con, $cabFact[$i]['TCPED_ID']);
-                $this->InsertarDetFactura($con, $detFact, $idCab, $cabFact[$i]['TIE_ID'],$cliID);                
-                $this->actTemCabPed($con, $cabFact[$i]['TCPED_ID'],'3');
-                $idsReturn[] = array(
-                    "ids" => $idCab,
-                );
-            }
-            $trans->commit();
-            $con->active = false;
-            return $msg->messageSystem('OK', null, 30, null, $idsReturn);
-        } catch (Exception $e) {
-            $trans->rollback();
-            $con->active = false;
-            //throw $e;
-            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
-        }
-    }*/
+    
     
     /*private function buscarCabPedidosTempGrupo($con,$ids,$op,$f_ini,$f_fin) {
         //$con = yii::app()->db;

@@ -223,6 +223,60 @@ class ARTICULO extends CActiveRecord {
         $con->active = false;
         return $rawData;
     }
+
+
+    public function insertarImgComentario($nombreFile,$nombreUser) {
+        $msg = new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+            $sql = "INSERT INTO " . $con->dbname . ".IMG_COMENTARIO
+                    (CLI_ID,USU_NOMBRE,ICOM_ARCHIVO,EST_LOG,FEC_CRE)VALUES
+                    ($cli_Id,'$nombreUser','$nombreFile','1',CURRENT_TIMESTAMP()) ";
+            $command = $con->createCommand($sql);
+            $command->execute();       
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK', null, 10, null, null);
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            //throw $e;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+
+
+    public function borrarImagComentario($nombreUser) {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            //Borra todas las imagenes relacionadas con ese nombre
+            $sql = "DELETE FROM " . $con->dbname . ".IMG_COMENTARIO  WHERE USU_NOMBRE='$nombreUser' ";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            //echo $sql;
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,12,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+
+    public function mostrarImagComentario($nombreUser) {
+        $rawData = array();
+        $con = Yii::app()->db;
+        $sql = "SELECT ICOM_ARCHIVO NomImag FROM " . $con->dbname . ".IMG_COMENTARIO WHERE USU_NOMBRE='$nombreUser';";
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    }
     
     
     

@@ -1,0 +1,1 @@
+1- Revisar privilegio de carpetas 

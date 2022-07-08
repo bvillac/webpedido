@@ -92,6 +92,7 @@ class qqFileUploader {
 
     private function toBytes($str){
         $val = trim($str);
+        $val = trim(substr($val, 0, strlen($val)-1));//08-07-2022 modifica para extraer el Entero
         $last = strtolower($str[strlen($str)-1]);
         switch($last) {
             case 'g': $val *= 1024;

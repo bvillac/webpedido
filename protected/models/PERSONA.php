@@ -122,7 +122,7 @@ class PERSONA extends CActiveRecord
 	}
         
         
-        public function mostrarUsuarioPersona($control) {
+    public function mostrarUsuarioPersona($control) {
         $rawData = array();
         $con = Yii::app()->db;
         $limitrowsql = Yii::app()->params['limitRowSQL'];
@@ -160,49 +160,7 @@ class PERSONA extends CActiveRecord
             ),
         ));
         
-        /*$rawData = array();
-        $limitrowsql = Yii::app()->params['limitRowSQL'];
-        $con = Yii::app()->db;
-        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
-        $sql = "SELECT A.UTIE_ID UtieId,B.USU_NOMBRE Usuario,A.UTIE_FEC_CRE Fecha,
-                        CONCAT(E.PER_NOMBRE,' ',E.PER_APELLIDO) Persona,F.CLI_NOMBRE Cliente,
-                        C.TIE_NOMBRE TiendaNombre,D.ROL_NOMBRE Rol,A.UTIE_EST_LOG Estado,A.UTIE_ASIG Asig
-                        FROM " . $con->dbname . ".USUARIO_TIENDA A
-                                INNER JOIN (" . $con->dbname . ".USUARIO B
-                                            INNER JOIN " . $con->dbname . ".PERSONA E
-						ON B.PER_ID=E.PER_ID)
-                                        ON A.USU_ID=B.USU_ID
-                                INNER JOIN (" . $con->dbname . ".TIENDA C
-                                            INNER JOIN VSSEAPEDIDO.CLIENTE F
-						ON C.CLI_ID=F.CLI_ID)
-                                        ON A.TIE_ID=C.TIE_ID
-                                INNER JOIN " . $con->dbname . ".ROL D
-                                        ON A.ROL_ID=D.ROL_ID
-                WHERE A.UTIE_EST_LOG=1   ";
-        if (!empty($control)) {//Verifica la Opcion op para los filtros
-            $sql .= ($control['TIE_ID'] != "0") ? "AND C.TIE_ID='".$control['TIE_ID']."' " : "";
-            $sql .= ($control['CLI_ID'] != "0") ? "AND C.CLI_ID='".$control['CLI_ID']."' " : "";
-            $sql .= ($control['ROL_ID'] != "0") ? "AND D.ROL_ID='".$control['ROL_ID']."' " : "";
-            $sql .= ($control['USU_NOMBRE'] != "") ? "AND B.USU_NOMBRE='".$control['USU_NOMBRE']."' " : "";
-        }
         
-        $sql .= "ORDER BY A.UTIE_ID DESC LIMIT $limitrowsql";
-        //echo $sql;
-        $rawData = $con->createCommand($sql)->queryAll();
-        $con->active = false;
-
-        return new CArrayDataProvider($rawData, array(
-            'keyField' => 'UtieId',
-            'sort' => array(
-                'attributes' => array(
-                    'Usuario', 'TiendaNombre', 'Rol', 'Fecha', 'Estado','Cliente','Persona'
-                ),
-            ),
-            'totalItemCount' => count($rawData),
-            'pagination' => array(
-                'pageSize' => 300,//Yii::app()->params['pageSize'],
-            ),
-        ));*/
     }
 
     public function insertarDatosPersona($objEnt) {

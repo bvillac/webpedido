@@ -150,7 +150,6 @@ class SiteController extends Controller {
     }
 
     public function actionRecuperarClave() {
-        //VSValidador::putMessageLogFile("llego");
         if (Yii::app()->request->isPostRequest) {
             $msg = new VSexception();
             $model = new USUARIO;
@@ -158,7 +157,7 @@ class SiteController extends Controller {
             $correo = isset($_POST['correo']) ? $_POST['correo'] :'';
             if($model->existeCorreoUsuario($correo)){//si Retorna 1 existe
                 $NuevaClave=VSValidador::generateRandomString(8);
-                VSValidador::putMessageLogFile("correo existe ".$correo.' '.$NuevaClave);
+                //VSValidador::putMessageLogFile("correo existe ".$correo.' '.$NuevaClave);
                 $arroout=$model->cambiarPasswordLogin($correo,$NuevaClave);
                 if($arroout["status"]=="OK"){
                     $dataMail = new mailSystem;            
