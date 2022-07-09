@@ -42,6 +42,37 @@ function fun_ItemTienda(op){
     }
 }
 
+//#############################
+function fun_ConsumoItem(op){
+    //if ($('#cmb_tienda option:selected').val() != 0) {
+        var link="";
+        var data = base64_encode(ItemResumenIndex(op));
+        if(data!=""){
+            link=$('#txth_controlador').val()+"/ConsumoTienda?";
+            if(op==1){
+                $('#btn_aceptar_item').attr("href", link+"data="+data);
+            }else{
+                $('#btn_excel_item').attr("href", link+"data="+data);
+            }
+        }
+    //}else{
+    //    $("#messageInfo").html('Seleccionar una tienda!' + buttonAlert);
+    //    alerMessage();
+    //}   
+}
+
+function ItemResumenIndex(op){
+    var objRep = new Array();
+    objRep[0]=op;
+    objRep[1]=$('#dtp_fec_ini_item').val();
+    objRep[2]=$('#dtp_fec_fin_item').val();
+    objRep[3]=$('#cmb_tienda option:selected').val();
+    return JSON.stringify(objRep);
+}
+
+
+
+//###############################
 function fun_ConsumoTienda(op){
     //if ($('#cmb_tienda option:selected').val() != 0) {
         var link="";

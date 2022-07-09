@@ -717,8 +717,17 @@ class PEDIDOSController extends Controller {
 
             $ruta =Yii::app()->params['rutaFileComent'].$nombreUser."/";// Ruta de Usuario Imagenes
             //VSValidador::putMessageLogFile($ruta);
-            $imagenes=$model->mostrarImagComentario($nombreUser);         
-            $arroout=$dataMail->enviarMensaje($htmlMail,$ruta,$imagenes);
+            $imagenes=$model->mostrarImagComentario($nombreUser);
+            if(sizeof($imagenes)>0){//Existen Registros
+                $arroout=$dataMail->enviarMensaje($htmlMail,$ruta,$imagenes);
+                if ($arroout["status"]=="OK"){
+                    $resultado=$model->borrarImagComentario($nombreUser); 
+                }
+            }else{
+                $imagenes = array();
+                $arroout=$dataMail->enviarMensaje($htmlMail,$ruta,$imagenes);
+            }        
+            
             header('Content-type: application/json');
             echo CJavaScript::jsonEncode($arroout); 
             return;
@@ -740,10 +749,8 @@ class PEDIDOSController extends Controller {
         $folder =Yii::app()->params['rutaFileComent'].$nombreUser."/";// folder for uploaded files
         if (!file_exists($folder)) {
             mkdir($folder, 0777, true); //Se Crea la carpeta
-            chmod(dirname($folder), 0777);
-            //chmod($folder_path, 0777); 
+            //chmod(dirname($folder), 0777);//Habilitar si da error
         }
-        //VSValidador::putMessageLogFile($folder);
         $allowedExtensions = array("jpg", "jpeg"); //array("jpg","jpeg","gif","exe","mov" and etc...
         $sizeLimit = 2 * 1024 * 1024; // maximum file size in bytes
         $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);

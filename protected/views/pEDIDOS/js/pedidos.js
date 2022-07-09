@@ -946,8 +946,7 @@ function calTotalGrupo(col) {
     
 }
 
-function fun_enviarComentario(){
-    
+function fun_enviarComentario(){    
     var Coment = $('#txt_mensaje').val();
     if(Coment !=""){
         if(!confirm('Está seguro que desea Enviar este Mensaje')) return false;
@@ -962,12 +961,18 @@ function fun_enviarComentario(){
             success: function(data){
                 if (data.status=="OK"){ 
                     $("#messageInfo").html(data.message+buttonAlert); 
-                    alerMessage();                    
+                    alerMessage();                       
+                    $('#txt_mensaje').val('');                  	
+                    //$(".qq-upload-list").remove();//Borra toda la lista
+                    $(".qq-upload-list").empty();  //Borra solo el contenido           
                     //alert(data.data.toSource());
                 }
             },
             dataType: "json"
         });
+    }else{
+        $("#messageInfo").html('Por favor ingresar su comentario ..!'+buttonAlert); 
+        alerMessage();  
     }
     return true;
     

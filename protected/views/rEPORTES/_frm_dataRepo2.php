@@ -79,10 +79,10 @@
     </div>
     <div class="form-group rowLine">
         <?php
-                echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Exportar PDF'), array('rEPORTES/Rep_ItemTienda'), array('id' => 'btn_aceptar_item', 'name' => 'btn_aceptar_item', 'title' => Yii::t('CONTROL_ACCIONES', 'Accept'), 'class' => 'btn btn-primary btn-sm', "target"=>"_blank",'onclick' => 'fun_ConsumoTienda(1)'));
+                echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Exportar PDF'), array('rEPORTES/Rep_ItemTienda'), array('id' => 'btn_aceptar_item', 'name' => 'btn_aceptar_item', 'title' => Yii::t('CONTROL_ACCIONES', 'Accept'), 'class' => 'btn btn-primary btn-sm', "target"=>"_blank",'onclick' => 'fun_ConsumoItem(1)'));
             ?>
         <?php
-                echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Exportar Excel'), array('rEPORTES/Rep_ItemTienda'), array('id' => 'btn_excel_item', 'name' => 'btn_excel_item', 'title' => Yii::t('CONTROL_ACCIONES', 'Excel'), 'class' => 'btn btn-primary btn-sm', "target"=>"_blank",'onclick' => 'fun_ConsumoTienda(2)'));
+                echo CHtml::link(Yii::t('CONTROL_ACCIONES', 'Exportar Excel'), array('rEPORTES/Rep_ItemTienda'), array('id' => 'btn_excel_item', 'name' => 'btn_excel_item', 'title' => Yii::t('CONTROL_ACCIONES', 'Excel'), 'class' => 'btn btn-primary btn-sm', "target"=>"_blank",'onclick' => 'fun_ConsumoItem(2)'));
             ?>
         
     </div>

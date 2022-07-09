@@ -21,14 +21,14 @@
                     <textarea id="txt_mensaje" rows="4" cols="50" placeholder="Comentario.."></textarea> 
                 </div>
             </div>
-            <div class="form-group">
-            <p>
-                <strong>
-                    Permite adjuntar Archivo con Formato o extensión .JPG <br>
-                    Tamaño Máximo de Archivo (1MB)
-                </strong>
-            </p>
-                <label><?php echo Yii::t('PERSONA', 'Archivo') ?></label>
+            <div class="form-group" style="display: none">
+                <p>
+                    <strong>
+                        Permite adjuntar Archivo con Formato o extensión .JPG <br>
+                        Tamaño Máximo de Archivo (1MB)
+                    </strong>
+                </p>
+                <label><?php echo Yii::t('PERSONA', 'Arrastra los archivos aquí para subirlos') ?></label>
                 <?php
                 $this->widget('application.extensions.EAjaxUpload.EAjaxUpload', array(
                     'id' => 'fileUploader',                    
@@ -50,6 +50,7 @@
                               'emptyError'=>"{file} is empty, please select files again without it.",
                               'onLeave'=>"The files are being uploaded, if you leave now the upload will be cancelled."
                              ),
+                        
                         //'showMessage'=>"js:function(message){ alert(message); }"
                     )
                 ));

@@ -185,12 +185,12 @@ class mailSystem {
         // si el cuerpo del mensaje es HTML
         $mail->MsgHTML($body); 
 
-        //$mail->AddAddress('ncastro@utimpor.com', 'Ventas Utimpor');
+        $mail->AddAddress('ncastro@utimpor.com', 'Ventas Utimpor');
         $mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor');
-        //$mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
-        //$mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor');
-        //$mail->addBCC('gcastro@utimpor.com', 'Ventas Utimpor');
-        //$mail->addBCC('dtroncoso@utimpor.com', 'Ventas Utimpor');
+        $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
+        $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor');
+        $mail->addBCC('gcastro@utimpor.com', 'Ventas Utimpor');
+        $mail->addBCC('dtroncoso@utimpor.com', 'Ventas Utimpor');
         // si el SMTP necesita autenticación
         
         //AddAttachment
