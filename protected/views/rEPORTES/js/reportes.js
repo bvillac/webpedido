@@ -67,7 +67,8 @@ function ItemResumenIndex(op){
     objRep[1]=$('#dtp_fec_ini_item').val();
     objRep[2]=$('#dtp_fec_fin_item').val();
     objRep[3]=$('#cmb_tienda option:selected').val();
-    return JSON.stringify(objRep);
+    //return JSON.stringify(objRep);
+    return objRep;
 }
 
 

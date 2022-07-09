@@ -105,6 +105,8 @@ class REPORTESController extends Controller {
         }
     }
     
+
+    //Reporte para tienda Normal
     public function actionConsumoTienda($data) {
         try {
             $control = base64_decode($data);
@@ -112,6 +114,7 @@ class REPORTESController extends Controller {
             $rep = new REPORTES;
             $modelo = new CABPEDIDO;
             $report = $modelo->reporteConsumoTienda($control);
+           
             $op = explode(",", $control); //Recibe Datos y los separa
             $mPDF1 = $rep->crearBaseReport();
             $nameFile=Yii::t('TIENDA', 'CONSUMOS') . "-" . date('YmdHis');

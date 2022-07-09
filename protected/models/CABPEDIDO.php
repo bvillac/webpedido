@@ -600,7 +600,6 @@ class CABPEDIDO extends CActiveRecord {
         $rawData = array();
         $con = Yii::app()->db;
         $cliID=Yii::app()->getSession()->get('CliID', FALSE);
-
         $sql = "SELECT DATE(A.TDPED_FEC_CRE) FECHA,C.TIE_ID,C.TIE_NOMBRE Tienda,B.COD_ART,B.ART_DES_COM DETALLE,
                     MAX(A.TDPED_P_VENTA) P_VENTA,SUM(A.TDPED_CAN_PED) CAN_PED, MAX(A.TDPED_P_VENTA)*SUM(A.TDPED_CAN_PED) TOTAL
                     FROM " . $con->dbname . ".TEMP_DET_PEDIDO A
@@ -675,7 +674,7 @@ class CABPEDIDO extends CActiveRecord {
                 //$sql .= " GROUP BY A.ART_ID ORDER BY A.ART_ID ASC; ";
                 $sql .= " GROUP BY A.ART_ID ORDER BY B.ART_DES_COM ASC; ";
 
-       //VSValidador::putMessageLogFile($sql);
+        //VSValidador::putMessageLogFile($sql);
         //echo $sql;
         
    
