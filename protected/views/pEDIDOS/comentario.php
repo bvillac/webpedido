@@ -21,7 +21,7 @@
                     <textarea id="txt_mensaje" rows="4" cols="50" placeholder="Comentario.."></textarea> 
                 </div>
             </div>
-            <div class="form-group" style="display: none">
+            <div class="form-group" >
                 <p>
                     <strong>
                         Permite adjuntar Archivo con Formato o extensión .JPG <br>
