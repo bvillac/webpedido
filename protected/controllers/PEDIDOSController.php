@@ -772,4 +772,101 @@ class PEDIDOSController extends Controller {
         echo $return; // it's array 
     }
 
+
+    /**
+     * Lists all models.
+     */
+    public function actionFavoritos() {
+        //$model = new ARTICULOTIENDA;
+        //$id='1';
+        $this->titleWindows = Yii::t('GENERAL', 'Listado Favoritos');
+        $this->render('favoritos', array(
+            //'model' => $model,
+            
+        ));
+    }
+
+    public function actionBuscarArticulo() {
+        if (Yii::app()->request->isAjaxRequest) {
+            $valor = isset($_POST['valor']) ? $_POST['valor'] : "";
+            $op = isset($_POST['op']) ? $_POST['op'] : "";
+            $arrayData = array();
+            $data = new ARTICULO;
+            $arrayData = $data->retornarBusArticulo($valor, $op);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arrayData);
+        }
+    }
+
+
+    public function actionSavefavorito() {
+        if (Yii::app()->request->isPostRequest) {
+            //SValidador::putMessageLogFile("LLEGO DATOS");
+            $model = new PRECIOCLIENTE;
+            $dts_Listafavorito = isset($_POST['DTS_LISTA']) ? CJavaScript::jsonDecode($_POST['DTS_LISTA']) : array();
+            $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
+            if ($accion == "Create") {
+                $arroout = $model->insertarFavorito($dts_Listafavorito);
+            }else{
+                 //$arroout = $model->insertarPrecioTienda($cliId,$dts_PrecioTienda);
+            }
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+        }
+    }
+
+    public function actionBuscarListadoFavorito() {
+        if (Yii::app()->request->isAjaxRequest) {
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : "";
+            $arrayData = array();
+            $data = new PRECIOCLIENTE;
+            $arrayData = $data->retornarlistaFavoritos($ids);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arrayData);
+        }
+    }
+
+
+    public function actionListarFavoritos() {
+        $model = new TIENDA;
+        $arrayData = array();
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        if (Yii::app()->request->isAjaxRequest) {
+            //VSValidador::putMessageLogFile("llego");
+            $op = isset($_POST['op']) ? $_POST['op'] : "";
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : "0";
+            $des_com = isset($_POST['des_com']) ? $_POST['des_com'] : "";
+            switch ($op) {
+                case 'Tienda':
+                    $arrayData = $model->listarItemsFavoritos($ids,$des_com);
+                    break;
+                case 'Buscar':
+                    $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
+                    $ids=($contBuscar[0]['TIE_ID']!='')?$contBuscar[0]['TIE_ID']:"0";
+                    $des_com=($contBuscar[0]['DES_COM']!='')?$contBuscar[0]['DES_COM']:"";
+                    $arrayData = $model->listarItemsFavoritos($ids,$des_com);
+                    break;
+                default: 
+            }
+            //$arrayData = $model->listarItemsFavoritos($ids,$des_com);
+            $this->renderPartial('_indexGrid', array(
+                'model' => $arrayData,
+            ),false, true);
+            return;
+        }
+
+
+        //$this->titleWindows = Yii::t('TIENDA', 'List orders');
+        /*$this->titleWindows = Yii::t('TIENDA', 'Hacer Pedidos');
+        $this->render('listar', array(
+            'model' => $model->listarItemsFavoritos(0,""),
+            //'tienda' => $model->recuperarTiendasRol(),
+            'tienda' => $model->recuperarTiendaAsig(),
+            //'area' => $model->recuperarUserArea(),
+            'cliID' => $cli_Id,
+        ));*/
+    }
+
+    
+
 }

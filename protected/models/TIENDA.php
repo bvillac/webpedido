@@ -796,6 +796,58 @@ class TIENDA extends CActiveRecord {
 
         }
     }
+
+
+    public function listarItemsFavoritos($ids,$desCom) {
+        $rawData = array();
+        $con = Yii::app()->db;
+        //$rawData[]=$this->rowProdList();
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        $usuId = Yii::app()->getSession()->get('user_id', FALSE);
+        $tieId = Yii::app()->getSession()->get('TieID', FALSE);
+
+        $sql = "SELECT D.ARTIE_ID,C.PCLI_ID,A.ART_ID,A.COD_ART Codigo,B.ART_DES_COM Nombre,C.PCLI_P_VENTA Precio,
+                        '0' Cantidad,'0' Total,B.ART_I_M_IVA Iva,'' Observacion,D.ARTIE_EST_LOG Estado
+                    FROM " . $con->dbname . ".LISTA_FAVORITOS A
+                        INNER JOIN (" . $con->dbname . ".ARTICULO B
+                                INNER JOIN (" . $con->dbname . ".PRECIO_CLIENTE C
+                                        INNER JOIN " . $con->dbname . ".ARTICULO_TIENDA D
+                                                ON D.PCLI_ID=C.PCLI_ID AND C.PCLI_EST_LOG=1)
+                                    ON B.ART_ID=C.ART_ID AND B.COD_ART=C.COD_ART AND C.CLI_ID=1 AND C.PCLI_EST_LOG=1)
+                            ON A.ART_ID=B.ART_ID AND A.COD_ART=B.COD_ART
+                    WHERE A.TIE_ID=$tieId AND A.CLI_ID=$cli_Id AND A.USU_ID=$usuId ";
+            //$sql.=($desCom!="")?" AND B.ART_DES_COM LIKE '%$desCom%' ":"";
+            $sql.=" ORDER BY B.ART_DES_COM";
+        
+        /*$sql = "SELECT A.ARTIE_ID,A.PCLI_ID,B.ART_ID,C.COD_ART Codigo, C.ART_DES_COM Nombre,B.PCLI_P_VENTA Precio,
+                        '0' Cantidad,'0' Total,C.ART_I_M_IVA Iva,'' Observacion,A.ARTIE_EST_LOG Estado
+                        FROM " . $con->dbname . ".ARTICULO_TIENDA A
+                                INNER JOIN (" . $con->dbname . ".PRECIO_CLIENTE B
+                                                INNER JOIN " . $con->dbname . ".ARTICULO C
+                                                        ON C.ART_ID=B.ART_ID)
+                                        ON A.PCLI_ID=B.PCLI_ID AND B.PCLI_EST_LOG=1
+                WHERE A.ARTIE_EST_LOG=1 AND A.TIE_ID=$ids AND B.CLI_ID = $cli_Id ";
+        //$sql.=($ids!=0)?"AND A.TIE_ID=$ids":""; 
+        $sql.=($desCom!="")?" AND C.ART_DES_COM LIKE '%$desCom%' ":"";
+        $sql.=" ORDER BY C.ART_DES_COM";*/
+        //echo $sql;
+        //VSValidador::putMessageLogFile($sql);
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+
+        return new CArrayDataProvider($rawData, array(
+            'keyField' => 'ARTIE_ID',
+            'sort' => array(
+                'attributes' => array(
+                    //'Codigo', 'Nombre', 'Estado',
+                ),
+            ),
+            'totalItemCount' => count($rawData),
+            'pagination' => array(
+                'pageSize' => 1000,//Yii::app()->params['pageSize'],//Solo para que salgan todos
+            ),
+        ));
+    }
     
 
 }

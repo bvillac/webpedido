@@ -197,43 +197,6 @@ class CABPEDIDO extends CActiveRecord {
         }
     }
     
-    /*public function actulizaRevisado($Ids,$EstAut) {
-        $msg = new VSexception();
-        $valida = new VSValidador();
-        $idsReturn = array();
-        $con = Yii::app()->db;
-        $trans = $con->beginTransaction();
-        try {            
-            $this->actTemCabPed($con, $Ids,$EstAut);
-                $idsReturn[] = array(
-                    "ids" => $Ids,
-                );
-            $trans->commit();
-            $con->active = false;
-            return $msg->messageSystem('OK', null, 30, null, $idsReturn);
-        } catch (Exception $e) {
-            $trans->rollback();
-            $con->active = false;
-            //throw $e;
-            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
-        }
-    }*/
-    
-    
-    
-    /*private function buscarCabPedidosTempGrupo($con,$ids,$op,$f_ini,$f_fin) {
-        //$con = yii::app()->db;
-        $rawData = array();
-        //Lista solo los que estan listos a envair.. 
-        $sql = "SELECT * FROM " . $con->dbname . ".TEMP_CAB_PEDIDO "
-                . " WHERE IDS_ARE IN($ids)  "
-                . " AND TCPED_EST_LOG IN(1,5) ";
-        $sql .= " AND DATE(TCPED_FEC_CRE) BETWEEN '" . date("Y-m-d", strtotime($f_ini)) . "' AND '" . date("Y-m-d", strtotime($f_fin)) . "'  ";
-        //echo $sql;
-        $rawData = $con->createCommand($sql)->queryAll();
-        //$con->active = false;
-        return $rawData;
-    }*/
     
 
     private function buscarCabPedidosTemp($con,$ids) {

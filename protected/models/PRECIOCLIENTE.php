@@ -274,4 +274,73 @@ class PRECIOCLIENTE extends CActiveRecord {
             
         }
     }
+
+
+
+    public function insertarFavorito($dts_Listafavorito) {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $cliId=Yii::app()->getSession()->get('CliID', FALSE);//
+        $usuId = Yii::app()->getSession()->get('user_id', FALSE);
+        $tieId = Yii::app()->getSession()->get('TieID', FALSE);
+        $trans = $con->beginTransaction();
+        try {
+            $this->removerListaFavorito($con,$cliId,$usuId,$tieId);
+                for ($i = 0; $i < sizeof($dts_Listafavorito); $i++) {
+                    $artID=$dts_Listafavorito[$i]['ART_ID'];
+                    $codArt=$dts_Listafavorito[$i]['COD_ART'];
+                    $sql = " INSERT INTO " . $con->dbname . ".LISTA_FAVORITOS "
+                            . "(TIE_ID,CLI_ID,USU_ID,ART_ID,COD_ART,EST_LOG)"
+                            . "VALUES "
+                            . "($tieId,$cliId,$usuId,$artID,'$codArt','1') ";
+                    //echo $sql;
+                    $command = $con->createCommand($sql);
+                    $command->execute();
+                }
+                $trans->commit();
+                $con->active = false;
+                return $msg->messageSystem('OK',null,10,null, null);
+           
+            
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            //throw $e;
+            return $msg->messageSystem('NO_OK',$e->getMessage(),11,null, null);
+            
+        }
+    }
+
+    private function removerListaFavorito($con,$cliId,$usuId,$tieId) {
+        $sql = "DELETE FROM " . $con->dbname . ".LISTA_FAVORITOS WHERE TIE_ID=$tieId AND CLI_ID=$cliId AND USU_ID=$usuId ";
+        $command = $con->createCommand($sql);
+        $command->execute();
+    }
+
+    public function retornarlistaFavoritos($ids) {
+        $con = Yii::app()->db;
+        $rawData = array();
+        $cliId=Yii::app()->getSession()->get('CliID', FALSE);//
+        $usuId = Yii::app()->getSession()->get('user_id', FALSE);
+        $tieId = Yii::app()->getSession()->get('TieID', FALSE);
+
+        $sql = "SELECT A.ART_ID,A.COD_ART,B.ART_DES_COM
+                    FROM " . $con->dbname . ".LISTA_FAVORITOS A
+                        INNER JOIN " . $con->dbname . ".ARTICULO B
+                            ON A.ART_ID=B.ART_ID AND A.COD_ART=B.COD_ART
+                        WHERE A.TIE_ID=$tieId AND A.CLI_ID=$cliId AND A.USU_ID=$usuId ; ";
+
+        //$sql = "SELECT * FROM " . $con->dbname . ".LISTA_FAVORITOS 
+        //            WHERE TIE_ID=1 AND CLI_ID=1 AND USU_ID=1; ";
+        
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    }
+    
+
+
+
+  
 }
