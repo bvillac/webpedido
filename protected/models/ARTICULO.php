@@ -168,6 +168,7 @@ class ARTICULO extends CActiveRecord {
             default:
         }
         $sql .= " LIMIT " . Yii::app()->params['limitRow'];
+        //VSValidador::putMessageLogFile($sql);
         //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
@@ -273,6 +274,56 @@ class ARTICULO extends CActiveRecord {
         $rawData = array();
         $con = Yii::app()->db;
         $sql = "SELECT ICOM_ARCHIVO NomImag FROM " . $con->dbname . ".IMG_COMENTARIO WHERE USU_NOMBRE='$nombreUser';";
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    }
+
+
+    /**
+     * Función 
+     *
+     * @author Byron Villacreses
+     * @access public
+     * @return Retorna Los Datos de las Facturas GENERADAS
+     */
+    public function retornarBusArticuloFavorito($valor, $op) {
+        $con = Yii::app()->db;
+        $rawData = array();
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        //Patron de Busqueda
+        /* http://www.mclibre.org/consultar/php/lecciones/php_expresiones_regulares.html */
+        $patron = "/^[[:digit:]]+$/"; //Los patrones deben empezar y acabar con el carácter / (barra).
+        if (preg_match($patron, $valor)) {
+            $op = "CED"; //La cadena son sólo números.
+        } else {
+            $op = "NOM"; //La cadena son Alfanumericos.
+            //Las separa en un array 
+            $aux = explode(" ", $valor);
+            $condicion = " ";
+            for ($i = 0; $i < count($aux); $i++) {
+                //Crea la Sentencia de Busqueda
+                $condicion .=" AND (A.ART_DES_COM LIKE '%$aux[$i]%' OR A.COD_ART LIKE '%$aux[$i]%' )";
+            }
+        }
+        $sql = "SELECT A.ART_ID,A.COD_ART,A.ART_DES_COM "
+                . " FROM " . $con->dbname . ".ARTICULO A "
+                . "     INNER JOIN " . $con->dbname . ".PRECIO_CLIENTE B "
+                . "         ON A.ART_ID=B.ART_ID "
+                . "WHERE A.ART_EST_LOG=1 AND B.CLI_ID=$cli_Id ";
+
+        switch ($op) {
+            case 'CED':
+                $sql .=" AND A.COD_ART LIKE '%$valor%' ";
+                break;
+            case 'NOM':
+                $sql .=$condicion;
+                break;
+            default:
+        }
+        $sql .= " LIMIT " . Yii::app()->params['limitRow'];
+        //VSValidador::putMessageLogFile($sql);
+        //echo $sql;
         $rawData = $con->createCommand($sql)->queryAll();
         $con->active = false;
         return $rawData;

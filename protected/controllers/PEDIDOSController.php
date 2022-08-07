@@ -856,15 +856,32 @@ class PEDIDOSController extends Controller {
         }
 
 
-        //$this->titleWindows = Yii::t('TIENDA', 'List orders');
-        /*$this->titleWindows = Yii::t('TIENDA', 'Hacer Pedidos');
-        $this->render('listar', array(
-            'model' => $model->listarItemsFavoritos(0,""),
-            //'tienda' => $model->recuperarTiendasRol(),
-            'tienda' => $model->recuperarTiendaAsig(),
-            //'area' => $model->recuperarUserArea(),
-            'cliID' => $cli_Id,
-        ));*/
+        
+    }
+
+
+    public function actionBuscarArticuloFavorito() {
+        if (Yii::app()->request->isAjaxRequest) {
+            $valor = isset($_POST['valor']) ? $_POST['valor'] : "";
+            $op = isset($_POST['op']) ? $_POST['op'] : "";
+            $arrayData = array();
+            $data = new ARTICULO;
+            $arrayData = $data->retornarBusArticuloFavorito($valor, $op);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arrayData);
+        }
+    }
+
+
+    public function actionExisteLista() {
+        if (Yii::app()->request->isAjaxRequest) {
+            //$ids = isset($_POST['ids']) ? $_POST['ids'] : "";
+            //$arrayData = array();
+            $data = new TIENDA;
+            $arrayData["status"] = $data->existelistadoFavoritos();
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arrayData);
+        }
     }
 
     

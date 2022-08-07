@@ -253,6 +253,7 @@ function mostrarListaTienda(ids) {
         }
     });
     if ($('#cmb_tienda option:selected').val()!=0) {
+        habilitarBuscar(true);
         buscarDataTienda(ids);
     }
 }
@@ -1283,7 +1284,7 @@ function recalculaTotalPedTemp() {
 /******************   GRID BUSCAR ITEMS FAVORITOS ******************/
 
 function autocompletarBuscarItemsFavorito(request, response, control, op) {
-    var link = $('#txth_controlador').val() + "/BuscarArticulo";
+    var link = $('#txth_controlador').val() + "/BuscarArticuloFavorito";
     $.ajax({
         type: 'POST',
         dataType: 'json',
@@ -1505,11 +1506,59 @@ function consultarListadoFavorito() {
             ids: $('#cmb_tienda option:selected').val(),
             des_com: "",
             op: "Tienda"//solo tiendas
+        },
+        complete: function(jqXHR, status) {
+            //alert('ok');
+            //if (status=='success'){
+            //    console.log(jqXHR, status)
+            //}
         }
     });
     /*if ($('#cmb_tienda option:selected').val()!=0) {
         buscarDataTienda(ids);
     }*/
+}
+
+function fun_comprobarlistado(){  
+    var link=$('#txth_controlador').val()+"/ExisteLista";
+    var ids=$('#cmb_tienda option:selected').val();
+    if (ids > 0) {//Verifica que este seleccionada una tienda
+        //var encodedIds = base64_encode(ids);  //Verificar cofificacion Base
+        $.ajax({
+            type: 'POST',
+            url: link,
+            success: function(data){
+                //alert(data.status);
+                if (data.status){ 
+                    habilitarBuscar(false);
+                    consultarListadoFavorito()
+                }else{
+                    habilitarBuscar(true);
+                    $("#messageInfo").html('No Existe listado Favoritos..!'+buttonAlert); 
+                    alerMessage();  
+                }
+            },
+            dataType: "json"
+        });      
+    }else{
+        $("#messageInfo").html('Seleccionar una Tienda!'+buttonAlert); 
+        alerMessage(); 
+    } 
+    return true;
+    
+}
+
+function habilitarBuscar(valor) {
+    if(valor){
+        //habilita las opciones de buscar
+        $("#btn_buscar").removeClass("disabled");
+        $("#txt_codigoBuscar").removeAttr('disabled');
+    }else{
+        //Deshabilita las opciones de buscar
+        $('#txt_codigoBuscar').attr("disabled", true);
+        $("#btn_buscar").addClass("disabled");
+    }
+
 }
 
 

@@ -848,6 +848,23 @@ class TIENDA extends CActiveRecord {
             ),
         ));
     }
+
+
+    public function existelistadoFavoritos() {
+        //$rawData = array();
+        //Retonra si Existe CLiente cuando se realiza una copia de precios
+        $cli_Id=Yii::app()->getSession()->get('CliID', FALSE);
+        $usuId = Yii::app()->getSession()->get('user_id', FALSE);
+        $con = Yii::app()->db;
+
+        $sql = "SELECT COD_ART FROM " . $con->dbname . ".LISTA_FAVORITOS "
+                . " WHERE CLI_ID=$cli_Id AND USU_ID=$usuId ";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryRow();        
+        if ($rawData === false)
+            return false; //en caso de que existe problema o no retorne nada tiene false por defecto 
+        return true;
+    }
     
 
 }

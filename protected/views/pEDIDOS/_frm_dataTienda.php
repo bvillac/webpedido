@@ -82,7 +82,7 @@
         </div>
         <div class="rowTd">
             <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Search'), array('id' => 'btn_buscar', 'name' => 'btn_buscar', 'class' => 'btn btn-success', 'onclick' => 'buscarDataItem("","Buscar")')); ?>
-            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Usar tu pedido favorito'), array('id' => 'btn_favorito', 'name' => 'btn_favorito', 'class' => 'btn btn-primary ', 'onclick' => 'consultarListadoFavorito()')); ?>
+            <?php echo CHtml::button(Yii::t('CONTROL_ACCIONES', 'Usar tu pedido favorito'), array('id' => 'btn_favorito', 'name' => 'btn_favorito', 'class' => 'btn btn-primary ', 'onclick' => 'fun_comprobarlistado()')); ?>
         </div>
             
         
