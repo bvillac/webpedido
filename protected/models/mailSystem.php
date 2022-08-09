@@ -11,12 +11,13 @@ require_once('PHPMailerAutoload.php');
 
 class mailSystem {
     private $SMTPSecure="ssl";
+    //private $SMTPSecure="tls";
     private $Port = 465;
-    //private $Host = "mail.utimpor.com";
-    private $Host='marquis.websitewelcome.com';
+    private $Host = "smtp-relay.gmail.com";
+    //private $Host='marquis.websitewelcome.com';
     private $Username = "no-responder@utimpor.com";
     //private $Username = "no-data@utimpor.com";
-    private $Password = "sx_Key!)Y82z";//"tFxBrTzxeEGt60yf";//MP1TQyb=PkcZ
+    private $Password = "qSqtx8tKpgk";//"sx_Key!)Y82z";
     private $CharSet = 'UTF-8';
     private $TituloEnvio = 'Pedido en Línea Utimpor.com';
 
@@ -98,8 +99,8 @@ class mailSystem {
         //$mail->SMTPSecure = 'tls';
         //$mail->Port = 587;
         //Para ssl
-        $mail->SMTPSecure = "ssl";
-        $mail->Port = 465;
+        $mail->SMTPSecure = $this->SMTPSecure;//"ssl";
+        $mail->Port =  $this->Port;//465;
         // la dirección del servidor, p. ej.: smtp.servidor.com
         $mail->Host = $this->Host;//"mail.utimpor.com";
 
