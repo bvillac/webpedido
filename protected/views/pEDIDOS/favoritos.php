@@ -21,7 +21,7 @@
                         <tr>
                             <th>Código</th>
                             <th>Nombre</th>
-                            <th>Img</th>                                                        
+                            <th>Imagen</th>                                                        
                             <th></th>
                         </tr>
                     </thead>

@@ -17,10 +17,10 @@ class mailSystem {
     //private $Host='marquis.websitewelcome.com';
     private $Username = "no-responder@utimpor.com";
     //private $Username = "no-data@utimpor.com";
-    private $Password = "qSqtx8tKpgk";//"sx_Key!)Y82z";
+    private $Password = "ZQvN3T3@J4b4";//"sx_Key!)Y82z";
     private $CharSet = 'UTF-8';
     private $TituloEnvio = 'Pedido en Línea Utimpor.com';
-    private $MailSistema = "televentas03@utimpor.com";
+    private $MailSistema = "byronvillacreses@gmail.com";
 
     public function enviarNotificacion($body,$CabPed,$Asunto,$Titulo) {
         $msg = new VSexception();
@@ -189,7 +189,7 @@ class mailSystem {
         $mail->MsgHTML($body); 
 
         $mail->AddAddress('ncastro@utimpor.com', 'Ventas Utimpor');
-        $mail->addBCC($this->MailSistema, 'Ventas Utimpor');
+        //$mail->addBCC($this->MailSistema, 'Ventas Utimpor');
         $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
         $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor');
         $mail->addBCC('gcastro@utimpor.com', 'Ventas Utimpor');
