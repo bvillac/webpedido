@@ -1333,6 +1333,13 @@ function retornaFilaFavorito(c, Grid, TbGtable, op) {
     strFila += '<td style="display:none; border:none;">' + Grid[c]['ART_ID'] + '</td>';
     strFila += '<td width="5px" style="text-align: left">' + Grid[c]['COD_ART'] + '</td>';
     strFila += '<td width="100px" style="text-align:left">' + Grid[c]['ART_DES_COM'] + '</td>';
+
+    strFila += '<td width="36px" style="text-align: center">';
+        strFila += '<a data-lightbox="'+Grid[c]['COD_ART']+'_G-01" href="' + RutaImagenAccion + 'productos/'+Grid[c]['COD_ART']+'_G-01.jpg">';
+            strFila += '<img width="40" height="40" src="' + RutaImagenAccion + 'productos/'+Grid[c]['COD_ART']+'_P-01.jpg">';
+        strFila += '</a>';
+    strFila += '</td>';
+
     strFila += '<td width="36px" style="text-align:center">';    
     strFila += '<a class="btn-img" onclick="eliminarItemsListasFavorito(' + Grid[c]['ART_ID'] + ',\'' + TbGtable + '\')" >' + imgCol + '</a>';
     strFila += '</td>';

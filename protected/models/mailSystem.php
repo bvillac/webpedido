@@ -20,6 +20,7 @@ class mailSystem {
     private $Password = "qSqtx8tKpgk";//"sx_Key!)Y82z";
     private $CharSet = 'UTF-8';
     private $TituloEnvio = 'Pedido en Línea Utimpor.com';
+    private $MailSistema = "televentas03@utimpor.com";
 
     public function enviarNotificacion($body,$CabPed,$Asunto,$Titulo) {
         $msg = new VSexception();
@@ -107,8 +108,8 @@ class mailSystem {
         // dirección remitente, p. ej.: no-responder@miempresa.com
         // nombre remitente, p. ej.: "Servicio de envío automático"
         //$mail->setFrom('no-responder@utimpor.com', 'Servicio de envío automático Utimpor.com');
-        $mail->setFrom('no-responder@utimpor.com', $this->TituloEnvio);
-        //$mail->setFrom('bvillacreses@utimpor.com', 'Utimpor.com');
+        $mail->setFrom($this->Username, $this->TituloEnvio);
+        //$mail->setFrom($this->MailSistema, 'Utimpor.com-test');
 
         // asunto y cuerpo alternativo del mensaje
         $mail->Subject = "$valorNeto ($nomEmpresa) Ha Recibido un(a) Orden Nuevo(a)!!!";
@@ -122,7 +123,8 @@ class mailSystem {
         $mail->AddAddress($CabPed[0]["CorreoPersona"], $CabPed[0]["NombrePersona"]);//Usuario Genera Pedido
         //$mail->AddAddress("byron_villacresesf@hotmail.com", "Byron Villa");
         //$mail->AddAddress("byronvillacreses@gmail.com", "Byron Villa");
-        $mail->AddAddress("bvillacreses@utimpor.com", "Byron Villa");
+        //$mail->AddAddress("bvillacreses@utimpor.com", "Byron Villa");
+        $mail->AddAddress($this->MailSistema, 'Utimpor.com-test');
         
         
         /******** COPIA OCULTA PARA VENTAS  ***************/
@@ -179,7 +181,7 @@ class mailSystem {
         $mail->SMTPSecure = $this->SMTPSecure;
         $mail->Port = $this->Port;
         $mail->Host = $this->Host;
-        $mail->setFrom('no-responder@utimpor.com', $this->TituloEnvio);
+        $mail->setFrom($this->Username, $this->TituloEnvio);
         // asunto y cuerpo alternativo del mensaje
         $mail->Subject = "($nomEmpresa) Ha Recibido un Correo!!!";
         $mail->AltBody = "Data alternativao";
@@ -187,7 +189,7 @@ class mailSystem {
         $mail->MsgHTML($body); 
 
         $mail->AddAddress('ncastro@utimpor.com', 'Ventas Utimpor');
-        $mail->addBCC('bvillacreses@utimpor.com', 'Ventas Utimpor');
+        $mail->addBCC($this->MailSistema, 'Ventas Utimpor');
         $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
         $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor');
         $mail->addBCC('gcastro@utimpor.com', 'Ventas Utimpor');
@@ -272,7 +274,7 @@ class mailSystem {
         // si el cuerpo del mensaje es HTML
         $mail->MsgHTML($body);   
         $mail->AddAddress('ncastro@utimpor.com', "Byron Villacreses");
-        $mail->addBCC('bvillacreses@utimpor.com', "Byron Villacreses");
+        //$mail->addBCC('bvillacreses@utimpor.com', "Byron Villacreses");
         $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor');
         $mail->addBCC('gcastro@utimpor.com', 'Ventas Utimpor');
         //$mail->addBCC('ljaramillo@utimpor.com', "Byron Villacreses");

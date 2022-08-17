@@ -20,7 +20,8 @@
                     <thead>
                         <tr>
                             <th>Código</th>
-                            <th>Nombre</th>                                                        
+                            <th>Nombre</th>
+                            <th>Img</th>                                                        
                             <th></th>
                         </tr>
                     </thead>
