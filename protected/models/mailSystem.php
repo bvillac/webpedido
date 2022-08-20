@@ -10,8 +10,8 @@ Yii::import('system.vendors.PHPMailer.*'); //Usar de Forma nativa.
 require_once('PHPMailerAutoload.php');
 
 class mailSystem {
-    private $SMTPSecure="ssl";
-    //private $SMTPSecure="tls";
+    //private $SMTPSecure="ssl";
+    private $SMTPSecure="tls";
     private $Port = 465;
     private $Host = "smtp-relay.gmail.com";
     //private $Host='marquis.websitewelcome.com';
