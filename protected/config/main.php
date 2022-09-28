@@ -122,7 +122,7 @@ return array(
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => 'Root$s34w3b',
-            'password' => 'root00',
+            //'password' => 'root00',
             //'password' => 'Root$s34',
             'charset' => 'utf8',
             'dbname' => "VSSEAPEDIDO",
