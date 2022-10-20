@@ -812,8 +812,8 @@ class TIENDA extends CActiveRecord {
                         INNER JOIN (" . $con->dbname . ".ARTICULO B
                                 INNER JOIN (" . $con->dbname . ".PRECIO_CLIENTE C
                                         INNER JOIN " . $con->dbname . ".ARTICULO_TIENDA D
-                                                ON D.PCLI_ID=C.PCLI_ID AND C.PCLI_EST_LOG=1)
-                                    ON B.ART_ID=C.ART_ID AND B.COD_ART=C.COD_ART AND C.CLI_ID=1 AND C.PCLI_EST_LOG=1)
+                                                ON D.PCLI_ID=C.PCLI_ID AND D.TIE_ID=$tieId AND C.PCLI_EST_LOG=1)
+                                    ON B.ART_ID=C.ART_ID AND B.COD_ART=C.COD_ART AND C.CLI_ID=$cli_Id AND C.PCLI_EST_LOG=1)
                             ON A.ART_ID=B.ART_ID AND A.COD_ART=B.COD_ART
                     WHERE A.TIE_ID=$tieId AND A.CLI_ID=$cli_Id AND A.USU_ID=$usuId ";
             //$sql.=($desCom!="")?" AND B.ART_DES_COM LIKE '%$desCom%' ":"";

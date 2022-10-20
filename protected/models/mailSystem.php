@@ -10,14 +10,14 @@ Yii::import('system.vendors.PHPMailer.*'); //Usar de Forma nativa.
 require_once('PHPMailerAutoload.php');
 
 class mailSystem {
-    //private $SMTPSecure="ssl";
-    private $SMTPSecure="tls";
-    private $Port = 465;
+    private $SMTPSecure="ssl";
+    //private $SMTPSecure="tls";
+    private $Port = 465;//465;
     private $Host = "smtp-relay.gmail.com";
     //private $Host='marquis.websitewelcome.com';
     private $Username = "no-responder@utimpor.com";
     //private $Username = "no-data@utimpor.com";
-    private $Password = "ZQvN3T3@J4b4";//"sx_Key!)Y82z";
+    private $Password = "#He39pH8FQWX";//"sx_Key!)Y82z";
     private $CharSet = 'UTF-8';
     private $TituloEnvio = 'Pedido en Línea Utimpor.com';
     private $MailSistema = "byronvillacreses@gmail.com";
@@ -124,7 +124,7 @@ class mailSystem {
         //$mail->AddAddress("byron_villacresesf@hotmail.com", "Byron Villa");
         //$mail->AddAddress("byronvillacreses@gmail.com", "Byron Villa");
         //$mail->AddAddress("bvillacreses@utimpor.com", "Byron Villa");
-        $mail->AddAddress($this->MailSistema, 'Utimpor.com-test');
+        //$mail->AddAddress($this->MailSistema, 'Utimpor.com-test');
         
         
         /******** COPIA OCULTA PARA VENTAS  ***************/
@@ -189,7 +189,7 @@ class mailSystem {
         $mail->MsgHTML($body); 
 
         $mail->AddAddress('ncastro@utimpor.com', 'Ventas Utimpor');
-        //$mail->addBCC($this->MailSistema, 'Ventas Utimpor');
+        $mail->addBCC($this->MailSistema, 'Ventas Utimpor');
         $mail->addBCC('ecastro@utimpor.com', 'Ventas Utimpor'); //Para copia Oculta Gerencia
         $mail->addBCC('icastro@utimpor.com', 'Ventas Utimpor');
         $mail->addBCC('gcastro@utimpor.com', 'Ventas Utimpor');

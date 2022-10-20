@@ -119,7 +119,7 @@ class ROL extends CActiveRecord {
 
     public function recuperarRolTienda() {
         $con = yii::app()->db;
-        $sql = "SELECT ROL_ID,ROL_NOMBRE FROM " . $con->dbname . ".ROL WHERE EST_LOG=1 AND ROL_ID IN(2,3,7,8,9,11);";
+        $sql = "SELECT ROL_ID,ROL_NOMBRE FROM " . $con->dbname . ".ROL WHERE EST_LOG=1 AND ROL_ID IN(2,3,7,8,9,11,14);";
         //echo $sql;
         $rawData =$con->createCommand($sql)->query();
         $con->active = false;
