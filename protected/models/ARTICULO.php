@@ -328,6 +328,141 @@ class ARTICULO extends CActiveRecord {
         $con->active = false;
         return $rawData;
     }
+
+
+    public function mostrarItems($control) {
+        $rawData = array();
+        $con = Yii::app()->db;
+        $limitrowsql = Yii::app()->params['limitRowSQL'];
+
+        $sql = "SELECT ART_ID Ids,COD_ART Codigo,ART_DES_COM Nombre,ART_EST_LOG Estado
+                        FROM " . $con->dbname . ".ARTICULO
+                    WHERE ART_EST_LOG<>'' ";
+        if (!empty($control)) {//Verifica la Opcion op para los filtros
+            //$sql .= ($control['ROL_ID'] != "0") ? "AND D.ROL_ID='".$control['ROL_ID']."' " : "";
+            $sql .= ($control['DET_NOM'] != "") ? "AND ART_DES_COM LIKE '%".$control['DET_NOM']."%' " : "";
+        }
+        $sql .= "ORDER BY COD_ART ASC LIMIT $limitrowsql";
+        //echo $sql;
+        
+
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+
+        return new CArrayDataProvider($rawData, array(
+            'keyField' => 'Codigo',
+            'sort' => array(
+                'attributes' => array(
+                    'Ids', 'Codigo','Nombre', 
+                ),
+            ),
+            'totalItemCount' => count($rawData),
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['pageSize'],
+            ),
+        ));
+        
+        
+    }
+
+    public function consultarItems($id) {
+        $con = yii::app()->db;
+
+        $sql = "SELECT ART_ID Ids,COD_ART Codigo,ART_DES_COM Nombre,ART_EST_LOG Estado
+                    FROM " . $con->dbname . ".ARTICULO WHERE COD_ART='$id';";
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryRow();//Retorna solo 1
+        $con->active = false;
+        return $rawData;
+    }
+
+
+    public function insertarItems($objEnt) {
+        $msg = new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            //$this->InsertarPersona($con, $objEnt);
+            $sql = "INSERT INTO " . $con->dbname . ".ARTICULO
+                (COD_ART,ART_DES_COM,COD_LIN,COD_TIP,COD_MAR,ART_I_M_IVA,ART_P_COSTO,ART_P_PROME,ART_P_VENTA,ART_EST_LOG,ART_FEC_CRE)VALUES
+                ('" . $objEnt['cod_art'] . "','" . $objEnt['des_com'] . "','01','01','01','1','0.00','0.00','0.00','1',CURRENT_TIMESTAMP()) ";
+            $command = $con->createCommand($sql);
+            $command->execute();
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK', null, 10, null, null);
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            throw $e;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+
+
+
+    public function actualizarItems($objEnt) {
+        $msg= new VSexception();
+        $con = yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            $sql = "UPDATE " . $con->dbname . ".ARTICULO
+                            SET  ART_DES_COM = '" . $objEnt['des_com'] . "',
+                                ART_EST_LOG = '" . $objEnt['estado'] . "',
+                                ART_FEC_MOD = CURRENT_TIMESTAMP()
+                            WHERE COD_ART= '" . $objEnt['cod_art'] . "'";
+            $command = $con->createCommand($sql);
+            $command->execute();
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK', null, 10, null, null);
+        } catch (Exception $e) {
+            $trans->rollback();
+            $con->active = false;
+            //throw $e;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+
+
+    public function retornarBuscarItems($valor, $op) {
+        $con = Yii::app()->db;
+        $rawData = array();
+
+        $sql = "SELECT COD_ART Ids,ART_DES_COM Nombre "
+                . "FROM " . $con->dbname . ".ARTICULO "
+                . "WHERE ART_EST_LOG<>'' AND ART_DES_COM LIKE '%$valor%' ";
+        $sql .= " LIMIT " . Yii::app()->params['limitRow'];
+        //echo $sql;
+        $rawData = $con->createCommand($sql)->queryAll();
+        $con->active = false;
+        return $rawData;
+    }
+
+    public function activarItem($ids,$Estado) {
+        $msg= new VSexception();
+        $con = Yii::app()->db;
+        $trans = $con->beginTransaction();
+        try {
+            
+            //VSValidador::putMessageLogFile($usuario.$cliente);
+            $sql = " UPDATE " . $con->dbname . ".ARTICULO 
+                            SET ART_EST_LOG='$Estado' WHERE COD_ART='$ids'; ";
+            $comando = $con->createCommand($sql);
+            $comando->execute();
+            //echo $sql;
+            $trans->commit();
+            $con->active = false;
+            return $msg->messageSystem('OK',null,10,null, null);
+        } catch (Exception $e) { // se arroja una excepción si una consulta falla
+            $trans->rollBack();
+            //throw $e;
+            $con->active = false;
+            return $msg->messageSystem('NO_OK', $e->getMessage(), 11, null, null);
+        }
+    }
+
+
     
     
     

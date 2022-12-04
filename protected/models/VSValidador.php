@@ -67,6 +67,7 @@ class VSValidador {
         //$rutaFileWebP=Yii::app()->params["rutapro"].$codigo."_P-01.jpg";
         //$rutaFileWebG=Yii::app()->params["rutapro"].$codigo."_G-01.jpg";
         //$rutaFile=Yii::app()->params["rutafilePro"].$codigo."_G-01.jpg";
+        //VSValidador::putMessageLogFile($rutaFile);
         if(file_exists($rutaFile)){
           //return CHtml::link(CHtml::image(Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'] . 'search.png'),$rutaFileWeb,array("data-lightbox"=>$codigo."_G-01"));
           return CHtml::link(CHtml::image($rutaFileWebP,null,array('width'=>40,'height'=>40)),$rutaFileWebG,array("data-lightbox"=>$codigo."_G-01"));
@@ -91,6 +92,12 @@ class VSValidador {
     public static function asignarDatos($Funcion,$TbGtable,$codigo,$icono) {        
         $rutaIconos=Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'];
         return CHtml::link(CHtml::image($rutaIconos.$icono),null,array("onclick"=>"javascript:$Funcion('$codigo','$TbGtable')"));
+    }
+
+    public static function activarDatos($Funcion,$TbGtable,$codigo,$estado,$icono) {        
+        $rutaIconos=Yii::app()->theme->baseUrl . Yii::app()->params['rutaIconos'];
+        //$estado=($estado=="1")?"0":"1";
+        return CHtml::link(CHtml::image($rutaIconos.$icono),null,array("onclick"=>"javascript:$Funcion('$codigo','$estado','$TbGtable')"));
     }
     
     public static function tipoAprobacion() {

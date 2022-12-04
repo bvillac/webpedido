@@ -28,7 +28,7 @@ class ARTICULOController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','items','editaritems','save','nuevoitems','buscarItems','activarItem','upload'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -170,4 +170,121 @@ class ARTICULOController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+	/**
+     * Lists all models.
+     */
+    public function actionItems() {
+        $modelo = new ARTICULO;
+        if (Yii::app()->request->isAjaxRequest) {
+            $contBuscar = isset($_POST['CONT_BUSCAR']) ? CJavaScript::jsonDecode($_POST['CONT_BUSCAR']) : array();
+            //$arrayData = $model->mostrarPedidos($contBuscar);
+            $arrayData = $modelo->mostrarItems($contBuscar);
+            $this->renderPartial('_indexGrid', array(
+                'model' => $arrayData,
+                    ), false, true);
+            return;
+        }
+        $this->titleWindows = Yii::t('USUARIO', 'Items o Articulos');
+        $this->render('items', array(
+            'model' => $modelo->mostrarItems(null),
+        ));
+    }
+
+	/**
+     * Updates a particular model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id the ID of the model to be updated
+     */
+    public function actionEditaritems($id) {
+        $ids = base64_decode($id);
+        $model = new ARTICULO;
+        $items = $model->consultarItems($ids);
+        $model->COD_ART = $ids; //mantiene el ID del Descargo Actualizar
+        $this->render('editaritems', array(
+            'model' => $model,
+            'data' => base64_encode(CJavaScript::jsonEncode($items)),
+        ));
+    }
+
+	public function actionSave() {
+        if (Yii::app()->request->isPostRequest) {
+            $model = new ARTICULO;
+            $data = isset($_POST['DATA']) ? CJavaScript::jsonDecode($_POST['DATA']) : array();
+            $accion = isset($_POST['ACCION']) ? $_POST['ACCION'] : "";
+            if ($accion == "Create") {
+                $arroout = $model->insertarItems($data);
+            } else {
+                $arroout = $model->actualizarItems($data);
+            }
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+            return;
+        }
+    }
+
+	/**
+     * Creates a new model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     */
+    public function actionNuevoitems() {
+        $model = new ARTICULO;
+        $this->render('nuevoitems', array(
+            'model' => $model,
+        ));
+    }
+
+
+	public function actionBuscarItems() {
+        if (Yii::app()->request->isAjaxRequest) {
+            $valor = isset($_POST['valor']) ? $_POST['valor'] : "";
+            $op = isset($_POST['op']) ? $_POST['op'] : "";
+            $arrayData = array();
+            $data = new ARTICULO;
+            $arrayData = $data->retornarBuscarItems($valor, $op);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arrayData);
+        }
+	}
+
+
+	public function actionActivarItem() {
+        if (Yii::app()->request->isPostRequest) {
+            //$ids = base64_decode($_POST['ids']);
+            $ids = isset($_POST['ids']) ? $_POST['ids'] : 0;
+			$Estado = ($_POST['estado'])?0:1;//isset($_POST['estado']) ? $_POST['estado'] : "";
+            $res = new ARTICULO;
+            $arroout = $res->activarItem($ids,$Estado);
+            header('Content-type: application/json');
+            echo CJavaScript::jsonEncode($arroout);
+        }
+    }
+
+	//Nota: Si tiene problema no olvidar los privilegios de la carpeta
+    public function actionUpload() {
+		
+        Yii::import("ext.EAjaxUpload.qqFileUploader");
+        $model=new ARTICULO;
+		$folder=YiiBase::getPathOfAlias("webroot").Yii::app()->params["rutafilePro"];
+		//VSValidador::putMessageLogFile($folder);
+        if (!file_exists($folder)) {
+            mkdir($folder, 0777, true); //Se Crea la carpeta
+            //chmod(dirname($folder), 0777);//Habilitar si da error
+        }
+
+        $allowedExtensions = array("jpg", "jpeg"); //array("jpg","jpeg","gif","exe","mov" and etc...
+        $sizeLimit = 12 * 1024 * 1024; // maximum file size in bytes
+        $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+        $result = $uploader->handleUpload($folder);
+        
+        $fileSize = filesize($folder . $result['filename']); //GETTING FILE SIZE
+        $fileName = $result['filename']; //GETTING FILE NAME //Retorna el Nombre del Archivo a subir
+        
+        //VSValidador::putMessageLogFile($result);
+        
+        $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+        echo $return; // it's array 
+    }
+
+
 }
