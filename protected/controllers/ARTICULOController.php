@@ -275,7 +275,8 @@ class ARTICULOController extends Controller
         $allowedExtensions = array("jpg", "jpeg"); //array("jpg","jpeg","gif","exe","mov" and etc...
         $sizeLimit = 12 * 1024 * 1024; // maximum file size in bytes
         $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
-        $result = $uploader->handleUpload($folder);
+        //$result = $uploader->handleUpload($folder);
+		$result = $uploader->handleUploadPersonalizado($folder);
         
         $fileSize = filesize($folder . $result['filename']); //GETTING FILE SIZE
         $fileName = $result['filename']; //GETTING FILE NAME //Retorna el Nombre del Archivo a subir
